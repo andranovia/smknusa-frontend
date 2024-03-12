@@ -29,7 +29,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="flex flex-col items-stretch  text-[#081B34] rounded-md md:w-1/4 ">
+          <div className="flex flex-col items-start justify-start  text-[#081B34] rounded-md md:w-1/4">
             <div className="flex flex-col bg-white rounded-md w-full">
               <div className="rounded-md bg-yellow-300 p-4">
                 <h2 className="text-[14px] font-[600]">
@@ -40,7 +40,7 @@ export default function Footer() {
                 Kami akan memberikan notifikasi kepada anda, jika ada pembaruan
                 dari kami.
               </div>
-              <div className="rounded-[10px] m-4 border-2 p-2 flex justify-between items-center ">
+              <div className="rounded-[10px] m-4 border-2 p-2 flex justify-between items-center">
                 <input
                   type="text"
                   name=""
@@ -57,7 +57,7 @@ export default function Footer() {
               </div>
             </div>
 
-            <div className="mt-4 p-4 text-white flex flex-col items-start gap-4 ">
+            <div className="mt-4 pt-4 text-white flex flex-col items-start gap-4 justify-start">
               <div className="flex items-center mr-4 mb-2">
                 <Image
                   src={"/assets/sms.svg"}

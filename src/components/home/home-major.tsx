@@ -24,7 +24,7 @@ const majorData = [
 
 const HomeMajor = () => {
   const startIndex = 0;
-  const dragThreshold = 100;
+  const dragThreshold = 50;
   const fallbackWidth = 100;
   const containerRef = useRef<HTMLDivElement>(null);
   const itemsRef = useRef<(HTMLDivElement | null)[]>([]);
@@ -32,9 +32,9 @@ const HomeMajor = () => {
   const canScrollPrev = activeSlide > 0;
   const canScrollNext = activeSlide < majorData.length - 1;
 
-  const maxLeftSlide = -250;
+  const maxLeftSlide = -280;
   const maxRightSlide = -20;
-  const offsetX = useMotionValue(0);
+  const offsetX = useMotionValue(-40);
   const animatedX = useSpring(offsetX, {
     damping: 20,
     stiffness: 150,
@@ -48,12 +48,18 @@ const HomeMajor = () => {
 
     animatedX.stop();
 
+    const currentOffset = animatedX.get();
+
     if (
       Math.abs(dragOffset) < dragThreshold ||
       (!canScrollPrev && dragOffset > 0) ||
       (!canScrollNext && dragOffset < 0)
     ) {
-      animatedX.set(maxRightSlide);
+      if (currentOffset > maxRightSlide) {
+        animatedX.set(maxRightSlide);
+      } else {
+        animatedX.set(currentOffset);
+      }
     } else {
       animatedX.set(maxLeftSlide);
     }
@@ -72,28 +78,39 @@ const HomeMajor = () => {
         <hr className="bg-white w-[95%] mt-20" />
       </div>
 
-      <div className="relative w-full h-full px-8  -top-32 ">
-        <div className="flex justify-start items-end relative bottom-0 bg-[#F2F3F4] overflow-hidden rounded-[10px] ">
+      <div className="relative  px-8  -top-32  ">
+        <div className="flex justify-start items-end relative bg-[#F2F3F4] overflow-hidden rounded-[10px] ">
           <Image
             src={"/assets/pak-rudi-1.png"}
             alt=""
             width={550}
             height={550}
             draggable={false}
-            className="h-full w-full relative z-20 -right-14 bg-gradient-to-r from-[#F2F3F4] to-transparent rounded-md"
+            className="w-full h-full z-20 bg-gradient-to-r from-[#F2F3F4]  to-transparent rounded-md"
           />
+          <div className="absolute bg-white left-16 bottom-10 p-4 rounded-md z-30">
+            <h1 className="font-[700] text-[16px]">
+              Kepala Sekolah SMKN 1 Purwosari
+            </h1>
+          </div>
           <div className="relative  flex flex-col gap-14 justify-center items-start h-full my-14">
-            <div className="mx-20 flex justify-center items-center gap-8">
+            <div className=" flex justify-start items-center gap-8">
               <h1
                 className="font-[600] text-[16px] p-1 rounded-md relative transition-all w-min-content
-                        before:h-1 before:absolute before:bottom-0 before:right-0 before:bg-white before:transition-all before:duration-500
-                        before:w-full hover:before:left-0 hover:before:bg-primary cursor-pointer"
+                        before:h-1 before:absolute before:bottom-0 before:right-0 before:bg-[#F5C451] before:transition-all before:duration-500
+                        before:w-full hover:before:left-0  cursor-pointer"
               >
                 Informatika
               </h1>
-              <h1 className="font-[600] text-[16px]">Agribisnis</h1>
-              <h1 className="font-[600] text-[16px]">Permesinan</h1>
-              <h1 className="font-[600] text-[16px]">Elektronika</h1>
+              <h1 className="font-[600] text-[16px] text-[#9DA5B1]">
+                Agribisnis
+              </h1>
+              <h1 className="font-[600] text-[16px] text-[#9DA5B1]">
+                Permesinan
+              </h1>
+              <h1 className="font-[600] text-[16px] text-[#9DA5B1]">
+                Elektronika
+              </h1>
             </div>
             <motion.div
               ref={containerRef}
@@ -109,7 +126,7 @@ const HomeMajor = () => {
                 left: -(fallbackWidth * (majorData.length - 1)),
                 right: fallbackWidth,
               }}
-              className="flex justify-end items-end gap-8   relative "
+              className="flex justify-end items-end gap-8    relative "
             >
               {majorData.map((data, index) => {
                 return (

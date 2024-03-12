@@ -1,6 +1,7 @@
 import HomeHero from "@/components/home/home-hero";
 import HomeMajor from "@/components/home/home-major";
 import HomeSlider from "@/components/home/home-slider";
+import HomeFacility from "@/components/home/home-facility";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <HomeHero />
       <HomeSlider />
       <HomeMajor />
+      <HomeFacility />
     </main>
   );
 }
