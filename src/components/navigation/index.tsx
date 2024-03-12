@@ -6,7 +6,7 @@ import NavigationItem from "./navigation-item";
 import NavigationDropdown from "./navigation-dropdown";
 
 const Navbar = () => {
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     const controlNavbar = () => {
@@ -28,7 +28,7 @@ const Navbar = () => {
     <div
       className={`flex items-center justify-between z-40 transition-transform ${
         show ? "text-[#081B34] translate-y-2" : "text-white translate-y-8"
-      } fixed w-full px-2 delay-0`}
+      } fixed w-full px-3 delay-0`}
     >
       <div
         className={`flex  items-center    justify-between w-full py-3 transition-all rounded-[10px] px-11  ${

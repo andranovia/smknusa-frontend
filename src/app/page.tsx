@@ -1,4 +1,5 @@
 import HomeHero from "@/components/home/home-hero";
+import HomeMajor from "@/components/home/home-major";
 import HomeSlider from "@/components/home/home-slider";
 
 export default function Home() {
@@ -6,6 +7,7 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center ">
       <HomeHero />
       <HomeSlider />
+      <HomeMajor />
     </main>
   );
 }

@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function Footer() {
   return (
     <>
-      <div className="flex flex-col gap-10 px-8 py-10 bg-[#081B34] text-white">
+      <div className="flex flex-col gap-10 px-8 py-10 bg-primary rounded-[10px] text-white">
         <div className="flex flex-wrap mt-8 ">
           <div className="flex flex-col items-stretch md:w-1/4 ">
             <h2 className="text-xl font-bold ">Unit Produksi Sekolah</h2>
@@ -91,7 +91,7 @@ export default function Footer() {
 
         <hr />
 
-        <div className="flex items-center justify-between bg-[#081B34] text-white ">
+        <div className="flex items-center justify-between  text-white ">
           <div className="flex items-center">
             <Image
               src={"/assets/logo-skansa.svg"}
