@@ -34,7 +34,7 @@ const Navbar = () => {
         className={`flex  items-center    justify-between w-full py-3 transition-all rounded-[10px] px-11  ${
           !show
             ? "bg-opacity-0 font-[900]"
-            : "bg-opacity-100 bg-white  font-[800]"
+            : "bg-opacity-100 bg-white shadow-lg font-[800]"
         }  `}
       >
         <div className="flex items-center">

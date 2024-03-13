@@ -4,18 +4,18 @@ import Image from "next/image";
 export default function Footer() {
   return (
     <>
-      <div className="flex flex-col gap-10 px-8 py-10 bg-primary rounded-[10px] text-white">
+      <div className="flex flex-col gap-10 px-8 py-8 bg-primary rounded-[10px] text-white">
         <div className="flex flex-wrap mt-8 ">
           <div className="flex flex-col items-stretch md:w-1/4 ">
             <h2 className="text-xl font-bold ">Unit Produksi Sekolah</h2>
-            <div className="mt-4">
+            <div className="mt-10">
               <p className="mb-4">Tangirelasi </p>
               <p className="">SMK Production</p>
             </div>
           </div>
           <div className="flex flex-col items-stretch  md:w-1/4 ">
             <h2 className="text-xl font-bold ">Aplikasi & Layanan</h2>
-            <div className="mt-4">
+            <div className="mt-10">
               <p className="mb-4">Virtual School</p>
               <p className="mb-4">CBT(Ujian Sekolah)</p>
               <p className="mb-4">LMS Save The Childr</p>
@@ -24,12 +24,12 @@ export default function Footer() {
           </div>
           <div className="flex flex-col items-stretch md:w-1/4 ">
             <h2 className="text-xl font-bold">Lainnya</h2>
-            <div className="mt-4">
+            <div className="mt-10">
               <p className="">Peta Situs (XML)</p>
             </div>
           </div>
 
-          <div className="flex flex-col items-start justify-start  text-[#081B34] rounded-md md:w-1/4">
+          <div className="flex flex-col items-start justify-start text-[#081B34] rounded-md md:w-1/4">
             <div className="flex flex-col bg-white rounded-md w-full">
               <div className="rounded-md bg-yellow-300 p-4">
                 <h2 className="text-[14px] font-[600]">
@@ -106,7 +106,7 @@ export default function Footer() {
           </div>
 
           <div className="flex-grow flex justify-center  ">
-            <div className="text-center mt-8 text-gray-500">
+            <div className="text-center text-gray-500">
               <p>
                 Hak Cipta &copy; 2024 SMK Negeri 1 Purwosari. Dikembangkan oleh
                 TPW SMK

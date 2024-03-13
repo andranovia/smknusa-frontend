@@ -1,69 +1,95 @@
 "use client";
 
 import Image from "next/image";
-import React, { useRef, useState } from "react";
-import { PanInfo, motion, useMotionValue, useSpring } from "framer-motion";
+import React, { useEffect, useState } from "react";
+import HomeMajorSlider from "./home-major-slider";
+import { motion, useAnimation, useMotionValue, useSpring } from "framer-motion";
 
-const majorData = [
+function createSymbol(name: string): symbol {
+  return Symbol(name);
+}
+
+const Informatika = createSymbol("Informatika");
+const Agribisnis = createSymbol("Agribisnis");
+const Pemesinan = createSymbol("Pemesinan");
+
+const majorData = {
+  [Informatika]: [
+    {
+      major: "RPL",
+      majorDesc: "Rekayasa Perangkat Lunak",
+      majorImg: "/assets/rpl-major.png",
+    },
+    {
+      major: "DKV",
+      majorDesc: "Design Komunikasi Visual",
+      majorImg: "/assets/dkv-major.png",
+    },
+    {
+      major: "TKJ",
+      majorDesc: "Teknik Komputer Dan Jaringan",
+      majorImg: "/assets/tkj-major.png",
+    },
+  ],
+  [Agribisnis]: [
+    {
+      major: "RPL",
+      majorDesc: "Rekayasa Perangkat Lunak",
+      majorImg: "/assets/rpl-major.png",
+    },
+  ],
+  [Pemesinan]: [
+    {
+      major: "RPL",
+      majorDesc: "Rekayasa Perangkat Lunak",
+      majorImg: "/assets/rpl-major.png",
+    },
+    {
+      major: "DKV",
+      majorDesc: "Design Komunikasi Visual",
+      majorImg: "/assets/dkv-major.png",
+    },
+  ],
+};
+
+const majorLinkData = [
   {
-    major: "RPL",
-    majorDesc: "Rekayasa Perangkat Lunak",
-    majorImg: "/assets/rpl-major.png",
+    text: "Informatika",
+    slide: Informatika,
   },
   {
-    major: "DKV",
-    majorDesc: "Design Komunikasi Visual",
-    majorImg: "/assets/dkv-major.png",
+    text: "Agribisnis",
+    slide: Agribisnis,
   },
   {
-    major: "TKJ",
-    majorDesc: "Teknik Komputer Dan Jaringan",
-    majorImg: "/assets/tkj-major.png",
+    text: "Pemesinan",
+    slide: Pemesinan,
   },
 ];
 
 const HomeMajor = () => {
-  const startIndex = 0;
-  const dragThreshold = 50;
-  const fallbackWidth = 100;
-  const containerRef = useRef<HTMLDivElement>(null);
-  const itemsRef = useRef<(HTMLDivElement | null)[]>([]);
-  const [activeSlide, setActiveSlide] = useState(startIndex);
-  const canScrollPrev = activeSlide > 0;
-  const canScrollNext = activeSlide < majorData.length - 1;
-
-  const maxLeftSlide = -280;
-  const maxRightSlide = -20;
+  const [currentSlide, setCurrentSlide] = useState(Informatika);
   const offsetX = useMotionValue(-40);
+  const majors = majorData[currentSlide as keyof typeof majorData];
+  const controls = useAnimation();
   const animatedX = useSpring(offsetX, {
     damping: 20,
     stiffness: 150,
   });
 
-  function handleDragSnap(
-    _: MouseEvent,
-    { offset: { x: dragOffset } }: PanInfo
-  ) {
-    containerRef.current?.removeAttribute("data-dragging");
-
-    animatedX.stop();
-
-    const currentOffset = animatedX.get();
-
-    if (
-      Math.abs(dragOffset) < dragThreshold ||
-      (!canScrollPrev && dragOffset > 0) ||
-      (!canScrollNext && dragOffset < 0)
-    ) {
-      if (currentOffset > maxRightSlide) {
-        animatedX.set(maxRightSlide);
-      } else {
-        animatedX.set(currentOffset);
-      }
+  const handleSlideChange = (newSlide: symbol) => {
+    if (majorData[currentSlide] !== majorData[newSlide]) {
+      controls.start("animate");
+      animatedX.set(0);
     } else {
-      animatedX.set(maxLeftSlide);
+      controls.start("initial");
     }
-  }
+    setTimeout(() => {
+      setCurrentSlide(() => {
+        return newSlide;
+      });
+    }, 500);
+  };
 
   return (
     <div className="w-full h-[61rem] bg-white rounded-[10px]">
@@ -86,78 +112,50 @@ const HomeMajor = () => {
             width={550}
             height={550}
             draggable={false}
-            className="w-full h-full z-20 bg-gradient-to-r from-[#F2F3F4]  to-transparent rounded-md"
+            className="w-[40rem] h-[35rem] z-20 bg-gradient-to-r from-[#F2F3F4]  to-transparent rounded-md"
           />
-          <div className="absolute bg-white left-16 bottom-10 p-4 rounded-md z-30">
-            <h1 className="font-[700] text-[16px]">
-              Kepala Sekolah SMKN 1 Purwosari
-            </h1>
-          </div>
+
           <div className="relative  flex flex-col gap-14 justify-center items-start h-full my-14">
             <div className=" flex justify-start items-center gap-8">
-              <h1
-                className="font-[600] text-[16px] p-1 rounded-md relative transition-all w-min-content
-                        before:h-1 before:absolute before:bottom-0 before:right-0 before:bg-[#F5C451] before:transition-all before:duration-500
-                        before:w-full hover:before:left-0  cursor-pointer"
-              >
-                Informatika
-              </h1>
-              <h1 className="font-[600] text-[16px] text-[#9DA5B1]">
-                Agribisnis
-              </h1>
-              <h1 className="font-[600] text-[16px] text-[#9DA5B1]">
-                Permesinan
-              </h1>
-              <h1 className="font-[600] text-[16px] text-[#9DA5B1]">
-                Elektronika
-              </h1>
-            </div>
-            <motion.div
-              ref={containerRef}
-              style={{
-                x: animatedX,
-              }}
-              drag="x"
-              onDragStart={() => {
-                containerRef.current?.setAttribute("data-dragging", "true");
-              }}
-              onDragEnd={handleDragSnap}
-              dragConstraints={{
-                left: -(fallbackWidth * (majorData.length - 1)),
-                right: fallbackWidth,
-              }}
-              className="flex justify-end items-end gap-8    relative "
-            >
-              {majorData.map((data, index) => {
+              {majorLinkData.map((data, index) => {
                 return (
                   <React.Fragment key={index}>
-                    <motion.div
-                      layout
-                      transition={{
-                        ease: "easeInOut",
-                        duration: 0.4,
-                      }}
-                      ref={(el) => (itemsRef.current[index] = el)}
-                      className="flex justify-end items-center flex-col relative bg-black rounded-[10px]  w-[18.75rem] h-[25rem]"
+                    <h1
+                      onClick={() => handleSlideChange(data.slide)}
+                      className={`font-[600] cursor-pointer transition-colors text-[16px] text-[#9DA5B1] ${
+                        majorData[currentSlide] === majorData[data.slide]
+                          ? `p-1 rounded-md relative text-primary w-min-content before:h-1 before:absolute before:bottom-0 before:right-0 before:bg-[#F5C451] before:w-full before:opacity-100 `
+                          : "p-1 rounded-md relative  w-min-content before:h-0 before:absolute before:bottom-0 before:right-0 before:bg-[#F2F3F4] before:opacity-0 "
+                      } `}
                     >
-                      <Image
-                        src={data.majorImg}
-                        alt="rpl-major"
-                        width={300}
-                        height={400}
-                        className="w-full h-full opacity-70"
-                        draggable={false}
-                      />
-                      <div className="absolute text-center pb-4 text-white">
-                        <h2 className="font-[600] text-[18px]">{data.major}</h2>
-                        <p className="font-[500] text-[14px]">
-                          {data.majorDesc}
-                        </p>
-                      </div>
-                    </motion.div>
+                      {data.text}
+                    </h1>
                   </React.Fragment>
                 );
               })}
+            </div>
+
+            <motion.div
+              animate={controls}
+              variants={{
+                animate: {
+                  x: [0, 1000, 0],
+                  opacity: [1, 0, 1],
+                  transition: {
+                    duration: 1.2,
+                    ease: "easeInOut",
+                  },
+                },
+                initial: {
+                  x: 0,
+                },
+              }}
+            >
+              <HomeMajorSlider
+                majorData={majors}
+                offsetX={offsetX}
+                animatedX={animatedX}
+              />
             </motion.div>
           </div>
         </div>
