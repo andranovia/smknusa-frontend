@@ -124,7 +124,7 @@ const HomeMajor = () => {
                       onClick={() => handleSlideChange(data.slide)}
                       className={`font-[600] cursor-pointer transition-colors text-[16px] text-[#9DA5B1] ${
                         majorData[currentSlide] === majorData[data.slide]
-                          ? `p-1 rounded-md relative text-primary w-min-content before:h-1 before:absolute before:bottom-0 before:right-0 before:bg-[#F5C451] before:w-full before:opacity-100 `
+                          ? `p-1 rounded-md relative text-primary w-min-content before:border-[1px] before:absolute before:bottom-0 before:right-0 before:border-[#F5C451] before:w-full before:opacity-100 `
                           : "p-1 rounded-md relative  w-min-content before:h-0 before:absolute before:bottom-0 before:right-0 before:bg-[#F2F3F4] before:opacity-0 "
                       } `}
                     >

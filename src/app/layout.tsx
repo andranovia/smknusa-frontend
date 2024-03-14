@@ -10,8 +10,8 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Welcome to SMKNUSA",
-  description: "This website provide information about SMKNUSA",
+  title: "Welcome to SMK Negeri 1 Purwosari",
+  description: "Website ini memberikan informasi detail mengenai SMKNUSA",
 };
 
 export default function RootLayout({
@@ -21,6 +21,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link
+          rel="icon"
+          href="/assets/logo-skansa.svg"
+          sizes="any"
+          type="image/svg+xml"
+        />
+      </head>
       <body className={`bg-[#F2F2F2] ${montserrat.className}`}>
         <nav className="relative ">
           <Navbar />

@@ -1,9 +1,87 @@
-import React from "react";
+import React, { useState } from "react";
+import { HomeFacilityCardStack } from "./home-facillity-card-stack";
+import { useAnimation, motion, animate } from "framer-motion";
+
+const cardData = [
+  [
+    {
+      id: 0,
+      name: "Laboratorium Komputer",
+      designation: "Dilengkapi dengan setup yang bagus",
+      contentImg: "/assets/lab-kom.png",
+    },
+    {
+      id: 1,
+      name: "Laboratorium Komputer",
+      designation: "Dilengkapi dengan setup yang bagus",
+      contentImg: "/assets/lab-pertanian.png",
+    },
+    {
+      id: 2,
+      name: "Laboratorium Komputer",
+      designation: "Dilengkapi dengan setup yang bagus",
+      contentImg: "/assets/lab-mesin.png",
+    },
+  ],
+  [
+    {
+      id: 0,
+      name: "Laboratorium Komputer 2",
+      designation: "Dilengkapi dengan setup yang bagus",
+      contentImg: "/assets/lab-pertanian.png",
+    },
+    {
+      id: 1,
+      name: "Laboratorium Komputer",
+      designation: "Dilengkapi dengan setup yang bagus",
+      contentImg: "/assets/lab-mesin.png",
+    },
+  ],
+  [
+    {
+      id: 0,
+      name: "Laboratorium Komputer 3",
+      designation: "Dilengkapi dengan setup yang bagus",
+      contentImg: "/assets/lab-pertanian.png",
+    },
+    {
+      id: 1,
+      name: "Laboratorium Komputer",
+      designation: "Dilengkapi dengan setup yang bagus",
+      contentImg: "/assets/lab-mesin.png",
+    },
+  ],
+];
+const facilityLinkData = [
+  {
+    text: "Informatika dan Elektronika",
+    majorFacilityIndex: 0,
+  },
+  {
+    text: "Agribisnis dan Agroteknologi",
+    majorFacilityIndex: 1,
+  },
+  {
+    text: "Teknologi dan Rekayasa",
+    majorFacilityIndex: 2,
+  },
+];
 
 const HomeFacility = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const facilityCardData = cardData[currentSlide];
+  const controls = useAnimation();
+  const handleSlideChange = (key: number) => {
+    setTimeout(() => {
+      setCurrentSlide(key);
+    }, 500);
+
+    controls.start("animate");
+  };
+
   return (
     <>
-      <div className="w-full h-[62rem] bg-white rounded-[10px]">
+      <div className="w-full h-fit bg-white rounded-[10px]  ">
         <div className="flex flex-col items-center justify-center bg-primary  rounded-md text-white pt-10 pb-48">
           <h1 className="font-[700] text-[36px]">
             Kenapa Harus SMK Negeri 1 Purwosari
@@ -21,23 +99,27 @@ const HomeFacility = () => {
             </span>
           </p>
 
-          <hr className="bg-white w-[95%] mt-[58px]" />
+          <hr className="bg-white w-[95%] mt-[4rem]" />
 
           <div className="flex justify-between items-start w-full left-8 mt-12 px-10">
             <div className=" flex justify-between items-center px-4 gap-8 ">
-              <h1
-                className="font-[600] text-[16px] p-1 rounded-md relative transition-all w-min-content
-                        before:h-1 before:absolute before:bottom-0 before:right-0 before:bg-[#F5C451] before:transition-all before:duration-500
-                        before:w-full hover:before:left-0 hover:before:bg-primary cursor-pointer"
-              >
-                Informatika dan Elektronika
-              </h1>
-              <h1 className="font-[600] text-[16px] text-[#9DA5B1]">
-                Agribisnis dan Agroteknologi
-              </h1>
-              <h1 className="font-[600] text-[16px] text-[#9DA5B1]">
-                Teknologi dan Rekayasa
-              </h1>
+              {facilityLinkData.map((data, index) => {
+                return (
+                  <React.Fragment key={index}>
+                    <h1
+                      onClick={() => handleSlideChange(data.majorFacilityIndex)}
+                      className={`font-[600]  cursor-pointer transition-colors text-[16px]  ${
+                        cardData[currentSlide] ===
+                        cardData[data.majorFacilityIndex]
+                          ? `p-1 rounded-md relative  w-min-content before:border-[1px] before:absolute before:bottom-0 text-white before:right-0 before:border-[#F5C451] before:w-full before:opacity-100 `
+                          : "p-1 rounded-md relative  w-min-content before:h-0 before:absolute before:bottom-0 text-[#9DA5B1] before:right-0 before:bg-[#F2F3F4] before:opacity-0 "
+                      } `}
+                    >
+                      {data.text}
+                    </h1>
+                  </React.Fragment>
+                );
+              })}
             </div>
 
             <div className="flex justify-center items-center ">
@@ -47,9 +129,28 @@ const HomeFacility = () => {
             </div>
           </div>
         </div>
-        <div className="relative  px-8  -top-36  ">
-          <div className="flex justify-start items-end relative bg-[#F2F3F4] rounded-[10px] ">
-            p
+        <div className="relative  px-8  -top-36  -mb-20">
+          <div className="flex justify-center items-end relative overflow-hidden bg-[#F2F3F4] rounded-[10px] ">
+            <motion.div
+              variants={{
+                initial: {
+                  y: 0,
+                },
+                animate: {
+                  y: [0, 800, 0],
+                  opacity: [1, 0, 1],
+                  transition: {
+                    duration: 1.2,
+                    ease: "easeInOut",
+                  },
+                },
+              }}
+              animate={controls}
+              initial={"initial"}
+              className="h-[38rem] flex items-end justify-center w-full px-20 pt-20"
+            >
+              <HomeFacilityCardStack items={facilityCardData} />
+            </motion.div>
           </div>
         </div>
       </div>
