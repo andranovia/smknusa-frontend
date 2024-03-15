@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function Footer() {
   return (
     <>
-      <div className="flex flex-col gap-10 px-8 py-8 bg-primary rounded-[10px] text-white">
+      <div className="flex flex-col  px-8 py-8 bg-primary rounded-[10px] text-white">
         <div className="flex flex-wrap mt-8 ">
           <div className="flex flex-col items-stretch md:w-1/4 ">
             <h2 className="text-xl font-bold ">Unit Produksi Sekolah</h2>
@@ -16,9 +16,10 @@ export default function Footer() {
           <div className="flex flex-col items-stretch  md:w-1/4 ">
             <h2 className="text-xl font-bold ">Aplikasi & Layanan</h2>
             <div className="mt-10">
+              <p className="mb-4">LSP SMKN 1 Purwosari</p>
               <p className="mb-4">Virtual School</p>
               <p className="mb-4">CBT(Ujian Sekolah)</p>
-              <p className="mb-4">LMS Save The Childr</p>
+              <p className="mb-4">LMS Save The Children</p>
               <p className="mb-4">Kotak Saran</p>
             </div>
           </div>
@@ -46,7 +47,7 @@ export default function Footer() {
                   name=""
                   id=""
                   placeholder="Masukkan alamat email anda"
-                  className=" w-full  "
+                  className=" w-full outline-none "
                 />
                 <Image
                   src={"/assets/round-arrow-right.svg"}
@@ -56,40 +57,43 @@ export default function Footer() {
                 />
               </div>
             </div>
+          </div>
+        </div>
 
-            <div className="mt-4 pt-4 text-white flex flex-col items-start gap-4 justify-start">
-              <div className="flex items-center mr-4 mb-2">
-                <Image
-                  src={"/assets/sms.svg"}
-                  alt="sm"
-                  width={22}
-                  height={22}
-                />
-                <p className="ml-2 mb-0">informasi@smkn1purwosari.sch.id</p>
-              </div>
-              <div className="flex items-center">
-                <Image
-                  src={"/assets/call.svg"}
-                  alt="call"
-                  width={22}
-                  height={22}
-                />
-                <p className="ml-2 mb-0">(0343) 613747</p>
-              </div>
+        <div className="w-full h-full justify-between items-end flex">
+          <div className="flex flex-col md:flex-row md:justify-between  ">
+            <div className="flex gap-4">
+              <Image
+                src={"/assets/location.svg"}
+                alt="location"
+                height={22}
+                width={22}
+              />
+              <p className="">
+                Jl. Raya Purwosari No. 1, Kec Purwosari, Kab Pasuruan, Jawa
+                Timur 67162
+              </p>
+            </div>
+          </div>
+
+          <div className=" text-white flex flex-col items-start gap-4 justify-start relative -left-8">
+            <div className="flex items-center mr-4 mb-2">
+              <Image src={"/assets/sms.svg"} alt="sm" width={22} height={22} />
+              <p className="ml-2 mb-0">informasi@smkn1purwosari.sch.id</p>
+            </div>
+            <div className="flex items-center">
+              <Image
+                src={"/assets/call.svg"}
+                alt="call"
+                width={22}
+                height={22}
+              />
+              <p className="ml-2 mb-0">(0343) 613747</p>
             </div>
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row md:justify-between ">
-          <div>
-            <p className="">
-              Jl. Raya Purwosari No. 1, Kec Purwosari, Kab Pasuruan, Jawa Timur
-              67162
-            </p>
-          </div>
-        </div>
-
-        <hr />
+        <hr className="mt-10 mb-4" />
 
         <div className="flex items-center justify-between  text-white ">
           <div className="flex items-center">
@@ -106,7 +110,7 @@ export default function Footer() {
           </div>
 
           <div className="flex-grow flex justify-center  ">
-            <div className="text-center text-gray-500">
+            <div className="text-center text-[14] text-[#F8F8F8] font-[500]">
               <p>
                 Hak Cipta &copy; 2024 SMK Negeri 1 Purwosari. Dikembangkan oleh
                 TPW SMK

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { HomeFacilityCardStack } from "./home-facillity-card-stack";
-import { useAnimation, motion, animate } from "framer-motion";
+import { HomeFacilityCardStack } from "./home-facility-card-stack";
+import { useAnimation, motion } from "framer-motion";
 
 const cardData = [
   [

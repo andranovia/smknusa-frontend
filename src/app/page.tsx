@@ -5,6 +5,7 @@ import HomeMajor from "@/components/home/home-major";
 import HomeSlider from "@/components/home/home-slider";
 import HomeFacility from "@/components/home/home-facility";
 import HomeNews from "@/components/home/home-news";
+import HomeEnterpreneur from "@/components/home/home-enterpreneur";
 import Lenis from "@studio-freight/lenis";
 import { useEffect } from "react";
 
@@ -26,7 +27,7 @@ export default function Home() {
       <HomeSlider />
       <HomeMajor />
       <HomeFacility />
-      {/* nanti ini buat kewirausahaan */}
+      <HomeEnterpreneur />
       <HomeNews />
     </main>
   );

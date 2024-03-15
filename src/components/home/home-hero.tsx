@@ -11,6 +11,7 @@ const HomeHero = () => {
           loop
           playsInline
           muted
+          className="w-screen"
         />
       </div>
     </div>
