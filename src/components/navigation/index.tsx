@@ -52,11 +52,11 @@ const Navbar = () => {
         </div>
         <div className="flex-grow flex justify-center font-[600] ">
           <ul className={`flex justify-center items-center gap-8`}>
-            <NavigationItem name="Profile" show={show} dropdown={true} />
-            <NavigationItem name="Akademik" show={show} dropdown={true} />
-            <NavigationItem name="BKK" show={show} dropdown={true} />
-            <NavigationItem name="Berita" show={show} />
-            <NavigationItem name="Artikel" show={show} />
+            <NavigationItem  name="Profile" show={show} dropdown={true} route={'/profile'}/>
+            <NavigationItem name="Akademik" show={show} dropdown={true} route={'/akademik'}/>
+            <NavigationItem name="BKK" show={show} dropdown={true} route={'/bkk'}/>
+            <NavigationItem name="Berita" show={show} route={'/news'}/>
+            <NavigationItem name="Artikel" show={show} route={'/artikel'}/>
           </ul>
         </div>
         <div className="flex items-center space-x-4">
