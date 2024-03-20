@@ -1,6 +1,7 @@
 "use client";
 
 import NewsHero from "@/components/berita";
+import NewsCard from "@/components/berita/news-card";
 import NewsForm from "@/components/berita/news-form";
 import Lenis from "@studio-freight/lenis";
 import { useEffect } from "react";
@@ -21,6 +22,7 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center ">
       <NewsHero />
       <NewsForm />
+      <NewsCard />
     </main>
   );
 }
