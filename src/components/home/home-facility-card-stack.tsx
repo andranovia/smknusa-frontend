@@ -49,7 +49,7 @@ export const HomeFacilityCardStack = ({
             top: index * -CARD_OFFSET,
             scale: 1 - index * SCALE_FACTOR,
             y: index === 0 ? [0, 500, 0] : 0,
-            zIndex: [0, cards.length - index],
+            zIndex: cards.length - index,
           }}
           transition={{
             duration: 1,
