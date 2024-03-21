@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 const newsData = [
   {
@@ -68,28 +69,51 @@ const newsData = [
 
 const NewsCard = () => {
   return (
+    <>
     <div className="flex justify-center items-center">
-      <div className="grid grid-flow-col grid-cols-9 gap-5">
+      <div className="grid grid-cols-3 gap-8 px-12 pb-12">
         {newsData.map((news, index) => {
           return (
           <React.Fragment key={index}>
-            <div className="bg-white rounded-lg shadow-md overflow-hidden">
+            <div className="bg-white rounded-lg w-[23rem] shadow-md overflow-hidden">
               <img
-                className="w-full h-40 object-cover"
+                className="w-full max-h-full object-cover"
                 src={news.cardImg}
                 alt={news.card}
               />
               <div className="p-4">
-                <div className="text-base font-bold mb-2">{news.card}</div>
-                <div className="text-sm text-gray-500 flex items-center">
-                  <span className="text-gray-600">{news.cardProfile}</span>
-                  <div className="ml-auto text-gray-600 text-right">
+                <div className="text-md font-[500] text-[18px] mb-2">{news.card}</div>
+                <div className="text-sm text-[#696969] flex justify-between items-center">
+                  <span className=" flex text-[#696969] font-[500] text-[12px]">
+                    <Image
+                     className="mx-1"
+                    src={"/assets/user.svg"}
+                    alt="user"
+                    width={15}
+                    height={15}
+                    />
+                    {news.cardProfile}</span>
+                  <div className="flex ml-auto font-[500] mr-4 text-[12px] text-[#696969] text-right">
+                  <Image
+                   className="mx-1"
+                    src={"/assets/clock.svg"}
+                    alt="user"
+                    width={15}
+                    height={15}
+                    />
                     {news.cardDate}
                   </div>
+                  <span className="font-[500]  text-[12px] text-[#696969] flex items-center">
+                    <Image
+                     className="mx-1"
+                     src={"/assets/eye.svg"}
+                     alt="views"
+                     width={15}
+                     height={15}
+                    />
+                    {news.cardView}</span>
                 </div>
-                <div className="mt-4 text-sm text-gray-600 flex items-center">
-                  <span className="text-gray-600">Views: {news.cardView}</span>
-                </div>
+                
               </div>
             </div>
           </React.Fragment>
@@ -97,6 +121,7 @@ const NewsCard = () => {
         })}
       </div>
     </div>
+    </>
   );
 };
 

@@ -5,7 +5,7 @@ const NewsForm = () => {
     <>
     <div className="relative z-10 -top-24">
       <div className="flex justify-center items-center">
-        <div className=" bg-white px-12 py-10 rounded-lg border-white shadow-lg">
+        <div className=" bg-white px-12 py-10 w-[73rem] rounded-lg border-white shadow-lg">
           <div className="grid grid-cols-4 gap-12 mb-3">
             <div className="col-span-1 flex flex-col">
               <label htmlFor="judul" className="block font-medium text-[18px] mb-5 text-[#081B34] mt-1">Judul Berita</label>
