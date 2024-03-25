@@ -82,33 +82,28 @@ const HomeFacility = () => {
   return (
     <>
       <div className="w-full h-fit bg-white rounded-[10px]  ">
-        <div className="flex flex-col items-center justify-center bg-primary  rounded-md text-white pt-10 pb-48">
-          <h1 className="font-[700] text-[36px]">
+        <div className="flex flex-col items-center justify-center bg-primary gap-8 rounded-md text-white pt-10 pb-48">
+          <h1 className="font-[700] lg:text-[36px] w-4/5 lg:w-fit">
             Kenapa Harus SMK Negeri 1 Purwosari
           </h1>
 
-          <p className="font-[500] text-[18px] mt-[12px]">
+          <p className="font-[500] lg:text-[18px]  lg:w-2/3 lg:text-center w-4/5">
             Di SMK Negeri 1 Purwosari, kami akan memberikan pengalaman terbaik
-            dalam kegiatan belajar mengajar <br />
-            <span className="block text-center">
-              yang menyongsong kurikulum merdeka belajar. Dengan dilengkapi
-              fasilitas yang berqualitas,
-            </span>
-            <span className="block text-center">
-              mampu menyongsong kebutuhan siswa untuk belajar
-            </span>
+            dalam kegiatan belajar mengajar yang menyongsong kurikulum merdeka
+            belajar. Dengan dilengkapi fasilitas yang berqualitas, mampu
+            menyongsong kebutuhan siswa untuk belajar
           </p>
 
-          <hr className="bg-white w-[95%] mt-[4rem]" />
+          <hr className="bg-white lg:w-[95%]  w-4/5 lg:mt-20" />
 
-          <div className="flex justify-between items-start w-full left-8 mt-12 px-10">
-            <div className=" flex justify-between items-center px-4 gap-8 ">
+          <div className="flex flex-col lg:flex-row lg:gap-0 gap-8 lg:justify-between items-center lg:items-start w-full left-8 mt-12 lg:px-10">
+            <div className="  flex justify-between items-center px-4 gap-8 ">
               {facilityLinkData.map((data, index) => {
                 return (
                   <React.Fragment key={index}>
                     <h1
                       onClick={() => handleSlideChange(data.majorFacilityIndex)}
-                      className={`font-[600]  cursor-pointer transition-colors text-[16px]  ${
+                      className={`font-[600]  cursor-pointer transition-colors lg:text-[16px] text-xs w-[5.5rem] lg:w-[15rem] truncate ${
                         cardData[currentSlide] ===
                         cardData[data.majorFacilityIndex]
                           ? `p-1 rounded-md relative  w-min-content before:border-[1px] before:absolute before:bottom-0 text-white before:right-0 before:border-[#F5C451] before:w-full before:opacity-100 `
@@ -129,8 +124,8 @@ const HomeFacility = () => {
             </div>
           </div>
         </div>
-        <div className="relative  px-8  -top-36  -mb-20">
-          <div className="flex justify-center items-end relative overflow-hidden bg-[#F2F3F4] rounded-[10px] ">
+        <div className="relative px-4 lg:px-8  -top-36  -mb-20">
+          <div className="flex justify-center lg:items-end relative overflow-hidden bg-[#F2F3F4] rounded-[10px] ">
             <motion.div
               variants={{
                 initial: {
@@ -147,7 +142,7 @@ const HomeFacility = () => {
               }}
               animate={controls}
               initial={"initial"}
-              className="h-[38rem] flex items-end justify-center w-full px-20 pt-20"
+              className="lg:h-[38rem] flex lg:items-end justify-center w-full lg:px-20 pt-10 lg:pt-20"
             >
               <HomeFacilityCardStack items={facilityCardData} />
             </motion.div>

@@ -43,6 +43,7 @@ const HomeEnterpreneurSlider = () => {
                   alt={data.enterpreneurImg}
                   width={110}
                   height={110}
+                  className="lg:w-28 w-14"
                 />
               </div>
             </React.Fragment>

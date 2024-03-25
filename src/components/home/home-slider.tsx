@@ -37,9 +37,9 @@ const HomeSlider = () => {
                   alt="star"
                   width={70}
                   height={70}
-                  className="mx-10"
+                  className="mx-10 lg:w-18 w-12"
                 />
-                <h2 className="font-[500] text-[22px]">{data.text}</h2>
+                <h2 className="font-[500] lg:text-[22px]">{data.text}</h2>
               </div>
             </React.Fragment>
           ))}

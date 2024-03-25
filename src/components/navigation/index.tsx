@@ -3,7 +3,7 @@
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import NavigationItem from "./navigation-item";
-import NavigationDropdown from "./navigation-dropdown";
+import NavigationDropdownIcon from "./navigation-dropdown-icon";
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
@@ -26,7 +26,7 @@ const Navbar = () => {
 
   return (
     <div
-      className={`flex items-center justify-between z-40 transition-transform ${
+      className={`lg:flex items-center justify-between z-40 hidden transition-transform ${
         show ? "text-[#081B34] translate-y-2" : "text-white translate-y-8"
       } fixed w-full px-3 delay-0`}
     >
@@ -50,13 +50,28 @@ const Navbar = () => {
             PURWOSARI
           </div>
         </div>
-        <div className="flex-grow flex justify-center font-[600] ">
+        <div className=" flex justify-start font-[600] ">
           <ul className={`flex justify-center items-center gap-8`}>
-            <NavigationItem  name="Profile" show={show} dropdown={true} route={'/profile'}/>
-            <NavigationItem name="Akademik" show={show} dropdown={true} route={'/akademik'}/>
-            <NavigationItem name="BKK" show={show} dropdown={true} route={'/bkk'}/>
-            <NavigationItem name="Berita" show={show} route={'/news'}/>
-            <NavigationItem name="Artikel" show={show} route={'/artikel'}/>
+            <NavigationItem
+              name="Profile"
+              show={show}
+              dropdown={true}
+              route={"/profile"}
+            />
+            <NavigationItem
+              name="Akademik"
+              show={show}
+              dropdown={true}
+              route={"/akademik"}
+            />
+            <NavigationItem
+              name="BKK"
+              show={show}
+              dropdown={true}
+              route={"/bkk"}
+            />
+            <NavigationItem name="Berita" show={show} route={"/news"} />
+            <NavigationItem name="Artikel" show={show} route={"/artikel"} />
           </ul>
         </div>
         <div className="flex items-center space-x-4">
@@ -74,7 +89,7 @@ const Navbar = () => {
               width={22}
               height={22}
             />
-            <NavigationDropdown show={show} />
+            <NavigationDropdownIcon show={show} />
           </div>
           <Image
             src={"/assets/user.svg"}

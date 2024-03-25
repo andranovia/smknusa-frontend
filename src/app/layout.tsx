@@ -30,11 +30,11 @@ export default function RootLayout({
         />
       </head>
       <body className={`bg-[#F2F2F2] ${montserrat.className}`}>
-        <nav className="relative">
+        <nav className="">
           <Navbar />
         </nav>
         <div className="p-3 overflow-hidden">{children}</div>
-        <footer className="p-3 ">
+        <footer className=" ">
           <Footer />
         </footer>
       </body>

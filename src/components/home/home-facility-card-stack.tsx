@@ -39,11 +39,11 @@ export const HomeFacilityCardStack = ({
   }, []);
 
   return (
-    <div className="relative h-60 w-60 lg:w-full lg:h-full">
+    <div className="relative h-40 w-72 lg:w-full lg:h-full">
       {cards.map((card, index) => (
         <motion.div
           key={card.id}
-          className="absolute h-60 w-60 lg:w-full lg:h-full flex flex-col justify-end items-center"
+          className="absolute w-full h-full flex flex-col justify-end items-center"
           style={{ transformOrigin: "top center" }}
           animate={{
             top: index * -CARD_OFFSET,
@@ -66,8 +66,10 @@ export const HomeFacilityCardStack = ({
             className="absolute w-full h-full"
           />
           <div className="relative z-20 text-center text-white -top-10">
-            <p className="font-[700] text-[20px] ">{card.name}</p>
-            <p className="font-[500] text-[14px]">{card.designation}</p>
+            <p className="font-[700] lg:text-[20px] ">{card.name}</p>
+            <p className="font-[500] lg:text-[14px] text-xs">
+              {card.designation}
+            </p>
           </div>
         </motion.div>
       ))}

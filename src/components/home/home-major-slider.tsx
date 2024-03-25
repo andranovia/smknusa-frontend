@@ -1,12 +1,5 @@
 import React, { useRef } from "react";
-import {
-  MotionValue,
-  PanInfo,
-  motion,
-  useAnimation,
-  useMotionValue,
-  useSpring,
-} from "framer-motion";
+import { MotionValue, PanInfo, motion, useAnimation } from "framer-motion";
 import Image from "next/image";
 
 interface HomeMajorSliderProps {
@@ -19,11 +12,7 @@ interface HomeMajorSliderProps {
   animatedX: any;
 }
 
-const HomeMajorSlider = ({
-  majorData,
-  offsetX,
-  animatedX,
-}: HomeMajorSliderProps) => {
+const HomeMajorSlider = ({ majorData, animatedX }: HomeMajorSliderProps) => {
   const startIndex = 0;
   const dragThreshold = 50;
   const fallbackWidth = 100;
@@ -89,7 +78,7 @@ const HomeMajorSlider = ({
                 }}
                 animate={controls}
                 ref={(el) => (itemsRef.current[index] = el)}
-                className="flex justify-end items-center flex-col relative bg-black rounded-[10px]  w-[18.75rem] h-[25rem]"
+                className="flex justify-end items-center flex-col relative bg-black rounded-[10px] w-[13rem] h-[18rem]  lg:w-[18.75rem] lg:h-[25rem]"
               >
                 <Image
                   src={data.majorImg}
@@ -101,7 +90,9 @@ const HomeMajorSlider = ({
                 />
                 <div className="absolute text-center pb-4 text-white">
                   <h2 className="font-[600] text-[18px]">{data.major}</h2>
-                  <p className="font-[500] text-[14px]">{data.majorDesc}</p>
+                  <p className="font-[500] text-[14px] hidden lg:block">
+                    {data.majorDesc}
+                  </p>
                 </div>
               </motion.div>
             </React.Fragment>

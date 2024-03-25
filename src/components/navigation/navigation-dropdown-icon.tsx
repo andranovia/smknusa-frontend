@@ -5,7 +5,7 @@ interface NavigationDropdownProps {
   show: boolean;
 }
 
-const NavigationDropdown = ({ show }: NavigationDropdownProps) => {
+const NavigationDropdownIcon = ({ show }: NavigationDropdownProps) => {
   return (
     <Image
       src={`${show ? `/assets/dropdown.svg` : "/assets/dropdown-white.svg"}`}
@@ -16,4 +16,4 @@ const NavigationDropdown = ({ show }: NavigationDropdownProps) => {
   );
 };
 
-export default NavigationDropdown;
+export default NavigationDropdownIcon;
