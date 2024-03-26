@@ -1,10 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import HomeMajorSlider from "./home-major-slider";
 import { motion, useAnimation, useMotionValue, useSpring } from "framer-motion";
-import { useResize } from "@/hooks/useResize";
 
 function createSymbol(name: string): symbol {
   return Symbol(name);
@@ -19,36 +18,36 @@ const majorData = {
     {
       major: "RPL",
       majorDesc: "Rekayasa Perangkat Lunak",
-      majorImg: "/assets/rpl-major.png",
+      majorImg: "/assets/major/rpl-major.png",
     },
     {
       major: "DKV",
       majorDesc: "Design Komunikasi Visual",
-      majorImg: "/assets/dkv-major.png",
+      majorImg: "/assets/major/dkv-major.png",
     },
     {
       major: "TKJ",
       majorDesc: "Teknik Komputer Dan Jaringan",
-      majorImg: "/assets/tkj-major.png",
+      majorImg: "/assets/major/tkj-major.png",
     },
   ],
   [Agribisnis]: [
     {
       major: "RPL",
       majorDesc: "Rekayasa Perangkat Lunak",
-      majorImg: "/assets/rpl-major.png",
+      majorImg: "/assets/major/rpl-major.png",
     },
   ],
   [Pemesinan]: [
     {
       major: "RPL",
       majorDesc: "Rekayasa Perangkat Lunak",
-      majorImg: "/assets/rpl-major.png",
+      majorImg: "/assets/major/rpl-major.png",
     },
     {
       major: "DKV",
       majorDesc: "Design Komunikasi Visual",
-      majorImg: "/assets/dkv-major.png",
+      majorImg: "/assets/major/dkv-major.png",
     },
   ],
 };

@@ -50,7 +50,7 @@ export default function Footer() {
                   className=" w-full outline-none "
                 />
                 <Image
-                  src={"/assets/round-arrow-right.svg"}
+                  src={"/assets/icon/round-arrow-right.svg"}
                   alt="sm"
                   width={30}
                   height={30}
@@ -64,7 +64,7 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row md:justify-between  ">
             <div className="flex gap-4">
               <Image
-                src={"/assets/location.svg"}
+                src={"/assets/icon/location.svg"}
                 alt="location"
                 height={22}
                 width={22}
@@ -78,12 +78,17 @@ export default function Footer() {
 
           <div className=" text-white flex flex-col items-start gap-4 justify-start relative -left-8">
             <div className="flex items-center mr-4 mb-2">
-              <Image src={"/assets/sms.svg"} alt="sm" width={22} height={22} />
+              <Image
+                src={"/assets/icon/sms.svg"}
+                alt="sm"
+                width={22}
+                height={22}
+              />
               <p className="ml-2 mb-0">informasi@smkn1purwosari.sch.id</p>
             </div>
             <div className="flex items-center">
               <Image
-                src={"/assets/call.svg"}
+                src={"/assets/icon/call.svg"}
                 alt="call"
                 width={22}
                 height={22}
@@ -98,7 +103,7 @@ export default function Footer() {
         <div className="flex items-center justify-between  text-white ">
           <div className="flex items-center">
             <Image
-              src={"/assets/logo-skansa.svg"}
+              src={"/assets/icon/logo-skansa.svg"}
               alt=""
               height={55}
               width={55}
@@ -120,25 +125,25 @@ export default function Footer() {
 
           <div className="flex items-center space-x-4">
             <Image
-              src={"/assets/tiktok.svg"}
+              src={"/assets/icon/tiktok.svg"}
               alt="tiktok"
               width={22}
               height={22}
             />
             <Image
-              src={"/assets/instagram.svg"}
+              src={"/assets/icon/instagram.svg"}
               alt="instagram"
               width={22}
               height={22}
             />
             <Image
-              src={"/assets/facebook.svg"}
+              src={"/assets/icon/facebook.svg"}
               alt="facebook"
               width={22}
               height={22}
             />
             <Image
-              src={"/assets/twitter.svg"}
+              src={"/assets/icon/twitter.svg"}
               alt="twitter"
               width={22}
               height={22}

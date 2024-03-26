@@ -4,6 +4,7 @@ import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import NavigationItem from "./navigation-item";
 import NavigationDropdownIcon from "./navigation-dropdown-icon";
+import NavigationLanguage from "./navigation-language";
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
@@ -39,7 +40,7 @@ const Navbar = () => {
       >
         <div className="flex items-center">
           <Image
-            src={"/assets/logo-skansa.svg"}
+            src={"/assets/icon/logo-skansa.svg"}
             alt=""
             height={55}
             width={55}
@@ -52,47 +53,24 @@ const Navbar = () => {
         </div>
         <div className=" flex justify-start font-[600] ">
           <ul className={`flex justify-center items-center gap-8`}>
-            <NavigationItem
-              name="Profile"
-              show={show}
-              dropdown={true}
-              route={"/profile"}
-            />
-            <NavigationItem
-              name="Akademik"
-              show={show}
-              dropdown={true}
-              route={"/akademik"}
-            />
-            <NavigationItem
-              name="BKK"
-              show={show}
-              dropdown={true}
-              route={"/bkk"}
-            />
+            <NavigationItem name="Profile" show={show} dropdown={true} />
+            <NavigationItem name="Akademik" show={show} dropdown={true} />
+            <NavigationItem name="BKK" show={show} dropdown={true} />
             <NavigationItem name="Berita" show={show} route={"/news"} />
             <NavigationItem name="Artikel" show={show} route={"/artikel"} />
           </ul>
         </div>
         <div className="flex items-center space-x-4">
           <Image
-            src={"/assets/search.svg"}
+            src={"/assets/icon/search.svg"}
             alt="search"
             className={`${show ? `invert` : "invert-0"} transition-all `}
             width={22}
             height={22}
           />
-          <div className="flex justify-center items-center gap-1">
-            <Image
-              src={"/assets/indonesia.svg"}
-              alt="search"
-              width={22}
-              height={22}
-            />
-            <NavigationDropdownIcon show={show} />
-          </div>
+          <NavigationLanguage show={show} />
           <Image
-            src={"/assets/user.svg"}
+            src={"/assets/icon/user.svg"}
             alt="user"
             height={5}
             width={20}

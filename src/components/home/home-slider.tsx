@@ -33,7 +33,7 @@ const HomeSlider = () => {
             <React.Fragment key={index}>
               <div className="flex items-center ">
                 <Image
-                  src={"/assets/star.svg"}
+                  src={"/assets/icon/star.svg"}
                   alt="star"
                   width={70}
                   height={70}

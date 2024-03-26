@@ -8,7 +8,9 @@ interface NavigationDropdownProps {
 const NavigationDropdownIcon = ({ show }: NavigationDropdownProps) => {
   return (
     <Image
-      src={`${show ? `/assets/dropdown.svg` : "/assets/dropdown-white.svg"}`}
+      src={`${
+        show ? `/assets/icon/dropdown.svg` : "/assets/icon/dropdown-white.svg"
+      }`}
       alt="dropdown"
       height={5}
       width={20}

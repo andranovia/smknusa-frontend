@@ -4,28 +4,28 @@ import Marquee from "react-fast-marquee";
 
 const sliderEnterpreneur = [
   {
-    enterpreneurImg: "/assets/yamaha.svg",
+    enterpreneurImg: "/assets/company/yamaha.svg",
   },
   {
-    enterpreneurImg: "/assets/mayora.svg",
+    enterpreneurImg: "/assets/company/mayora.svg",
   },
   {
-    enterpreneurImg: "/assets/otsuka.svg",
+    enterpreneurImg: "/assets/company/otsuka.svg",
   },
   {
-    enterpreneurImg: "/assets/bakery.svg",
+    enterpreneurImg: "/assets/company/bakery.svg",
   },
   {
-    enterpreneurImg: "/assets/satria.svg",
+    enterpreneurImg: "/assets/company/satria.svg",
   },
   {
-    enterpreneurImg: "/assets/daihatsu.svg",
+    enterpreneurImg: "/assets/company/daihatsu.svg",
   },
   {
-    enterpreneurImg: "/assets/kyc.svg",
+    enterpreneurImg: "/assets/company/kyc.svg",
   },
   {
-    enterpreneurImg: "/assets/ktg.svg",
+    enterpreneurImg: "/assets/company/ktg.svg",
   },
 ];
 
