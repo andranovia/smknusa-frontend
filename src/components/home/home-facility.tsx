@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { HomeFacilityCardStack } from "./home-facility-card-stack";
 import { useAnimation, motion } from "framer-motion";
+import { useMediaQuery } from "react-responsive";
 
 const cardData = [
   [
@@ -52,22 +53,9 @@ const cardData = [
     },
   ],
 ];
-const facilityLinkData = [
-  {
-    text: "Informatika dan Elektronika",
-    majorFacilityIndex: 0,
-  },
-  {
-    text: "Agribisnis dan Agroteknologi",
-    majorFacilityIndex: 1,
-  },
-  {
-    text: "Teknologi dan Rekayasa",
-    majorFacilityIndex: 2,
-  },
-];
 
 const HomeFacility = () => {
+  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
   const [currentSlide, setCurrentSlide] = useState(0);
   const facilityCardData = cardData[currentSlide];
   const controls = useAnimation();
@@ -79,11 +67,26 @@ const HomeFacility = () => {
     controls.start("animate");
   };
 
+  const facilityLinkData = [
+    {
+      text: isMobile ? "Informatika" : "Informatika dan Elektronika",
+      majorFacilityIndex: 0,
+    },
+    {
+      text: isMobile ? "Agribisnis" : "Agribisnis dan Agroteknologi",
+      majorFacilityIndex: 1,
+    },
+    {
+      text: isMobile ? "Rekayasa" : "Teknologi dan Rekayasa",
+      majorFacilityIndex: 2,
+    },
+  ];
+
   return (
     <>
       <div className="w-full h-fit bg-white rounded-[10px]  ">
         <div className="flex flex-col items-center justify-center bg-primary gap-8 rounded-md text-white pt-10 pb-48">
-          <h1 className="font-[700] lg:text-[36px] w-4/5 lg:w-fit">
+          <h1 className="font-[700] lg:text-[36px] text-[24px] w-4/5 lg:w-fit">
             Kenapa Harus SMK Negeri 1 Purwosari
           </h1>
 
@@ -96,18 +99,18 @@ const HomeFacility = () => {
 
           <hr className="bg-white lg:w-[95%]  w-4/5 lg:mt-20" />
 
-          <div className="flex flex-col lg:flex-row lg:gap-0 gap-8 lg:justify-between items-center lg:items-start w-full left-8 mt-12 lg:px-10">
-            <div className="  flex justify-between items-center px-4 gap-8 ">
+          <div className="flex  lg:gap-0 gap-8 justify-center items-center  w-4/5 lg:w-full  lg:mt-12 lg:px-10">
+            <div className="grid  grid-cols-2  lg:flex justify-between w-full items-center lg:px-4 gap-8 ">
               {facilityLinkData.map((data, index) => {
                 return (
                   <React.Fragment key={index}>
                     <h1
                       onClick={() => handleSlideChange(data.majorFacilityIndex)}
-                      className={`font-[600]  cursor-pointer transition-colors lg:text-[16px] text-xs w-[5.5rem] lg:w-[15rem] truncate ${
+                      className={`font-[600]  text-center cursor-pointer transition-colors lg:text-[16px] text-xs   ${
                         cardData[currentSlide] ===
                         cardData[data.majorFacilityIndex]
-                          ? `p-1 rounded-md relative  w-min-content before:border-[1px] before:absolute before:bottom-0 text-white before:right-0 before:border-[#F5C451] before:w-full before:opacity-100 `
-                          : "p-1 rounded-md relative  w-min-content before:h-0 before:absolute before:bottom-0 text-[#9DA5B1] before:right-0 before:bg-[#F2F3F4] before:opacity-0 "
+                          ? `p-1 rounded-md relative   before:border-[1px] before:absolute before:right-0  before:bottom-0 text-white  before:mx-auto before:border-[#F5C451] before:w-full before:opacity-100 `
+                          : "p-1 rounded-md relative   before:h-0 before:absolute before:bottom-0 text-[#9DA5B1] before:right-0 before:bg-[#F2F3F4] before:opacity-0 "
                       } `}
                     >
                       {data.text}
@@ -115,11 +118,12 @@ const HomeFacility = () => {
                   </React.Fragment>
                 );
               })}
-            </div>
-
-            <div className="flex justify-center items-center ">
-              <div className="btn bg-[#F5C451] hover:bg-[#F5C451] text-[#081B34] font-[600] py-2.5 px-5 rounded">
-                <button className="text-[16px] ">Selengkapnya </button>
+              <div className="flex justify-center items-center lg:ml-[25%]">
+                <div className="btn bg-[#F5C451] hover:bg-[#F5C451] text-[#081B34] font-[600] py-2.5 px-5 rounded">
+                  <button className="lg:text-[16px] text-xs">
+                    Selengkapnya{" "}
+                  </button>
+                </div>
               </div>
             </div>
           </div>

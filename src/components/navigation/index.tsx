@@ -3,7 +3,6 @@
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import NavigationItem from "./navigation-item";
-import NavigationDropdownIcon from "./navigation-dropdown-icon";
 import NavigationLanguage from "./navigation-language";
 
 const Navbar = () => {
