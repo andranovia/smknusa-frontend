@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <>
       <div className="lg:flex flex-col hidden px-8 py-8 bg-primary rounded-[10px] text-white">
-        <div className="flex flex-wrap mt-8 ">
+        <div className="flex flex-wrap mt-8 mx-12">
           <div className="flex flex-col items-stretch md:w-1/4 ">
             <h2 className="text-xl font-bold ">Unit Produksi Sekolah</h2>
             <div className="mt-10">
@@ -32,12 +32,18 @@ export default function Footer() {
 
           <div className="flex flex-col items-start justify-start text-[#081B34] rounded-md md:w-1/4">
             <div className="flex flex-col bg-white rounded-md w-full">
-              <div className="rounded-md bg-yellow-300 p-4">
-                <h2 className="text-[14px] font-[600]">
+              <div className="flex gap-1 rounded-md bg-yellow-300 p-4">
+              <Image
+                  alt="sms_notification"
+                  src={"/assets/icon/sms-notification.svg"}
+                  width={"22"}
+                  height={"22"}
+                  />
+                <h2 className=" text-[14px] font-[600]">
                   Dapatkan Informasi Terbaru Kami
                 </h2>
               </div>
-              <div className="p-4 font-[500]">
+              <div className="p-4 text-[14px] font-[500]">
                 Kami akan memberikan notifikasi kepada anda, jika ada pembaruan
                 dari kami.
               </div>
@@ -58,11 +64,10 @@ export default function Footer() {
               </div>
             </div>
           </div>
-        </div>
 
-        <div className="w-full h-full justify-between items-end flex">
-          <div className="flex flex-col md:flex-row md:justify-between  ">
-            <div className="flex gap-4">
+
+        <div className="w-full  h-full justify-between items-end flex">
+            <div className="flex flex-col md:flex-row md:justify-between gap-4">
               <Image
                 src={"/assets/icon/location.svg"}
                 alt="location"
@@ -74,9 +79,9 @@ export default function Footer() {
                 Timur 67162
               </p>
             </div>
-          </div>
 
-          <div className=" text-white flex flex-col items-start gap-4 justify-start relative -left-8">
+
+          <div className=" text-white flex flex-col items-start gap-4 justify-start relative -left-12">
             <div className="flex items-center mr-4 mb-2">
               <Image
                 src={"/assets/icon/sms.svg"}
@@ -96,6 +101,7 @@ export default function Footer() {
               <p className="ml-2 mb-0">(0343) 613747</p>
             </div>
           </div>
+        </div>
         </div>
 
         <hr className="mt-10 mb-4" />

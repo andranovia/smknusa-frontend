@@ -34,7 +34,7 @@ export default function RootLayout({
           <Navbar />
         </nav>
         <div className="p-3 overflow-hidden">{children}</div>
-        <footer className=" ">
+        <footer className="p-3 ">
           <Footer />
         </footer>
       </body>
