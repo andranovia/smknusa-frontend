@@ -33,8 +33,8 @@ export default function RootLayout({
         <nav className="">
           <Navbar />
         </nav>
-        <div className="p-3 overflow-hidden">{children}</div>
-        <footer className="p-3 ">
+        <div className="overflow-hidden">{children}</div>
+        <footer className="">
           <Footer />
         </footer>
       </body>

@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function Footer() {
   return (
     <>
-      <div className="lg:flex flex-col hidden px-8 py-8 bg-primary rounded-[10px] text-white">
+      <div className="lg:flex flex-col hidden px-8 py-8 bg-primary rounded-t-lg text-white mt-3">
         <div className="flex flex-wrap mt-8 mx-12">
           <div className="flex flex-col items-stretch md:w-1/4 ">
             <h2 className="text-xl font-bold ">Unit Produksi Sekolah</h2>
