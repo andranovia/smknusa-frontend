@@ -5,7 +5,7 @@ const NewsHero = () => {
   return (
     <>
       <div className="relative lg:w-full lg:h-[80%]">
-      <div className="relative">
+      <div className="relative pb-6">
         <Image
           src={"/assets/smkn1purwosari.svg"}
           alt='smknusa'

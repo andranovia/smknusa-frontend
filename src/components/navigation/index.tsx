@@ -43,6 +43,7 @@ const Navbar = () => {
             alt=""
             height={55}
             width={55}
+            quality={100}
           />
 
           <div className="ml-2  text-[18px]  ">
