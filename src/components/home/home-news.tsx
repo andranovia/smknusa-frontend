@@ -7,35 +7,115 @@ interface NewsItem {
   image: string;
 }
 
-const newsData: NewsItem[] = [
+const newsData: { [key: string]: NewsItem[] } = {
+  Pengumuman: [
+    {
+      title: "Pengumuman",
+      content:
+        'Pengoptimalan Gerakan Literasi Sekolah dengan Program "Pustaka Keliling" di SMK Negeri 1 Purwosari',
+      image: "/assets/berita/berita_entrepeneur.svg",
+    },
+    {
+      title: "Pengumuman",
+      content:
+        "SMKN 1 Purwosari Merebut Juara 1 dan 3 Lomba Karya Tulis Ilmiah (KTI) Inovasi Teknologi",
+      image: "/assets/samplemurid.png",
+    },
+    {
+      title: "Pengumuman",
+      content:
+        "SMKN 1 Purwosari Mendapatkan Penghargaan Bintang 5 Apresiasi SMK BISA 2023",
+      image: "/assets/berita/berita_guru.svg",
+    },
+  ],
+  Agenda: [
+    {
+      title: "Agenda",
+      content:
+        'Pengoptimalan Gerakan Literasi Sekolah dengan Program "Pustaka Keliling" di SMK Negeri 1 Purwosari',
+      image: "/assets/berita/berita_entrepeneur.svg",
+    },
+    {
+      title: "Agenda",
+      content:
+        "SMKN 1 Purwosari Merebut Juara 1 dan 3 Lomba Karya Tulis Ilmiah (KTI) Inovasi Teknologi",
+      image: "/assets/samplemurid.png",
+    },
+    {
+      title: "Agenda",
+      content:
+        "SMKN 1 Purwosari Mendapatkan Penghargaan Bintang 5 Apresiasi SMK BISA 2023",
+      image: "/assets/berita/berita_guru.svg",
+    },
+  ],
+  Berita: [
+    {
+      title: "Berita",
+      content:
+        'Pengoptimalan Gerakan Literasi Sekolah dengan Program "Pustaka Keliling" di SMK Negeri 1 Purwosari',
+      image: "/assets/berita/berita_entrepeneur.svg",
+    },
+    {
+      title: "Berita",
+      content:
+        "SMKN 1 Purwosari Merebut Juara 1 dan 3 Lomba Karya Tulis Ilmiah (KTI) Inovasi Teknologi",
+      image: "/assets/samplemurid.png",
+    },
+    {
+      title: "Berita",
+      content:
+        "SMKN 1 Purwosari Mendapatkan Penghargaan Bintang 5 Apresiasi SMK BISA 2023",
+      image: "/assets/berita/berita_guru.svg",
+    },
+  ],
+  Artikel: [
+    {
+      title: "Artikel",
+      content:
+        'Pengoptimalan Gerakan Literasi Sekolah dengan Program "Pustaka Keliling" di SMK Negeri 1 Purwosari',
+      image: "/assets/berita/berita_entrepeneur.svg",
+    },
+    {
+      title: "Artikel",
+      content:
+        "SMKN 1 Purwosari Merebut Juara 1 dan 3 Lomba Karya Tulis Ilmiah (KTI) Inovasi Teknologi",
+      image: "/assets/samplemurid.png",
+    },
+    {
+      title: "Artikel",
+      content:
+        "SMKN 1 Purwosari Mendapatkan Penghargaan Bintang 5 Apresiasi SMK BISA 2023",
+      image: "/assets/berita/berita_guru.svg",
+    },
+  ],
+};
+
+const newsLinkData = [
   {
-    title: "Berita",
-    content:
-      'Pengoptimalan Gerakan Literasi Sekolah dengan Program "Pustaka Keliling" di SMK Negeri 1 Purwosari',
-    image: "/assets/berita/berita_entrepeneur.svg",
+    newsTitle: "Pengumuman",
   },
   {
-    title: "Berita",
-    content:
-      "SMKN 1 Purwosari Merebut Juara 1 dan 3 Lomba Karya Tulis Ilmiah (KTI) Inovasi Teknologi",
-    image: "/assets/samplemurid.png",
+    newsTitle: "Agenda",
   },
   {
-    title: "Berita",
-    content:
-      "SMKN 1 Purwosari Mendapatkan Penghargaan Bintang 5 Apresiasi SMK BISA 2023",
-    image: "/assets/berita/berita_guru.svg",
+    newsTitle: "Berita",
+  },
+  {
+    newsTitle: "Artikel",
   },
 ];
 
 const HomeNews = () => {
-  const [activeNewsIndex, setActiveNewsIndex] = useState<number | null>(1);
-  const [selectedNewsImage, setSelectedNewsImage] = useState<string | null>("");
+  const [currentNewsType, setCurrentNewsType] = useState<string | null>(
+    "Pengumuman"
+  );
 
-  const handleNewsClick = (index: number, newsImage: string) => {
-    setActiveNewsIndex(index);
-    setSelectedNewsImage(newsImage);
+  const currentNewsData = currentNewsType ? newsData[currentNewsType] : null;
+
+  const handleChangeNews = (newsType: string) => {
+    setCurrentNewsType(newsType);
   };
+
   return (
     <>
       <div className="w-full h-[62rem] bg-white rounded-[10px] mt-3">
@@ -54,18 +134,20 @@ const HomeNews = () => {
 
           <div className="flex justify-between items-start w-full left-8 mt-12 px-10">
             <div className=" flex justify-between items-center px-4 gap-8 ">
-              <h1 className="font-[600] text-[16px] text-[#9DA5B1]">
-                Pengumuman
-              </h1>
-              <h1 className="font-[600] text-[16px] text-[#9DA5B1]">Agenda</h1>
-              <h1
-                className="font-[600] text-[16px] p-1 rounded-md relative transition-all w-min-content
-                        before:h-1 before:absolute before:bottom-0 before:right-0 before:bg-[#F5C451] before:transition-all before:duration-500
-                        before:w-full hover:before:left-0 hover:before:bg-primary cursor-pointer"
-              >
-                Berita
-              </h1>
-              <h1 className="font-[600] text-[16px] text-[#9DA5B1]">Artikel</h1>
+              {newsLinkData.map((link, index) => (
+                <React.Fragment key={index}>
+                  <h1
+                    onClick={() => handleChangeNews(link.newsTitle)}
+                    className={`font-[600] text-[16px] text-[#9DA5B1] p-1 rounded-md relative transition-all w-min-content cursor-pointer ${
+                      link.newsTitle === currentNewsType
+                        ? " before:h-1 before:absolute text-white before:bottom-0 before:right-0 before:bg-[#F5C451] before:transition-all before:duration-500 before:w-full"
+                        : null
+                    }`}
+                  >
+                    {link.newsTitle}
+                  </h1>
+                </React.Fragment>
+              ))}
             </div>
 
             <div className="flex justify-center items-center ">
@@ -83,7 +165,7 @@ const HomeNews = () => {
                 <div className="bg-[#F5C451] p-1 rounded-md h-1/4 absolute top-0 mt-8"></div>
                 <div className="bg-gray-200  p-1 rounded-md h-full"></div>
                 <div className="flex flex-col items-start gap-8">
-                  {newsData.map((news, index) => (
+                  {currentNewsData?.map((news, index) => (
                     <React.Fragment key={index}>
                       <div className="flex flex-col items-start gap-2 w-2/3">
                         <h2 className="font-[600]  text-[18px]">
