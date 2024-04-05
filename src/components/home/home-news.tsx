@@ -1,7 +1,41 @@
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
+
+interface NewsItem {
+  title: string;
+  content: string;
+  image: string;
+}
+
+const newsData: NewsItem[] = [
+  {
+    title: "Berita",
+    content:
+      'Pengoptimalan Gerakan Literasi Sekolah dengan Program "Pustaka Keliling" di SMK Negeri 1 Purwosari',
+    image: "/assets/berita/berita_entrepeneur.svg",
+  },
+  {
+    title: "Berita",
+    content:
+      "SMKN 1 Purwosari Merebut Juara 1 dan 3 Lomba Karya Tulis Ilmiah (KTI) Inovasi Teknologi",
+    image: "/assets/samplemurid.png",
+  },
+  {
+    title: "Berita",
+    content:
+      "SMKN 1 Purwosari Mendapatkan Penghargaan Bintang 5 Apresiasi SMK BISA 2023",
+    image: "/assets/berita/berita_guru.svg",
+  },
+];
 
 const HomeNews = () => {
+  const [activeNewsIndex, setActiveNewsIndex] = useState<number | null>(1);
+  const [selectedNewsImage, setSelectedNewsImage] = useState<string | null>("");
+
+  const handleNewsClick = (index: number, newsImage: string) => {
+    setActiveNewsIndex(index);
+    setSelectedNewsImage(newsImage);
+  };
   return (
     <>
       <div className="w-full h-[62rem] bg-white rounded-[10px]">
@@ -49,63 +83,28 @@ const HomeNews = () => {
                 <div className="bg-[#F5C451] p-1 rounded-md h-1/4 absolute top-0 mt-8"></div>
                 <div className="bg-gray-200  p-1 rounded-md h-full"></div>
                 <div className="flex flex-col items-start gap-8">
-                  <div className="flex flex-col items-start gap-2 w-2/3">
-                    <h2 className="font-[600]  text-[18px]">Berita</h2>
-                    <p className="font-[500] text-[16px]">
-                      Pengoptimalan Gerakan Literasi Sekolah dengan Program
-                      "Pustaka Keliling" di SMK Negeri 1 Purwosari
-                    </p>
-                    <div className="flex justify-start items-center gap-2">
-                      <h3 className="font-[500] text-[16px]">
-                        Lihat Selengkapnya
-                      </h3>
-                      <Image
-                        src={"assets/icon/line-arrow-right.svg"}
-                        alt="arrow-right"
-                        width={40}
-                        height={40}
-                        className="w-4 h-4"
-                      />
-                    </div>
-                  </div>
-                  <div className="flex flex-col items-start gap-2 w-2/3">
-                    <h2 className="font-[600]  text-[18px]">Berita</h2>
-                    <p className="font-[500] text-[16px]">
-                      Pengoptimalan Gerakan Literasi Sekolah dengan Program
-                      "Pustaka Keliling" di SMK Negeri 1 Purwosari
-                    </p>
-                    <div className="flex justify-start items-center gap-2">
-                      <h3 className="font-[500] text-[16px]">
-                        Lihat Selengkapnya
-                      </h3>
-                      <Image
-                        src={"assets/icon/line-arrow-right.svg"}
-                        alt="arrow-right"
-                        width={40}
-                        height={40}
-                        className="w-4 h-4"
-                      />
-                    </div>
-                  </div>
-                  <div className="flex flex-col items-start gap-2 w-2/3">
-                    <h2 className="font-[600]  text-[18px]">Berita</h2>
-                    <p className="font-[500] text-[16px]">
-                      Pengoptimalan Gerakan Literasi Sekolah dengan Program
-                      "Pustaka Keliling" di SMK Negeri 1 Purwosari
-                    </p>
-                    <div className="flex justify-start items-center gap-2">
-                      <h3 className="font-[500] text-[16px]">
-                        Lihat Selengkapnya
-                      </h3>
-                      <Image
-                        src={"assets/icon/line-arrow-right.svg"}
-                        alt="arrow-right"
-                        width={40}
-                        height={40}
-                        className="w-4 h-4"
-                      />
-                    </div>
-                  </div>
+                  {newsData.map((news, index) => (
+                    <React.Fragment key={index}>
+                      <div className="flex flex-col items-start gap-2 w-2/3">
+                        <h2 className="font-[600]  text-[18px]">
+                          {news.title}
+                        </h2>
+                        <p className="font-[500] text-[16px]">{news.content}</p>
+                        <div className="flex justify-start items-center gap-2">
+                          <h3 className="font-[500] text-[16px]">
+                            Lihat Selengkapnya
+                          </h3>
+                          <Image
+                            src={"assets/icon/line-arrow-right.svg"}
+                            alt="arrow-right"
+                            width={40}
+                            height={40}
+                            className="w-4 h-4"
+                          />
+                        </div>
+                      </div>
+                    </React.Fragment>
+                  ))}
                 </div>
               </div>
               <Image
