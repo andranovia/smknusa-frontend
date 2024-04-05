@@ -38,7 +38,7 @@ const HomeNews = () => {
   };
   return (
     <>
-      <div className="w-full h-[62rem] bg-white rounded-[10px]">
+      <div className="w-full h-[62rem] bg-white rounded-[10px] mt-3">
         <div className="flex flex-col items-center justify-center bg-primary  rounded-md text-white pt-10 pb-48">
           <h1 className="font-[700] text-[36px]">
             Papan Pengumuman Informasi <br />

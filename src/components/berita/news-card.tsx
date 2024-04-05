@@ -89,7 +89,7 @@ const NewsCard = () => {
                       <span className=" flex text-[#696969] font-[500] text-[12px]">
                         <Image
                           className="mx-1"
-                          src={"/assets/user.svg"}
+                          src={"/assets/icon/user.svg"}
                           alt="user"
                           width={15}
                           height={15}
