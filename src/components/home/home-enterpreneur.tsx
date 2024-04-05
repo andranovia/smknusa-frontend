@@ -10,7 +10,7 @@ const HomeEnterpreneur = () => {
             SMKN 1 Purwosari Bekerjasama Dengan Beberapa Perusahaan
           </h1>
 
-          <p className="font-[500] text-[18px] w-4/5">
+          <p className="font-[500] text-[18px] w-4/5 lg:text-center">
             Kami telah melakukan kerja sama dengan beberapa perusahaan besar
             yang membina SMK Negeri 1 Purwosari.
           </p>

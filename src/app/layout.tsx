@@ -24,7 +24,7 @@ export default function RootLayout({
       <head>
         <link
           rel="icon"
-          href="/assets/logo-skansa.svg"
+          href="/assets/icon/logo-skansa.svg"
           sizes="any"
           type="image/svg+xml"
         />

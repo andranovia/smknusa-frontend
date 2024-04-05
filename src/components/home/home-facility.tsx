@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import { HomeFacilityCardStack } from "./home-facility-card-stack";
 import { useAnimation, motion } from "framer-motion";
