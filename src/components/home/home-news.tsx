@@ -124,7 +124,7 @@ const HomeNews = () => {
   const handleChangeNews = (newsType: string) => {
     setCurrentNewsType(newsType);
     setcurrentNewsHighlightIndex(0);
-    dragControls.set({ y: 0 });
+    dragControls.start({ y: 0 });
   };
 
   return (
