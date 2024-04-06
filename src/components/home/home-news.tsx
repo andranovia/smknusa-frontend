@@ -1,5 +1,9 @@
+"use client";
+
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { motion, useAnimation, useDragControls } from "framer-motion";
+import HomeNewsCard from "./home-news-card";
 
 interface NewsItem {
   title: string;
@@ -109,11 +113,18 @@ const HomeNews = () => {
   const [currentNewsType, setCurrentNewsType] = useState<string | null>(
     "Pengumuman"
   );
+  const [currentNewsHighlightIndex, setcurrentNewsHighlightIndex] = useState(0);
 
-  const currentNewsData = currentNewsType ? newsData[currentNewsType] : null;
+  const dragControls = useAnimation();
+
+  const currentNewsData = currentNewsType
+    ? newsData[currentNewsType]
+    : undefined;
 
   const handleChangeNews = (newsType: string) => {
     setCurrentNewsType(newsType);
+    setcurrentNewsHighlightIndex(0);
+    dragControls.set({ y: 0 });
   };
 
   return (
@@ -159,45 +170,12 @@ const HomeNews = () => {
         </div>
 
         <div className="relative  px-8  -top-36  w-full">
-          <div className="flex justify-start items-end relative w-full h-[32rem] bg-[#F2F3F4] rounded-[10px] ">
-            <div className="flex flex-row justify-between items-center w-full h-full p-8">
-              <div className="flex justify-start items-center gap-8 h-full">
-                <div className="bg-[#F5C451] p-1 rounded-md h-1/4 absolute top-0 mt-8"></div>
-                <div className="bg-gray-200  p-1 rounded-md h-full"></div>
-                <div className="flex flex-col items-start gap-8">
-                  {currentNewsData?.map((news, index) => (
-                    <React.Fragment key={index}>
-                      <div className="flex flex-col items-start gap-2 w-2/3">
-                        <h2 className="font-[600]  text-[18px]">
-                          {news.title}
-                        </h2>
-                        <p className="font-[500] text-[16px]">{news.content}</p>
-                        <div className="flex justify-start items-center gap-2">
-                          <h3 className="font-[500] text-[16px]">
-                            Lihat Selengkapnya
-                          </h3>
-                          <Image
-                            src={"assets/icon/line-arrow-right.svg"}
-                            alt="arrow-right"
-                            width={40}
-                            height={40}
-                            className="w-4 h-4"
-                          />
-                        </div>
-                      </div>
-                    </React.Fragment>
-                  ))}
-                </div>
-              </div>
-              <Image
-                src={"/assets/announcement/announcment-1.png"}
-                alt="announcement-1"
-                width={400}
-                height={400}
-                className="w-1/2 h-full"
-              />
-            </div>
-          </div>
+          <HomeNewsCard
+            setcurrentNewsHighlightIndex={setcurrentNewsHighlightIndex}
+            currentNewsHighlightIndex={currentNewsHighlightIndex}
+            currentNewsData={currentNewsData}
+            dragControls={dragControls}
+          />
         </div>
       </div>
     </>
