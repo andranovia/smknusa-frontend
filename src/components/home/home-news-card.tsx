@@ -1,6 +1,12 @@
 import Image from "next/image";
 import React, { Dispatch, SetStateAction, useEffect, useRef } from "react";
-import { AnimationControls, motion } from "framer-motion";
+import {
+  AnimationControls,
+  motion,
+  useScroll,
+  useTransform,
+  useMotionValueEvent,
+} from "framer-motion";
 import { defaultTransition } from "../animation/transition";
 
 type HomeNewsCardProps = {
@@ -13,6 +19,7 @@ type HomeNewsCardProps = {
   currentNewsHighlightIndex: number;
   newsHighlightControls: AnimationControls;
   setcurrentNewsHighlightIndex: Dispatch<SetStateAction<number>>;
+  homeNewsEndRef: React.MutableRefObject<null>;
 };
 
 const HomeNewsCard = ({
@@ -21,45 +28,30 @@ const HomeNewsCard = ({
   currentNewsHighlightIndex,
   newsHighlightControls,
   setcurrentNewsHighlightIndex,
+  homeNewsEndRef,
 }: HomeNewsCardProps) => {
   const sliderPositionYRef = useRef<HTMLDivElement>(null);
   const sliderContainerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (
-          mutation.type === "attributes" &&
-          mutation.attributeName === "style"
-        ) {
-          const targetElement = mutation.target as HTMLElement;
-          if (targetElement instanceof HTMLElement) {
-            const transformStyle = targetElement.style.transform;
-            const translateYRegex = /translateY\(([-+]?\d+)px\)/;
-            const match = translateYRegex.exec(transformStyle);
-            if (match && match[1]) {
-              const translateYValue = parseInt(match[1]);
+  const { scrollYProgress: homeNewsScrollProgress } = useScroll({
+    target: homeNewsEndRef,
+    offset: ["start", "end"],
+  });
+  const sliderY = useTransform(
+    homeNewsScrollProgress,
+    [0, 0.5, 1],
+    [0, 80, 300]
+  );
 
-              if (translateYValue <= 16) {
-                setcurrentNewsHighlightIndex(0);
-              } else if (translateYValue >= 16 && translateYValue < 304) {
-                setcurrentNewsHighlightIndex(1);
-              } else if (translateYValue >= 304) {
-                setcurrentNewsHighlightIndex(2);
-              }
-            }
-          }
-        }
-      });
-    });
-
-    const sliderElement = sliderPositionYRef.current;
-    if (sliderElement) {
-      observer.observe(sliderElement, { attributes: true });
+  useMotionValueEvent(sliderY, "change", (latest) => {
+    if (latest <= 60) {
+      setcurrentNewsHighlightIndex(0);
+    } else if (latest >= 60 && latest <= 250) {
+      setcurrentNewsHighlightIndex(1);
+    } else if (latest > 250) {
+      setcurrentNewsHighlightIndex(2);
     }
-
-    return () => observer.disconnect();
-  }, [currentNewsData]);
+  });
 
   const newsHighlightVariant = {
     hidden: {
@@ -97,18 +89,13 @@ const HomeNewsCard = ({
   };
 
   return (
-    <div
-      onScroll={() => console.log("scrolled")}
-      className="flex justify-start overflow-hidden items-end relative w-full h-[32rem] bg-[#F2F3F4] rounded-[10px] "
-    >
+    <div className="flex justify-start overflow-hidden items-end relative w-full h-[32rem] bg-[#F2F3F4] rounded-[10px] ">
       <div className="flex flex-row justify-between items-center w-full h-full p-8">
         <div className="flex justify-start items-center gap-8 h-full">
           <motion.div
-            drag="y"
-            dragElastic={0}
-            dragMomentum={false}
             dragConstraints={sliderContainerRef}
             ref={sliderPositionYRef}
+            style={{ y: sliderY }}
             animate={dragControls}
             transition={defaultTransition}
             className="bg-[#F5C451] cursor-grab p-1 rounded-md h-1/4 absolute top-0 mt-8"

@@ -13,7 +13,10 @@ const config: Config = {
       },
       textColor: {
         'primary' : '#081B34'
-      }
+      },
+      cursor: {
+        next: 'url(/assets/icon/round-arrow-right.svg), next',
+      },
     },
   },
   plugins: [],
