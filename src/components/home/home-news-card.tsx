@@ -1,12 +1,7 @@
 import Image from "next/image";
-import React, {
-  Dispatch,
-  SetStateAction,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { Dispatch, SetStateAction, useEffect, useRef } from "react";
 import { AnimationControls, motion } from "framer-motion";
+import { defaultTransition } from "../animation/transition";
 
 type HomeNewsCardProps = {
   currentNewsData?: {
@@ -16,6 +11,7 @@ type HomeNewsCardProps = {
   }[];
   dragControls: AnimationControls;
   currentNewsHighlightIndex: number;
+  newsHighlightControls: AnimationControls;
   setcurrentNewsHighlightIndex: Dispatch<SetStateAction<number>>;
 };
 
@@ -23,6 +19,7 @@ const HomeNewsCard = ({
   currentNewsData,
   dragControls,
   currentNewsHighlightIndex,
+  newsHighlightControls,
   setcurrentNewsHighlightIndex,
 }: HomeNewsCardProps) => {
   const sliderPositionYRef = useRef<HTMLDivElement>(null);
@@ -64,8 +61,46 @@ const HomeNewsCard = ({
     return () => observer.disconnect();
   }, [currentNewsData]);
 
+  const newsHighlightVariant = {
+    hidden: {
+      y: 0,
+    },
+    after: {
+      y: 0,
+    },
+    visible: {
+      y: 0,
+      transition: {
+        when: "beforeChildren",
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  useEffect(() => {
+    newsHighlightControls.start("visible");
+  }, [currentNewsData]);
+
+  const listVariant = {
+    hidden: {
+      y: 40,
+      opacity: 0,
+    },
+    after: {
+      y: 80,
+      opacity: 0,
+    },
+    visible: {
+      y: 0,
+      opacity: 1,
+    },
+  };
+
   return (
-    <div className="flex justify-start items-end relative w-full h-[32rem] bg-[#F2F3F4] rounded-[10px] ">
+    <div
+      onScroll={() => console.log("scrolled")}
+      className="flex justify-start overflow-hidden items-end relative w-full h-[32rem] bg-[#F2F3F4] rounded-[10px] "
+    >
       <div className="flex flex-row justify-between items-center w-full h-full p-8">
         <div className="flex justify-start items-center gap-8 h-full">
           <motion.div
@@ -75,21 +110,33 @@ const HomeNewsCard = ({
             dragConstraints={sliderContainerRef}
             ref={sliderPositionYRef}
             animate={dragControls}
+            transition={defaultTransition}
             className="bg-[#F5C451] cursor-grab p-1 rounded-md h-1/4 absolute top-0 mt-8"
           ></motion.div>
           <div
             ref={sliderContainerRef}
             className="bg-gray-200  p-1 rounded-md lg:h-[26rem]"
           ></div>
-          <div className="flex flex-col items-start gap-8">
+
+          <motion.div
+            variants={newsHighlightVariant}
+            animate={newsHighlightControls}
+            initial="hidden"
+            transition={defaultTransition}
+            className="flex flex-col items-start gap-8 "
+          >
             {currentNewsData?.map((news, index) => (
               <React.Fragment key={index}>
-                <div
-                  className={`flex flex-col items-start gap-2 w-2/3 ${
-                    currentNewsHighlightIndex === index
-                      ? "text-gray-900"
-                      : "text-gray-400"
-                  }`}
+                <motion.div
+                  variants={listVariant}
+                  animate={{
+                    color:
+                      currentNewsHighlightIndex === index
+                        ? "#111827"
+                        : "#9ca3af",
+                    scale: currentNewsHighlightIndex === index ? 1 : 0.9,
+                  }}
+                  className={`flex flex-col items-start gap-2 w-2/3 `}
                 >
                   <h2 className="font-[600] text-[18px] ">{news.title}</h2>
                   <p className="font-[500] text-[16px]">{news.content}</p>
@@ -105,10 +152,10 @@ const HomeNewsCard = ({
                       className="w-4 h-4"
                     />
                   </div>
-                </div>
+                </motion.div>
               </React.Fragment>
             ))}
-          </div>
+          </motion.div>
         </div>
         <Image
           src={"/assets/announcement/announcment-1.png"}

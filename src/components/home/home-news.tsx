@@ -1,8 +1,7 @@
 "use client";
 
-import Image from "next/image";
-import React, { useEffect, useRef, useState } from "react";
-import { motion, useAnimation, useDragControls } from "framer-motion";
+import React, { useState } from "react";
+import { useAnimation } from "framer-motion";
 import HomeNewsCard from "./home-news-card";
 
 interface NewsItem {
@@ -114,7 +113,7 @@ const HomeNews = () => {
     "Pengumuman"
   );
   const [currentNewsHighlightIndex, setcurrentNewsHighlightIndex] = useState(0);
-
+  const newsHighlightControls = useAnimation();
   const dragControls = useAnimation();
 
   const currentNewsData = currentNewsType
@@ -122,9 +121,14 @@ const HomeNews = () => {
     : undefined;
 
   const handleChangeNews = (newsType: string) => {
-    setCurrentNewsType(newsType);
-    setcurrentNewsHighlightIndex(0);
-    dragControls.start({ y: 0 });
+    if (newsType !== currentNewsType) {
+      dragControls.start({ y: 0 });
+      newsHighlightControls.start("after");
+      setTimeout(() => {
+        setCurrentNewsType(newsType);
+        setcurrentNewsHighlightIndex(0);
+      }, 300);
+    }
   };
 
   return (
@@ -171,6 +175,7 @@ const HomeNews = () => {
 
         <div className="relative  px-8  -top-36  w-full">
           <HomeNewsCard
+            newsHighlightControls={newsHighlightControls}
             setcurrentNewsHighlightIndex={setcurrentNewsHighlightIndex}
             currentNewsHighlightIndex={currentNewsHighlightIndex}
             currentNewsData={currentNewsData}

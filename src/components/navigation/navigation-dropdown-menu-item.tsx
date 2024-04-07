@@ -1,15 +1,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-
-const transition = {
-  type: "spring",
-  mass: 0.5,
-  damping: 11.5,
-  stiffness: 100,
-  restDelta: 0.001,
-  restSpeed: 0.001,
-};
+import { defaultTransition } from "../animation/transition";
 
 export const MenuItem = ({
   active,
@@ -30,7 +22,7 @@ export const MenuItem = ({
               <motion.div
                 animate={{ y: 0 }}
                 initial={{ y: 80 }}
-                transition={transition}
+                transition={defaultTransition}
               >
                 <motion.div className="  p-4 z-20 flex flex-col  gap-4 items-start ">
                   {children}

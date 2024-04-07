@@ -5,6 +5,7 @@ import { MenuItem } from "./navigation-dropdown-menu-item";
 import { AnimatePresence, motion, useAnimation } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { defaultTransition } from "../animation/transition";
 
 interface navLink {
   linkDropdownData: {
@@ -142,15 +143,6 @@ const navbarDropdownData: { [key: string]: navLink[] } = {
   ],
 };
 
-const transition = {
-  type: "spring",
-  mass: 0.5,
-  damping: 11.5,
-  stiffness: 100,
-  restDelta: 0.001,
-  restSpeed: 0.001,
-};
-
 const NavigationItem = ({
   name,
   dropdown,
@@ -217,7 +209,7 @@ const NavigationItem = ({
                     <MenuItem
                       active={currentDropdown}
                       item={name}
-                      transition={transition}
+                      transition={defaultTransition}
                     >
                       <div className="flex gap-4 pr-14 pl-4 py-2">
                         <Image
