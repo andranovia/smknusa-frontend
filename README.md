@@ -1,4 +1,23 @@
+# SMKN 1 Purwosari Official Website
+
+Welcome to the official repository for the SMKN 1 Purwosari website! This project serves as the online platform for SMKN 1 Purwosari, providing information and resources for students, parents, and staff members.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+
+## Features
+
+- **Profile**:  This feature provides information about SMKN 1 Purwosari, including its history, mission, vision, and values.
+- **Academic**: : This feature focuses on the academic aspect of SMKN 1 Purwosari. It provides detailed information about the various academic programs offered by the school.
+- **News and Announcement**: This feature keeps users informed about the latest news, updates, and announcements related to SMKN 1 Purwosari. 
+- **User Auth**: This feature enables users to create accounts, log in, and access personalized content or features.
+
+## Technology Stack
+
+- **Frontend**: Next.js, React
+- **Styling**: Tailwind CSS
+- **Animation**: Framer Motion
+
 
 ## Getting Started
 
