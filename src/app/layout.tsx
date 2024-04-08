@@ -33,8 +33,8 @@ export default function RootLayout({
         <nav className="">
           <Navbar />
         </nav>
-        <div className="">{children}</div>
-        <footer className="">
+        {children}
+        <footer>
           <Footer />
         </footer>
       </body>

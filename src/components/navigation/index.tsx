@@ -4,9 +4,12 @@ import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import NavigationItem from "./navigation-item";
 import NavigationLanguage from "./navigation-language";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
 
   useEffect(() => {
     const controlNavbar = () => {
@@ -27,14 +30,16 @@ const Navbar = () => {
   return (
     <div
       className={`lg:flex items-center justify-between z-40 hidden transition-transform ${
-        show ? "text-[#081B34] translate-y-2" : "text-white translate-y-8"
+        !show && isHomePage
+          ? "text-white translate-y-8"
+          : " text-[#081B34] translate-y-2"
       } fixed w-full px-3 delay-0`}
     >
       <div
         className={`flex  items-center    justify-between w-full py-3 transition-all rounded-[10px] px-11  ${
-          !show
+          !show && isHomePage
             ? "bg-opacity-0 font-[900]"
-            : "bg-opacity-100 bg-white shadow-lg font-[800]"
+            : "bg-opacity-100 bg-white  font-[800]"
         }  `}
       >
         <div className="flex items-center">
@@ -52,7 +57,11 @@ const Navbar = () => {
           </div>
         </div>
         <div className=" flex justify-start font-[600] ">
-          <ul className={`flex justify-center items-center gap-8`}>
+          <ul
+            className={`flex justify-center items-center gap-8 ${
+              !show && isHomePage ? "text-white" : " text-[#9DA5B1]"
+            }`}
+          >
             <NavigationItem name="Profile" show={show} dropdown={true} />
             <NavigationItem name="Akademik" show={show} dropdown={true} />
             <NavigationItem name="BKK" show={show} dropdown={true} />
@@ -64,7 +73,9 @@ const Navbar = () => {
           <Image
             src={"/assets/icon/search.svg"}
             alt="search"
-            className={`${show ? `invert` : "invert-0"} transition-all `}
+            className={`${
+              !show && isHomePage ? `invert-0` : "invert"
+            } transition-all `}
             width={22}
             height={22}
           />
@@ -74,7 +85,9 @@ const Navbar = () => {
             alt="user"
             height={5}
             width={20}
-            className={`${show ? `invert` : "invert-0"} transition-all `}
+            className={`${
+              !show && isHomePage ? `invert-0` : "invert"
+            } transition-all `}
           />
         </div>
       </div>

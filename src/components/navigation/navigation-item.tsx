@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import NavigationDropdown from "./navigation-dropdown-icon";
-
 import { MenuItem } from "./navigation-dropdown-menu-item";
 import { AnimatePresence, motion, useAnimation } from "framer-motion";
 import Image from "next/image";
@@ -12,6 +11,7 @@ interface navLink {
     text: string;
     description: string;
     icon: string;
+    linkRef: string;
   };
 }
 
@@ -29,6 +29,7 @@ const navbarDropdownData: { [key: string]: navLink[] } = {
         text: "Sambutan Kepala Sekolah",
         description: "Berisi sambutan resmi dari kepala sekolah",
         icon: "/assets/nav-dropdown-icon/profile/sambutan-kepsek.svg",
+        linkRef: "/profile/welcome-speech",
       },
     },
     {
@@ -36,6 +37,7 @@ const navbarDropdownData: { [key: string]: navLink[] } = {
         text: "Visi dan Misi",
         description: "Berisi sambutan resmi dari kepala sekolah",
         icon: "/assets/nav-dropdown-icon/profile/visi-misi.svg",
+        linkRef: "/profile/welcome-speech",
       },
     },
     {
@@ -43,6 +45,7 @@ const navbarDropdownData: { [key: string]: navLink[] } = {
         text: "Struktur Organisasi Sekolah",
         description: "Berisi sambutan resmi dari kepala sekolah",
         icon: "/assets/nav-dropdown-icon/profile/struktur.svg",
+        linkRef: "/profile/structure",
       },
     },
     {
@@ -50,6 +53,7 @@ const navbarDropdownData: { [key: string]: navLink[] } = {
         text: "Program Kerja Sekolah",
         description: "Berisi sambutan resmi dari kepala sekolah",
         icon: "/assets/nav-dropdown-icon/profile/proker.svg",
+        linkRef: "/profile/welcome-speech",
       },
     },
     {
@@ -57,6 +61,7 @@ const navbarDropdownData: { [key: string]: navLink[] } = {
         text: "Fasilitas Sekolah",
         description: "Berisi sambutan resmi dari kepala sekolah",
         icon: "/assets/nav-dropdown-icon/profile/fasilitas.svg",
+        linkRef: "/profile/welcome-speech",
       },
     },
     {
@@ -64,6 +69,7 @@ const navbarDropdownData: { [key: string]: navLink[] } = {
         text: "Sejarah Sekolah",
         description: "Berisi sambutan resmi dari kepala sekolah",
         icon: "/assets/nav-dropdown-icon/profile/sejarah.svg",
+        linkRef: "/profile/history",
       },
     },
     {
@@ -71,6 +77,7 @@ const navbarDropdownData: { [key: string]: navLink[] } = {
         text: "Identitas Sekolah",
         description: "Berisi sambutan resmi dari kepala sekolah",
         icon: "/assets/nav-dropdown-icon/profile/identitas.svg",
+        linkRef: "/profile/welcome-speech",
       },
     },
   ],
@@ -80,6 +87,7 @@ const navbarDropdownData: { [key: string]: navLink[] } = {
         text: "Data Warga Sekolah",
         description: "Berisi sambutan resmi dari kepala sekolah",
         icon: "/assets/nav-dropdown-icon/akademik/data-warga.svg",
+        linkRef: "/profile/welcome-speech",
       },
     },
     {
@@ -87,6 +95,7 @@ const navbarDropdownData: { [key: string]: navLink[] } = {
         text: "Ekstrakulikuler",
         description: "Berisi sambutan resmi dari kepala sekolah",
         icon: "/assets/nav-dropdown-icon/akademik/ekstrakulikuler.svg",
+        linkRef: "/profile/welcome-speech",
       },
     },
     {
@@ -94,6 +103,7 @@ const navbarDropdownData: { [key: string]: navLink[] } = {
         text: "E-Raport",
         description: "Berisi sambutan resmi dari kepala sekolah",
         icon: "/assets/nav-dropdown-icon/akademik/e-raport.svg",
+        linkRef: "/profile/welcome-speech",
       },
     },
     {
@@ -101,6 +111,7 @@ const navbarDropdownData: { [key: string]: navLink[] } = {
         text: "E-Learning",
         description: "Berisi sambutan resmi dari kepala sekolah",
         icon: "/assets/nav-dropdown-icon/akademik/e-learning.svg",
+        linkRef: "/profile/welcome-speech",
       },
     },
     {
@@ -108,6 +119,7 @@ const navbarDropdownData: { [key: string]: navLink[] } = {
         text: "PPDB",
         description: "Berisi sambutan resmi dari kepala sekolah",
         icon: "/assets/nav-dropdown-icon/akademik/ppdb.svg",
+        linkRef: "/profile/welcome-speech",
       },
     },
     {
@@ -115,6 +127,7 @@ const navbarDropdownData: { [key: string]: navLink[] } = {
         text: "Form Perangkat Ajar",
         description: "Berisi sambutan resmi dari kepala sekolah",
         icon: "/assets/nav-dropdown-icon/akademik/form-pa.svg",
+        linkRef: "/profile/welcome-speech",
       },
     },
   ],
@@ -124,6 +137,7 @@ const navbarDropdownData: { [key: string]: navLink[] } = {
         text: "Kemitraan",
         description: "Berisi sambutan resmi dari kepala sekolah",
         icon: "/assets/nav-dropdown-icon/Bkk/kemitraan.svg",
+        linkRef: "/profile/welcome-speech",
       },
     },
     {
@@ -131,6 +145,7 @@ const navbarDropdownData: { [key: string]: navLink[] } = {
         text: "Alumni - Alumni Hebat",
         description: "Berisi sambutan resmi dari kepala sekolah",
         icon: "/assets/nav-dropdown-icon/Bkk/alumni.svg",
+        linkRef: "/profile/welcome-speech",
       },
     },
     {
@@ -138,6 +153,7 @@ const navbarDropdownData: { [key: string]: navLink[] } = {
         text: "Lowongan Pekerjaan",
         description: "Berisi sambutan resmi dari kepala sekolah",
         icon: "/assets/nav-dropdown-icon/Bkk/lowongan.svg",
+        linkRef: "/profile/welcome-speech",
       },
     },
   ],
@@ -176,9 +192,7 @@ const NavigationItem = ({
       >
         <li
           onMouseEnter={() => handleOpenDropdown()}
-          className={`relative flex justify-center items-center cursor-po gap-1 ${
-            show ? "text-[#9DA5B1]" : "text-white"
-          }  rounded-md  w-min-content
+          className={`relative flex justify-center items-center cursor-po gap-1   rounded-md  w-min-content
           before:border-0 before:absolute before:bottom-0 before:right-0 before:border-transparent before:transition-colors before:duration-500
           before:w-full hover:before:border-[1px] hover:before:left-0 hover:before:border-[#F5C451] cursor-pointer z-20`}
         >
@@ -220,9 +234,11 @@ const NavigationItem = ({
                           className="w-5 h-5 opacity-50"
                         />
                         <div className="flex flex-col items-start">
-                          <h2 className="text-[#9DA5B1] font-[600] text-[16px]">
-                            {data.linkDropdownData.text}
-                          </h2>
+                          <Link href={data.linkDropdownData.linkRef}>
+                            <h2 className="text-[#9DA5B1] font-[600] text-[16px]">
+                              {data.linkDropdownData.text}
+                            </h2>
+                          </Link>
                         </div>
                       </div>
                     </MenuItem>

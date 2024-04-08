@@ -30,6 +30,18 @@ const newsData: { [key: string]: NewsItem[] } = {
         "SMKN 1 Purwosari Mendapatkan Penghargaan Bintang 5 Apresiasi SMK BISA 2023",
       image: "/assets/berita/berita_guru.svg",
     },
+    {
+      title: "Pengumuman",
+      content:
+        "SMKN 1 Purwosari Merebut Juara 1 dan 3 Lomba Karya Tulis Ilmiah (KTI) Inovasi Teknologi",
+      image: "/assets/samplemurid.png",
+    },
+    {
+      title: "Pengumuman",
+      content:
+        "SMKN 1 Purwosari Mendapatkan Penghargaan Bintang 5 Apresiasi SMK BISA 2023",
+      image: "/assets/berita/berita_guru.svg",
+    },
   ],
   Agenda: [
     {
@@ -116,7 +128,6 @@ const HomeNews = () => {
 
   const [currentNewsHighlightIndex, setcurrentNewsHighlightIndex] = useState(0);
   const newsHighlightControls = useAnimation();
-  const dragControls = useAnimation();
 
   const currentNewsData = currentNewsType
     ? newsData[currentNewsType]
@@ -124,7 +135,6 @@ const HomeNews = () => {
 
   const handleChangeNews = (newsType: string) => {
     if (newsType !== currentNewsType) {
-      dragControls.start({ y: 0 });
       newsHighlightControls.start("after");
       setTimeout(() => {
         setCurrentNewsType(newsType);
@@ -191,7 +201,6 @@ const HomeNews = () => {
                     setcurrentNewsHighlightIndex={setcurrentNewsHighlightIndex}
                     currentNewsHighlightIndex={currentNewsHighlightIndex}
                     currentNewsData={currentNewsData}
-                    dragControls={dragControls}
                   />
                 </div>
               </div>

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import React from "react";
 
 interface NavigationDropdownProps {
@@ -6,10 +7,14 @@ interface NavigationDropdownProps {
 }
 
 const NavigationDropdownIcon = ({ show }: NavigationDropdownProps) => {
+  const pathname = usePathname();
+
   return (
     <Image
       src={`${
-        show ? `/assets/icon/dropdown.svg` : "/assets/icon/dropdown-white.svg"
+        !show && pathname === "/"
+          ? `/assets/icon/dropdown-white.svg`
+          : "/assets/icon/dropdown.svg"
       }`}
       alt="dropdown"
       height={5}

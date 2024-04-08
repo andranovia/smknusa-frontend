@@ -6,6 +6,7 @@ import {
   useScroll,
   useTransform,
   useMotionValueEvent,
+  useAnimation,
 } from "framer-motion";
 import { defaultTransition } from "../animation/transition";
 
@@ -15,7 +16,6 @@ type HomeNewsCardProps = {
     content: string;
     image: string;
   }[];
-  dragControls: AnimationControls;
   currentNewsHighlightIndex: number;
   newsHighlightControls: AnimationControls;
   setcurrentNewsHighlightIndex: Dispatch<SetStateAction<number>>;
@@ -24,7 +24,6 @@ type HomeNewsCardProps = {
 
 const HomeNewsCard = ({
   currentNewsData,
-  dragControls,
   currentNewsHighlightIndex,
   newsHighlightControls,
   setcurrentNewsHighlightIndex,
@@ -32,24 +31,35 @@ const HomeNewsCard = ({
 }: HomeNewsCardProps) => {
   const sliderPositionYRef = useRef<HTMLDivElement>(null);
   const sliderContainerRef = useRef<HTMLDivElement>(null);
-
+  const dragControls = useAnimation();
   const { scrollYProgress: homeNewsScrollProgress } = useScroll({
     target: homeNewsEndRef,
     offset: ["start", "end"],
   });
+
   const sliderY = useTransform(
     homeNewsScrollProgress,
     [0, 0.5, 1],
     [0, 80, 300]
   );
+  const newsY = useTransform(
+    homeNewsScrollProgress,
+    [0, 1],
+    [
+      0,
+      currentNewsData
+        ? currentNewsData?.length <= 3
+          ? -64
+          : -64 * currentNewsData.length
+        : 1,
+    ]
+  );
 
   useMotionValueEvent(sliderY, "change", (latest) => {
-    if (latest <= 60) {
-      setcurrentNewsHighlightIndex(0);
-    } else if (latest >= 60 && latest <= 250) {
-      setcurrentNewsHighlightIndex(1);
-    } else if (latest > 250) {
-      setcurrentNewsHighlightIndex(2);
+    if (currentNewsData) {
+      const segmentSize = 250 / (currentNewsData.length - 1);
+      const index = Math.floor(latest / segmentSize);
+      setcurrentNewsHighlightIndex(Math.min(index, currentNewsData.length - 1));
     }
   });
 
@@ -91,7 +101,7 @@ const HomeNewsCard = ({
   return (
     <div className="flex justify-start overflow-hidden items-end relative w-full h-[32rem] bg-[#F2F3F4] rounded-[10px] ">
       <div className="flex flex-row justify-between items-center w-full h-full p-8">
-        <div className="flex justify-start items-center gap-8 h-full">
+        <div className="flex justify-start items-start gap-8 h-full">
           <motion.div
             dragConstraints={sliderContainerRef}
             ref={sliderPositionYRef}
@@ -109,8 +119,9 @@ const HomeNewsCard = ({
             variants={newsHighlightVariant}
             animate={newsHighlightControls}
             initial="hidden"
+            style={{ y: newsY }}
             transition={defaultTransition}
-            className="flex flex-col items-start gap-8 "
+            className="flex flex-col items-start gap-8 mt-10"
           >
             {currentNewsData?.map((news, index) => (
               <React.Fragment key={index}>
