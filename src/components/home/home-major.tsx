@@ -93,7 +93,7 @@ const HomeMajor = () => {
   };
 
   return (
-    <div className="w-full lg:h-[61rem] bg-white rounded-[10px]">
+    <div className="lg:w-full lg:h-[61rem] bg-white rounded-[10px]">
       <div className="flex flex-col items-center justify-center gap-8 bg-primary  rounded-md text-white pt-16 pb-48">
         <h1 className="font-[700] lg:text-[36px] text-[24px] w-4/5 lg:w-fit ">
           Menuju SMK Bisa,
@@ -119,7 +119,7 @@ const HomeMajor = () => {
             className="w-[40rem] hidden lg:block h-[35rem] z-20 bg-gradient-to-r from-[#F2F3F4]  to-transparent rounded-md"
           />
 
-          <div className="relative  flex flex-col gap-14 lg:justify-center  items-start h-full lg:my-14 mt-8 ">
+          <div className="relative w-[20rem] lg:w-full  flex flex-col gap-14 lg:justify-center  items-start h-full lg:my-14 mt-8 ">
             <div className=" flex justify-start lg:px-0 px-6 lg:items-center gap-8">
               {majorLinkData.map((data, index) => {
                 return (
@@ -141,6 +141,7 @@ const HomeMajor = () => {
 
             <motion.div
               animate={controls}
+              className="relative"
               variants={{
                 animate: {
                   x: [0, 1000, 0],

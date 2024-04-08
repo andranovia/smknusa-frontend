@@ -100,7 +100,7 @@ const HomeNewsCard = ({
 
   return (
     <div className="flex justify-start overflow-hidden items-end relative w-full h-[32rem] bg-[#F2F3F4] rounded-[10px] ">
-      <div className="flex flex-row justify-between items-center w-full h-full p-8">
+      <div className="flex flex-col  lg:flex-row justify-between items-center w-full h-full p-8">
         <div className="flex justify-start items-start gap-8 h-full">
           <motion.div
             dragConstraints={sliderContainerRef}

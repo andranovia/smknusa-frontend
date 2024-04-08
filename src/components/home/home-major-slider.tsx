@@ -65,7 +65,7 @@ const HomeMajorSlider = ({ majorData, animatedX }: HomeMajorSliderProps) => {
           left: -(fallbackWidth * (majorData.length - 1)),
           right: fallbackWidth,
         }}
-        className="flex justify-end items-end gap-8    relative "
+        className=" flex  gap-8  relative "
       >
         {majorData.map((data, index) => {
           return (
@@ -77,7 +77,6 @@ const HomeMajorSlider = ({ majorData, animatedX }: HomeMajorSliderProps) => {
                   duration: 0.4,
                 }}
                 animate={controls}
-                ref={(el) => (itemsRef.current[index] = el)}
                 className="flex justify-end items-center flex-col relative bg-black rounded-[10px] w-[13rem] h-[18rem]  lg:w-[18.75rem] lg:h-[25rem]"
               >
                 <Image
