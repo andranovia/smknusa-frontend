@@ -4,8 +4,8 @@ import HomeEnterpreneurSlider from "./home-enterpreneur-slider";
 const HomeEnterpreneur = () => {
   return (
     <>
-      <div className="w-full h-[62rem] bg-white rounded-[10px] mt-3">
-        <div className="flex  flex-col items-center justify-center gap-8 bg-primary  rounded-md text-white pt-10 pb-48">
+      <div className=" lg:w-full h-[62rem] bg-white rounded-[10px] mt-3">
+        <div className="relative flex  flex-col items-center justify-center gap-8 bg-primary  rounded-md text-white pt-10 pb-48">
           <h1 className="font-[700]  lg:text-[36px] text-[24px] lg:text-center w-4/5">
             SMKN 1 Purwosari Bekerjasama Dengan Beberapa Perusahaan
           </h1>

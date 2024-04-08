@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { HomeFacilityCardStack } from "./home-facility-card-stack";
 import { useAnimation, motion } from "framer-motion";
-import { useMediaQuery } from "react-responsive";
+import { useResize } from "@/hooks/useResize";
 
 const cardData = [
   [
@@ -57,7 +57,7 @@ const cardData = [
 ];
 
 const HomeFacility = () => {
-  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+  const { isMobile } = useResize();
   const [currentSlide, setCurrentSlide] = useState(0);
   const facilityCardData = cardData[currentSlide];
   const controls = useAnimation();

@@ -33,12 +33,12 @@ export default function Footer() {
           <div className="flex flex-col items-start justify-start text-[#081B34] rounded-md md:w-1/4">
             <div className="flex flex-col bg-white rounded-md w-full">
               <div className="flex gap-1 rounded-md bg-yellow-300 p-4">
-              <Image
+                <Image
                   alt="sms_notification"
                   src={"/assets/icon/sms-notification.svg"}
                   width={"22"}
                   height={"22"}
-                  />
+                />
                 <h2 className=" text-[14px] font-[600]">
                   Dapatkan Informasi Terbaru Kami
                 </h2>
@@ -65,8 +65,7 @@ export default function Footer() {
             </div>
           </div>
 
-
-        <div className="w-full  h-full justify-between items-end flex">
+          <div className="w-full  h-full justify-between items-end flex">
             <div className="flex flex-col md:flex-row md:justify-between gap-4">
               <Image
                 src={"/assets/icon/location.svg"}
@@ -80,28 +79,27 @@ export default function Footer() {
               </p>
             </div>
 
-
-          <div className=" text-white flex flex-col items-start gap-4 justify-start relative -left-12">
-            <div className="flex items-center mr-4 mb-2">
-              <Image
-                src={"/assets/icon/sms.svg"}
-                alt="sm"
-                width={22}
-                height={22}
-              />
-              <p className="ml-2 mb-0">informasi@smkn1purwosari.sch.id</p>
-            </div>
-            <div className="flex items-center">
-              <Image
-                src={"/assets/icon/call.svg"}
-                alt="call"
-                width={22}
-                height={22}
-              />
-              <p className="ml-2 mb-0">(0343) 613747</p>
+            <div className=" text-white flex flex-col items-start gap-4 justify-start relative -left-12">
+              <div className="flex items-center mr-4 mb-2">
+                <Image
+                  src={"/assets/icon/sms.svg"}
+                  alt="sm"
+                  width={22}
+                  height={22}
+                />
+                <p className="ml-2 mb-0">informasi@smkn1purwosari.sch.id</p>
+              </div>
+              <div className="flex items-center">
+                <Image
+                  src={"/assets/icon/call.svg"}
+                  alt="call"
+                  width={22}
+                  height={22}
+                />
+                <p className="ml-2 mb-0">(0343) 613747</p>
+              </div>
             </div>
           </div>
-        </div>
         </div>
 
         <hr className="mt-10 mb-4" />

@@ -151,31 +151,30 @@ const HomeNews = () => {
       >
         <div className="sticky -top-1/3   flex justify-center items-center overflow-hidden ">
           <div className="w-full h-full bg-white rounded-[10px] mt-3">
-            <div className="flex flex-col items-center justify-center bg-primary  rounded-md text-white pt-10 pb-48">
-              <h1 className="font-[700] text-[36px]">
-                Papan Pengumuman Informasi <br />
-                <span className="block text-center">
-                  SMK Negeri 1 Purwosari
-                </span>
+            <div className="flex flex-col items-center lg:text-center justify-center bg-primary  rounded-md text-white pt-10 pb-48">
+              <h1 className="font-[700] lg:text-[36px]  text-[24px] w-4/5 lg:w-full">
+                Papan Pengumuman Informasi
+                <br className="hidden lg:block" />
+                SMK Negeri 1 Purwosari
               </h1>
 
-              <p className="font-[500] text-[18px] mt-[12px]">
+              <p className="font-[500] lg:text-[18px] mt-[12px] w-4/5 lg:w-full">
                 Papan Pengumuman ini berisi segala informasi mengenai pembaruan
                 agenda, berita, artikel atau yang lainnya
               </p>
 
               <hr className="bg-white w-[95%] mt-[58px]" />
 
-              <div className="flex justify-between items-start w-full left-8 mt-12 px-10">
-                <div className=" flex justify-between items-center px-4 gap-8 ">
+              <div className="flex flex-col lg:flex-row lg:justify-between items-start w-full gap-8 left-8 mt-12 px-10">
+                <div className="grid grid-cols-2 items-center lg:flex lg:justify-start lg:gap-x-10 px-4 justify-between w-full gap-x-20 gap-y-10 ">
                   {newsLinkData.map((link, index) => (
                     <React.Fragment key={index}>
                       <h1
                         onClick={() => handleChangeNews(link.newsTitle)}
-                        className={`font-[600] text-[16px] text-[#9DA5B1] p-1 rounded-md relative transition-all w-min-content cursor-pointer ${
+                        className={`font-[600] text-[16px]  text-[#9DA5B1] p-1 rounded-md relative transition-all w-min-content cursor-pointer ${
                           link.newsTitle === currentNewsType
-                            ? " before:h-1 before:absolute text-white before:bottom-0 before:right-0 before:bg-[#F5C451] before:transition-all before:duration-500 before:w-full"
-                            : null
+                            ? `p-1 rounded-md relative   before:border-[1px] before:absolute before:right-0  before:bottom-0 text-white  before:mx-auto before:border-[#F5C451] before:w-full before:opacity-100 `
+                            : "p-1 rounded-md relative   before:h-0 before:absolute before:bottom-0 text-[#9DA5B1] before:right-0 before:bg-[#F2F3F4] before:opacity-0 "
                         }`}
                       >
                         {link.newsTitle}
@@ -184,15 +183,15 @@ const HomeNews = () => {
                   ))}
                 </div>
 
-                <div className="flex justify-center items-center ">
-                  <div className="btn bg-[#F5C451] hover:bg-[#F5C451] text-[#081B34] font-[500] py-2.5 px-5 rounded">
+                <div className="flex justify-center items-center w-full lg:w-40">
+                  <div className="w-full bg-[#F5C451] hover:bg-[#F5C451] text-[#081B34] font-[500] py-2.5 px-5 rounded">
                     <button>Selengkapnya </button>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="relative  px-8  -top-36  w-full">
+            <div className="relative lg:block hidden px-8  -top-36  w-full">
               <div className=" lg:w-full lg:h-full     bg-dot-black/[0.4] relative rounded-xl mt-10 lg:mt-0 ">
                 <div className="relative ">
                   <HomeNewsCard
