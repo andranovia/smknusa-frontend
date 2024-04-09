@@ -3,10 +3,10 @@ import React from "react";
 
 const ProfileHistory = () => {
   return (
-    <div className="w-full pt-24 px-3 rounded-[10px]">
+    <div className="w-full lg:pt-24 px-3 rounded-[10px] text-[#081B34]">
       <div className="relative  bg-white flex flex-col items-center  pt-10 pb-20">
-        <div className="flex flex-col items-center gap-4  w-2/3 text-center">
-          <h1 className="font-[700] text-[46px] text-[#081B34]">
+        <div className="flex flex-col lg:items-center gap-4 w-[80%]  lg:w-2/3 lg:text-center">
+          <h1 className="font-[700] lg:text-[46px] text-[24px] ">
             Sejarah Berdirinya Sekolah
           </h1>
           <p className="font-[500] text-[18px] text-[#696969]">
@@ -15,7 +15,7 @@ const ProfileHistory = () => {
           </p>
           <hr className="w-full border mt-8" />
         </div>
-        <div className="flex flex-col items-center gap-20  w-[80%]">
+        <div className="flex flex-col items-center gap-10 lg:gap-20  w-[80%]">
           <Image
             src={"/assets/profile/welcome-speech/profile-welcome-speech.png"}
             alt=""
