@@ -37,7 +37,7 @@ const navbarDropdownData: { [key: string]: navLink[] } = {
         text: "Visi dan Misi",
         description: "Berisi sambutan resmi dari kepala sekolah",
         icon: "/assets/nav-dropdown-icon/profile/visi-misi.svg",
-        linkRef: "/profile/welcome-speech",
+        linkRef: "/profile/vision-mision",
       },
     },
     {
