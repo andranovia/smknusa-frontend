@@ -171,10 +171,10 @@ const HomeNews = () => {
                     <React.Fragment key={index}>
                       <h1
                         onClick={() => handleChangeNews(link.newsTitle)}
-                        className={`font-[600] text-[16px]  text-[#9DA5B1] p-1 rounded-md relative transition-all w-min-content cursor-pointer ${
+                        className={`font-[600] text-[16px]  p-1 rounded-md relative transition-all w-min-content cursor-pointer ${
                           link.newsTitle === currentNewsType
                             ? `p-1 rounded-md relative   before:border-[1px] before:absolute before:right-0  before:bottom-0 text-white  before:mx-auto before:border-[#F5C451] before:w-full before:opacity-100 `
-                            : "p-1 rounded-md relative   before:h-0 before:absolute before:bottom-0 text-[#9DA5B1] before:right-0 before:bg-[#F2F3F4] before:opacity-0 "
+                            : "p-1 rounded-md relative   before:h-0 before:absolute before:bottom-0 text-gray-light before:right-0 before:bg-white before:opacity-0 "
                         }`}
                       >
                         {link.newsTitle}
@@ -184,7 +184,7 @@ const HomeNews = () => {
                 </div>
 
                 <div className="flex justify-center items-center w-full lg:w-40">
-                  <div className="w-full bg-[#F5C451] hover:bg-[#F5C451] text-[#081B34] font-[500] py-2.5 px-5 rounded">
+                  <div className="w-full bg-yellow text-[#081B34] font-[500] py-2.5 px-5 rounded">
                     <button>Selengkapnya </button>
                   </div>
                 </div>

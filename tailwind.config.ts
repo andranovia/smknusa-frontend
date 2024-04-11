@@ -9,10 +9,16 @@ const config: Config = {
   theme: {
     extend: {
       backgroundColor: {
-        'primary': '#081B34'
+        'gray-base': '#F2F2F2',
+        'gray-medium': '#E2E8F0',
+        'yellow-light': '#FFD980',
+        'yellow' : '#F5C451',
+        'primary' : '#081B34'
       },
       textColor: {
-        'primary' : '#081B34'
+        'blue-base' : '#081B34',
+        'gray': '#696969',
+        'gray-light': '#9DA5B1'
       },
       cursor: {
         next: 'url(/assets/icon/round-arrow-right.svg), next',

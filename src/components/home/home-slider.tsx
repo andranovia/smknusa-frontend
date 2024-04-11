@@ -26,7 +26,7 @@ const sliderData = [
 const HomeSlider = () => {
   return (
     <>
-      <div className="text-[#081B34] w-full flex justify-center overflow-hidden relative  items-center my-3 rounded-md bg-white py-4 ">
+      <div className="text-blue-base w-full flex justify-center overflow-hidden relative  items-center my-3 rounded-md bg-white py-4 ">
         <div className="absolute left-0 bg-gradient-to-r from-white to-transparent z-10 p-10"></div>
         <Marquee autoFill={true} speed={80}>
           {sliderData.map((data, index) => (

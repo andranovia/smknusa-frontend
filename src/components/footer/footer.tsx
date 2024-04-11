@@ -30,9 +30,9 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="flex flex-col items-start justify-start text-[#081B34] rounded-md md:w-1/4">
+          <div className="flex flex-col items-start justify-start text-blue-base rounded-md md:w-1/4">
             <div className="flex flex-col bg-white rounded-md w-full">
-              <div className="flex gap-1 rounded-md bg-yellow-300 p-4">
+              <div className="flex gap-1 rounded-md bg-yellow p-4">
                 <Image
                   alt="sms_notification"
                   src={"/assets/icon/sms-notification.svg"}
@@ -119,7 +119,7 @@ export default function Footer() {
           </div>
 
           <div className="flex-grow flex justify-center  ">
-            <div className="text-center text-[14] text-[#F8F8F8] font-[500]">
+            <div className="text-center text-[14] text-white font-[500]">
               <p>
                 Hak Cipta &copy; 2024 SMK Negeri 1 Purwosari. Dikembangkan oleh
                 TPW SMK

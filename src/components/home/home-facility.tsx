@@ -112,7 +112,7 @@ const HomeFacility = () => {
                         cardData[currentSlide] ===
                         cardData[data.majorFacilityIndex]
                           ? `p-1 rounded-md relative   before:border-[1px] before:absolute before:right-0  before:bottom-0 text-white  before:mx-auto before:border-[#F5C451] before:w-full before:opacity-100 `
-                          : "p-1 rounded-md relative   before:h-0 before:absolute before:bottom-0 text-[#9DA5B1] before:right-0 before:bg-[#F2F3F4] before:opacity-0 "
+                          : "p-1 rounded-md relative   before:h-0 before:absolute before:bottom-0 text-gray-light before:right-0 before:bg-white before:opacity-0 "
                       } `}
                     >
                       {data.text}
@@ -121,7 +121,7 @@ const HomeFacility = () => {
                 );
               })}
               <div className="flex justify-center items-center lg:ml-[25%]">
-                <div className="btn bg-[#F5C451] hover:bg-[#F5C451] text-[#081B34] font-[600] py-2.5 px-5 rounded">
+                <div className="btn bg-yellow text-blue-base font-[600] py-2.5 px-5 rounded">
                   <button className="lg:text-[16px] text-xs">
                     Selengkapnya{" "}
                   </button>
@@ -131,7 +131,7 @@ const HomeFacility = () => {
           </div>
         </div>
         <div className="relative px-4 lg:px-8  -top-36  -mb-20">
-          <div className="flex justify-center lg:items-end relative overflow-hidden bg-[#F2F3F4] rounded-[10px] ">
+          <div className="flex justify-center lg:items-end relative overflow-hidden bg-white rounded-[10px] ">
             <motion.div
               variants={{
                 initial: {

@@ -29,10 +29,10 @@ const Navbar = () => {
 
   return (
     <div
-      className={`lg:flex items-center justify-between z-40 hidden transition-transform ${
-        !show && isHomePage
-          ? "text-white translate-y-8"
-          : " text-[#081B34] translate-y-2"
+      className={`lg:flex items-center  justify-between z-40 hidden transition-transform ${
+        show
+          ? ` text-blue-base translate-y-2 shadow-lg`
+          : `  ${isHomePage ? "translate-y-8 text-white " : "translate-y-2 "}`
       } fixed w-full px-3 delay-0`}
     >
       <div
@@ -59,7 +59,7 @@ const Navbar = () => {
         <div className=" flex justify-start font-[600] ">
           <ul
             className={`flex justify-center items-center gap-8 ${
-              !show && isHomePage ? "text-white" : " text-[#9DA5B1]"
+              !show && isHomePage ? "text-white" : " text-gray-light"
             }`}
           >
             <NavigationItem name="Profile" show={show} dropdown={true} />

@@ -99,7 +99,7 @@ const HomeNewsCard = ({
   };
 
   return (
-    <div className="flex justify-start overflow-hidden items-end relative w-full h-[32rem] bg-[#F2F3F4] rounded-[10px] ">
+    <div className="flex justify-start overflow-hidden items-end relative w-full h-[32rem] bg-white rounded-[10px] ">
       <div className="flex flex-col  lg:flex-row justify-between items-center w-full h-full p-8">
         <div className="flex justify-start items-start gap-8 h-full">
           <motion.div
@@ -108,11 +108,11 @@ const HomeNewsCard = ({
             style={{ y: sliderY }}
             animate={dragControls}
             transition={defaultTransition}
-            className="bg-[#F5C451] cursor-grab p-1 rounded-md h-1/4 absolute top-0 mt-8"
+            className="bg-yellow cursor-grab p-1 rounded-md h-1/4 absolute top-0 mt-8"
           ></motion.div>
           <div
             ref={sliderContainerRef}
-            className="bg-gray-200  p-1 rounded-md lg:h-[26rem]"
+            className="bg-gray-base  p-1 rounded-md lg:h-[26rem]"
           ></div>
 
           <motion.div

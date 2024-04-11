@@ -120,7 +120,7 @@ const NewsCard = () => {
                           key={index}
                           className={`bg-[${category.CategoryColor}] px-2 py-1 rounded-[10px]`}
                         >
-                          <p className="font-[500] text-[10px] text-[#696969]">
+                          <p className="font-[500] text-[10px] text-gray">
                             {category.categoryName}
                           </p>
                         </div>
@@ -135,8 +135,8 @@ const NewsCard = () => {
                       <div className="text-md font-[500] text-[18px] mb-2">
                         {news.card}
                       </div>
-                      <div className="text-sm text-[#696969] flex justify-between items-center">
-                        <span className=" flex text-[#696969] font-[500] text-[12px]">
+                      <div className="text-sm text-gray flex justify-between items-center">
+                        <span className=" flex text-gray font-[500] text-[12px]">
                           <Image
                             className="mx-1"
                             src={"/assets/icon/user.svg"}
@@ -146,7 +146,7 @@ const NewsCard = () => {
                           />
                           {news.cardProfile}
                         </span>
-                        <div className="flex ml-auto font-[500] mr-4 text-[12px] text-[#696969] text-right">
+                        <div className="flex ml-auto font-[500] mr-4 text-[12px] text-gray text-right">
                           <Image
                             className="mx-1"
                             src={"/assets/icon/clock.svg"}
@@ -156,7 +156,7 @@ const NewsCard = () => {
                           />
                           {news.cardDate}
                         </div>
-                        <span className="font-[500]  text-[12px] text-[#696969] flex items-center">
+                        <span className="font-[500]  text-[12px] text-gray flex items-center">
                           <Image
                             className="mx-1"
                             src={"/assets/icon/eye.svg"}
