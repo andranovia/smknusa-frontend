@@ -109,7 +109,7 @@ const HomeMajor = () => {
       </div>
 
       <div className="relative  lg:px-8 px-3  -top-32  ">
-        <div className="flex justify-start items-end relative bg-[#F2F3F4] overflow-hidden rounded-[10px] ">
+        <div className="flex justify-start items-end relative bg-white overflow-hidden rounded-[10px] ">
           <Image
             src={"/assets/pak-rudi-1.png"}
             alt=""
@@ -126,10 +126,10 @@ const HomeMajor = () => {
                   <React.Fragment key={index}>
                     <h1
                       onClick={() => handleSlideChange(data.slide)}
-                      className={`font-[600] text-xs cursor-pointer transition-colors lg:text-[16px] text-[#9DA5B1] ${
+                      className={`font-[600] text-xs cursor-pointer transition-colors lg:text-[16px]  ${
                         majorData[currentSlide] === majorData[data.slide]
-                          ? `p-1 rounded-md relative text-primary w-min-content before:border-[1px] before:absolute before:bottom-0 before:right-0 before:border-[#F5C451] before:w-full before:opacity-100 `
-                          : "p-1 rounded-md relative  w-min-content before:h-0 before:absolute before:bottom-0 before:right-0 before:bg-[#F2F3F4] before:opacity-0 "
+                          ? `p-1 rounded-md relative text-blue-base w-min-content before:border-[1px] before:absolute before:bottom-0 before:right-0 before:border-[#F5C451] before:w-full before:opacity-100 `
+                          : "p-1 rounded-md relative text-gray-light  w-min-content before:h-0 before:absolute before:bottom-0 before:right-0 before:bg-white before:opacity-0 "
                       } `}
                     >
                       {data.text}

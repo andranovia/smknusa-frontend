@@ -29,7 +29,7 @@ export default function RootLayout({
           type="image/svg+xml"
         />
       </head>
-      <body className={`bg-[#F2F2F2] ${montserrat.className}`}>
+      <body className={`bg-gray-base ${montserrat.className}`}>
         <nav className="">
           <Navbar />
         </nav>

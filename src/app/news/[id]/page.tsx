@@ -39,7 +39,7 @@ const newsData = [
 
 export default function Page({ params }: { params: { id: string } }) {
   return (
-    <div className="w-full lg:pt-24 px-3 rounded-[10px] text-[#081B34]">
+    <div className="w-full lg:pt-24 px-3 rounded-[10px] text-blue-base">
       <div className="relative  bg-white flex flex-col items-center gap-20 pt-10 pb-20">
         <div className="flex flex-col lg:items-center gap-4 w-[80%] ">
           <h1 className="font-[700] lg:text-[46px] text-[24px] ">
@@ -48,16 +48,14 @@ export default function Page({ params }: { params: { id: string } }) {
           <div className="flex justify-between items-start w-full">
             <div className="grid grid-cols-2 items-center gap-2">
               <div className="bg-[#FFE7AF] px-2 py-1 rounded-[10px]">
-                <p className="font-[500] text-[10px] text-[#696969]">Penting</p>
+                <p className="font-[500] text-[10px] text-gray">Penting</p>
               </div>
               <div className="bg-[#CDFFAF] px-2 py-1 rounded-[10px]">
-                <p className="font-[500] text-[10px] text-[#696969]">
-                  Informasi
-                </p>
+                <p className="font-[500] text-[10px] text-gray">Informasi</p>
               </div>
             </div>
             <div className="flex flex-col w-4/5 gap-8 font-[500] text-[18px]  ">
-              <p className=" text-[#696969]">
+              <p className=" text-gray">
                 PT. INDO BISMAR merupakan Perusahaan swasta yang bergerak dalam
                 bidang telekomunikasi, yang menyediakan Handphone, Laptop, PC,
                 dll., selain itu juga mempunya divisi lain seperti, Rental
@@ -111,8 +109,8 @@ export default function Page({ params }: { params: { id: string } }) {
             height={800}
           />
           <div className="flex justify-between items-start gap-10 w-full">
-            <div className="w-full flex flex-col items-start gap-10 w-3/5">
-              <p className="flex flex-col items-start gap-10 font-[500] text-[18px] text-[#081B34] w-full">
+            <div className="lg:w-full flex flex-col items-start gap-10 w-3/5">
+              <p className="flex flex-col items-start gap-10 font-[500] text-[18px] text-blue-base w-full">
                 <span>
                   Pada hari Rabu tanggal 25 Januari 2023, siswa kelas XII SMKN 1
                   Purwosari mendapatkan kesempatan untuk mengikuti pembelajaran
@@ -145,8 +143,8 @@ export default function Page({ params }: { params: { id: string } }) {
                 <span>Jurnalis: -</span>
               </p>
               <hr className="w-full border " />
-              <div className="w-full rounded-[10px] p-4 flex justify-start items-center gap-4 bg-[#F1F5F9]">
-                <div className="p-4 bg-[#E2E8F0] rounded-[10px]">
+              <div className="w-full rounded-[10px] p-4 flex justify-start items-center gap-4 bg-gray-base">
+                <div className="p-4 bg-gray-medium rounded-[10px]">
                   <Image
                     src={"/assets/icon/logo-skansa.svg"}
                     alt="smknusa-icon"
@@ -156,7 +154,7 @@ export default function Page({ params }: { params: { id: string } }) {
                   />
                 </div>
                 <div className="flex flex-col items-start gap-2">
-                  <h3 className="font-medium text-sm text-[#696969]">
+                  <h3 className="font-medium text-sm text-gray">
                     DIPUBLIKASIKAN OLEH
                   </h3>
                   <h4 className="font-semibold text-[18px]">Humas</h4>
@@ -180,7 +178,7 @@ export default function Page({ params }: { params: { id: string } }) {
                 <div className="flex flex-col gap-4 w-full col-span-2">
                   <label
                     htmlFor="Title"
-                    className="font-medium text-[18px] text-[#081B34]"
+                    className="font-medium text-[18px] text-blue-base"
                   >
                     Judul Berita
                   </label>
@@ -195,7 +193,7 @@ export default function Page({ params }: { params: { id: string } }) {
                 <div className="flex flex-col gap-4 w-full col-span-2">
                   <label
                     htmlFor="Category"
-                    className="font-medium text-[18px]  text-[#081B34] "
+                    className="font-medium text-[18px]  text-blue-base"
                   >
                     Kategori Berita
                   </label>
@@ -209,7 +207,7 @@ export default function Page({ params }: { params: { id: string } }) {
                 <div className="flex flex-col gap-4 w-full col-span-1">
                   <label
                     htmlFor="From"
-                    className=" font-medium text-[18px]  text-[#081B34] "
+                    className=" font-medium text-[18px]  text-blue-base "
                   >
                     Dari tanggal
                   </label>
@@ -223,7 +221,7 @@ export default function Page({ params }: { params: { id: string } }) {
                 <div className="flex flex-col gap-4 w-full col-span-1">
                   <label
                     htmlFor="To Date"
-                    className=" font-medium text-[18px]  text-[#081B34] "
+                    className=" font-medium text-[18px]  text-blue-base "
                   >
                     Sampai tanggal
                   </label>
@@ -235,7 +233,7 @@ export default function Page({ params }: { params: { id: string } }) {
                   />
                 </div>
                 <div className="flex flex-col gap-4 w-full col-span-2 mt-2">
-                  <button className=" font-medium text-[18px] bg-[#FFD980]  py-2 rounded-[10px] ">
+                  <button className=" font-medium text-[18px] bg-yellow-light  py-2 rounded-[10px] ">
                     Cari
                   </button>
                 </div>
@@ -247,7 +245,7 @@ export default function Page({ params }: { params: { id: string } }) {
           <h2 className="mt-10 text-5xl font-semibold">
             Berita Lain yang tak kalah menarik
           </h2>
-          <div className="grid grid-cols-3 items-center gap-10 p-8 bg-[#F1F5F9] rounded-[10px]">
+          <div className="grid grid-cols-3 items-center gap-10 p-8 bg-white rounded-[10px]">
             {newsData.map((news, index) => {
               return (
                 <React.Fragment key={index}>
@@ -258,7 +256,7 @@ export default function Page({ params }: { params: { id: string } }) {
                           key={index}
                           className={`bg-[${category.CategoryColor}] px-2 py-1 rounded-[10px]`}
                         >
-                          <p className="font-[500] text-[10px] text-[#696969]">
+                          <p className="font-[500] text-[10px] text-gray">
                             {category.categoryName}
                           </p>
                         </div>
@@ -273,8 +271,8 @@ export default function Page({ params }: { params: { id: string } }) {
                       <div className="text-md font-[500] text-[18px] mb-2">
                         {news.card}
                       </div>
-                      <div className="text-sm text-[#696969] flex justify-between items-center">
-                        <span className=" flex text-[#696969] font-[500] text-[12px]">
+                      <div className="text-sm text-gray flex justify-between items-center">
+                        <span className=" flex text-gray font-[500] text-[12px]">
                           <Image
                             className="mx-1"
                             src={"/assets/icon/user.svg"}
@@ -284,7 +282,7 @@ export default function Page({ params }: { params: { id: string } }) {
                           />
                           {news.cardProfile}
                         </span>
-                        <div className="flex ml-auto font-[500] mr-4 text-[12px] text-[#696969] text-right">
+                        <div className="flex ml-auto font-[500] mr-4 text-[12px] text-gray text-right">
                           <Image
                             className="mx-1"
                             src={"/assets/icon/clock.svg"}
@@ -294,7 +292,7 @@ export default function Page({ params }: { params: { id: string } }) {
                           />
                           {news.cardDate}
                         </div>
-                        <span className="font-[500]  text-[12px] text-[#696969] flex items-center">
+                        <span className="font-[500]  text-[12px] text-gray flex items-center">
                           <Image
                             className="mx-1"
                             src={"/assets/icon/eye.svg"}

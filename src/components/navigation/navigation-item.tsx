@@ -235,7 +235,7 @@ const NavigationItem = ({
                         />
                         <div className="flex flex-col items-start">
                           <Link href={data.linkDropdownData.linkRef}>
-                            <h2 className="text-[#9DA5B1] font-[600] text-[16px]">
+                            <h2 className="text-gray-light font-[600] text-[16px]">
                               {data.linkDropdownData.text}
                             </h2>
                           </Link>

@@ -48,7 +48,7 @@ const NavigationLanguage = ({ show }: NavigationLanguageProps) => {
               {languageDropdown?.map((data, index) => (
                 <div
                   key={index}
-                  className="flex flex-col items-start gap-4 px-6 rounded-[10px] bg-[#F7F7F7]  "
+                  className="flex flex-col items-start gap-4 px-6 rounded-[10px] bg-white  "
                 >
                   <div className="flex gap-4  py-2 items-center">
                     <Image
@@ -59,10 +59,10 @@ const NavigationLanguage = ({ show }: NavigationLanguageProps) => {
                       className="w-5 h-5 opacity-50"
                     />
                     <div className="flex flex-col items-start">
-                      <h2 className="text-[#081B34] font-[600] text-[16px]">
+                      <h2 className="text-blue-base font-[600] text-[16px]">
                         Bahasa
                       </h2>
-                      <p className="font-[500] text-[16px] text-[#69717C]">
+                      <p className="font-[500] text-[16px] text-gray">
                         {data.language}
                       </p>
                     </div>
@@ -78,7 +78,7 @@ const NavigationLanguage = ({ show }: NavigationLanguageProps) => {
                   height={40}
                   className="w-5 h-5 opacity-50"
                 />
-                <h2 className="text-[#9DA5B1] font-[600] text-[16px]">
+                <h2 className="text-gray-light font-[600] text-[16px]">
                   Language
                 </h2>
               </div>
