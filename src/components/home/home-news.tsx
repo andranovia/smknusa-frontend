@@ -165,7 +165,7 @@ const HomeNews = () => {
 
               <hr className="bg-white w-[95%] mt-[58px]" />
 
-              <div className="flex flex-col lg:flex-row lg:justify-between items-start w-full gap-8 left-8 mt-12 px-10">
+              <div className="flex flex-col lg:flex-row lg:justify-between items-start w-full gap-8 left-8 mt-12 px-10 ">
                 <div className="grid grid-cols-2 items-center lg:flex lg:justify-start lg:gap-x-10 px-4 justify-between w-full gap-x-20 gap-y-10 ">
                   {newsLinkData.map((link, index) => (
                     <React.Fragment key={index}>
@@ -192,7 +192,7 @@ const HomeNews = () => {
             </div>
 
             <div className="relative lg:block hidden px-8  -top-36  w-full">
-              <div className=" lg:w-full lg:h-full     bg-dot-black/[0.4] relative rounded-xl mt-10 lg:mt-0 ">
+              <div className=" lg:w-full lg:h-full  bg-gray-base relative rounded-xl mt-10 lg:mt-0 ">
                 <div className="relative ">
                   <HomeNewsCard
                     homeNewsEndRef={homeNewsEndRef}

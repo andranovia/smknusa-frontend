@@ -107,38 +107,39 @@ const newsData = [
 const NewsCard = () => {
   return (
     <>
-      <div className="flex justify-center items-center">
-        <div className="grid grid-cols-3 gap-8 px-12 pb-12">
+      <div className="flex justify-center items-center bg-gray-base lg:bg-white px-2 lg:-mt-10 ">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-8 p-4 lg:px-12 pb-12 bg-white rounded-[10px]">
           {newsData.map((news, index) => {
             return (
               <React.Fragment key={index}>
                 <Link href={"/news/2"}>
-                  <div className="bg-white rounded-lg w-[23rem] shadow-md overflow-hidden">
-                    <div className="grid grid-cols-2 items-center gap-2 absolute p-2">
-                      {news.cardCategory.map((category, index) => (
-                        <div
-                          key={index}
-                          className={`bg-[${category.CategoryColor}] px-2 py-1 rounded-[10px]`}
-                        >
-                          <p className="font-[500] text-[10px] text-gray">
-                            {category.categoryName}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-                    <img
+                  <div className="bg-white rounded-lg lg:w-[23rem] h-full shadow-md overflow-hidden relative">
+                    <Image
                       className="w-full max-h-full object-cover"
                       src={news.cardImg}
                       alt={news.card}
+                      width={800}
+                      height={800}
                     />
-                    <div className="p-4">
-                      <div className="text-md font-[500] text-[18px] mb-2">
-                        {news.card}
+                    <div className=" px-3 lg:p-4 flex flex-col items-start gap-4 w-full my-4 lg:my-0 ">
+                      <div className="grid grid-cols-2 items-center gap-2 top-0 left-0 lg:absolute lg:p-2 z-20">
+                        {news.cardCategory.map((category, index) => (
+                          <div
+                            key={index}
+                            className={`bg-[${category.CategoryColor}] px-2 py-1 rounded-[10px]`}
+                          >
+                            <p className="font-[500] text-[10px] text-gray">
+                              {category.categoryName}
+                            </p>
+                          </div>
+                        ))}
                       </div>
-                      <div className="text-sm text-gray flex justify-between items-center">
-                        <span className=" flex text-gray font-[500] text-[12px]">
+                      <div className="lg:text-md text-xs font-[500]  lg:text-[18px] mb-2 lg:w-full w-[8.5rem]">
+                        <h2> {news.card}</h2>
+                      </div>
+                      <div className="text-sm gap-2 text-gray flex flex-col lg:flex-row lg:justify-between lg:items-center w-full">
+                        <span className=" flex text-gray font-[500] text-[12px] gap-2 items-center">
                           <Image
-                            className="mx-1"
                             src={"/assets/icon/user.svg"}
                             alt="user"
                             width={15}
@@ -146,9 +147,8 @@ const NewsCard = () => {
                           />
                           {news.cardProfile}
                         </span>
-                        <div className="flex ml-auto font-[500] mr-4 text-[12px] text-gray text-right">
+                        <div className="flex lg:ml-auto font-[500] mr-4 text-[12px] text-gray text-right gap-2 items-center">
                           <Image
-                            className="mx-1"
                             src={"/assets/icon/clock.svg"}
                             alt="user"
                             width={15}
@@ -156,9 +156,8 @@ const NewsCard = () => {
                           />
                           {news.cardDate}
                         </div>
-                        <span className="font-[500]  text-[12px] text-gray flex items-center">
+                        <span className="font-[500]  text-[12px] text-gray flex items-center gap-2">
                           <Image
-                            className="mx-1"
                             src={"/assets/icon/eye.svg"}
                             alt="views"
                             width={15}

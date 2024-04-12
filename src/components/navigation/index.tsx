@@ -9,7 +9,7 @@ import { usePathname } from "next/navigation";
 const Navbar = () => {
   const [show, setShow] = useState(false);
   const pathname = usePathname();
-  const isHomePage = pathname === "/";
+  const isHomePage = pathname === "/" || pathname === "/news";
 
   useEffect(() => {
     const controlNavbar = () => {
