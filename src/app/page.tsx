@@ -25,7 +25,7 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center ">
       <HomeHero />
       <HomeSlider />
-      <div className="px-3">
+      <div className="px-1 lg:px-3">
         <HomeMajor />
         <HomeFacility />
         <HomeEnterpreneur />
