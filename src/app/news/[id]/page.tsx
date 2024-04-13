@@ -162,7 +162,7 @@ export default function Page({ params }: { params: { id: string } }) {
               </div>
             </div>
 
-            <div className="flex flex-col items-start w-1/3 ">
+            <div className="flex flex-col items-start w-2/4 ">
               <div className="flex gap-2 items-center w-full border-2 bg-white z-10 border-[#F5C451] py-3 px-8 rounded-[10px]">
                 <Image
                   width={20}
@@ -262,10 +262,12 @@ export default function Page({ params }: { params: { id: string } }) {
                         </div>
                       ))}
                     </div>
-                    <img
+                    <Image
                       className="w-full max-h-full object-cover"
                       src={news.cardImg}
                       alt={news.card}
+                      width={200}
+                      height={200}
                     />
                     <div className="p-4">
                       <div className="text-md font-[500] text-[18px] mb-2">

@@ -1,7 +1,5 @@
-"use client";
-
 import React, { useRef, useState } from "react";
-import { useAnimation, useScroll, useTransform } from "framer-motion";
+import { useAnimation } from "framer-motion";
 import HomeNewsCard from "./home-news-card";
 
 interface NewsItem {
@@ -147,10 +145,10 @@ const HomeNews = () => {
     <>
       <div
         ref={homeNewsEndRef}
-        className="w-full h-full flex justify-center items-center flex-col "
+        className="w-full h-full  flex justify-center items-center flex-col "
       >
-        <div className="sticky -top-1/3   flex justify-center items-center overflow-hidden ">
-          <div className="w-full h-full bg-white rounded-[10px] mt-3">
+        <div className="lg:sticky -top-1/3   flex justify-center items-center overflow-hidden ">
+          <div className="w-full h-full bg-gray-base lg:pb-20 lg:bg-white rounded-[10px] mt-3">
             <div className="flex flex-col items-center lg:text-center justify-center bg-primary  rounded-md text-white pt-10 pb-48">
               <h1 className="font-[700] lg:text-[36px]  text-[24px] w-4/5 lg:w-full">
                 Papan Pengumuman Informasi
@@ -191,8 +189,8 @@ const HomeNews = () => {
               </div>
             </div>
 
-            <div className="relative lg:block hidden px-8  -top-36  w-full">
-              <div className=" lg:w-full lg:h-full  bg-gray-base relative rounded-xl mt-10 lg:mt-0 ">
+            <div className="relative px-4  lg:px-8  -mt-36   w-full">
+              <div className=" lg:w-full lg:h-full  bg-gray-base relative rounded-xl mt-0 ">
                 <div className="relative ">
                   <HomeNewsCard
                     homeNewsEndRef={homeNewsEndRef}
@@ -206,7 +204,7 @@ const HomeNews = () => {
             </div>
           </div>
         </div>
-        <div className=" top-0 h-[60vw] z-20 pointer  pointer-events: none; flex justify-center items-center">
+        <div className=" top-0 lg:h-[60vw] z-20 pointer  pointer-events:none hidden lg:flex justify-center items-center">
           {/* add height to trigger sticky*/}
         </div>
       </div>

@@ -10,6 +10,8 @@ import {
 } from "framer-motion";
 import { defaultTransition } from "../animation/transition";
 
+import { useMediaQuery } from "react-responsive";
+
 type HomeNewsCardProps = {
   currentNewsData?: {
     title: string;
@@ -29,6 +31,7 @@ const HomeNewsCard = ({
   setcurrentNewsHighlightIndex,
   homeNewsEndRef,
 }: HomeNewsCardProps) => {
+  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
   const sliderPositionYRef = useRef<HTMLDivElement>(null);
   const sliderContainerRef = useRef<HTMLDivElement>(null);
   const dragControls = useAnimation();
@@ -99,29 +102,38 @@ const HomeNewsCard = ({
   };
 
   return (
-    <div className="flex justify-start overflow-hidden items-end relative w-full h-[32rem] bg-gray-base  rounded-[10px] ">
-      <div className="flex flex-col  lg:flex-row justify-between items-center w-full h-full p-8">
+    <div className="flex justify-start overflow-hidden items-end relative w-full lg:h-[32rem] bg-white lg:bg-gray-base  rounded-[10px] ">
+      <div className="flex flex-col  lg:flex-row-reverse justify-between items-center w-full h-full lg:p-8 gap-6">
+        <Image
+          src={"/assets/announcement/announcment-1.png"}
+          alt="announcement-1"
+          width={400}
+          height={400}
+          className="lg:w-1/2 h-full"
+        />
         <div className="flex justify-start items-start gap-8 h-full">
-          <motion.div
-            dragConstraints={sliderContainerRef}
-            ref={sliderPositionYRef}
-            style={{ y: sliderY }}
-            animate={dragControls}
-            transition={defaultTransition}
-            className="bg-yellow cursor-grab p-1 rounded-md h-1/4 absolute top-0 mt-8"
-          ></motion.div>
-          <div
-            ref={sliderContainerRef}
-            className="bg-gray-base  p-1 rounded-md lg:h-[26rem]"
-          ></div>
+          <div className="hidden lg:block">
+            <motion.div
+              dragConstraints={sliderContainerRef}
+              ref={sliderPositionYRef}
+              style={{ y: sliderY }}
+              animate={dragControls}
+              transition={defaultTransition}
+              className="bg-yellow cursor-grab p-1 rounded-md h-1/4 absolute top-0 mt-8"
+            ></motion.div>
+            <div
+              ref={sliderContainerRef}
+              className="bg-gray-base  p-1 rounded-md lg:h-[26rem]"
+            ></div>
+          </div>
 
           <motion.div
             variants={newsHighlightVariant}
             animate={newsHighlightControls}
             initial="hidden"
-            style={{ y: newsY }}
+            style={{ y: isMobile ? 0 : newsY }}
             transition={defaultTransition}
-            className="flex flex-col items-start gap-8 mt-10"
+            className="flex flex-col items-start gap-8 lg:mt-10 lg:pb-0 pb-10"
           >
             {currentNewsData?.map((news, index) => (
               <React.Fragment key={index}>
@@ -132,12 +144,17 @@ const HomeNewsCard = ({
                       currentNewsHighlightIndex === index
                         ? "#111827"
                         : "#9ca3af",
-                    scale: currentNewsHighlightIndex === index ? 1 : 0.9,
+                    scale:
+                      currentNewsHighlightIndex === index && !isMobile
+                        ? 1
+                        : 0.9,
                   }}
-                  className={`flex flex-col items-start gap-2 w-2/3 `}
+                  className={`flex flex-col items-start gap-2 lg:w-2/3 `}
                 >
-                  <h2 className="font-[600] text-[18px] ">{news.title}</h2>
-                  <p className="font-[500] text-[16px]">{news.content}</p>
+                  <h2 className="font-[600]   text-[18px] ">{news.title}</h2>
+                  <p className="font-[500] text-sm lg:text-[16px]">
+                    {news.content}
+                  </p>
                   <div className="flex justify-start items-center gap-2">
                     <h3 className="font-[500] text-[16px]">
                       Lihat Selengkapnya
@@ -155,13 +172,6 @@ const HomeNewsCard = ({
             ))}
           </motion.div>
         </div>
-        <Image
-          src={"/assets/announcement/announcment-1.png"}
-          alt="announcement-1"
-          width={400}
-          height={400}
-          className="w-1/2 h-full"
-        />
       </div>
     </div>
   );
