@@ -9,7 +9,10 @@ import { usePathname } from "next/navigation";
 const Navbar = () => {
   const [show, setShow] = useState(false);
   const pathname = usePathname();
-  const isHomePage = pathname === "/" || pathname === "/news";
+  const isActivePage =
+    pathname === "/" ||
+    pathname === "/news" ||
+    pathname === "/profile/school-facility";
 
   useEffect(() => {
     const controlNavbar = () => {
@@ -32,12 +35,12 @@ const Navbar = () => {
       className={`lg:flex items-center  justify-between z-40 hidden transition-transform ${
         show
           ? ` text-blue-base translate-y-2 shadow-lg`
-          : `  ${isHomePage ? "translate-y-8 text-white " : "translate-y-2 "}`
+          : `  ${isActivePage ? "translate-y-8 text-white " : "translate-y-2 "}`
       } fixed w-full px-3 delay-0`}
     >
       <div
         className={`flex  items-center    justify-between w-full py-3 transition-all rounded-[10px] px-11  ${
-          !show && isHomePage
+          !show && isActivePage
             ? "bg-opacity-0 font-[900]"
             : "bg-opacity-100 bg-white  font-[800]"
         }  `}
@@ -59,7 +62,7 @@ const Navbar = () => {
         <div className=" flex justify-start font-[600] ">
           <ul
             className={`flex justify-center items-center gap-8 ${
-              !show && isHomePage ? "text-white" : " text-gray-light"
+              !show && isActivePage ? "text-white" : " text-gray-light"
             }`}
           >
             <NavigationItem name="Profile" show={show} dropdown={true} />
@@ -74,7 +77,7 @@ const Navbar = () => {
             src={"/assets/icon/search.svg"}
             alt="search"
             className={`${
-              !show && isHomePage ? `invert-0` : "invert"
+              !show && isActivePage ? `invert-0` : "invert"
             } transition-all `}
             width={22}
             height={22}
@@ -86,7 +89,7 @@ const Navbar = () => {
             height={5}
             width={20}
             className={`${
-              !show && isHomePage ? `invert-0` : "invert"
+              !show && isActivePage ? `invert-0` : "invert"
             } transition-all `}
           />
         </div>
