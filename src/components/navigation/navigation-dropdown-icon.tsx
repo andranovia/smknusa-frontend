@@ -8,11 +8,15 @@ interface NavigationDropdownProps {
 
 const NavigationDropdownIcon = ({ show }: NavigationDropdownProps) => {
   const pathname = usePathname();
-  const isHomePage = pathname === "/" || pathname === "/news";
+  const isActivePage =
+    pathname === "/" ||
+    pathname === "/news" ||
+    pathname === "/profile/school-facility";
+
   return (
     <Image
       src={`${
-        !show && isHomePage
+        !show && isActivePage
           ? `/assets/icon/dropdown-white.svg`
           : "/assets/icon/dropdown.svg"
       }`}
