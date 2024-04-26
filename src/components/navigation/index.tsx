@@ -52,6 +52,7 @@ const Navbar = () => {
             height={55}
             width={55}
             quality={100}
+            className="w-auto h-auto"
           />
 
           <div className="ml-2  text-[18px]  ">

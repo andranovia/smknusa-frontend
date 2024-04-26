@@ -111,6 +111,7 @@ export default function Footer() {
               alt=""
               height={55}
               width={55}
+              className="w-auto h-auto"
             />
             <div className="ml-2 font-[900] text-[18px] ">
               SMK NEGERI 1 <br />

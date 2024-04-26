@@ -12,18 +12,10 @@ export const useResize = () => {
 
     handleResize();
 
-    let timeoutId: ReturnType<typeof setTimeout>;
-
-    const debouncedResize = () => {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(handleResize, 200);
-    };
-
-    window.addEventListener("resize", debouncedResize);
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener("resize", debouncedResize);
-      clearTimeout(timeoutId);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
