@@ -1,5 +1,11 @@
 import Image from "next/image";
-import React, { Dispatch, SetStateAction, useEffect, useRef } from "react";
+import React, {
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import {
   AnimationControls,
   motion,
@@ -7,10 +13,13 @@ import {
   useTransform,
   useMotionValueEvent,
   useAnimation,
+  useMotionValue,
 } from "framer-motion";
 import { defaultTransition } from "../animation/transition";
 
 import { useMediaQuery } from "react-responsive";
+import dynamic from "next/dynamic";
+import { useResize } from "@/hooks/useResize";
 
 type HomeNewsCardProps = {
   currentNewsData?: {
@@ -20,7 +29,7 @@ type HomeNewsCardProps = {
   }[];
   currentNewsHighlightIndex: number;
   newsHighlightControls: AnimationControls;
-  setcurrentNewsHighlightIndex: Dispatch<SetStateAction<number>>;
+  setCurrentNewsHighlightIndex: Dispatch<SetStateAction<number>>;
   homeNewsEndRef: React.MutableRefObject<null>;
 };
 
@@ -28,25 +37,30 @@ const HomeNewsCard = ({
   currentNewsData,
   currentNewsHighlightIndex,
   newsHighlightControls,
-  setcurrentNewsHighlightIndex,
+  setCurrentNewsHighlightIndex,
   homeNewsEndRef,
 }: HomeNewsCardProps) => {
-  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+  const isMobile = useMediaQuery({ maxWidth: 768 });
   const sliderPositionYRef = useRef<HTMLDivElement>(null);
   const sliderContainerRef = useRef<HTMLDivElement>(null);
   const dragControls = useAnimation();
+
+  const scrollMobile = useMotionValue(0);
+
   const { scrollYProgress: homeNewsScrollProgress } = useScroll({
     target: homeNewsEndRef,
     offset: ["start", "end"],
+    layoutEffect: false,
   });
 
   const sliderY = useTransform(
-    homeNewsScrollProgress,
+    isMobile ? scrollMobile : homeNewsScrollProgress,
     [0, 0.5, 1],
     [0, 80, 300]
   );
+
   const newsY = useTransform(
-    homeNewsScrollProgress,
+    isMobile ? scrollMobile : homeNewsScrollProgress,
     [0, 1],
     [
       0,
@@ -62,7 +76,7 @@ const HomeNewsCard = ({
     if (currentNewsData) {
       const segmentSize = 250 / (currentNewsData.length - 1);
       const index = Math.floor(latest / segmentSize);
-      setcurrentNewsHighlightIndex(Math.min(index, currentNewsData.length - 1));
+      setCurrentNewsHighlightIndex(Math.min(index, currentNewsData.length - 1));
     }
   });
 
@@ -101,6 +115,57 @@ const HomeNewsCard = ({
     },
   };
 
+  const NewsHighlightDefault = (children: React.ReactNode) => {
+    return (
+      <motion.div
+        variants={newsHighlightVariant}
+        animate={newsHighlightControls}
+        initial="hidden"
+        style={{ y: newsY }}
+        transition={defaultTransition}
+        className="flex flex-col items-start gap-8 lg:mt-10 lg:pb-0 pb-10"
+      >
+        {children}
+      </motion.div>
+    );
+  };
+
+  const currentNews = () => {
+    return (
+      <>
+        {currentNewsData?.map((news, index) => (
+          <React.Fragment key={index}>
+            <motion.div
+              variants={listVariant}
+              animate={{
+                color:
+                  currentNewsHighlightIndex === index ? "#111827" : "#9ca3af",
+                scale:
+                  currentNewsHighlightIndex === index && !isMobile ? 1 : 0.9,
+              }}
+              className={`flex flex-col items-start gap-2 lg:w-2/3 `}
+            >
+              <h2 className="font-[600]   text-[18px] ">{news.title}</h2>
+              <p className="font-[500] text-sm lg:text-[16px]">
+                {news.content}
+              </p>
+              <div className="flex justify-start items-center gap-2">
+                <h3 className="font-[500] text-[16px]">Lihat Selengkapnya</h3>
+                <Image
+                  src={"assets/icon/line-arrow-right.svg"}
+                  alt="arrow-right"
+                  width={40}
+                  height={40}
+                  className="w-4 h-4"
+                />
+              </div>
+            </motion.div>
+          </React.Fragment>
+        ))}
+      </>
+    );
+  };
+
   return (
     <div className="flex justify-start overflow-hidden items-end relative w-full lg:h-[32rem] bg-white lg:bg-gray-base  rounded-[10px] ">
       <div className="flex flex-col  lg:flex-row-reverse justify-between items-center w-full h-full lg:p-8 gap-6">
@@ -127,50 +192,7 @@ const HomeNewsCard = ({
             ></div>
           </div>
 
-          <motion.div
-            variants={newsHighlightVariant}
-            animate={newsHighlightControls}
-            initial="hidden"
-            style={{ y: isMobile ? 0 : newsY }}
-            transition={defaultTransition}
-            className="flex flex-col items-start gap-8 lg:mt-10 lg:pb-0 pb-10"
-          >
-            {currentNewsData?.map((news, index) => (
-              <React.Fragment key={index}>
-                <motion.div
-                  variants={listVariant}
-                  animate={{
-                    color:
-                      currentNewsHighlightIndex === index
-                        ? "#111827"
-                        : "#9ca3af",
-                    scale:
-                      currentNewsHighlightIndex === index && !isMobile
-                        ? 1
-                        : 0.9,
-                  }}
-                  className={`flex flex-col items-start gap-2 lg:w-2/3 `}
-                >
-                  <h2 className="font-[600]   text-[18px] ">{news.title}</h2>
-                  <p className="font-[500] text-sm lg:text-[16px]">
-                    {news.content}
-                  </p>
-                  <div className="flex justify-start items-center gap-2">
-                    <h3 className="font-[500] text-[16px]">
-                      Lihat Selengkapnya
-                    </h3>
-                    <Image
-                      src={"assets/icon/line-arrow-right.svg"}
-                      alt="arrow-right"
-                      width={40}
-                      height={40}
-                      className="w-4 h-4"
-                    />
-                  </div>
-                </motion.div>
-              </React.Fragment>
-            ))}
-          </motion.div>
+          {NewsHighlightDefault(currentNews())}
         </div>
       </div>
     </div>
