@@ -39,13 +39,13 @@ const newsData = [
 
 export default function Page({ params }: { params: { id: string } }) {
   return (
-    <div className="w-full lg:pt-24 px-3 rounded-[10px] text-blue-base">
-      <div className="relative  bg-white flex flex-col items-center gap-20 pt-10 pb-20">
+    <div className="w-full lg:pt-24 px-2 lg:px-3 rounded-[10px] text-blue-base">
+      <div className="relative  bg-white flex flex-col items-center lg:gap-20 pt-10 pb-20">
         <div className="flex flex-col lg:items-center gap-4 w-[80%] ">
           <h1 className="font-[700] lg:text-[46px] text-[24px] ">
             Pembelajaran Entrepreneur dari PT. Indobismar
           </h1>
-          <div className="flex justify-between items-start w-full">
+          <div className="flex lg:flex-row flex-col lg:my-0 my-8 lg:gap-0 gap-8 justify-between items-start w-full">
             <div className="grid grid-cols-2 items-center gap-2">
               <div className="bg-[#FFE7AF] px-2 py-1 rounded-[10px]">
                 <p className="font-[500] text-[10px] text-gray">Penting</p>
@@ -54,7 +54,7 @@ export default function Page({ params }: { params: { id: string } }) {
                 <p className="font-[500] text-[10px] text-gray">Informasi</p>
               </div>
             </div>
-            <div className="flex flex-col w-4/5 gap-8 font-[500] text-[18px]  ">
+            <div className="flex flex-col lg:w-4/5 gap-8 font-[500] text-[18px]  ">
               <p className=" text-gray">
                 PT. INDO BISMAR merupakan Perusahaan swasta yang bergerak dalam
                 bidang telekomunikasi, yang menyediakan Handphone, Laptop, PC,
@@ -65,9 +65,9 @@ export default function Page({ params }: { params: { id: string } }) {
                 SMKN 1 Glagah, [...]
               </p>
               <hr className="w-full border " />
-              <div className="w-full justify-between flex ">
+              <div className="w-full justify-between flex lg:flex-row flex-col ">
                 <h4 className="text-[12px]">Diposting pada : 17 Maret 2024</h4>
-                <div className="flex justify-center items-center grayscale gap-10 text-[12px]">
+                <div className="flex lg:flex-row flex-col justify-center lg:items-center grayscale my-4 gap-4 lg:gap-10 text-[12px]">
                   <div className="flex gap-1 items-center">
                     <Image
                       width={20}
@@ -100,7 +100,7 @@ export default function Page({ params }: { params: { id: string } }) {
             </div>
           </div>
         </div>
-        <div className="flex flex-col items-center gap-8 w-[80%] ">
+        <div className="flex flex-col items-center gap-8 w-[90%] lg:w-[80%] ">
           <Image
             src={"/assets/berita/view/news-view.png"}
             alt=""
@@ -108,8 +108,8 @@ export default function Page({ params }: { params: { id: string } }) {
             width={800}
             height={800}
           />
-          <div className="flex justify-between items-start gap-10 w-full">
-            <div className="lg:w-full flex flex-col items-start gap-10 w-3/5">
+          <div className="flex lg:flex-row flex-col justify-between items-start gap-10 w-full">
+            <div className="lg:w-full flex flex-col items-start gap-10 lg:w-3/5">
               <p className="flex flex-col items-start gap-10 font-[500] text-[18px] text-blue-base w-full">
                 <span>
                   Pada hari Rabu tanggal 25 Januari 2023, siswa kelas XII SMKN 1
@@ -162,7 +162,7 @@ export default function Page({ params }: { params: { id: string } }) {
               </div>
             </div>
 
-            <div className="flex flex-col items-start w-2/4 ">
+            <div className="flex flex-col items-start lg:w-[35%] ">
               <div className="flex gap-2 items-center w-full border-2 bg-white z-10 border-[#F5C451] py-3 px-8 rounded-[10px]">
                 <Image
                   width={20}
@@ -241,42 +241,41 @@ export default function Page({ params }: { params: { id: string } }) {
             </div>
           </div>
         </div>
-        <div className=" flex gap-10 flex-col w-[80%]">
-          <h2 className="mt-10 text-5xl font-semibold">
+        <div className=" flex gap-10 flex-col w-[90%] lg:w-[80%]">
+          <h2 className="mt-10 text-3xl lg:text-5xl font-semibold">
             Berita Lain yang tak kalah menarik
           </h2>
-          <div className="grid grid-cols-3 items-center gap-10 p-8 bg-white rounded-[10px]">
+          <div className="grid grid-cols-2 lg:grid-cols-3 items-center gap-10 lg:p-8 bg-white rounded-[10px]">
             {newsData.map((news, index) => {
               return (
                 <React.Fragment key={index}>
-                  <div className="bg-white rounded-lg  ">
-                    <div className="grid grid-cols-2 items-center gap-2 absolute p-2">
-                      {news.cardCategory.map((category, index) => (
-                        <div
-                          key={index}
-                          className={`bg-[${category.CategoryColor}] px-2 py-1 rounded-[10px]`}
-                        >
-                          <p className="font-[500] text-[10px] text-gray">
-                            {category.categoryName}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
+                  <div className="bg-white rounded-lg lg:w-[23rem] h-full shadow-md overflow-hidden relative">
                     <Image
                       className="w-full max-h-full object-cover"
                       src={news.cardImg}
                       alt={news.card}
-                      width={200}
-                      height={200}
+                      width={800}
+                      height={800}
                     />
-                    <div className="p-4">
-                      <div className="text-md font-[500] text-[18px] mb-2">
-                        {news.card}
+                    <div className=" px-3 lg:p-4 flex flex-col items-start gap-4 w-full my-4 lg:my-0 ">
+                      <div className="grid grid-cols-2 items-center gap-2 top-0 left-0 lg:absolute lg:p-2 z-20">
+                        {news.cardCategory.map((category, index) => (
+                          <div
+                            key={index}
+                            className={`bg-[${category.CategoryColor}] px-2 py-1 rounded-[10px]`}
+                          >
+                            <p className="font-[500] text-[8px] lg:text-[10px] text-gray">
+                              {category.categoryName}
+                            </p>
+                          </div>
+                        ))}
                       </div>
-                      <div className="text-sm text-gray flex justify-between items-center">
-                        <span className=" flex text-gray font-[500] text-[12px]">
+                      <div className="lg:text-md text-xs font-[500]  lg:text-[18px] mb-2 lg:w-full w-[8.5rem]">
+                        <h2> {news.card}</h2>
+                      </div>
+                      <div className="text-sm gap-2 text-gray flex flex-col lg:flex-row lg:justify-between lg:items-center w-full">
+                        <span className=" flex text-gray font-[500] text-[12px] gap-2 items-center">
                           <Image
-                            className="mx-1"
                             src={"/assets/icon/user.svg"}
                             alt="user"
                             width={15}
@@ -284,9 +283,8 @@ export default function Page({ params }: { params: { id: string } }) {
                           />
                           {news.cardProfile}
                         </span>
-                        <div className="flex ml-auto font-[500] mr-4 text-[12px] text-gray text-right">
+                        <div className="flex lg:ml-auto font-[500] mr-4 text-[12px] text-gray text-right gap-2 items-center">
                           <Image
-                            className="mx-1"
                             src={"/assets/icon/clock.svg"}
                             alt="user"
                             width={15}
@@ -294,9 +292,8 @@ export default function Page({ params }: { params: { id: string } }) {
                           />
                           {news.cardDate}
                         </div>
-                        <span className="font-[500]  text-[12px] text-gray flex items-center">
+                        <span className="font-[500]  text-[12px] text-gray flex items-center gap-2">
                           <Image
-                            className="mx-1"
                             src={"/assets/icon/eye.svg"}
                             alt="views"
                             width={15}
