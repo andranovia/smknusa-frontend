@@ -1,8 +1,110 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Pagination from "../feature/pagination";
 
 const newsData = [
+  {
+    card: "Pembelajaran Entrepreneur Dari PT.Indobismar",
+    cardImg: "/assets/berita/berita_entrepeneur.svg",
+    cardProfile: "Humas",
+    cardDate: "17/03/2024",
+    cardView: "99999",
+    cardCategory: [
+      { categoryName: "Penting", CategoryColor: "#FFE7AF" },
+      { categoryName: "Informasi", CategoryColor: "#CDFFAF" },
+    ],
+  },
+  {
+    card: "Pembelajaran Entrepreneur Dari PT.Indobismar",
+    cardImg: "/assets/berita/berita_entrepeneur.svg",
+    cardProfile: "Humas",
+    cardDate: "17/03/2024",
+    cardView: "99999",
+    cardCategory: [
+      { categoryName: "Penting", CategoryColor: "#FFE7AF" },
+      { categoryName: "Informasi", CategoryColor: "#CDFFAF" },
+    ],
+  },
+  {
+    card: "Pembelajaran Entrepeneur Dari PT.Indobismar",
+    cardImg: "/assets/berita/berita_entrepeneur.svg",
+    cardProfile: "Humas",
+    cardDate: "17/03/2024",
+    cardView: "99999",
+    cardCategory: [
+      { categoryName: "Penting", CategoryColor: "#FFE7AF" },
+      { categoryName: "Informasi", CategoryColor: "#CDFFAF" },
+    ],
+  },
+  {
+    card: "Hari Guru Nasional 2023: Bergerak Bersama, Rayakan...",
+    cardImg: "/assets/berita/berita_guru.svg",
+    cardProfile: "Humas",
+    cardDate: "17/03/2024",
+    cardView: "99999",
+    cardCategory: [
+      { categoryName: "Penting", CategoryColor: "#FFE7AF" },
+      { categoryName: "Informasi", CategoryColor: "#CDFFAF" },
+    ],
+  },
+  {
+    card: "Raih Prestasi Kembali: Dua Siswa SMKN 1 Purwosari Juara...",
+    cardImg: "/assets/berita/berita_prestasi.svg",
+    cardProfile: "Humas",
+    cardDate: "17/03/2024",
+    cardView: "99999",
+    cardCategory: [
+      { categoryName: "Penting", CategoryColor: "#FFE7AF" },
+      { categoryName: "Informasi", CategoryColor: "#CDFFAF" },
+    ],
+  },
+  {
+    card: "Pembelajaran Entrepeneur Dari PT.Indobismar",
+    cardImg: "/assets/berita/berita_entrepeneur.svg",
+    cardProfile: "Humas",
+    cardDate: "17/03/2024",
+    cardView: "99999",
+    cardCategory: [
+      { categoryName: "Penting", CategoryColor: "#FFE7AF" },
+      { categoryName: "Informasi", CategoryColor: "#CDFFAF" },
+    ],
+  },
+  {
+    card: "Pembelajaran Entrepeneur Dari PT.Indobismar",
+    cardImg: "/assets/berita/berita_entrepeneur.svg",
+    cardProfile: "Humas",
+    cardDate: "17/03/2024",
+    cardView: "99999",
+    cardCategory: [
+      { categoryName: "Penting", CategoryColor: "#FFE7AF" },
+      { categoryName: "Informasi", CategoryColor: "#CDFFAF" },
+    ],
+  },
+  {
+    card: "Hari Guru Nasional 2023: Bergerak Bersama, Rayakan...",
+    cardImg: "/assets/berita/berita_guru.svg",
+    cardProfile: "Humas",
+    cardDate: "17/03/2024",
+    cardView: "99999",
+    cardCategory: [
+      { categoryName: "Penting", CategoryColor: "#FFE7AF" },
+      { categoryName: "Informasi", CategoryColor: "#CDFFAF" },
+    ],
+  },
+  {
+    card: "Pembelajaran Entrepeneur Dari PT.Indobismar",
+    cardImg: "/assets/berita/berita_entrepeneur.svg",
+    cardProfile: "Humas",
+    cardDate: "17/03/2024",
+    cardView: "99999",
+    cardCategory: [
+      { categoryName: "Penting", CategoryColor: "#FFE7AF" },
+      { categoryName: "Informasi", CategoryColor: "#CDFFAF" },
+    ],
+  },
   {
     card: "Pembelajaran Entrepeneur Dari PT.Indobismar",
     cardImg: "/assets/berita/berita_entrepeneur.svg",
@@ -91,25 +193,25 @@ const newsData = [
       { categoryName: "Informasi", CategoryColor: "#CDFFAF" },
     ],
   },
-  {
-    card: "Pembelajaran Entrepeneur Dari PT.Indobismar",
-    cardImg: "/assets/berita/berita_entrepeneur.svg",
-    cardProfile: "Humas",
-    cardDate: "17/03/2024",
-    cardView: "99999",
-    cardCategory: [
-      { categoryName: "Penting", CategoryColor: "#FFE7AF" },
-      { categoryName: "Informasi", CategoryColor: "#CDFFAF" },
-    ],
-  },
 ];
 
 const NewsCard = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const postsPerPage = 9;
+
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentNewsData = newsData.slice(indexOfFirstPost, indexOfLastPost);
+
+  const onPageChange = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+  };
+
   return (
     <>
-      <div className="flex justify-center items-center bg-gray-base lg:bg-white px-2 lg:-mt-10 ">
+      <div className="flex flex-col justify-center items-center bg-gray-base lg:bg-white px-2 lg:-mt-10 my-20">
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-8 p-4 lg:px-12 pb-12 bg-white rounded-[10px]">
-          {newsData.map((news, index) => {
+          {currentNewsData.map((news, index) => {
             return (
               <React.Fragment key={index}>
                 <Link href={"/news/2"}>
@@ -173,6 +275,11 @@ const NewsCard = () => {
             );
           })}
         </div>
+        <Pagination
+          totalPosts={newsData.length}
+          postsPerPage={9}
+          onPageChange={onPageChange}
+        />
       </div>
     </>
   );

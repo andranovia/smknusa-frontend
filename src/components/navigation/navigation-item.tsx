@@ -61,7 +61,7 @@ const navbarDropdownData: { [key: string]: navLink[] } = {
         text: "Fasilitas Sekolah",
         description: "Berisi sambutan resmi dari kepala sekolah",
         icon: "/assets/nav-dropdown-icon/profile/fasilitas.svg",
-        linkRef: "/profile/welcome-speech",
+        linkRef: "/profile/school-facility",
       },
     },
     {

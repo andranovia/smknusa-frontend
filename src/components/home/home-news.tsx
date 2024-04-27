@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useRef, useState } from "react";
 import { useAnimation } from "framer-motion";
 import HomeNewsCard from "./home-news-card";
@@ -74,12 +76,6 @@ const newsData: { [key: string]: NewsItem[] } = {
         "SMKN 1 Purwosari Merebut Juara 1 dan 3 Lomba Karya Tulis Ilmiah (KTI) Inovasi Teknologi",
       image: "/assets/samplemurid.png",
     },
-    {
-      title: "Berita",
-      content:
-        "SMKN 1 Purwosari Mendapatkan Penghargaan Bintang 5 Apresiasi SMK BISA 2023",
-      image: "/assets/berita/berita_guru.svg",
-    },
   ],
   Artikel: [
     {
@@ -124,7 +120,7 @@ const HomeNews = () => {
   );
   const homeNewsEndRef = useRef(null);
 
-  const [currentNewsHighlightIndex, setcurrentNewsHighlightIndex] = useState(0);
+  const [currentNewsHighlightIndex, setCurrentNewsHighlightIndex] = useState(0);
   const newsHighlightControls = useAnimation();
 
   const currentNewsData = currentNewsType
@@ -136,7 +132,7 @@ const HomeNews = () => {
       newsHighlightControls.start("after");
       setTimeout(() => {
         setCurrentNewsType(newsType);
-        setcurrentNewsHighlightIndex(0);
+        setCurrentNewsHighlightIndex(0);
       }, 300);
     }
   };
@@ -195,7 +191,7 @@ const HomeNews = () => {
                   <HomeNewsCard
                     homeNewsEndRef={homeNewsEndRef}
                     newsHighlightControls={newsHighlightControls}
-                    setcurrentNewsHighlightIndex={setcurrentNewsHighlightIndex}
+                    setCurrentNewsHighlightIndex={setCurrentNewsHighlightIndex}
                     currentNewsHighlightIndex={currentNewsHighlightIndex}
                     currentNewsData={currentNewsData}
                   />
