@@ -1,11 +1,5 @@
 import Image from "next/image";
-import React, {
-  Dispatch,
-  SetStateAction,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { Dispatch, SetStateAction, useEffect, useRef } from "react";
 import {
   AnimationControls,
   motion,
@@ -18,8 +12,6 @@ import {
 import { defaultTransition } from "../animation/transition";
 
 import { useMediaQuery } from "react-responsive";
-import dynamic from "next/dynamic";
-import { useResize } from "@/hooks/useResize";
 
 type HomeNewsCardProps = {
   currentNewsData?: {
@@ -66,8 +58,8 @@ const HomeNewsCard = ({
       0,
       currentNewsData
         ? currentNewsData?.length <= 3
-          ? -64
-          : -64 * currentNewsData.length
+          ? -4
+          : -54 * currentNewsData.length
         : 1,
     ]
   );
@@ -167,7 +159,7 @@ const HomeNewsCard = ({
   };
 
   return (
-    <div className="flex justify-start overflow-hidden items-end relative w-full lg:h-[32rem] bg-white lg:bg-gray-base  rounded-[10px] ">
+    <div className="flex justify-start overflow-hidden items-end relative w-full lg:h-[34rem] bg-white lg:bg-gray-base  rounded-[10px] ">
       <div className="flex flex-col  lg:flex-row-reverse justify-between items-center w-full h-full lg:p-8 gap-6">
         <Image
           src={"/assets/announcement/announcment-1.png"}

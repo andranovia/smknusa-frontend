@@ -4,7 +4,7 @@ import Image from "next/image";
 interface PaginationProps {
   totalPosts: number;
   postsPerPage: number;
-  onPageChange?: (pageNumber: number) => void; // Optional callback for updating current page
+  onPageChange?: (pageNumber: number) => void;
 }
 
 const Pagination: React.FC<PaginationProps> = ({
@@ -12,7 +12,7 @@ const Pagination: React.FC<PaginationProps> = ({
   postsPerPage,
   onPageChange,
 }) => {
-  const [currentPage, setCurrentPage] = useState(1); // State for current page
+  const [currentPage, setCurrentPage] = useState(1);
 
   const totalPages = Math.ceil(totalPosts / postsPerPage);
   const pages = [];
