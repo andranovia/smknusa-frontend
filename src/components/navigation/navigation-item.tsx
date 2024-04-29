@@ -5,8 +5,9 @@ import { AnimatePresence, motion, useAnimation } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { defaultTransition } from "../animation/transition";
+import NavigationItemAnimate from "./navigation-item-animate";
 
-interface navLink {
+export type NavigationLinkData =  {
   linkDropdownData: {
     text: string;
     description: string;
@@ -22,7 +23,7 @@ interface NavigationItemProps {
   route?: string;
 }
 
-const navbarDropdownData: { [key: string]: navLink[] } = {
+const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
   Profile: [
     {
       linkDropdownData: {
@@ -168,7 +169,7 @@ const NavigationItem = ({
   const [currentDropdown, setCurrentDropdown] = useState<string | null>(null);
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownControls = useAnimation();
-  const hoverControls = useAnimation();
+
 
   const dropdownData = currentDropdown
     ? navbarDropdownData[currentDropdown]
@@ -217,7 +218,7 @@ const NavigationItem = ({
                   animate: { opacity: 1, scale: 1, y: 0 },
                   exit: { opacity: 0, y: 10 },
                 }}
-                className="mt-14 z-20 rounded-b-[10px] rounded-r-[10px] bg-white overflow-hidden"
+                className="w-[24rem] mt-14 z-20 rounded-b-[10px] rounded-r-[10px] bg-white overflow-hidden"
               >
                 {dropdownData?.map((data, index) => (
                   <div key={index}>
@@ -226,32 +227,7 @@ const NavigationItem = ({
                       item={name}
                       transition={defaultTransition}
                     >
-                      <motion.div
-                        whileHover={{
-                          opacity: 1,
-                          backgroundColor: "#F7F7F7",
-                        }}
-                        initial={{
-                          backgroundColor: "#FFFFFF",
-                          opacity: 0.5,
-                        }}
-                        className="flex gap-4 pr-14 pl-4 py-2  text-blue-base"
-                      >
-                        <Image
-                          src={data.linkDropdownData.icon}
-                          alt={data.linkDropdownData.icon}
-                          width={40}
-                          height={40}
-                          className="w-5 h-5"
-                        />
-                        <div className="flex flex-col items-start">
-                          <Link href={data.linkDropdownData.linkRef}>
-                            <h2 className=" font-[600] text-[16px]">
-                              {data.linkDropdownData.text}
-                            </h2>
-                          </Link>
-                        </div>
-                      </motion.div>
+                      <NavigationItemAnimate itemData={data}/>
                     </MenuItem>
                   </div>
                 ))}
