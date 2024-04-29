@@ -65,9 +65,9 @@ export default function Page({ params }: { params: { id: string } }) {
                 SMKN 1 Glagah, [...]
               </p>
               <hr className="w-full border " />
-              <div className="w-full justify-between flex lg:flex-row flex-col ">
+              <div className="w-full justify-between flex lg:flex-row flex-col lg:items-center gap-4">
                 <h4 className="text-[12px]">Diposting pada : 17 Maret 2024</h4>
-                <div className="flex lg:flex-row flex-col justify-center lg:items-center grayscale my-4 gap-4 lg:gap-10 text-[12px]">
+                <div className="flex flex-row  lg:justify-center lg:items-center grayscale my-4 gap-4 lg:gap-10 text-[10px]">
                   <div className="flex gap-1 items-center">
                     <Image
                       width={20}
@@ -108,8 +108,8 @@ export default function Page({ params }: { params: { id: string } }) {
             width={800}
             height={800}
           />
-          <div className="flex lg:flex-row flex-col justify-between items-start gap-10 w-full">
-            <div className="lg:w-full flex flex-col items-start gap-10 lg:w-3/5">
+          <div className="flex lg:flex-row flex-col justify-between items-start gap-10 lg:gap-20 w-full">
+            <div className="lg:w-full flex flex-col items-start gap-10 ">
               <p className="flex flex-col items-start gap-10 font-[500] text-[18px] text-blue-base w-full">
                 <span>
                   Pada hari Rabu tanggal 25 Januari 2023, siswa kelas XII SMKN 1
@@ -162,7 +162,7 @@ export default function Page({ params }: { params: { id: string } }) {
               </div>
             </div>
 
-            <div className="flex flex-col items-start lg:w-[35%] ">
+            <div className="flex flex-col items-start lg:w-2/4 ">
               <div className="flex gap-2 items-center w-full border-2 bg-white z-10 border-[#F5C451] py-3 px-8 rounded-[10px]">
                 <Image
                   width={20}
@@ -178,7 +178,7 @@ export default function Page({ params }: { params: { id: string } }) {
                 <div className="flex flex-col gap-4 w-full col-span-2">
                   <label
                     htmlFor="Title"
-                    className="font-medium text-[18px] text-blue-base"
+                    className="font-medium text-sm lg:text-[18px] text-blue-base"
                   >
                     Judul Berita
                   </label>
@@ -193,7 +193,7 @@ export default function Page({ params }: { params: { id: string } }) {
                 <div className="flex flex-col gap-4 w-full col-span-2">
                   <label
                     htmlFor="Category"
-                    className="font-medium text-[18px]  text-blue-base"
+                    className="font-medium text-sm lg:text-[18px]  text-blue-base"
                   >
                     Kategori Berita
                   </label>
@@ -207,7 +207,7 @@ export default function Page({ params }: { params: { id: string } }) {
                 <div className="flex flex-col gap-4 w-full col-span-1">
                   <label
                     htmlFor="From"
-                    className=" font-medium text-[18px]  text-blue-base "
+                    className=" font-medium text-sm lg:text-[18px]  text-blue-base "
                   >
                     Dari tanggal
                   </label>
@@ -221,7 +221,7 @@ export default function Page({ params }: { params: { id: string } }) {
                 <div className="flex flex-col gap-4 w-full col-span-1">
                   <label
                     htmlFor="To Date"
-                    className=" font-medium text-[18px]  text-blue-base "
+                    className=" font-medium text-sm lg:text-[18px]  text-blue-base "
                   >
                     Sampai tanggal
                   </label>
@@ -233,7 +233,7 @@ export default function Page({ params }: { params: { id: string } }) {
                   />
                 </div>
                 <div className="flex flex-col gap-4 w-full col-span-2 mt-2">
-                  <button className=" font-medium text-[18px] bg-yellow-light  py-2 rounded-[10px] ">
+                  <button className=" font-medium text-sm lg:text-[18px] bg-yellow-light  py-2 rounded-[10px] ">
                     Cari
                   </button>
                 </div>
@@ -245,7 +245,7 @@ export default function Page({ params }: { params: { id: string } }) {
           <h2 className="mt-10 text-3xl lg:text-5xl font-semibold">
             Berita Lain yang tak kalah menarik
           </h2>
-          <div className="grid grid-cols-2 lg:grid-cols-3 items-center gap-10 lg:p-8 bg-white rounded-[10px]">
+          <div className="grid grid-cols-2 lg:grid-cols-3 items-center gap-10 lg:mt-10 bg-white rounded-[10px]">
             {newsData.map((news, index) => {
               return (
                 <React.Fragment key={index}>
