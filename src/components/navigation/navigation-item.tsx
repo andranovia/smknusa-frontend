@@ -168,6 +168,7 @@ const NavigationItem = ({
   const [currentDropdown, setCurrentDropdown] = useState<string | null>(null);
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownControls = useAnimation();
+  const hoverControls = useAnimation();
 
   const dropdownData = currentDropdown
     ? navbarDropdownData[currentDropdown]
@@ -225,22 +226,32 @@ const NavigationItem = ({
                       item={name}
                       transition={defaultTransition}
                     >
-                      <div className="flex gap-4 pr-14 pl-4 py-2">
+                      <motion.div
+                        whileHover={{
+                          opacity: 1,
+                          backgroundColor: "#F7F7F7",
+                        }}
+                        initial={{
+                          backgroundColor: "#FFFFFF",
+                          opacity: 0.5,
+                        }}
+                        className="flex gap-4 pr-14 pl-4 py-2  text-blue-base"
+                      >
                         <Image
                           src={data.linkDropdownData.icon}
                           alt={data.linkDropdownData.icon}
                           width={40}
                           height={40}
-                          className="w-5 h-5 opacity-50"
+                          className="w-5 h-5"
                         />
                         <div className="flex flex-col items-start">
                           <Link href={data.linkDropdownData.linkRef}>
-                            <h2 className="text-gray-light font-[600] text-[16px]">
+                            <h2 className=" font-[600] text-[16px]">
                               {data.linkDropdownData.text}
                             </h2>
                           </Link>
                         </div>
-                      </div>
+                      </motion.div>
                     </MenuItem>
                   </div>
                 ))}
