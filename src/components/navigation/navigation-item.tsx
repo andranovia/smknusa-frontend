@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import NavigationDropdown from "./navigation-dropdown-icon";
 import { MenuItem } from "./navigation-dropdown-menu-item";
 import { AnimatePresence, motion, useAnimation } from "framer-motion";
-import Image from "next/image";
+
 import Link from "next/link";
 import { defaultTransition } from "../animation/transition";
 import NavigationItemAnimate from "./navigation-item-animate";

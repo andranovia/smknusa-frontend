@@ -70,7 +70,7 @@ const NavigationLanguage = ({ show }: NavigationLanguageProps) => {
                 </div>
               ))}
               <div className="flex items-center gap-4 px-6">
-                {" "}
+      
                 <Image
                   src={"/assets/icon/language.svg"}
                   alt={"language"}

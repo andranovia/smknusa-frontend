@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 import NavigationItem from "./navigation-item";
 import NavigationLanguage from "./navigation-language";
 import { usePathname } from "next/navigation";
+import NavigationSearch from "./navigation-search";
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
@@ -60,7 +61,7 @@ const Navbar = () => {
             PURWOSARI
           </div>
         </div>
-        <div className=" flex justify-start font-[600] ">
+        <div className=" flex justify-start gap-[5rem] font-[600] ">
           <ul
             className={`flex justify-center items-center gap-8 ${
               !show && isActivePage ? "text-white" : " text-gray-light"
@@ -72,27 +73,19 @@ const Navbar = () => {
             <NavigationItem name="Berita" show={show} route={"/news"} />
             <NavigationItem name="Artikel" show={show} route={"/artikel"} />
           </ul>
-        </div>
-        <div className="flex items-center space-x-4">
-          <Image
-            src={"/assets/icon/search.svg"}
-            alt="search"
-            className={`${
-              !show && isActivePage ? `invert-0` : "invert"
-            } transition-all `}
-            width={22}
-            height={22}
-          />
-          <NavigationLanguage show={show} />
-          <Image
-            src={"/assets/icon/user.svg"}
-            alt="user"
-            height={5}
-            width={20}
-            className={`${
-              !show && isActivePage ? `invert-0` : "invert"
-            } transition-all `}
-          />
+          <div className="flex items-center space-x-4">
+            <NavigationSearch isActivePage={isActivePage} show={show} />
+            <NavigationLanguage show={show} />
+            <Image
+              src={"/assets/icon/user.svg"}
+              alt="user"
+              height={5}
+              width={20}
+              className={`${
+                !show && isActivePage ? `invert-0` : "invert"
+              } transition-all `}
+            />
+          </div>
         </div>
       </div>
     </div>
