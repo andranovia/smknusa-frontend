@@ -1,6 +1,6 @@
-import NewsHero from "@/components/berita";
-import NewsCard from "@/components/berita/news-card";
-import NewsForm from "@/components/berita/news-form";
+import NewsHero from "@/components/news";
+import NewsCard from "@/components/news/news-card";
+import NewsForm from "@/components/news/news-form";
 
 export default function Home() {
   return (

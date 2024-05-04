@@ -17,7 +17,6 @@ const HomeMajorSlider = ({ majorData, animatedX }: HomeMajorSliderProps) => {
   const dragThreshold = 50;
   const fallbackWidth = 100;
   const containerRef = useRef<HTMLDivElement>(null);
-  const itemsRef = useRef<(HTMLDivElement | null)[]>([]);
   const canScrollPrev = startIndex > 0;
   const canScrollNext = startIndex < majorData.length - 1;
   const controls = useAnimation();

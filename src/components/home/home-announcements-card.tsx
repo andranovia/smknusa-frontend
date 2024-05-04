@@ -13,25 +13,25 @@ import { defaultTransition } from "../animation/transition";
 
 import { useMediaQuery } from "react-responsive";
 
-type HomeNewsCardProps = {
-  currentNewsData?: {
+type HomeAnnouncementsCardProps = {
+  currentAnnouncementsData?: {
     title: string;
     content: string;
     image: string;
   }[];
-  currentNewsHighlightIndex: number;
-  newsHighlightControls: AnimationControls;
-  setCurrentNewsHighlightIndex: Dispatch<SetStateAction<number>>;
-  homeNewsEndRef: React.MutableRefObject<null>;
+  currentAnnouncementsHighlightIndex: number;
+  announcementsHighlightControls: AnimationControls;
+  setCurrentAnnouncementsHighlightIndex: Dispatch<SetStateAction<number>>;
+  homeAnnouncementsEndRef: React.MutableRefObject<null>;
 };
 
-const HomeNewsCard = ({
-  currentNewsData,
-  currentNewsHighlightIndex,
-  newsHighlightControls,
-  setCurrentNewsHighlightIndex,
-  homeNewsEndRef,
-}: HomeNewsCardProps) => {
+const HomeAnnouncementsCard = ({
+  currentAnnouncementsData,
+  currentAnnouncementsHighlightIndex,
+  announcementsHighlightControls,
+  setCurrentAnnouncementsHighlightIndex,
+  homeAnnouncementsEndRef,
+}: HomeAnnouncementsCardProps) => {
   const isMobile = useMediaQuery({ maxWidth: 768 });
   const sliderPositionYRef = useRef<HTMLDivElement>(null);
   const sliderContainerRef = useRef<HTMLDivElement>(null);
@@ -39,40 +39,40 @@ const HomeNewsCard = ({
 
   const scrollMobile = useMotionValue(0);
 
-  const { scrollYProgress: homeNewsScrollProgress } = useScroll({
-    target: homeNewsEndRef,
+  const { scrollYProgress: homeAnnouncementsScrollProgress } = useScroll({
+    target: homeAnnouncementsEndRef,
     offset: ["start", "end"],
     layoutEffect: false,
   });
 
   const sliderY = useTransform(
-    isMobile ? scrollMobile : homeNewsScrollProgress,
+    isMobile ? scrollMobile : homeAnnouncementsScrollProgress,
     [0, 0.5, 1],
     [0, 80, 300]
   );
 
-  const newsY = useTransform(
-    isMobile ? scrollMobile : homeNewsScrollProgress,
+  const announcementsY = useTransform(
+    isMobile ? scrollMobile : homeAnnouncementsScrollProgress,
     [0, 1],
     [
       0,
-      currentNewsData
-        ? currentNewsData?.length <= 3
+      currentAnnouncementsData
+        ? currentAnnouncementsData?.length <= 3
           ? -4
-          : -54 * currentNewsData.length
+          : -54 * currentAnnouncementsData.length
         : 1,
     ]
   );
 
   useMotionValueEvent(sliderY, "change", (latest) => {
-    if (currentNewsData) {
-      const segmentSize = 250 / (currentNewsData.length - 1);
+    if (currentAnnouncementsData) {
+      const segmentSize = 250 / (currentAnnouncementsData.length - 1);
       const index = Math.floor(latest / segmentSize);
-      setCurrentNewsHighlightIndex(Math.min(index, currentNewsData.length - 1));
+      setCurrentAnnouncementsHighlightIndex(Math.min(index, currentAnnouncementsData.length - 1));
     }
   });
 
-  const newsHighlightVariant = {
+  const announcementsHighlightVariant = {
     hidden: {
       y: 0,
     },
@@ -89,8 +89,8 @@ const HomeNewsCard = ({
   };
 
   useEffect(() => {
-    newsHighlightControls.start("visible");
-  }, [currentNewsData]);
+    announcementsHighlightControls.start("visible");
+  }, [currentAnnouncementsData]);
 
   const listVariant = {
     hidden: {
@@ -107,13 +107,13 @@ const HomeNewsCard = ({
     },
   };
 
-  const NewsHighlightDefault = (children: React.ReactNode) => {
+  const AnnouncementsHighlightDefault = (children: React.ReactNode) => {
     return (
       <motion.div
-        variants={newsHighlightVariant}
-        animate={newsHighlightControls}
+        variants={announcementsHighlightVariant}
+        animate={announcementsHighlightControls}
         initial="hidden"
-        style={{ y: newsY }}
+        style={{ y: announcementsY }}
         transition={defaultTransition}
         className="flex flex-col items-start gap-8 lg:mt-10 lg:pb-0 pb-10"
       >
@@ -122,24 +122,24 @@ const HomeNewsCard = ({
     );
   };
 
-  const currentNews = () => {
+  const currentAnnouncements = () => {
     return (
       <>
-        {currentNewsData?.map((news, index) => (
+        {currentAnnouncementsData?.map((announcement, index) => (
           <React.Fragment key={index}>
             <motion.div
               variants={listVariant}
               animate={{
                 color:
-                  currentNewsHighlightIndex === index ? "#111827" : "#9ca3af",
+                  currentAnnouncementsHighlightIndex === index ? "#111827" : "#9ca3af",
                 scale:
-                  currentNewsHighlightIndex === index && !isMobile ? 1 : 0.9,
+                  currentAnnouncementsHighlightIndex === index && !isMobile ? 1 : 0.9,
               }}
               className={`flex flex-col items-start gap-2 lg:w-2/3 `}
             >
-              <h2 className="font-[600]   text-[18px] ">{news.title}</h2>
+              <h2 className="font-[600]   text-[18px] ">{announcement.title}</h2>
               <p className="font-[500] text-sm lg:text-[16px]">
-                {news.content}
+                {announcement.content}
               </p>
               <div className="flex justify-start items-center gap-2">
                 <h3 className="font-[500] text-[16px]">Lihat Selengkapnya</h3>
@@ -162,7 +162,7 @@ const HomeNewsCard = ({
     <div className="flex justify-start overflow-hidden items-end relative w-full lg:h-[34rem] bg-white lg:bg-gray-base  rounded-[10px] ">
       <div className="flex flex-col  lg:flex-row-reverse justify-between items-center w-full h-full lg:p-8 gap-6">
         <Image
-          src={"/assets/announcement/announcment-1.png"}
+          src={"/assets/home/announcement/announcment.png"}
           alt="announcement-1"
           width={400}
           height={400}
@@ -184,11 +184,11 @@ const HomeNewsCard = ({
             ></div>
           </div>
 
-          {NewsHighlightDefault(currentNews())}
+          {AnnouncementsHighlightDefault(currentAnnouncements())}
         </div>
       </div>
     </div>
   );
 };
 
-export default HomeNewsCard;
+export default HomeAnnouncementsCard;

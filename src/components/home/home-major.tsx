@@ -18,36 +18,36 @@ const majorData = {
     {
       major: "RPL",
       majorDesc: "Rekayasa Perangkat Lunak",
-      majorImg: "/assets/major/rpl-major.png",
+      majorImg: "/assets/home/major/rpl-major.png",
     },
     {
       major: "DKV",
       majorDesc: "Design Komunikasi Visual",
-      majorImg: "/assets/major/dkv-major.png",
+      majorImg: "/assets/home/major/dkv-major.png",
     },
     {
       major: "TKJ",
       majorDesc: "Teknik Komputer Dan Jaringan",
-      majorImg: "/assets/major/tkj-major.png",
+      majorImg: "/assets/home/major/tkj-major.png",
     },
   ],
   [Agribisnis]: [
     {
       major: "RPL",
       majorDesc: "Rekayasa Perangkat Lunak",
-      majorImg: "/assets/major/rpl-major.png",
+      majorImg: "/assets/home/major/rpl-major.png",
     },
   ],
   [Pemesinan]: [
     {
       major: "RPL",
       majorDesc: "Rekayasa Perangkat Lunak",
-      majorImg: "/assets/major/rpl-major.png",
+      majorImg: "/assets/home/major/rpl-major.png",
     },
     {
       major: "DKV",
       majorDesc: "Design Komunikasi Visual",
-      majorImg: "/assets/major/dkv-major.png",
+      majorImg: "/assets/home/major/dkv-major.png",
     },
   ],
 };
@@ -111,7 +111,7 @@ const HomeMajor = () => {
       <div className="relative  lg:px-8 px-3  -top-32  ">
         <div className="flex justify-start items-end relative bg-white overflow-hidden rounded-[10px] ">
           <Image
-            src={"/assets/pak-rudi-1.png"}
+            src={"/assets/home/major/principal.png"}
             alt=""
             width={550}
             height={550}

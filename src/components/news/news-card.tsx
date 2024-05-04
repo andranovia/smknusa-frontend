@@ -8,7 +8,7 @@ import Pagination from "../feature/pagination";
 const newsData = [
   {
     card: "Pembelajaran Entrepreneur Dari PT.Indobismar",
-    cardImg: "/assets/berita/berita_entrepeneur.svg",
+    cardImg: "/assets/news/news-entrepeneur.webp",
     cardProfile: "Humas",
     cardDate: "17/03/2024",
     cardView: "99999",
@@ -19,7 +19,7 @@ const newsData = [
   },
   {
     card: "Pembelajaran Entrepreneur Dari PT.Indobismar",
-    cardImg: "/assets/berita/berita_entrepeneur.svg",
+    cardImg: "/assets/news/news-entrepeneur.webp",
     cardProfile: "Humas",
     cardDate: "17/03/2024",
     cardView: "99999",
@@ -30,7 +30,7 @@ const newsData = [
   },
   {
     card: "Pembelajaran Entrepeneur Dari PT.Indobismar",
-    cardImg: "/assets/berita/berita_entrepeneur.svg",
+    cardImg: "/assets/news/news-entrepeneur.webp",
     cardProfile: "Humas",
     cardDate: "17/03/2024",
     cardView: "99999",
@@ -41,7 +41,7 @@ const newsData = [
   },
   {
     card: "Hari Guru Nasional 2023: Bergerak Bersama, Rayakan...",
-    cardImg: "/assets/berita/berita_guru.svg",
+    cardImg: "/assets/news/news-teacher.webp",
     cardProfile: "Humas",
     cardDate: "17/03/2024",
     cardView: "99999",
@@ -52,7 +52,7 @@ const newsData = [
   },
   {
     card: "Raih Prestasi Kembali: Dua Siswa SMKN 1 Purwosari Juara...",
-    cardImg: "/assets/berita/berita_prestasi.svg",
+    cardImg: "/assets/news/news-achievement.webp",
     cardProfile: "Humas",
     cardDate: "17/03/2024",
     cardView: "99999",
@@ -63,7 +63,7 @@ const newsData = [
   },
   {
     card: "Pembelajaran Entrepeneur Dari PT.Indobismar",
-    cardImg: "/assets/berita/berita_entrepeneur.svg",
+    cardImg: "/assets/news/news-entrepeneur.webp",
     cardProfile: "Humas",
     cardDate: "17/03/2024",
     cardView: "99999",
@@ -74,7 +74,7 @@ const newsData = [
   },
   {
     card: "Pembelajaran Entrepeneur Dari PT.Indobismar",
-    cardImg: "/assets/berita/berita_entrepeneur.svg",
+    cardImg: "/assets/news/news-entrepeneur.webp",
     cardProfile: "Humas",
     cardDate: "17/03/2024",
     cardView: "99999",
@@ -85,7 +85,7 @@ const newsData = [
   },
   {
     card: "Hari Guru Nasional 2023: Bergerak Bersama, Rayakan...",
-    cardImg: "/assets/berita/berita_guru.svg",
+    cardImg: "/assets/news/news-teacher.webp",
     cardProfile: "Humas",
     cardDate: "17/03/2024",
     cardView: "99999",
@@ -96,7 +96,7 @@ const newsData = [
   },
   {
     card: "Pembelajaran Entrepeneur Dari PT.Indobismar",
-    cardImg: "/assets/berita/berita_entrepeneur.svg",
+    cardImg: "/assets/news/news-entrepeneur.webp",
     cardProfile: "Humas",
     cardDate: "17/03/2024",
     cardView: "99999",
@@ -107,7 +107,7 @@ const newsData = [
   },
   {
     card: "Pembelajaran Entrepeneur Dari PT.Indobismar",
-    cardImg: "/assets/berita/berita_entrepeneur.svg",
+    cardImg: "/assets/news/news-entrepeneur.webp",
     cardProfile: "Humas",
     cardDate: "17/03/2024",
     cardView: "99999",
@@ -118,7 +118,7 @@ const newsData = [
   },
   {
     card: "Pembelajaran Entrepeneur Dari PT.Indobismar",
-    cardImg: "/assets/berita/berita_entrepeneur.svg",
+    cardImg: "/assets/news/news-entrepeneur.webp",
     cardProfile: "Humas",
     cardDate: "17/03/2024",
     cardView: "99999",
@@ -129,7 +129,7 @@ const newsData = [
   },
   {
     card: "Pembelajaran Entrepeneur Dari PT.Indobismar",
-    cardImg: "/assets/berita/berita_entrepeneur.svg",
+    cardImg: "/assets/news/news-entrepeneur.webp",
     cardProfile: "Humas",
     cardDate: "17/03/2024",
     cardView: "99999",
@@ -140,7 +140,7 @@ const newsData = [
   },
   {
     card: "Hari Guru Nasional 2023: Bergerak Bersama, Rayakan...",
-    cardImg: "/assets/berita/berita_guru.svg",
+    cardImg: "/assets/news/news-teacher.webp",
     cardProfile: "Humas",
     cardDate: "17/03/2024",
     cardView: "99999",
@@ -151,7 +151,7 @@ const newsData = [
   },
   {
     card: "Raih Prestasi Kembali: Dua Siswa SMKN 1 Purwosari Juara...",
-    cardImg: "/assets/berita/berita_prestasi.svg",
+    cardImg: "/assets/news/news-achievement.webp",
     cardProfile: "Humas",
     cardDate: "17/03/2024",
     cardView: "99999",
@@ -162,7 +162,7 @@ const newsData = [
   },
   {
     card: "Pembelajaran Entrepeneur Dari PT.Indobismar",
-    cardImg: "/assets/berita/berita_entrepeneur.svg",
+    cardImg: "/assets/news/news-entrepeneur.webp",
     cardProfile: "Humas",
     cardDate: "17/03/2024",
     cardView: "99999",
@@ -173,7 +173,7 @@ const newsData = [
   },
   {
     card: "Pembelajaran Entrepeneur Dari PT.Indobismar",
-    cardImg: "/assets/berita/berita_entrepeneur.svg",
+    cardImg: "/assets/news/news-entrepeneur.webp",
     cardProfile: "Humas",
     cardDate: "17/03/2024",
     cardView: "99999",
@@ -184,7 +184,7 @@ const newsData = [
   },
   {
     card: "Hari Guru Nasional 2023: Bergerak Bersama, Rayakan...",
-    cardImg: "/assets/berita/berita_guru.svg",
+    cardImg: "/assets/news/news-teacher.webp",
     cardProfile: "Humas",
     cardDate: "17/03/2024",
     cardView: "99999",

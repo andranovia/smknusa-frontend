@@ -2,8 +2,8 @@ import HomeHero from "@/components/home/home-hero";
 import HomeMajor from "@/components/home/home-major";
 import HomeSlider from "@/components/home/home-slider";
 import HomeFacility from "@/components/home/home-facility";
-import HomeNews from "@/components/home/home-news";
 import HomeEnterpreneur from "@/components/home/home-enterpreneur";
+import HomeAnnouncement from "@/components/home/home-announcements";
 
 export default function Home() {
   return (
@@ -14,7 +14,7 @@ export default function Home() {
         <HomeMajor />
         <HomeFacility />
         <HomeEnterpreneur />
-        <HomeNews />
+        <HomeAnnouncement />
       </div>
     </main>
   );
