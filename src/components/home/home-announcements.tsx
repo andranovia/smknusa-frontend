@@ -2,45 +2,46 @@
 
 import React, { useRef, useState } from "react";
 import { useAnimation } from "framer-motion";
-import HomeNewsCard from "./home-news-card";
+import HomeAnnouncementsCard from "./home-announcements-card";
 
-interface NewsItem {
+
+interface AnnouncementsItem {
   title: string;
   content: string;
   image: string;
 }
 
-const newsData: { [key: string]: NewsItem[] } = {
+const announcementsData: { [key: string]: AnnouncementsItem[] } = {
   Pengumuman: [
     {
       title: "Pengumuman",
       content:
         'Pengoptimalan Gerakan Literasi Sekolah dengan Program "Pustaka Keliling" di SMK Negeri 1 Purwosari',
-      image: "/assets/berita/berita_entrepeneur.svg",
+      image: "/assets/home/announcement/announcment.png",
     },
     {
       title: "Pengumuman",
       content:
         "SMKN 1 Purwosari Merebut Juara 1 dan 3 Lomba Karya Tulis Ilmiah (KTI) Inovasi Teknologi",
-      image: "/assets/samplemurid.png",
+      image: "/assets/home/announcement/announcment.png",
     },
     {
       title: "Pengumuman",
       content:
         "SMKN 1 Purwosari Mendapatkan Penghargaan Bintang 5 Apresiasi SMK BISA 2023",
-      image: "/assets/berita/berita_guru.svg",
+      image: "/assets/home/announcement/announcment.png",
     },
     {
       title: "Pengumuman",
       content:
         "SMKN 1 Purwosari Merebut Juara 1 dan 3 Lomba Karya Tulis Ilmiah (KTI) Inovasi Teknologi",
-      image: "/assets/samplemurid.png",
+      image: "/assets/home/announcement/announcment.png",
     },
     {
       title: "Pengumuman",
       content:
         "SMKN 1 Purwosari Mendapatkan Penghargaan Bintang 5 Apresiasi SMK BISA 2023",
-      image: "/assets/berita/berita_guru.svg",
+      image: "/assets/home/announcement/announcment.png",
     },
   ],
   Agenda: [
@@ -48,19 +49,19 @@ const newsData: { [key: string]: NewsItem[] } = {
       title: "Agenda",
       content:
         'Pengoptimalan Gerakan Literasi Sekolah dengan Program "Pustaka Keliling" di SMK Negeri 1 Purwosari',
-      image: "/assets/berita/berita_entrepeneur.svg",
+      image: "/assets/home/announcement/announcment.png",
     },
     {
       title: "Agenda",
       content:
         "SMKN 1 Purwosari Merebut Juara 1 dan 3 Lomba Karya Tulis Ilmiah (KTI) Inovasi Teknologi",
-      image: "/assets/samplemurid.png",
+      image: "/assets/home/announcement/announcment.png",
     },
     {
       title: "Agenda",
       content:
         "SMKN 1 Purwosari Mendapatkan Penghargaan Bintang 5 Apresiasi SMK BISA 2023",
-      image: "/assets/berita/berita_guru.svg",
+      image: "/assets/home/announcement/announcment.png",
     },
   ],
   Berita: [
@@ -68,13 +69,13 @@ const newsData: { [key: string]: NewsItem[] } = {
       title: "Berita",
       content:
         'Pengoptimalan Gerakan Literasi Sekolah dengan Program "Pustaka Keliling" di SMK Negeri 1 Purwosari',
-      image: "/assets/berita/berita_entrepeneur.svg",
+      image: "/assets/home/announcement/announcment.png",
     },
     {
       title: "Berita",
       content:
         "SMKN 1 Purwosari Merebut Juara 1 dan 3 Lomba Karya Tulis Ilmiah (KTI) Inovasi Teknologi",
-      image: "/assets/samplemurid.png",
+      image: "/assets/home/announcement/announcment.png",
     },
   ],
   Artikel: [
@@ -82,57 +83,57 @@ const newsData: { [key: string]: NewsItem[] } = {
       title: "Artikel",
       content:
         'Pengoptimalan Gerakan Literasi Sekolah dengan Program "Pustaka Keliling" di SMK Negeri 1 Purwosari',
-      image: "/assets/berita/berita_entrepeneur.svg",
+      image: "/assets/home/announcement/announcment.png",
     },
     {
       title: "Artikel",
       content:
         "SMKN 1 Purwosari Merebut Juara 1 dan 3 Lomba Karya Tulis Ilmiah (KTI) Inovasi Teknologi",
-      image: "/assets/samplemurid.png",
+      image: "/assets/home/announcement/announcment.png",
     },
     {
       title: "Artikel",
       content:
         "SMKN 1 Purwosari Mendapatkan Penghargaan Bintang 5 Apresiasi SMK BISA 2023",
-      image: "/assets/berita/berita_guru.svg",
+      image: "/assets/home/announcement/announcment.png",
     },
   ],
 };
 
-const newsLinkData = [
+const announcementsLinkData = [
   {
-    newsTitle: "Pengumuman",
+    announcementsTitle: "Pengumuman",
   },
   {
-    newsTitle: "Agenda",
+    announcementsTitle: "Agenda",
   },
   {
-    newsTitle: "Berita",
+    announcementsTitle: "Berita",
   },
   {
-    newsTitle: "Artikel",
+    announcementsTitle: "Artikel",
   },
 ];
 
-const HomeNews = () => {
-  const [currentNewsType, setCurrentNewsType] = useState<string | null>(
+const HomeAnnouncement = () => {
+  const [currentAnnouncementsType, setCurrentAnnouncementsType] = useState<string | null>(
     "Pengumuman"
   );
-  const homeNewsEndRef = useRef(null);
+  const homeAnnouncementsEndRef = useRef(null);
 
-  const [currentNewsHighlightIndex, setCurrentNewsHighlightIndex] = useState(0);
-  const newsHighlightControls = useAnimation();
+  const [currentAnnouncementsHighlightIndex, setCurrentAnnouncementsHighlightIndex] = useState(0);
+  const announcementsHighlightControls = useAnimation();
 
-  const currentNewsData = currentNewsType
-    ? newsData[currentNewsType]
+  const currentAnnouncementsData = currentAnnouncementsType
+    ? announcementsData[currentAnnouncementsType]
     : undefined;
 
-  const handleChangeNews = (newsType: string) => {
-    if (newsType !== currentNewsType) {
-      newsHighlightControls.start("after");
+  const handleChangeAnnouncements = (announcementsType: string) => {
+    if (announcementsType !== currentAnnouncementsType) {
+      announcementsHighlightControls.start("after");
       setTimeout(() => {
-        setCurrentNewsType(newsType);
-        setCurrentNewsHighlightIndex(0);
+        setCurrentAnnouncementsType(announcementsType);
+        setCurrentAnnouncementsHighlightIndex(0);
       }, 300);
     }
   };
@@ -140,7 +141,7 @@ const HomeNews = () => {
   return (
     <>
       <div
-        ref={homeNewsEndRef}
+        ref={homeAnnouncementsEndRef}
         className="w-full h-full  flex justify-center items-center flex-col "
       >
         <div className="lg:sticky -top-1/3   flex justify-center items-center overflow-hidden ">
@@ -161,17 +162,17 @@ const HomeNews = () => {
 
               <div className="flex flex-col lg:flex-row lg:justify-between items-start w-full gap-8 left-8 mt-12 px-10 ">
                 <div className="grid grid-cols-2 items-center lg:flex lg:justify-start lg:gap-x-10 px-4 justify-between w-full gap-x-20 gap-y-10 ">
-                  {newsLinkData.map((link, index) => (
+                  {announcementsLinkData.map((link, index) => (
                     <React.Fragment key={index}>
                       <h1
-                        onClick={() => handleChangeNews(link.newsTitle)}
+                        onClick={() => handleChangeAnnouncements(link.announcementsTitle)}
                         className={`font-[600] text-[16px]  p-1 rounded-md relative transition-all w-min-content cursor-pointer ${
-                          link.newsTitle === currentNewsType
+                          link.announcementsTitle === currentAnnouncementsType
                             ? `p-1 rounded-md relative   before:border-[1px] before:absolute before:right-0  before:bottom-0 text-white  before:mx-auto before:border-[#F5C451] before:w-full before:opacity-100 `
                             : "p-1 rounded-md relative   before:h-0 before:absolute before:bottom-0 text-gray-light before:right-0 before:bg-white before:opacity-0 "
                         }`}
                       >
-                        {link.newsTitle}
+                        {link.announcementsTitle}
                       </h1>
                     </React.Fragment>
                   ))}
@@ -188,12 +189,12 @@ const HomeNews = () => {
             <div className="relative px-4  lg:px-8  -mt-36   w-full">
               <div className=" lg:w-full lg:h-full  bg-gray-base relative rounded-xl mt-0 ">
                 <div className="relative ">
-                  <HomeNewsCard
-                    homeNewsEndRef={homeNewsEndRef}
-                    newsHighlightControls={newsHighlightControls}
-                    setCurrentNewsHighlightIndex={setCurrentNewsHighlightIndex}
-                    currentNewsHighlightIndex={currentNewsHighlightIndex}
-                    currentNewsData={currentNewsData}
+                  <HomeAnnouncementsCard
+                    homeAnnouncementsEndRef={homeAnnouncementsEndRef}
+                    announcementsHighlightControls={announcementsHighlightControls}
+                    setCurrentAnnouncementsHighlightIndex={setCurrentAnnouncementsHighlightIndex}
+                    currentAnnouncementsHighlightIndex={currentAnnouncementsHighlightIndex}
+                    currentAnnouncementsData={currentAnnouncementsData}
                   />
                 </div>
               </div>
@@ -208,4 +209,4 @@ const HomeNews = () => {
   );
 };
 
-export default HomeNews;
+export default HomeAnnouncement;

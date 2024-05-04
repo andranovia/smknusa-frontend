@@ -11,19 +11,19 @@ const cardData = [
       id: 0,
       name: "Laboratorium Komputer",
       designation: "Dilengkapi dengan setup yang bagus",
-      contentImg: "/assets/fasilitas/lab-kom.png",
+      contentImg: "/assets/home/facility/lab-computer.png",
     },
     {
       id: 1,
       name: "Laboratorium Komputer",
       designation: "Dilengkapi dengan setup yang bagus",
-      contentImg: "/assets/fasilitas/lab-pertanian.png",
+      contentImg: "/assets/home/facility/lab-farm.png",
     },
     {
       id: 2,
       name: "Laboratorium Komputer",
       designation: "Dilengkapi dengan setup yang bagus",
-      contentImg: "/assets/fasilitas/lab-mesin.png",
+      contentImg: "/assets/home/facility/lab-machine.png",
     },
   ],
   [
@@ -31,13 +31,13 @@ const cardData = [
       id: 0,
       name: "Laboratorium Komputer 2",
       designation: "Dilengkapi dengan setup yang bagus",
-      contentImg: "/assets/fasilitas/lab-pertanian.png",
+      contentImg: "/assets/home/facility/lab-farm.png",
     },
     {
       id: 1,
       name: "Laboratorium Komputer",
       designation: "Dilengkapi dengan setup yang bagus",
-      contentImg: "/assets/fasilitas/lab-mesin.png",
+      contentImg: "/assets/home/facility/lab-machine.png",
     },
   ],
   [
@@ -45,13 +45,13 @@ const cardData = [
       id: 0,
       name: "Laboratorium Komputer 3",
       designation: "Dilengkapi dengan setup yang bagus",
-      contentImg: "/assets/fasilitas/lab-pertanian.png",
+      contentImg: "/assets/home/facility/lab-farm.png",
     },
     {
       id: 1,
       name: "Laboratorium Komputer",
       designation: "Dilengkapi dengan setup yang bagus",
-      contentImg: "/assets/fasilitas/lab-mesin.png",
+      contentImg: "/assets/home/facility/lab-machine.png",
     },
   ],
 ];
@@ -86,7 +86,7 @@ const HomeFacility = () => {
 
   return (
     <>
-      <div className="w-full h-fit bg-white rounded-[10px] mt-3 ">
+      <div className="w-full h-fit bg-white rounded-[10px] mt-3 lg:overflow-hidden">
         <div className="flex flex-col items-center justify-center bg-primary gap-8 rounded-md text-white pt-10 pb-48">
           <h1 className="font-[700] lg:text-[36px] text-[24px] w-4/5 lg:w-fit">
             Kenapa Harus SMK Negeri 1 Purwosari

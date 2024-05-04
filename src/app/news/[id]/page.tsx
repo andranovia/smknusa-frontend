@@ -4,7 +4,7 @@ import React from "react";
 const newsData = [
   {
     card: "Pembelajaran Entrepeneur Dari PT.Indobismar",
-    cardImg: "/assets/berita/berita_entrepeneur.svg",
+    cardImg: "/assets/news/news-entrepeneur.svg",
     cardProfile: "Humas",
     cardDate: "17/03/2024",
     cardView: "99999",
@@ -15,7 +15,7 @@ const newsData = [
   },
   {
     card: "Pembelajaran Entrepeneur Dari PT.Indobismar",
-    cardImg: "/assets/berita/berita_entrepeneur.svg",
+    cardImg: "/assets/news/news-entrepeneur.svg",
     cardProfile: "Humas",
     cardDate: "17/03/2024",
     cardView: "99999",
@@ -26,7 +26,7 @@ const newsData = [
   },
   {
     card: "Pembelajaran Entrepeneur Dari PT.Indobismar",
-    cardImg: "/assets/berita/berita_entrepeneur.svg",
+    cardImg: "/assets/news/news-entrepeneur.svg",
     cardProfile: "Humas",
     cardDate: "17/03/2024",
     cardView: "99999",
@@ -102,7 +102,7 @@ export default function Page({ params }: { params: { id: string } }) {
         </div>
         <div className="flex flex-col items-center gap-8 w-[90%] lg:w-[80%] ">
           <Image
-            src={"/assets/berita/view/news-view.png"}
+            src={"/assets/news/view/news-view.png"}
             alt=""
             className="w-full rounded-[10px]"
             width={800}
