@@ -23,7 +23,7 @@ const ProfileHistory = () => {
             width={800}
             height={800}
           />
-          <p className="flex flex-col items-start gap-10 font-[500] text-[18px] text-blue-base">
+          <p className="flex flex-col items-start text-justify gap-10 font-[500] text-[18px] text-blue-base">
             <span>
               Assalamualaikum warahmatullahi wabarakatuh. Dengan mengucapkan
               segala puji kepada Tuhan Yang Maha Esa, disertai rasa syukur atas
