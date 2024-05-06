@@ -54,7 +54,15 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
         text: "Program Kerja Sekolah",
         description: "Berisi sambutan resmi dari kepala sekolah",
         icon: "/assets/nav-dropdown-icon/profile/proker.svg",
-        linkRef: "/profile/welcome-speech",
+        linkRef: "/profile/course-work",
+      },
+    },
+    {
+      linkDropdownData: {
+        text: "Komite Sekolah",
+        description: "Berisi sambutan resmi dari kepala sekolah",
+        icon: "/assets/nav-dropdown-icon/profile/komite.svg",
+        linkRef: "/profile/school-committe",
       },
     },
     {
