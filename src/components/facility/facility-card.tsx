@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { cn } from "@/utils/cn";
 
 const facilityData = [
   {
@@ -75,14 +76,78 @@ const facilityData = [
       { categoryName: "Teknologi dan Rekayasa", CategoryColor: "#007AFF" },
     ],
   },
+  {
+    card: "Laser Cutting",
+    cardImg: "/assets/facility/facility-image.png",
+    cardDescription: "Laser Cutting adalah alat yang digunakan untuk...",
+    cardfacility: [
+      { categoryName: "Teknologi dan Rekayasa", CategoryColor: "#007AFF" },
+    ],
+  },
+  {
+    card: "Laser Cutting",
+    cardImg: "/assets/facility/facility-image.png",
+    cardDescription: "Laser Cutting adalah alat yang digunakan untuk...",
+    cardfacility: [
+      { categoryName: "Teknologi dan Rekayasa", CategoryColor: "#007AFF" },
+    ],
+  },
+  {
+    card: "Laser Cutting",
+    cardImg: "/assets/facility/facility-image.png",
+    cardDescription: "Laser Cutting adalah alat yang digunakan untuk...",
+    cardfacility: [
+      { categoryName: "Teknologi dan Rekayasa", CategoryColor: "#007AFF" },
+    ],
+  },
+  {
+    card: "Laser Cutting",
+    cardImg: "/assets/facility/facility-image.png",
+    cardDescription: "Laser Cutting adalah alat yang digunakan untuk...",
+    cardfacility: [
+      { categoryName: "Teknologi dan Rekayasa", CategoryColor: "#007AFF" },
+    ],
+  },
+  {
+    card: "Laser Cutting",
+    cardImg: "/assets/facility/facility-image.png",
+    cardDescription: "Laser Cutting adalah alat yang digunakan untuk...",
+    cardfacility: [
+      { categoryName: "Teknologi dan Rekayasa", CategoryColor: "#007AFF" },
+    ],
+  },
+  {
+    card: "Laser Cutting",
+    cardImg: "/assets/facility/facility-image.png",
+    cardDescription: "Laser Cutting adalah alat yang digunakan untuk...",
+    cardfacility: [
+      { categoryName: "Teknologi dan Rekayasa", CategoryColor: "#007AFF" },
+    ],
+  },
+  {
+    card: "Laser Cutting",
+    cardImg: "/assets/facility/facility-image.png",
+    cardDescription: "Laser Cutting adalah alat yang digunakan untuk...",
+    cardfacility: [
+      { categoryName: "Teknologi dan Rekayasa", CategoryColor: "#007AFF" },
+    ],
+  },
+  {
+    card: "Laser Cutting",
+    cardImg: "/assets/facility/facility-image.png",
+    cardDescription: "Laser Cutting adalah alat yang digunakan untuk...",
+    cardfacility: [
+      { categoryName: "Teknologi dan Rekayasa", CategoryColor: "#007AFF" },
+    ],
+  },
 ];
 
-const FacilityCard = () => {
+const FacilityCard = ({showAllFacillity}: {showAllFacillity: boolean}) => {
   return (
     <>
-      <div className="flex justify-center items-center bg-gray-base lg:bg-white px-2 lg:-mt-10 ">
+      <div className="flex justify-center items-center bg-gray-base lg:bg-white px-2 lg:mt-0 ">
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-8 p-4 lg:px-12 pb-12 bg-white rounded-[10px]">
-          {facilityData.map((facility, index) => {
+          {facilityData.slice(0, showAllFacillity ? facilityData.length : 9).map((facility, index) => {
             return (
               <React.Fragment key={index}>
                 <Link href={"/news/2"}>
@@ -99,10 +164,10 @@ const FacilityCard = () => {
                         {facility.cardfacility.map((facility, index) => (
                           <div
                             key={index}
-                            className={`bg-[${facility.CategoryColor}] px-2 py-1 rounded-[10px]`}
+                            className={cn(`bg-[${facility.CategoryColor}] px-2 py-1 rounded-[10px]`)}
                           >
                             <p className="font-[600] text-[12px] text-white ">
-                              {facility.categoryName}s
+                              {facility.categoryName}
                             </p>
                           </div>
                         ))}
