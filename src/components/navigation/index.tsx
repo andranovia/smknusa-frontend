@@ -77,7 +77,7 @@ const Navbar = () => {
             <NavigationSearch isActivePage={isActivePage} show={show} />
             <NavigationLanguage show={show} />
             <Image
-              src={"/assets/icon/user.svg"}
+              src={"/assets/icon/user-profile.svg"}
               alt="user"
               height={5}
               width={20}

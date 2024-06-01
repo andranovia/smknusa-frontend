@@ -2,8 +2,8 @@ import HomeHero from "@/components/home/home-hero";
 import HomeMajor from "@/components/home/home-major";
 import HomeSlider from "@/components/home/home-slider";
 import HomeFacility from "@/components/home/home-facility";
-import HomeEnterpreneur from "@/components/home/home-enterpreneur";
 import HomeAnnouncement from "@/components/home/home-announcements";
+import HomeEntrepreneur from "@/components/home/home-entrepreneur";
 
 export default function Home() {
   return (
@@ -13,7 +13,7 @@ export default function Home() {
       <div className="px-1 lg:px-3">
         <HomeMajor />
         <HomeFacility />
-        <HomeEnterpreneur />
+        <HomeEntrepreneur />
         <HomeAnnouncement />
       </div>
     </main>
