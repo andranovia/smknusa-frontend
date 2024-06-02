@@ -8,8 +8,7 @@ interface HomeMajorSliderProps {
     majorDesc: string;
     majorImg: string;
   }[];
-  offsetX: MotionValue<number>;
-  animatedX: any;
+  animatedX: MotionValue<number>;
 }
 
 const HomeMajorSlider = ({ majorData, animatedX }: HomeMajorSliderProps) => {

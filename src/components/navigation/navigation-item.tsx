@@ -7,14 +7,14 @@ import Link from "next/link";
 import { defaultTransition } from "../animation/transition";
 import NavigationItemAnimate from "./navigation-item-animate";
 
-export type NavigationLinkData =  {
+export type NavigationLinkData = {
   linkDropdownData: {
     text: string;
     description: string;
     icon: string;
     linkRef: string;
   };
-}
+};
 
 interface NavigationItemProps {
   name: string;
@@ -178,7 +178,6 @@ const NavigationItem = ({
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownControls = useAnimation();
 
-
   const dropdownData = currentDropdown
     ? navbarDropdownData[currentDropdown]
     : null;
@@ -200,7 +199,7 @@ const NavigationItem = ({
         className="flex justify-start cursor-pointer"
         onMouseLeave={() => handleCloseDropdown()}
       >
-        <li
+        <span
           onMouseEnter={() => handleOpenDropdown()}
           className={`relative flex justify-center items-center cursor-po gap-1   rounded-md  w-min-content
           before:border-0 before:absolute before:bottom-0 before:right-0 before:border-transparent before:transition-colors before:duration-500
@@ -213,7 +212,7 @@ const NavigationItem = ({
               <NavigationDropdown show={show} />
             </motion.div>
           )}
-        </li>
+        </span>
         <AnimatePresence>
           {showDropdown && (
             <div className="absolute">
@@ -235,7 +234,7 @@ const NavigationItem = ({
                       item={name}
                       transition={defaultTransition}
                     >
-                      <NavigationItemAnimate itemData={data}/>
+                      <NavigationItemAnimate itemData={data} />
                     </MenuItem>
                   </div>
                 ))}
