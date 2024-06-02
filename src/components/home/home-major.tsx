@@ -1,17 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import HomeMajorSlider from "./home-major-slider";
 import { motion, useAnimation, useMotionValue, useSpring } from "framer-motion";
 
-function createSymbol(name: string): symbol {
-  return Symbol(name);
-}
-
-const Informatika = createSymbol("Informatika");
-const Agribisnis = createSymbol("Agribisnis");
-const Pemesinan = createSymbol("Pemesinan");
+const Informatika = Symbol("Informatika");
+const Agribisnis = Symbol("Agribisnis");
+const Pemesinan = Symbol("Pemesinan");
 
 const majorData = {
   [Informatika]: [
@@ -68,29 +64,30 @@ const majorLinkData = [
 ];
 
 const HomeMajor = () => {
-  const [currentSlide, setCurrentSlide] = useState(Informatika);
+  const [currentSlide, setCurrentSlide] = useState<symbol>(Informatika);
   const xValue = -170;
   const offsetX = useMotionValue(xValue);
-  const majors = majorData[currentSlide as keyof typeof majorData];
+  const majors = useMemo(() => {
+    return majorData[currentSlide as keyof typeof majorData];
+  }, [currentSlide]);
   const controls = useAnimation();
   const animatedX = useSpring(offsetX, {
     damping: 20,
     stiffness: 150,
   });
 
-  const handleSlideChange = (newSlide: symbol) => {
-    if (majorData[currentSlide] !== majorData[newSlide]) {
-      controls.start("animate");
-      animatedX.set(0);
-    } else {
-      controls.start("initial");
-    }
-    setTimeout(() => {
-      setCurrentSlide(() => {
-        return newSlide;
-      });
-    }, 500);
-  };
+  const handleSlideChange = useCallback(
+    (newSlide: symbol) => {
+      if (currentSlide !== newSlide) {
+        controls.start("animate");
+        animatedX.set(0);
+        setTimeout(() => {
+          setCurrentSlide(newSlide);
+        }, 500);
+      }
+    },
+    [currentSlide, controls, animatedX]
+  );
 
   return (
     <div className="lg:w-full lg:h-[61rem] bg-white rounded-[10px]">
@@ -125,12 +122,13 @@ const HomeMajor = () => {
                 return (
                   <React.Fragment key={index}>
                     <h1
+                      key={index}
                       onClick={() => handleSlideChange(data.slide)}
-                      className={`font-[600] text-xs cursor-pointer transition-colors lg:text-[16px]  ${
-                        majorData[currentSlide] === majorData[data.slide]
-                          ? `p-1 rounded-md relative text-blue-base w-min-content before:border-[1px] before:absolute before:bottom-0 before:right-0 before:border-[#F5C451] before:w-full before:opacity-100 `
-                          : "p-1 rounded-md relative text-gray-light  w-min-content before:h-0 before:absolute before:bottom-0 before:right-0 before:bg-white before:opacity-0 "
-                      } `}
+                      className={`font-[600] text-xs cursor-pointer transition-colors lg:text-[16px] ${
+                        currentSlide === data.slide
+                          ? "p-1 rounded-md relative text-blue-base w-min-content before:border-[1px] before:absolute before:bottom-0 before:right-0 before:border-[#F5C451] before:w-full before:opacity-100"
+                          : "p-1 rounded-md relative text-gray-light w-min-content before:h-0 before:absolute before:bottom-0 before:right-0 before:bg-white before:opacity-0"
+                      }`}
                     >
                       {data.text}
                     </h1>
@@ -156,11 +154,7 @@ const HomeMajor = () => {
                 },
               }}
             >
-              <HomeMajorSlider
-                majorData={majors}
-                offsetX={offsetX}
-                animatedX={animatedX}
-              />
+              <HomeMajorSlider majorData={majors} animatedX={animatedX} />
             </motion.div>
           </div>
         </div>

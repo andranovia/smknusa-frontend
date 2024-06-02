@@ -50,8 +50,8 @@ export default function Footer() {
               <div className="rounded-[10px] m-4 border-2 p-2 flex justify-between items-center">
                 <input
                   type="text"
-                  name=""
-                  id=""
+                  name="user-email"
+                  id="user-email"
                   placeholder="Masukkan alamat email anda"
                   className=" w-full outline-none placeholder:text-xs lg:placeholder:text-base"
                 />

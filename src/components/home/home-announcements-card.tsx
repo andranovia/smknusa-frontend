@@ -10,19 +10,51 @@ import {
   useMotionValue,
 } from "framer-motion";
 import { defaultTransition } from "../animation/transition";
-
 import { useMediaQuery } from "react-responsive";
 
+type Announcement = {
+  title: string;
+  content: string;
+  image: string;
+};
+
 type HomeAnnouncementsCardProps = {
-  currentAnnouncementsData?: {
-    title: string;
-    content: string;
-    image: string;
-  }[];
+  currentAnnouncementsData?: Announcement[];
   currentAnnouncementsHighlightIndex: number;
   announcementsHighlightControls: AnimationControls;
   setCurrentAnnouncementsHighlightIndex: Dispatch<SetStateAction<number>>;
   homeAnnouncementsEndRef: React.MutableRefObject<null>;
+};
+
+const announcementsHighlightVariant = {
+  hidden: {
+    y: 0,
+  },
+  after: {
+    y: 0,
+  },
+  visible: {
+    y: 0,
+    transition: {
+      when: "beforeChildren",
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const listVariant = {
+  hidden: {
+    y: 40,
+    opacity: 0,
+  },
+  after: {
+    y: 80,
+    opacity: 0,
+  },
+  visible: {
+    y: 0,
+    opacity: 1,
+  },
 };
 
 const HomeAnnouncementsCard = ({
@@ -36,7 +68,6 @@ const HomeAnnouncementsCard = ({
   const sliderPositionYRef = useRef<HTMLDivElement>(null);
   const sliderContainerRef = useRef<HTMLDivElement>(null);
   const dragControls = useAnimation();
-
   const scrollMobile = useMotionValue(0);
 
   const { scrollYProgress: homeAnnouncementsScrollProgress } = useScroll({
@@ -68,46 +99,17 @@ const HomeAnnouncementsCard = ({
     if (currentAnnouncementsData) {
       const segmentSize = 250 / (currentAnnouncementsData.length - 1);
       const index = Math.floor(latest / segmentSize);
-      setCurrentAnnouncementsHighlightIndex(Math.min(index, currentAnnouncementsData.length - 1));
+      setCurrentAnnouncementsHighlightIndex(
+        Math.min(index, currentAnnouncementsData.length - 1)
+      );
     }
   });
-
-  const announcementsHighlightVariant = {
-    hidden: {
-      y: 0,
-    },
-    after: {
-      y: 0,
-    },
-    visible: {
-      y: 0,
-      transition: {
-        when: "beforeChildren",
-        staggerChildren: 0.2,
-      },
-    },
-  };
 
   useEffect(() => {
     announcementsHighlightControls.start("visible");
   }, [currentAnnouncementsData]);
 
-  const listVariant = {
-    hidden: {
-      y: 40,
-      opacity: 0,
-    },
-    after: {
-      y: 80,
-      opacity: 0,
-    },
-    visible: {
-      y: 0,
-      opacity: 1,
-    },
-  };
-
-  const AnnouncementsHighlightDefault = (children: React.ReactNode) => {
+  const AnnouncementsHighlight = (children: React.ReactNode) => {
     return (
       <motion.div
         variants={announcementsHighlightVariant}
@@ -122,41 +124,43 @@ const HomeAnnouncementsCard = ({
     );
   };
 
-  const currentAnnouncements = () => {
-    return (
-      <>
-        {currentAnnouncementsData?.map((announcement, index) => (
-          <React.Fragment key={index}>
-            <motion.div
-              variants={listVariant}
-              animate={{
-                color:
-                  currentAnnouncementsHighlightIndex === index ? "#111827" : "#9ca3af",
-                scale:
-                  currentAnnouncementsHighlightIndex === index && !isMobile ? 1 : 0.9,
-              }}
-              className={`flex flex-col items-start gap-2 lg:w-2/3 `}
-            >
-              <h2 className="font-[600]   text-[18px] ">{announcement.title}</h2>
-              <p className="font-[500] text-sm lg:text-[16px]">
-                {announcement.content}
-              </p>
-              <div className="flex justify-start items-center gap-2">
-                <h3 className="font-[500] text-[16px]">Lihat Selengkapnya</h3>
-                <Image
-                  src={"assets/icon/line-arrow-right.svg"}
-                  alt="arrow-right"
-                  width={40}
-                  height={40}
-                  className="w-4 h-4"
-                />
-              </div>
-            </motion.div>
-          </React.Fragment>
-        ))}
-      </>
-    );
-  };
+  const AnnouncementsList = () => (
+    <>
+      {currentAnnouncementsData?.map((announcement, index) => (
+        <React.Fragment key={index}>
+          <motion.div
+            variants={listVariant}
+            animate={{
+              color:
+                currentAnnouncementsHighlightIndex === index
+                  ? "#111827"
+                  : "#9ca3af",
+              scale:
+                currentAnnouncementsHighlightIndex === index && !isMobile
+                  ? 1
+                  : 0.9,
+            }}
+            className={`flex flex-col items-start gap-2 lg:w-2/3 `}
+          >
+            <h2 className="font-[600]   text-[18px] ">{announcement.title}</h2>
+            <p className="font-[500] text-sm lg:text-[16px]">
+              {announcement.content}
+            </p>
+            <div className="flex justify-start items-center gap-2">
+              <h3 className="font-[500] text-[16px]">Lihat Selengkapnya</h3>
+              <Image
+                src={"assets/icon/line-arrow-right.svg"}
+                alt="arrow-right"
+                width={40}
+                height={40}
+                className="w-4 h-4"
+              />
+            </div>
+          </motion.div>
+        </React.Fragment>
+      ))}
+    </>
+  );
 
   return (
     <div className="flex justify-start overflow-hidden items-end relative w-full lg:h-[34rem] bg-white lg:bg-gray-base  rounded-[10px] ">
@@ -184,7 +188,7 @@ const HomeAnnouncementsCard = ({
             ></div>
           </div>
 
-          {AnnouncementsHighlightDefault(currentAnnouncements())}
+          {AnnouncementsHighlight(AnnouncementsList())}
         </div>
       </div>
     </div>

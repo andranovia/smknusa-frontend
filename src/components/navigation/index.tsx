@@ -62,7 +62,7 @@ const Navbar = () => {
           </div>
         </div>
         <div className=" flex justify-start gap-[5rem] font-[600] ">
-          <ul
+          <div
             className={`flex justify-center items-center gap-8 ${
               !show && isActivePage ? "text-white" : " text-gray-light"
             }`}
@@ -72,7 +72,7 @@ const Navbar = () => {
             <NavigationItem name="BKK" show={show} dropdown={true} />
             <NavigationItem name="Berita" show={show} route={"/news"} />
             <NavigationItem name="Artikel" show={show} route={"/artikel"} />
-          </ul>
+          </div>
           <div className="flex items-center space-x-4">
             <NavigationSearch isActivePage={isActivePage} show={show} />
             <NavigationLanguage show={show} />

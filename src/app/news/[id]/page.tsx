@@ -177,58 +177,58 @@ export default function Page({ params }: { params: { id: string } }) {
               <div className="grid grid-cols-2 w-full gap-4 py-6 -mt-2 px-6 border rounded-b-[10px]">
                 <div className="flex flex-col gap-4 w-full col-span-2">
                   <label
-                    htmlFor="Title"
+                    htmlFor="title"
                     className="font-medium text-sm lg:text-[18px] text-blue-base"
                   >
                     Judul Berita
                   </label>
                   <input
                     type="text"
-                    id="Title"
-                    name="Title"
+                    id="title"
+                    name="title"
                     className="border border-gray-300 rounded-lg p-2 focus:ring-[#F5C451] focus:border-[#F5C451] focus:outline-none focus:ring-1"
                   />
                 </div>
 
                 <div className="flex flex-col gap-4 w-full col-span-2">
                   <label
-                    htmlFor="Category"
+                    htmlFor="category"
                     className="font-medium text-sm lg:text-[18px]  text-blue-base"
                   >
                     Kategori Berita
                   </label>
                   <input
                     type="text"
-                    id="Category"
-                    name="Category"
+                    id="category"
+                    name="category"
                     className="border border-gray-300 rounded-lg p-2 focus:ring-[#F5C451] focus:border-[#F5C451] focus:outline-none focus:ring-1"
                   />
                 </div>
                 <div className="flex flex-col gap-4 w-full col-span-1">
                   <label
-                    htmlFor="From"
+                    htmlFor="from"
                     className=" font-medium text-sm lg:text-[18px]  text-blue-base "
                   >
                     Dari tanggal
                   </label>
                   <input
                     type="text"
-                    id="From"
-                    name="From"
+                    id="from"
+                    name="from"
                     className="border border-gray-300 rounded-lg p-2 focus:ring-[#F5C451] focus:border-[#F5C451] focus:outline-none focus:ring-1"
                   />
                 </div>
                 <div className="flex flex-col gap-4 w-full col-span-1">
                   <label
-                    htmlFor="To Date"
+                    htmlFor="to-date"
                     className=" font-medium text-sm lg:text-[18px]  text-blue-base "
                   >
                     Sampai tanggal
                   </label>
                   <input
                     type="text"
-                    id="To Date"
-                    name="To Date"
+                    id="to-date"
+                    name="to-date"
                     className="border border-gray-300 rounded-lg p-2 focus:ring-[#F5C451] focus:border-[#F5C451] focus:outline-none focus:ring-1"
                   />
                 </div>

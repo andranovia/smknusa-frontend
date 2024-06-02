@@ -116,7 +116,7 @@ const announcementsLinkData = [
 ];
 
 const HomeAnnouncement = () => {
-  const [currentAnnouncementsType, setCurrentAnnouncementsType] = useState<string | null>(
+  const [currentAnnouncementsType, setCurrentAnnouncementsType] = useState<string>(
     "Pengumuman"
   );
   const homeAnnouncementsEndRef = useRef(null);
@@ -124,9 +124,8 @@ const HomeAnnouncement = () => {
   const [currentAnnouncementsHighlightIndex, setCurrentAnnouncementsHighlightIndex] = useState(0);
   const announcementsHighlightControls = useAnimation();
 
-  const currentAnnouncementsData = currentAnnouncementsType
-    ? announcementsData[currentAnnouncementsType]
-    : undefined;
+  const currentAnnouncementsData = announcementsData[currentAnnouncementsType]
+ 
 
   const handleChangeAnnouncements = (announcementsType: string) => {
     if (announcementsType !== currentAnnouncementsType) {

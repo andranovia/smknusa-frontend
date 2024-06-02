@@ -3,9 +3,9 @@ import React, { useState } from "react";
 import NavigationDropdownIcon from "./navigation-dropdown-icon";
 import { AnimatePresence, motion } from "framer-motion";
 
-interface NavigationLanguageProps {
+type NavigationLanguageProps = {
   show: boolean;
-}
+};
 
 const languageDropdown = [
   {
@@ -70,7 +70,6 @@ const NavigationLanguage = ({ show }: NavigationLanguageProps) => {
                 </div>
               ))}
               <div className="flex items-center gap-4 px-6">
-      
                 <Image
                   src={"/assets/icon/language.svg"}
                   alt={"language"}

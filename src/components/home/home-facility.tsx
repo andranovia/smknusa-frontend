@@ -1,9 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import { HomeFacilityCardStack } from "./home-facility-card-stack";
+
 import { useAnimation, motion } from "framer-motion";
 import { useResize } from "@/hooks/useResize";
+import HomeFacilityCardStack from "./home-facility-card-stack";
 
 const cardData = [
   [
@@ -69,17 +70,21 @@ const HomeFacility = () => {
     controls.start("animate");
   };
 
+  const getFacilityLinkText = (text: string, altText: string) => {
+    return isMobile ? text : altText;
+  };
+
   const facilityLinkData = [
     {
-      text: isMobile ? "Informatika" : "Informatika dan Elektronika",
+      text: getFacilityLinkText("Informatika", "Informatika dan Elektronika"),
       majorFacilityIndex: 0,
     },
     {
-      text: isMobile ? "Agribisnis" : "Agribisnis dan Agroteknologi",
+      text: getFacilityLinkText("Agribisnis", "Agribisnis dan Agroteknologi"),
       majorFacilityIndex: 1,
     },
     {
-      text: isMobile ? "Rekayasa" : "Teknologi dan Rekayasa",
+      text: getFacilityLinkText("Rekayasa", "Teknologi dan Rekayasa"),
       majorFacilityIndex: 2,
     },
   ];
@@ -120,6 +125,7 @@ const HomeFacility = () => {
                   </React.Fragment>
                 );
               })}
+              
               <div className="flex justify-center items-center lg:ml-[25%]">
                 <div className="btn bg-yellow text-blue-base font-[600] py-2.5 px-5 rounded">
                   <button className="lg:text-[16px] text-xs">

@@ -9,57 +9,57 @@ const NewsForm = () => {
             <div className="grid grid-cols-2 lg:grid-cols-4 lg:gap-12 gap-4 mb-3">
               <div className="col-span-1 flex flex-col">
                 <label
-                  htmlFor="judul"
+                  htmlFor="title"
                   className="block font-medium lg:text-[18px] mb-5 text-blue-base mt-1"
                 >
                   Judul Berita
                 </label>
                 <input
                   type="text"
-                  id="judul"
-                  name="judul"
+                  id="title"
+                  name="title"
                   className="lg:w-[107%] h-10 border border-gray-300 rounded-lg p-2"
                 />
               </div>
               <div className="col-span-1 flex flex-col">
                 <label
-                  htmlFor="kategori"
+                  htmlFor="category"
                   className="block font-medium lg:text-[18px] mb-5 text-blue-base mt-1"
                 >
                   Kategori Berita
                 </label>
                 <input
                   type="text"
-                  id="kategori"
-                  name="kategori"
+                  id="category"
+                  name="category"
                   className="lg:w-[107%] h-10 border border-gray-300 rounded-lg p-2"
                 />
               </div>
               <div className="col-span-1 flex flex-col">
                 <label
-                  htmlFor="dari"
+                  htmlFor="from"
                   className="block font-medium lg:text-[18px] mb-5 text-blue-base mt-1"
                 >
                   Dari Tanggal
                 </label>
                 <input
                   type="text"
-                  id="dari"
-                  name="dari"
+                  id="from"
+                  name="from"
                   className="lg:w-[107%] h-10 border border-gray-300 rounded-lg p-2"
                 />
               </div>
               <div className="col-span-1 flex flex-col">
                 <label
-                  htmlFor="sampai"
+                  htmlFor="to-date"
                   className="block font-medium lg:text-[18px] mb-5 text-blue-base mt-1"
                 >
                   Sampai Tanggal
                 </label>
                 <input
                   type="text"
-                  id="sampai"
-                  name="sampai"
+                  id="to-date"
+                  name="to-date"
                   className="lg:w-[107%] h-10 border border-gray-300 rounded-lg p-2"
                 />
               </div>
