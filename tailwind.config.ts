@@ -20,6 +20,9 @@ const config: Config = {
         'gray': '#696969',
         'gray-light': '#9DA5B1'
       },
+      borderColor: {
+        'blue-base' : '#081B34',
+      },
       cursor: {
         next: 'url(/assets/icon/round-arrow-right.svg), next',
       },

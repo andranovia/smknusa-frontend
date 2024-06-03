@@ -6,9 +6,10 @@ import NavigationItem from "./navigation-item";
 import NavigationLanguage from "./navigation-language";
 import { usePathname } from "next/navigation";
 import NavigationSearch from "./navigation-search";
+import Link from "next/link";
 
 const Navbar = () => {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
   const pathname = usePathname();
   const isActivePage =
     pathname === "/" ||
@@ -46,21 +47,23 @@ const Navbar = () => {
             : "bg-opacity-100 bg-white  font-[800]"
         }  `}
       >
-        <div className="flex items-center">
-          <Image
-            src={"/assets/icon/logo-skansa.svg"}
-            alt=""
-            height={55}
-            width={55}
-            quality={100}
-            className="w-auto h-auto"
-          />
+        <Link href={"/"}>
+          <div className="flex items-center">
+            <Image
+              src={"/assets/icon/logo-skansa.svg"}
+              alt=""
+              height={55}
+              width={55}
+              quality={100}
+              className="w-auto h-auto"
+            />
 
-          <div className="ml-2  text-[18px]  ">
-            SMK NEGERI 1 <br />
-            PURWOSARI
+            <div className="ml-2  text-[18px]  ">
+              SMK NEGERI 1 <br />
+              PURWOSARI
+            </div>
           </div>
-        </div>
+        </Link>
         <div className=" flex justify-start gap-[5rem] font-[600] ">
           <div
             className={`flex justify-center items-center gap-8 ${

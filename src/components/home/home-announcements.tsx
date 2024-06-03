@@ -159,13 +159,13 @@ const HomeAnnouncement = () => {
 
               <hr className="bg-white w-[95%] mt-[58px]" />
 
-              <div className="flex flex-col lg:flex-row lg:justify-between items-start w-full gap-8 left-8 mt-12 px-10 ">
-                <div className="grid grid-cols-2 items-center lg:flex lg:justify-start lg:gap-x-10 px-4 justify-between w-full gap-x-20 gap-y-10 ">
+              <div className="flex flex-col lg:flex-row lg:justify-between items-start w-full gap-8 left-8 mt-12 px-4 lg:px-10 ">
+                <div className="grid grid-cols-2 items-center lg:flex lg:justify-start lg:gap-x-10  px-4 w-full gap-x-4 gap-y-10 ">
                   {announcementsLinkData.map((link, index) => (
                     <React.Fragment key={index}>
                       <h1
                         onClick={() => handleChangeAnnouncements(link.announcementsTitle)}
-                        className={`font-[600] text-[16px]  p-1 rounded-md relative transition-all w-min-content cursor-pointer ${
+                        className={`font-[600] text-[16px] text-center  p-1 rounded-md relative transition-all w-min-content cursor-pointer ${
                           link.announcementsTitle === currentAnnouncementsType
                             ? `p-1 rounded-md relative   before:border-[1px] before:absolute before:right-0  before:bottom-0 text-white  before:mx-auto before:border-[#F5C451] before:w-full before:opacity-100 `
                             : "p-1 rounded-md relative   before:h-0 before:absolute before:bottom-0 text-gray-light before:right-0 before:bg-white before:opacity-0 "
@@ -185,7 +185,7 @@ const HomeAnnouncement = () => {
               </div>
             </div>
 
-            <div className="relative px-4  lg:px-8  -mt-36   w-full">
+            <div className="relative px-3  lg:px-8  -mt-36   w-full">
               <div className=" lg:w-full lg:h-full  bg-gray-base relative rounded-xl mt-0 ">
                 <div className="relative ">
                   <HomeAnnouncementsCard

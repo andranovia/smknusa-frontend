@@ -11,10 +11,11 @@ export default function Home() {
       <HomeHero />
       <HomeSlider />
       <div className="px-1 lg:px-3">
+      <HomeAnnouncement />
         <HomeMajor />
         <HomeFacility />
         <HomeEntrepreneur />
-        <HomeAnnouncement />
+    
       </div>
     </main>
   );
