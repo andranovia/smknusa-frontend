@@ -4,7 +4,7 @@ import React from "react";
 const newsData = [
   {
     card: "Pembelajaran Entrepeneur Dari PT.Indobismar",
-    cardImg: "/assets/news/news-entrepeneur.svg",
+    cardImg: "/assets/news/news-entrepeneur.webp",
     cardProfile: "Humas",
     cardDate: "17/03/2024",
     cardView: "99999",
@@ -15,7 +15,7 @@ const newsData = [
   },
   {
     card: "Pembelajaran Entrepeneur Dari PT.Indobismar",
-    cardImg: "/assets/news/news-entrepeneur.svg",
+    cardImg: "/assets/news/news-entrepeneur.webp",
     cardProfile: "Humas",
     cardDate: "17/03/2024",
     cardView: "99999",
@@ -26,7 +26,7 @@ const newsData = [
   },
   {
     card: "Pembelajaran Entrepeneur Dari PT.Indobismar",
-    cardImg: "/assets/news/news-entrepeneur.svg",
+    cardImg: "/assets/news/news-entrepeneur.webp",
     cardProfile: "Humas",
     cardDate: "17/03/2024",
     cardView: "99999",
