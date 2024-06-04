@@ -107,8 +107,8 @@ const HomeMajor = () => {
 
       <div className="relative  lg:px-8 px-3  -mt-32  ">
         <div className="flex justify-start items-end relative  bg-white overflow-hidden rounded-[10px] ">
-          <div className="relative w-[22.5rem] lg:w-full  flex  justify-center gap-14  h-full  mt-8 mb-10 lg:mb-0">
-            <div className="w-[40%] flex  lg:absolute justify-center py-3 rounded-[10px] items-center lg:px-0 px-6 gap-8 bg-primary ">
+          <div className="relative w-[22.5rem] lg:w-full  flex flex-col lg:flex-row   justify-center gap-14  h-full  mt-8 mb-10 lg:mb-0">
+            <div className="lg:w-[40%] w-full flex  lg:absolute justify-center py-3 lg:rounded-[10px] items-center lg:px-0 px-6 gap-8 bg-primary ">
               {majorLinkData.map((data, index) => {
                 return (
                   <React.Fragment key={index}>
