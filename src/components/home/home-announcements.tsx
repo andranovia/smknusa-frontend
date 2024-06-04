@@ -4,7 +4,6 @@ import React, { useRef, useState } from "react";
 import { useAnimation } from "framer-motion";
 import HomeAnnouncementsCard from "./home-announcements-card";
 
-
 interface AnnouncementsItem {
   title: string;
   content: string;
@@ -116,24 +115,24 @@ const announcementsLinkData = [
 ];
 
 const HomeAnnouncement = () => {
-  const [currentAnnouncementsType, setCurrentAnnouncementsType] = useState<string>(
-    "Pengumuman"
-  );
+  const [currentAnnouncementsType, setCurrentAnnouncementsType] =
+    useState<string>("Pengumuman");
   const homeAnnouncementsEndRef = useRef(null);
 
-  const [currentAnnouncementsHighlightIndex, setCurrentAnnouncementsHighlightIndex] = useState(0);
+  const [
+    currentAnnouncementsHighlightIndex,
+    setCurrentAnnouncementsHighlightIndex,
+  ] = useState(0);
   const announcementsHighlightControls = useAnimation();
 
-  const currentAnnouncementsData = announcementsData[currentAnnouncementsType]
- 
+  const currentAnnouncementsData = announcementsData[currentAnnouncementsType];
 
   const handleChangeAnnouncements = (announcementsType: string) => {
     if (announcementsType !== currentAnnouncementsType) {
       announcementsHighlightControls.start("after");
-      setTimeout(() => {
-        setCurrentAnnouncementsType(announcementsType);
-        setCurrentAnnouncementsHighlightIndex(0);
-      }, 300);
+
+      setCurrentAnnouncementsType(announcementsType);
+      setCurrentAnnouncementsHighlightIndex(0);
     }
   };
 
@@ -164,7 +163,9 @@ const HomeAnnouncement = () => {
                   {announcementsLinkData.map((link, index) => (
                     <React.Fragment key={index}>
                       <h1
-                        onClick={() => handleChangeAnnouncements(link.announcementsTitle)}
+                        onClick={() =>
+                          handleChangeAnnouncements(link.announcementsTitle)
+                        }
                         className={`font-[600] text-[16px] text-center  p-1 rounded-md relative transition-all w-min-content cursor-pointer ${
                           link.announcementsTitle === currentAnnouncementsType
                             ? `p-1 rounded-md relative   before:border-[1px] before:absolute before:right-0  before:bottom-0 text-white  before:mx-auto before:border-[#F5C451] before:w-full before:opacity-100 `
@@ -190,9 +191,15 @@ const HomeAnnouncement = () => {
                 <div className="relative ">
                   <HomeAnnouncementsCard
                     homeAnnouncementsEndRef={homeAnnouncementsEndRef}
-                    announcementsHighlightControls={announcementsHighlightControls}
-                    setCurrentAnnouncementsHighlightIndex={setCurrentAnnouncementsHighlightIndex}
-                    currentAnnouncementsHighlightIndex={currentAnnouncementsHighlightIndex}
+                    announcementsHighlightControls={
+                      announcementsHighlightControls
+                    }
+                    setCurrentAnnouncementsHighlightIndex={
+                      setCurrentAnnouncementsHighlightIndex
+                    }
+                    currentAnnouncementsHighlightIndex={
+                      currentAnnouncementsHighlightIndex
+                    }
                     currentAnnouncementsData={currentAnnouncementsData}
                   />
                 </div>

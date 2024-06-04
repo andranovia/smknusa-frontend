@@ -107,8 +107,8 @@ const HomeMajor = () => {
 
       <div className="relative  lg:px-8 px-3  -mt-32  ">
         <div className="flex justify-start items-end relative  bg-white overflow-hidden rounded-[10px] ">
-          <div className="relative w-[22.5rem] lg:w-full  flex flex-col gap-14  h-full  mt-8 mb-10 lg:mb-0">
-            <div className="w-full flex  lg:absolute justify-center py-3 items-center lg:px-0 px-6 gap-8 bg-yellow ">
+          <div className="relative w-[22.5rem] lg:w-full  flex flex-col lg:flex-row   justify-center gap-14  h-full  mt-8 mb-10 lg:mb-0">
+            <div className="lg:w-[40%] w-full flex  lg:absolute justify-center py-3 lg:rounded-[10px] items-center lg:px-0 px-6 gap-8 bg-primary ">
               {majorLinkData.map((data, index) => {
                 return (
                   <React.Fragment key={index}>
@@ -117,8 +117,8 @@ const HomeMajor = () => {
                       onClick={() => handleSlideChange(data.slide)}
                       className={`font-[600] relative z-40 text-xs cursor-pointer transition-colors lg:text-[16px] ${
                         currentSlide === data.slide
-                          ? "p-1 rounded-md relative text-blue-base w-min-content before:border-[1px] before:absolute before:bottom-0 before:right-0 before:border-blue-base before:w-full before:opacity-100"
-                          : "p-1 rounded-md relative  text-white w-min-content before:h-0 before:absolute before:bottom-0 before:right-0 before:bg-white before:opacity-0"
+                          ? "p-1 rounded-md relative text-white  w-min-content before:border-[1px] before:absolute before:bottom-0 before:right-0 before:border-yellow before:w-full before:opacity-100"
+                          : "p-1 rounded-md relative  text-gray-light w-min-content before:h-0 before:absolute before:bottom-0 before:right-0 before:bg-white before:opacity-0"
                       }`}
                     >
                       {data.text}
