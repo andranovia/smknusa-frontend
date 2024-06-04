@@ -82,11 +82,11 @@ const Navbar = () => {
             <Image
               src={"/assets/icon/user-profile.svg"}
               alt="user"
-              height={5}
+              height={20}
               width={20}
               className={`${
                 !show && isActivePage ? `invert-0` : "invert"
-              } transition-all `}
+              } transition-all  w-5 h-5`}
             />
           </div>
         </div>

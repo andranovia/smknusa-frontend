@@ -22,6 +22,7 @@ const config: Config = {
       },
       borderColor: {
         'blue-base' : '#081B34',
+        'yellow' : '#F5C451',
       },
       cursor: {
         next: 'url(/assets/icon/round-arrow-right.svg), next',

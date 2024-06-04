@@ -19,7 +19,7 @@ type Announcement = {
 };
 
 type HomeAnnouncementsCardProps = {
-  currentAnnouncementsData?: Announcement[];
+  currentAnnouncementsData: Announcement[];
   currentAnnouncementsHighlightIndex: number;
   announcementsHighlightControls: AnimationControls;
   setCurrentAnnouncementsHighlightIndex: Dispatch<SetStateAction<number>>;
@@ -82,6 +82,24 @@ const HomeAnnouncementsCard = ({
     [0, 80, 300]
   );
 
+  useEffect(() => {
+    let timeoutId: NodeJS.Timeout;
+    if (isMobile) {
+      timeoutId = setTimeout(() => {
+        if (
+          currentAnnouncementsHighlightIndex <
+          currentAnnouncementsData.length - 1
+        ) {
+          setCurrentAnnouncementsHighlightIndex((prevIndex) => prevIndex + 1);
+        } else {
+          setCurrentAnnouncementsHighlightIndex(0);
+        }
+      }, 2000);
+    }
+
+    return () => clearTimeout(timeoutId);
+  }, [currentAnnouncementsHighlightIndex]);
+
   const announcementsY = useTransform(
     isMobile ? scrollMobile : homeAnnouncementsScrollProgress,
     [0, 1],
@@ -96,7 +114,7 @@ const HomeAnnouncementsCard = ({
   );
 
   useMotionValueEvent(sliderY, "change", (latest) => {
-    if (currentAnnouncementsData) {
+    if (currentAnnouncementsData && !isMobile) {
       const segmentSize = 250 / (currentAnnouncementsData.length - 1);
       const index = Math.floor(latest / segmentSize);
       setCurrentAnnouncementsHighlightIndex(
@@ -142,7 +160,9 @@ const HomeAnnouncementsCard = ({
             }}
             className={`flex flex-col items-start gap-2 lg:w-2/3 `}
           >
-            <h2 className="font-[600]   text-[18px] ">{announcement.title}</h2>
+            <h2 className="font-[600]   lg:text-[18px] ">
+              {announcement.title}
+            </h2>
             <p className="font-[500] text-sm lg:text-[16px]">
               {announcement.content}
             </p>

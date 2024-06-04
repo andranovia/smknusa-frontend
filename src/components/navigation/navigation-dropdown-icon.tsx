@@ -21,8 +21,9 @@ const NavigationDropdownIcon = ({ show }: NavigationDropdownProps) => {
           : "/assets/icon/dropdown.svg"
       }`}
       alt="dropdown"
-      height={5}
+      height={20}
       width={20}
+      className="w-5 h-5"
     />
   );
 };
