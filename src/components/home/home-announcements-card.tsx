@@ -1,3 +1,4 @@
+
 import Image from "next/image";
 import React, { Dispatch, SetStateAction, useEffect, useRef } from "react";
 import {
@@ -7,10 +8,11 @@ import {
   useTransform,
   useMotionValueEvent,
   useAnimation,
-  useMotionValue,
+  AnimatePresence,
+  motionValue,
 } from "framer-motion";
 import { defaultTransition } from "../animation/transition";
-import { useMediaQuery } from "react-responsive";
+import { useMediaQuery } from "@uidotdev/usehooks";
 
 type Announcement = {
   title: string;
@@ -26,37 +28,6 @@ type HomeAnnouncementsCardProps = {
   homeAnnouncementsEndRef: React.MutableRefObject<null>;
 };
 
-const announcementsHighlightVariant = {
-  hidden: {
-    y: 0,
-  },
-  after: {
-    y: 0,
-  },
-  visible: {
-    y: 0,
-    transition: {
-      when: "beforeChildren",
-      staggerChildren: 0.2,
-    },
-  },
-};
-
-const listVariant = {
-  hidden: {
-    y: 40,
-    opacity: 0,
-  },
-  after: {
-    y: 80,
-    opacity: 0,
-  },
-  visible: {
-    y: 0,
-    opacity: 1,
-  },
-};
-
 const HomeAnnouncementsCard = ({
   currentAnnouncementsData,
   currentAnnouncementsHighlightIndex,
@@ -64,11 +35,48 @@ const HomeAnnouncementsCard = ({
   setCurrentAnnouncementsHighlightIndex,
   homeAnnouncementsEndRef,
 }: HomeAnnouncementsCardProps) => {
-  const isMobile = useMediaQuery({ maxWidth: 768 });
+  const isMobile = useMediaQuery("only screen and (max-width : 768px)");
   const sliderPositionYRef = useRef<HTMLDivElement>(null);
   const sliderContainerRef = useRef<HTMLDivElement>(null);
   const dragControls = useAnimation();
-  const scrollMobile = useMotionValue(0);
+  const scrollMobile = motionValue(0);
+
+  const announcementsHighlightVariant = {
+    hidden: {
+      y: 0,
+    },
+    after: {
+      y: 0,
+    },
+    visible: {
+      y: 0,
+      transition: {
+        when: "beforeChildren",
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const listVariant = {
+    hidden: {
+      y: 40,
+      opacity: 0,
+    },
+    after: {
+      y: 80,
+      opacity: 0,
+    },
+    visible: {
+      y: 0,
+      opacity: 1,
+    },
+  };
+
+  const imageVariant = {
+    hidden: { opacity: 0, y: isMobile ? 0 : 400, x: isMobile ? -100 : 0 },
+    visible: { opacity: 1, y: 0, x: 0 },
+    exit: { opacity: 0, y: isMobile ? 0 : -600, x: isMobile ? 100 : 0 },
+  };
 
   const { scrollYProgress: homeAnnouncementsScrollProgress } = useScroll({
     target: homeAnnouncementsEndRef,
@@ -81,6 +89,10 @@ const HomeAnnouncementsCard = ({
     [0, 0.5, 1],
     [0, 80, 300]
   );
+
+  useEffect(() => {
+    announcementsHighlightControls.start("visible");
+  }, [currentAnnouncementsData]);
 
   useEffect(() => {
     let timeoutId: NodeJS.Timeout;
@@ -100,6 +112,16 @@ const HomeAnnouncementsCard = ({
     return () => clearTimeout(timeoutId);
   }, [currentAnnouncementsHighlightIndex]);
 
+  useMotionValueEvent(sliderY, "change", (latest) => {
+    if (currentAnnouncementsData && !isMobile) {
+      const segmentSize = 250 / (currentAnnouncementsData.length - 1);
+      const index = Math.floor(latest / segmentSize);
+      setCurrentAnnouncementsHighlightIndex(
+        Math.min(index, currentAnnouncementsData.length - 1)
+      );
+    }
+  });
+
   const announcementsY = useTransform(
     isMobile ? scrollMobile : homeAnnouncementsScrollProgress,
     [0, 1],
@@ -112,20 +134,6 @@ const HomeAnnouncementsCard = ({
         : 1,
     ]
   );
-
-  useMotionValueEvent(sliderY, "change", (latest) => {
-    if (currentAnnouncementsData && !isMobile) {
-      const segmentSize = 250 / (currentAnnouncementsData.length - 1);
-      const index = Math.floor(latest / segmentSize);
-      setCurrentAnnouncementsHighlightIndex(
-        Math.min(index, currentAnnouncementsData.length - 1)
-      );
-    }
-  });
-
-  useEffect(() => {
-    announcementsHighlightControls.start("visible");
-  }, [currentAnnouncementsData]);
 
   const AnnouncementsHighlight = (children: React.ReactNode) => {
     return (
@@ -142,6 +150,11 @@ const HomeAnnouncementsCard = ({
     );
   };
 
+  const AnnouncementsHighlightImage = (children: React.ReactNode) => {
+    return (
+      <div className="flex flex-col items-start gap-8 pb-0 ">{children}</div>
+    );
+  };
   const AnnouncementsList = () => (
     <>
       {currentAnnouncementsData?.map((announcement, index) => (
@@ -182,16 +195,43 @@ const HomeAnnouncementsCard = ({
     </>
   );
 
+  const AnnouncementImageList = () => {
+    return (
+      <>
+        <AnimatePresence mode="popLayout">
+          {currentAnnouncementsData.map(
+            (announcement, index) =>
+              index === currentAnnouncementsHighlightIndex && (
+                <motion.div
+                  key={currentAnnouncementsHighlightIndex}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  variants={{ ...imageVariant }}
+                  transition={defaultTransition}
+                  className={`flex flex-col items-start gap-2 w-full h-full `}
+                >
+                  <Image
+                    src={announcement.image}
+                    alt={`announcement-${index}`}
+                    width={400}
+                    height={400}
+                    className="w-full h-full object-cover"
+                  />
+                </motion.div>
+              )
+          )}
+        </AnimatePresence>
+      </>
+    );
+  };
+
   return (
     <div className="flex justify-start overflow-hidden items-end relative w-full lg:h-[34rem] bg-white lg:bg-gray-base  rounded-[10px] ">
       <div className="flex flex-col  lg:flex-row-reverse justify-between items-center w-full h-full lg:p-8 gap-6">
-        <Image
-          src={"/assets/home/announcement/announcment.png"}
-          alt="announcement-1"
-          width={400}
-          height={400}
-          className="lg:w-1/2 h-full"
-        />
+        <div className="lg:w-2/3 overflow-hidden w-full">
+          {AnnouncementsHighlightImage(AnnouncementImageList())}
+        </div>
         <div className="flex justify-start items-start gap-8 h-full">
           <div className="hidden lg:block">
             <motion.div

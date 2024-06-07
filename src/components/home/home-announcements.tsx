@@ -125,14 +125,18 @@ const HomeAnnouncement = () => {
   ] = useState(0);
   const announcementsHighlightControls = useAnimation();
 
+
+
+  
   const currentAnnouncementsData = announcementsData[currentAnnouncementsType];
 
   const handleChangeAnnouncements = (announcementsType: string) => {
     if (announcementsType !== currentAnnouncementsType) {
       announcementsHighlightControls.start("after");
-
-      setCurrentAnnouncementsType(announcementsType);
-      setCurrentAnnouncementsHighlightIndex(0);
+      setTimeout(() => {
+        setCurrentAnnouncementsType(announcementsType);
+        setCurrentAnnouncementsHighlightIndex(0);
+      }, 200);
     }
   };
 
@@ -207,7 +211,7 @@ const HomeAnnouncement = () => {
             </div>
           </div>
         </div>
-        <div className=" top-0 lg:h-[60vw] z-20 pointer  pointer-events:none hidden lg:flex justify-center items-center">
+        <div className=" top-0 lg:h-[50vw] z-20 pointer  pointer-events:none hidden lg:flex justify-center items-center">
           {/* add height to trigger sticky*/}
         </div>
       </div>
