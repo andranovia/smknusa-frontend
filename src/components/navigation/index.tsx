@@ -74,7 +74,7 @@ const Navbar = () => {
             <NavigationItem name="Akademik" show={show} dropdown={true} />
             <NavigationItem name="BKK" show={show} dropdown={true} />
             <NavigationItem name="Berita" show={show} route={"/news"} />
-            <NavigationItem name="Artikel" show={show} route={"/artikel"} />
+            <NavigationItem name="Artikel" show={show} route={"/article"} />
           </div>
           <div className="flex items-center space-x-4">
             <NavigationSearch isActivePage={isActivePage} show={show} />
