@@ -240,13 +240,14 @@ const NewsCard = () => {
                         <h2> {news.card}</h2>
                       </div>
                       <div className="text-sm gap-2 text-gray flex flex-col lg:flex-row lg:justify-between lg:items-center w-full">
+                        <Image
+                          src={"/assets/icon/user-profile.svg"}
+                          alt="user"
+                          height={15}
+                          width={15}
+                          className="w-3 h-3 invert"
+                        />
                         <span className=" flex text-gray font-[500] text-[12px] gap-2 items-center">
-                          <Image
-                            src={"/assets/icon/user.svg"}
-                            alt="user"
-                            width={15}
-                            height={15}
-                          />
                           {news.cardProfile}
                         </span>
                         <div className="flex lg:ml-auto font-[500] mr-4 text-[12px] text-gray text-right gap-2 items-center">
