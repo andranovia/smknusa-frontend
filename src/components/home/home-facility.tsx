@@ -3,8 +3,9 @@
 import React, { useState } from "react";
 
 import { useAnimation, motion } from "framer-motion";
-import { useMediaQuery } from "@uidotdev/usehooks";
+
 import HomeFacilityCardStack from "./home-facility-card-stack";
+import { useMediaQuery } from "@uidotdev/usehooks";
 
 const cardData = [
   [
@@ -125,7 +126,7 @@ const HomeFacility = () => {
                   </React.Fragment>
                 );
               })}
-              
+
               <div className="flex justify-center items-center lg:ml-[25%]">
                 <div className="btn bg-yellow text-blue-base font-[600] py-2.5 px-5 rounded">
                   <button className="lg:text-[16px] text-xs">

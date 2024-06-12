@@ -4,6 +4,7 @@ import HomeSlider from "@/components/home/home-slider";
 import HomeFacility from "@/components/home/home-facility";
 import HomeAnnouncement from "@/components/home/home-announcements";
 import HomeEntrepreneur from "@/components/home/home-entrepreneur";
+import { ClientOnly } from "@/utils/isClient";
 
 export default function Home() {
   return (
@@ -11,11 +12,12 @@ export default function Home() {
       <HomeHero />
       <HomeSlider />
       <div className="px-1 lg:px-3">
-      <HomeAnnouncement />
+        <HomeAnnouncement />
         <HomeMajor />
-        <HomeFacility />
+        <ClientOnly>
+          <HomeFacility />
+        </ClientOnly>
         <HomeEntrepreneur />
-    
       </div>
     </main>
   );
