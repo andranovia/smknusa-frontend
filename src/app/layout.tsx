@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/navigation";
 import { Montserrat } from "next/font/google";
 import Footer from "@/components/footer/footer";
+import { ReactQueryProvider } from "@/utils/ReactQueryProvider";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -33,7 +34,7 @@ export default function RootLayout({
         <nav className="">
           <Navbar />
         </nav>
-        {children}
+        <ReactQueryProvider>{children}</ReactQueryProvider>
         <footer>
           <Footer />
         </footer>

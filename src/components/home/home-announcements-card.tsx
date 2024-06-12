@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import React, { Dispatch, SetStateAction, useEffect, useRef } from "react";
 import {
@@ -13,10 +12,6 @@ import {
 } from "framer-motion";
 import { defaultTransition } from "../animation/transition";
 import { useMediaQuery } from "@uidotdev/usehooks";
-
-
-
-
 
 type Announcement = {
   title: string;
@@ -77,9 +72,9 @@ const HomeAnnouncementsCard = ({
   };
 
   const imageVariant = {
-    hidden: { opacity: 0,  x: isMobile ? -100 : -300 },
-    visible: { opacity: 1, x: 0 },
-    exit: { opacity: 0,  x: isMobile ? 100 : 300 },
+    hidden: { opacity: 0, y: isMobile ? 0 : 200, x: isMobile ? -100 : 0 },
+    visible: { opacity: 1, y: 0, x: 0 },
+    exit: { opacity: 0, y: isMobile ? 0 : -200, x: isMobile ? 100 : 0 },
   };
 
   const { scrollYProgress: homeAnnouncementsScrollProgress } = useScroll({
@@ -203,28 +198,26 @@ const HomeAnnouncementsCard = ({
     return (
       <>
         <AnimatePresence mode="popLayout">
-          {currentAnnouncementsData.map(
-            (announcement, index) =>
-              index === currentAnnouncementsHighlightIndex && (
-                <motion.div
-                  key={currentAnnouncementsHighlightIndex}
-                  initial="hidden"
-                  animate="visible"
-                  exit="exit"
-                  variants={{ ...imageVariant }}
-                  transition={defaultTransition}
-                  className={`flex flex-col items-start gap-2 w-full h-full `}
-                >
-                  <Image
-                    src={announcement.image}
-                    alt={`announcement-${index}`}
-                    width={400}
-                    height={400}
-                    className="w-full h-full object-cover"
-                  />
-                </motion.div>
-              )
-          )}
+          <motion.div
+            key={currentAnnouncementsHighlightIndex}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            variants={{ ...imageVariant }}
+            transition={defaultTransition}
+            className={`flex flex-col items-start gap-2 w-full h-full `}
+          >
+            <Image
+              src={
+                currentAnnouncementsData[currentAnnouncementsHighlightIndex]
+                  .image
+              }
+              alt={`announcement-${currentAnnouncementsHighlightIndex}`}
+              width={400}
+              height={400}
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
         </AnimatePresence>
       </>
     );
