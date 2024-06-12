@@ -1,8 +1,10 @@
 "use client";
 
+
+import { useMediaQuery } from "@uidotdev/usehooks";
 import React from "react";
 import YouTube, { YouTubeEvent } from "react-youtube";
-import { useMediaQuery } from "@uidotdev/usehooks";
+
 
 const HomeEntrepreneurVideo = () => {
   const isMobile = useMediaQuery("only screen and (max-width : 768px)");

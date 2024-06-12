@@ -14,6 +14,10 @@ import {
 import { defaultTransition } from "../animation/transition";
 import { useMediaQuery } from "@uidotdev/usehooks";
 
+
+
+
+
 type Announcement = {
   title: string;
   content: string;
@@ -73,9 +77,9 @@ const HomeAnnouncementsCard = ({
   };
 
   const imageVariant = {
-    hidden: { opacity: 0, y: isMobile ? 0 : 400, x: isMobile ? -100 : 0 },
-    visible: { opacity: 1, y: 0, x: 0 },
-    exit: { opacity: 0, y: isMobile ? 0 : -600, x: isMobile ? 100 : 0 },
+    hidden: { opacity: 0,  x: isMobile ? -100 : -300 },
+    visible: { opacity: 1, x: 0 },
+    exit: { opacity: 0,  x: isMobile ? 100 : 300 },
   };
 
   const { scrollYProgress: homeAnnouncementsScrollProgress } = useScroll({
@@ -130,7 +134,7 @@ const HomeAnnouncementsCard = ({
       currentAnnouncementsData
         ? currentAnnouncementsData?.length <= 3
           ? -4
-          : -54 * currentAnnouncementsData.length
+          : -40 * currentAnnouncementsData.length
         : 1,
     ]
   );

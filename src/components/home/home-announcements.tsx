@@ -3,6 +3,7 @@
 import React, { useRef, useState } from "react";
 import { useAnimation } from "framer-motion";
 import HomeAnnouncementsCard from "./home-announcements-card";
+import { ClientOnly } from "@/utils/isClient";
 
 interface AnnouncementsItem {
   title: string;
@@ -36,12 +37,7 @@ const announcementsData: { [key: string]: AnnouncementsItem[] } = {
         "SMKN 1 Purwosari Merebut Juara 1 dan 3 Lomba Karya Tulis Ilmiah (KTI) Inovasi Teknologi",
       image: "/assets/home/announcement/announcment.png",
     },
-    {
-      title: "Pengumuman",
-      content:
-        "SMKN 1 Purwosari Mendapatkan Penghargaan Bintang 5 Apresiasi SMK BISA 2023",
-      image: "/assets/home/announcement/announcment.png",
-    },
+    
   ],
   Agenda: [
     {
@@ -125,9 +121,6 @@ const HomeAnnouncement = () => {
   ] = useState(0);
   const announcementsHighlightControls = useAnimation();
 
-
-
-  
   const currentAnnouncementsData = announcementsData[currentAnnouncementsType];
 
   const handleChangeAnnouncements = (announcementsType: string) => {
@@ -193,27 +186,27 @@ const HomeAnnouncement = () => {
             <div className="relative px-3  lg:px-8  -mt-36   w-full">
               <div className=" lg:w-full lg:h-full  bg-gray-base relative rounded-xl mt-0 ">
                 <div className="relative ">
-                  <HomeAnnouncementsCard
-                    homeAnnouncementsEndRef={homeAnnouncementsEndRef}
-                    announcementsHighlightControls={
-                      announcementsHighlightControls
-                    }
-                    setCurrentAnnouncementsHighlightIndex={
-                      setCurrentAnnouncementsHighlightIndex
-                    }
-                    currentAnnouncementsHighlightIndex={
-                      currentAnnouncementsHighlightIndex
-                    }
-                    currentAnnouncementsData={currentAnnouncementsData}
-                  />
+                  <ClientOnly>
+                    <HomeAnnouncementsCard
+                      homeAnnouncementsEndRef={homeAnnouncementsEndRef}
+                      announcementsHighlightControls={
+                        announcementsHighlightControls
+                      }
+                      setCurrentAnnouncementsHighlightIndex={
+                        setCurrentAnnouncementsHighlightIndex
+                      }
+                      currentAnnouncementsHighlightIndex={
+                        currentAnnouncementsHighlightIndex
+                      }
+                      currentAnnouncementsData={currentAnnouncementsData}
+                    />
+                  </ClientOnly>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div className=" top-0 lg:h-[50vw] z-20 pointer  pointer-events:none hidden lg:flex justify-center items-center">
-          {/* add height to trigger sticky*/}
-        </div>
+        
       </div>
     </>
   );
