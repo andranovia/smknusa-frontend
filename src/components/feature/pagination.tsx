@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 
 interface PaginationProps {
-  totalPosts?: number ;
+  totalPosts?: number;
   postsPerPage: number;
   onPageChange?: (pageNumber: number) => void;
 }
@@ -15,11 +15,6 @@ const Pagination: React.FC<PaginationProps> = ({
   const [currentPage, setCurrentPage] = useState(1);
 
   const totalPages = totalPosts ? Math.ceil(totalPosts / postsPerPage) : 0;
-  const pages = [];
-
-  for (let i = 1; i <= totalPages; i++) {
-    pages.push(i);
-  }
 
   const handleButtonClick = (pageNumber: number) => {
     if (pageNumber > 0 && pageNumber <= totalPages) {
@@ -30,30 +25,56 @@ const Pagination: React.FC<PaginationProps> = ({
     }
   };
 
+  const getDisplayedPages = () => {
+    if (totalPages <= 7) {
+      return Array.from({ length: totalPages }, (_, i) => i + 1);
+    }
+
+    const pages = [];
+
+    if (currentPage <= 4) {
+      pages.push(1, 2, 3, 4, 5, '...', totalPages);
+    } else if (currentPage >= totalPages - 3) {
+      pages.push(1, '...', totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1, totalPages);
+    } else {
+      pages.push(1, '...', currentPage - 1, currentPage, currentPage + 1, '...', totalPages);
+    }
+
+    return pages;
+  };
+
   return (
     <div className="flex text-center gap-3 p-3">
-      <p className="mt-2">Previous</p>
-      <button className="p-3 bg-gray-base rounded-md">
+      <button 
+        className="p-3 bg-gray-base rounded-md"
+        onClick={() => handleButtonClick(currentPage - 1)}
+        disabled={currentPage === 1}
+      >
         <Image
-          alt="arrow-right"
+          alt="arrow-left"
           src={"/assets/icon/arrow-right.svg"}
           className="-rotate-180"
           width={15}
           height={15}
         />
       </button>
-      {pages.map((page, index) => (
+      {getDisplayedPages().map((page, index) => (
         <button
           key={index}
           className={`px-3 py-1 rounded-md ${
             currentPage === page ? "bg-yellow-light" : "bg-white"
           }`}
-          onClick={() => handleButtonClick(page)}
+          onClick={() => typeof page === 'number' && handleButtonClick(page)}
+          disabled={page === '...'}
         >
           {page}
         </button>
       ))}
-      <button className="p-3 bg-gray-base rounded-md">
+      <button 
+        className="p-3 bg-gray-base rounded-md"
+        onClick={() => handleButtonClick(currentPage + 1)}
+        disabled={currentPage === totalPages}
+      >
         <Image
           alt="arrow-right"
           src={"/assets/icon/arrow-right.svg"}
@@ -61,7 +82,6 @@ const Pagination: React.FC<PaginationProps> = ({
           height={15}
         />
       </button>
-      <p className="mt-2">Next</p>
     </div>
   );
 };
