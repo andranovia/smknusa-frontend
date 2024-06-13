@@ -1,3 +1,5 @@
+import { Article } from "@/services/api/useQueries/useArticles";
+import { backendUrl } from "@/utils/backendUrl";
 import Image from "next/image";
 import React from "react";
 
@@ -118,7 +120,7 @@ export default function Page({ params }: { params: { id: string } }) {
                   pantau terus. Walaupun lagi karantina tetep rebahan
                   secukupnya, ngoding selelahnya hehe ?
                 </span>
-              
+
                 <span>Jurnalis: -</span>
               </p>
               <hr className="w-full border " />
@@ -292,4 +294,18 @@ export default function Page({ params }: { params: { id: string } }) {
       </div>
     </div>
   );
+}
+
+async function fetchArticles() {
+  const response = await fetch(`${backendUrl}api/user/articles`);
+  const data = await response.json();
+  return data.data;
+}
+
+export async function generateStaticParams() {
+  const newsData = await fetchArticles();
+
+  const ids = newsData?.map((news: Article) => news.id_pemberitahuan);
+
+  return ids?.map((id: string) => ({ id: id.toString() }));
 }

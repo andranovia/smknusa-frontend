@@ -31,12 +31,7 @@ const announcementsData: { [key: string]: AnnouncementsItem[] } = {
         "SMKN 1 Purwosari Mendapatkan Penghargaan Bintang 5 Apresiasi SMK BISA 2023",
       image: "/assets/home/announcement/announcment.png",
     },
-    {
-      title: "Pengumuman",
-      content:
-        "SMKN 1 Purwosari Merebut Juara 1 dan 3 Lomba Karya Tulis Ilmiah (KTI) Inovasi Teknologi",
-      image: "/assets/home/announcement/announcment.png",
-    },
+   
     
   ],
   Agenda: [
@@ -123,6 +118,8 @@ const HomeAnnouncement = () => {
 
   const currentAnnouncementsData = announcementsData[currentAnnouncementsType];
 
+
+
   const handleChangeAnnouncements = (announcementsType: string) => {
     if (announcementsType !== currentAnnouncementsType) {
       announcementsHighlightControls.start("after");
@@ -139,7 +136,7 @@ const HomeAnnouncement = () => {
         ref={homeAnnouncementsEndRef}
         className="w-full h-full  flex justify-center items-center flex-col "
       >
-        <div className="lg:sticky -top-1/3   flex justify-center items-center overflow-hidden ">
+        <div className="lg:sticky -top-1/3 w-full  flex justify-center items-center overflow-hidden ">
           <div className="w-full h-full bg-gray-base lg:pb-20 lg:bg-white rounded-[10px] mt-3">
             <div className="flex flex-col items-center lg:text-center justify-center bg-primary  rounded-md text-white pt-10 pb-48">
               <h1 className="font-[700] lg:text-[36px]  text-[24px] w-4/5 lg:w-full">

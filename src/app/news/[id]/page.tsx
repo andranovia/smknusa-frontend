@@ -1,3 +1,6 @@
+
+import { News } from "@/services/api/useQueries/useNews";
+import { backendUrl } from "@/utils/backendUrl";
 import Image from "next/image";
 import React from "react";
 
@@ -312,4 +315,19 @@ export default function Page({ params }: { params: { id: string } }) {
       </div>
     </div>
   );
+}
+async function fetchNews() {
+  const response = await fetch(`${backendUrl}api/user/news`);
+  const data = await response.json();
+
+  return data.data;
+}
+
+
+export async function generateStaticParams() {
+  const newsData = await fetchNews();
+
+  const ids = newsData?.map((news: News) => news.id_pemberitahuan);
+
+  return ids?.map((id: string) => ({ id: id.toString() }));
 }

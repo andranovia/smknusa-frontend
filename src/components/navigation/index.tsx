@@ -41,13 +41,13 @@ const Navbar = () => {
       } fixed w-full px-3 delay-0`}
     >
       <div
-        className={`flex  items-center    justify-between w-full py-3 transition-all rounded-[10px] px-11  ${
+        className={`flex  items-center  w-full py-3 transition-all rounded-[10px] px-11  ${
           !show && isActivePage
             ? "bg-opacity-0 font-[900]"
             : "bg-opacity-100 bg-white  font-[800]"
         }  `}
       >
-        <Link href={"/"}>
+        <Link href={"/"} className="w-[52%]">
           <div className="flex items-center">
             <Image
               src={"/assets/icon/logo-skansa.svg"}
@@ -64,7 +64,7 @@ const Navbar = () => {
             </div>
           </div>
         </Link>
-        <div className=" flex justify-start gap-[5rem] font-[600] ">
+        <div className=" flex justify-between  w-full  font-[600] ">
           <div
             className={`flex justify-center items-center gap-8 ${
               !show && isActivePage ? "text-white" : " text-gray-light"

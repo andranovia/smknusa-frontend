@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import { getNews, getNewsById, getNewsCategories } from "../methods/fetch-berita";
+import { getNews, getNewsById, getNewsCategories } from "../methods/fetch-news";
 
-type News = {
+export type News = {
   id_pemberitahuan: string;
   nama: string;
   thumbnail: string;

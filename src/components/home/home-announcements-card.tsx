@@ -1,3 +1,6 @@
+
+"use client";
+
 import Image from "next/image";
 import React, { Dispatch, SetStateAction, useEffect, useRef } from "react";
 import {
@@ -39,6 +42,11 @@ const HomeAnnouncementsCard = ({
   const sliderContainerRef = useRef<HTMLDivElement>(null);
   const dragControls = useAnimation();
   const scrollMobile = motionValue(0);
+
+  useEffect(() => {
+    announcementsHighlightControls.start("visible");
+  }, [currentAnnouncementsData]);
+
 
   const announcementsHighlightVariant = {
     hidden: {
@@ -89,9 +97,6 @@ const HomeAnnouncementsCard = ({
     [0, 80, 300]
   );
 
-  useEffect(() => {
-    announcementsHighlightControls.start("visible");
-  }, [currentAnnouncementsData]);
 
   useEffect(() => {
     let timeoutId: NodeJS.Timeout;
@@ -113,7 +118,7 @@ const HomeAnnouncementsCard = ({
 
   useMotionValueEvent(sliderY, "change", (latest) => {
     if (currentAnnouncementsData && !isMobile) {
-      const segmentSize = 250 / (currentAnnouncementsData.length - 1);
+      const segmentSize = 200 / (currentAnnouncementsData.length - 1);
       const index = Math.floor(latest / segmentSize);
       setCurrentAnnouncementsHighlightIndex(
         Math.min(index, currentAnnouncementsData.length - 1)
@@ -139,7 +144,7 @@ const HomeAnnouncementsCard = ({
       <motion.div
         variants={announcementsHighlightVariant}
         animate={announcementsHighlightControls}
-        initial="hidden"
+        initial="visible"
         style={{ y: announcementsY }}
         transition={defaultTransition}
         className="flex flex-col items-start gap-8 lg:mt-10 lg:pb-0 pb-10"
@@ -149,11 +154,6 @@ const HomeAnnouncementsCard = ({
     );
   };
 
-  const AnnouncementsHighlightImage = (children: React.ReactNode) => {
-    return (
-      <div className="flex flex-col items-start gap-8 pb-0 ">{children}</div>
-    );
-  };
   const AnnouncementsList = () => (
     <>
       {currentAnnouncementsData?.map((announcement, index) => (
@@ -205,7 +205,7 @@ const HomeAnnouncementsCard = ({
             exit="exit"
             variants={{ ...imageVariant }}
             transition={defaultTransition}
-            className={`flex flex-col items-start gap-2 w-full h-full `}
+            className={`flex flex-col items-start gap-2 w-full h-full top-[10%] lg:h-auto lg:w-[45%] lg:absolute  `}
           >
             <Image
               src={
@@ -227,7 +227,7 @@ const HomeAnnouncementsCard = ({
     <div className="flex justify-start overflow-hidden items-end relative w-full lg:h-[34rem] bg-white lg:bg-gray-base  rounded-[10px] ">
       <div className="flex flex-col  lg:flex-row-reverse justify-between items-center w-full h-full lg:p-8 gap-6">
         <div className="lg:w-2/3 overflow-hidden w-full">
-          {AnnouncementsHighlightImage(AnnouncementImageList())}
+         {AnnouncementImageList()}
         </div>
         <div className="flex justify-start items-start gap-8 h-full">
           <div className="hidden lg:block">
