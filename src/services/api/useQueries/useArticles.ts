@@ -5,7 +5,7 @@ import {
   getArticles,
 } from "../methods/fetch-articles";
 
-type Article = {
+export type Article = {
   id_pemberitahuan: string;
   nama: string;
   thumbnail: string;

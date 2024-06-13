@@ -91,7 +91,7 @@ const HomeMajor = () => {
 
   return (
     <div className="lg:w-full lg:h-full bg-white rounded-[10px]">
-      <div className="flex flex-col items-center justify-center gap-8 bg-primary  rounded-md text-white pt-16 pb-48">
+      <div className="flex flex-col w-full items-center justify-center gap-8 bg-primary  rounded-md text-white pt-16 pb-48">
         <h1 className="font-[700] lg:text-[36px] text-[24px] w-4/5 lg:w-fit ">
           Menuju SMK Bisa,
           <br className="block lg:hidden" /> SMK Hebat
