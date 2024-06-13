@@ -8,8 +8,8 @@ import {
 type Article = {
   id_pemberitahuan: string;
   nama: string;
-  thumnail: string;
-  date: string;
+  thumbnail: string;
+  created_at: string;
   text: HTMLElement;
   level: string;
   category: {
@@ -23,19 +23,19 @@ export const useArticles = (id?: string) => {
 
 
   const { data: articles } = useQuery<Article[] | null>({
-    queryKey: ["articles"],
+    queryKey: ["Articles"],
     queryFn: () => getArticles()
   });
 
   const { data: articleById } = useQuery({
-    queryKey: ["articleById"],
+    queryKey: ["ArticleById"],
     queryFn: () => {
       return getArticleById(id);
     },
   });
 
   const { data: articleCategories } = useQuery({
-    queryKey: ["articleCategories"],
+    queryKey: ["ArticleCategories"],
     queryFn: () => {
       return getArticleCategories();
     },

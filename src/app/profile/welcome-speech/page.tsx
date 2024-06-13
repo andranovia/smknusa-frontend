@@ -7,11 +7,10 @@ const ProfileHistory = () => {
       <div className="relative  bg-white flex flex-col items-center  pt-10 pb-20">
         <div className="flex flex-col lg:items-center gap-4 w-[80%]  lg:w-2/3 lg:text-center">
           <h1 className="font-[700] lg:text-[46px] text-[24px] ">
-            Sejarah Berdirinya Sekolah
+            Sambutan Kepala Sekolah
           </h1>
           <p className="font-[500] text-[18px] text-gray">
-            Sedikit pengetahuan mengenai bagaimana sejarah berdirinya SMK Negeri
-            1 Purwosari
+            Sambutan resmi dari kepala sekolah SMK Negeri 1 Purwosari
           </p>
           <hr className="w-full border mt-8" />
         </div>

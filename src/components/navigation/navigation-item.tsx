@@ -96,7 +96,7 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
         text: "Data Warga Sekolah",
         description: "Berisi sambutan resmi dari kepala sekolah",
         icon: "/assets/nav-dropdown-icon/akademik/data-warga.svg",
-        linkRef: "/profile/welcome-speech",
+        linkRef: "/academic/ptk",
       },
     },
     {
