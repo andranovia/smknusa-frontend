@@ -4,91 +4,11 @@ import React, { useRef, useState } from "react";
 import { useAnimation } from "framer-motion";
 import HomeAnnouncementsCard from "./home-announcements-card";
 import { ClientOnly } from "@/utils/isClient";
+import { Announcement, useAnnouncements } from "@/services/api/useQueries/useAnnouncements";
+import { News, useNews } from "@/services/api/useQueries/useNews";
+import { Article, useArticles } from "@/services/api/useQueries/useArticles";
+import { useEvents } from "@/services/api/useQueries/useEvents";
 
-interface AnnouncementsItem {
-  title: string;
-  content: string;
-  image: string;
-}
-
-const announcementsData: { [key: string]: AnnouncementsItem[] } = {
-  Pengumuman: [
-    {
-      title: "Pengumuman",
-      content:
-        'Pengoptimalan Gerakan Literasi Sekolah dengan Program "Pustaka Keliling" di SMK Negeri 1 Purwosari',
-      image: "/assets/home/announcement/announcment.png",
-    },
-    {
-      title: "Pengumuman",
-      content:
-        "SMKN 1 Purwosari Merebut Juara 1 dan 3 Lomba Karya Tulis Ilmiah (KTI) Inovasi Teknologi",
-      image: "/assets/home/announcement/announcment.png",
-    },
-    {
-      title: "Pengumuman",
-      content:
-        "SMKN 1 Purwosari Mendapatkan Penghargaan Bintang 5 Apresiasi SMK BISA 2023",
-      image: "/assets/home/announcement/announcment.png",
-    },
-   
-    
-  ],
-  Agenda: [
-    {
-      title: "Agenda",
-      content:
-        'Pengoptimalan Gerakan Literasi Sekolah dengan Program "Pustaka Keliling" di SMK Negeri 1 Purwosari',
-      image: "/assets/home/announcement/announcment.png",
-    },
-    {
-      title: "Agenda",
-      content:
-        "SMKN 1 Purwosari Merebut Juara 1 dan 3 Lomba Karya Tulis Ilmiah (KTI) Inovasi Teknologi",
-      image: "/assets/home/announcement/announcment.png",
-    },
-    {
-      title: "Agenda",
-      content:
-        "SMKN 1 Purwosari Mendapatkan Penghargaan Bintang 5 Apresiasi SMK BISA 2023",
-      image: "/assets/home/announcement/announcment.png",
-    },
-  ],
-  Berita: [
-    {
-      title: "Berita",
-      content:
-        'Pengoptimalan Gerakan Literasi Sekolah dengan Program "Pustaka Keliling" di SMK Negeri 1 Purwosari',
-      image: "/assets/home/announcement/announcment.png",
-    },
-    {
-      title: "Berita",
-      content:
-        "SMKN 1 Purwosari Merebut Juara 1 dan 3 Lomba Karya Tulis Ilmiah (KTI) Inovasi Teknologi",
-      image: "/assets/home/announcement/announcment.png",
-    },
-  ],
-  Artikel: [
-    {
-      title: "Artikel",
-      content:
-        'Pengoptimalan Gerakan Literasi Sekolah dengan Program "Pustaka Keliling" di SMK Negeri 1 Purwosari',
-      image: "/assets/home/announcement/announcment.png",
-    },
-    {
-      title: "Artikel",
-      content:
-        "SMKN 1 Purwosari Merebut Juara 1 dan 3 Lomba Karya Tulis Ilmiah (KTI) Inovasi Teknologi",
-      image: "/assets/home/announcement/announcment.png",
-    },
-    {
-      title: "Artikel",
-      content:
-        "SMKN 1 Purwosari Mendapatkan Penghargaan Bintang 5 Apresiasi SMK BISA 2023",
-      image: "/assets/home/announcement/announcment.png",
-    },
-  ],
-};
 
 const announcementsLinkData = [
   {
@@ -106,8 +26,13 @@ const announcementsLinkData = [
 ];
 
 const HomeAnnouncement = () => {
-  const [currentAnnouncementsType, setCurrentAnnouncementsType] =
-    useState<string>("Pengumuman");
+  const { announcements } = useAnnouncements();
+  const { news } = useNews();
+  const { articles } = useArticles();
+  const {events} = useEvents()
+
+
+  const [currentAnnouncementsType, setCurrentAnnouncementsType] = useState<string>("Pengumuman");
   const homeAnnouncementsEndRef = useRef(null);
 
   const [
@@ -116,15 +41,38 @@ const HomeAnnouncement = () => {
   ] = useState(0);
   const announcementsHighlightControls = useAnimation();
 
-  const currentAnnouncementsData = announcementsData[currentAnnouncementsType];
+  const getNewestItems = (data?: Announcement[] | News[] | Article[] | null) => {
+    return data
+      ?.sort((a, b) => {
+        const dateA = 'date' in a ? new Date(a.date).getTime() : new Date(a.created_at).getTime();
+        const dateB = 'date' in b ? new Date(b.date).getTime() : new Date(b.created_at).getTime();
+        return dateB - dateA;
+      })
+      .slice(0, 3);
+  };
 
+  const getCurrentAnnouncementsData = () => {
+    switch (currentAnnouncementsType) {
+      case "Pengumuman":
+        return getNewestItems(announcements);
+      case "Berita":
+        return getNewestItems(news);
+      case "Artikel":
+        return getNewestItems(articles);
+      case "Agenda":
+        return getNewestItems(events);
+      default:
+        return [];
+    }
+  };
 
+  const currentAnnouncementsData = getCurrentAnnouncementsData();
 
   const handleChangeAnnouncements = (announcementsType: string) => {
     if (announcementsType !== currentAnnouncementsType) {
       announcementsHighlightControls.start("after");
       setTimeout(() => {
-        setCurrentAnnouncementsType(announcementsType);
+        setCurrentAnnouncementsType((announcementsType));
         setCurrentAnnouncementsHighlightIndex(0);
       }, 200);
     }
@@ -196,6 +144,7 @@ const HomeAnnouncement = () => {
                         currentAnnouncementsHighlightIndex
                       }
                       currentAnnouncementsData={currentAnnouncementsData}
+                      currentAnnouncementsType={currentAnnouncementsType}
                     />
                   </ClientOnly>
                 </div>
@@ -203,7 +152,6 @@ const HomeAnnouncement = () => {
             </div>
           </div>
         </div>
-        
       </div>
     </>
   );

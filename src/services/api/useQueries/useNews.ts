@@ -6,7 +6,7 @@ export type News = {
   nama: string;
   thumbnail: string;
   created_at: string;
-  text: HTMLElement;
+  text: string;
   level: number;
   category: {
     id: number;

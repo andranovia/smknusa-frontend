@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from "next/image";
@@ -15,22 +14,22 @@ import {
 } from "framer-motion";
 import { defaultTransition } from "../animation/transition";
 import { useMediaQuery } from "@uidotdev/usehooks";
-
-type Announcement = {
-  title: string;
-  content: string;
-  image: string;
-};
+import { Announcement } from "@/services/api/useQueries/useAnnouncements";
+import { Article } from "@/services/api/useQueries/useArticles";
+import { News } from "@/services/api/useQueries/useNews";
+import { Event } from "@/services/api/useQueries/useEvents";
 
 type HomeAnnouncementsCardProps = {
-  currentAnnouncementsData: Announcement[];
+  currentAnnouncementsData?: Announcement[] | Article[] | News[] | Event[];
   currentAnnouncementsHighlightIndex: number;
   announcementsHighlightControls: AnimationControls;
   setCurrentAnnouncementsHighlightIndex: Dispatch<SetStateAction<number>>;
   homeAnnouncementsEndRef: React.MutableRefObject<null>;
+  currentAnnouncementsType: string;
 };
 
 const HomeAnnouncementsCard = ({
+  currentAnnouncementsType,
   currentAnnouncementsData,
   currentAnnouncementsHighlightIndex,
   announcementsHighlightControls,
@@ -46,7 +45,6 @@ const HomeAnnouncementsCard = ({
   useEffect(() => {
     announcementsHighlightControls.start("visible");
   }, [currentAnnouncementsData]);
-
 
   const announcementsHighlightVariant = {
     hidden: {
@@ -94,17 +92,17 @@ const HomeAnnouncementsCard = ({
   const sliderY = useTransform(
     isMobile ? scrollMobile : homeAnnouncementsScrollProgress,
     [0, 0.5, 1],
-    [0, 80, 300]
+    [0, 80, 320]
   );
-
 
   useEffect(() => {
     let timeoutId: NodeJS.Timeout;
     if (isMobile) {
       timeoutId = setTimeout(() => {
         if (
+          currentAnnouncementsData &&
           currentAnnouncementsHighlightIndex <
-          currentAnnouncementsData.length - 1
+            currentAnnouncementsData?.length - 1
         ) {
           setCurrentAnnouncementsHighlightIndex((prevIndex) => prevIndex + 1);
         } else {
@@ -118,7 +116,7 @@ const HomeAnnouncementsCard = ({
 
   useMotionValueEvent(sliderY, "change", (latest) => {
     if (currentAnnouncementsData && !isMobile) {
-      const segmentSize = 200 / (currentAnnouncementsData.length - 1);
+      const segmentSize = 250 / (currentAnnouncementsData.length - 1);
       const index = Math.floor(latest / segmentSize);
       setCurrentAnnouncementsHighlightIndex(
         Math.min(index, currentAnnouncementsData.length - 1)
@@ -147,7 +145,7 @@ const HomeAnnouncementsCard = ({
         initial="visible"
         style={{ y: announcementsY }}
         transition={defaultTransition}
-        className="flex flex-col items-start gap-8 lg:mt-10 lg:pb-0 pb-10"
+        className="flex flex-col items-start gap-8  lg:pb-0 pb-10"
       >
         {children}
       </motion.div>
@@ -173,11 +171,17 @@ const HomeAnnouncementsCard = ({
             className={`flex flex-col items-start gap-2 lg:w-2/3 `}
           >
             <h2 className="font-[600]   lg:text-[18px] ">
-              {announcement.title}
+              {currentAnnouncementsType}
             </h2>
-            <p className="font-[500] text-sm lg:text-[16px]">
-              {announcement.content}
+
+            <p className="font-[500] text-sm lg:text-[16px] line-clamp-3 min-h-16">
+              <p>
+                {"title" in announcement
+                  ? announcement.title
+                  : announcement.nama}
+              </p>
             </p>
+
             <div className="flex justify-start items-center gap-2">
               <h3 className="font-[500] text-[16px]">Lihat Selengkapnya</h3>
               <Image
@@ -209,8 +213,10 @@ const HomeAnnouncementsCard = ({
           >
             <Image
               src={
-                currentAnnouncementsData[currentAnnouncementsHighlightIndex]
-                  .image
+                currentAnnouncementsData
+                  ? currentAnnouncementsData[currentAnnouncementsHighlightIndex]
+                      .thumbnail
+                  : "empty"
               }
               alt={`announcement-${currentAnnouncementsHighlightIndex}`}
               width={400}
@@ -226,10 +232,10 @@ const HomeAnnouncementsCard = ({
   return (
     <div className="flex justify-start overflow-hidden items-end relative w-full lg:h-[34rem] bg-white lg:bg-gray-base  rounded-[10px] ">
       <div className="flex flex-col  lg:flex-row-reverse justify-between items-center w-full h-full lg:p-8 gap-6">
-        <div className="lg:w-2/3 overflow-hidden w-full">
-         {AnnouncementImageList()}
+        <div className="lg:w-2/4 overflow-hidden w-full">
+          {AnnouncementImageList()}
         </div>
-        <div className="flex justify-start items-start gap-8 h-full">
+        <div className="flex justify-start items-start gap-8 h-full ">
           <div className="hidden lg:block">
             <motion.div
               dragConstraints={sliderContainerRef}
