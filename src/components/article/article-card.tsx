@@ -9,7 +9,6 @@ import { backendUrl } from "@/utils/backendUrl";
 
 const ArticleCard = () => {
   const { articles } = useArticles();
-  const ARTICLE_IMG_URL = `${backendUrl}/img/artikel/`;
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 9;
 
@@ -34,7 +33,7 @@ const ArticleCard = () => {
                   <div className="bg-white rounded-lg lg:w-[23rem] h-full shadow-md overflow-hidden relative">
                     <Image
                       className="w-full max-h-[12rem] object-cover"
-                      src={ARTICLE_IMG_URL + article.thumbnail}
+                      src={article.thumbnail}
                       alt={article.nama}
                       width={800}
                       height={800}

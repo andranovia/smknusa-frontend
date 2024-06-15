@@ -9,7 +9,6 @@ import { useNews } from "@/services/api/useQueries/useNews";
 
 const NewsCard = () => {
   const { news } = useNews();
-  const NEWS_IMG_URL = `${backendUrl}/img/berita/`;
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 9;
 
@@ -34,7 +33,7 @@ const NewsCard = () => {
                   <div className="bg-white rounded-lg lg:w-[23rem] h-full shadow-md overflow-hidden relative">
                     <Image
                       className="w-full max-h-[12rem] object-cover"
-                      src={NEWS_IMG_URL + news.thumbnail}
+                      src={news.thumbnail}
                       alt={news.nama}
                       width={800}
                       height={800}
