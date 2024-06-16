@@ -18,6 +18,7 @@ import { Announcement } from "@/services/api/useQueries/useAnnouncements";
 import { Article } from "@/services/api/useQueries/useArticles";
 import { News } from "@/services/api/useQueries/useNews";
 import { Event } from "@/services/api/useQueries/useEvents";
+import { backendUrl } from "@/utils/backendUrl";
 
 type HomeAnnouncementsCardProps = {
   currentAnnouncementsData?: Announcement[] | Article[] | News[] | Event[];
@@ -175,11 +176,7 @@ const HomeAnnouncementsCard = ({
             </h2>
 
             <p className="font-[500] text-sm lg:text-[16px] line-clamp-3 min-h-16">
-              <p>
-                {"title" in announcement
-                  ? announcement.title
-                  : announcement.nama}
-              </p>
+              {"title" in announcement ? announcement.title : announcement.nama}
             </p>
 
             <div className="flex justify-start items-center gap-2">
@@ -209,19 +206,18 @@ const HomeAnnouncementsCard = ({
             exit="exit"
             variants={{ ...imageVariant }}
             transition={defaultTransition}
-            className={`flex flex-col items-start gap-2 w-full h-full top-[10%] lg:h-auto lg:w-[45%] lg:absolute  `}
+            className={`flex flex-col items-start gap-2 w-full h-full top-[10%]  lg:h-[27rem]  lg:w-[45%] left-1/2 lg:absolute  `}
           >
             <Image
               src={
                 currentAnnouncementsData
-                  ? currentAnnouncementsData[currentAnnouncementsHighlightIndex]
-                      .thumbnail
-                  : "empty"
+                  ? backendUrl + currentAnnouncementsData[currentAnnouncementsHighlightIndex].image
+                  : "/empty"
               }
               alt={`announcement-${currentAnnouncementsHighlightIndex}`}
               width={400}
               height={400}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover rounded-lg"
             />
           </motion.div>
         </AnimatePresence>
@@ -232,7 +228,7 @@ const HomeAnnouncementsCard = ({
   return (
     <div className="flex justify-start overflow-hidden items-end relative w-full lg:h-[34rem] bg-white lg:bg-gray-base  rounded-[10px] ">
       <div className="flex flex-col  lg:flex-row-reverse justify-between items-center w-full h-full lg:p-8 gap-6">
-        <div className="lg:w-2/4 overflow-hidden w-full">
+        <div className="lg:w-2/4 overflow-hidden w-full ">
           {AnnouncementImageList()}
         </div>
         <div className="flex justify-start items-start gap-8 h-full ">

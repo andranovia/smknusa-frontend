@@ -4,6 +4,7 @@ export async function getAnnouncements() {
   try {
     const response = await axiosInstance.get("api/user/announcements");
     const data = response.data.data;
+    
     return data;
   } catch (error) {
     console.log(error, "Error fetching Announcements");
@@ -14,9 +15,9 @@ export async function getAnnouncements() {
 export async function getAnnouncementById(id?: string) {
   try {
     if (id) {
-      await axiosInstance.get(`api/user/announcement/${id}`).then((res) => {
-        return res.data.data;
-      });
+      const response = await axiosInstance.get(`api/user/announcement/${id}`);
+      const data = response.data.data;
+      return data;
     } else {
       return null;
     }
@@ -28,10 +29,11 @@ export async function getAnnouncementById(id?: string) {
 
 export async function getAnnouncementCategories() {
   try {
-    await axiosInstance.get(`api/user/announcement-categories`).then((res) => {
-      return res.data.data;
-    });
-    return null;
+    const response = await axiosInstance.get(
+      `api/user/announcement-categories`
+    );
+    const data = response.data.data;
+    return data;
   } catch (error) {
     console.log(error, "Error fetching announcement categories");
     return null;

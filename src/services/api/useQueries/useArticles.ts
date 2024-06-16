@@ -27,7 +27,7 @@ export const useArticles = (id?: string) => {
     queryFn: () => getArticles()
   });
 
-  const { data: articleById } = useQuery({
+  const { data: articleById } = useQuery<Article | null>({
     queryKey: ["ArticleById"],
     queryFn: () => {
       return getArticleById(id);

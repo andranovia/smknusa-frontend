@@ -28,7 +28,7 @@ const NavigationSearch = ({ show, isActivePage }: NavigationSearchProps) => {
         name="search"
         id="search"
         placeholder="Ketikkan kata kunci"
-        className={`focus:outline-none  placeholder:font-[500] placeholder:text-sm bg-transparent`}
+        className={`focus:outline-none hidden lg:block placeholder:font-[500] placeholder:text-sm bg-transparent`}
       />
       <motion.div
         transition={defaultTransition}
@@ -42,7 +42,7 @@ const NavigationSearch = ({ show, isActivePage }: NavigationSearchProps) => {
             !show && isActivePage
               ? searchToggle
                 ? `invert`
-                : "invert-0"
+                : "lg:invert-0 invert"
               : "invert"
           } transition-all `}
           width={22}
@@ -50,6 +50,7 @@ const NavigationSearch = ({ show, isActivePage }: NavigationSearchProps) => {
         />
       </motion.div>
     </div>
+    
   );
 };
 

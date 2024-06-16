@@ -23,7 +23,7 @@ const NavigationDropdownIcon = ({ show }: NavigationDropdownProps) => {
       alt="dropdown"
       height={20}
       width={20}
-      className="w-5 h-5"
+      className="w-5 h-5 invert lg:invert-0"
     />
   );
 };
