@@ -31,7 +31,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`bg-gray-base ${montserrat.className}`}>
-        <nav className="">
+        <nav className="bg-gray-base">
           <Navbar />
         </nav>
         <ReactQueryProvider>{children}</ReactQueryProvider>

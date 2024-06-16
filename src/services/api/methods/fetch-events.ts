@@ -1,3 +1,4 @@
+
 import { axiosInstance } from "@/utils/axiosInstance";
 
 export async function getEvents() {
@@ -14,9 +15,9 @@ export async function getEvents() {
 export async function getEventById(id?: string) {
   try {
     if (id) {
-      await axiosInstance.get(`api/user/event/${id}`).then((res) => {
-        return res.data.data;
-      });
+      const response = await axiosInstance.get(`api/user/event/${id}`);
+      const data = response.data.data;
+      return data;
     } else {
       return null;
     }
@@ -28,10 +29,9 @@ export async function getEventById(id?: string) {
 
 export async function getEventCategories() {
   try {
-    await axiosInstance.get(`api/user/event-categories`).then((res) => {
-      return res.data.data;
-    });
-    return null;
+    const response = await axiosInstance.get(`api/user/event-categories`);
+    const data = response.data.data;
+    return data;
   } catch (error) {
     console.log(error, "Error fetching Event categories");
     return null;

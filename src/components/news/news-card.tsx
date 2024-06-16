@@ -4,8 +4,8 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Pagination from "../feature/pagination";
-import { backendUrl } from "@/utils/backendUrl";
 import { useNews } from "@/services/api/useQueries/useNews";
+import { backendUrl } from "@/utils/backendUrl";
 
 const NewsCard = () => {
   const { news } = useNews();
@@ -29,11 +29,11 @@ const NewsCard = () => {
             const normalDate = date.toLocaleDateString();
             return (
               <React.Fragment key={index}>
-                <Link href={"/news/2"}>
+                <Link href={`/news/${news.id_pemberitahuan}`}>
                   <div className="bg-white rounded-lg lg:w-[23rem] h-full shadow-md overflow-hidden relative">
                     <Image
                       className="w-full max-h-[12rem] object-cover"
-                      src={news.thumbnail}
+                      src={backendUrl +  news.thumbnail}
                       alt={news.nama}
                       width={800}
                       height={800}

@@ -14,26 +14,27 @@ export async function getArticles() {
 export async function getArticleById(id?: string) {
   try {
     if (id) {
-      await axiosInstance.get(`api/user/article/${id}`).then((res) => {
-        return res.data.data;
-      });
+      const response = await axiosInstance.get(`api/user/articles/${id}`);
+      const data = response.data.data;
+      return data;
     } else {
-      return null
+      return null;
     }
   } catch (error) {
     console.log(error, "Error fetching articles by id");
-    return null
+    return null;
   }
 }
 
 export async function getArticleCategories() {
   try {
-    await axiosInstance.get(`api/user/article-categories`).then((res) => {
-      return res.data.data;
-    });
-    return null
+    const response = await axiosInstance.get(`api/user/article-categories`);
+    const data = response.data.data;
+    return data;
+
+    return null;
   } catch (error) {
     console.log(error, "Error fetching article categories");
-    return null
+    return null;
   }
 }

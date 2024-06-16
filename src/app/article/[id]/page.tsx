@@ -1,4 +1,6 @@
-import { Article } from "@/services/api/useQueries/useArticles";
+"use client";
+
+import { useArticles } from "@/services/api/useQueries/useArticles";
 import { backendUrl } from "@/utils/backendUrl";
 import Image from "next/image";
 import React from "react";
@@ -31,20 +33,24 @@ const articleData = [
 ];
 
 export default function Page({ params }: { params: { id: string } }) {
+  const { id } = params;
+  const { articleById } = useArticles(id);
+  const date = new Date(articleById?.created_at || Date.now());
+  const normalDate = date.toLocaleDateString();
+
   return (
     <div className="w-full lg:pt-24 px-2 lg:px-3 rounded-[10px] text-blue-base">
       <div className="relative  bg-white flex flex-col items-center lg:gap-20 pt-10 pb-20">
         <div className="flex flex-col gap-4 w-[80%] ">
           <h1 className="font-[700] lg:text-[46px] text-[24px] ">
-            Laravel 7: Membuat Aplikasi Perpustakaan
+            {articleById?.nama}
           </h1>
           <div className="flex lg:flex-row flex-col lg:my-0 my-8 lg:gap-0 gap-8 justify-between items-start w-full">
             <div className="grid grid-cols-2 items-center gap-2">
               <div className="bg-[#FFE7AF] px-2 py-1 rounded-[10px]">
-                <p className="font-[500] text-[10px] text-gray">Penting</p>
-              </div>
-              <div className="bg-[#CDFFAF] px-2 py-1 rounded-[10px]">
-                <p className="font-[500] text-[10px] text-gray">Informasi</p>
+                <p className="font-[500] text-[10px] text-gray">
+                  {articleById?.category?.nama}
+                </p>
               </div>
             </div>
             <div className="flex flex-col lg:w-4/5 gap-8 font-[500] text-[18px]  ">
@@ -59,7 +65,7 @@ export default function Page({ params }: { params: { id: string } }) {
               </p>
               <hr className="w-full border " />
               <div className="w-full justify-between flex lg:flex-row flex-col lg:items-center gap-4">
-                <h4 className="text-[12px]">Diposting pada : 17 Maret 2024</h4>
+                <h4 className="text-[12px]">Diposting pada : {normalDate}</h4>
                 <div className="flex flex-row  lg:justify-center lg:items-center grayscale my-4 gap-4 lg:gap-10 text-[10px]">
                   <div className="flex gap-1 items-center">
                     <Image
@@ -77,7 +83,7 @@ export default function Page({ params }: { params: { id: string } }) {
                       src={"/assets/icon/eye.svg"}
                       alt="view"
                     />
-                    <h4>99999</h4>
+                    <h4>{articleById?.viewer}</h4>
                   </div>
                   <div className="flex gap-1 items-center">
                     <Image
@@ -95,8 +101,8 @@ export default function Page({ params }: { params: { id: string } }) {
         </div>
         <div className="flex flex-col items-center gap-8 w-[90%] lg:w-[80%] ">
           <Image
-            src={"/assets/article/view/article-view.png"}
-            alt=""
+            src={backendUrl + articleById?.thumbnail}
+            alt="article-image"
             className="w-full rounded-[10px]"
             width={800}
             height={800}
@@ -296,16 +302,16 @@ export default function Page({ params }: { params: { id: string } }) {
   );
 }
 
-async function fetchArticles() {
-  const response = await fetch(`${backendUrl}api/user/articles`);
-  const data = await response.json();
-  return data.data;
-}
+// async function fetchArticles() {
+//   const response = await fetch(`${backendUrl}api/user/articles`);
+//   const data = await response.json();
+//   return data.data;
+// }
 
-export async function generateStaticParams() {
-  const newsData = await fetchArticles();
+// export async function generateStaticParams() {
+//   const newsData = await fetchArticles();
 
-  const ids = newsData?.map((news: Article) => news.id_pemberitahuan);
+//   const ids = newsData?.map((news: Article) => news.id_pemberitahuan);
 
-  return ids?.map((id: string) => ({ id: id.toString() }));
-}
+//   return ids?.map((id: string) => ({ id: id.toString() }));
+// }

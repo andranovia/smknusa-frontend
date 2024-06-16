@@ -34,20 +34,24 @@ const Navbar = () => {
 
   return (
     <div
-      className={`lg:flex items-center  justify-between z-40 hidden transition-transform ${
+      className={`flex items-center  lg:justify-between z-40  transition-transform ${
         show
           ? ` text-blue-base translate-y-2 shadow-lg`
-          : `  ${isActivePage ? "translate-y-8 text-white " : "translate-y-2 "}`
-      } fixed w-full px-3 delay-0`}
+          : `  ${
+              isActivePage
+                ? "lg:translate-y-8 lg:text-white "
+                : "lg:translate-y-2 "
+            }`
+      } lg:fixed w-full px-3 delay-0`}
     >
       <div
-        className={`flex  items-center  w-full py-3 transition-all rounded-[10px] px-11  ${
+        className={`flex  items-center  w-full py-3 transition-all rounded-[10px] lg:px-11  ${
           !show && isActivePage
             ? "bg-opacity-0 font-[900]"
             : "bg-opacity-100 bg-white  font-[800]"
         }  `}
       >
-        <Link href={"/"} className="w-[52%]">
+        <Link href={"/"} className="lg:w-[52%] w-full">
           <div className="flex items-center">
             <Image
               src={"/assets/icon/logo-skansa.svg"}
@@ -55,18 +59,18 @@ const Navbar = () => {
               height={55}
               width={55}
               quality={100}
-              className="w-auto h-auto"
+              className="w-[20%] lg:w-auto h-auto"
             />
 
-            <div className="ml-2  text-[18px]  ">
-              SMK NEGERI 1 <br />
+            <h2 className="ml-2 text-sm lg:text-[18px]  ">
+              SMK NEGERI 1 <br className="hidden lg:block" />
               PURWOSARI
-            </div>
+            </h2>
           </div>
         </Link>
-        <div className=" flex justify-between  w-full  font-[600] ">
+        <div className="flex lg:justify-between  lg:w-full w-1/2   font-[600] ">
           <div
-            className={`flex justify-center items-center gap-8 ${
+            className={`lg:flex hidden  justify-center items-center gap-8 ${
               !show && isActivePage ? "text-white" : " text-gray-light"
             }`}
           >
@@ -76,7 +80,7 @@ const Navbar = () => {
             <NavigationItem name="Berita" show={show} route={"/news"} />
             <NavigationItem name="Artikel" show={show} route={"/article"} />
           </div>
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center lg:space-x-4 gap-2">
             <NavigationSearch isActivePage={isActivePage} show={show} />
             <NavigationLanguage show={show} />
             <Image
@@ -85,7 +89,7 @@ const Navbar = () => {
               height={20}
               width={20}
               className={`${
-                !show && isActivePage ? `invert-0` : "invert"
+                !show && isActivePage ? `lg:invert-0 invert` : "invert"
               } transition-all  w-5 h-5`}
             />
           </div>

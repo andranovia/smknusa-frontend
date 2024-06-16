@@ -29,11 +29,11 @@ const ArticleCard = () => {
             const normalDate = date.toLocaleDateString();
             return (
               <React.Fragment key={index}>
-                <Link href={"/article/2"}>
+                <Link href={`/article/${article.id_pemberitahuan}`}>
                   <div className="bg-white rounded-lg lg:w-[23rem] h-full shadow-md overflow-hidden relative">
                     <Image
                       className="w-full max-h-[12rem] object-cover"
-                      src={article.thumbnail}
+                      src={backendUrl +  article.thumbnail}
                       alt={article.nama}
                       width={800}
                       height={800}

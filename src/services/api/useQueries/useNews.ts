@@ -1,3 +1,4 @@
+
 import { useQuery } from "@tanstack/react-query";
 import { getNews, getNewsById, getNewsCategories } from "../methods/fetch-news";
 
@@ -23,7 +24,7 @@ export const useNews = (id?: string) => {
     queryFn: () => getNews()
   });
 
-  const { data: newsById } = useQuery({
+  const { data: newsById } = useQuery<News | null>({
     queryKey: ["NewsById"],
     queryFn: () => {
       return getNewsById(id);
