@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import {
-  getArticleById,
   getArticleCategories,
   getArticles,
 } from "../methods/fetch-articles";
@@ -27,12 +26,6 @@ export const useArticles = (id?: string) => {
     queryFn: () => getArticles()
   });
 
-  const { data: articleById } = useQuery<Article | null>({
-    queryKey: ["ArticleById"],
-    queryFn: () => {
-      return getArticleById(id);
-    },
-  });
 
   const { data: articleCategories } = useQuery({
     queryKey: ["ArticleCategories"],
@@ -41,5 +34,5 @@ export const useArticles = (id?: string) => {
     },
   });
 
-  return { articles, articleById, articleCategories };
+  return { articles, articleCategories };
 };

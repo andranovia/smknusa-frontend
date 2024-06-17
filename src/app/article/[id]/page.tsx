@@ -1,6 +1,4 @@
-"use client";
-
-import { useArticles } from "@/services/api/useQueries/useArticles";
+import { Article } from "@/services/api/useQueries/useArticles";
 import { backendUrl } from "@/utils/backendUrl";
 import Image from "next/image";
 import React from "react";
@@ -32,14 +30,38 @@ const articleData = [
   },
 ];
 
-export default function Page({ params }: { params: { id: string } }) {
+
+
+async function fetchArticles() {
+  const response = await fetch(`${backendUrl}api/user/articles`);
+  const data = await response.json();
+  return data.data;
+}
+
+export async function generateStaticParams() {
+  const newsData = await fetchArticles();
+
+  const ids = newsData?.map((news: Article) => news.id_pemberitahuan);
+
+  return ids?.map((id: string) => ({ id: id.toString() }));
+}
+
+async function getArticleById(id: string) {
+  const response = await fetch(`${backendUrl}api/user/articles/${id}`);
+  const data = await response.json();
+  return data.data;
+}
+
+
+export default async function Page({ params }: { params: { id: string } }) {
   const { id } = params;
-  const { articleById } = useArticles(id);
+  const articleById: Article = await getArticleById(id);
+
   const date = new Date(articleById?.created_at || Date.now());
   const normalDate = date.toLocaleDateString();
 
   return (
-    <div className="w-full lg:pt-24 px-2 lg:px-3 rounded-[10px] text-blue-base">
+    <div className="w-full  lg:pt-24 px-2 lg:px-3 rounded-[10px] text-blue-base">
       <div className="relative  bg-white flex flex-col items-center lg:gap-20 pt-10 pb-20">
         <div className="flex flex-col gap-4 w-[80%] ">
           <h1 className="font-[700] lg:text-[46px] text-[24px] ">
@@ -302,16 +324,4 @@ export default function Page({ params }: { params: { id: string } }) {
   );
 }
 
-// async function fetchArticles() {
-//   const response = await fetch(`${backendUrl}api/user/articles`);
-//   const data = await response.json();
-//   return data.data;
-// }
 
-// export async function generateStaticParams() {
-//   const newsData = await fetchArticles();
-
-//   const ids = newsData?.map((news: Article) => news.id_pemberitahuan);
-
-//   return ids?.map((id: string) => ({ id: id.toString() }));
-// }

@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import {
-  getEventById,
   getEventCategories,
   getEvents,
 } from "../methods/fetch-events";
@@ -27,12 +26,7 @@ export const useEvents = (id?: string) => {
     queryFn: () => getEvents()
   });
 
-  const { data: eventById } = useQuery({
-    queryKey: ["EventById"],
-    queryFn: () => {
-      return getEventById(id);
-    },
-  });
+
 
   const { data: eventCategories } = useQuery({
     queryKey: ["EventCategories"],
@@ -41,5 +35,5 @@ export const useEvents = (id?: string) => {
     },
   });
 
-  return { events, eventById, eventCategories };
+  return { events,  eventCategories };
 };
