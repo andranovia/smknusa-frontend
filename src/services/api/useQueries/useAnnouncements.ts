@@ -1,13 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import {
-  getAnnouncementById,
+
   getAnnouncements,
   getAnnouncementCategories
 } from "../methods/fetch-announcements";
 
 export type Announcement = {
   id_pemberitahuan: string;
-  title: string;
+  nama: string;
   thumbnail: string;
   created_at: string;
   date: string;
@@ -28,12 +28,7 @@ export const useAnnouncements = (id?: string) => {
     queryFn: () => getAnnouncements()
   });
 
-  const { data: announcementsById } = useQuery({
-    queryKey: ["AnnouncementById"],
-    queryFn: () => {
-      return getAnnouncementById(id);
-    },
-  });
+
 
   const { data: announcementCategories } = useQuery({
     queryKey: ["AnnouncementCategories"],
@@ -42,5 +37,5 @@ export const useAnnouncements = (id?: string) => {
     },
   });
 
-  return { announcements, announcementsById, announcementCategories };
+  return { announcements, announcementCategories };
 };

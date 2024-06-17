@@ -115,7 +115,7 @@ const HomeMajor = () => {
                     <h1
                       key={index}
                       onClick={() => handleSlideChange(data.slide)}
-                      className={`font-[600] relative z-40 text-xs cursor-pointer transition-colors lg:text-[16px] ${
+                      className={`font-[600] relative z-30 text-xs cursor-pointer transition-colors lg:text-[16px] ${
                         currentSlide === data.slide
                           ? "p-1 rounded-md relative text-white  w-min-content before:border-[1px] before:absolute before:bottom-0 before:right-0 before:border-yellow before:w-full before:opacity-100"
                           : "p-1 rounded-md relative  text-gray-light w-min-content before:h-0 before:absolute before:bottom-0 before:right-0 before:bg-white before:opacity-0"

@@ -1,6 +1,6 @@
 
 import { useQuery } from "@tanstack/react-query";
-import { getNews, getNewsById, getNewsCategories } from "../methods/fetch-news";
+import { getNews, getNewsCategories } from "../methods/fetch-news";
 
 export type News = {
   id_pemberitahuan: string;
@@ -24,12 +24,6 @@ export const useNews = (id?: string) => {
     queryFn: () => getNews()
   });
 
-  const { data: newsById } = useQuery<News | null>({
-    queryKey: ["NewsById"],
-    queryFn: () => {
-      return getNewsById(id);
-    },
-  });
 
   const { data: newsCategories } = useQuery({
     queryKey: ["NewsCategories"],
@@ -38,5 +32,5 @@ export const useNews = (id?: string) => {
     },
   });
 
-  return { news, newsById, newsCategories };
+  return { news, newsCategories };
 };

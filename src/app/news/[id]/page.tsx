@@ -1,6 +1,5 @@
-"use client";
 
-import { useNews } from "@/services/api/useQueries/useNews";
+import { News, useNews } from "@/services/api/useQueries/useNews";
 import { backendUrl } from "@/utils/backendUrl";
 import Image from "next/image";
 import React from "react";
@@ -41,9 +40,30 @@ const newsData = [
   },
 ];
 
-export default function Page({ params }: { params: { id: string } }) {
+async function fetchNews() {
+  const response = await fetch(`${backendUrl}api/user/news`);
+  const data = await response.json();
+
+  return data.data;
+}
+
+export async function generateStaticParams() {
+  const newsData = await fetchNews();
+
+  const ids = newsData?.map((news: News) => news.id_pemberitahuan);
+
+  return ids?.map((id: string) => ({ id: id.toString() }));
+}
+
+async function getNewsById(id: string) {
+  const response = await fetch(`${backendUrl}api/user/news/${id}`);
+  const data = await response.json();
+  return data.data;
+}
+
+export default async function Page({ params }: { params: { id: string } }) {
   const { id } = params;
-  const { newsById } = useNews(id);
+  const newsById: News = await getNewsById(id);
   const date = new Date(newsById?.created_at || Date.now());
   const normalDate = date.toLocaleDateString();
 
@@ -111,7 +131,7 @@ export default function Page({ params }: { params: { id: string } }) {
         <div className="flex flex-col items-center gap-8 w-[90%] lg:w-[80%] ">
           <Image
             src={backendUrl + newsById?.thumbnail}
-            alt={'news-image'}
+            alt={"news-image"}
             className="w-full rounded-[10px]"
             width={800}
             height={800}
@@ -321,18 +341,3 @@ export default function Page({ params }: { params: { id: string } }) {
     </div>
   );
 }
-
-// async function fetchNews() {
-//   const response = await fetch(`${backendUrl}api/user/news`);
-//   const data = await response.json();
-
-//   return data.data;
-// }
-
-// export async function generateStaticParams() {
-//   const newsData = await fetchNews();
-
-//   const ids = newsData?.map((news: News) => news.id_pemberitahuan);
-
-//   return ids?.map((id: string) => ({ id: id.toString() }));
-// }

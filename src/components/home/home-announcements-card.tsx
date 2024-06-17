@@ -91,26 +91,25 @@ const HomeAnnouncementsCard = ({
   });
 
   const sliderY = useTransform(
-    isMobile ? scrollMobile : homeAnnouncementsScrollProgress,
+    homeAnnouncementsScrollProgress,
     [0, 0.5, 1],
     [0, 80, 320]
   );
 
   useEffect(() => {
     let timeoutId: NodeJS.Timeout;
-    if (isMobile) {
-      timeoutId = setTimeout(() => {
-        if (
-          currentAnnouncementsData &&
-          currentAnnouncementsHighlightIndex <
-            currentAnnouncementsData?.length - 1
-        ) {
-          setCurrentAnnouncementsHighlightIndex((prevIndex) => prevIndex + 1);
-        } else {
-          setCurrentAnnouncementsHighlightIndex(0);
-        }
-      }, 2000);
-    }
+
+    timeoutId = setTimeout(() => {
+      if (
+        currentAnnouncementsData &&
+        currentAnnouncementsHighlightIndex <
+          currentAnnouncementsData?.length - 1
+      ) {
+        setCurrentAnnouncementsHighlightIndex((prevIndex) => prevIndex + 1);
+      } else {
+        setCurrentAnnouncementsHighlightIndex(0);
+      }
+    }, 2000);
 
     return () => clearTimeout(timeoutId);
   }, [currentAnnouncementsHighlightIndex]);
@@ -176,7 +175,7 @@ const HomeAnnouncementsCard = ({
             </h2>
 
             <p className="font-[500] text-sm lg:text-[16px] line-clamp-3 min-h-16">
-              {"title" in announcement ? announcement.title : announcement.nama}
+              {announcement.nama}
             </p>
 
             <div className="flex justify-start items-center gap-2">
@@ -206,12 +205,14 @@ const HomeAnnouncementsCard = ({
             exit="exit"
             variants={{ ...imageVariant }}
             transition={defaultTransition}
-            className={`flex flex-col items-start gap-2 w-full h-full top-[10%]  lg:h-[27rem]  lg:w-[45%] left-1/2 lg:absolute  `}
+            className={` w-full h-full lg:top-[10%]  lg:h-[27rem]  lg:w-[45%] lg:left-1/2 absolute  `}
           >
             <Image
               src={
                 currentAnnouncementsData
-                  ? backendUrl + currentAnnouncementsData[currentAnnouncementsHighlightIndex].image
+                  ? backendUrl +
+                    currentAnnouncementsData[currentAnnouncementsHighlightIndex]
+                      .thumbnail
                   : "/empty"
               }
               alt={`announcement-${currentAnnouncementsHighlightIndex}`}
@@ -228,7 +229,7 @@ const HomeAnnouncementsCard = ({
   return (
     <div className="flex justify-start overflow-hidden items-end relative w-full lg:h-[34rem] bg-white lg:bg-gray-base  rounded-[10px] ">
       <div className="flex flex-col  lg:flex-row-reverse justify-between items-center w-full h-full lg:p-8 gap-6">
-        <div className="lg:w-2/4 overflow-hidden w-full ">
+        <div className="lg:w-2/4 overflow-hidden w-full relative lg:static h-[16rem] lg:h-full ">
           {AnnouncementImageList()}
         </div>
         <div className="flex justify-start items-start gap-8 h-full ">

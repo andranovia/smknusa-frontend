@@ -12,20 +12,7 @@ export async function getAnnouncements() {
   }
 }
 
-export async function getAnnouncementById(id?: string) {
-  try {
-    if (id) {
-      const response = await axiosInstance.get(`api/user/announcement/${id}`);
-      const data = response.data.data;
-      return data;
-    } else {
-      return null;
-    }
-  } catch (error) {
-    console.log(error, "Error fetching Announcement by id");
-    return null;
-  }
-}
+
 
 export async function getAnnouncementCategories() {
   try {
