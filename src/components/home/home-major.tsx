@@ -91,7 +91,7 @@ const HomeMajor = () => {
 
   return (
     <div className="lg:w-full lg:h-full bg-white rounded-[10px]">
-      <div className="flex flex-col w-full items-center justify-center gap-8 bg-primary  rounded-md text-white pt-16 pb-48">
+      <div className="flex flex-col w-full items-center justify-center gap-8 bg-primary  rounded-md text-white pt-8 lg:pt-16 pb-28 lg:pb-48">
         <h1 className="font-[700] lg:text-[36px] text-[24px] w-4/5 lg:w-fit ">
           Menuju SMK Bisa,
           <br className="block lg:hidden" /> SMK Hebat
@@ -105,10 +105,10 @@ const HomeMajor = () => {
         <hr className="bg-white w-4/5  lg:w-[95%] lg:mt-10" />
       </div>
 
-      <div className="relative  lg:px-8 px-3  -mt-32  ">
-        <div className="flex justify-start items-end relative  bg-white overflow-hidden rounded-[10px] ">
+      <div className="relative  lg:px-8 px-3  lg:-mt-32  ">
+        <div className="flex justify-start items-end relative  bg-white lg:overflow-hidden rounded-[10px] ">
           <div className="relative w-[22.5rem] lg:w-full  flex flex-col lg:flex-row   justify-center gap-14  h-full  mt-8 mb-10 lg:mb-0">
-            <div className="lg:w-[40%] w-full flex  lg:absolute justify-center py-3 lg:rounded-[10px] items-center lg:px-0 px-6 gap-8 bg-primary ">
+            <div className="lg:w-[40%] w-full flex top-0 -mt-28 lg:mt-0 absolute justify-center py-3 lg:rounded-[10px] items-center lg:px-0 px-6 gap-8 lg:bg-primary ">
               {majorLinkData.map((data, index) => {
                 return (
                   <React.Fragment key={index}>

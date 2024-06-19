@@ -108,13 +108,13 @@ const HomeFacility = () => {
           <hr className="bg-white lg:w-[95%]  w-4/5 lg:mt-20" />
 
           <div className="flex  lg:gap-0 gap-8 justify-center items-center  w-4/5 lg:w-full  lg:mt-12 lg:px-10">
-            <div className="grid  grid-cols-2  lg:flex justify-between w-full items-center lg:px-4 gap-8 ">
+            <div className=" flex lg:justify-between w-full items-center lg:px-4 gap-8 ">
               {facilityLinkData.map((data, index) => {
                 return (
                   <React.Fragment key={index}>
                     <h1
                       onClick={() => handleSlideChange(data.majorFacilityIndex)}
-                      className={`font-[600]  text-center cursor-pointer transition-colors lg:text-[16px] text-xs   ${
+                      className={`font-[600] hidden lg:block  text-center cursor-pointer transition-colors lg:text-[16px] text-xs   ${
                         cardData[currentSlide] ===
                         cardData[data.majorFacilityIndex]
                           ? `p-1 rounded-md relative   before:border-[1px] before:absolute before:right-0  before:bottom-0 text-white  before:mx-auto before:border-[#F5C451] before:w-full before:opacity-100 `
@@ -127,8 +127,8 @@ const HomeFacility = () => {
                 );
               })}
 
-              <div className="flex justify-center items-center lg:ml-[25%]">
-                <div className="btn bg-yellow text-blue-base font-[600] py-2.5 px-5 rounded">
+              <div className="flex justify-center items-center lg:ml-[25%] w-full lg:w-fit ">
+                <div className="btn bg-yellow text-blue-base w-full text-center font-[600] py-2.5 px-5 rounded">
                   <button className="lg:text-[16px] text-xs">
                     Selengkapnya{" "}
                   </button>
