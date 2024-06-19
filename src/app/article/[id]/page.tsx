@@ -2,6 +2,7 @@ import { Article } from "@/services/api/useQueries/useArticles";
 import { backendUrl } from "@/utils/backendUrl";
 import Image from "next/image";
 import React from "react";
+import parse from "html-react-parser";
 
 const articleData = [
   {
@@ -30,8 +31,6 @@ const articleData = [
   },
 ];
 
-
-
 async function fetchArticles() {
   const response = await fetch(`${backendUrl}api/user/articles`);
   const data = await response.json();
@@ -52,13 +51,14 @@ async function getArticleById(id: string) {
   return data.data;
 }
 
-
 export default async function Page({ params }: { params: { id: string } }) {
   const { id } = params;
   const articleById: Article = await getArticleById(id);
 
   const date = new Date(articleById?.created_at || Date.now());
   const normalDate = date.toLocaleDateString();
+
+  const parsedHtml = parse(articleById?.text);
 
   return (
     <div className="w-full  lg:pt-24 px-2 lg:px-3 rounded-[10px] text-blue-base">
@@ -131,26 +131,11 @@ export default async function Page({ params }: { params: { id: string } }) {
           />
           <div className="flex lg:flex-row flex-col justify-between items-start gap-10 lg:gap-20 w-full">
             <div className="lg:w-full flex flex-col items-start gap-10 ">
-              <p className="flex flex-col items-start gap-10 font-[500] text-[18px] text-blue-base w-full">
-                <span>
-                  Framework Laravel adalah sebuah alat bantu untuk memudahkan
-                  kita agar bisa lebih mudah saat membuat website, Framework
-                  Laravel ini merupakan framework berbasis PHP (maksutnya Pakek
-                  bahasa PHP) yang sedang populer dikalangan programmer PHP
-                  setelah CI (CodeIgniter), Rekomendasi banget deh buat kalian
-                  yang masih baru masuk ke dalam dunia web programming, buat
-                  belajar framework Laravel ini..
-                </span>
-                <span>
-                  Pada seri kali ini kami membuat feed tentang Aplikasi
-                  Perpustakaan menggunakan Laravel. Step by step pastinya. Dari
-                  instalasi, Layouting, sampai nanti finishing. Jadi.. tetep
-                  pantau terus. Walaupun lagi karantina tetep rebahan
-                  secukupnya, ngoding selelahnya hehe ?
-                </span>
+              <div className="flex flex-col items-start gap-10 font-[500] text-[18px] text-blue-base w-full">
+                <span className="flex flex-col items-start gap-4">{parsedHtml}</span>
 
                 <span>Jurnalis: -</span>
-              </p>
+              </div>
               <hr className="w-full border " />
               <div className="w-full rounded-[10px] p-4 flex justify-start items-center gap-4 bg-gray-base">
                 <div className="p-4 bg-gray-medium rounded-[10px]">
@@ -323,5 +308,3 @@ export default async function Page({ params }: { params: { id: string } }) {
     </div>
   );
 }
-
-

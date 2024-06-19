@@ -1,8 +1,9 @@
 
-import { News, useNews } from "@/services/api/useQueries/useNews";
+import { News } from "@/services/api/useQueries/useNews";
 import { backendUrl } from "@/utils/backendUrl";
 import Image from "next/image";
 import React from "react";
+import parse from "html-react-parser";
 
 const newsData = [
   {
@@ -66,7 +67,7 @@ export default async function Page({ params }: { params: { id: string } }) {
   const newsById: News = await getNewsById(id);
   const date = new Date(newsById?.created_at || Date.now());
   const normalDate = date.toLocaleDateString();
-
+  const parsedHtml = parse(newsById?.text);
   return (
     <div className="w-full lg:pt-24 px-2 lg:px-3 rounded-[10px] text-blue-base">
       <div className="relative  bg-white flex flex-col items-center lg:gap-20 pt-10 pb-20">
@@ -138,38 +139,11 @@ export default async function Page({ params }: { params: { id: string } }) {
           />
           <div className="flex lg:flex-row flex-col justify-between items-start gap-10 lg:gap-20 w-full">
             <div className="lg:w-full flex flex-col items-start gap-10 ">
-              <p className="flex flex-col items-start gap-10 font-[500] text-[18px] text-blue-base w-full">
-                <span>
-                  Pada hari Rabu tanggal 25 Januari 2023, siswa kelas XII SMKN 1
-                  Purwosari mendapatkan kesempatan untuk mengikuti pembelajaran
-                  entrepreneur dari PT. INDO BISMAR.
-                </span>
-                <span>
-                  PT. INDO BISMAR merupakan Perusahaan swasta yang bergerak
-                  dalam bidang telekomunikasi, yang menyediakan Handphone,
-                  Laptop, PC, dll., selain itu juga mempunya divisi lain
-                  seperti, Rental Mobil, percetakan, Restoran dan tempat
-                  rekreasi. Hadir dalam kegiatan ini, Bpk. DR. Siswanto, S.Sos,
-                  MM selaku CEO PT. INDO BISMAR. Beliau yang juga merupakan
-                  alumni SMK, tepatnya dari SMKN 1 Glagah, dengan sangat
-                  bersemangat memberikan motivasi kepada siswa SMKN 1 Purwosari
-                  untuk menjadi wirausahawan tangguh, pantang menyerah dan
-                  sukses luar biasa.
-                </span>
-                <span>
-                  Dalam kesempatan ini, juga dilaksanakan penandatanganan MoU
-                  antara SMKN 1 Purwosari dengan PT. INDO BISMAR.
-                </span>
-                <span>
-                  Bpk. Rudi Trisantoso, S.Pd, M.Pd selaku Kepala SMKN 1
-                  Purwosari dalam sambutannya menyampaikan ucapan terima kasih
-                  kepada PT. INDO BISMAR untuk pembelajaran entrepreneur yang
-                  telah diberikan kepada siswa SMKN 1 Purwosari serta berharap
-                  agar kerja sama yang telah terjalin semakin erat dan
-                  memberikan kontribusi yang positif bagi kedua belah pihak.
-                </span>
+            <div className="flex flex-col items-start gap-10 font-[500] text-[18px] text-blue-base w-full">
+                <span className="flex flex-col items-start gap-4">{parsedHtml}</span>
+
                 <span>Jurnalis: -</span>
-              </p>
+              </div>
               <hr className="w-full border " />
               <div className="w-full rounded-[10px] p-4 flex justify-start items-center gap-4 bg-gray-base">
                 <div className="p-4 bg-gray-medium rounded-[10px]">
