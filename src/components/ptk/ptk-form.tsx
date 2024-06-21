@@ -8,7 +8,7 @@ const PtkForm = () => {
           <h2 className="block font-medium lg:text-[18px] mb-5 text-blue-base mt-1">
             Form Pencarian PTK
           </h2>
-          <div className="grid grid-cols-2 lg:gap-12 gap-4 mb-3">
+          <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-12 gap-4 mb-3">
             <input
               type="text"
               id="title"

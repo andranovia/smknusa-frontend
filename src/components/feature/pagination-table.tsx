@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import Image from "next/image";
+import { useMediaQuery } from "@uidotdev/usehooks";
 
 interface PaginationTableProps {
-  totalPosts?: number ;
+  totalPosts?: number;
   postsPerPage: number;
   onPageChange?: (pageNumber: number) => void;
 }
@@ -13,13 +14,25 @@ const PaginationTable: React.FC<PaginationTableProps> = ({
   onPageChange,
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
-
+  const isMobile = useMediaQuery("only screen and (max-width : 768px)");
   const totalPages = totalPosts ? Math.ceil(totalPosts / postsPerPage) : 0;
-  const pages = [];
+  const getDisplayedPages = () => {
+    if (totalPages <= 7) {
+      return Array.from({ length: totalPages }, (_, i) => i + 1);
+    }
 
-  for (let i = 1; i <= totalPages; i++) {
-    pages.push(i);
-  }
+    const pages = [];
+
+    if (currentPage <= 4) {
+      pages.push(1, 2, 3, 4, 5, '...', totalPages);
+    } else if (currentPage >= totalPages - 3) {
+      pages.push(1, '...', totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1, totalPages);
+    } else {
+      pages.push(1, '...', currentPage - 1, currentPage, currentPage + 1, '...', totalPages);
+    }
+
+    return pages;
+  };
 
   const handleButtonClick = (pageNumber: number) => {
     if (pageNumber > 0 && pageNumber <= totalPages) {
@@ -31,37 +44,49 @@ const PaginationTable: React.FC<PaginationTableProps> = ({
   };
 
   return (
-    <div className="flex text-center gap-3 p-3">
-      <p className="mt-2">Previous</p>
-      <button className="p-3 bg-gray-base rounded-md">
+    <div className="flex text-center gap-3 p-3 w-full justify-between items-center ">
+      <button
+        onClick={() => handleButtonClick(currentPage - 1)}
+        disabled={currentPage === 1}
+        className="p-2 border-2 border-gray-200 rounded-lg flex justify-center gap-2 items-center"
+      >
         <Image
           alt="arrow-right"
-          src={"/assets/icon/arrow-right.svg"}
+          src={"/assets/icon/arrow-line-right.svg"}
           className="-rotate-180"
           width={15}
           height={15}
         />
+        <p className="text-sm font-semibold text-blue-base hidden lg:block">Previous</p>
       </button>
-      {pages.map((page, index) => (
-        <button
-          key={index}
-          className={`px-3 py-1 rounded-md ${
-            currentPage === page ? "bg-yellow-light" : "bg-white"
-          }`}
-          onClick={() => handleButtonClick(page)}
-        >
-          {page}
-        </button>
-      ))}
-      <button className="p-3 bg-gray-base rounded-md">
+
+      <div className="flex justify-center gap-2 items-center">
+      {getDisplayedPages().slice(0, isMobile ? 5 : 7).map((page, index) => (
+          <button
+            key={index}
+            className={`px-3 py-1 rounded-md ${
+              currentPage === page ? "bg-gray-base" : "bg-white"
+            }`}
+            onClick={() => typeof page === 'number' && handleButtonClick(page)}
+            disabled={page === '...'}
+          >
+            {page}
+          </button>
+        ))}
+      </div>
+      <button
+        onClick={() => handleButtonClick(currentPage + 1)}
+        disabled={currentPage === totalPages}
+        className="p-2 border-2 border-gray-200 rounded-lg flex justify-center gap-2 items-center"
+      >
+        <p className="text-sm font-semibold text-blue-base hidden lg:block">Next</p>
         <Image
           alt="arrow-right"
-          src={"/assets/icon/arrow-right.svg"}
+          src={"/assets/icon/arrow-line-right.svg"}
           width={15}
           height={15}
         />
       </button>
-      <p className="mt-2">Next</p>
     </div>
   );
 };
