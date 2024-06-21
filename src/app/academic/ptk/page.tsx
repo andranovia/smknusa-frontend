@@ -1,3 +1,4 @@
+
 import PtkForm from "@/components/ptk/ptk-form";
 import PtkTable from "@/components/ptk/ptk-table";
 import React from "react";
@@ -21,6 +22,7 @@ const PTK = () => {
         <PtkForm /> 
         <PtkTable />
       </div>
+
     </div>
   );
 };

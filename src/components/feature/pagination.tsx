@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
+import { useMediaQuery } from "@uidotdev/usehooks";
 
 interface PaginationProps {
   totalPosts?: number;
@@ -13,7 +14,7 @@ const Pagination: React.FC<PaginationProps> = ({
   onPageChange,
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
-
+  const isMobile = useMediaQuery("only screen and (max-width : 768px)");
   const totalPages = totalPosts ? Math.ceil(totalPosts / postsPerPage) : 0;
 
   const handleButtonClick = (pageNumber: number) => {
@@ -58,7 +59,7 @@ const Pagination: React.FC<PaginationProps> = ({
           height={15}
         />
       </button>
-      {getDisplayedPages().map((page, index) => (
+      {getDisplayedPages().slice(0, isMobile ? 5 : 7).map((page, index) => (
         <button
           key={index}
           className={`px-3 py-1 rounded-md ${

@@ -130,7 +130,7 @@ const HomeFacility = () => {
               <div className="flex justify-center items-center lg:ml-[25%] w-full lg:w-fit ">
                 <div className="btn bg-yellow text-blue-base w-full text-center font-[600] py-2.5 px-5 rounded">
                   <button className="lg:text-[16px] text-xs">
-                    Selengkapnya{" "}
+                    Selengkapnya
                   </button>
                 </div>
               </div>
