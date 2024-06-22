@@ -1,73 +1,19 @@
-"use client";
-
 import Image from "next/image";
-import React, { useState } from "react";
-import PaginationTable from "../feature/pagination-table";
+import React, { Dispatch, SetStateAction, useState } from "react";
+import PaginationTable from "../../feature/pagination-table";
 
-const PtkTable = () => {
-  const ptkData = [
-    {
-      nama: "Raditya Wahyu Sasono",
-      nip: "198609302010121001",
-      jenis_kelamin: "Laki - Laki",
-      mapel: "Produktif RPL",
-    },
-    {
-      nama: "Raditya Wahyu Sasono",
-      nip: "198609302010121001",
-      jenis_kelamin: "Laki - Laki",
-      mapel: "Produktif RPL",
-    },
-    {
-      nama: "Raditya Wahyu Sasono",
-      nip: "198609302010121001",
-      jenis_kelamin: "Laki - Laki",
-      mapel: "Produktif RPL",
-    },
-    {
-      nama: "Raditya Wahyu Sasono",
-      nip: "198609302010121001",
-      jenis_kelamin: "Laki - Laki",
-      mapel: "Produktif RPL",
-    },
-    {
-      nama: "Raditya Wahyu Sasono",
-      nip: "198609302010121001",
-      jenis_kelamin: "Laki - Laki",
-      mapel: "Produktif RPL",
-    },
-    {
-      nama: "Raditya Wahyu Sasono",
-      nip: "198609302010121001",
-      jenis_kelamin: "Laki - Laki",
-      mapel: "Produktif RPL",
-    },
-    {
-      nama: "Raditya Wahyu Sasono",
-      nip: "198609302010121001",
-      jenis_kelamin: "Laki - Laki",
-      mapel: "Produktif RPL",
-    },
-    {
-      nama: "Raditya Wahyu Sasono",
-      nip: "198609302010121001",
-      jenis_kelamin: "Laki - Laki",
-      mapel: "Produktif RPL",
-    },
-    {
-      nama: "Raditya Wahyu Sasono",
-      nip: "198609302010121001",
-      jenis_kelamin: "Laki - Laki",
-      mapel: "Produktif RPL",
-    },
-    {
-      nama: "Raditya Wahyu Sasono",
-      nip: "198609302010121001",
-      jenis_kelamin: "Laki - Laki",
-      mapel: "Produktif RPL",
-    },
-  ];
+type PtkData = {
+  nama: string;
+  nip: string;
+  jenis_kelamin: string;
+  mapel: string;
+};
 
+type PtkTableProps = {
+  ptkData: PtkData[];
+  handleChangeTable: () => void;
+};
+const PtkTable = ({ ptkData, handleChangeTable }: PtkTableProps) => {
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 9;
 
@@ -80,7 +26,7 @@ const PtkTable = () => {
   };
 
   return (
-    <div className="relative flex flex-col  overflow-x-auto  lg:rounded-lg border lg:w-[84%]">
+    <div className="relative flex flex-col  overflow-x-auto  lg:rounded-lg border w-full lg:w-[84%]">
       <div className="flex  items-center justify-between mx-4 lg:mx-12 gap-4">
         <div className="flex  items-center justify-between lg:justify-start  gap-4">
           <h1 className="text-sm font-bold text-blue-base w-1/2 lg:w-fit  my-6">
@@ -90,13 +36,15 @@ const PtkTable = () => {
             {ptkData.length + " " + "orang"}
           </p>
         </div>
-        <Image
-          src={"/assets/icon/candle.svg"}
-          alt="candle"
-          width={20}
-          height={20}
-          className="w-6 h-6"
-        />
+        <button onClick={() => handleChangeTable()}>
+          <Image
+            src={"/assets/icon/candle.svg"}
+            alt="candle"
+            width={20}
+            height={20}
+            className="w-6 h-6"
+          />
+        </button>
       </div>
 
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -149,7 +97,9 @@ const PtkTable = () => {
                   </div>
                 </td>
                 <td className="px-6 py-4 flex gap-2 items-center md:table-cell lg:justify-start  justify-between ">
-                  <span className="block lg:hidden text-sm font-bold text-blue-base">Nama</span>
+                  <span className="block lg:hidden text-sm font-bold text-blue-base">
+                    Nama
+                  </span>
 
                   <div className="flex gap-4 items-center ">
                     <Image
@@ -163,21 +113,29 @@ const PtkTable = () => {
                   </div>
                 </td>
                 <td className="px-6 py-4 md:table-cell flex gap-2 justify-between items-center">
-                  <span className="block lg:hidden text-sm font-bold text-blue-base">NIP</span>
+                  <span className="block lg:hidden text-sm font-bold text-blue-base">
+                    NIP
+                  </span>
                   {ptk.nip}
                 </td>
                 <td className="px-6 py-4 md:table-cell flex gap-2 justify-between items-center">
-                  <span className="block lg:hidden text-sm font-bold text-blue-base">Jenis Kelamin</span>
+                  <span className="block lg:hidden text-sm font-bold text-blue-base">
+                    Jenis Kelamin
+                  </span>
                   {ptk.jenis_kelamin}
                 </td>
                 <td
                   scope="row"
                   className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap w-full flex justify-between  md:w-1/3 md:table-cell "
                 >
-                  <span className="block lg:hidden text-sm font-bold text-blue-base">Mapel</span>
+                  <span className="block lg:hidden text-sm font-bold text-blue-base">
+                    Mapel
+                  </span>
 
                   <span className="lg:w-full text-center text-xs flex lg:justify-center items-center">
-                    <p className=" lg:w-1/3 bg-amber-100 bg-opacity-70 border-yellow px-2 py-1 border rounded-full text-yellow-500">{ptk.mapel}</p>
+                    <p className=" lg:w-1/3 bg-amber-100 bg-opacity-70 border-yellow px-2 py-1 border rounded-full text-yellow-500">
+                      {ptk.mapel}
+                    </p>
                   </span>
                 </td>
               </tr>
