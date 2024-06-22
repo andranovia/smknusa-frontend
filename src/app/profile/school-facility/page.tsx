@@ -1,9 +1,9 @@
 "use client";
 
-import FacilityHero from "@/components/facility";
-import FacilityCard from "@/components/facility/facility-card";
-import FacilityFilter from "@/components/facility/facillity-filter";
-import FacilityShowMore from "@/components/facility/facillity-showmore";
+import FacilityHero from "@/components/profile/facility";
+import FacilityCard from "@/components/profile/facility/facility-card";
+import FacilityFilter from "@/components/profile/facility/facillity-filter";
+import FacilityShowMore from "@/components/profile/facility/facillity-showmore";
 import React, { useState } from "react";
 
 const SchoolFacility = () => {
