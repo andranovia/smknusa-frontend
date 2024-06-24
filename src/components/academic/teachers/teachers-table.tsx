@@ -1,25 +1,19 @@
 import Image from "next/image";
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, { useState } from "react";
 import PaginationTable from "../../feature/pagination-table";
+import { Teacher } from "@/services/api/useQueries/useResidents";
 
-type PtkData = {
-  nama: string;
-  nip: string;
-  jenis_kelamin: string;
-  mapel: string;
-};
-
-type PtkTableProps = {
-  ptkData: PtkData[];
+type TeachersTableProps = {
+  teachersData?: Teacher[] | null;
   handleChangeTable: () => void;
 };
-const PtkTable = ({ ptkData, handleChangeTable }: PtkTableProps) => {
+const TeachersTable = ({ teachersData, handleChangeTable }: TeachersTableProps) => {
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 9;
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPtkData = ptkData?.slice(indexOfFirstPost, indexOfLastPost);
+  const currentPtkData = teachersData?.slice(indexOfFirstPost, indexOfLastPost);
 
   const onPageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
@@ -33,7 +27,7 @@ const PtkTable = ({ ptkData, handleChangeTable }: PtkTableProps) => {
             Pendidik Tenaga Kependidikan
           </h1>
           <p className="text-xs bg-amber-100 bg-opacity-70 border-yellow px-3 py-0.5 border rounded-full text-yellow-500">
-            {ptkData.length + " " + "orang"}
+            {teachersData?.length + " " + "orang"}
           </p>
         </div>
         <button onClick={() => handleChangeTable()}>
@@ -78,7 +72,7 @@ const PtkTable = ({ ptkData, handleChangeTable }: PtkTableProps) => {
           </tr>
         </thead>
         <tbody>
-          {currentPtkData.map((ptk, index) => (
+          {currentPtkData?.map((teacher, index) => (
             <React.Fragment key={index}>
               <tr className="bg-white border flex flex-col md:table-row">
                 <td className="w-4  px-6 py-4 lg:p-4 flex items-center md:table-cell">
@@ -109,20 +103,20 @@ const PtkTable = ({ ptkData, handleChangeTable }: PtkTableProps) => {
                       height={20}
                       className="w-8 h-8"
                     />
-                    <p>{ptk.nama}</p>
+                    <p className="truncate max-w-[10rem]">{teacher.nama}</p>
                   </div>
                 </td>
                 <td className="px-6 py-4 md:table-cell flex gap-2 justify-between items-center">
                   <span className="block lg:hidden text-sm font-bold text-blue-base">
                     NIP
                   </span>
-                  {ptk.nip}
+                  {teacher.nip || "-"}
                 </td>
                 <td className="px-6 py-4 md:table-cell flex gap-2 justify-between items-center">
                   <span className="block lg:hidden text-sm font-bold text-blue-base">
                     Jenis Kelamin
                   </span>
-                  {ptk.jenis_kelamin}
+                  {teacher.jenis_kelamin === "" ? "-" : teacher.jenis_kelamin === "L" ? "Laki-laki" : "Perempuan"}
                 </td>
                 <td
                   scope="row"
@@ -134,7 +128,7 @@ const PtkTable = ({ ptkData, handleChangeTable }: PtkTableProps) => {
 
                   <span className="lg:w-full text-center text-xs flex lg:justify-center items-center">
                     <p className=" lg:w-1/3 bg-amber-100 bg-opacity-70 border-yellow px-2 py-1 border rounded-full text-yellow-500">
-                      {ptk.mapel}
+                      Produktif RPL
                     </p>
                   </span>
                 </td>
@@ -144,7 +138,7 @@ const PtkTable = ({ ptkData, handleChangeTable }: PtkTableProps) => {
         </tbody>
       </table>
       <PaginationTable
-        totalPosts={ptkData.length}
+        totalPosts={teachersData?.length}
         postsPerPage={postsPerPage}
         onPageChange={onPageChange}
       />
@@ -152,4 +146,4 @@ const PtkTable = ({ ptkData, handleChangeTable }: PtkTableProps) => {
   );
 };
 
-export default PtkTable;
+export default TeachersTable;

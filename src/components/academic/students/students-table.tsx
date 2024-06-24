@@ -1,27 +1,25 @@
 import Image from "next/image";
 import React, { Dispatch, SetStateAction, useState } from "react";
 import PaginationTable from "../../feature/pagination-table";
-
-type StudentData = {
-  nisn: string;
-  name: string;
-  kelas: string;
-  jenis_kelamin: string;
-  alamat: string;
-  ttl: string;
-};
+import { Student } from "@/services/api/useQueries/useResidents";
 
 type StudentsTableProps = {
-  studentsData: StudentData[];
+  studentsData?: Student[] | null;
   handleChangeTable: () => void;
 };
-const StudentsTable = ({ studentsData, handleChangeTable }: StudentsTableProps) => {
+const StudentsTable = ({
+  studentsData,
+  handleChangeTable,
+}: StudentsTableProps) => {
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 9;
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPtkData = studentsData?.slice(indexOfFirstPost, indexOfLastPost);
+  const currentStudentsData = studentsData?.slice(
+    indexOfFirstPost,
+    indexOfLastPost
+  );
 
   const onPageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
@@ -35,7 +33,7 @@ const StudentsTable = ({ studentsData, handleChangeTable }: StudentsTableProps) 
             Peserta Didik
           </h1>
           <p className="text-xs bg-amber-100 bg-opacity-70 border-yellow px-3 py-0.5 border rounded-full text-yellow-500">
-            {studentsData.length + " " + "orang"}
+            {studentsData?.length + " " + "orang"}
           </p>
         </div>
         <button onClick={() => handleChangeTable()}>
@@ -86,7 +84,7 @@ const StudentsTable = ({ studentsData, handleChangeTable }: StudentsTableProps) 
           </tr>
         </thead>
         <tbody>
-          {currentPtkData.map((ptk, index) => (
+          {currentStudentsData?.map((student, index) => (
             <React.Fragment key={index}>
               <tr className="bg-white border flex flex-col md:table-row">
                 <td className="w-4  px-6 py-4 lg:p-4 flex items-center md:table-cell">
@@ -109,13 +107,15 @@ const StudentsTable = ({ studentsData, handleChangeTable }: StudentsTableProps) 
                     NISN
                   </span>
 
-                  <p>{ptk.nisn}</p>
+                  <p>{student.nisn}</p>
                 </td>
-                <td className="px-6 py-4 md:table-cell flex gap-2 justify-between items-center">
+                <td className="px-6 py-4 md:table-cell flex gap-2 justify-between items-center truncate lg:max-w-[12rem]">
                   <span className="block lg:hidden text-sm font-bold text-blue-base">
                     Name
                   </span>
-                  {ptk.name}
+                  <span className="truncate max-w-[10rem] ">
+                    {student.nama}
+                  </span>
                 </td>
                 <td className="px-6 py-4 md:table-cell flex gap-2 justify-between items-center">
                   <span className="block lg:hidden text-sm font-bold text-blue-base">
@@ -123,28 +123,29 @@ const StudentsTable = ({ studentsData, handleChangeTable }: StudentsTableProps) 
                   </span>
                   <span className="lg:w-full text-center text-xs">
                     <p className=" bg-amber-100 bg-opacity-70 border-yellow p-1 border rounded-full text-yellow-500">
-                    {ptk.kelas}
+                      {student.kelas}
                     </p>
                   </span>
-               
                 </td>
-                <td className="px-6 py-4 md:table-cell flex gap-2 justify-between items-center">
+                <td className="px-6 py-4 md:table-cell flex gap-2 justify-between items-center truncate lg:max-w-[10rem]">
                   <span className="block lg:hidden text-sm font-bold text-blue-base">
                     Alamat
                   </span>
-                  {ptk.alamat}
+                  <span className="truncate max-w-[10rem]">
+                    {student.alamat}
+                  </span>
                 </td>
                 <td className="px-6 py-4 md:table-cell flex gap-2 justify-between items-center">
                   <span className="block lg:hidden text-sm font-bold text-blue-base">
                     TTL
                   </span>
-                  {ptk.ttl}
+                  {student.tempat_lahir}, {student.tanggal_lahir}
                 </td>
                 <td className="px-6 py-4 md:table-cell flex gap-2 justify-between items-center">
                   <span className="block lg:hidden text-sm font-bold text-blue-base">
                     Jenis Kelamin
                   </span>
-                  {ptk.jenis_kelamin}
+                  {student.gender === "L" ? "Laki-laki" : "Perempuan"}
                 </td>
               </tr>
             </React.Fragment>
@@ -152,7 +153,7 @@ const StudentsTable = ({ studentsData, handleChangeTable }: StudentsTableProps) 
         </tbody>
       </table>
       <PaginationTable
-        totalPosts={studentsData.length}
+        totalPosts={studentsData?.length}
         postsPerPage={postsPerPage}
         onPageChange={onPageChange}
       />

@@ -1,184 +1,26 @@
 "use client";
 
-import PtkForm from "@/components/academic/ptk/ptk-form";
-import PtkTable from "@/components/academic/ptk/ptk-table";
+
+import TeachersForm from "@/components/academic/teachers/teachers-form";
+import TeachersTable from "@/components/academic/teachers/teachers-table";
 import StudentsForm from "@/components/academic/students/students-form";
 import StudentsTable from "@/components/academic/students/students-table";
+import { useResidents } from "@/services/api/useQueries/useResidents";
 import React, { useState } from "react";
-const ptkData = [
-  {
-    nama: "Raditya Wahyu Sasono",
-    nip: "198609302010121001",
-    jenis_kelamin: "Laki - Laki",
-    mapel: "Produktif RPL",
-  },
-  {
-    nama: "Raditya Wahyu Sasono",
-    nip: "198609302010121001",
-    jenis_kelamin: "Laki - Laki",
-    mapel: "Produktif RPL",
-  },
-  {
-    nama: "Raditya Wahyu Sasono",
-    nip: "198609302010121001",
-    jenis_kelamin: "Laki - Laki",
-    mapel: "Produktif RPL",
-  },
-  {
-    nama: "Raditya Wahyu Sasono",
-    nip: "198609302010121001",
-    jenis_kelamin: "Laki - Laki",
-    mapel: "Produktif RPL",
-  },
-  {
-    nama: "Raditya Wahyu Sasono",
-    nip: "198609302010121001",
-    jenis_kelamin: "Laki - Laki",
-    mapel: "Produktif RPL",
-  },
-  {
-    nama: "Raditya Wahyu Sasono",
-    nip: "198609302010121001",
-    jenis_kelamin: "Laki - Laki",
-    mapel: "Produktif RPL",
-  },
-  {
-    nama: "Raditya Wahyu Sasono",
-    nip: "198609302010121001",
-    jenis_kelamin: "Laki - Laki",
-    mapel: "Produktif RPL",
-  },
-  {
-    nama: "Raditya Wahyu Sasono",
-    nip: "198609302010121001",
-    jenis_kelamin: "Laki - Laki",
-    mapel: "Produktif RPL",
-  },
-  {
-    nama: "Raditya Wahyu Sasono",
-    nip: "198609302010121001",
-    jenis_kelamin: "Laki - Laki",
-    mapel: "Produktif RPL",
-  },
-  {
-    nama: "Raditya Wahyu Sasono",
-    nip: "198609302010121001",
-    jenis_kelamin: "Laki - Laki",
-    mapel: "Produktif RPL",
-  },
-];
 
-const studentsData = [
-  {
-    nisn: "33025421",
-    name: "Whiwin Adistiara",
-    kelas: "X APHP 1",
-    jenis_kelamin: "Perempuan",
-    alamat: "Dsn. Kanigoro",
-    ttl: "Pasuruan",
-  },
-  {
-    nisn: "33025421",
-    name: "Whiwin Adistiara",
-    kelas: "X APHP 1",
-    jenis_kelamin: "Perempuan",
-    alamat: "Dsn. Kanigoro",
-    ttl: "Pasuruan",
-  },
-  {
-    nisn: "33025421",
-    name: "Whiwin Adistiara",
-    kelas: "X APHP 1",
-    jenis_kelamin: "Perempuan",
-    alamat: "Dsn. Kanigoro",
-    ttl: "Pasuruan",
-  },
-  {
-    nisn: "33025421",
-    name: "Whiwin Adistiara",
-    kelas: "X APHP 1",
-    jenis_kelamin: "Perempuan",
-    alamat: "Dsn. Kanigoro",
-    ttl: "Pasuruan",
-  },
-  {
-    nisn: "33025421",
-    name: "Whiwin Adistiara",
-    kelas: "X APHP 1",
-    jenis_kelamin: "Perempuan",
-    alamat: "Dsn. Kanigoro",
-    ttl: "Pasuruan",
-  },
-  {
-    nisn: "33025421",
-    name: "Whiwin Adistiara",
-    kelas: "X APHP 1",
-    jenis_kelamin: "Perempuan",
-    alamat: "Dsn. Kanigoro",
-    ttl: "Pasuruan",
-  },
-  {
-    nisn: "33025421",
-    name: "Whiwin Adistiara",
-    kelas: "X APHP 1",
-    jenis_kelamin: "Perempuan",
-    alamat: "Dsn. Kanigoro",
-    ttl: "Pasuruan",
-  },
-  {
-    nisn: "33025421",
-    name: "Whiwin Adistiara",
-    kelas: "X APHP 1",
-    jenis_kelamin: "Perempuan",
-    alamat: "Dsn. Kanigoro",
-    ttl: "Pasuruan",
-  },
-  {
-    nisn: "33025421",
-    name: "Whiwin Adistiara",
-    kelas: "X APHP 1",
-    jenis_kelamin: "Perempuan",
-    alamat: "Dsn. Kanigoro",
-    ttl: "Pasuruan",
-  },
-  {
-    nisn: "33025421",
-    name: "Whiwin Adistiara",
-    kelas: "X APHP 1",
-    jenis_kelamin: "Perempuan",
-    alamat: "Dsn. Kanigoro",
-    ttl: "Pasuruan",
-  },
-  {
-    nisn: "33025421",
-    name: "Whiwin Adistiara",
-    kelas: "X APHP 1",
-    jenis_kelamin: "Perempuan",
-    alamat: "Dsn. Kanigoro",
-    ttl: "Pasuruan",
-  },
-  {
-    nisn: "33025421",
-    name: "Whiwin Adistiara",
-    kelas: "X APHP 1",
-    jenis_kelamin: "Perempuan",
-    alamat: "Dsn. Kanigoro",
-    ttl: "Pasuruan",
-  },
-];
+
 
 const ResidentData = () => {
   const [currentTable, setcurrentTable] = useState<string>("students");
+  const { teachers, students } = useResidents();
 
   const handleChangeTable = () => {
     if (currentTable === "students") {
-      setcurrentTable("ptk");
+      setcurrentTable("teachers");
     } else {
       setcurrentTable("students");
     }
-  }
-
-
+  };
 
   return (
     <div className="w-full lg:pt-24 px-3 rounded-[10px] text-blue-base bg-white">
@@ -195,15 +37,18 @@ const ResidentData = () => {
         </div>
       </div>
       <div className="pb-20 pt-10 flex flex-col items-center justify-center gap-10">
-        {currentTable === "ptk" ? (
+        {currentTable === "teachers" ? (
           <>
-            <PtkForm />
-            <PtkTable ptkData={ptkData} handleChangeTable={handleChangeTable} />
+            <TeachersForm />
+            <TeachersTable teachersData={teachers} handleChangeTable={handleChangeTable} />
           </>
         ) : (
           <>
             <StudentsForm />
-            <StudentsTable studentsData={studentsData} handleChangeTable={handleChangeTable}/>
+            <StudentsTable
+              studentsData={students}
+              handleChangeTable={handleChangeTable}
+            />
           </>
         )}
       </div>
