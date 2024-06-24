@@ -1,6 +1,6 @@
 import React from "react";
 
-const PtkForm = () => {
+const TeachersForm = () => {
   return (
     <div className="relative z-10 w-full">
       <div className="flex justify-center items-center p-2 bg-gray-base lg:bg-transparent">
@@ -36,4 +36,4 @@ const PtkForm = () => {
   );
 };
 
-export default PtkForm;
+export default TeachersForm;
