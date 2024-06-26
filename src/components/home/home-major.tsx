@@ -106,7 +106,7 @@ const HomeMajor = () => {
       </div>
 
       <div className="relative  lg:px-8 px-3  lg:-mt-32  ">
-        <div className="flex justify-start items-end relative  bg-white lg:overflow-hidden rounded-[10px] ">
+        <div className="flex justify-start items-end relative  bg-white overflow-hidden rounded-[10px] ">
           <div className="relative w-[22.5rem] lg:w-full  flex flex-col lg:flex-row   justify-center gap-14  h-full  mt-8 mb-10 lg:mb-0">
             <div className="lg:w-[40%] w-full flex top-0 -mt-28 lg:mt-0 absolute justify-center py-3 lg:rounded-[10px] items-center lg:px-0 px-6 gap-8 lg:bg-primary ">
               {majorLinkData.map((data, index) => {
