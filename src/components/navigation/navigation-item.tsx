@@ -6,6 +6,7 @@ import { AnimatePresence, motion, useAnimation } from "framer-motion";
 import Link from "next/link";
 import { defaultTransition } from "../animation/transition";
 import NavigationItemAnimate from "./navigation-item-animate";
+import { useMediaQuery } from "@uidotdev/usehooks";
 
 export type NavigationLinkData = {
   linkDropdownData: {
@@ -151,7 +152,7 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
     },
     {
       linkDropdownData: {
-        text: "Alumni - Alumni Hebat",
+        text: "Alumni Hebat",
         description: "Berisi sambutan resmi dari kepala sekolah",
         icon: "/assets/nav-dropdown-icon/Bkk/alumni.svg",
         linkRef: "/profile/welcome-speech",
@@ -177,6 +178,7 @@ const NavigationItem = ({
   const [currentDropdown, setCurrentDropdown] = useState<string | null>(null);
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownControls = useAnimation();
+  const isMobile = useMediaQuery("only screen and (max-width: 768px)");
 
   const dropdownData = currentDropdown
     ? navbarDropdownData[currentDropdown]
@@ -201,7 +203,7 @@ const NavigationItem = ({
       >
         <span
           onMouseEnter={() => handleOpenDropdown()}
-          className={`relative flex justify-center items-center cursor-po gap-1   rounded-md  w-min-content
+          className={`font-semibold  relative flex justify-center items-center cursor-po gap-1   rounded-md  w-min-content
           before:border-0 before:absolute before:bottom-0 before:right-0 before:border-transparent before:transition-colors before:duration-500
           before:w-full hover:before:border-[1px] hover:before:left-0 hover:before:border-[#F5C451] cursor-pointer z-20`}
         >
@@ -215,28 +217,31 @@ const NavigationItem = ({
         </span>
         <AnimatePresence>
           {showDropdown && (
-            <div className="absolute">
+            <div className="absolute left-10 lg:left-auto">
               <motion.div
                 initial="initial"
                 animate="animate"
                 exit="exit"
                 variants={{
                   initial: { opacity: 0.5, scale: 0.85, y: 10 },
-                  animate: { opacity: 1, scale: 1, y: 0 },
+                  animate: { opacity: 1, scale: 1, y: isMobile ? -420 : 0 },
                   exit: { opacity: 0, y: 10 },
                 }}
-                className="w-[24rem] mt-14 z-20 rounded-b-[10px] rounded-r-[10px] bg-white overflow-hidden"
+                transition={defaultTransition}
+                className="min-w-[20rem] w-[90%] lg:w-[24rem] items-center justify-center grid grid-cols-2 lg:gap-0 h-[25rem] lg:h-full lg:grid-cols-1 lg:mt-14 z-20 rounded-tl-[10px] lg:rounded-tl-none lg:rounded-b-[10px] shadow-lg  rounded-r-[10px] bg-white lg:pb-0 pb-8 overflow-hidden"
               >
                 {dropdownData?.map((data, index) => (
-                  <div key={index}>
-                    <MenuItem
-                      active={currentDropdown}
-                      item={name}
-                      transition={defaultTransition}
-                    >
-                      <NavigationItemAnimate itemData={data} />
-                    </MenuItem>
-                  </div>
+                  <React.Fragment key={index}>
+                    <Link href={data.linkDropdownData.linkRef} className="w-full">
+                      <MenuItem
+                        active={currentDropdown}
+                        item={name}
+                        transition={defaultTransition}
+                      >
+                        <NavigationItemAnimate itemData={data} />
+                      </MenuItem>
+                    </Link>
+                  </React.Fragment>
                 ))}
               </motion.div>
             </div>
