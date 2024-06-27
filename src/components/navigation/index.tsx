@@ -98,7 +98,7 @@ const Navbar = () => {
         </div>
       </div>
       <div className="w-full  p-2 flex justify-center  fixed lg:hidden bottom-2 z-50">
-        <div className="bg-white flex gap-4 items-center px-2 w-[92%]  py-3 rounded-full">
+        <div className="bg-white flex gap-3  shadow-lg items-center px-2 w-[90%]  py-2 rounded-full">
           <Image
             src={"/assets/icon/rounded-arrow-up.svg"}
             alt="arrow-up"
@@ -108,10 +108,10 @@ const Navbar = () => {
           />
 
           <div className="flex justify-center items-center gap-4 ">
-            <span className="text-gray font-semibold">Beranda</span>
-            <span className="text-gray font-semibold">Menu</span>
-            <span className="text-gray font-semibold">Berita</span>
-            <span className="text-gray font-semibold">Artikel</span>
+            <NavigationItem name="Profile" show={show} dropdown={false} />
+            <NavigationItem name="Akademik" show={show} dropdown={false} />
+            <NavigationItem name="BKK" show={show} dropdown={false} />
+            <NavigationItem name="News" show={show} dropdown={false} />
           </div>
         </div>
       </div>
