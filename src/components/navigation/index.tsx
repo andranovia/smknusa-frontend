@@ -7,48 +7,57 @@ import NavigationLanguage from "./navigation-language";
 import { usePathname } from "next/navigation";
 import NavigationSearch from "./navigation-search";
 import Link from "next/link";
+import { useMediaQuery } from "@uidotdev/usehooks";
 
 const Navbar = () => {
   const [show, setShow] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const isMobile = useMediaQuery("only screen and (max-width : 768px)");
   const pathname = usePathname();
   const isActivePage =
     pathname === "/" ||
     pathname === "/news" ||
     pathname === "/profile/school-facility";
 
-  useEffect(() => {
-    const controlNavbar = () => {
-      if (window.scrollY > 0) {
-        setShow(true);
-      } else {
-        setShow(false);
-      }
-    };
-
-    window.addEventListener("scroll", controlNavbar);
-
-    return () => {
-      window.removeEventListener("scroll", controlNavbar);
-    };
-  }, []);
-
+    useEffect(() => {
+      const controlNavbar = () => {
+        if (isMobile) {
+          if (window.scrollY > lastScrollY) {
+          
+            setShow(false);
+          } else {
+   
+            setShow(true);
+          }
+        } else {
+          setShow(true); 
+        }
+        setLastScrollY(window.scrollY);
+      };
+  
+      window.addEventListener('scroll', controlNavbar);
+  
+      return () => {
+        window.removeEventListener('scroll', controlNavbar);
+      };
+    }, [lastScrollY, isMobile]);
   return (
     <>
       <div
         className={`flex items-center  lg:justify-between z-40  transition-transform ${
           show
-            ? ` text-blue-base translate-y-2 shadow-lg`
+            ? ` text-blue-base translate-y-0 lg:translate-y-2 shadow-lg`
             : `  ${
                 isActivePage
-                  ? "lg:translate-y-8 lg:text-white "
+                  ? "-translate-y-20 lg:translate-y-8 lg:text-white "
                   : "lg:translate-y-2 "
               }`
-        } lg:fixed w-full px-3 delay-0`}
+        } fixed w-full lg:px-3 delay-0 `}
       >
         <div
-          className={`flex  items-center  w-full py-3 transition-all rounded-[10px] lg:px-11  ${
+          className={`flex  items-center  w-full py-3 transition-all rounded-[10px] px-4 lg:px-11  ${
             !show && isActivePage
-              ? "bg-opacity-0 font-[900]"
+              ? "lg:bg-opacity-0 bg-white font-[800] lg:font-[900]"
               : "bg-opacity-100 bg-white  font-[800]"
           }  `}
         >
@@ -97,22 +106,50 @@ const Navbar = () => {
           </div>
         </div>
       </div>
+
+      {/* <Image
+        src={"/assets/icon/rounded-arrow-up.svg"}
+        alt="arrow-up"
+        height={20}
+        width={20}
+        className="w-10 h-10 p-[1px] fixed lg:hidden bottom-20 right-8 z-50 bg-white rounded-full"
+      /> */}
+
       <div className="w-full  p-2 flex justify-center  fixed lg:hidden bottom-2 z-50">
-        <div className="bg-white flex gap-3  shadow-lg items-center px-2 w-[90%]  py-2 rounded-full">
+        <div className="bg-white flex gap-5 lg:gap-4 shadow-lg items-center justify-between px-8 w-[90%]  py-2 rounded-[10px]">
+          <NavigationItem
+            name="Profile"
+            show={show}
+            dropdown={false}
+            icon="https://img.icons8.com/?size=100&id=EOn31zjdfgcn&format=png&color=000000"
+          />
+          <NavigationItem
+            name="Akademik"
+            show={show}
+            dropdown={false}
+            icon="https://img.icons8.com/?size=100&id=83308&format=png&color=000000"
+          />
           <Image
-            src={"/assets/icon/rounded-arrow-up.svg"}
+            src={
+              "https://img.icons8.com/?size=100&id=83326&format=png&color=FFFFFF"
+            }
             alt="arrow-up"
             height={20}
             width={20}
-            className="w-8 h-8"
+            className="w-10 h-10 p-2 bg-primary rounded-full"
           />
-
-          <div className="flex justify-center items-center gap-4 ">
-            <NavigationItem name="Profile" show={show} dropdown={false} />
-            <NavigationItem name="Akademik" show={show} dropdown={false} />
-            <NavigationItem name="BKK" show={show} dropdown={false} />
-            <NavigationItem name="News" show={show} dropdown={false} />
-          </div>
+          <NavigationItem
+            name="BKK"
+            show={show}
+            dropdown={false}
+            icon="https://img.icons8.com/?size=100&id=86119&format=png&color=000000"
+          />
+          <NavigationItem
+            name="Info"
+            show={show}
+            dropdown={false}
+            icon="https://img.icons8.com/?size=100&id=83308&format=png&color=000000"
+          />
         </div>
       </div>
     </>

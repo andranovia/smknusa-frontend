@@ -92,7 +92,7 @@ const HomeFacility = () => {
 
   return (
     <>
-      <div className="w-full h-fit bg-white rounded-[10px] mt-3 lg:overflow-hidden">
+      <div className="w-full h-fit bg-white rounded-[10px] lg:overflow-hidden">
         <div className="flex flex-col items-center justify-center bg-primary gap-8 rounded-md text-white pt-10 pb-48">
           <h1 className="font-[700] lg:text-[36px] text-[24px] w-4/5 lg:w-fit">
             Kenapa Harus SMK Negeri 1 Purwosari
