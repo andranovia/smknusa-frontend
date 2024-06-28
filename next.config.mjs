@@ -2,7 +2,7 @@
 const nextConfig = {
 
     images: {
-        domains: ['backend.rplsmknusa.com'],
+        domains: ['backend.rplsmknusa.com', 'img.icons8.com'],
       },
   // output: 'export',
   //   images: {

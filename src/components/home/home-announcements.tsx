@@ -85,12 +85,12 @@ const HomeAnnouncement = () => {
         className="w-full h-full  flex justify-center items-center flex-col "
       >
         <div className="lg:sticky -top-1/3 w-full  flex justify-center items-center overflow-hidden ">
-          <div className="w-full h-full bg-gray-base lg:pb-20 lg:bg-white rounded-[10px] mt-3">
+          <div className="w-full h-full bg-gray-base lg:pb-20 lg:bg-white rounded-[10px] ">
             <div className="flex flex-col items-center lg:text-center justify-center bg-primary  rounded-md text-white pt-10 pb-48">
               <h1 className="font-[700] lg:text-[36px]  text-[24px] w-4/5 lg:w-full">
-                Papan Pengumuman Informasi
-                <br className="hidden lg:block" />
-                SMK Negeri 1 Purwosari
+                Papan Pengumuman Informasi <br className="hidden lg:block" />SMK Negeri 1 Purwosari
+             
+              
               </h1>
 
               <p className="font-[500] lg:text-[18px] mt-[12px] w-4/5 lg:w-full">
