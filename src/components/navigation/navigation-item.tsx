@@ -218,48 +218,14 @@ const NavigationItem = ({
 
   return (
     <>
-      <AnimatePresence>
-        {showDropdown && (
-          <div className="absolute left-10 lg:left-auto -top-[25rem] lg:top-auto h-[25rem] lg:h-full flex flex-col items-end justify-end">
-            <motion.div
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              variants={{
-                initial: { opacity: 0.5, scale: 0.85, y: 10 },
-                animate: { opacity: 1, scale: 1, y: isMobile ? 0 : 0 },
-                exit: { opacity: 0, y: 10 },
-              }}
-              transition={defaultTransition}
-              className="min-w-[20rem] w-[90%] lg:w-[24rem] items-center justify-center grid grid-cols-2 lg:gap-0 h-fit lg:grid-cols-1 lg:mt-14 z-20 rounded-tl-[10px] lg:rounded-tl-none lg:rounded-b-[10px] shadow-lg  rounded-r-[10px] bg-white lg:pb-0 pb-2 overflow-hidden"
-            >
-              {dropdownData?.map((data, index) => (
-                <React.Fragment key={index}>
-                  <Link
-                    href={data.linkDropdownData.linkRef}
-                    className="w-full h-[6rem]"
-                  >
-                    <MenuItem
-                      active={currentDropdown}
-                      item={name}
-                      transition={defaultTransition}
-                    >
-                      <NavigationItemAnimate itemData={data} />
-                    </MenuItem>
-                  </Link>
-                </React.Fragment>
-              ))}
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
+      
       <div
         className="flex justify-start cursor-pointer"
         onMouseLeave={() => handleCloseDropdown()}
       >
         <span
           onMouseEnter={() => handleOpenDropdown()}
-          className={`font-semibold  relative flex justify-center items-center cursor-po gap-1   rounded-md  w-min-content
+          className={`font-semibold  relative flex justify-center items-center  gap-1   rounded-md  w-min-content
           before:border-0 before:absolute before:bottom-0 before:right-0 before:border-transparent before:transition-colors before:duration-500
           before:w-full hover:before:border-[1px] hover:before:left-0 hover:before:border-[#F5C451] cursor-pointer z-20`}
         >
@@ -282,6 +248,43 @@ const NavigationItem = ({
             </motion.div>
           )}
         </span>
+ 
+      <AnimatePresence>
+        {showDropdown && (
+          <div className="absolute left-10 lg:left-auto  lg:top-auto h-[25rem] lg:h-auto lg:justify-start lg:items-start flex flex-col items-end justify-end
+">
+            <motion.div
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                variants={{
+                  initial: { opacity: 0.5, scale: 0.85, y: 10 },
+                  animate: { opacity: 1, scale: 1, y: isMobile ? -420 : 0 },
+                  exit: { opacity: 0, y: 10 },
+                }}
+                transition={defaultTransition}
+                className="min-w-[20rem] w-[90%] lg:w-[24rem] items-center justify-center grid grid-cols-2 lg:gap-0 h-fit lg:h-full lg:grid-cols-1 lg:mt-14 z-20 rounded-tl-[10px] lg:rounded-tl-none lg:rounded-b-[10px] shadow-lg  rounded-r-[10px] bg-white lg:pb-0 pb-8 overflow-hidden"
+              >
+              {dropdownData?.map((data, index) => (
+                <React.Fragment key={index}>
+                  <Link
+                    href={data.linkDropdownData.linkRef}
+                    className="w-full h-[6rem] lg:h-auto"
+                  >
+                    <MenuItem
+                      active={currentDropdown}
+                      item={name}
+                      transition={defaultTransition}
+                    >
+                      <NavigationItemAnimate itemData={data} />
+                    </MenuItem>
+                  </Link>
+                </React.Fragment>
+              ))}
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
       </div>
     </>
   );

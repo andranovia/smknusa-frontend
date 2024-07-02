@@ -19,28 +19,29 @@ const Navbar = () => {
     pathname === "/news" ||
     pathname === "/profile/school-facility";
 
-    useEffect(() => {
-      const controlNavbar = () => {
-        if (isMobile) {
-          if (window.scrollY > lastScrollY) {
-          
-            setShow(false);
-          } else {
-   
-            setShow(true);
-          }
+  useEffect(() => {
+    const controlNavbar = () => {
+      if (isMobile) {
+        if (window.scrollY > lastScrollY) {
+          setShow(false);
         } else {
-          setShow(true); 
+          setShow(true);
         }
-        setLastScrollY(window.scrollY);
-      };
-  
-      window.addEventListener('scroll', controlNavbar);
-  
-      return () => {
-        window.removeEventListener('scroll', controlNavbar);
-      };
-    }, [lastScrollY, isMobile]);
+      } else if (window.scrollY > 0) {
+        setShow(true);
+      } else {
+        setShow(false);
+      }
+
+      setLastScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", controlNavbar);
+
+    return () => {
+      window.removeEventListener("scroll", controlNavbar);
+    };
+  }, [lastScrollY, isMobile]);
   return (
     <>
       <div
