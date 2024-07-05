@@ -21,7 +21,7 @@ export type Article = {
 export const useArticles = (id?: string) => {
 
 
-  const { data: articles } = useQuery<Article[] | null>({
+  const { data: articles, isLoading: isArticlesLoading } = useQuery<Article[] | null>({
     queryKey: ["Articles"],
     queryFn: () => getArticles()
   });
@@ -34,5 +34,5 @@ export const useArticles = (id?: string) => {
     },
   });
 
-  return { articles, articleCategories };
+  return { articles, articleCategories, isArticlesLoading };
 };

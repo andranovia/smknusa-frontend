@@ -23,7 +23,7 @@ export type Announcement = {
 export const useAnnouncements = (id?: string) => {
 
 
-  const { data: announcements } = useQuery<Announcement[] | null>({
+  const { data: announcements, isLoading: isAnnouncementsLoading  } = useQuery<Announcement[] | null>({
     queryKey: ["Announcements"],
     queryFn: () => getAnnouncements()
   });
@@ -37,5 +37,5 @@ export const useAnnouncements = (id?: string) => {
     },
   });
 
-  return { announcements, announcementCategories };
+  return { announcements, announcementCategories, isAnnouncementsLoading };
 };

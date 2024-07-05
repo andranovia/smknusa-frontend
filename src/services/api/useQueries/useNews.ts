@@ -19,7 +19,7 @@ export type News = {
 export const useNews = (id?: string) => {
 
 
-  const { data: news } = useQuery<News[] | null>({
+  const { data: news, isLoading: isNewsLoading } = useQuery<News[] | null>({
     queryKey: ["News"],
     queryFn: () => getNews()
   });
@@ -32,5 +32,5 @@ export const useNews = (id?: string) => {
     },
   });
 
-  return { news, newsCategories };
+  return { news, newsCategories, isNewsLoading };
 };

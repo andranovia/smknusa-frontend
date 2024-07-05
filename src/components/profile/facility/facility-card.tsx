@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/utils/cn";
+import FacilityCardItem from "./facility-card-item";
+import CardItemLoading from "@/ui/card-item-loading";
+import FacilityShowMore from "./facility-showmore";
 
 const facilityData = [
   {
@@ -142,49 +145,52 @@ const facilityData = [
   },
 ];
 
-const FacilityCard = ({showAllFacillity}: {showAllFacillity: boolean}) => {
+export type Facility = {
+  card: string;
+  cardImg: string;
+  cardDescription: string;
+  cardfacility: {
+    categoryName: string;
+    CategoryColor: string;
+  }[];
+};
+
+const FacilityCard = () => {
+  const [showAllFacillity, setShowAllFacillity] = useState(false);
   return (
     <>
       <div className="flex justify-center items-center bg-gray-base lg:bg-white px-2 lg:mt-0 ">
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-8 p-4 lg:px-12 pb-12 bg-white rounded-[10px]">
-          {facilityData.slice(0, showAllFacillity ? facilityData.length : 9).map((facility, index) => {
-            return (
-              <React.Fragment key={index}>
-                <Link href={"/news/2"}>
-                  <div className="bg-white rounded-lg lg:w-[23rem] h-full shadow-md overflow-hidden relative">
-                    <Image
-                      className="w-full max-h-full object-cover"
-                      src={facility.cardImg}
-                      alt={facility.card}
-                      width={800}
-                      height={800}
-                    />
-                    <div className=" px-3 lg:p-4 flex flex-col items-start gap-4 w-full my-4 lg:my-0 ">
-                      <div className="grid grid-cols-2 items-center gap-2 top-0 left-0 lg:absolute lg:p-2 z-20">
-                        {facility.cardfacility.map((facility, index) => (
-                          <div
-                            key={index}
-                            className={cn(`bg-[${facility.CategoryColor}] px-2 py-1 rounded-[10px]`)}
-                          >
-                            <p className="font-[600] text-[12px] text-white ">
-                              {facility.categoryName}
-                            </p>
-                          </div>
-                        ))}
-                      </div>
-                      <div className="lg:text-md text-xs font-[500]  lg:text-[18px] mb-2 lg:w-full w-[8.5rem]">
-                        <h2> {facility.card}</h2>
-                      </div>
-                      <div className="lg:text-md text-xs font-[500]  lg:text-[18px] mb-2 lg:w-full w-[8.5rem] text-gray">
-                        <h2> {facility.cardDescription}</h2>
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              </React.Fragment>
-            );
-          })}
-        </div>
+        {facilityData ? (
+          <div className="flex flex-col items-center">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-8 p-4 lg:px-12 pb-12 bg-white rounded-[10px]">
+              {facilityData
+                .slice(0, showAllFacillity ? facilityData.length : 9)
+                .map((facility, index) => {
+                  return (
+                    <React.Fragment key={index}>
+                      <Link href={"/news/2"}>
+                        <FacilityCardItem facility={facility} />
+                      </Link>
+                    </React.Fragment>
+                  );
+                })}
+            </div>
+            <FacilityShowMore
+              showAllFacillity={showAllFacillity}
+              setShowAllFacillity={setShowAllFacillity}
+            />
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-8 p-4 lg:px-12 pb-12 bg-white rounded-[10px]">
+            {Array(6)
+              .fill(0)
+              .map((_, index) => (
+                <React.Fragment key={index}>
+                  <CardItemLoading />
+                </React.Fragment>
+              ))}
+          </div>
+        )}
       </div>
     </>
   );
