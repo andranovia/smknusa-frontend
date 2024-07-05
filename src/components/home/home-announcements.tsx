@@ -4,11 +4,13 @@ import React, { useRef, useState } from "react";
 import { useAnimation } from "framer-motion";
 import HomeAnnouncementsCard from "./home-announcements-card";
 import { ClientOnly } from "@/utils/isClient";
-import { Announcement, useAnnouncements } from "@/services/api/useQueries/useAnnouncements";
+import {
+  Announcement,
+  useAnnouncements,
+} from "@/services/api/useQueries/useAnnouncements";
 import { News, useNews } from "@/services/api/useQueries/useNews";
 import { Article, useArticles } from "@/services/api/useQueries/useArticles";
 import { useEvents } from "@/services/api/useQueries/useEvents";
-
 
 const announcementsLinkData = [
   {
@@ -29,10 +31,10 @@ const HomeAnnouncement = () => {
   const { announcements } = useAnnouncements();
   const { news } = useNews();
   const { articles } = useArticles();
-  const {events} = useEvents()
+  const { events } = useEvents();
 
-
-  const [currentAnnouncementsType, setCurrentAnnouncementsType] = useState<string>("Pengumuman");
+  const [currentAnnouncementsType, setCurrentAnnouncementsType] =
+    useState<string>("Pengumuman");
   const homeAnnouncementsEndRef = useRef(null);
 
   const [
@@ -41,11 +43,19 @@ const HomeAnnouncement = () => {
   ] = useState(0);
   const announcementsHighlightControls = useAnimation();
 
-  const getNewestItems = (data?: Announcement[] | News[] | Article[] | null) => {
+  const getNewestItems = (
+    data?: Announcement[] | News[] | Article[] | null
+  ) => {
     return data
       ?.sort((a, b) => {
-        const dateA = 'date' in a ? new Date(a.date).getTime() : new Date(a.created_at).getTime();
-        const dateB = 'date' in b ? new Date(b.date).getTime() : new Date(b.created_at).getTime();
+        const dateA =
+          "date" in a
+            ? new Date(a.date).getTime()
+            : new Date(a.created_at).getTime();
+        const dateB =
+          "date" in b
+            ? new Date(b.date).getTime()
+            : new Date(b.created_at).getTime();
         return dateB - dateA;
       })
       .slice(0, 3);
@@ -72,7 +82,7 @@ const HomeAnnouncement = () => {
     if (announcementsType !== currentAnnouncementsType) {
       announcementsHighlightControls.start("after");
       setTimeout(() => {
-        setCurrentAnnouncementsType((announcementsType));
+        setCurrentAnnouncementsType(announcementsType);
         setCurrentAnnouncementsHighlightIndex(0);
       }, 200);
     }
@@ -88,9 +98,8 @@ const HomeAnnouncement = () => {
           <div className="w-full h-full bg-gray-base lg:pb-20 lg:bg-white rounded-[10px] ">
             <div className="flex flex-col items-center lg:text-center justify-center bg-primary  rounded-md text-white pt-10 pb-48">
               <h1 className="font-[700] lg:text-[36px]  text-[24px] w-4/5 lg:w-full">
-                Papan Pengumuman Informasi <br className="hidden lg:block" />SMK Negeri 1 Purwosari
-             
-              
+                Papan Pengumuman Informasi <br className="hidden lg:block" />
+                SMK Negeri 1 Purwosari
               </h1>
 
               <p className="font-[500] lg:text-[18px] mt-[12px] w-4/5 lg:w-full">
