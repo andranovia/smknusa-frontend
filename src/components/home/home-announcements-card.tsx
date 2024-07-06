@@ -16,7 +16,6 @@ import { defaultTransition } from "../animation/transition";
 import { useMediaQuery } from "@uidotdev/usehooks";
 import {
   Announcement,
-  useAnnouncements,
 } from "@/services/api/useQueries/useAnnouncements";
 import { Article } from "@/services/api/useQueries/useArticles";
 import { News } from "@/services/api/useQueries/useNews";
