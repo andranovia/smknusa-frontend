@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 
-const CardItemLoading = () => {
+const InfoCardItemLoading = () => {
   return (
     <div className="bg-white rounded-lg animate-pulse lg:w-[23rem] h-full shadow-md overflow-hidden relative">
     <div className="w-full h-[6rem] lg:h-[11rem] bg-slate-300"></div>
@@ -47,4 +47,4 @@ const CardItemLoading = () => {
   )
 }
 
-export default CardItemLoading
+export default InfoCardItemLoading

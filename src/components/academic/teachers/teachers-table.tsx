@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React, { useState } from "react";
-import PaginationTable from "../../feature/pagination-table";
+import PaginationTable from "../../ui/pagination-table";
 import { Teacher } from "@/services/api/useQueries/useResidents";
 
 type TeachersTableProps = {

@@ -2,12 +2,10 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import Pagination from "../feature/pagination";
+import Pagination from "../ui/pagination";
 import { useArticles } from "@/services/api/useQueries/useArticles";
-import ArticleCardItem from "./article-card-item";
-import Image from "next/image";
-import ArticleCardItemLoading from "../../ui/card-item-loading";
-import CardItemLoading from "../../ui/card-item-loading";
+import InfoCardItem from "../ui/info-card-item";
+import InfoCardItemLoading from "../ui/info-card-item-loading";
 
 const ArticleCard = () => {
   const { articles, isArticlesLoading } = useArticles();
@@ -27,14 +25,14 @@ const ArticleCard = () => {
       <div className="flex flex-col justify-center items-center bg-gray-base lg:bg-white px-2 lg:-mt-10 lg:my-20 ">
         {isArticlesLoading ? (
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-8 p-4 lg:px-12 pb-12 bg-white rounded-[10px]">
-          {Array(6)
-            .fill(0)
-            .map((_, index) => (
-              <React.Fragment key={index}>
-                <CardItemLoading />
-              </React.Fragment>
-            ))}
-        </div>
+            {Array(6)
+              .fill(0)
+              .map((_, index) => (
+                <React.Fragment key={index}>
+                  <InfoCardItemLoading />
+                </React.Fragment>
+              ))}
+          </div>
         ) : (
           <div className="flex justify-center items-center flex-col">
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-8 p-4 lg:px-12 pb-12 bg-white rounded-[10px]">
@@ -44,8 +42,8 @@ const ArticleCard = () => {
                 return (
                   <React.Fragment key={index}>
                     <Link href={`/article/${article.id_pemberitahuan}`}>
-                      <ArticleCardItem
-                        article={article}
+                      <InfoCardItem
+                        infoCardData={article}
                         normalDate={normalDate}
                       />
                     </Link>

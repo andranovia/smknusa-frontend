@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import NavigationDropdown from "./navigation-dropdown-icon";
-import { MenuItem } from "./navigation-dropdown-menu-item";
+import { NavigationDropdownMenuItem } from "./navigation-dropdown-menu-item";
 import { AnimatePresence, motion, useAnimation } from "framer-motion";
 
 import Link from "next/link";
@@ -218,7 +218,6 @@ const NavigationItem = ({
 
   return (
     <>
-      
       <div
         className="flex justify-start cursor-pointer"
         onMouseLeave={() => handleCloseDropdown()}
@@ -230,30 +229,28 @@ const NavigationItem = ({
           before:w-full hover:before:border-[1px] hover:before:left-0 hover:before:border-[#F5C451] cursor-pointer z-20`}
         >
           <span className="hidden lg:block">
-          {route ? <Link href={route}>{name}</Link> : name}</span>
-          {icon? (
+            {route ? <Link href={route}>{name}</Link> : name}
+          </span>
+          {icon ? (
             <div className="block lg:hidden">
-            <Image
-              src={icon}
-              alt="navbar-icon"
-              width={30}
-              height={30}
-            />
-          </div>
+              <Image src={icon} alt="navbar-icon" width={30} height={30} />
+            </div>
           ) : null}
-          
+
           {dropdown && (
             <motion.div animate={{ rotate: showDropdown ? 180 : 0 }}>
               <NavigationDropdown show={show} />
             </motion.div>
           )}
         </span>
- 
-      <AnimatePresence>
-        {showDropdown && (
-          <div className="absolute left-10 lg:left-auto  lg:top-auto h-[25rem] lg:h-auto lg:justify-start lg:items-start flex flex-col items-end justify-end
-">
-            <motion.div
+
+        <AnimatePresence>
+          {showDropdown && (
+            <div
+              className="absolute left-10 lg:left-auto  lg:top-auto h-[25rem] lg:h-auto lg:justify-start lg:items-start flex flex-col items-end justify-end
+"
+            >
+              <motion.div
                 initial="initial"
                 animate="animate"
                 exit="exit"
@@ -265,26 +262,26 @@ const NavigationItem = ({
                 transition={defaultTransition}
                 className="min-w-[20rem] w-[90%] lg:w-[24rem] items-center justify-center grid grid-cols-2 lg:gap-0 h-fit lg:h-full lg:grid-cols-1 lg:mt-14 z-20 rounded-tl-[10px] lg:rounded-tl-none lg:rounded-b-[10px] shadow-lg  rounded-r-[10px] bg-white lg:pb-0 pb-8 overflow-hidden"
               >
-              {dropdownData?.map((data, index) => (
-                <React.Fragment key={index}>
-                  <Link
-                    href={data.linkDropdownData.linkRef}
-                    className="w-full h-[6rem] lg:h-auto"
-                  >
-                    <MenuItem
-                      active={currentDropdown}
-                      item={name}
-                      transition={defaultTransition}
+                {dropdownData?.map((data, index) => (
+                  <React.Fragment key={index}>
+                    <Link
+                      href={data.linkDropdownData.linkRef}
+                      className="w-full h-[6rem] lg:h-auto"
                     >
-                      <NavigationItemAnimate itemData={data} />
-                    </MenuItem>
-                  </Link>
-                </React.Fragment>
-              ))}
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
+                      <NavigationDropdownMenuItem
+                        active={currentDropdown}
+                        item={name}
+                        transition={defaultTransition}
+                      >
+                        <NavigationItemAnimate itemData={data} />
+                      </NavigationDropdownMenuItem>
+                    </Link>
+                  </React.Fragment>
+                ))}
+              </motion.div>
+            </div>
+          )}
+        </AnimatePresence>
       </div>
     </>
   );

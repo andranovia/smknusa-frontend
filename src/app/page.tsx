@@ -8,7 +8,7 @@ import { ClientOnly } from "@/utils/isClient";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center gap-3">
+    <div className="flex min-h-screen flex-col items-center gap-3">
       <HomeHero />
       <HomeSlider />
       <div className="px-1 lg:px-3 flex flex-col items-center gap-3">
@@ -19,6 +19,6 @@ export default function Home() {
         </ClientOnly>
         <HomeEntrepreneur />
       </div>
-    </main>
+    </div>
   );
 }

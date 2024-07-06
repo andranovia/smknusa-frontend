@@ -2,10 +2,10 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import Pagination from "../feature/pagination";
+import Pagination from "../ui/pagination";
 import { useNews } from "@/services/api/useQueries/useNews";
-import NewsCardItem from "./news-card-item";
-import CardItemLoading from "@/ui/card-item-loading";
+import InfoCardItem from "../ui/info-card-item";
+import InfoCardItemLoading from "@/components/ui/info-card-item-loading";
 
 const NewsCard = () => {
   const { news, isNewsLoading } = useNews();
@@ -29,7 +29,7 @@ const NewsCard = () => {
               .fill(0)
               .map((_, index) => (
                 <React.Fragment key={index}>
-                  <CardItemLoading />
+                  <InfoCardItemLoading />
                 </React.Fragment>
               ))}
           </div>
@@ -43,7 +43,7 @@ const NewsCard = () => {
                 return (
                   <React.Fragment key={index}>
                     <Link href={`/news/${news.id_pemberitahuan}`}>
-                      <NewsCardItem news={news} normalDate={normalDate} />
+                      <InfoCardItem infoCardData={news} normalDate={normalDate} />
                     </Link>
                   </React.Fragment>
                 );

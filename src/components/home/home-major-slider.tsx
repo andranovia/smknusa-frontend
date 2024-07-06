@@ -48,55 +48,53 @@ const HomeMajorSlider = ({ majorData, animatedX }: HomeMajorSliderProps) => {
   }
 
   return (
-    <>
-      <motion.div
-        ref={containerRef}
-        style={{
-          x: animatedX,
-        }}
-        drag="x"
-        onDragStart={() => {
-          containerRef.current?.setAttribute("data-dragging", "true");
-        }}
-        onDragEnd={handleDragSnap}
-        dragConstraints={{
-          left: -(fallbackWidth * (majorData.length - 1)),
-          right: fallbackWidth,
-        }}
-        className=" flex  gap-8  relative "
-      >
-        {majorData.map((data, index) => {
-          return (
-            <React.Fragment key={index}>
-              <motion.div
-                layout
-                transition={{
-                  ease: "easeInOut",
-                  duration: 0.4,
-                }}
-                animate={controls}
-                className="flex justify-end items-center flex-col relative bg-black rounded-[10px] w-[13rem] h-[18rem]  lg:w-[18.75rem] lg:h-[25rem]"
-              >
-                <Image
-                  src={data.majorImg}
-                  alt="rpl-major"
-                  width={300}
-                  height={400}
-                  className="w-full h-full opacity-70"
-                  draggable={false}
-                />
-                <div className="absolute text-center pb-4 text-white">
-                  <h2 className="font-[600] text-[18px]">{data.major}</h2>
-                  <p className="font-[500] text-[14px] hidden lg:block">
-                    {data.majorDesc}
-                  </p>
-                </div>
-              </motion.div>
-            </React.Fragment>
-          );
-        })}
-      </motion.div>
-    </>
+    <motion.div
+      ref={containerRef}
+      style={{
+        x: animatedX,
+      }}
+      drag="x"
+      onDragStart={() => {
+        containerRef.current?.setAttribute("data-dragging", "true");
+      }}
+      onDragEnd={handleDragSnap}
+      dragConstraints={{
+        left: -(fallbackWidth * (majorData.length - 1)),
+        right: fallbackWidth,
+      }}
+      className=" flex  gap-8  relative "
+    >
+      {majorData.map((data, index) => {
+        return (
+          <React.Fragment key={index}>
+            <motion.div
+              layout
+              transition={{
+                ease: "easeInOut",
+                duration: 0.4,
+              }}
+              animate={controls}
+              className="flex justify-end items-center flex-col relative bg-black rounded-[10px] w-[13rem] h-[18rem]  lg:w-[18.75rem] lg:h-[25rem]"
+            >
+              <Image
+                src={data.majorImg}
+                alt="rpl-major"
+                width={300}
+                height={400}
+                className="w-full h-full opacity-70"
+                draggable={false}
+              />
+              <div className="absolute text-center pb-4 text-white">
+                <h2 className="font-[600] text-[18px]">{data.major}</h2>
+                <p className="font-[500] text-[14px] hidden lg:block">
+                  {data.majorDesc}
+                </p>
+              </div>
+            </motion.div>
+          </React.Fragment>
+        );
+      })}
+    </motion.div>
   );
 };
 

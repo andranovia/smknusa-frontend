@@ -18,7 +18,6 @@ export async function getArticleCategories() {
     const data = response.data.data;
     return data;
 
-    return null;
   } catch (error) {
     console.log(error, "Error fetching article categories");
     return null;

@@ -1,6 +1,6 @@
 import Image from "next/image";
-import React, { Dispatch, SetStateAction, useState } from "react";
-import PaginationTable from "../../feature/pagination-table";
+import React, { useState } from "react";
+import PaginationTable from "../../ui/pagination-table";
 import { Student } from "@/services/api/useQueries/useResidents";
 
 type StudentsTableProps = {
