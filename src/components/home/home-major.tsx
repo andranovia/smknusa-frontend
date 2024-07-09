@@ -4,6 +4,7 @@ import Image from "next/image";
 import React, { useCallback, useMemo, useState } from "react";
 import HomeMajorSlider from "./home-major-slider";
 import { motion, useAnimation, useMotionValue, useSpring } from "framer-motion";
+import { Heading, Paragraph } from "../ui/typography";
 
 const Informatika = Symbol("Informatika");
 const Agribisnis = Symbol("Agribisnis");
@@ -92,15 +93,15 @@ const HomeMajor = () => {
   return (
     <div className="lg:w-full lg:h-full bg-white rounded-[10px]">
       <div className="flex flex-col w-full items-center justify-center gap-8 bg-primary  rounded-md text-white pt-8 lg:pt-16 pb-16 lg:pb-48">
-        <h1 className="font-[700] lg:text-[36px] text-[24px] w-4/5 lg:w-fit ">
+        <Heading type="h1" className="lg:text-[36px] text-[24px] w-4/5 lg:w-fit ">
           Menuju SMK Bisa,
           <br className="block lg:hidden" /> SMK Hebat
-        </h1>
+        </Heading>
 
-        <p className="font-[500] lg:text-[18px] lg:w-fit w-4/5 ">
+        <Paragraph className=" lg:text-[18px] lg:w-fit w-4/5 ">
           SMK Negeri 1 Purwosari memiliki beberapa program keahlian yang dibagi
           menjadi 10 macam jurusan.
-        </p>
+        </Paragraph>
 
         <hr className="bg-white w-4/5  lg:w-[95%] lg:mt-10" />
       </div>
@@ -112,7 +113,7 @@ const HomeMajor = () => {
               {majorLinkData.map((data, index) => {
                 return (
                   <React.Fragment key={index}>
-                    <h1
+                    <span
                       key={index}
                       onClick={() => handleSlideChange(data.slide)}
                       className={`font-[600] relative z-30 text-xs cursor-pointer transition-colors lg:text-[16px] ${
@@ -122,7 +123,7 @@ const HomeMajor = () => {
                       }`}
                     >
                       {data.text}
-                    </h1>
+                    </span>
                   </React.Fragment>
                 );
               })}

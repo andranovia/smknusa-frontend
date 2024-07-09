@@ -1,3 +1,4 @@
+import { Heading } from "@/components/ui/typography";
 import Image from "next/image";
 import React from "react";
 
@@ -14,12 +15,12 @@ const FacilityHero = () => {
             className="object-cover w-full h-full lg:rounded-lg"
           />
           <div className="absolute inset-0 flex flex-col px-10 lg:items-center justify-center text-white lg:mt-[11em]">
-            <h1 className="lg:text-4xl text-2xl mb-4 font-[700] lg:text-[46px]">
+            <Heading type="h1" className="lg:text-4xl text-2xl mb-6 lg:text-[46px]">
               Fasilitas Sekolah
-            </h1>
-            <p className="text-xs  lg:text-center lg:font-[500] lg:text-[18px]">
+            </Heading>
+            <Heading type="h5" className="text-xs  lg:text-center lg:font-[500] lg:text-[18px]">
               Daftar fasilitas yang ada di SMK Negeri 1 Purwosari
-            </p>
+            </Heading>
           </div>
         </div>
       </div>

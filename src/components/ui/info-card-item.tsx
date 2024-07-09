@@ -4,6 +4,7 @@ import { News } from "@/services/api/useQueries/useNews";
 import { backendUrl } from "@/utils/backendUrl";
 import Image from "next/image";
 import React from "react";
+import { Heading } from "./typography";
 
 type InfoCardItemProps = {
   infoCardData: Article | News | Event;
@@ -29,14 +30,14 @@ const InfoCardItem = ({ infoCardData, normalDate }: InfoCardItemProps) => {
           ) : null}
 
           <div className={`bg-[#CDFFAF] px-2 py-1 rounded-[10px]`}>
-            <p className="font-[500] text-[10px] line-clamp-1 text-gray">
+            <Heading type="h5" className="font-[500] text-[10px] line-clamp-1 text-gray">
               {infoCardData.category.nama}
-            </p>
+            </Heading>
           </div>
         </div>
-        <div className="lg:text-md text-xs font-[500] lg:min-h-16  lg:text-[18px] mb-2 lg:w-full w-[8.5rem]">
-          <h2> {infoCardData.nama}</h2>
-        </div>
+        
+          <Heading type="h5" className="lg:text-md text-xs font-[500] lg:min-h-16  lg:text-[18px] mb-2 lg:w-full w-[8.5rem] line-clamp-3"> {infoCardData.nama}</Heading>
+     
         <div className="text-sm gap-2 text-gray flex flex-col lg:flex-row lg:justify-between lg:items-center w-full">
           <div className="flex gap-2 items-center">
             <Image

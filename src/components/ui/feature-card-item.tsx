@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { Facility } from "../profile/facility/facility-card";
+import { Heading } from "./typography";
 
 const FeatureCardItem = ({
   featureCardData,
@@ -17,21 +18,31 @@ const FeatureCardItem = ({
         height={800}
       />
       <div className=" px-3 lg:p-4 flex flex-col items-start gap-4 w-full my-4 lg:my-0 ">
-        <div className="grid grid-cols-2 items-center gap-2 top-0 left-0 lg:absolute lg:p-2 z-20">
-          <div
-            className={`bg-[#007AFF] px-2 py-1 rounded-[10px]`}
-          >
-            <p className="font-[600] text-[12px] text-white ">
+        <div className="flex items-center gap-2 top-0 left-0 lg:absolute lg:p-2 z-20">
+          <div className={`bg-[#007AFF] px-2 py-1 rounded-[10px]`}>
+            <Heading
+              type="h5"
+              className="font-[600] text-[12px] text-white line-clamp-1 lg:line-clamp-none"
+            >
               {featureCardData.category.nama}
-            </p>
+            </Heading>
           </div>
         </div>
-        <div className="lg:text-md text-xs font-[500]  lg:text-[18px] mb-2 lg:w-full w-[8.5rem]">
-          <h2> {featureCardData.title}</h2>
-        </div>
-        <div className="lg:text-md text-xs font-[500]  lg:text-[18px] mb-2 lg:w-full w-[8.5rem] text-gray">
-          <h2> {featureCardData.description}</h2>
-        </div>
+
+        <Heading
+          type="h2"
+          className="lg:text-md text-xs font-[500]  lg:text-[18px] mb-2 lg:w-full w-[8.5rem]"
+        >
+          {featureCardData.title}
+        </Heading>
+
+        <Heading
+          type="h4"
+          className="lg:text-md text-xs font-[500]  lg:text-[18px] mb-2 lg:w-full w-[8.5rem] text-gray"
+        >
+          {" "}
+          {featureCardData.description}
+        </Heading>
       </div>
     </div>
   );

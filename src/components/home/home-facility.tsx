@@ -6,6 +6,7 @@ import { useAnimation, motion } from "framer-motion";
 
 import HomeFacilityCardStack from "./home-facility-card-stack";
 import { useMediaQuery } from "@uidotdev/usehooks";
+import { Heading, Paragraph } from "../ui/typography";
 
 const cardData = [
   [
@@ -93,16 +94,16 @@ const HomeFacility = () => {
   return (
     <section className="w-full h-fit bg-white rounded-[10px] lg:overflow-hidden">
       <div className="flex flex-col items-center justify-center bg-primary gap-8 rounded-md text-white pt-10 pb-48">
-        <h1 className="font-[700] lg:text-[36px] text-[24px] w-4/5 lg:w-fit">
+        <Heading type="h1" className=" lg:text-[36px] text-[24px] w-4/5 lg:w-fit">
           Kenapa Harus SMK Negeri 1 Purwosari
-        </h1>
+        </Heading>
 
-        <p className="font-[500] lg:text-[18px]  lg:w-2/3 lg:text-center w-4/5">
+        <Paragraph className=" lg:text-[18px]  lg:w-2/3 lg:text-center w-4/5">
           Di SMK Negeri 1 Purwosari, kami akan memberikan pengalaman terbaik
           dalam kegiatan belajar mengajar yang menyongsong kurikulum merdeka
           belajar. Dengan dilengkapi fasilitas yang berqualitas, mampu
           menyongsong kebutuhan siswa untuk belajar
-        </p>
+        </Paragraph>
 
         <hr className="bg-white lg:w-[95%]  w-4/5 lg:mt-20" />
 

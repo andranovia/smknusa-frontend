@@ -1,3 +1,4 @@
+import { Heading } from "@/components/ui/typography";
 import React from "react";
 
 const TeachersForm = () => {
@@ -5,9 +6,9 @@ const TeachersForm = () => {
     <div className="relative z-10 w-full">
       <div className="flex justify-center items-center p-2 bg-gray-base lg:bg-transparent">
         <div className=" bg-white w-full px-6 lg:px-12 py-4 lg:py-10 lg:w-[84%] rounded-lg border-white lg:shadow-lg">
-          <h2 className="block font-medium lg:text-[18px] mb-5 text-blue-base mt-1">
+          <Heading type="h5" className="block mb-5 text-blue-base mt-1">
             Form Pencarian PTK
-          </h2>
+          </Heading>
           <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-12 gap-4 mb-3">
             <input
               type="text"
