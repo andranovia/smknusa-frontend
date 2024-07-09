@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import { Heading, Paragraph } from "@/components/ui/typography";
 
 const CourseWork = () => {
   return (
@@ -7,10 +8,10 @@ const CourseWork = () => {
       <div className="relative  bg-white flex flex-col items-center  pt-10 pb-20">
         <div className="flex flex-col  gap-4 w-[80%]  lg:w-1/2">
             <div className="flex flex-col gap-4 items-center">
-          <h1 className="font-[700] lg:text-[46px] ">Program Kerja Sekolah</h1>
-          <p className="font-[500] text-[18px] text-[#696969]">
+          <Heading type="h1">Program Kerja Sekolah</Heading>
+          <Heading type="h5" className=" text-gray">
             Mengenai program kerja sekolah yang resmi SMK Negeri 1 Purwosari
-          </p>
+          </Heading>
           </div>
           <hr className="border-gray-300" />
 
@@ -27,10 +28,10 @@ const CourseWork = () => {
           </div>
 
           <div className="mt-10 ">
-            <h1 className="font-[700] text-[18px]">Sasaran Mutu</h1>
-            <p className="font-[400] text-[16px]  ">
+            <Heading type="h4" className="font-[700] ">Sasaran Mutu</Heading>
+            <Paragraph className="font-[400] text-[16px]  ">
               Sasaran mutu Top Manajemen (Sekolah) periode 17 Juli 2020 sampai dengan 16 Juli 2021 adalah:
-            </p>
+            </Paragraph>
           </div>    
 
           <div>
@@ -44,17 +45,12 @@ const CourseWork = () => {
           </div>
 
           <div className="mt-10">
-            <h1 className="font-[700] text-[18px]">
+            <Heading type="h4" className="font-[700] ">
               STRATEGI PENCAPAIAN SASARAN MUTU
-            </h1>
-            <p className="font-[400] text-[16px] ">
+            </Heading>
+            <Paragraph className="font-[400] text-[16px] ">
             Untuk mencapai sasaran mutu yang telah dicanangkan, diterapkan beberapa strategi pencapaian melalui pemberdayaan sumber daya institusi (5M) sebagai berikut:
-            </p>
-          </div>
-
-          <div>
-            {/* <h1 className="font-[700] text-[18px]">STRATEGI PENCAPAIAN SASARAN MUTU</h1>
-                    <p className="font-[400] text-[16px]">Untuk mencapai sasaran mutu yang telah dicanangkan, diterapkan beberapa strategi pencapaian melalui pemberdayaan sumber daya institusi (5M) sebagai berikut:</p> */}
+            </Paragraph>
           </div>
 
           <div>

@@ -1,3 +1,4 @@
+import { Heading, Paragraph } from "@/components/ui/typography";
 import Image from "next/image";
 import React from "react";
 
@@ -6,12 +7,8 @@ const ProfileHistory = () => {
     <div className="w-full lg:pt-24 px-3 rounded-[10px] text-blue-base">
       <div className="relative  bg-white flex flex-col items-center  pt-10 pb-20">
         <div className="flex flex-col lg:items-center gap-4 w-[80%]  lg:w-2/3 lg:text-center">
-          <h1 className="font-[700] lg:text-[46px] text-[24px] ">
-            Sambutan Kepala Sekolah
-          </h1>
-          <p className="font-[500] text-[18px] text-gray">
-            Sambutan resmi dari kepala sekolah SMK Negeri 1 Purwosari
-          </p>
+          <Heading type="h1" className="">Sambutan Kepala Sekolah</Heading>
+          <Heading type="h5" className="text-gray"> Sambutan resmi dari kepala sekolah SMK Negeri 1 Purwosari</Heading>
           <hr className="w-full border mt-8" />
         </div>
         <div className="flex flex-col items-center gap-10 lg:gap-20  w-[80%]">
@@ -22,7 +19,11 @@ const ProfileHistory = () => {
             width={800}
             height={800}
           />
-          <p className="flex flex-col items-start text-justify gap-10 font-[500] text-[18px] text-blue-base">
+          <Paragraph
+            className={
+              "   flex flex-col items-start text-justify gap-10 text-blue-base"
+            }
+          >
             <span>
               Assalamualaikum warahmatullahi wabarakatuh. Dengan mengucapkan
               segala puji kepada Tuhan Yang Maha Esa, disertai rasa syukur atas
@@ -66,7 +67,7 @@ const ProfileHistory = () => {
               dalam mencerdaskan kehidupan anak bangsa Indonesia menuju Generasi
               Emas. Amin. Wassalamu’alaikum warahmatullahi wabarakatuh.
             </span>
-          </p>
+          </Paragraph>
         </div>
       </div>
     </div>

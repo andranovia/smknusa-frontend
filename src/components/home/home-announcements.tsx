@@ -11,6 +11,7 @@ import {
 import { News, useNews } from "@/services/api/useQueries/useNews";
 import { Article, useArticles } from "@/services/api/useQueries/useArticles";
 import { useEvents } from "@/services/api/useQueries/useEvents";
+import { Heading, Paragraph } from "../ui/typography";
 
 const announcementsLinkData = [
   {
@@ -96,15 +97,15 @@ const HomeAnnouncement = () => {
       <div className="lg:sticky -top-1/3 w-full  flex justify-center items-center overflow-hidden ">
         <div className="w-full h-full bg-gray-base lg:pb-20 lg:bg-white rounded-[10px] ">
           <div className="flex flex-col items-center lg:text-center justify-center bg-primary  rounded-md text-white pt-10 pb-48">
-            <h1 className="font-[700] lg:text-[36px]  text-[24px] w-4/5 lg:w-full">
+            <Heading type="h1" className=" lg:text-[36px]  text-[24px] w-4/5 lg:w-full">
               Papan Pengumuman Informasi <br className="hidden lg:block" />
               SMK Negeri 1 Purwosari
-            </h1>
+            </Heading>
 
-            <p className="font-[500] lg:text-[18px] mt-[12px] w-4/5 lg:w-full">
+            <Paragraph className=" lg:text-[18px] mt-[12px] w-4/5 lg:w-full">
               Papan Pengumuman ini berisi segala informasi mengenai pembaruan
               agenda, berita, artikel atau yang lainnya
-            </p>
+            </Paragraph>
 
             <hr className="bg-white w-[95%] mt-[58px]" />
 
@@ -112,7 +113,7 @@ const HomeAnnouncement = () => {
               <div className="grid grid-cols-2 items-center lg:flex lg:justify-start lg:gap-x-10  px-4 w-full gap-x-4 gap-y-10 ">
                 {announcementsLinkData.map((link, index) => (
                   <React.Fragment key={index}>
-                    <h1
+                    <span
                       onClick={() =>
                         handleChangeAnnouncements(link.announcementsTitle)
                       }
@@ -123,7 +124,7 @@ const HomeAnnouncement = () => {
                       }`}
                     >
                       {link.announcementsTitle}
-                    </h1>
+                    </span>
                   </React.Fragment>
                 ))}
               </div>

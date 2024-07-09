@@ -2,6 +2,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import PaginationTable from "../../ui/pagination-table";
 import { Teacher } from "@/services/api/useQueries/useResidents";
+import { Heading } from "@/components/ui/typography";
 
 type TeachersTableProps = {
   teachersData?: Teacher[] | null;
@@ -23,12 +24,12 @@ const TeachersTable = ({ teachersData, handleChangeTable }: TeachersTableProps) 
     <div className="relative flex flex-col  overflow-x-auto  lg:rounded-lg border w-full lg:w-[84%]">
       <div className="flex  items-center justify-between mx-4 lg:mx-12 gap-4">
         <div className="flex  items-center justify-between lg:justify-start  gap-4">
-          <h1 className="text-sm font-bold text-blue-base w-1/2 lg:w-fit  my-6">
+          <Heading type="h5" className="text-sm font-bold text-blue-base w-1/2 lg:w-fit  my-6">
             Pendidik Tenaga Kependidikan
-          </h1>
-          <p className="text-xs bg-amber-100 bg-opacity-70 border-yellow px-3 py-0.5 border rounded-full text-yellow-500">
+          </Heading>
+          <Heading type="h5" className="text-xs bg-amber-100 bg-opacity-70 border-yellow px-3 py-0.5 border rounded-full text-yellow-500">
             {teachersData?.length + " " + "orang"}
-          </p>
+          </Heading>
         </div>
         <button onClick={() => handleChangeTable()}>
           <Image

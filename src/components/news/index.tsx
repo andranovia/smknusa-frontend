@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import { Heading } from "../ui/typography";
 
 const NewsHero = () => {
   return (
@@ -13,13 +14,13 @@ const NewsHero = () => {
           className="object-cover w-full h-full lg:rounded-lg"
         />
         <div className="absolute inset-0 flex flex-col px-10 lg:items-center justify-center text-white lg:mt-[11em]">
-          <h1 className="lg:text-4xl text-2xl mb-4 font-[700] lg:text-[46px]">
+          <Heading type="h1" className="text-2xl mb-6 lg:text-[46px]">
             Berita-Berita SMK
-          </h1>
-          <p className="text-xs  lg:text-center font-[600] lg:text-[18px]">
+          </Heading>
+          <Heading type="h5" className="text-xs  lg:text-center font-[600] lg:text-[18px]">
             Update informasi terbaru seputar kegiatan-kegiatan yang berlangsung
             pada SMK Negeri 1 Purwosari
-          </p>
+          </Heading>
         </div>
       </div>
     </div>

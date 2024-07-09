@@ -1,18 +1,19 @@
+import { Heading, Paragraph } from "@/components/ui/typography";
 import Image from "next/image";
 import React from "react";
 
 const ProfileHistory = () => {
   return (
-    <div className="w-full lg:pt-24 px-3 rounded-[10px] text-blue-base">
+    <div className="w-full pt-20 lg:pt-24 px-3 rounded-[10px] text-blue-base">
       <div className="relative  bg-white flex flex-col items-center  pt-10 pb-20">
         <div className="flex flex-col lg:items-center gap-4 w-[80%] lg:w-2/3 lg:text-center">
-          <h1 className="font-[700] lg:text-[46px] text-[24px] ">
+          <Heading type="h1">
             Sejarah Berdirinya Sekolah
-          </h1>
-          <p className="font-[500] text-[18px] text-gray">
+          </Heading>
+          <Heading type="h5" className=" text-gray">
             Sedikit pengetahuan mengenai bagaimana sejarah berdirinya SMK Negeri
             1 Purwosari
-          </p>
+          </Heading>
           <hr className="w-full border mt-8" />
         </div>
         <div className="flex flex-col items-center gap-8 w-[80%]">
@@ -23,7 +24,7 @@ const ProfileHistory = () => {
             width={800}
             height={800}
           />
-          <p className="flex flex-col items-start gap-10 font-[500] text-[18px] text-blue-base">
+          <Paragraph className="flex flex-col items-start gap-10 text-blue-base">
             <span>
               SMK Negeri 1 Purwosari, merupakan sebuah institusi pendidikan yang
               berdiri pada tahun 2000, telah menjadi salah satu landasan
@@ -63,7 +64,7 @@ const ProfileHistory = () => {
               seperti komputer dan alat-alat lainnya untuk mendukung
               pembelajaran siswa mereka.
             </span>
-          </p>
+          </Paragraph>
         </div>
       </div>
     </div>
