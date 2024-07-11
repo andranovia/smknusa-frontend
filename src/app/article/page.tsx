@@ -1,15 +1,17 @@
-import ArticleHero from "@/components/article";
 import ArticleCard from "@/components/article/article-card";
 import ArticleForm from "@/components/article/article-form";
+import InfoLayout from "@/layouts/info-layout";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center">
-      <ArticleHero />
+    <InfoLayout
+      title="Artikel-Artikel SMK"
+      subtitle="Update artikel terbaru karya siswa-siswi SMK Negeri 1 Purwosari"
+    >
       <div className="container  bg-white max-w-full h-full lg:rounded-lg">
         <ArticleForm />
         <ArticleCard />
       </div>
-    </main>
+    </InfoLayout>
   );
 }

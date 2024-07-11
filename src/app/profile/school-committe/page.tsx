@@ -2,7 +2,7 @@ import { Heading } from "@/components/ui/typography";
 import React from "react";
 import Iframe from "react-iframe";
 
-const SchoolCommitte = () => {
+const ProfileSchoolCommitte = () => {
   return (
     <div className="w-full pt-20 lg:pt-24 px-3 rounded-[10px] text-blue-base">
       <div className="relative  bg-white flex flex-col items-center  pt-10 pb-20">
@@ -26,4 +26,4 @@ const SchoolCommitte = () => {
   );
 };
 
-export default SchoolCommitte;
+export default ProfileSchoolCommitte;
