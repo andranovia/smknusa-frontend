@@ -8,6 +8,13 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        'sm': '425px',
+        'md': '576px',
+        'lg': '768px',
+        'xl': '1024px',
+        '2xl': '1440px',
+      },
       backgroundColor: {
         'gray-base': '#F2F2F2',
         'gray-medium': '#E2E8F0',
@@ -30,6 +37,13 @@ const config: Config = {
       cursor: {
         next: 'url(/assets/icon/round-arrow-right.svg), next',
       },
+      maxWidth: {
+        'sm-content': '80%',
+        'md-content': '485px',
+        'lg-content': '648px',
+        'xl-content': '922px',
+        'max-content': '1368px',
+      }
     },
   },
   plugins: [],

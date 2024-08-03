@@ -16,13 +16,13 @@ export const NavigationDropdownMenuItem = ({
     active !== null && (
       <>
         {active === item && (
-          <div className="lg:block flex  items-center lg:items-start lg:justify-start justify-center">
+          <div className="xl:block flex  items-center xl:items-start xl:justify-start justify-center">
             <motion.div
               animate={{ y: 0 }}
               initial={{ y: 80 }}
               transition={defaultTransition}
             >
-              <motion.div className="p-4 z-20 flex flex-col  gap-4 items-start lg:justify-start justify-center">
+              <motion.div className="p-4 z-20 flex flex-col  gap-4 items-start xl:justify-start justify-center">
                 {children}
               </motion.div>
             </motion.div>

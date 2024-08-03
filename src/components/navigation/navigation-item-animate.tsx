@@ -10,7 +10,7 @@ type NavigationItemAnimateProps = {
 
 const NavigationItemAnimate = ({ itemData }: NavigationItemAnimateProps) => {
   const hoverControls = useAnimation();
-  const isMobile = useMediaQuery("only screen and (max-width: 768px)");
+  const isMobile = useMediaQuery("only screen and (max-width: 1024px)");
 
   const handleHover = () => {
     hoverControls.start({
@@ -51,17 +51,17 @@ const NavigationItemAnimate = ({ itemData }: NavigationItemAnimateProps) => {
         }}
         onMouseEnter={() => handleHover()}
         onMouseLeave={() => handleHoverLeave()}
-        className="flex lg:flex-row   flex-col lg:items-start items-center lg:text-start text-center  gap-4 lg:pr-14 w-full rounded-[10px] lg:pl-4 py-2  text-blue-base"
+        className="flex xl:flex-row   flex-col xl:items-start items-center xl:text-start text-center  gap-4 xl:pr-14 w-full rounded-[10px] xl:pl-4 py-2  text-blue-base"
       >
         <Image
           src={itemData.linkDropdownData.icon}
           alt={itemData.linkDropdownData.icon}
           width={40}
           height={40}
-          className="w-6 h-6 lg:w-5 lg:h-5 lg:mt-[2px]"
+          className="w-6 h-6 xl:w-5 xl:h-5 xl:mt-[2px]"
         />
-        <div className="lg:flex flex-col items-start w-full">
-          <h2 className=" font-[600] text-xs lg:text-[16px] line-clamp-1">
+        <div className="xl:flex flex-col items-start w-full">
+          <h2 className=" font-[600] text-xs xl:text-[16px] line-clamp-1">
             {isMobile
               ? getLinkMobile(itemData.linkDropdownData.text)
               : itemData.linkDropdownData.text}
@@ -73,7 +73,7 @@ const NavigationItemAnimate = ({ itemData }: NavigationItemAnimateProps) => {
               opacity: 0,
             }}
             animate={hoverControls}
-            className="absolute text-xs hidden lg:block text-nowrap"
+            className="absolute text-xs hidden xl:block text-nowrap"
           >
             {itemData.linkDropdownData.description}
           </motion.p>

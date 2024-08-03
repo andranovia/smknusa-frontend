@@ -4,9 +4,9 @@ import Iframe from "react-iframe";
 
 const ProfileSchoolCommitte = () => {
   return (
-    <div className="w-full pt-20 lg:pt-24 px-3 rounded-[10px] text-blue-base">
+    <div className="w-full pt-20 xl:pt-24 px-3 rounded-[10px] text-blue-base">
       <div className="relative  bg-white flex flex-col items-center  pt-10 pb-20">
-        <div className="flex flex-col  gap-4 w-[80%]  lg:w-1/2 overflow-hidden">
+        <div className="flex flex-col  gap-4 w-[80%]  xl:w-1/2 overflow-hidden">
           <Heading type="h3" className="font-[700] text-[24px] ">
             Komite Sekolah
           </Heading>

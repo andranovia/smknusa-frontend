@@ -21,10 +21,10 @@ const TeachersTable = ({ teachersData, handleChangeTable }: TeachersTableProps) 
   };
 
   return (
-    <div className="relative flex flex-col  overflow-x-auto  lg:rounded-lg border w-full lg:w-[84%]">
-      <div className="flex  items-center justify-between mx-4 lg:mx-12 gap-4">
-        <div className="flex  items-center justify-between lg:justify-start  gap-4">
-          <Heading type="h5" className="text-sm font-bold text-blue-base w-1/2 lg:w-fit  my-6">
+    <div className="relative flex flex-col  overflow-x-auto  xl:rounded-lg border w-full xl:w-[84%]">
+      <div className="flex  items-center justify-between mx-4 xl:mx-12 gap-4">
+        <div className="flex  items-center justify-between xl:justify-start  gap-4">
+          <Heading type="h5" className="text-sm font-bold text-blue-base w-1/2 xl:w-fit  my-6">
             Pendidik Tenaga Kependidikan
           </Heading>
           <Heading type="h5" className="text-xs bg-amber-100 bg-opacity-70 border-yellow px-3 py-0.5 border rounded-full text-yellow-500">
@@ -44,7 +44,7 @@ const TeachersTable = ({ teachersData, handleChangeTable }: TeachersTableProps) 
 
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50  dark:text-gray-400">
-          <tr className="border w-full lg:table-row hidden ">
+          <tr className="border w-full xl:table-row hidden ">
             <th scope="col" className="p-4">
               <div className="flex items-center">
                 <input
@@ -76,7 +76,7 @@ const TeachersTable = ({ teachersData, handleChangeTable }: TeachersTableProps) 
           {currentPtkData?.map((teacher, index) => (
             <React.Fragment key={index}>
               <tr className="bg-white border flex flex-col md:table-row">
-                <td className="w-4  px-6 py-4 lg:p-4 flex items-center md:table-cell">
+                <td className="w-4  px-6 py-4 xl:p-4 flex items-center md:table-cell">
                   <div className="flex items-center gap-4">
                     <input
                       id={`checkbox-table-${index}`}
@@ -85,14 +85,14 @@ const TeachersTable = ({ teachersData, handleChangeTable }: TeachersTableProps) 
                     />
                     <label
                       htmlFor={`checkbox-table-${index}`}
-                      className="block lg:hidden "
+                      className="block xl:hidden "
                     >
                       Checkbox
                     </label>
                   </div>
                 </td>
-                <td className="px-6 py-4 flex gap-2 items-center md:table-cell lg:justify-start  justify-between ">
-                  <span className="block lg:hidden text-sm font-bold text-blue-base">
+                <td className="px-6 py-4 flex gap-2 items-center md:table-cell xl:justify-start  justify-between ">
+                  <span className="block xl:hidden text-sm font-bold text-blue-base">
                     Nama
                   </span>
 
@@ -108,13 +108,13 @@ const TeachersTable = ({ teachersData, handleChangeTable }: TeachersTableProps) 
                   </div>
                 </td>
                 <td className="px-6 py-4 md:table-cell flex gap-2 justify-between items-center">
-                  <span className="block lg:hidden text-sm font-bold text-blue-base">
+                  <span className="block xl:hidden text-sm font-bold text-blue-base">
                     NIP
                   </span>
                   {teacher.nip || "-"}
                 </td>
                 <td className="px-6 py-4 md:table-cell flex gap-2 justify-between items-center">
-                  <span className="block lg:hidden text-sm font-bold text-blue-base">
+                  <span className="block xl:hidden text-sm font-bold text-blue-base">
                     Jenis Kelamin
                   </span>
                   {teacher.jenis_kelamin === "" ? "-" : teacher.jenis_kelamin === "L" ? "Laki-laki" : "Perempuan"}
@@ -123,12 +123,12 @@ const TeachersTable = ({ teachersData, handleChangeTable }: TeachersTableProps) 
                   scope="row"
                   className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap w-full flex justify-between  md:w-1/3 md:table-cell "
                 >
-                  <span className="block lg:hidden text-sm font-bold text-blue-base">
+                  <span className="block xl:hidden text-sm font-bold text-blue-base">
                     Mapel
                   </span>
 
-                  <span className="lg:w-full text-center text-xs flex lg:justify-center items-center">
-                    <p className=" lg:w-1/3 bg-amber-100 bg-opacity-70 border-yellow px-2 py-1 border rounded-full text-yellow-500">
+                  <span className="xl:w-full text-center text-xs flex xl:justify-center items-center">
+                    <p className=" xl:w-1/3 bg-amber-100 bg-opacity-70 border-yellow px-2 py-1 border rounded-full text-yellow-500">
                       Produktif RPL
                     </p>
                   </span>

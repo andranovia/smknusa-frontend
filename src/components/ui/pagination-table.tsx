@@ -14,7 +14,7 @@ const PaginationTable: React.FC<PaginationTableProps> = ({
   onPageChange,
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const isMobile = useMediaQuery("only screen and (max-width : 768px)");
+  const isMobile = useMediaQuery("only screen and (max-width : 1024px)");
   const totalPages = totalPosts ? Math.ceil(totalPosts / postsPerPage) : 0;
   const getDisplayedPages = () => {
     if (totalPages <= 7) {
@@ -57,7 +57,7 @@ const PaginationTable: React.FC<PaginationTableProps> = ({
           width={15}
           height={15}
         />
-        <p className="text-sm font-semibold text-blue-base hidden lg:block">Previous</p>
+        <p className="text-sm font-semibold text-blue-base hidden xl:block">Previous</p>
       </button>
 
       <div className="flex justify-center gap-2 items-center">
@@ -79,7 +79,7 @@ const PaginationTable: React.FC<PaginationTableProps> = ({
         disabled={currentPage === totalPages}
         className="p-2 border-2 border-gray-200 rounded-lg flex justify-center gap-2 items-center"
       >
-        <p className="text-sm font-semibold text-blue-base hidden lg:block">Next</p>
+        <p className="text-sm font-semibold text-blue-base hidden xl:block">Next</p>
         <Image
           alt="arrow-right"
           src={"/assets/icon/arrow-line-right.svg"}

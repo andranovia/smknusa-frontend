@@ -9,7 +9,7 @@ const ProfileCourseWork = () => {
       title="Program Kerja Sekolah"
       subtitle="Program Kerja Sekolah SMK Negeri 1 Purwosari"
     >
-      <div className="flex flex-col items-start lg:w-[60%] gap-4">
+      <div className="flex flex-col items-start xl:w-[60%] gap-4">
         <Image
           src={"/assets/profile/course-work/course-work.png"}
           alt="commit and consist"

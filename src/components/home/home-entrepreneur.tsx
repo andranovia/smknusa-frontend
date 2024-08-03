@@ -7,22 +7,22 @@ import { Heading, Paragraph } from "../ui/typography";
 
 const HomeEntrepreneur = () => {
   return (
-    <section className=" lg:w-full h-full lg:h-[78rem]  flex flex-col items-center justify-center bg-white rounded-[10px] ">
-      <div className="relative flex w-full h-3/4 flex-col items-center justify-center gap-8 bg-primary  rounded-md text-white pt-14 pb-32">
-        <Heading type="h1" className="  lg:text-[36px] text-[24px] lg:text-center w-4/5">
-          SMKN 1 Purwosari <br className="hidden lg:block" /> Bekerjasama Dengan
+    <section className="w-full h-full xl:h-[54rem] 2xl:h-[70rem]  flex flex-col items-center justify-center bg-white rounded-[10px] ">
+      <div className="relative flex w-full h-full flex-col items-center bg-primary  rounded-md text-white pt-10 pb-32">
+        <Heading type="h1" className="  xl:text-[36px] lg:text-[30px] text-[24px] lg:text-center w-full sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 2xl:max-w-max-content">
+          SMKN 1 Purwosari <br className="hidden xl:block" />  Bekerjasama  <br className="hidden lg:block xl:hidden" /> Dengan
           Beberapa Perusahaan
         </Heading>
 
-        <Paragraph  className="text-[18px] w-4/5 lg:text-center">
+        <Paragraph  className="xl:text-[18px] lg:text-[14px] lg:text-center w-full sm:max-w-sm-content  mt-[12px] md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 2xl:max-w-max-content xl:text-center">
           Kami telah melakukan kerja sama dengan beberapa perusahaan besar yang
           membina SMK Negeri 1 Purwosari.
         </Paragraph>
 
-        <hr className="bg-white lg:w-[95%] lg:mt-[58px] w-4/5" />
+        <hr className="bg-white mt-8 xl:mt-[52px]  w-full sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 2xl:max-w-max-content" />
         <HomeEntrepreneurSlider />
       </div>
-      <div className="relative lg:-top-[10%] -mt-32 lg:-mt-0 mb-10 lg:mb-0">
+      <div className="relative xl:-top-[12%] 2xl:-top-[12%] -mt-32 xl:-mt-0 mb-10 xl:mb-0 w-full flex justify-center">
         <ClientOnly>
           <HomeEntrepreneurVideo />
         </ClientOnly>

@@ -66,7 +66,7 @@ const majorLinkData = [
 
 const HomeMajor = () => {
   const [currentSlide, setCurrentSlide] = useState<symbol>(Informatika);
-  const xValue = -170;
+  const xValue = 0;
   const offsetX = useMotionValue(xValue);
   const majors = useMemo(() => {
     return majorData[currentSlide as keyof typeof majorData];
@@ -91,32 +91,32 @@ const HomeMajor = () => {
   );
 
   return (
-    <div className="lg:w-full lg:h-full bg-white rounded-[10px]">
-      <div className="flex flex-col w-full items-center justify-center gap-8 bg-primary  rounded-md text-white pt-8 lg:pt-16 pb-16 lg:pb-48">
-        <Heading type="h1" className="lg:text-[36px] text-[24px] w-4/5 lg:w-fit ">
+    <section className="w-full h-full bg-white rounded-[10px]">
+      <div className="flex flex-col lg:text-center w-full items-center justify-center bg-primary  rounded-md text-white pt-10 pb-16 xl:pb-48">
+        <Heading type="h1" className="xl:text-[36px]  lg:text-[30px] text-[24px] w-full sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 2xl:max-w-max-content xl:w-fit ">
           Menuju SMK Bisa,
-          <br className="block lg:hidden" /> SMK Hebat
+          <br className="block sm:hidden" /> SMK Hebat
         </Heading>
 
-        <Paragraph className=" lg:text-[18px] lg:w-fit w-4/5 ">
+        <Paragraph className=" xl:text-[18px] lg:text-[14px] xl:w-fit  mt-[12px] w-full sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 2xl:max-w-max-content">
           SMK Negeri 1 Purwosari memiliki beberapa program keahlian yang dibagi
           menjadi 10 macam jurusan.
         </Paragraph>
 
-        <hr className="bg-white w-4/5  lg:w-[95%] lg:mt-10" />
+        <hr className="bg-white mt-8 xl:mt-[52px]  w-full sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 2xl:max-w-max-content" />
       </div>
 
-      <div className="relative  lg:px-8 px-3  lg:-mt-32  ">
+      <div className="relative  xl:px-8 px-0  xl:-mt-32  ">
         <div className="flex justify-start items-end relative  bg-white overflow-hidden rounded-[10px] ">
-          <div className="relative w-[22.5rem] lg:w-full  flex flex-col lg:flex-row   justify-center gap-14  h-full  mt-8 mb-10 lg:mb-0">
-            <div className="lg:w-[40%] w-full flex top-0 -mt-28 lg:mt-0 absolute justify-center py-3 lg:rounded-[10px] items-center lg:px-0 px-6 gap-8 lg:bg-primary ">
+          <div className="relative w-full  flex flex-col xl:flex-row   justify-center gap-14  h-full  mt-8 mb-10 xl:mb-0">
+            <div className="xl:w-[40%] w-full flex top-0 -mt-28 xl:mt-0 absolute justify-center py-3 xl:rounded-[10px] items-center xl:px-0 px-6 gap-8 xl:bg-primary lg:min-w-lg max-w-lg">
               {majorLinkData.map((data, index) => {
                 return (
                   <React.Fragment key={index}>
                     <span
                       key={index}
                       onClick={() => handleSlideChange(data.slide)}
-                      className={`font-[600] relative z-30 text-xs cursor-pointer transition-colors lg:text-[16px] ${
+                      className={`font-[600] relative z-30 text-xs cursor-pointer transition-colors xl:text-[16px] ${
                         currentSlide === data.slide
                           ? "p-1 rounded-md relative text-white  w-min-content before:border-[1px] before:absolute before:bottom-0 before:right-0 before:border-yellow before:w-full before:opacity-100"
                           : "p-1 rounded-md relative  text-gray-light w-min-content before:h-0 before:absolute before:bottom-0 before:right-0 before:bg-white before:opacity-0"
@@ -128,18 +128,18 @@ const HomeMajor = () => {
                 );
               })}
             </div>
-            <div className="relative flex justify-center items-center w-full  left-20">
+            <div className="relative flex justify-center items-center w-full max-w-max-content  xl:left-20">
               <Image
                 src={"/assets/home/major/principal.png"}
                 alt=""
                 width={550}
                 height={550}
                 draggable={false}
-                className="w-[40rem] hidden lg:block h-full z-20 relative -left-[34%]"
+                className="w-[40rem] hidden xl:block h-full z-20 relative lg:left-0 xl:-left-[34%]"
               />
               <motion.div
                 animate={controls}
-                className="lg:absolute left-[34%] lg:mt-10"
+                className="xl:absolute left-[34%] xl:mt-10"
                 variants={{
                   animate: {
                     x: [0, 1000, 0],
@@ -160,7 +160,7 @@ const HomeMajor = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

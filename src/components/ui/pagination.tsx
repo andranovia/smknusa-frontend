@@ -14,7 +14,7 @@ const Pagination: React.FC<PaginationProps> = ({
   onPageChange,
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const isMobile = useMediaQuery("only screen and (max-width : 768px)");
+  const isMobile = useMediaQuery("only screen and (max-width : 1024px)");
   const totalPages = totalPosts ? Math.ceil(totalPosts / postsPerPage) : 0;
 
   const handleButtonClick = (pageNumber: number) => {
