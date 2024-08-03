@@ -27,10 +27,10 @@ const StudentsTable = ({
   };
 
   return (
-    <div className="relative flex flex-col  overflow-x-auto  lg:rounded-lg border w-full lg:w-[84%]">
-      <div className="flex  items-center justify-between mx-4 lg:mx-12 gap-4">
-        <div className="flex w-full  items-center justify-between lg:justify-start  gap-4">
-          <Heading type="h5" className="text-sm font-bold text-blue-base  lg:w-fit  my-6">
+    <div className="relative flex flex-col  overflow-x-auto  xl:rounded-lg border w-full xl:w-[84%]">
+      <div className="flex  items-center justify-between mx-4 xl:mx-12 gap-4">
+        <div className="flex w-full  items-center justify-between xl:justify-start  gap-4">
+          <Heading type="h5" className="text-sm font-bold text-blue-base  xl:w-fit  my-6">
             Peserta Didik
           </Heading>
           <Heading type="h5" className="text-xs bg-amber-100 bg-opacity-70 border-yellow px-3 py-0.5 border rounded-full text-yellow-500">
@@ -50,7 +50,7 @@ const StudentsTable = ({
 
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50  dark:text-gray-400">
-          <tr className="border w-full lg:table-row hidden ">
+          <tr className="border w-full xl:table-row hidden ">
             <th scope="col" className="p-4">
               <div className="flex items-center">
                 <input
@@ -88,7 +88,7 @@ const StudentsTable = ({
           {currentStudentsData?.map((student, index) => (
             <React.Fragment key={index}>
               <tr className="bg-white border flex flex-col md:table-row">
-                <td className="w-4  px-6 py-4 lg:p-4 flex items-center md:table-cell">
+                <td className="w-4  px-6 py-4 xl:p-4 flex items-center md:table-cell">
                   <div className="flex items-center gap-4">
                     <input
                       id={`checkbox-table-${index}`}
@@ -97,21 +97,21 @@ const StudentsTable = ({
                     />
                     <label
                       htmlFor={`checkbox-table-${index}`}
-                      className="block lg:hidden "
+                      className="block xl:hidden "
                     >
                       Checkbox
                     </label>
                   </div>
                 </td>
-                <td className="px-6 py-4 flex gap-2 items-center md:table-cell lg:justify-start  justify-between ">
-                  <span className="block lg:hidden text-sm font-bold text-blue-base">
+                <td className="px-6 py-4 flex gap-2 items-center md:table-cell xl:justify-start  justify-between ">
+                  <span className="block xl:hidden text-sm font-bold text-blue-base">
                     NISN
                   </span>
 
                   <p>{student.nisn}</p>
                 </td>
-                <td className="px-6 py-4 md:table-cell flex gap-2 justify-between items-center truncate lg:max-w-[12rem]">
-                  <span className="block lg:hidden text-sm font-bold text-blue-base">
+                <td className="px-6 py-4 md:table-cell flex gap-2 justify-between items-center truncate xl:max-w-[12rem]">
+                  <span className="block xl:hidden text-sm font-bold text-blue-base">
                     Name
                   </span>
                   <span className="truncate max-w-[10rem] ">
@@ -119,17 +119,17 @@ const StudentsTable = ({
                   </span>
                 </td>
                 <td className="px-6 py-4 md:table-cell flex gap-2 justify-between items-center">
-                  <span className="block lg:hidden text-sm font-bold text-blue-base">
+                  <span className="block xl:hidden text-sm font-bold text-blue-base">
                     Kelas
                   </span>
-                  <span className="lg:w-full text-center text-xs">
+                  <span className="xl:w-full text-center text-xs">
                     <p className=" bg-amber-100 bg-opacity-70 border-yellow p-1 border rounded-full text-yellow-500">
                       {student.kelas}
                     </p>
                   </span>
                 </td>
-                <td className="px-6 py-4 md:table-cell flex gap-2 justify-between items-center truncate lg:max-w-[10rem]">
-                  <span className="block lg:hidden text-sm font-bold text-blue-base">
+                <td className="px-6 py-4 md:table-cell flex gap-2 justify-between items-center truncate xl:max-w-[10rem]">
+                  <span className="block xl:hidden text-sm font-bold text-blue-base">
                     Alamat
                   </span>
                   <span className="truncate max-w-[10rem]">
@@ -137,13 +137,13 @@ const StudentsTable = ({
                   </span>
                 </td>
                 <td className="px-6 py-4 md:table-cell flex gap-2 justify-between items-center">
-                  <span className="block lg:hidden text-sm font-bold text-blue-base">
+                  <span className="block xl:hidden text-sm font-bold text-blue-base">
                     TTL
                   </span>
                   {student.tempat_lahir}, {student.tanggal_lahir}
                 </td>
                 <td className="px-6 py-4 md:table-cell flex gap-2 justify-between items-center">
-                  <span className="block lg:hidden text-sm font-bold text-blue-base">
+                  <span className="block xl:hidden text-sm font-bold text-blue-base">
                     Jenis Kelamin
                   </span>
                   {student.gender === "L" ? "Laki-laki" : "Perempuan"}

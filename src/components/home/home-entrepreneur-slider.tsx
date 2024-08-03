@@ -42,7 +42,7 @@ const HomeEntrepreneurSlider = () => {
               alt="entrepreneur-icon"
               width={110}
               height={110}
-              className="lg:w-32 w-20 p-2 lg:p-3 "
+              className="xl:w-32 w-20 p-2 xl:p-3 "
             />
           </React.Fragment>
         ))}

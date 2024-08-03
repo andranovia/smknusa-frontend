@@ -8,7 +8,7 @@ export default function Home() {
       title="Artikel-Artikel SMK"
       subtitle="Update artikel terbaru karya siswa-siswi SMK Negeri 1 Purwosari"
     >
-      <div className="container  bg-white max-w-full h-full lg:rounded-lg">
+      <div className="container  bg-white max-w-full h-full xl:rounded-lg">
         <ArticleForm />
         <ArticleCard />
       </div>

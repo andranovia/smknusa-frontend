@@ -32,7 +32,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`bg-gray-base ${montserrat.className}`}>
-        <nav className="bg-gray-base">
+        <nav className="bg-gray-base xl:flex justify-center ">
           <ClientOnly>
             <Navbar />
           </ClientOnly>

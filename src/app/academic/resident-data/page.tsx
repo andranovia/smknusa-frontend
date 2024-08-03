@@ -24,10 +24,10 @@ const ResidentData = () => {
   };
 
   return (
-    <div className="w-full pt-20 lg:pt-24 px-3 rounded-[10px] text-blue-base bg-white">
+    <div className="w-full pt-20 xl:pt-24 px-3 rounded-[10px] text-blue-base bg-white">
       <div className="relative   flex flex-col items-center  pt-10 ">
-        <div className="flex flex-col lg:items-center gap-4 w-[80%]  lg:w-2/3 lg:text-center">
-          <Heading type="h1" className="font-[700] lg:text-[46px] text-[24px] ">
+        <div className="flex flex-col xl:items-center gap-4 w-[80%]  xl:w-2/3 xl:text-center">
+          <Heading type="h1" className="font-[700] xl:text-[46px] text-[24px] ">
             Data Warga Sekolah
           </Heading>
           <Heading type="h5" className=" text-gray">

@@ -74,7 +74,7 @@ const HomeMajorSlider = ({ majorData, animatedX }: HomeMajorSliderProps) => {
                 duration: 0.4,
               }}
               animate={controls}
-              className="flex justify-end items-center flex-col relative bg-black rounded-[10px] w-[13rem] h-[18rem]  lg:w-[18.75rem] lg:h-[25rem]"
+              className="flex justify-end items-center flex-col relative bg-black rounded-[10px] w-[13rem] h-[18rem]   xl:w-[18.75rem] xl:h-[25rem]"
             >
               <Image
                 src={data.majorImg}
@@ -86,7 +86,7 @@ const HomeMajorSlider = ({ majorData, animatedX }: HomeMajorSliderProps) => {
               />
               <div className="absolute text-center pb-4 text-white">
                 <h2 className="font-[600] text-[18px]">{data.major}</h2>
-                <p className="font-[500] text-[14px] hidden lg:block">
+                <p className="font-[500] text-[14px] hidden xl:block">
                   {data.majorDesc}
                 </p>
               </div>

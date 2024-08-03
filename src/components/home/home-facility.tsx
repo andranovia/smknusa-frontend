@@ -60,13 +60,19 @@ const cardData = [
 ];
 
 const HomeFacility = () => {
-  const isMobile = useMediaQuery("only screen and (max-width : 768px)");
+  const isMobile = useMediaQuery("only screen and (max-width : 1024px)");
   const [currentSlide, setCurrentSlide] = useState(0);
   const facilityCardData = cardData[currentSlide];
+  const [isChangingSlide, setisChangingSlide] = useState(false)
   const controls = useAnimation();
   const handleSlideChange = (key: number) => {
+    setisChangingSlide(true)
+    setTimeout(() => {
+      setisChangingSlide(false)
+    }, 1000);
     setTimeout(() => {
       setCurrentSlide(key);
+      
     }, 500);
 
     controls.start("animate");
@@ -92,29 +98,29 @@ const HomeFacility = () => {
   ];
 
   return (
-    <section className="w-full h-fit bg-white rounded-[10px] lg:overflow-hidden">
-      <div className="flex flex-col items-center justify-center bg-primary gap-8 rounded-md text-white pt-10 pb-48">
-        <Heading type="h1" className=" lg:text-[36px] text-[24px] w-4/5 lg:w-fit">
-          Kenapa Harus SMK Negeri 1 Purwosari
+    <section className="w-full h-fit bg-white rounded-[10px] xl:overflow-hidden ">
+      <div className="flex flex-col items-center justify-center bg-primary rounded-md text-white pt-10 pb-48">
+        <Heading type="h1" className=" xl:text-[36px] lg:text-[30px] text-[24px] lg:text-center w-full sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 2xl:max-w-max-content xl:w-fit ">
+          Kenapa Harus SMK <br className="hidden sm:block md:hidden" />  Negeri 1 Purwosari
         </Heading>
 
-        <Paragraph className=" lg:text-[18px]  lg:w-2/3 lg:text-center w-4/5">
+        <Paragraph className=" xl:text-[18px] lg:text-[14px] mt-[12px]  2xl:w-2/3 lg:text-center w-full sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 2xl:max-w-max-content">
           Di SMK Negeri 1 Purwosari, kami akan memberikan pengalaman terbaik
           dalam kegiatan belajar mengajar yang menyongsong kurikulum merdeka
           belajar. Dengan dilengkapi fasilitas yang berqualitas, mampu
           menyongsong kebutuhan siswa untuk belajar
         </Paragraph>
 
-        <hr className="bg-white lg:w-[95%]  w-4/5 lg:mt-20" />
+        <hr className="bg-white mt-8 xl:mt-[52px] w-full sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 2xl:max-w-max-content" />
 
-        <div className="flex  lg:gap-0 gap-8 justify-center items-center  w-4/5 lg:w-full  lg:mt-12 lg:px-10">
-          <div className=" flex lg:justify-between w-full items-center lg:px-4 gap-8 ">
+        <div className="flexm my-12  xl:gap-0 gap-8 justify-center items-center  w-full sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 2xl:max-w-max-content ">
+          <div className="max-w-max-content flex xl:justify-between w-full items-center xl:px-4 gap-8 ">
             {facilityLinkData.map((data, index) => {
               return (
                 <React.Fragment key={index}>
                   <h1
                     onClick={() => handleSlideChange(data.majorFacilityIndex)}
-                    className={`font-[600] hidden lg:block  text-center cursor-pointer transition-colors lg:text-[16px] text-xs   ${
+                    className={`font-[600] hidden xl:block  2xl:text-center cursor-pointer transition-colors xl:text-[16px] text-xs   ${
                       cardData[currentSlide] ===
                       cardData[data.majorFacilityIndex]
                         ? `p-1 rounded-md relative   before:border-[1px] before:absolute before:right-0  before:bottom-0 text-white  before:mx-auto before:border-[#F5C451] before:w-full before:opacity-100 `
@@ -127,16 +133,16 @@ const HomeFacility = () => {
               );
             })}
 
-            <div className="flex justify-center items-center lg:ml-[25%] w-full lg:w-fit ">
+            <div className="flex justify-center items-center xl:ml-[25%] w-full xl:w-fit ">
               <div className="btn bg-yellow text-blue-base w-full text-center font-[600] py-2.5 px-5 rounded">
-                <button className="lg:text-[16px] text-xs">Selengkapnya</button>
+                <button className="xl:text-[16px] text-xs">Selengkapnya</button>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="relative px-4 lg:px-8  -top-36  -mb-20">
-        <div className="flex justify-center lg:items-end relative overflow-hidden bg-white rounded-[10px] ">
+      <div className="relative px-4 xl:px-8  -top-44   -mb-20">
+        <div className="flex justify-center xl:items-end relative overflow-hidden bg-white rounded-[10px] ">
           <motion.div
             variants={{
               initial: {
@@ -153,9 +159,9 @@ const HomeFacility = () => {
             }}
             animate={controls}
             initial={"initial"}
-            className="lg:h-[38rem] flex lg:items-end justify-center w-full lg:px-20 pt-10 lg:pt-20"
+            className="2xl:h-[38rem] xl:h-[30rem] lg:h-[24rem] flex xl:items-end max-w-max-content justify-center w-full xl:px-20 pt-10 xl:pt-20"
           >
-            <HomeFacilityCardStack items={facilityCardData} />
+            <HomeFacilityCardStack items={facilityCardData} isChangingSlide={isChangingSlide}/>
           </motion.div>
         </div>
       </div>

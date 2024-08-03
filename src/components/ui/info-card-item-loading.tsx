@@ -3,16 +3,16 @@ import React from 'react'
 
 const InfoCardItemLoading = () => {
   return (
-    <div className="bg-white rounded-lg animate-pulse lg:w-[23rem] h-full shadow-md overflow-hidden relative">
-    <div className="w-full h-[6rem] lg:h-[11rem] bg-slate-300"></div>
-    <div className=" px-3 lg:p-4 flex flex-col items-stretch   gap-2  w-full mb-4 lg:my-0 ">
-      <div className="grid grid-cols-2   items-center gap-2 top-0 left-0 lg:absolute lg:p-2 z-20">
+    <div className="bg-white rounded-lg animate-pulse xl:w-[23rem] h-full shadow-md overflow-hidden relative">
+    <div className="w-full h-[6rem] xl:h-[11rem] bg-slate-300"></div>
+    <div className=" px-3 xl:p-4 flex flex-col items-stretch   gap-2  w-full mb-4 xl:my-0 ">
+      <div className="grid grid-cols-2   items-center gap-2 top-0 left-0 xl:absolute xl:p-2 z-20">
         <div className="h-4 bg-white rounded-full w-[6rem]"></div>
       </div>
-      <div className="h-2 bg-gray-300 rounded-full w-[5rem] lg:w-[16rem]"></div>
-      <div className="h-2 bg-gray-300 rounded-full w-1/2 lg:w-[10rem] "></div>
-      <div className="h-2 bg-gray-300 rounded-full w-[6rem] lg:w-[13rem]"></div>
-      <div className="text-sm gap-2 text-gray flex mt-6 flex-col lg:flex-row lg:justify-between lg:items-center w-full">
+      <div className="h-2 bg-gray-300 rounded-full w-[5rem] xl:w-[16rem]"></div>
+      <div className="h-2 bg-gray-300 rounded-full w-1/2 xl:w-[10rem] "></div>
+      <div className="h-2 bg-gray-300 rounded-full w-[6rem] xl:w-[13rem]"></div>
+      <div className="text-sm gap-2 text-gray flex mt-6 flex-col xl:flex-row xl:justify-between xl:items-center w-full">
         <div className="flex gap-2 items-center">
           <Image
             src={"/assets/icon/user-profile.svg"}
@@ -23,7 +23,7 @@ const InfoCardItemLoading = () => {
           />
           <div className="h-2 bg-gray-400 rounded-full w-[4rem]"></div>
         </div>
-        <div className="flex lg:ml-auto font-[500] mr-4 text-[12px] text-gray text-right gap-2 items-center">
+        <div className="flex xl:ml-auto font-[500] mr-4 text-[12px] text-gray text-right gap-2 items-center">
           <Image
             src={"/assets/icon/clock.svg"}
             alt="user"

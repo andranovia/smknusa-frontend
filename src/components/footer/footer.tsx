@@ -4,17 +4,17 @@ import Image from "next/image";
 export default function Footer() {
   return (
     <>
-      <div className="flex flex-col  lg:px-8 py-8 bg-primary rounded-t-lg text-white mt-3">
-        <div className="flex lg:flex-wrap flex-col lg:flex-row flex-nowrap mt-8 mx-12  lg:gap-0 gap-10">
-          <div className="flex flex-col items-stretch md:w-1/4 ">
-            <h2 className="text-xl font-bold ">Unit Produksi Sekolah</h2>
+      <div className="flex flex-col items-center 2xl:justify-center  2xl:px-8 py-8 bg-primary rounded-t-lg text-white mt-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 2xl:flex 2xl:flex-wrap flex-col 2xl:flex-row flex-nowrap mt-8 mx-12 2xl:mx-0  2xl:gap-0 gap-10 xl:max-w-xl-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content 2xl:max-w-max-content">
+          <div className="flex flex-col items-stretch 2xl:w-1/4 ">
+            <h2 className="text-2xl font-bold ">Unit Produksi Sekolah</h2>
             <div className="mt-10">
               <p className="mb-4">Tangirelasi </p>
               <p className="">SMK Production</p>
             </div>
           </div>
-          <div className="flex flex-col items-stretch  md:w-1/4 ">
-            <h2 className="text-xl font-bold ">Aplikasi & Layanan</h2>
+          <div className="flex flex-col items-stretch  2xl:w-1/4 ">
+            <h2 className="text-2xl font-bold ">Aplikasi & Layanan</h2>
             <div className="mt-10">
               <p className="mb-4">LSP SMKN 1 Purwosari</p>
               <p className="mb-4">Virtual School</p>
@@ -23,14 +23,14 @@ export default function Footer() {
               <p className="mb-4">Kotak Saran</p>
             </div>
           </div>
-          <div className="flex flex-col items-stretch md:w-1/4 ">
-            <h2 className="text-xl font-bold">Lainnya</h2>
+          <div className="flex flex-col items-stretch 2xl:w-1/4 md:col-span-2">
+            <h2 className="text-2xl font-bold">Lainnya</h2>
             <div className="mt-10">
               <p className="">Peta Situs (XML)</p>
             </div>
           </div>
 
-          <div className="flex flex-col items-start justify-start text-blue-base rounded-md md:w-1/4">
+          <div className="flex flex-col items-start justify-start text-blue-base rounded-md 2xl:w-1/4 md:col-span-2">
             <div className="flex flex-col bg-white rounded-md w-full">
               <div className="flex items-center gap-1 rounded-md bg-yellow p-4">
                 <Image
@@ -39,7 +39,7 @@ export default function Footer() {
                   width={"22"}
                   height={"22"}
                 />
-                <h2 className="text-xs lg:text-[14px] font-[600]">
+                <h2 className="text-xs 2xl:text-[14px] font-[600]">
                   Dapatkan Informasi Terbaru Kami
                 </h2>
               </div>
@@ -53,7 +53,7 @@ export default function Footer() {
                   name="user-email"
                   id="user-email"
                   placeholder="Masukkan alamat email anda"
-                  className=" w-full outline-none placeholder:text-xs lg:placeholder:text-base"
+                  className=" w-full outline-none placeholder:text-xs 2xl:placeholder:text-base"
                 />
                 <Image
                   src={"/assets/icon/round-arrow-right.svg"}
@@ -65,8 +65,8 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="w-full  h-full lg:justify-between lg:items-end flex flex-col lg:flex-row text-xs lg:text-base gap-4 lg:gap-0">
-            <div className="flex flex-row md:justify-between gap-4">
+          <div className="w-full  h-full 2xl:justify-between 2xl:items-end flex flex-col 2xl:flex-row text-xs 2xl:text-base gap-4 2xl:gap-0">
+            <div className="flex flex-row 2xl:justify-between gap-4">
               <Image
                 src={"/assets/icon/location.svg"}
                 alt="location"
@@ -104,7 +104,7 @@ export default function Footer() {
 
         <hr className="mt-10 mb-4" />
 
-        <div className="flex lg:items-center px-12  lg:px-0 flex-col lg:flex-row  justify-between gap-8 my-4 lg:my-0 lg:gap-0 text-white ">
+        <div className="flex 2xl:items-center  md:w-full sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 2xl:max-w-max-content  2xl:px-0 flex-col 2xl:flex-row  justify-between gap-8 my-4 2xl:my-0 2xl:gap-0 text-white ">
           <div className="flex items-center">
             <Image
               src={"/assets/icon/logo-skansa.svg"}
@@ -119,8 +119,8 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="flex-grow flex justify-center  ">
-            <div className="lg:text-center text-[14] text-white font-[500]">
+          <div className="flex-grow flex 2xl:justify-center  ">
+            <div className="2xl:text-center text-[14] text-white font-[500]">
               <p>
                 Hak Cipta &copy; 2024 SMK Negeri 1 Purwosari. Dikembangkan oleh
                 TPW SMK

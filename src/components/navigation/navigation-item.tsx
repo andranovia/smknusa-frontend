@@ -199,7 +199,7 @@ const NavigationItem = ({
   const [currentDropdown, setCurrentDropdown] = useState<string | null>(null);
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownControls = useAnimation();
-  const isMobile = useMediaQuery("only screen and (max-width: 768px)");
+  const isMobile = useMediaQuery("only screen and (max-width: 1023.98px)");
 
   const dropdownData = currentDropdown
     ? navbarDropdownData[currentDropdown]
@@ -228,11 +228,11 @@ const NavigationItem = ({
           before:border-0 before:absolute before:bottom-0 before:right-0 before:border-transparent before:transition-colors before:duration-500
           before:w-full hover:before:border-[1px] hover:before:left-0 hover:before:border-[#F5C451] cursor-pointer z-20`}
         >
-          <span className="hidden lg:block">
+          <span className="hidden xl:block">
             {route ? <Link href={route}>{name}</Link> : name}
           </span>
           {icon ? (
-            <div className="block lg:hidden">
+            <div className="block xl:hidden">
               <Image src={icon} alt="navbar-icon" width={30} height={30} />
             </div>
           ) : null}
@@ -247,7 +247,7 @@ const NavigationItem = ({
         <AnimatePresence>
           {showDropdown && (
             <div
-              className="absolute left-10 lg:left-auto  lg:top-auto h-[25rem] lg:h-auto lg:justify-start lg:items-start flex flex-col items-end justify-end
+              className="absolute left-4 xl:left-auto  xl:top-auto h-[25rem] xl:h-auto xl:justify-start xl:items-start flex flex-col items-end justify-end
 "
             >
               <motion.div
@@ -260,13 +260,13 @@ const NavigationItem = ({
                   exit: { opacity: 0, y: 10 },
                 }}
                 transition={defaultTransition}
-                className="min-w-[20rem] w-[90%] lg:w-[24rem] items-center justify-center grid grid-cols-2 lg:gap-0 h-fit lg:h-full lg:grid-cols-1 lg:mt-14 z-20 rounded-tl-[10px] lg:rounded-tl-none lg:rounded-b-[10px] shadow-lg  rounded-r-[10px] bg-white lg:pb-0 pb-8 overflow-hidden"
+                className="min-w-[20rem] w-[90%] xl:w-[24rem] items-center justify-center grid grid-cols-2 xl:gap-0 h-fit xl:h-full xl:grid-cols-1 xl:mt-14 z-20 rounded-tl-[10px] xl:rounded-tl-none xl:rounded-b-[10px] shadow-lg  rounded-r-[10px] bg-white xl:pb-0 pb-8 overflow-hidden"
               >
                 {dropdownData?.map((data, index) => (
                   <React.Fragment key={index}>
                     <Link
                       href={data.linkDropdownData.linkRef}
-                      className="w-full h-[6rem] lg:h-auto"
+                      className="w-full h-[6rem] xl:h-auto"
                     >
                       <NavigationDropdownMenuItem
                         active={currentDropdown}

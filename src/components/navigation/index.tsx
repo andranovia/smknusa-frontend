@@ -12,7 +12,7 @@ import { useMediaQuery } from "@uidotdev/usehooks";
 const Navbar = () => {
   const [show, setShow] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const isMobile = useMediaQuery("only screen and (max-width : 768px)");
+  const isMobile = useMediaQuery("only screen and (max-width : 1023.98px)");
   const pathname = usePathname();
   const isActivePage =
     pathname === "/" ||
@@ -45,24 +45,24 @@ const Navbar = () => {
   return (
     <>
       <div
-        className={`flex items-center  lg:justify-between z-40  transition-transform ${
+        className={`flex items-center max-w-[1472.8px] justify-center bg-white xl:bg-transparent   xl:justify-between z-40  transition-transform ${
           show
-            ? ` text-blue-base translate-y-0 lg:translate-y-2 shadow-lg`
+            ? ` text-blue-base translate-y-0 xl:translate-y-2 shadow-lg`
             : `  ${
                 isActivePage
-                  ? "-translate-y-20 lg:translate-y-8 lg:text-white "
-                  : "lg:translate-y-2 "
+                  ? "-translate-y-20 xl:translate-y-8 xl:text-white "
+                  : "xl:translate-y-2 "
               }`
-        } fixed w-full lg:px-3 delay-0 `}
+        } fixed w-full xl:px-3 delay-0 `}
       >
         <div
-          className={`flex  items-center  w-full py-3 transition-all rounded-[10px] px-4 lg:px-11  ${
+          className={`flex  items-center md:max-w-md-content lg:max-w-lg-content xl:max-w-full  w-full py-3 transition-all rounded-[10px] px-4 2xl:px-11  ${
             !show && isActivePage
-              ? "lg:bg-opacity-0 bg-white font-[800] lg:font-[900]"
+              ? "xl:bg-opacity-0 bg-white font-[800] xl:font-[900]"
               : "bg-opacity-100 bg-white  font-[800]"
           }  `}
         >
-          <Link href={"/"} className="lg:w-[52%] w-full">
+          <Link href={"/"} className="2xl:w-[52%] xl:w-[40%] w-full">
             <div className="flex items-center">
               <Image
                 src={"/assets/icon/logo-skansa.svg"}
@@ -70,18 +70,18 @@ const Navbar = () => {
                 height={55}
                 width={55}
                 quality={100}
-                className="w-[20%] lg:w-auto h-auto"
+                className="w-10 xl:w-auto h-auto"
               />
 
-              <h2 className="ml-2 text-sm lg:text-[18px]  ">
+              <h2 className="ml-2 text-sm xl:text-[18px]  ">
                 SMK NEGERI 1 <br className="block" />
                 PURWOSARI
               </h2>
             </div>
           </Link>
-          <div className="flex lg:justify-between  lg:w-full w-1/2   font-[600] ">
+          <div className="flex xl:justify-between  xl:w-full w-auto   font-[600] ">
             <div
-              className={`lg:flex hidden  justify-center items-center gap-8 ${
+              className={`xl:flex hidden  justify-center items-center gap-8 ${
                 !show && isActivePage ? "text-white" : " text-gray-light"
               }`}
             >
@@ -91,7 +91,7 @@ const Navbar = () => {
               <NavigationItem name="Berita" show={show} route={"/news"} />
               <NavigationItem name="Artikel" show={show} route={"/article"} />
             </div>
-            <div className="flex items-center lg:space-x-4 gap-2">
+            <div className="flex items-center xl:space-x-4 gap-3 xl:gap-0 w-max">
               <NavigationSearch isActivePage={isActivePage} show={show} />
               <NavigationLanguage show={show} />
               <Image
@@ -100,7 +100,7 @@ const Navbar = () => {
                 height={20}
                 width={20}
                 className={`${
-                  !show && isActivePage ? `lg:invert-0 invert` : "invert"
+                  !show && isActivePage ? `xl:invert-0 invert` : "invert"
                 } transition-all  w-5 h-5`}
               />
             </div>
@@ -113,11 +113,11 @@ const Navbar = () => {
         alt="arrow-up"
         height={20}
         width={20}
-        className="w-10 h-10 p-[1px] fixed lg:hidden bottom-20 right-8 z-50 bg-white rounded-full"
+        className="w-10 h-10 p-[1px] fixed xl:hidden bottom-20 right-8 z-50 bg-white rounded-full"
       /> */}
 
-      <div className="w-full  p-2 flex justify-center  fixed lg:hidden bottom-2 z-50">
-        <div className="bg-white flex gap-5 lg:gap-4 shadow-lg items-center justify-between px-8 w-[90%]  py-2 rounded-[10px]">
+      <div className="w-full  p-2 flex justify-center  fixed xl:hidden bottom-2 z-50 ">
+        <div className="bg-white flex gap-5 xl:gap-4 shadow-lg items-center justify-between px-8 w-[90%]  py-2 rounded-[10px] sm:max-w-[368px] md:max-w-md-content relative">
           <NavigationItem
             name="Profile"
             show={show}

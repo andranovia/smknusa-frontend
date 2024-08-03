@@ -22,9 +22,9 @@ const NewsCard = () => {
 
   return (
     <>
-      <div className="flex flex-col justify-center items-center bg-gray-base lg:bg-white px-2 lg:-mt-10 lg:my-20">
+      <div className="flex flex-col justify-center items-center bg-gray-base xl:bg-white px-2 xl:-mt-10 xl:my-20">
         {isNewsLoading ? (
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-8 p-4 lg:px-12 pb-12 bg-white rounded-[10px]">
+          <div className="grid grid-cols-2 xl:grid-cols-3 gap-8 p-4 xl:px-12 pb-12 bg-white rounded-[10px]">
             {Array(6)
               .fill(0)
               .map((_, index) => (
@@ -35,7 +35,7 @@ const NewsCard = () => {
           </div>
         ) : (
           <div className="flex justify-center items-center flex-col">
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-8 p-4 lg:px-12 pb-12 bg-white rounded-[10px]">
+            <div className="grid grid-cols-2 xl:grid-cols-3 gap-8 p-4 xl:px-12 pb-12 bg-white rounded-[10px]">
               {currentNewsData?.map((news, index) => {
                 const date = new Date(news.created_at);
                 const normalDate = date.toLocaleDateString();

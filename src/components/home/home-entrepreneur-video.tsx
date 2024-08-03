@@ -1,21 +1,19 @@
 "use client";
 
-
 import { useMediaQuery } from "@uidotdev/usehooks";
 import React from "react";
 import YouTube, { YouTubeEvent } from "react-youtube";
 
-
 const HomeEntrepreneurVideo = () => {
-  const isMobile = useMediaQuery("only screen and (max-width : 768px)");
+  const isMobile = useMediaQuery("only screen and (max-width : 1024px)");
   const onPlayerReady = (event: YouTubeEvent<any>) => {
     event.target.pauseVideo();
   };
 
   const opts = {
-    height: isMobile ? "200" : "540",
-    width: isMobile ? "340" : "1080",
-    playerVars: {
+      height: "100%",
+      width: "100%",
+      playerVars: {
       controls: 0,
       autoplay: 0,
       rel: 0,
@@ -29,7 +27,14 @@ const HomeEntrepreneurVideo = () => {
     },
   };
 
-  return <YouTube videoId="oknvOlg6EeE" opts={opts} onReady={onPlayerReady} />;
+  return (
+    <YouTube
+      className="sm:min-h-60 md:min-h-72 xl:min-h-96 2xl:min-h-[38rem] sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content lg:min-h-[20rem] xl:max-w-xl-content 2xl:w-[90%] 2xl:max-w-[1080px] w-full"
+      videoId="oknvOlg6EeE"
+      opts={opts}
+      onReady={onPlayerReady}
+    />
+  );
 };
 
 export default HomeEntrepreneurVideo;
