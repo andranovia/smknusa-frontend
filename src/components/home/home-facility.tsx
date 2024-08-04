@@ -99,21 +99,21 @@ const HomeFacility = () => {
 
   return (
     <section className="w-full h-fit bg-white rounded-[10px] xl:overflow-hidden ">
-      <div className="flex flex-col items-center justify-center bg-primary rounded-md text-white pt-10 pb-48">
-        <Heading type="h1" className=" xl:text-[36px] lg:text-[30px] text-[24px] lg:text-center w-full sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 2xl:max-w-max-content xl:w-fit ">
-          Kenapa Harus SMK <br className="hidden sm:block md:hidden" />  Negeri 1 Purwosari
+      <div className="flex flex-col items-center justify-center bg-primary rounded-md text-white pt-6 sm:pt-10 pb-48">
+        <Heading type="h1" className=" xl:text-[36px] text-[22px] lg:text-[30px] sm:text-[24px] lg:text-center w-full max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 2xl:max-w-max-content xl:w-fit ">
+          Kenapa Harus SMK  Negeri 1 Purwosari
         </Heading>
 
-        <Paragraph className=" xl:text-[18px] lg:text-[14px] mt-[12px]  2xl:w-2/3 lg:text-center w-full sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 2xl:max-w-max-content">
+        <Paragraph className=" text-sm xl:text-[18px] lg:text-[14px] mt-[12px]  2xl:w-2/3 lg:text-center w-full max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 2xl:max-w-max-content">
           Di SMK Negeri 1 Purwosari, kami akan memberikan pengalaman terbaik
           dalam kegiatan belajar mengajar yang menyongsong kurikulum merdeka
           belajar. Dengan dilengkapi fasilitas yang berqualitas, mampu
           menyongsong kebutuhan siswa untuk belajar
         </Paragraph>
 
-        <hr className="bg-white mt-8 xl:mt-[52px] w-full sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 2xl:max-w-max-content" />
+        <hr className="bg-white mt-8 xl:mt-[52px] w-full max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 2xl:max-w-max-content" />
 
-        <div className="flexm my-12  xl:gap-0 gap-8 justify-center items-center  w-full sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 2xl:max-w-max-content ">
+        <div className="flexm my-12  xl:gap-0 gap-8 justify-center items-center  w-full max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 2xl:max-w-max-content ">
           <div className="max-w-max-content flex xl:justify-between w-full items-center xl:px-4 gap-8 ">
             {facilityLinkData.map((data, index) => {
               return (
@@ -141,7 +141,7 @@ const HomeFacility = () => {
           </div>
         </div>
       </div>
-      <div className="relative px-4 xl:px-8  -top-44   -mb-20">
+      <div className="relative px-4 xl:px-8 -mt-44 mb-6 xl:mt-0  xl:-top-44   xl:-mb-20">
         <div className="flex justify-center xl:items-end relative overflow-hidden bg-white rounded-[10px] ">
           <motion.div
             variants={{

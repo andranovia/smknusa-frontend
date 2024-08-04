@@ -13,7 +13,9 @@ const config: Config = {
         'md': '576px',
         'lg': '768px',
         'xl': '1024px',
+        '1xl': '1279.98px',
         '2xl': '1440px',
+       
       },
       backgroundColor: {
         'gray-base': '#F2F2F2',
@@ -38,11 +40,13 @@ const config: Config = {
         next: 'url(/assets/icon/round-arrow-right.svg), next',
       },
       maxWidth: {
+        'xs-content': '280px',
         'sm-content': '80%',
         'md-content': '485px',
         'lg-content': '648px',
         'xl-content': '922px',
-        'max-content': '1368px',
+        'grid-content': '1279.98px',
+        'max-content': '1448.8px',
       }
     },
   },

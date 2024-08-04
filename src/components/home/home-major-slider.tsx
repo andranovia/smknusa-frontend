@@ -19,8 +19,8 @@ const HomeMajorSlider = ({ majorData, animatedX }: HomeMajorSliderProps) => {
   const canScrollPrev = startIndex > 0;
   const canScrollNext = startIndex < majorData.length - 1;
   const controls = useAnimation();
-  const maxLeftSlide = -280;
-  const maxRightSlide = -20;
+  const maxLeftSlide = -200;
+  const maxRightSlide = 200;
 
   function handleDragSnap(
     _: MouseEvent,

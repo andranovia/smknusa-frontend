@@ -14,7 +14,6 @@ const HomeEntrepreneurVideo = () => {
       height: "100%",
       width: "100%",
       playerVars: {
-      controls: 0,
       autoplay: 0,
       rel: 0,
       modestbranding: 1,
@@ -29,7 +28,7 @@ const HomeEntrepreneurVideo = () => {
 
   return (
     <YouTube
-      className="sm:min-h-60 md:min-h-72 xl:min-h-96 2xl:min-h-[38rem] sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content lg:min-h-[20rem] xl:max-w-xl-content 2xl:w-[90%] 2xl:max-w-[1080px] w-full"
+      className="min-h-48 sm:min-h-60 md:min-h-72 xl:min-h-96 2xl:min-h-[38rem] max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content lg:min-h-[20rem] xl:max-w-xl-content 2xl:w-[90%] 2xl:max-w-[1080px] w-full"
       videoId="oknvOlg6EeE"
       opts={opts}
       onReady={onPlayerReady}

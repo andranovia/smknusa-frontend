@@ -22,9 +22,9 @@ const ArticleCard = () => {
 
   return (
     <>
-      <div className="flex flex-col justify-center items-center bg-gray-base xl:bg-white px-2 xl:-mt-10 xl:my-20 ">
+      <div className="flex flex-col justify-center items-center bg-gray-base xl:bg-white  1xl:-mt-10 1xl:my-20 ">
         {isArticlesLoading ? (
-          <div className="grid grid-cols-2 xl:grid-cols-3 gap-8 p-4 xl:px-12 pb-12 bg-white rounded-[10px]">
+          <div className="grid grid-cols-2 2xl:grid-cols-3 gap-8 p-4 xl:px-12 pb-12 bg-white  rounded-[10px]">
             {Array(6)
               .fill(0)
               .map((_, index) => (
@@ -34,18 +34,16 @@ const ArticleCard = () => {
               ))}
           </div>
         ) : (
-          <div className="flex justify-center items-center flex-col">
-            <div className="grid grid-cols-2 xl:grid-cols-3 gap-8 p-4 xl:px-12 pb-12 bg-white rounded-[10px]">
+          <div className="flex justify-center items-center flex-col w-full 2xl:w-auto">
+            <div className="grid grid-cols-2 1xl:grid-cols-3 gap-8 p-4 xl:px-12 pb-12 bg-white rounded-[10px] w-full">
               {currentArticleData?.map((article, index) => {
                 const date = new Date(article.created_at);
                 const normalDate = date.toLocaleDateString();
+
                 return (
                   <React.Fragment key={index}>
-                    <Link href={`/article/${article.id_pemberitahuan}`}>
-                      <InfoCardItem
-                        infoCardData={article}
-                        normalDate={normalDate}
-                      />
+                    <Link href={`/article/${article.id_pemberitahuan}`}className="flex justify-center">
+                      <InfoCardItem infoCardData={article} normalDate={normalDate} />
                     </Link>
                   </React.Fragment>
                 );

@@ -33,7 +33,7 @@ const NavigationLanguage = ({ show }: NavigationLanguageProps) => {
       </div>
       <AnimatePresence>
         {languageToggle && (
-          <div className="absolute">
+          <div className="absolute right-14 md:right-auto xl:right-4 2xl:right-auto">
             <motion.div
               initial="initial"
               animate="animate"
@@ -43,7 +43,7 @@ const NavigationLanguage = ({ show }: NavigationLanguageProps) => {
                 animate: { opacity: 1, scale: 1, y: 0 },
                 exit: { opacity: 0, y: 10 },
               }}
-              className="mt-14 z-20 flex flex-col gap-2 items-start px-2  pt-2 pb-5 rounded-b-[10px] rounded-r-[10px] bg-white overflow-hidden"
+              className="mt-14 z-20 flex flex-col gap-2 items-start px-2  pt-2 pb-5 rounded-b-[10px] rounded-tl-[10px] md:rounded-tl-none md:rounded-r-[10px]  bg-white overflow-hidden"
             >
               {languageDropdown?.map((data, index) => (
                 <div

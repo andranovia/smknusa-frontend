@@ -47,7 +47,7 @@ const Navbar = () => {
       <div
         className={`flex items-center max-w-[1472.8px] justify-center bg-white xl:bg-transparent   xl:justify-between z-40  transition-transform ${
           show
-            ? ` text-blue-base translate-y-0 xl:translate-y-2 shadow-lg`
+            ? ` text-blue-base translate-y-0 xl:translate-y-2 `
             : `  ${
                 isActivePage
                   ? "-translate-y-20 xl:translate-y-8 xl:text-white "
@@ -59,7 +59,7 @@ const Navbar = () => {
           className={`flex  items-center md:max-w-md-content lg:max-w-lg-content xl:max-w-full  w-full py-3 transition-all rounded-[10px] px-4 2xl:px-11  ${
             !show && isActivePage
               ? "xl:bg-opacity-0 bg-white font-[800] xl:font-[900]"
-              : "bg-opacity-100 bg-white  font-[800]"
+              : "bg-opacity-100 bg-white  font-[800] shadow-lg"
           }  `}
         >
           <Link href={"/"} className="2xl:w-[52%] xl:w-[40%] w-full">
@@ -117,7 +117,7 @@ const Navbar = () => {
       /> */}
 
       <div className="w-full  p-2 flex justify-center  fixed xl:hidden bottom-2 z-50 ">
-        <div className="bg-white flex gap-5 xl:gap-4 shadow-lg items-center justify-between px-8 w-[90%]  py-2 rounded-[10px] sm:max-w-[368px] md:max-w-md-content relative">
+        <div className="bg-white flex gap-5 xl:gap-4 shadow-lg items-center justify-between px-8 w-[90%]  py-2 rounded-[10px] sm:max-w-[368px] md:max-w-[430px] relative">
           <NavigationItem
             name="Profile"
             show={show}

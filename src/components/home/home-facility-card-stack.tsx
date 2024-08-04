@@ -55,7 +55,7 @@ const HomeFacilityCardStack: React.FC<HomeFacilityCardStackProps> = ({
   };
 
   return (
-    <div className="relative  h-full min-h-48 w-full sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 2xl:max-w-max-content">
+    <div className="relative  h-full min-h-36 sm:min-h-48 w-full max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 2xl:max-w-max-content">
       {cards.map((card, index) => (
         <motion.div
           key={card.id}
