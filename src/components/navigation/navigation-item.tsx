@@ -247,8 +247,7 @@ const NavigationItem = ({
         <AnimatePresence>
           {showDropdown && (
             <div
-              className="absolute left-4 xl:left-auto  xl:top-auto h-[25rem] xl:h-auto xl:justify-start xl:items-start flex flex-col items-end justify-end
-"
+              className="absolute left-4 md:left-14  xl:left-auto  xl:top-auto h-[25rem] xl:h-auto xl:justify-start xl:items-start flex flex-col items-end justify-end"
             >
               <motion.div
                 initial="initial"

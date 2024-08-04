@@ -31,7 +31,7 @@ const sliderEntrepreneur = [
 
 const HomeEntrepreneurSlider = () => {
   return (
-    <div className="text-blue-base w-full flex  justify-center  relative items-center  rounded-md  py-6 ">
+    <div className="text-blue-base w-full flex max-w-max-content  justify-center  relative items-center  rounded-md  py-6 ">
       <div className="absolute left-0 z-10 mix-blend-darken bg-gradient-to-r from-[#081B34] to-transparent py-20 px-4"></div>
 
       <Marquee autoFill={true} speed={60}>

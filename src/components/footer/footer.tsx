@@ -5,17 +5,17 @@ export default function Footer() {
   return (
     <>
       <div className="flex flex-col items-center 2xl:justify-center  2xl:px-8 py-8 bg-primary rounded-t-lg text-white mt-3">
-        <div className="grid grid-cols-1 md:grid-cols-2 2xl:flex 2xl:flex-wrap flex-col 2xl:flex-row flex-nowrap mt-8 mx-12 2xl:mx-0  2xl:gap-0 gap-10 xl:max-w-xl-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content 2xl:max-w-max-content">
+        <div className="grid grid-cols-1 md:grid-cols-2 2xl:flex 2xl:flex-wrap flex-col 2xl:flex-row flex-nowrap mt-0 lg:mt-8   2xl:gap-0 gap-10 xl:max-w-xl-content max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content 2xl:max-w-max-content">
           <div className="flex flex-col items-stretch 2xl:w-1/4 ">
-            <h2 className="text-2xl font-bold ">Unit Produksi Sekolah</h2>
-            <div className="mt-10">
+            <h2 className="text-lg lg:text-2xl font-bold ">Unit Produksi Sekolah</h2>
+            <div className="mt-4 lg:mt-10">
               <p className="mb-4">Tangirelasi </p>
               <p className="">SMK Production</p>
             </div>
           </div>
           <div className="flex flex-col items-stretch  2xl:w-1/4 ">
-            <h2 className="text-2xl font-bold ">Aplikasi & Layanan</h2>
-            <div className="mt-10">
+            <h2 className="text-lg lg:text-2xl font-bold ">Aplikasi & Layanan</h2>
+            <div className="mt-4 lg:mt-10">
               <p className="mb-4">LSP SMKN 1 Purwosari</p>
               <p className="mb-4">Virtual School</p>
               <p className="mb-4">CBT(Ujian Sekolah)</p>
@@ -24,8 +24,8 @@ export default function Footer() {
             </div>
           </div>
           <div className="flex flex-col items-stretch 2xl:w-1/4 md:col-span-2">
-            <h2 className="text-2xl font-bold">Lainnya</h2>
-            <div className="mt-10">
+            <h2 className="text-lg lg:text-2xl font-bold">Lainnya</h2>
+            <div className="mt-4 lg:mt-10">
               <p className="">Peta Situs (XML)</p>
             </div>
           </div>
@@ -104,7 +104,7 @@ export default function Footer() {
 
         <hr className="mt-10 mb-4" />
 
-        <div className="flex 2xl:items-center  md:w-full sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 2xl:max-w-max-content  2xl:px-0 flex-col 2xl:flex-row  justify-between gap-8 my-4 2xl:my-0 2xl:gap-0 text-white ">
+        <div className="flex 2xl:items-center  md:w-full max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 2xl:max-w-max-content  2xl:px-0 flex-col 2xl:flex-row  justify-between gap-8 my-4 2xl:my-0 2xl:gap-0 text-white ">
           <div className="flex items-center">
             <Image
               src={"/assets/icon/logo-skansa.svg"}

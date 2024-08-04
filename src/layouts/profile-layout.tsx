@@ -17,8 +17,8 @@ const ProfileLayout = ({
   className,
 }: ProfileLayoutProps) => {
   return (
-    <div className="w-full pt-20 xl:pt-24 px-3 min-h-screen rounded-[10px] text-blue-base">
-      <div className="relative bg-white min-h-screen flex flex-col items-center pt-10 pb-20">
+    <div className="w-full flex justify-center pt-20 xl:pt-24 px-3 min-h-screen rounded-[10px] text-blue-base">
+      <div className="relative bg-white lg:min-h-screen flex flex-col items-center pt-10 pb-20 max-w-max  md:max-w-md-content lg:max-w-lg-content w-full xl:max-w-full 2xl:max-w-max-content">
         <div className="flex flex-col xl:items-center gap-4 w-[80%] xl:w-2/3 xl:text-center">
           <Heading type="h1" className="">
             {title}
