@@ -2,8 +2,6 @@
 
 import { Heading } from "@/components/ui/typography";
 import { useMediaQuery } from "@uidotdev/usehooks";
-
-import Image from "next/image";
 import React from "react";
 
 const InfoLayout = ({
@@ -17,19 +15,20 @@ const InfoLayout = ({
   children: React.ReactNode;
   className?: string;
 }) => {
-  const isMobile = useMediaQuery("only screen and (max-width: 1023.98px)");
+  const isMedium = useMediaQuery("only screen and (max-width: 1023.98px)");
+  const isSmall = useMediaQuery("only screen and (max-width:  576px)");
   return (
     <div className="flex min-h-screen flex-col items-center bg-gray-base">
       <div
         style={{
-          marginTop: isMobile ? "4rem" : "0rem",
+          marginTop: isMedium ? "4rem" : "0rem",
         }}
         className="relative h-full w-full xl:h-[80%] "
       >
         <div className="relative 1xl:pb-6 h-full w-full flex justify-center">
           <div
             style={{
-              height: isMobile ? "14rem" : "30rem",
+              height: isMedium ? isSmall ? "10rem" : "14rem" : "30rem",
               background: 'url("/assets/smkn1purwosari.svg")',
               backgroundSize: "cover",
               backgroundRepeat: "no-repeat",

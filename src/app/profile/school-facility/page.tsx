@@ -13,8 +13,10 @@ const ProfileSchoolFacility = () => {
         title="Fasilitas Sekolah"
         subtitle="Daftar fasilitas yang ada di SMK Negeri 1 Purwosari"
       >
-        <FacilityFilter />
-        <FacilityCard />
+        <div className="flex flex-col w-full max-w-full md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 1xl:max-w-[1472.8px] bg-white">
+          <FacilityFilter />
+          <FacilityCard />
+        </div>
       </InfoLayout>
     </ClientOnly>
   );

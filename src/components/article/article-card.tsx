@@ -22,9 +22,9 @@ const ArticleCard = () => {
 
   return (
     <>
-      <div className="flex flex-col justify-center items-center bg-gray-base xl:bg-white  ">
+      <div className="flex flex-col justify-center items-center bg-gray-base xl:bg-white  xl:-mt-14">
         {isArticlesLoading ? (
-          <div className="grid grid-cols-2 1xl:grid-cols-3 gap-8 p-4 xl:px-12 pb-12 bg-white w-full 2xl:max-w-fit rounded-[10px]">
+          <div className="grid grid-cols-2 1xl:grid-cols-3 gap-4 xl:gap-8 p-4 xl:px-12 pb-12 bg-white w-full 2xl:max-w-fit rounded-[10px]">
             {Array(6)
               .fill(0)
               .map((_, index) => (
@@ -35,7 +35,7 @@ const ArticleCard = () => {
           </div>
         ) : (
           <div className="flex justify-center items-center flex-col w-full 2xl:w-auto">
-            <div className="grid grid-cols-2 1xl:grid-cols-3 gap-8 p-4 xl:px-12 pb-12 bg-white rounded-[10px] w-full">
+            <div className="grid grid-cols-2 1xl:grid-cols-3 gap-4 xl:gap-8 p-4 xl:px-12 pb-12 bg-white rounded-[10px] w-full">
               {currentArticleData?.map((article, index) => {
                 const date = new Date(article.created_at);
                 const normalDate = date.toLocaleDateString();

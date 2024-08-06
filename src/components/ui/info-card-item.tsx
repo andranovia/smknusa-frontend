@@ -21,22 +21,22 @@ const InfoCardItem = ({ infoCardData, normalDate }: InfoCardItemProps) => {
         width={800}
         height={800}
       />
-      <div className=" px-3 xl:p-4 flex flex-col items-stretch   gap-4 w-full my-4 xl:my-0 ">
+      <div className=" px-3 xl:p-4 flex flex-col items-stretch justify-between    gap-4 w-full my-4 xl:my-0 ">
         <div className="grid grid-cols-2   items-center gap-2 top-0 left-0 xl:absolute xl:p-2 z-20">
           {infoCardData.level === "0" || infoCardData.level === 0 ? (
-            <div className={`bg-[#FFE7AF] px-2 py-1 rounded-[10px] max-w-[89.25px]`}>
+            <div className={`bg-[#FFE7AF] px-2 py-1 rounded-[6px] sm:rounded-[10px] max-w-[89.25px]`}>
               <p className="font-[500] text-[10px] text-center text-gray">Penting</p>
             </div>
           ) : null}
 
-          <div className={`bg-[#CDFFAF] px-2 py-1 rounded-[10px] max-w-[89.25px]`}>
-            <Heading type="h5" className="font-[500] text-center text-[10px] line-clamp-1 text-gray">
+          <div className={`bg-[#CDFFAF] px-2 py-1 rounded-[6px] sm:rounded-[10px] max-w-[89.25px]`}>
+            <Heading type="h5" className="font-[500] text-center text-[10px] line-clamp-1   text-gray">
               {infoCardData.category.nama}
             </Heading>
           </div>
         </div>
         
-          <Heading type="h5" className="xl:text-md text-xs font-[500] xl:min-h-16  xl:text-[18px] mb-2 sm:w-full w-[8.5rem] line-clamp-3"> {infoCardData.nama}</Heading>
+          <Heading type="h5" className="xl:text-md text-xs font-[500] xl:min-h-16  xl:text-[18px] mb-2 sm:w-full  line-clamp-3 leading-6"> {infoCardData.nama}</Heading>
      
         <div className="text-sm gap-2 text-gray flex flex-col xl:flex-row xl:justify-between xl:items-center w-full">
           <div className="flex gap-2 items-center">
