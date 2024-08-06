@@ -22,9 +22,9 @@ const NewsCard = () => {
 
   return (
     <>
-      <div className="flex flex-col justify-center items-center bg-gray-base xl:bg-white  1xl:-mt-10 1xl:my-20 ">
-        {isNewsLoading ? (
-          <div className="grid grid-cols-2 2xl:grid-cols-3 gap-8 p-4 xl:px-12 pb-12 bg-white  rounded-[10px]">
+      <div className="flex flex-col justify-center items-center bg-gray-base xl:bg-white  ">
+        {!isNewsLoading ? (
+          <div className="grid grid-cols-2 1xl:grid-cols-3 gap-8 p-4 xl:px-12 pb-12 bg-white w-full 2xl:max-w-fit  rounded-[10px]">
             {Array(6)
               .fill(0)
               .map((_, index) => (
@@ -49,11 +49,13 @@ const NewsCard = () => {
                 );
               })}
             </div>
+            <div className="my-4">
             <Pagination
               totalPosts={news?.length}
               postsPerPage={postsPerPage}
               onPageChange={onPageChange}
             />
+            </div>
           </div>
         )}
       </div>

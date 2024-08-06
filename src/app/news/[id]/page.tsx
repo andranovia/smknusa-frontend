@@ -4,6 +4,7 @@ import { backendUrl } from "@/utils/backendUrl";
 import Image from "next/image";
 import React from "react";
 import parse from "html-react-parser";
+import { redirect } from "next/navigation";
 
 const newsData = [
   {
@@ -64,7 +65,12 @@ async function getNewsById(id: string) {
 
 export default async function Page({ params }: { params: { id: string } }) {
   const { id } = params;
-  const newsById: News = await getNewsById(id);
+  const newsById = await getNewsById(id);
+
+  
+  if(newsById === 'Data tidak ditemukan'){
+    redirect('/404');
+  }
   const date = new Date(newsById?.created_at || Date.now());
   const normalDate = date.toLocaleDateString();
   const parsedHtml = parse(newsById?.text);

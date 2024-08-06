@@ -8,6 +8,7 @@ import StudentsTable from "@/components/academic/students/students-table";
 import { useResidents } from "@/services/api/useQueries/useResidents";
 import React, { useState } from "react";
 import { Heading } from "@/components/ui/typography";
+import { ClientOnly } from "@/utils/isClient";
 
 
 
@@ -39,18 +40,18 @@ const ResidentData = () => {
       </div>
       <div className="pb-20 pt-10 flex flex-col items-center justify-center gap-10">
         {currentTable === "teachers" ? (
-          <>
+          <ClientOnly>
             <TeachersForm />
             <TeachersTable teachersData={teachers} handleChangeTable={handleChangeTable} />
-          </>
+          </ClientOnly>
         ) : (
-          <>
+          <ClientOnly>
             <StudentsForm />
             <StudentsTable
               studentsData={students}
               handleChangeTable={handleChangeTable}
             />
-          </>
+          </ClientOnly>
         )}
       </div>
     </div>
