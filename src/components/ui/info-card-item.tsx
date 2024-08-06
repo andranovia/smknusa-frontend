@@ -13,7 +13,7 @@ type InfoCardItemProps = {
 
 const InfoCardItem = ({ infoCardData, normalDate }: InfoCardItemProps) => {
   return (
-    <div className="bg-white rounded-lg sm:w-full xl:w-[23rem] h-full shadow-md overflow-hidden relative">
+    <div className="bg-white rounded-lg sm:w-full 1xl:w-[23rem] h-full shadow-md overflow-hidden relative">
       <Image
         className="w-full min-h-[6rem] sm:min-h-[8rem] xl:min-h-[12rem]  max-h-[6rem] sm:max-h-[8rem] xl:max-h-[12rem] object-cover"
         src={backendUrl + infoCardData.thumbnail}

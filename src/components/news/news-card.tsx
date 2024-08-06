@@ -23,7 +23,7 @@ const NewsCard = () => {
   return (
     <>
       <div className="flex flex-col justify-center items-center bg-gray-base xl:bg-white  ">
-        {!isNewsLoading ? (
+        {isNewsLoading ? (
           <div className="grid grid-cols-2 1xl:grid-cols-3 gap-8 p-4 xl:px-12 pb-12 bg-white w-full 2xl:max-w-fit  rounded-[10px]">
             {Array(6)
               .fill(0)

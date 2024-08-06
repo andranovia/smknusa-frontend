@@ -27,10 +27,10 @@ const StudentsTable = ({
   };
 
   return (
-    <div className="relative flex flex-col  overflow-x-auto  xl:rounded-lg border w-full xl:w-[84%]">
-      <div className="flex  items-center justify-between mx-4 xl:mx-12 gap-4">
-        <div className="flex w-full  items-center justify-between xl:justify-start  gap-4">
-          <Heading type="h5" className="text-sm font-bold text-blue-base  xl:w-fit  my-6">
+    <div className="relative flex flex-col  overflow-x-auto  1xl:rounded-lg border w-full">
+      <div className="flex  items-center justify-between mx-4 1xl:mx-12 gap-4">
+        <div className="flex w-full  items-center justify-between 1xl:justify-start  gap-4">
+          <Heading type="h5" className="text-sm font-bold text-blue-base  1xl:w-fit  my-6">
             Peserta Didik
           </Heading>
           <Heading type="h5" className="text-xs bg-amber-100 bg-opacity-70 border-yellow px-3 py-0.5 border rounded-full text-yellow-500">
@@ -87,8 +87,8 @@ const StudentsTable = ({
         <tbody>
           {currentStudentsData?.map((student, index) => (
             <React.Fragment key={index}>
-              <tr className="bg-white border flex flex-col md:table-row">
-                <td className="w-4  px-6 py-4 xl:p-4 flex items-center md:table-cell">
+              <tr className="bg-white border flex flex-col xl:table-row">
+                <td className="w-4  px-6 py-4 xl:p-4 flex items-center xl:table-cell">
                   <div className="flex items-center gap-4">
                     <input
                       id={`checkbox-table-${index}`}
@@ -103,14 +103,14 @@ const StudentsTable = ({
                     </label>
                   </div>
                 </td>
-                <td className="px-6 py-4 flex gap-2 items-center md:table-cell xl:justify-start  justify-between ">
+                <td className="px-6 py-4 flex gap-2 items-center xl:table-cell xl:justify-start  justify-between ">
                   <span className="block xl:hidden text-sm font-bold text-blue-base">
                     NISN
                   </span>
 
                   <p>{student.nisn}</p>
                 </td>
-                <td className="px-6 py-4 md:table-cell flex gap-2 justify-between items-center truncate xl:max-w-[12rem]">
+                <td className="px-6 py-4 xl:table-cell flex gap-2 justify-between items-center truncate xl:max-w-[12rem]">
                   <span className="block xl:hidden text-sm font-bold text-blue-base">
                     Name
                   </span>
@@ -118,7 +118,7 @@ const StudentsTable = ({
                     {student.nama}
                   </span>
                 </td>
-                <td className="px-6 py-4 md:table-cell flex gap-2 justify-between items-center">
+                <td className="px-6 py-4 xl:table-cell flex gap-2 justify-between items-center">
                   <span className="block xl:hidden text-sm font-bold text-blue-base">
                     Kelas
                   </span>
@@ -128,7 +128,7 @@ const StudentsTable = ({
                     </p>
                   </span>
                 </td>
-                <td className="px-6 py-4 md:table-cell flex gap-2 justify-between items-center truncate xl:max-w-[10rem]">
+                <td className="px-6 py-4 xl:table-cell flex gap-2 justify-between items-center truncate xl:max-w-[10rem]">
                   <span className="block xl:hidden text-sm font-bold text-blue-base">
                     Alamat
                   </span>
@@ -136,13 +136,13 @@ const StudentsTable = ({
                     {student.alamat}
                   </span>
                 </td>
-                <td className="px-6 py-4 md:table-cell flex gap-2 justify-between items-center">
+                <td className="px-6 py-4 xl:table-cell flex gap-2 justify-between items-center">
                   <span className="block xl:hidden text-sm font-bold text-blue-base">
                     TTL
                   </span>
                   {student.tempat_lahir}, {student.tanggal_lahir}
                 </td>
-                <td className="px-6 py-4 md:table-cell flex gap-2 justify-between items-center">
+                <td className="px-6 py-4 xl:table-cell flex gap-2 justify-between items-center">
                   <span className="block xl:hidden text-sm font-bold text-blue-base">
                     Jenis Kelamin
                   </span>
