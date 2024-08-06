@@ -14,7 +14,7 @@ const FacilityShowMore = ({
   };
 
   return (
-    <div className="my-10 xl:my-0 xl:mb-10  w-full xl:w-1/4">
+    <div className="my-8 xl:mt-0 mb-10  px-4 w-full sm:w-[316px]">
       {!showAllFacillity ? (
         <button
           className="w-full py-2 border-2 border-primary uppercase text-blue-base bg-yellow-light rounded-md"
