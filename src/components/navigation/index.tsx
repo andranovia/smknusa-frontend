@@ -59,7 +59,7 @@ const Navbar = () => {
           className={`flex  items-center md:max-w-md-content lg:max-w-lg-content xl:max-w-full  w-full py-3 transition-all rounded-[10px] px-4 2xl:px-11  ${
             !show && isActivePage
               ? "xl:bg-opacity-0 bg-white font-[800] xl:font-[900]"
-              : "bg-opacity-100 bg-white  font-[800] shadow-lg"
+              : "bg-opacity-100 bg-white  font-[800] xl:shadow-lg"
           }  `}
         >
           <Link href={"/"} className="2xl:w-[52%] xl:w-[40%] w-full">
