@@ -46,7 +46,7 @@ const config: Config = {
         'lg-content': '648px',
         'xl-content': '922px',
         'grid-content': '1279.98px',
-        'max-content': '1448.8px',
+        'max-content': '1368px',
       }
     },
   },

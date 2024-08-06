@@ -3,6 +3,8 @@ import { backendUrl } from "@/utils/backendUrl";
 import Image from "next/image";
 import React from "react";
 import parse from "html-react-parser";
+import { notFound, redirect } from "next/navigation";
+import { useRouter } from "next/router";
 
 const articleData = [
   {
@@ -34,7 +36,7 @@ const articleData = [
 async function fetchArticles() {
   const response = await fetch(`${backendUrl}api/user/articles`);
   const data = await response.json();
-  return data.data;
+  return data?.data || [];
 }
 
 export async function generateStaticParams() {
@@ -46,19 +48,25 @@ export async function generateStaticParams() {
 }
 
 async function getArticleById(id: string) {
+  if (!id) throw new Error("ID is required to fetch article");
   const response = await fetch(`${backendUrl}api/user/articles/${id}`);
   const data = await response.json();
-  return data.data;
+  return data?.data || null;
 }
 
 export default async function Page({ params }: { params: { id: string } }) {
   const { id } = params;
-  const articleById: Article = await getArticleById(id);
+
+  let articleById;
+  articleById = await getArticleById(id);
+
+  if(articleById === 'Data tidak ditemukan'){
+    redirect('/404');
+  }
+
 
   const date = new Date(articleById?.created_at || Date.now());
   const normalDate = date.toLocaleDateString();
-
-  const parsedHtml = parse(articleById?.text);
 
   return (
     <div className="w-full  xl:pt-24 px-2 xl:px-3 rounded-[10px] text-blue-base">
@@ -132,7 +140,9 @@ export default async function Page({ params }: { params: { id: string } }) {
           <div className="flex xl:flex-row flex-col justify-between items-start gap-10 xl:gap-20 w-full">
             <div className="xl:w-full flex flex-col items-start gap-10 ">
               <div className="flex flex-col items-start gap-10 font-[500] text-[18px] text-blue-base w-full">
-                <span className="flex flex-col items-start gap-4">{parsedHtml}</span>
+                <span className="flex flex-col items-start gap-4">
+                  {articleById?.text}
+                </span>
 
                 <span>Jurnalis: -</span>
               </div>
