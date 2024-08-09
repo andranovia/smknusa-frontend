@@ -3,8 +3,7 @@ import { backendUrl } from "@/utils/backendUrl";
 import Image from "next/image";
 import React from "react";
 import parse from "html-react-parser";
-import { notFound, redirect } from "next/navigation";
-import { useRouter } from "next/router";
+import { redirect } from "next/navigation";
 
 const articleData = [
   {
@@ -36,12 +35,12 @@ const articleData = [
 async function fetchArticles() {
   const response = await fetch(`${backendUrl}api/user/articles`);
   const data = await response.json();
-  return data?.data || [];
+  return data?.data;
 }
 
 export async function generateStaticParams() {
   const newsData = await fetchArticles();
-
+  console.log('test')
   const ids = newsData?.map((news: Article) => news.id_pemberitahuan);
 
   return ids?.map((id: string) => ({ id: id.toString() }));
@@ -50,6 +49,7 @@ export async function generateStaticParams() {
 async function getArticleById(id: string) {
   if (!id) throw new Error("ID is required to fetch article");
   const response = await fetch(`${backendUrl}api/user/articles/${id}`);
+
   const data = await response.json();
   return data?.data || null;
 }
@@ -57,12 +57,15 @@ async function getArticleById(id: string) {
 export default async function Page({ params }: { params: { id: string } }) {
   const { id } = params;
 
+
   let articleById;
   articleById = await getArticleById(id);
 
-  if(articleById === 'Data tidak ditemukan'){
+  if(articleById === 'Data tidak ditemukan' || !articleById) {
     redirect('/404');
   }
+
+  const parsedHtml = parse(articleById?.text);
 
 
   const date = new Date(articleById?.created_at || Date.now());
@@ -141,7 +144,7 @@ export default async function Page({ params }: { params: { id: string } }) {
             <div className="xl:w-full flex flex-col items-start gap-10 ">
               <div className="flex flex-col items-start gap-10 font-[500] text-[18px] text-blue-base w-full">
                 <span className="flex flex-col items-start gap-4">
-                  {articleById?.text}
+                  {parsedHtml}
                 </span>
 
                 <span>Jurnalis: -</span>

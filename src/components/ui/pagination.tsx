@@ -45,7 +45,7 @@ const Pagination: React.FC<PaginationProps> = ({
   };
 
   return (
-    <div className="flex text-center gap-3 p-3">
+    <div className="flex text-center gap-3 p-3 ">
       <button 
         className="p-3 bg-gray-base rounded-md"
         onClick={() => handleButtonClick(currentPage - 1)}

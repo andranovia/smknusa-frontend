@@ -74,17 +74,19 @@ export default async function Page({ params }: { params: { id: string } }) {
   const date = new Date(newsById?.created_at || Date.now());
   const normalDate = date.toLocaleDateString();
   const parsedHtml = parse(newsById?.text);
+
+  
   return (
-    <div className="w-full xl:pt-24 px-2 xl:px-3 rounded-[10px] text-blue-base">
-      <div className="relative  bg-white flex flex-col items-center xl:gap-20 pt-10 pb-20">
-        <div className="flex flex-col  gap-4 w-[80%] ">
+    <div className="w-full xl:pt-24 bg-white 2xl:bg-gray-base px-2 xl:px-3  rounded-[10px] text-blue-base flex justify-center">
+      <div className="relative  bg-white flex flex-col items-center mt-16 px-2 gap-10 xl:gap-20 pt-10 pb-20  max-w-full md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 2xl:max-w-max-content">
+        <div className="flex flex-col  gap-4 w-full 2xl:w-[80%] ">
           <h1 className="font-[700] xl:text-[46px] text-[24px] ">
             {newsById?.nama}
           </h1>
-          <div className="flex xl:flex-row flex-col xl:my-0 my-8 xl:gap-0 gap-8 justify-between items-start w-full">
+          <div className="flex xl:flex-row flex-col xl:my-0 xl:gap-0 gap-8 justify-between items-start w-full">
             <div className="grid grid-cols-2 items-center gap-2">
-              <div className="bg-[#FFE7AF] px-2 py-1 rounded-[10px]">
-                <p className="font-[500] text-[10px] text-gray">
+              <div className="bg-[#FFE7AF] px-2  py-2 lg:py-1 rounded-[10px]">
+                <p className="font-[500] text-md xl:text-[10px] text-gray">
                   {newsById?.category.nama}
                 </p>
               </div>
@@ -135,7 +137,7 @@ export default async function Page({ params }: { params: { id: string } }) {
             </div>
           </div>
         </div>
-        <div className="flex flex-col items-center gap-8 w-[90%] xl:w-[80%] ">
+        <div className="flex flex-col items-center gap-8 w-full 2xl:w-[80%] ">
           <Image
             src={backendUrl + newsById?.thumbnail}
             alt={"news-image"}
@@ -143,7 +145,7 @@ export default async function Page({ params }: { params: { id: string } }) {
             width={800}
             height={800}
           />
-          <div className="flex xl:flex-row flex-col justify-between items-start gap-10 xl:gap-20 w-full">
+          <div className="flex 2xl:flex-row flex-col justify-between items-start gap-10 xl:gap-20 w-full">
             <div className="xl:w-full flex flex-col items-start gap-10 ">
             <div className="flex flex-col items-start gap-10 font-[500] text-[18px] text-blue-base w-full">
                 <span className="flex flex-col items-start gap-4">{parsedHtml}</span>
@@ -170,7 +172,7 @@ export default async function Page({ params }: { params: { id: string } }) {
               </div>
             </div>
 
-            <div className="flex flex-col items-start xl:w-2/4 ">
+            <div className="flex flex-col items-start w-full 2xl:w-2/4 ">
               <div className="flex gap-2 items-center w-full border-2 bg-white z-10 border-[#F5C451] py-3 px-8 rounded-[10px]">
                 <Image
                   width={20}
@@ -183,7 +185,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                 </h4>
               </div>
               <div className="grid grid-cols-2 w-full gap-4 py-6 -mt-2 px-6 border rounded-b-[10px]">
-                <div className="flex flex-col gap-4 w-full col-span-2">
+                <div className="flex flex-col gap-4 w-full 2xl:col-span-2">
                   <label
                     htmlFor="title"
                     className="font-medium text-sm xl:text-[18px] text-blue-base"
@@ -198,7 +200,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                   />
                 </div>
 
-                <div className="flex flex-col gap-4 w-full col-span-2">
+                <div className="flex flex-col gap-4 w-full 2xl:col-span-2">
                   <label
                     htmlFor="category"
                     className="font-medium text-sm xl:text-[18px]  text-blue-base"
@@ -249,11 +251,11 @@ export default async function Page({ params }: { params: { id: string } }) {
             </div>
           </div>
         </div>
-        <div className=" flex gap-10 flex-col w-[90%] xl:w-[80%]">
+        <div className=" flex gap-10 flex-col w-full 2xl:w-[80%]">
           <h2 className="mt-10 text-3xl xl:text-5xl font-semibold">
             Berita Lain yang tak kalah menarik
           </h2>
-          <div className="grid grid-cols-2 xl:grid-cols-3 items-center gap-10 xl:mt-10 bg-white rounded-[10px]">
+          <div className="grid grid-cols-2 2xl:grid-cols-3 items-center gap-10 xl:mt-10 bg-white rounded-[10px]">
             {newsData.map((news, index) => {
               return (
                 <React.Fragment key={index}>
