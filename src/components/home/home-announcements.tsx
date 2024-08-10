@@ -97,19 +97,19 @@ const HomeAnnouncement = () => {
       <div className="xl:sticky -top-1/3 w-full  flex justify-center items-center  ">
         <div className="w-full h-full bg-gray-base xl:pb-20 xl:bg-white rounded-[10px] ">
           <div className="flex flex-col items-center lg:text-center justify-center bg-primary  rounded-md text-white pt-6 sm:pt-10 pb-48">
-            <Heading type="h1" className=" xl:text-[36px] text-[22px] lg:text-[30px] sm:text-[24px] max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content w-full xl:max-w-xl-content 2xl:max-w-max-content">
+            <Heading type="h1" className=" xl:text-[36px] text-[22px] lg:text-[30px] sm:text-[24px] max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content w-full xl:max-w-xl-content 2xl:max-w-max-container">
               Papan Pengumuman Informasi <br className="hidden lg:block" />
               SMK Negeri 1 Purwosari
             </Heading>
 
-            <Paragraph className="text-sm xl:text-[18px] lg:text-[14px] mt-[12px] max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content w-full xl:max-w-xl-content 2xl:max-w-max-content">
+            <Paragraph className="text-sm xl:text-[18px] lg:text-[14px] mt-[12px] max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content w-full xl:max-w-xl-content 2xl:max-w-max-container">
               Papan Pengumuman ini berisi segala informasi mengenai pembaruan
               agenda, berita, artikel atau yang lainnya
             </Paragraph>
 
-            <hr className="bg-white mt-8 xl:mt-[52px]  w-full max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 2xl:max-w-max-content" />
+            <hr className="bg-white mt-8 xl:mt-[52px]  w-full max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 2xl:max-w-max-container" />
 
-            <div className="flex flex-col xl:flex-row max-w-xs-content sm:max-w-sm-content md:max-w-md-content  lg:max-w-lg-content xl:justify-between xl:max-w-xl-content 2xl:max-w-max-content items-start w-full gap-8 left-8 mt-12  ">
+            <div className="flex flex-col xl:flex-row max-w-xs-content sm:max-w-sm-content md:max-w-md-content  lg:max-w-lg-content xl:justify-between xl:max-w-xl-content 2xl:max-w-max-container items-start w-full gap-8 left-8 mt-12  ">
               <div className="grid grid-cols-2 items-center xl:flex xl:justify-start xl:gap-x-10  px-4 w-full gap-x-4 gap-y-10 ">
                 {announcementsLinkData.map((link, index) => (
                   <React.Fragment key={index}>
@@ -138,7 +138,7 @@ const HomeAnnouncement = () => {
           </div>
 
           <div className="relative px-3  xl:px-8 flex justify-center items-center  -mt-36   w-full ">
-            <div className=" xl:w-full xl:h-full max-w-max-content  bg-gray-base relative rounded-xl mt-0 w-full md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 2xl:max-w-max-content">
+            <div className=" xl:w-full xl:h-full max-w-max-container  bg-gray-base relative rounded-xl mt-0 w-full md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 2xl:max-w-max-container">
               <div className="relative">
                 <ClientOnly>
                   <HomeAnnouncementsCard

@@ -9,6 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       screens: {
+        'xs': '375px',
         'sm': '425px',
         'md': '576px',
         'lg': '768px',
@@ -47,6 +48,7 @@ const config: Config = {
         'xl-content': '922px',
         'grid-content': '1279.98px',
         'max-content': '1448.8px',
+        'max-container': '1368px',
       }
     },
   },
