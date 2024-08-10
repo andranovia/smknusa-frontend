@@ -22,9 +22,9 @@ const NewsCard = () => {
 
   return (
     <>
-      <div className="flex flex-col justify-center items-center bg-gray-base xl:bg-white xl:-mt-14 ">
+      <div className="flex flex-col justify-center items-center bg-white xl:-mt-14 ">
         {isNewsLoading ? (
-          <div className="grid grid-cols-2 1xl:grid-cols-3 gap-4 xl:gap-8 p-4 xl:px-12 pb-12 bg-white w-full 2xl:max-w-fit  rounded-[10px]">
+          <div className="grid grid-cols-2 1xl:grid-cols-3 gap-4 xl:gap-8 p-4 1xl:px-12 pb-12 bg-white w-full 2xl:max-w-fit  rounded-[10px]">
             {Array(6)
               .fill(0)
               .map((_, index) => (
@@ -35,7 +35,7 @@ const NewsCard = () => {
           </div>
         ) : (
           <div className="flex justify-center items-center flex-col w-full 2xl:w-auto">
-            <div className="grid grid-cols-2 1xl:grid-cols-3 gap-4 xl:gap-8 p-4 xl:px-12 pb-12 bg-white rounded-[10px] w-full">
+            <div className="grid grid-cols-2 1xl:grid-cols-3 gap-2 sm:gap-4 xl:gap-8 p-4 1xl:px-12 pb-12 bg-white rounded-[10px] w-full">
               {currentNewsData?.map((news, index) => {
                 const date = new Date(news.created_at);
                 const normalDate = date.toLocaleDateString();
@@ -49,7 +49,7 @@ const NewsCard = () => {
                 );
               })}
             </div>
-            <div className="my-4">
+            <div className="mt-4 mb-12">
             <Pagination
               totalPosts={news?.length}
               postsPerPage={postsPerPage}

@@ -107,7 +107,7 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
         text: "Ekstrakulikuler",
         description: "Berisi sambutan resmi dari kepala sekolah",
         icon: "/assets/nav-dropdown-icon/akademik/ekstrakulikuler.svg",
-        linkRef: "/profile/welcome-speech",
+        linkRef: "/academic/extracurricular",
       },
     },
     {
