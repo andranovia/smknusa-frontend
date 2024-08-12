@@ -7,9 +7,9 @@ import {
   motion,
   useScroll,
   useTransform,
-  useMotionValueEvent,
   useAnimation,
   motionValue,
+  useMotionValue,
 } from "framer-motion";
 import { defaultTransition } from "../animation/transition";
 import { useMediaQuery } from "@uidotdev/usehooks";
@@ -39,18 +39,21 @@ const HomeAnnouncementsCard = ({
   const isMobile = useMediaQuery("only screen and (max-width : 1024px)");
   const sliderPositionYRef = useRef<HTMLDivElement>(null);
   const sliderContainerRef = useRef<HTMLDivElement>(null);
-  const dragControls = useAnimation();
-  const scrollMobile = motionValue(0);
-  
+  const scrollMobile = motionValue(0);  
+  const scrollY = useMotionValue(0); 
+  const sliderY = useTransform(scrollY, [0, 0.5, 1], [0, 80, 320]);
+  const controls = useAnimation();
+  const [isPending, setIsPending] = React.useState(false);
+
+
+
+
   useEffect(() => {
-    if (isMobile) {
-      let timeoutId: NodeJS.Timeout;
+    let timeoutId: NodeJS.Timeout;
+
       timeoutId = setTimeout(() => {
         setCurrentAnnouncementsHighlightIndex((prevIndex) => {
-          if (
-            currentAnnouncementsData &&
-            prevIndex < currentAnnouncementsData?.length - 1
-          ) {
+          if (currentAnnouncementsData && prevIndex < currentAnnouncementsData?.length - 1) {
             console.log(prevIndex + 1);
             return prevIndex + 1;
           } else {
@@ -58,12 +61,30 @@ const HomeAnnouncementsCard = ({
             return 0;
           }
         });
-      }, 2000);
   
-      return () => clearTimeout(timeoutId);
-    }
-  }, [isMobile, currentAnnouncementsData, setCurrentAnnouncementsHighlightIndex]);
-
+        if (currentAnnouncementsData && currentAnnouncementsHighlightIndex === currentAnnouncementsData.length - 1) {
+          controls.start({ y: 0 });
+        } else if (currentAnnouncementsData && currentAnnouncementsHighlightIndex === 0) {
+          controls.start({ y: 160 });
+        } else {
+          controls.start({ y: 320 });
+        }
+      }, 2000);
+    
+  
+    return () => clearTimeout(timeoutId);
+  }, [isPending, currentAnnouncementsData, currentAnnouncementsHighlightIndex, controls, setCurrentAnnouncementsHighlightIndex, isMobile]);
+  
+  // const handleChangeHighlight = (index: number) => {
+  //   setCurrentAnnouncementsHighlightIndex(index);
+  
+  //   if (currentAnnouncementsHighlightIndex === 0) {
+  //     controls.start({ y: 0 })
+  //   } else {
+  //     controls.start({ y: 160 })
+  //   }
+  // };
+  
   useEffect(() => {
     announcementsHighlightControls.start("visible");
   }, [currentAnnouncementsData]);
@@ -109,22 +130,6 @@ const HomeAnnouncementsCard = ({
     layoutEffect: false,
   });
 
-  const sliderY = useTransform(
-    homeAnnouncementsScrollProgress,
-    [0, 0.5, 1],
-    [0, 80, 320]
-  );
-
-
-  useMotionValueEvent(sliderY, "change", (latest) => {
-    if (currentAnnouncementsData && !isMobile) {
-      const segmentSize = 250 / (currentAnnouncementsData.length - 1);
-      const index = Math.floor(latest / segmentSize);
-      setCurrentAnnouncementsHighlightIndex(
-        Math.min(index, currentAnnouncementsData.length - 1)
-      );
-    }
-  });
 
   const announcementsY = useTransform(
     isMobile ? scrollMobile : homeAnnouncementsScrollProgress,
@@ -293,7 +298,7 @@ const HomeAnnouncementsCard = ({
               dragConstraints={sliderContainerRef}
               ref={sliderPositionYRef}
               style={{ y: sliderY }}
-              animate={dragControls}
+              animate={controls} 
               transition={defaultTransition}
               className="bg-yellow cursor-grab p-1 rounded-md h-1/4 absolute top-0 mt-8"
             ></motion.div>

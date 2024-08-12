@@ -9,6 +9,7 @@ import { Heading, Paragraph } from "../ui/typography";
 const Informatika = Symbol("Informatika");
 const Agribisnis = Symbol("Agribisnis");
 const Pemesinan = Symbol("Pemesinan");
+const Elektronika = Symbol("Elektronika");
 
 const majorData = {
   [Informatika]: [
@@ -47,6 +48,23 @@ const majorData = {
       majorImg: "/assets/home/major/dkv-major.png",
     },
   ],
+  [Elektronika]: [
+    {
+      major: "RPL",
+      majorDesc: "Rekayasa Perangkat Lunak",
+      majorImg: "/assets/home/major/rpl-major.png",
+    },
+    {
+      major: "DKV",
+      majorDesc: "Design Komunikasi Visual",
+      majorImg: "/assets/home/major/dkv-major.png",
+    },
+    {
+      major: "DKV",
+      majorDesc: "Design Komunikasi Visual",
+      majorImg: "/assets/home/major/dkv-major.png",
+    },
+  ],
 };
 
 const majorLinkData = [
@@ -61,6 +79,10 @@ const majorLinkData = [
   {
     text: "Pemesinan",
     slide: Pemesinan,
+  },
+  {
+    text: "Elektronika",
+    slide: Elektronika,
   },
 ];
 

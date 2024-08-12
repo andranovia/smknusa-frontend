@@ -2,20 +2,21 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { defaultTransition } from "../animation/transition";
+import { useActivePage } from "@/contexts/ActivePageContext";
 
 interface NavigationSearchProps {
   show: boolean;
-  isActivePage: boolean;
+
 }
 
-const NavigationSearch = ({ show, isActivePage }: NavigationSearchProps) => {
+const NavigationSearch = ({ show }: NavigationSearchProps) => {
   const [searchToggle, setSearchToggle] = useState(false);
-
+  const {activePage} = useActivePage()
   return (
     <div
       className={`flex justify-center items-center overflow-hidden bg-[#F7F7F7] ${
         searchToggle ? "bg-opacity-100" : "bg-opacity-0"
-      } transition-all rounded-[10px]  p-2 gap-2 `}
+      } transition-all rounded-[10px]  p-2 gap-2 ${show && searchToggle || !activePage && searchToggle ? 'bg-opacity-100' : searchToggle ? 'bg-opacity-40 bg-primary backdrop-blur-sm' : ''}`}
     >
       <motion.input
         transition={defaultTransition}
@@ -28,7 +29,7 @@ const NavigationSearch = ({ show, isActivePage }: NavigationSearchProps) => {
         name="search"
         id="search"
         placeholder="Ketikkan kata kunci"
-        className={`focus:outline-none hidden 2xl:block placeholder:font-[500] placeholder:text-sm bg-transparent`}
+        className={`focus:outline-none hidden 2xl:block placeholder:font-[500] placeholder:text-sm ${show || !activePage ? '' : 'placeholder:text-white'} bg-transparent`}
       />
       <motion.div
         transition={defaultTransition}
@@ -39,9 +40,9 @@ const NavigationSearch = ({ show, isActivePage }: NavigationSearchProps) => {
           src={"/assets/icon/search.svg"}
           alt="search"
           className={`${
-            !show && isActivePage
+            !show && activePage
               ? searchToggle
-                ? `invert`
+                ? `invert-0`
                 : "xl:invert-0 invert"
               : "invert"
           } transition-all w-5 h-5 `}

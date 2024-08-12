@@ -108,7 +108,7 @@ const HomeFacility = () => {
           Di SMK Negeri 1 Purwosari, kami akan memberikan pengalaman terbaik
           dalam kegiatan belajar mengajar yang menyongsong kurikulum merdeka
           belajar. Dengan dilengkapi fasilitas yang berqualitas, mampu
-          menyongsong kebutuhan siswa untuk belajar
+          menyongsong kebutuhan siswa untuk belajar.
         </Paragraph>
 
         <hr className="bg-white mt-8 xl:mt-[52px] w-full max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 2xl:max-w-max-container" />

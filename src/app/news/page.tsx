@@ -8,10 +8,9 @@ export default function News() {
     <ClientOnly>
       <InfoLayout
         title="Berita-Berita SMK"
-        className=""
         subtitle="Update informasi terbaru seputar kegiatan-kegiatan yang berlangsung pada SMK Negeri 1 Purwosari"
       >
-        <div className="w-full max-w-full md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 1xl:max-w-full  bg-white">
+        <div className="w-full max-w-full md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 1xl:max-w-full ">
           <NewsForm />
           <NewsCard />
         </div>

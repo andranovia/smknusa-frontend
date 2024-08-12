@@ -102,7 +102,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <hr className="mt-10 mb-4" />
+        <hr className="mt-10 mb-4 w-full" />
 
         <div className="flex 2xl:items-center px-4 md:px-0 md:w-full md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 2xl:max-w-max-content  2xl:px-0 flex-col 2xl:flex-row  justify-between gap-8 my-4 2xl:my-0 2xl:gap-0 text-white ">
           <div className="flex items-center">
@@ -123,7 +123,7 @@ export default function Footer() {
             <div className="2xl:text-center text-[14] text-white font-[500]">
               <p>
                 Hak Cipta &copy; 2024 SMK Negeri 1 Purwosari. Dikembangkan oleh
-                TPW SMK
+                VAR Studio
               </p>
             </div>
           </div>

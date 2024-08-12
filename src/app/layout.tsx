@@ -5,6 +5,7 @@ import { Montserrat } from "next/font/google";
 import Footer from "@/components/footer/footer";
 import { ReactQueryProvider } from "@/utils/ReactQueryProvider";
 import { ClientOnly } from "@/utils/isClient";
+import { ActivePageProvider } from "@/contexts/ActivePageContext";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -34,13 +35,15 @@ export default function RootLayout({
       <body className={`bg-gray-base ${montserrat.className}`}>
         <nav className="bg-gray-base xl:flex justify-center ">
           <ClientOnly>
+            <ActivePageProvider>
             <Navbar />
+            </ActivePageProvider>
           </ClientOnly>
         </nav>
         <main>
         <ReactQueryProvider>{children}</ReactQueryProvider>
         </main>
-        <footer>
+        <footer className=" px-2 xl:px-2.5">
           <Footer />
         </footer>
       </body>

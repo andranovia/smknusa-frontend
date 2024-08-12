@@ -8,6 +8,9 @@ import { defaultTransition } from "../animation/transition";
 import NavigationItemAnimate from "./navigation-item-animate";
 import { useMediaQuery } from "@uidotdev/usehooks";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { useActivePage } from "@/contexts/ActivePageContext";
+import { cn } from "@/utils/cn";
 
 export type NavigationLinkData = {
   linkDropdownData: {
@@ -136,6 +139,14 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
     },
     {
       linkDropdownData: {
+        text: "Jurusan",
+        description: "Berisi sambutan resmi dari kepala sekolah",
+        icon: "/assets/nav-dropdown-icon/akademik/jurusan.svg",
+        linkRef: "/profile/welcome-speech",
+      },
+    },
+    {
+      linkDropdownData: {
         text: "Form Perangkat Ajar",
         description: "Berisi sambutan resmi dari kepala sekolah",
         icon: "/assets/nav-dropdown-icon/akademik/form-pa.svg",
@@ -199,8 +210,10 @@ const NavigationItem = ({
   const [currentDropdown, setCurrentDropdown] = useState<string | null>(null);
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownControls = useAnimation();
+  const basePathname = usePathname();
+  const pathname = '/' + basePathname.split('/')[1];
   const isMobile = useMediaQuery("only screen and (max-width: 1023.98px)");
-
+  const { activePage } = useActivePage()
   const dropdownData = currentDropdown
     ? navbarDropdownData[currentDropdown]
     : null;
@@ -226,10 +239,10 @@ const NavigationItem = ({
           onMouseEnter={() => handleOpenDropdown()}
           className={`font-semibold  relative flex justify-center items-center  gap-1   rounded-md  w-min-content
           before:border-0 before:absolute before:bottom-0 before:right-0 before:border-transparent before:transition-colors before:duration-500
-          before:w-full hover:before:border-[1px] hover:before:left-0 hover:before:border-[#F5C451] cursor-pointer z-20`}
+          before:w-full hover:before:border-[1px] hover:before:left-0 hover:before:border-[#F5C451] cursor-pointer z-20 ${route === pathname ? 'opacity-100 before:border-[1px] ' : 'opacity-60'} `}
         >
-          <span className="hidden xl:block">
-            {route ? <Link href={route}>{name}</Link> : name}
+          <span className={`hidden xl:block ${show || !activePage ? "text-blue-base" : 'text-white'}`}>
+            {route === '/news' || route === '/article' ? <Link href={route}>{name}</Link> : name}
           </span>
           {icon ? (
             <div className="block xl:hidden">
@@ -244,43 +257,49 @@ const NavigationItem = ({
           )}
         </span>
 
-        <AnimatePresence>
-          {showDropdown && (
-            <div
-              className="absolute left-4 md:left-14  xl:left-auto  xl:top-auto h-[25rem] xl:h-auto xl:justify-start xl:items-start flex flex-col items-end justify-end"
-            >
-              <motion.div
-                initial="initial"
-                animate="animate"
-                exit="exit"
-                variants={{
-                  initial: { opacity: 0.5, scale: 0.85, y: 10 },
-                  animate: { opacity: 1, scale: 1, y: isMobile ? -420 : 0 },
-                  exit: { opacity: 0, y: 10 },
-                }}
-                transition={defaultTransition}
-                className="min-w-[20rem] w-[90%] xl:w-[24rem] items-center justify-center grid grid-cols-2 xl:gap-0 h-fit xl:h-full xl:grid-cols-1 xl:mt-14 z-20 rounded-tl-[10px] xl:rounded-tl-none xl:rounded-b-[10px] shadow-lg  rounded-r-[10px] bg-white xl:pb-0 pb-8 overflow-hidden"
+
+        {route === '/news' || route === '/article' ? null : (
+          <AnimatePresence>
+            {showDropdown && (
+              <div
+                className="absolute left-4 md:left-14  xl:left-auto  xl:top-auto h-[25rem] xl:h-auto xl:justify-start xl:items-start flex flex-col items-end justify-end"
               >
-                {dropdownData?.map((data, index) => (
-                  <React.Fragment key={index}>
-                    <Link
-                      href={data.linkDropdownData.linkRef}
-                      className="w-full h-[6rem] xl:h-auto"
-                    >
-                      <NavigationDropdownMenuItem
-                        active={currentDropdown}
-                        item={name}
-                        transition={defaultTransition}
+
+                <motion.div
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  variants={{
+                    initial: { opacity: 0.5, scale: 0.85, y: 10 },
+                    animate: { opacity: 1, scale: 1, y: isMobile ? -420 : 0 },
+                    exit: { opacity: 0, y: 10 },
+                  }}
+                  transition={defaultTransition}
+                  className={cn(`min-w-[20rem] relative w-[90%] xl:w-[26rem] items-center justify-center grid grid-cols-2 xl:gap-0 h-fit xl:h-full xl:grid-cols-1 xl:mt-14 z-20 rounded-tl-[10px] xl:rounded-tl-none xl:rounded-b-[10px]   rounded-r-[10px] bg-white ${show || !activePage ? "bg-opacity-100 shadow-lg" : "bg-opacity-40 bg-primary z-10 backdrop-blur-sm"}  xl:pb-0 pb-8 `)}
+                >
+                  <div className={`w-0 absolute h-0 -top-4 left-5 border-[16px]  border-transparent  opacity-40 border-t-0 ${show ? 'hidden' : 'border-b-[#081B34]'}`}></div>
+                  {dropdownData?.map((data, index) => (
+                    <React.Fragment key={index}>
+                      <Link
+                        href={data.linkDropdownData.linkRef}
+                        className="w-full h-[6rem] xl:h-auto"
                       >
-                        <NavigationItemAnimate itemData={data} />
-                      </NavigationDropdownMenuItem>
-                    </Link>
-                  </React.Fragment>
-                ))}
-              </motion.div>
-            </div>
-          )}
-        </AnimatePresence>
+                        <NavigationDropdownMenuItem
+                          active={currentDropdown}
+                          item={name}
+                          transition={defaultTransition}
+                        >
+                          <NavigationItemAnimate itemData={data} show={show} />
+                        </NavigationDropdownMenuItem>
+                      </Link>
+                    </React.Fragment>
+                  ))}
+                </motion.div>
+              </div>
+            )}
+          </AnimatePresence>
+        )}
+
       </div>
     </>
   );

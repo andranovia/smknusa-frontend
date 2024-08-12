@@ -1,3 +1,4 @@
+import { useActivePage } from "@/contexts/ActivePageContext";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import React from "react";
@@ -7,16 +8,11 @@ type NavigationDropdownProps = {
 }
 
 const NavigationDropdownIcon = ({ show }: NavigationDropdownProps) => {
-  const pathname = usePathname();
-  const isActivePage =
-    pathname === "/" ||
-    pathname === "/news" ||
-    pathname === "/profile/school-facility";
-
+  const {activePage} = useActivePage()
   return (
     <Image
       src={`${
-        !show && isActivePage
+        !show && activePage
           ? `/assets/icon/dropdown-white.svg`
           : "/assets/icon/dropdown.svg"
       }`}

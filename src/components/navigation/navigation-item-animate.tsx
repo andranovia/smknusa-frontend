@@ -3,15 +3,17 @@ import { motion, useAnimation } from "framer-motion";
 import Image from "next/image";
 import { NavigationLinkData } from "./navigation-item";
 import { useMediaQuery } from "@uidotdev/usehooks";
+import { useActivePage } from "@/contexts/ActivePageContext";
 
 type NavigationItemAnimateProps = {
   itemData: NavigationLinkData;
+  show: boolean
 };
 
-const NavigationItemAnimate = ({ itemData }: NavigationItemAnimateProps) => {
+const NavigationItemAnimate = ({ itemData, show }: NavigationItemAnimateProps) => {
   const hoverControls = useAnimation();
   const isMobile = useMediaQuery("only screen and (max-width: 1024px)");
-
+  const {activePage} = useActivePage() 
   const handleHover = () => {
     hoverControls.start({
       y: 25,
@@ -41,24 +43,24 @@ const NavigationItemAnimate = ({ itemData }: NavigationItemAnimateProps) => {
       <motion.div
         whileHover={{
           opacity: 1,
-          backgroundColor: "#F7F7F7",
+          backgroundColor: show ? "#F7F7F7" : '',
           height: 60,
         }}
         initial={{
-          opacity: isMobile ? 1 : 0.5,
-          backgroundColor: "#FFFFFF",
+          opacity: isMobile ? 1 : show || !activePage ? 0.5 : 0.8,
+          backgroundColor: "",
           height: 40,
         }}
         onMouseEnter={() => handleHover()}
         onMouseLeave={() => handleHoverLeave()}
-        className="flex xl:flex-row   flex-col xl:items-start items-center xl:text-start text-center  gap-4 xl:pr-14 w-full rounded-[10px] xl:pl-4 py-2  text-blue-base"
+        className={`flex xl:flex-row   flex-col xl:items-start items-center xl:text-start text-center  gap-4 xl:pr-14 w-full rounded-[10px] xl:pl-4 py-2   ${show || !activePage  ? 'text-blue-base opacity-50 ': 'text-white opacity-80'}`}
       >
         <Image
           src={itemData.linkDropdownData.icon}
           alt={itemData.linkDropdownData.icon}
           width={40}
           height={40}
-          className="w-6 h-6 xl:w-5 xl:h-5 xl:mt-[2px]"
+          className={`w-6 h-6 xl:w-5 xl:h-5 xl:mt-[2px] ${show || !activePage ? "invert-0" : "invert"}`}
         />
         <div className="xl:flex flex-col items-start w-full">
           <h2 className=" font-[600] text-xs xl:text-[16px] line-clamp-1">
