@@ -188,7 +188,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                 <div className="flex flex-col gap-4 w-full 2xl:col-span-2">
                   <label
                     htmlFor="title"
-                    className="font-medium text-sm xl:text-[18px] text-blue-base"
+                    className="font-medium text-sm xl:text-lg text-blue-base"
                   >
                     Judul Berita
                   </label>
@@ -203,7 +203,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                 <div className="flex flex-col gap-4 w-full 2xl:col-span-2">
                   <label
                     htmlFor="category"
-                    className="font-medium text-sm xl:text-[18px]  text-blue-base"
+                    className="font-medium text-sm xl:text-lg  text-blue-base"
                   >
                     Kategori Berita
                   </label>
@@ -217,7 +217,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                 <div className="flex flex-col gap-4 w-full col-span-1">
                   <label
                     htmlFor="from"
-                    className=" font-medium text-sm xl:text-[18px]  text-blue-base "
+                    className=" font-medium text-sm xl:text-lg  text-blue-base "
                   >
                     Dari tanggal
                   </label>
@@ -231,7 +231,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                 <div className="flex flex-col gap-4 w-full col-span-1">
                   <label
                     htmlFor="to-date"
-                    className=" font-medium text-sm xl:text-[18px]  text-blue-base "
+                    className=" font-medium text-sm xl:text-lg  text-blue-base "
                   >
                     Sampai tanggal
                   </label>
@@ -243,7 +243,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                   />
                 </div>
                 <div className="flex flex-col gap-4 w-full col-span-2 mt-2">
-                  <button className=" font-medium text-sm xl:text-[18px] bg-yellow-light  py-2 rounded-[10px] ">
+                  <button className=" font-medium text-sm xl:text-lg bg-yellow-light  py-2 rounded-[10px] ">
                     Cari
                   </button>
                 </div>
@@ -280,7 +280,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                           </div>
                         ))}
                       </div>
-                      <div className="xl:text-md text-xs font-[500]  xl:text-[18px] mb-2 xl:w-full w-[8.5rem]">
+                      <div className="xl:text-md text-xs font-[500]  xl:text-lg mb-2 xl:w-full w-[8.5rem]">
                         <h2> {news.card}</h2>
                       </div>
                       <div className="text-sm gap-2 text-gray flex flex-col xl:flex-row xl:justify-between xl:items-center w-full">

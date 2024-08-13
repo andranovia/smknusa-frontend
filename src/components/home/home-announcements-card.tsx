@@ -7,9 +7,9 @@ import {
   motion,
   useScroll,
   useTransform,
-  useMotionValueEvent,
   useAnimation,
   motionValue,
+  useMotionValue,
 } from "framer-motion";
 import { defaultTransition } from "../animation/transition";
 import { useMediaQuery } from "@uidotdev/usehooks";
@@ -26,9 +26,11 @@ type HomeAnnouncementsCardProps = {
   setCurrentAnnouncementsHighlightIndex: Dispatch<SetStateAction<number>>;
   homeAnnouncementsEndRef: React.MutableRefObject<null>;
   currentAnnouncementsType: string;
+  isChangingAnnouncements: boolean;
 };
 
 const HomeAnnouncementsCard = ({
+  isChangingAnnouncements,
   currentAnnouncementsType,
   currentAnnouncementsData,
   currentAnnouncementsHighlightIndex,
@@ -39,30 +41,54 @@ const HomeAnnouncementsCard = ({
   const isMobile = useMediaQuery("only screen and (max-width : 1024px)");
   const sliderPositionYRef = useRef<HTMLDivElement>(null);
   const sliderContainerRef = useRef<HTMLDivElement>(null);
-  const dragControls = useAnimation();
   const scrollMobile = motionValue(0);
-  
+  const controls = useAnimation();
+
+
+
   useEffect(() => {
-    if (isMobile) {
+    if (isChangingAnnouncements) {
+      controls.start({ y: 0 });
+    }
+    else if (isMobile) {
       let timeoutId: NodeJS.Timeout;
+
       timeoutId = setTimeout(() => {
         setCurrentAnnouncementsHighlightIndex((prevIndex) => {
-          if (
-            currentAnnouncementsData &&
-            prevIndex < currentAnnouncementsData?.length - 1
-          ) {
-            console.log(prevIndex + 1);
+          if (currentAnnouncementsData && prevIndex < currentAnnouncementsData?.length - 1) {
             return prevIndex + 1;
           } else {
-            console.log(0);
             return 0;
           }
         });
+
+        if (currentAnnouncementsData && currentAnnouncementsHighlightIndex === currentAnnouncementsData.length - 1) {
+          controls.start({ y: 0 });
+        } else if (currentAnnouncementsData && currentAnnouncementsHighlightIndex === 0) {
+          controls.start({ y: 160 });
+        } else {
+          controls.start({ y: 320 });
+        }
       }, 2000);
-  
+
       return () => clearTimeout(timeoutId);
     }
-  }, [isMobile, currentAnnouncementsData, setCurrentAnnouncementsHighlightIndex]);
+
+
+
+  }, [currentAnnouncementsData, currentAnnouncementsHighlightIndex, controls, setCurrentAnnouncementsHighlightIndex, isMobile]);
+
+  const handleChangeHighlight = (index: number) => {
+    if(isMobile) { return }
+    setCurrentAnnouncementsHighlightIndex(index);
+    if (currentAnnouncementsData && index === 0) {
+      controls.start({ y: 0 });
+    } else if (currentAnnouncementsData && index === 1) {
+      controls.start({ y: 160 });
+    } else {
+      controls.start({ y: 320 });
+    }
+  };
 
   useEffect(() => {
     announcementsHighlightControls.start("visible");
@@ -109,22 +135,6 @@ const HomeAnnouncementsCard = ({
     layoutEffect: false,
   });
 
-  const sliderY = useTransform(
-    homeAnnouncementsScrollProgress,
-    [0, 0.5, 1],
-    [0, 80, 320]
-  );
-
-
-  useMotionValueEvent(sliderY, "change", (latest) => {
-    if (currentAnnouncementsData && !isMobile) {
-      const segmentSize = 250 / (currentAnnouncementsData.length - 1);
-      const index = Math.floor(latest / segmentSize);
-      setCurrentAnnouncementsHighlightIndex(
-        Math.min(index, currentAnnouncementsData.length - 1)
-      );
-    }
-  });
 
   const announcementsY = useTransform(
     isMobile ? scrollMobile : homeAnnouncementsScrollProgress,
@@ -170,19 +180,24 @@ const HomeAnnouncementsCard = ({
                   currentAnnouncementsHighlightIndex === index && !isMobile
                     ? 1
                     : 0.9,
-              }}
-              className={`flex flex-col items-start gap-2 xl:w-2/3 `}
-            >
-              <h2 className="font-[600]   xl:text-[18px] ">
-                {currentAnnouncementsType}
-              </h2>
 
-              <p className="font-[500] text-sm xl:text-[16px] line-clamp-3 min-h-16">
-                {announcement.nama}
-              </p>
+                opacity:
+                  isChangingAnnouncements ? 0 : 1
+              }}
+              className={`flex flex-col items-start justify-between xl:w-2/3 min-h-[8.5rem] max-h-[8.5rem]`}
+            >
+              <span className="flex flex-col items-start gap-2  cursor-pointer " onClick={() => handleChangeHighlight(index)}>
+                <h2 className="font-[600]   xl:text-lg">
+                  {currentAnnouncementsType}
+                </h2>
+
+                <p className="font-[500] text-sm xl:text-[16px] line-clamp-3  xl:min-h-fit">
+                  {announcement.nama}
+                </p>
+              </span>
 
               <div className="flex justify-start items-center gap-2">
-                <h3 className="font-[500] text-[16px]">Lihat Selengkapnya</h3>
+                <h3 className="font-[500] text-[16px] cursor-pointer">Lihat Selengkapnya</h3>
                 <Image
                   src={"assets/icon/line-arrow-right.svg"}
                   alt="arrow-right"
@@ -225,7 +240,7 @@ const HomeAnnouncementsCard = ({
     );
 
   const AnnouncementImageList = () => {
-    
+
 
     const cardTransitionSettings = {
       duration: 0.4,
@@ -236,14 +251,13 @@ const HomeAnnouncementsCard = ({
       <>
         {currentAnnouncementsData ? (
           currentAnnouncementsData.map((announcement, index) => (
-            <>
-              <motion.div
-                key={index}
+            <React.Fragment   key={index}>
+              <motion.div   
                 initial="hidden"
                 animate={{
                   opacity: currentAnnouncementsHighlightIndex === index ? 1 : 1,
                   x: currentAnnouncementsHighlightIndex === index ? 0 : isMobile ? index === 2 ? 0 : 840 : 660,
-                  zIndex: isMobile? index === 0 ? 10 : index === 1 ? 8 : currentAnnouncementsHighlightIndex : index === 1 ? 10 : currentAnnouncementsHighlightIndex,
+                  zIndex: isMobile ? index === 0 ? 10 : index === 1 ? 8 : currentAnnouncementsHighlightIndex : index === 1 ? 10 : currentAnnouncementsHighlightIndex,
                   y: 0,
                 }}
                 variants={{ ...imageVariant }}
@@ -258,7 +272,7 @@ const HomeAnnouncementsCard = ({
                   className="w-full h-full object-cover rounded-lg"
                 />
               </motion.div>
-            </>
+            </React.Fragment>
           ))
         ) : (
           <>
@@ -282,7 +296,8 @@ const HomeAnnouncementsCard = ({
   };
 
   return (
-    <div className="flex justify-start overflow-hidden items-end relative w-full xl:h-[34rem] bg-white xl:bg-gray-base  rounded-[10px] ">
+    <div className="flex justify-start overflow-hidden items-end relative w-full xl:h-[34rem] bg-white   rounded-[10px] ">
+       <div className="absolute right-0 h-full bg-gradient-to-l from-white to-transparent z-20 p-0 xl:p-16 opacity-80"></div>
       <div className="flex flex-col overflow-hidden  xl:flex-row-reverse justify-between items-center w-full h-full xl:p-8 gap-6">
         <div className="xl:w-2/4  w-full relative xl:static h-[16rem]  lg:h-[24rem]  xl:h-full ">
           {AnnouncementImageList()}
@@ -292,8 +307,7 @@ const HomeAnnouncementsCard = ({
             <motion.div
               dragConstraints={sliderContainerRef}
               ref={sliderPositionYRef}
-              style={{ y: sliderY }}
-              animate={dragControls}
+              animate={controls}
               transition={defaultTransition}
               className="bg-yellow cursor-grab p-1 rounded-md h-1/4 absolute top-0 mt-8"
             ></motion.div>

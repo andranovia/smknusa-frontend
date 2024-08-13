@@ -100,27 +100,27 @@ const HomeFacility = () => {
   return (
     <section className="w-full h-fit bg-white rounded-[10px] xl:overflow-hidden ">
       <div className="flex flex-col items-center justify-center bg-primary rounded-md text-white pt-6 sm:pt-10 pb-48">
-        <Heading type="h1" className=" xl:text-[36px] text-[22px] lg:text-[30px] sm:text-[24px] lg:text-center w-full max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 2xl:max-w-max-container xl:w-fit ">
+        <Heading type="h1" className=" xl:text-[36px] text-[22px] lg:text-[30px] sm:text-[24px] lg:text-center w-full max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content 1xl:max-w-1xl-content xl:max-w-xl-content 2xl:max-w-max-container xl:w-fit ">
           Kenapa Harus SMK  Negeri 1 Purwosari
         </Heading>
 
-        <Paragraph className=" text-sm xl:text-[18px] lg:text-[14px] mt-[12px]  2xl:w-2/3 lg:text-center w-full max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 2xl:max-w-max-container">
+        <Paragraph className=" text-sm xl:text-lg lg:text-[14px] mt-[12px] w-full 1xl:w-2/3 lg:text-center max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container">
           Di SMK Negeri 1 Purwosari, kami akan memberikan pengalaman terbaik
           dalam kegiatan belajar mengajar yang menyongsong kurikulum merdeka
           belajar. Dengan dilengkapi fasilitas yang berqualitas, mampu
-          menyongsong kebutuhan siswa untuk belajar
+          menyongsong kebutuhan siswa untuk belajar.
         </Paragraph>
 
-        <hr className="bg-white mt-8 xl:mt-[52px] w-full max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 2xl:max-w-max-container" />
+        <hr className="bg-white mt-8 xl:mt-[52px] w-full max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container" />
 
-        <div className="flexm my-12  xl:gap-0 gap-8 justify-center items-center  w-full max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 2xl:max-w-max-container ">
+        <div className="flex my-12  xl:gap-0 gap-8 justify-center items-center  w-full max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container ">
           <div className="max-w-max-container flex xl:justify-between w-full items-center xl:px-4 gap-8 ">
             {facilityLinkData.map((data, index) => {
               return (
                 <React.Fragment key={index}>
                   <h1
                     onClick={() => handleSlideChange(data.majorFacilityIndex)}
-                    className={`font-[600] hidden xl:block  2xl:text-center cursor-pointer transition-colors xl:text-[16px] text-xs   ${
+                    className={`font-[600] w-full hidden xl:block  2xl:text-center cursor-pointer transition-colors 1xl:text-[16px] xl:text-center xl:text-md text-xs   ${
                       cardData[currentSlide] ===
                       cardData[data.majorFacilityIndex]
                         ? `p-1 rounded-md relative   before:border-[1px] before:absolute before:right-0  before:bottom-0 text-white  before:mx-auto before:border-[#F5C451] before:w-full before:opacity-100 `
@@ -133,7 +133,7 @@ const HomeFacility = () => {
               );
             })}
 
-            <div className="flex justify-center items-center xl:ml-[25%] w-full xl:w-fit ">
+            <div className="flex justify-center items-center xl:ml-[8%] 1xl:ml-[12%] 2xl:ml-[22%] w-full xl:w-fit ">
               <div className="btn bg-yellow text-blue-base w-full text-center font-[600] py-2.5 px-5 rounded">
                 <button className="xl:text-[16px] text-xs">Selengkapnya</button>
               </div>
@@ -141,8 +141,9 @@ const HomeFacility = () => {
           </div>
         </div>
       </div>
-      <div className="relative px-4 xl:px-8 -mt-44 mb-6 xl:mt-0  xl:-top-44   xl:-mb-20">
-        <div className="flex justify-center xl:items-end relative overflow-hidden bg-white rounded-[10px] ">
+      <div className="relative px-4 xl:px-8 -mt-44 mb-6 xl:mt-0  xl:-top-44  w-full flex justify-center  xl:-mb-20">
+        <div className="flex justify-center xl:items-end relative overflow-hidden w-full bg-white 2xl:max-w-max-container rounded-[10px] ">
+        <div className="absolute bottom-0 h-1/4 w-full bg-gradient-to-t from-white to-transparent z-20 p-10 md:p-16 opacity-60"></div>
           <motion.div
             variants={{
               initial: {
@@ -159,7 +160,7 @@ const HomeFacility = () => {
             }}
             animate={controls}
             initial={"initial"}
-            className="w-[15rem] 2xl:h-[38rem] xl:h-[30rem] lg:h-[24rem] flex xl:items-end max-w-max-container justify-center xs:w-full xl:px-20 pt-10 xl:pt-20"
+            className="w-[15rem] 2xl:h-[38rem] xl:h-[30rem] lg:h-[24rem] flex xl:items-end  justify-center xs:w-full xl:px-20 pt-10 xl:pt-20"
           >
             <HomeFacilityCardStack items={facilityCardData} isChangingSlide={isChangingSlide}/>
           </motion.div>

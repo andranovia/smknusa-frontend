@@ -36,7 +36,7 @@ const InfoCardItem = ({ infoCardData, normalDate }: InfoCardItemProps) => {
           </div>
         </div>
         
-          <Heading type="h5" className="xl:text-md text-xs font-[500] xl:min-h-16  xl:text-[18px] mb-2 sm:w-full  line-clamp-3 leading-6"> {infoCardData.nama}</Heading>
+          <Heading type="h5" className="xl:text-md text-xs font-[500] xl:min-h-16  xl:text-lg mb-2 sm:w-full  line-clamp-3 leading-6"> {infoCardData.nama}</Heading>
      
         <div className="text-sm gap-2 text-gray flex flex-col xl:flex-row xl:justify-between xl:items-center w-full">
           <div className="flex gap-2 items-center">

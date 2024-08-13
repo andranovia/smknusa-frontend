@@ -1,3 +1,5 @@
+import { useActivePage } from "@/contexts/ActivePageContext";
+import { useMediaQuery } from "@uidotdev/usehooks";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import React from "react";
@@ -7,23 +9,19 @@ type NavigationDropdownProps = {
 }
 
 const NavigationDropdownIcon = ({ show }: NavigationDropdownProps) => {
-  const pathname = usePathname();
-  const isActivePage =
-    pathname === "/" ||
-    pathname === "/news" ||
-    pathname === "/profile/school-facility";
-
+  const {activePage} = useActivePage()
+  const isMobile = useMediaQuery("only screen and (max-width: 1024px)");
   return (
     <Image
       src={`${
-        !show && isActivePage
+        !show && activePage && !isMobile
           ? `/assets/icon/dropdown-white.svg`
           : "/assets/icon/dropdown.svg"
       }`}
       alt="dropdown"
       height={20}
       width={20}
-      className="w-5 h-5 invert xl:invert-0"
+      className="w-5 h-5 xl:invert-0"
     />
   );
 };

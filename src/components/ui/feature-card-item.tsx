@@ -31,14 +31,14 @@ const FeatureCardItem = ({
 
         <Heading
           type="h2"
-          className="xl:text-md text-xs font-[500]   xl:text-[18px] xl:w-full "
+          className="xl:text-md text-xs font-[500]   xl:text-lg xl:w-full "
         >
           {featureCardData.title}
         </Heading>
 
         <Heading
           type="h4"
-          className="xl:text-md text-xs font-[500] leading-6 xl:text-[18px] mb-2 xl:w-full  text-gray"
+          className="xl:text-md text-xs font-[500] leading-6 xl:text-lg mb-2 xl:w-full  text-gray"
         >
           {" "}
           {featureCardData.description}

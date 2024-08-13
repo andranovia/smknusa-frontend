@@ -10,7 +10,7 @@ const NewsForm = () => {
               <div className="col-span-1 flex flex-col">
                 <label
                   htmlFor="title"
-                  className="block font-medium 1xl:text-[18px] mb-5 text-blue-base mt-1"
+                  className="block font-medium 1xl:text-lg mb-5 text-blue-base mt-1"
                 >
                   Judul Berita
                 </label>
@@ -24,7 +24,7 @@ const NewsForm = () => {
               <div className="col-span-1 flex flex-col">
                 <label
                   htmlFor="category"
-                  className="block font-medium 1xl:text-[18px] mb-5 text-blue-base mt-1"
+                  className="block font-medium 1xl:text-lg mb-5 text-blue-base mt-1"
                 >
                   Kategori Berita
                 </label>
@@ -38,7 +38,7 @@ const NewsForm = () => {
               <div className="col-span-1 flex flex-col">
                 <label
                   htmlFor="from"
-                  className="block font-medium 1xl:text-[18px] mb-5 text-blue-base mt-1"
+                  className="block font-medium 1xl:text-lg mb-5 text-blue-base mt-1"
                 >
                   Dari Tanggal
                 </label>
@@ -52,7 +52,7 @@ const NewsForm = () => {
               <div className="col-span-1 flex flex-col">
                 <label
                   htmlFor="to-date"
-                  className="block font-medium 1xl:text-[18px] mb-5 text-blue-base mt-1"
+                  className="block font-medium 1xl:text-lg mb-5 text-blue-base mt-1"
                 >
                   Sampai Tanggal
                 </label>

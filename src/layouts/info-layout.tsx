@@ -8,30 +8,30 @@ const InfoLayout = ({
   title,
   subtitle,
   children,
-  className,
 }: {
   title: string;
   subtitle: string;
   children: React.ReactNode;
-  className?: string;
 }) => {
   const isMedium = useMediaQuery("only screen and (max-width: 1023.98px)");
   const isSmall = useMediaQuery("only screen and (max-width:  576px)");
   return (
-    <div className="flex xl:min-h-screen flex-col items-center bg-white">
+    <div className="flex xl:min-h-screen flex-col items-center ">
       <div
         style={{
           marginTop: isMedium ? "4rem" : "0rem",
         }}
-        className="relative h-full w-full xl:h-[80%] "
+        className="relative h-full w-full xl:h-[80%] p-2 xl:p-3 overflow-hidden "
       >
+       
         <div   style={{
               height: isMedium ? isSmall ? "10rem" : "14rem" : "30rem",
               background: 'url("/assets/smkn1purwosari.svg")',
               backgroundSize: "cover",
               backgroundRepeat: "no-repeat",
-              backgroundPosition: "center"
-            }} className="relative 1xl:pb-6 h-full w-full flex justify-center">
+              backgroundPosition: "center",
+            }} className="relative 1xl:pb-6 h-full w-full flex justify-center rounded-md">
+                <div className="absolute hidden xl:block top-0 bg-gradient-to-b w-full z-10 from-black opacity-40 to-transparent min-w-full p-10"></div>
           <div
           
             className="inset-0 flex flex-col items-center justify-center text-white px-8  max-w-full md:max-w-md-content lg:max-w-lg-content xl:max-w-full  z-20  w-full"
@@ -53,8 +53,8 @@ const InfoLayout = ({
           </div>
         </div>
       </div>
-      <div className="flex w-full flex-col items-center ">
-        <div className=" w-full gap-10 xl:gap-0 flex flex-col  items-center   h-full xl:rounded-lg ">
+      <div className="flex w-full flex-col items-center px-2 xl:px-2.5  bg-gray-base">
+        <div className=" w-full gap-10 xl:gap-0 flex flex-col  items-center bg-white   h-full rounded-lg ">
           {children}
         </div>
       </div>

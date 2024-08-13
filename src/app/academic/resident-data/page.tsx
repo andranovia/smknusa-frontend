@@ -25,6 +25,8 @@ const ResidentData = () => {
   };
 
   return (
+
+    <div className="px-2 xl:px-2.5">
     <div className="w-full pt-20 xl:pt-24 px-3 flex flex-col justify-center items-center rounded-[10px] text-blue-base bg-white">
       <div className="relative   flex flex-col items-center  pt-10 w-full  md:max-w-md-content lg:max-w-lg-content xl:max-w-[1002px] 2xl:max-w-[1216px]  ">
         <div className="flex flex-col xl:items-center gap-4 w-full text-center">
@@ -54,6 +56,7 @@ const ResidentData = () => {
           </ClientOnly>
         )}
       </div>
+    </div>
     </div>
   );
 };

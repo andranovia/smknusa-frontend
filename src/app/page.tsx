@@ -8,11 +8,13 @@ import { ClientOnly } from "@/utils/isClient";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col items-center gap-3">
+    <div className="flex min-h-screen flex-col items-center">
       <HomeHero />
       <HomeSlider />
-      <div className="px-1 xl:px-3 flex flex-col w-full items-center gap-3">
+      <div className=" px-2 xl:px-2.5 flex flex-col w-full items-center gap-3 mt-3">
+        <ClientOnly>
         <HomeAnnouncement />
+        </ClientOnly>
         <HomeMajor />
         <ClientOnly>
           <HomeFacility />
