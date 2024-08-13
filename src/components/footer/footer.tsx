@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function Footer() {
   return (
     <>
-      <div className="flex flex-col items-center 2xl:justify-center  2xl:px-8 py-8 bg-primary rounded-t-lg text-white mt-3">
+      <div className="flex flex-col items-center 2xl:justify-center  2xl:px-8 py-8 bg-primary rounded-[10px] text-white mt-3">
         <div className="grid grid-cols-1 md:grid-cols-2 2xl:flex 2xl:flex-wrap flex-col 2xl:flex-row flex-nowrap mt-0 lg:mt-8 px-4 md:px-0  2xl:gap-0 gap-10 xl:max-w-xl-content  md:max-w-md-content lg:max-w-lg-content 2xl:max-w-max-content">
           <div className="flex flex-col items-stretch 2xl:w-1/4 ">
             <h2 className="text-lg lg:text-2xl font-bold ">Unit Produksi Sekolah</h2>

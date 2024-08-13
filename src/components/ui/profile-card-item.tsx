@@ -29,7 +29,7 @@ const ProfileCardItem = ({ profileCardData }: ProfileCardItemProps) => {
           </div>
         </div>
         
-          <Heading type="h5" className="xl:text-md text-xs font-[500]   xl:text-[18px] mb-2 sm:w-full  line-clamp-3 leading-6 text-gray"> {profileCardData.description}</Heading>
+          <Heading type="h5" className="xl:text-md text-xs font-[500]   xl:text-lg mb-2 sm:w-full  line-clamp-3 leading-6 text-gray"> {profileCardData.description}</Heading>
       </div>
     </div>
   );

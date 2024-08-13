@@ -71,7 +71,7 @@ const Navbar = () => {
                 className="w-10 xl:w-auto h-auto"
               />
 
-              <h2 className="ml-2 text-sm xl:text-[18px]  ">
+              <h2 className="ml-2 text-sm xl:text-lg  ">
                 SMK NEGERI 1 <br className="block" />
                 PURWOSARI
               </h2>

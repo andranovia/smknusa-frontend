@@ -43,7 +43,7 @@ export default function RootLayout({
         <main>
         <ReactQueryProvider>{children}</ReactQueryProvider>
         </main>
-        <footer className=" px-2 xl:px-2.5">
+        <footer className=" px-2 xl:px-2.5 pb-2 xl:pb-2.5">
           <Footer />
         </footer>
       </body>

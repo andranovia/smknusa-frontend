@@ -120,7 +120,7 @@ const HomeMajor = () => {
           <br className="block sm:hidden" /> SMK Hebat
         </Heading>
 
-        <Paragraph className=" text-sm xl:text-[18px] lg:text-[14px] xl:w-fit  mt-[12px] w-full max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container">
+        <Paragraph className=" text-sm xl:text-lg lg:text-[14px] xl:w-fit  mt-[12px] w-full max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container">
           SMK Negeri 1 Purwosari memiliki beberapa program keahlian yang dibagi
           menjadi 10 macam jurusan.
         </Paragraph>
@@ -128,17 +128,18 @@ const HomeMajor = () => {
         <hr className="bg-white mt-8 xl:mt-[52px]  w-full max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container" />
       </div>
 
-      <div className="relative  xl:px-8 px-0  xl:-mt-32  ">
-        <div className="flex justify-center items-end relative  bg-white overflow-hidden rounded-[10px] ">
+      <div className="relative  xl:px-8 px-0  xl:-mt-32 flex justify-center w-full ">
+        <div className="flex justify-center items-end relative  bg-white overflow-hidden rounded-[10px]  2xl:max-w-max-container h-full w-full">
+        <div className="absolute right-0 h-full bg-gradient-to-l from-white to-transparent z-20 p-10 md:p-16 opacity-80"></div>
           <div className="relative w-full  flex flex-col xl:flex-row   justify-center gap-14  h-full  mt-8 mb-10 xl:mb-0 max-w-max-container">
-            <div className="1xl:w-[40%] w-full flex top-0 -mt-28 xl:mt-0 absolute justify-center py-3 xl:rounded-[10px] items-center xl:px-0 px-6 gap-8 xl:bg-primary lg:min-w-lg max-w-lg">
+            <div className=" w-full flex top-0 -mt-28 xl:mt-0 absolute justify-center py-3 xl:rounded-[10px] items-center xl:px-0 px-6 gap-8 xl:bg-primary lg:min-w-lg max-w-[34rem]">
               {majorLinkData.map((data, index) => {
                 return (
                   <React.Fragment key={index}>
                     <span
                       key={index}
                       onClick={() => handleSlideChange(data.slide)}
-                      className={`font-[600] relative z-30 text-xs cursor-pointer transition-colors xl:text-[16px] ${
+                      className={`font-[600] relative text-center z-30 text-xs cursor-pointer transition-colors xl:text-[16px] ${
                         currentSlide === data.slide
                           ? "p-1 rounded-md relative text-white  w-min-content before:border-[1px] before:absolute before:bottom-0 before:right-0 before:border-yellow before:w-full before:opacity-100"
                           : "p-1 rounded-md relative  text-gray-light w-min-content before:h-0 before:absolute before:bottom-0 before:right-0 before:bg-white before:opacity-0"
@@ -150,7 +151,7 @@ const HomeMajor = () => {
                 );
               })}
             </div>
-            <div className="relative flex justify-center items-center w-full max-w-max-container  xl:left-20">
+            <div className="relative flex justify-center items-center w-full   xl:left-20">
               <Image
                 src={"/assets/home/major/principal.png"}
                 alt=""

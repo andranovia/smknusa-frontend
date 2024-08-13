@@ -187,7 +187,7 @@ const HomeAnnouncementsCard = ({
               className={`flex flex-col items-start justify-between xl:w-2/3 min-h-[8.5rem] max-h-[8.5rem]`}
             >
               <span className="flex flex-col items-start gap-2  cursor-pointer " onClick={() => handleChangeHighlight(index)}>
-                <h2 className="font-[600]   xl:text-[18px]">
+                <h2 className="font-[600]   xl:text-lg">
                   {currentAnnouncementsType}
                 </h2>
 
@@ -296,7 +296,8 @@ const HomeAnnouncementsCard = ({
   };
 
   return (
-    <div className="flex justify-start overflow-hidden items-end relative w-full xl:h-[34rem] bg-white xl:bg-gray-base  rounded-[10px] ">
+    <div className="flex justify-start overflow-hidden items-end relative w-full xl:h-[34rem] bg-white   rounded-[10px] ">
+       <div className="absolute right-0 h-full bg-gradient-to-l from-white to-transparent z-20 p-0 xl:p-16 opacity-80"></div>
       <div className="flex flex-col overflow-hidden  xl:flex-row-reverse justify-between items-center w-full h-full xl:p-8 gap-6">
         <div className="xl:w-2/4  w-full relative xl:static h-[16rem]  lg:h-[24rem]  xl:h-full ">
           {AnnouncementImageList()}

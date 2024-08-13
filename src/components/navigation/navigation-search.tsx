@@ -17,7 +17,7 @@ const NavigationSearch = ({ show, searchToggle, setSearchToggle }: NavigationSea
 
   return (
     <>
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: searchToggle ? 1 : 0, pointerEvents: searchToggle ? "auto" : "none" }} className="z-40 fixed w-screen left-0 bottom-0 h-screen bg-opacity-40 bg-primary backdrop-blur-sm" />
+     
 
       <motion.div
         transition={defaultTransition}
