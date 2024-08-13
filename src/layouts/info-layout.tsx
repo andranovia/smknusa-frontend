@@ -31,7 +31,7 @@ const InfoLayout = ({
               backgroundRepeat: "no-repeat",
               backgroundPosition: "center",
             }} className="relative 1xl:pb-6 h-full w-full flex justify-center rounded-md">
-                <div className="absolute top-0 bg-gradient-to-b w-full z-10 from-black opacity-40 to-transparent min-w-full p-10"></div>
+                <div className="absolute hidden xl:block top-0 bg-gradient-to-b w-full z-10 from-black opacity-40 to-transparent min-w-full p-10"></div>
           <div
           
             className="inset-0 flex flex-col items-center justify-center text-white px-8  max-w-full md:max-w-md-content lg:max-w-lg-content xl:max-w-full  z-20  w-full"

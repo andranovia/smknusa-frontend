@@ -262,7 +262,7 @@ const NavigationItem = ({
           <AnimatePresence>
             {showDropdown && (
               <div
-                className="absolute left-4 md:left-14  xl:left-auto  xl:top-auto h-[25rem] xl:h-auto xl:justify-start xl:items-start flex flex-col items-end justify-end"
+                className="absolute left-0 xs:left-4 md:left-14  xl:left-auto  xl:top-auto h-[25rem] xl:h-auto xl:justify-start xl:items-start flex flex-col items-end justify-end"
               >
 
                 <motion.div
@@ -275,9 +275,9 @@ const NavigationItem = ({
                     exit: { opacity: 0, y: 10 },
                   }}
                   transition={defaultTransition}
-                  className={cn(`min-w-[20rem] relative w-[90%] xl:w-[26rem] items-center justify-center grid grid-cols-2 xl:gap-0 h-fit xl:h-full xl:grid-cols-1 xl:mt-14 z-20 rounded-tl-[10px] xl:rounded-tl-none xl:rounded-b-[10px]   rounded-r-[10px] bg-white ${show || !activePage ? "bg-opacity-100 shadow-lg" : "bg-opacity-40 bg-primary z-10 backdrop-blur-sm"}  xl:pb-0 pb-8 `)}
+                  className={cn(`min-w-[17rem] xs:min-w-[19rem] sm:min-w-[20rem] relative w-[90%] xl:w-[26rem] items-center justify-center grid grid-cols-2 xl:gap-0 h-fit xl:h-full xl:grid-cols-1 xl:mt-14 z-20 rounded-tl-[10px] xl:rounded-tl-none xl:rounded-b-[10px]   rounded-r-[10px] bg-white ${show || !activePage ? "bg-opacity-100 shadow-lg" : "xl:bg-opacity-40 xl:bg-primary xl:z-10 xl:backdrop-blur-sm"}  xl:pb-0 pb-8 `)}
                 >
-                  <div className={`w-0 absolute h-0 -top-4 left-5 border-[16px]  border-transparent  opacity-40 border-t-0 ${show ? 'hidden' : 'border-b-[#081B34]'}`}></div>
+                  <div className={`w-0 absolute h-0 -top-4 left-5 border-[16px] hidden xl:block  border-transparent  opacity-40 border-t-0 ${show ? 'hidden' : 'border-b-[#081B34]'}`}></div>
                   {dropdownData?.map((data, index) => (
                     <React.Fragment key={index}>
                       <Link

@@ -46,6 +46,7 @@ const config: Config = {
         'md-content': '485px',
         'lg-content': '648px',
         'xl-content': '922px',
+        '1xl-content': '1210px',
         'grid-content': '1279.98px',
         'max-content': '1448.8px',
         'max-container': '1368px',

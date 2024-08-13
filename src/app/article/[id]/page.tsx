@@ -40,7 +40,6 @@ async function fetchArticles() {
 
 export async function generateStaticParams() {
   const newsData = await fetchArticles();
-  console.log('test')
   const ids = newsData?.map((news: Article) => news.id_pemberitahuan);
 
   return ids?.map((id: string) => ({ id: id.toString() }));

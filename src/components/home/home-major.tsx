@@ -115,23 +115,23 @@ const HomeMajor = () => {
   return (
     <section className="w-full h-full bg-white rounded-[10px]">
       <div className="flex flex-col lg:text-center w-full items-center justify-center bg-primary  rounded-md text-white pt-6 sm:pt-10 pb-16 xl:pb-48">
-        <Heading type="h1" className="xl:text-[36px]  text-[22px] lg:text-[30px] sm:text-[24px] w-full max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 2xl:max-w-max-container xl:w-fit ">
+        <Heading type="h1" className="xl:text-[36px]  text-[22px] lg:text-[30px] sm:text-[24px] w-full max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container xl:w-fit ">
           Menuju SMK Bisa,
           <br className="block sm:hidden" /> SMK Hebat
         </Heading>
 
-        <Paragraph className=" text-sm xl:text-[18px] lg:text-[14px] xl:w-fit  mt-[12px] w-full max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 2xl:max-w-max-container">
+        <Paragraph className=" text-sm xl:text-[18px] lg:text-[14px] xl:w-fit  mt-[12px] w-full max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container">
           SMK Negeri 1 Purwosari memiliki beberapa program keahlian yang dibagi
           menjadi 10 macam jurusan.
         </Paragraph>
 
-        <hr className="bg-white mt-8 xl:mt-[52px]  w-full max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 2xl:max-w-max-container" />
+        <hr className="bg-white mt-8 xl:mt-[52px]  w-full max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container" />
       </div>
 
       <div className="relative  xl:px-8 px-0  xl:-mt-32  ">
         <div className="flex justify-center items-end relative  bg-white overflow-hidden rounded-[10px] ">
           <div className="relative w-full  flex flex-col xl:flex-row   justify-center gap-14  h-full  mt-8 mb-10 xl:mb-0 max-w-max-container">
-            <div className="xl:w-[40%] w-full flex top-0 -mt-28 xl:mt-0 absolute justify-center py-3 xl:rounded-[10px] items-center xl:px-0 px-6 gap-8 xl:bg-primary lg:min-w-lg max-w-lg">
+            <div className="1xl:w-[40%] w-full flex top-0 -mt-28 xl:mt-0 absolute justify-center py-3 xl:rounded-[10px] items-center xl:px-0 px-6 gap-8 xl:bg-primary lg:min-w-lg max-w-lg">
               {majorLinkData.map((data, index) => {
                 return (
                   <React.Fragment key={index}>

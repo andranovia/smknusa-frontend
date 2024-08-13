@@ -2,8 +2,8 @@ import React from "react";
 
 const HomeHero = () => {
   return (
-    <section className="flex justify-center items-center xl:p-0 p-2 bg-gray-base mt-[4.5rem] xl:mt-0">
-      <div className="absolute top-0 bg-gradient-to-b w-full from-black opacity-40 to-transparent  p-10"></div>
+    <section className="flex justify-center items-center  bg-gray-base mt-[4.5rem] xl:mt-0">
+      <div className="absolute hidden xl:block top-0 bg-gradient-to-b w-full from-black opacity-40 to-transparent  p-10"></div>
       <div className="overflow-hidden ">
         <video
           width={1600}

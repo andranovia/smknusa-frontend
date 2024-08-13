@@ -26,9 +26,11 @@ type HomeAnnouncementsCardProps = {
   setCurrentAnnouncementsHighlightIndex: Dispatch<SetStateAction<number>>;
   homeAnnouncementsEndRef: React.MutableRefObject<null>;
   currentAnnouncementsType: string;
+  isChangingAnnouncements: boolean;
 };
 
 const HomeAnnouncementsCard = ({
+  isChangingAnnouncements,
   currentAnnouncementsType,
   currentAnnouncementsData,
   currentAnnouncementsHighlightIndex,
@@ -39,29 +41,27 @@ const HomeAnnouncementsCard = ({
   const isMobile = useMediaQuery("only screen and (max-width : 1024px)");
   const sliderPositionYRef = useRef<HTMLDivElement>(null);
   const sliderContainerRef = useRef<HTMLDivElement>(null);
-  const scrollMobile = motionValue(0);  
-  const scrollY = useMotionValue(0); 
-  const sliderY = useTransform(scrollY, [0, 0.5, 1], [0, 80, 320]);
+  const scrollMobile = motionValue(0);
   const controls = useAnimation();
-  const [isPending, setIsPending] = React.useState(false);
-
 
 
 
   useEffect(() => {
-    let timeoutId: NodeJS.Timeout;
+    if (isChangingAnnouncements) {
+      controls.start({ y: 0 });
+    }
+    else if (isMobile) {
+      let timeoutId: NodeJS.Timeout;
 
       timeoutId = setTimeout(() => {
         setCurrentAnnouncementsHighlightIndex((prevIndex) => {
           if (currentAnnouncementsData && prevIndex < currentAnnouncementsData?.length - 1) {
-            console.log(prevIndex + 1);
             return prevIndex + 1;
           } else {
-            console.log(0);
             return 0;
           }
         });
-  
+
         if (currentAnnouncementsData && currentAnnouncementsHighlightIndex === currentAnnouncementsData.length - 1) {
           controls.start({ y: 0 });
         } else if (currentAnnouncementsData && currentAnnouncementsHighlightIndex === 0) {
@@ -70,21 +70,26 @@ const HomeAnnouncementsCard = ({
           controls.start({ y: 320 });
         }
       }, 2000);
-    
-  
-    return () => clearTimeout(timeoutId);
-  }, [isPending, currentAnnouncementsData, currentAnnouncementsHighlightIndex, controls, setCurrentAnnouncementsHighlightIndex, isMobile]);
-  
-  // const handleChangeHighlight = (index: number) => {
-  //   setCurrentAnnouncementsHighlightIndex(index);
-  
-  //   if (currentAnnouncementsHighlightIndex === 0) {
-  //     controls.start({ y: 0 })
-  //   } else {
-  //     controls.start({ y: 160 })
-  //   }
-  // };
-  
+
+      return () => clearTimeout(timeoutId);
+    }
+
+
+
+  }, [currentAnnouncementsData, currentAnnouncementsHighlightIndex, controls, setCurrentAnnouncementsHighlightIndex, isMobile]);
+
+  const handleChangeHighlight = (index: number) => {
+    if(isMobile) { return }
+    setCurrentAnnouncementsHighlightIndex(index);
+    if (currentAnnouncementsData && index === 0) {
+      controls.start({ y: 0 });
+    } else if (currentAnnouncementsData && index === 1) {
+      controls.start({ y: 160 });
+    } else {
+      controls.start({ y: 320 });
+    }
+  };
+
   useEffect(() => {
     announcementsHighlightControls.start("visible");
   }, [currentAnnouncementsData]);
@@ -175,19 +180,24 @@ const HomeAnnouncementsCard = ({
                   currentAnnouncementsHighlightIndex === index && !isMobile
                     ? 1
                     : 0.9,
-              }}
-              className={`flex flex-col items-start gap-2 xl:w-2/3 `}
-            >
-              <h2 className="font-[600]   xl:text-[18px] ">
-                {currentAnnouncementsType}
-              </h2>
 
-              <p className="font-[500] text-sm xl:text-[16px] line-clamp-3 min-h-16">
-                {announcement.nama}
-              </p>
+                opacity:
+                  isChangingAnnouncements ? 0 : 1
+              }}
+              className={`flex flex-col items-start justify-between xl:w-2/3 min-h-[8.5rem] max-h-[8.5rem]`}
+            >
+              <span className="flex flex-col items-start gap-2  cursor-pointer " onClick={() => handleChangeHighlight(index)}>
+                <h2 className="font-[600]   xl:text-[18px]">
+                  {currentAnnouncementsType}
+                </h2>
+
+                <p className="font-[500] text-sm xl:text-[16px] line-clamp-3  xl:min-h-fit">
+                  {announcement.nama}
+                </p>
+              </span>
 
               <div className="flex justify-start items-center gap-2">
-                <h3 className="font-[500] text-[16px]">Lihat Selengkapnya</h3>
+                <h3 className="font-[500] text-[16px] cursor-pointer">Lihat Selengkapnya</h3>
                 <Image
                   src={"assets/icon/line-arrow-right.svg"}
                   alt="arrow-right"
@@ -230,7 +240,7 @@ const HomeAnnouncementsCard = ({
     );
 
   const AnnouncementImageList = () => {
-    
+
 
     const cardTransitionSettings = {
       duration: 0.4,
@@ -241,14 +251,13 @@ const HomeAnnouncementsCard = ({
       <>
         {currentAnnouncementsData ? (
           currentAnnouncementsData.map((announcement, index) => (
-            <>
-              <motion.div
-                key={index}
+            <React.Fragment   key={index}>
+              <motion.div   
                 initial="hidden"
                 animate={{
                   opacity: currentAnnouncementsHighlightIndex === index ? 1 : 1,
                   x: currentAnnouncementsHighlightIndex === index ? 0 : isMobile ? index === 2 ? 0 : 840 : 660,
-                  zIndex: isMobile? index === 0 ? 10 : index === 1 ? 8 : currentAnnouncementsHighlightIndex : index === 1 ? 10 : currentAnnouncementsHighlightIndex,
+                  zIndex: isMobile ? index === 0 ? 10 : index === 1 ? 8 : currentAnnouncementsHighlightIndex : index === 1 ? 10 : currentAnnouncementsHighlightIndex,
                   y: 0,
                 }}
                 variants={{ ...imageVariant }}
@@ -263,7 +272,7 @@ const HomeAnnouncementsCard = ({
                   className="w-full h-full object-cover rounded-lg"
                 />
               </motion.div>
-            </>
+            </React.Fragment>
           ))
         ) : (
           <>
@@ -297,8 +306,7 @@ const HomeAnnouncementsCard = ({
             <motion.div
               dragConstraints={sliderContainerRef}
               ref={sliderPositionYRef}
-              style={{ y: sliderY }}
-              animate={controls} 
+              animate={controls}
               transition={defaultTransition}
               className="bg-yellow cursor-grab p-1 rounded-md h-1/4 absolute top-0 mt-8"
             ></motion.div>

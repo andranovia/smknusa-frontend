@@ -12,7 +12,9 @@ export default function Home() {
       <HomeHero />
       <HomeSlider />
       <div className=" px-2 xl:px-2.5 flex flex-col w-full items-center gap-3 mt-3">
+        <ClientOnly>
         <HomeAnnouncement />
+        </ClientOnly>
         <HomeMajor />
         <ClientOnly>
           <HomeFacility />

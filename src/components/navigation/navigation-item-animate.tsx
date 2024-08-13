@@ -53,14 +53,14 @@ const NavigationItemAnimate = ({ itemData, show }: NavigationItemAnimateProps) =
         }}
         onMouseEnter={() => handleHover()}
         onMouseLeave={() => handleHoverLeave()}
-        className={`flex xl:flex-row   flex-col xl:items-start items-center xl:text-start text-center  gap-4 xl:pr-14 w-full rounded-[10px] xl:pl-4 py-2   ${show || !activePage  ? 'text-blue-base opacity-50 ': 'text-white opacity-80'}`}
+        className={`flex xl:flex-row   flex-col xl:items-start items-center xl:text-start text-center  gap-4 xl:pr-14 w-full rounded-[10px] xl:pl-4 py-2   ${show || !activePage  ? 'text-blue-base xl:opacity-50 ': 'xl:text-white xl:opacity-80'}`}
       >
         <Image
           src={itemData.linkDropdownData.icon}
           alt={itemData.linkDropdownData.icon}
           width={40}
           height={40}
-          className={`w-6 h-6 xl:w-5 xl:h-5 xl:mt-[2px] ${show || !activePage ? "invert-0" : "invert"}`}
+          className={`w-6 h-6 xl:w-5 xl:h-5 xl:mt-[2px] ${show || !activePage ? "xl:invert-0" : "xl:invert"}`}
         />
         <div className="xl:flex flex-col items-start w-full">
           <h2 className=" font-[600] text-xs xl:text-[16px] line-clamp-1">

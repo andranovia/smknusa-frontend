@@ -36,7 +36,7 @@ const HomeSlider = () => {
                 alt="star"
                 width={70}
                 height={70}
-                className="mx-10 xl:w-18 w-12"
+                className="mx-10 xl:w-16 w-8"
               />
               <h2 className="font-[500] xl:text-[22px]">{data.text}</h2>
             </div>
