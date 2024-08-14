@@ -74,7 +74,7 @@ const HomeMajorSlider = ({ majorData, animatedX }: HomeMajorSliderProps) => {
                 duration: 0.4,
               }}
               animate={controls}
-              className="flex justify-end items-center flex-col relative bg-black rounded-b-[10px] w-[13rem] h-[18rem]   xl:w-[18.75rem] xl:h-[25rem]"
+              className="flex justify-end items-center flex-col relative bg-black rounded-[10px] w-[13rem] h-[18rem]   xl:w-[18.75rem] xl:h-[25rem]"
             >
               <Image
                 src={data.majorImg}

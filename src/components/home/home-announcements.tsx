@@ -114,7 +114,7 @@ const HomeAnnouncement = () => {
       className="w-full h-full  flex justify-center items-center flex-col "
     >
       <div className="xl:sticky -top-1/3 w-full  flex justify-center items-center  ">
-        <div className="w-full h-full xl:pb-20 bg-white rounded-[10px] ">
+        <div className="w-full h-full xl:pb-8 bg-white rounded-[10px] ">
           <div className="flex flex-col items-center lg:text-center justify-center bg-primary  rounded-md text-white pt-6 sm:pt-10 pb-48">
             <Heading type="h1" className=" xl:text-[36px] text-[22px] lg:text-[30px] sm:text-[24px] max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content w-full xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container">
               Papan Pengumuman Informasi <br className="hidden lg:block" />
@@ -123,7 +123,7 @@ const HomeAnnouncement = () => {
 
             <Paragraph className="text-sm xl:text-lg lg:text-[14px] mt-[12px] max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content w-full xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container">
               Papan Pengumuman ini berisi segala informasi mengenai pembaruan
-              agenda, berita, artikel atau yang lainnya
+              agenda, berita, artikel atau yang lainnya.
             </Paragraph>
 
             <hr className="bg-white mt-8 xl:mt-[52px]  w-full max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container" />

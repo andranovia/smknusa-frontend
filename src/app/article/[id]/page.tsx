@@ -3,6 +3,7 @@ import { backendUrl } from "@/utils/backendUrl";
 import Image from "next/image";
 import React from "react";
 import parse from "html-react-parser";
+import { JSDOM } from 'jsdom';
 import { redirect } from "next/navigation";
 
 const articleData = [
@@ -65,15 +66,30 @@ export default async function Page({ params }: { params: { id: string } }) {
   }
 
   const parsedHtml = parse(articleById?.text);
+  const dom = new JSDOM(articleById?.text || '');
+  const document = dom.window.document;
 
+  const imgElements = document.querySelectorAll('img');
+  imgElements.forEach(img => img.remove());
+
+  const styleElements = document.querySelectorAll('style');
+  styleElements.forEach(style => style.remove());
+
+  const allElements = document.querySelectorAll('*');
+  allElements.forEach(element => element.removeAttribute('style'));
+
+  const sanitizedHtml = document.body.innerHTML;
 
   const date = new Date(articleById?.created_at || Date.now());
   const normalDate = date.toLocaleDateString();
 
+  
+
   return (
-    <div className="w-full  xl:pt-24 px-2 xl:px-3 rounded-[10px] text-blue-base">
-      <div className="relative  bg-white flex flex-col items-center xl:gap-20 pt-10 pb-20">
-        <div className="flex flex-col gap-4 w-[80%] ">
+    <div className="pt-20 xl:pt-24 px-2 xl:px-3 flex justify-center items-center w-full">
+    <div className="w-full  bg-white rounded-[10px]  text-blue-base flex justify-center">
+      <div className="relative  bg-white rounded-[10px] flex flex-col items-center xl:gap-20 pt-10 pb-20 px-4 gap-10  max-w-full md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 2xl:max-w-max-content">
+        <div className="flex flex-col gap-4 w-[82%] ">
           <h1 className="font-[700] xl:text-[46px] text-[24px] ">
             {articleById?.nama}
           </h1>
@@ -85,16 +101,10 @@ export default async function Page({ params }: { params: { id: string } }) {
                 </p>
               </div>
             </div>
-            <div className="flex flex-col xl:w-4/5 gap-8 font-[500] text-[18px]  ">
-              <p className=" text-gray">
-                Framework Laravel adalah sebuah alat bantu untuk memudahkan kita
-                agar bisa lebih mudah saat membuat website, Framework Laravel
-                ini merupakan framework berbasis PHP ( maksutnya Pakek bahasa
-                PHP) yang sedang populer dikalangan programmer PHP setelah CI
-                (CodeIgniter), Rekomendasi banget deh buat kalian yang masih
-                baru masuk ke dalam dunia web programming, buat belajar
-                framework Laravel ini. [...]
-              </p>
+            <div className="flex flex-col xl:w-4/5 gap-8 !font-[500] !text-[18px]  ">
+            <p dangerouslySetInnerHTML={{ __html: sanitizedHtml }} className="relative !text-gray line-clamp-3 after:content-['[...]'] after:absolute after:bottom-0 after:right-0 after:bg-white after:px-1">
+                  
+                </p>
               <hr className="w-full border " />
               <div className="w-full justify-between flex xl:flex-row flex-col xl:items-center gap-4">
                 <h4 className="text-[12px]">Diposting pada : {normalDate}</h4>
@@ -131,7 +141,7 @@ export default async function Page({ params }: { params: { id: string } }) {
             </div>
           </div>
         </div>
-        <div className="flex flex-col items-center gap-8 w-[90%] xl:w-[80%] ">
+        <div className="flex flex-col items-center gap-8 w-[90%] xl:w-[82%] ">
           <Image
             src={backendUrl + articleById?.thumbnail}
             alt="article-image"
@@ -247,7 +257,7 @@ export default async function Page({ params }: { params: { id: string } }) {
             </div>
           </div>
         </div>
-        <div className=" flex gap-10 flex-col w-[90%] xl:w-[80%]">
+        <div className=" flex gap-10 flex-col w-[90%] xl:w-[82%]">
           <h2 className="mt-10 text-3xl xl:text-5xl font-semibold">
             Artikel Lain yang tak kalah menarik
           </h2>
@@ -314,6 +324,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                 </React.Fragment>
               );
             })}
+          </div>
           </div>
         </div>
       </div>
