@@ -7,6 +7,7 @@ import { useAnimation, motion } from "framer-motion";
 import HomeFacilityCardStack from "./home-facility-card-stack";
 import { useMediaQuery } from "@uidotdev/usehooks";
 import { Heading, Paragraph } from "../ui/typography";
+import Link from "next/link";
 
 const cardData = [
   [
@@ -135,7 +136,7 @@ const HomeFacility = () => {
 
             <div className="flex justify-center items-center xl:ml-[8%] 1xl:ml-[12%] 2xl:ml-[22%] w-full xl:w-fit ">
               <div className="btn bg-yellow text-blue-base w-full text-center font-[600] py-2.5 px-5 rounded">
-                <button className="xl:text-[16px] text-xs">Selengkapnya</button>
+                <Link href={"/profile/school-facility"}  className="xl:text-[16px] text-xs">Selengkapnya</Link>
               </div>
             </div>
           </div>

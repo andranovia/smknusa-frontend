@@ -30,7 +30,7 @@ const InfoLayout = ({
               backgroundSize: "cover",
               backgroundRepeat: "no-repeat",
               backgroundPosition: "center",
-            }} className="relative 1xl:pb-6 h-full w-full flex justify-center rounded-md">
+            }} className="relative 1xl:pb-6 h-full w-full flex justify-center rounded-md overflow-hidden">
                 <div className="absolute hidden xl:block top-0 bg-gradient-to-b w-full z-10 from-black opacity-40 to-transparent min-w-full p-10"></div>
           <div
           

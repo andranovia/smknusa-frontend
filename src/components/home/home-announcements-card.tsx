@@ -5,11 +5,8 @@ import React, { Dispatch, SetStateAction, useEffect, useRef } from "react";
 import {
   AnimationControls,
   motion,
-  useScroll,
-  useTransform,
   useAnimation,
   motionValue,
-  useMotionValue,
 } from "framer-motion";
 import { defaultTransition } from "../animation/transition";
 import { useMediaQuery } from "@uidotdev/usehooks";
@@ -41,7 +38,6 @@ const HomeAnnouncementsCard = ({
   const isMobile = useMediaQuery("only screen and (max-width : 1024px)");
   const sliderPositionYRef = useRef<HTMLDivElement>(null);
   const sliderContainerRef = useRef<HTMLDivElement>(null);
-  const scrollMobile = motionValue(0);
   const controls = useAnimation();
 
 
@@ -61,14 +57,6 @@ const HomeAnnouncementsCard = ({
             return 0;
           }
         });
-
-        if (currentAnnouncementsData && currentAnnouncementsHighlightIndex === currentAnnouncementsData.length - 1) {
-          controls.start({ y: 0 });
-        } else if (currentAnnouncementsData && currentAnnouncementsHighlightIndex === 0) {
-          controls.start({ y: 160 });
-        } else {
-          controls.start({ y: 320 });
-        }
       }, 2000);
 
       return () => clearTimeout(timeoutId);
@@ -79,30 +67,50 @@ const HomeAnnouncementsCard = ({
   }, [currentAnnouncementsData, currentAnnouncementsHighlightIndex, controls, setCurrentAnnouncementsHighlightIndex, isMobile]);
 
   const handleChangeHighlight = (index: number) => {
-    if(isMobile) { return }
+    if (isMobile) { return }
     setCurrentAnnouncementsHighlightIndex(index);
     if (currentAnnouncementsData && index === 0) {
       controls.start({ y: 0 });
     } else if (currentAnnouncementsData && index === 1) {
-      controls.start({ y: 160 });
+      controls.start({ y: 170 });
     } else {
-      controls.start({ y: 320 });
+      controls.start({ y: 340 });
     }
   };
 
+  const imageVariant = {
+    hidden: { opacity: 1, y: isMobile ? 0 : 200, x: 0 },
+  };
+
   useEffect(() => {
-    announcementsHighlightControls.start("visible");
+
+    let timeoutId: NodeJS.Timeout;
+
+    timeoutId = setTimeout(() => {
+      announcementsHighlightControls.start("visible");
+    }, 400);
+
+    return () => clearTimeout(timeoutId);
+
+
   }, [currentAnnouncementsData]);
+
 
   const announcementsHighlightVariant = {
     hidden: {
       y: 0,
+      opacity: 0,
+      transition: {
+        when: "beforeChildren",
+        staggerChildren: 0.2,
+      },
     },
     after: {
       y: 0,
     },
     visible: {
       y: 0,
+      opacity: 1,
       transition: {
         when: "beforeChildren",
         staggerChildren: 0.2,
@@ -112,11 +120,11 @@ const HomeAnnouncementsCard = ({
 
   const listVariant = {
     hidden: {
-      y: 40,
+      y: 30,
       opacity: 0,
     },
     after: {
-      y: 80,
+      y: 40,
       opacity: 0,
     },
     visible: {
@@ -125,39 +133,17 @@ const HomeAnnouncementsCard = ({
     },
   };
 
-  const imageVariant = {
-    hidden: { opacity: 1, y: isMobile ? 0 : 200, x: 0 },
-  };
-
-  const { scrollYProgress: homeAnnouncementsScrollProgress } = useScroll({
-    target: homeAnnouncementsEndRef,
-    offset: ["start", "end"],
-    layoutEffect: false,
-  });
 
 
-  const announcementsY = useTransform(
-    isMobile ? scrollMobile : homeAnnouncementsScrollProgress,
-    [0, 1],
-    [
-      0,
-      currentAnnouncementsData
-        ? currentAnnouncementsData?.length <= 3
-          ? -4
-          : -40 * currentAnnouncementsData.length
-        : 1,
-    ]
-  );
 
   const AnnouncementsHighlight = (children: React.ReactNode) => {
     return (
       <motion.div
         variants={announcementsHighlightVariant}
         animate={announcementsHighlightControls}
-        initial="visible"
-        style={{ y: announcementsY }}
+        initial="hidden"
         transition={defaultTransition}
-        className="flex flex-col items-start gap-8  xl:pb-0 pb-10 "
+        className="flex flex-col items-start gap-8  xl:pb-0 pb-10 w-full"
       >
         {children}
       </motion.div>
@@ -180,9 +166,6 @@ const HomeAnnouncementsCard = ({
                   currentAnnouncementsHighlightIndex === index && !isMobile
                     ? 1
                     : 0.9,
-
-                opacity:
-                  isChangingAnnouncements ? 0 : 1
               }}
               className={`flex flex-col items-start justify-between xl:w-2/3 min-h-[8.5rem] max-h-[8.5rem]`}
             >
@@ -239,9 +222,42 @@ const HomeAnnouncementsCard = ({
       </>
     );
 
+
+  const announcementsImageHighlightVariant = {
+    hidden: {
+      x: 100,
+      opacity: 0,
+    },
+    after: {
+      x: 200,
+      opacity: 0,
+    },
+    visible: {
+      x: 0,
+      opacity: 1,
+    },
+  };
+
+
+  const AnnouncementImageHighlight = (children: React.ReactNode) => {
+    return (
+
+      currentAnnouncementsData ? (
+        <>
+          <motion.div
+            variants={announcementsImageHighlightVariant}
+            animate={announcementsHighlightControls}
+            initial="hidden"
+            transition={defaultTransition}
+            className=" w-full xl:w-3/4 relative  h-[16rem]  lg:h-[24rem]  xl:h-full "
+          >
+            {children}
+          </motion.div>
+        </>
+      ) : null
+    );
+  }
   const AnnouncementImageList = () => {
-
-
     const cardTransitionSettings = {
       duration: 0.4,
       ease: "easeInOut",
@@ -251,8 +267,8 @@ const HomeAnnouncementsCard = ({
       <>
         {currentAnnouncementsData ? (
           currentAnnouncementsData.map((announcement, index) => (
-            <React.Fragment   key={index}>
-              <motion.div   
+            <React.Fragment key={index}>
+              <motion.div
                 initial="hidden"
                 animate={{
                   opacity: currentAnnouncementsHighlightIndex === index ? 1 : 1,
@@ -262,7 +278,7 @@ const HomeAnnouncementsCard = ({
                 }}
                 variants={{ ...imageVariant }}
                 transition={cardTransitionSettings}
-                className={` w-full h-full xl:top-14  xl:h-[27rem]   xl:w-[45%] xl:left-1/2 absolute  `}
+                className={` w-full h-full xl:max-h-[27rem] xl:top-4  xl:max-w-[40rem] absolute  `}
               >
                 <Image
                   src={backendUrl + announcement.thumbnail}
@@ -297,13 +313,12 @@ const HomeAnnouncementsCard = ({
 
   return (
     <div className="flex justify-start overflow-hidden items-end relative w-full xl:h-[34rem] bg-white   rounded-[10px] ">
-       <div className="absolute right-0 h-full bg-gradient-to-l from-white to-transparent z-20 p-0 xl:p-16 opacity-80"></div>
+      <div className="absolute right-0 h-full bg-gradient-to-l from-white to-transparent z-20 p-0 xl:p-16 opacity-80"></div>
       <div className="flex flex-col overflow-hidden  xl:flex-row-reverse justify-between items-center w-full h-full xl:p-8 gap-6">
-        <div className="xl:w-2/4  w-full relative xl:static h-[16rem]  lg:h-[24rem]  xl:h-full ">
-          {AnnouncementImageList()}
-        </div>
-        <div className="flex justify-start items-start gap-8 h-full ">
-          <div className="hidden xl:block">
+        {AnnouncementImageHighlight(AnnouncementImageList())}
+
+        <div className="flex justify-start items-start gap-8 h-full w-[60%] ">
+          <div className="hidden xl:block h-full">
             <motion.div
               dragConstraints={sliderContainerRef}
               ref={sliderPositionYRef}
@@ -313,7 +328,7 @@ const HomeAnnouncementsCard = ({
             ></motion.div>
             <div
               ref={sliderContainerRef}
-              className="bg-gray-base  p-1 rounded-md xl:h-[26rem]"
+              className="bg-gray-base  p-1 rounded-md xl:h-full"
             ></div>
           </div>
 

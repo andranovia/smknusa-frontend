@@ -12,6 +12,7 @@ import { Article, useArticles } from "@/services/api/useQueries/useArticles";
 import { useEvents } from "@/services/api/useQueries/useEvents";
 import { Heading, Paragraph } from "../ui/typography";
 import { useMediaQuery } from "@uidotdev/usehooks";
+import Link from "next/link";
 
 const announcementsLinkData = [
   {
@@ -100,7 +101,7 @@ const HomeAnnouncement = () => {
         setCurrentAnnouncementsType(announcementsType);
         setCurrentAnnouncementsHighlightIndex(0);
       
-      }, 200);
+      }, 400);
    
 
       
@@ -148,9 +149,9 @@ const HomeAnnouncement = () => {
               </div>
 
               <div className="flex justify-center items-center w-full xl:w-40">
-                <div className="w-full bg-yellow text-[#081B34] font-[500] py-2.5 px-5 rounded">
-                  <button>Selengkapnya </button>
-                </div>
+                <Link href={currentAnnouncementsType === "Berita" ? "/news" : "/article"} className="w-full bg-yellow text-[#081B34] font-[500] py-2.5 px-5 rounded">
+                  Selengkapnya
+                </Link>
               </div>
             </div>
           </div>

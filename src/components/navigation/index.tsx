@@ -44,18 +44,18 @@ const Navbar = () => {
   }, [lastScrollY, isMobile]);
   return (
     <>
-
+      
       <div
-        className={`flex items-center max-w-[1472.8px]  justify-center rounded-lg bg-white xl:bg-transparent   xl:justify-between z-40  transition-[padding,max-width] ${show
+        className={`flex items-center  justify-center rounded-lg bg-white xl:bg-transparent   z-40  transition-[padding,max-width] ${show
           ? ` text-blue-base pt-0 xl:pt-2  xl:px-2.5`
           : `  ${activePage
-            ? `-pt-20 xl:pt-5 xl:text-white ${pathname === "/" ? "" : "xl:mt-3 xl:max-w-[98%]"} before:backdrop-blur-sm before:backdrop-hack`
+            ? `-pt-20 xl:pt-5 xl:text-white ${pathname === "/" ? "w-screen" : "xl:mt-3 xl:max-w-[98.4%] rounded-t-md overflow-hidden"} before:backdrop-blur-sm before:backdrop-hack`
             : "xl:pt-2 "
           }`
           } fixed w-full  delay-0 `}
       >
         <div
-          className={`flex  items-center md:max-w-md-content lg:max-w-lg-content xl:max-w-full   w-full py-3 transition-all rounded-[10px] px-4 2xl:px-11  ${!show && activePage
+          className={`flex  items-center 2xl:max-w-[1472.8px]  md:max-w-md-content lg:max-w-lg-content xl:max-w-full   w-full py-3 transition-all rounded-[10px] px-4 2xl:px-11  ${!show && activePage
             ? "xl:bg-opacity-0  bg-white font-[800] xl:font-[900]"
             : "bg-opacity-100 bg-white  font-[800] xl:shadow-lg"
             }  `}
