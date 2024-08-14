@@ -75,7 +75,7 @@ const NavigationItemAnimate = ({ itemData, show }: NavigationItemAnimateProps) =
               opacity: 0,
             }}
             animate={hoverControls}
-            className="absolute text-xs hidden xl:block text-nowrap"
+            className="absolute font-medium text-xs hidden xl:block text-nowrap"
           >
             {itemData.linkDropdownData.description}
           </motion.p>

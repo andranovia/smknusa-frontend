@@ -87,14 +87,6 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
         linkRef: "/profile/history",
       },
     },
-    {
-      linkDropdownData: {
-        text: "Identitas Sekolah",
-        description: "Berisi sambutan resmi dari kepala sekolah",
-        icon: "/assets/nav-dropdown-icon/profile/identitas.svg",
-        linkRef: "/profile/welcome-speech",
-      },
-    },
   ],
   Akademik: [
     {
@@ -134,7 +126,7 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
         text: "PPDB",
         description: "Berisi sambutan resmi dari kepala sekolah",
         icon: "/assets/nav-dropdown-icon/akademik/ppdb.svg",
-        linkRef: "/profile/welcome-speech",
+        linkRef: "https://ppdbjatim.net/",
       },
     },
     {
@@ -262,7 +254,7 @@ const NavigationItem = ({
           <AnimatePresence>
             {showDropdown && (
               <div
-                className="absolute left-0 xs:left-4 md:left-14  xl:left-auto  xl:top-auto h-[25rem] xl:h-auto xl:justify-start xl:items-start flex flex-col items-end justify-end"
+                className="absolute left-0 xs:left-4 md:left-14  xl:left-auto xl:ml-6  xl:top-auto h-[25rem] xl:h-auto xl:justify-start xl:items-start flex flex-col items-end justify-end"
               >
 
                 <motion.div
@@ -275,11 +267,9 @@ const NavigationItem = ({
                     exit: { opacity: 0, y: 10 },
                   }}
                   transition={defaultTransition}
-                  className={cn(`min-w-[17rem] xs:min-w-[19rem] border-none sm:min-w-[20rem] relative w-[90%] xl:w-[26rem] items-center justify-center grid grid-cols-2 xl:gap-0 h-fit xl:h-full xl:grid-cols-1 xl:mt-14 z-20 rounded-tl-[10px] xl:rounded-tl-none xl:rounded-b-[10px]   rounded-r-[10px] bg-white ${show || !activePage ? "bg-opacity-100 shadow-lg top-5" : "xl:bg-opacity-40 xl:bg-primary xl:z-10 xl:backdrop-blur-sm"}  xl:pb-0 pb-8 `)}
-                >
-                    <div className={`w-6 absolute h-6 -top-[19px] left-5 hidden  xl:block  ${show || !activePage ? ' opacity-100 -top-[19px]' : ' opacity-40 -top-[20.399999999999997px]'}`}>
-                    <Image src={show || !activePage ? 'https://img.icons8.com/fluency-systems-filled/FFFFFF/triangle.png' : 'https://img.icons8.com/fluency-systems-filled/081B34/triangle--v1.png'} alt="navbar-icon-triangle" width={30} height={30} />
-                  </div>
+                  className={cn(`min-w-[17rem] xs:min-w-[19rem] border-none sm:min-w-[20rem] relative w-[90%] xl:w-[26rem] items-center justify-center grid grid-cols-2 xl:gap-0 h-fit xl:h-full xl:grid-cols-1 xl:mt-14 z-20 rounded-tl-[10px] xl:rounded-b-[10px] rounded-r-[10px] bg-white ${show || !activePage ? "bg-opacity-100 shadow-lg xl:top-5 before:border-b-white " : "before:border-b-[#081B34] before:opacity-40 xl:bg-opacity-40 xl:bg-primary xl:z-10 xl:backdrop-blur-sm"}  xl:pb-0 pb-8 
+                    before:content-[''] xl:before:block before:hidden before:absolute before:border-l-[10px] before:border-l-transparent before:border-r-[10px] before:border-r-transparent before:border-b-[14px] before:top-[-13.6px]  before:left-2
+                  `)}>
                   {dropdownData?.map((data, index) => (
                     <React.Fragment key={index}>
                       <Link

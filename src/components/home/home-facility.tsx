@@ -7,6 +7,7 @@ import { useAnimation, motion } from "framer-motion";
 import HomeFacilityCardStack from "./home-facility-card-stack";
 import { useMediaQuery } from "@uidotdev/usehooks";
 import { Heading, Paragraph } from "../ui/typography";
+import Link from "next/link";
 
 const cardData = [
   [
@@ -135,7 +136,7 @@ const HomeFacility = () => {
 
             <div className="flex justify-center items-center xl:ml-[8%] 1xl:ml-[12%] 2xl:ml-[22%] w-full xl:w-fit ">
               <div className="btn bg-yellow text-blue-base w-full text-center font-[600] py-2.5 px-5 rounded">
-                <button className="xl:text-[16px] text-xs">Selengkapnya</button>
+                <Link href={"/profile/school-facility"}  className="xl:text-[16px] text-xs">Selengkapnya</Link>
               </div>
             </div>
           </div>
@@ -143,7 +144,7 @@ const HomeFacility = () => {
       </div>
       <div className="relative px-4 xl:px-8 -mt-44 mb-6 xl:mt-0  xl:-top-44  w-full flex justify-center  xl:-mb-20">
         <div className="flex justify-center xl:items-end relative overflow-hidden w-full bg-white 2xl:max-w-max-container rounded-[10px] ">
-        <div className="absolute bottom-0 h-1/4 w-full bg-gradient-to-t from-white to-transparent z-20 p-10 md:p-16 opacity-60"></div>
+        <div className="absolute bottom-0  w-full bg-gradient-to-t from-white to-transparent z-20 p-10 md:p-7x opacity-60"></div>
           <motion.div
             variants={{
               initial: {
