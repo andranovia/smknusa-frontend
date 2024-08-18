@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import NavigationDropdownIcon from "./navigation-dropdown-icon";
 import { AnimatePresence, motion } from "framer-motion";
 import { useActivePage } from "@/contexts/ActivePageContext";
+import { useActiveToast } from "@/contexts/ActiveToastContext";
 
 type NavigationLanguageProps = {
   show: boolean;
@@ -18,11 +19,13 @@ const languageDropdown = [
 const NavigationLanguage = ({ show }: NavigationLanguageProps) => {
   const [languageToggle, setLanguageToggle] = useState(false);
   const { activePage } = useActivePage();
+  const { handleActiveUnavailableToast } = useActiveToast();
 
   return (
     <div
-      className="hidden xl:flex  flex-col items-center "
-      onClick={() => setLanguageToggle(!languageToggle)}
+      className="hidden xl:flex  flex-col items-center cursor-pointer"
+      // onClick={() => setLanguageToggle(!languageToggle)}
+      onClick={() => handleActiveUnavailableToast()}
     >
       <div className="flex justify-center items-center gap-1">
         <Image
@@ -45,7 +48,7 @@ const NavigationLanguage = ({ show }: NavigationLanguageProps) => {
                 animate: { opacity: 1, scale: 1, y: 0 },
                 exit: { opacity: 0, y: 10 },
               }}
-              className={`mt-14 z-20 flex flex-col gap-2 items-start px-2  pt-2 pb-5 rounded-b-[10px] rounded-tl-[10px] md:rounded-tl-none md:rounded-r-[10px]   ${show || !activePage ? "bg-white" : "bg-primary bg-opacity-40 backdrop-blur-sm"}  overflow-hidden`}
+              className={`mt-14 z-20 flex flex-col gap-2 items-start px-2  pt-2 pb-5 rounded-b-[10px] rounded-tl-[10px] md:rounded-tl-none md:rounded-r-[10px]   bg-white  overflow-hidden`}
             >
               {languageDropdown?.map((data, index) => (
                 <div
@@ -61,10 +64,10 @@ const NavigationLanguage = ({ show }: NavigationLanguageProps) => {
                       className="w-5 h-5 opacity-50"
                     />
                     <div className="flex flex-col items-start">
-                      <h2 className={` ${show || !activePage ? "text-blue-base " : "text-white "}  font-[600] text-[16px]`}>
+                      <h2 className={`text-blue-base  font-[600] text-[16px]`}>
                         Bahasa
                       </h2>
-                      <p className={`font-[500] text-[16px] ${show || !activePage ? "text-gray " : "text-zinc-300 "} `}>
+                      <p className={`font-[500] text-[16px] text-gray `}>
                         {data.language}
                       </p>
                     </div>
@@ -77,7 +80,7 @@ const NavigationLanguage = ({ show }: NavigationLanguageProps) => {
                   alt={"language"}
                   width={40}
                   height={40}
-                  className={`w-5 h-5 opacity-50 ${show  || !activePage ? 'invert-0' : 'invert'}`}
+                  className={`w-5 h-5 opacity-50 invert-0`}
                 />
                 <h2 className="text-gray-light font-[600] text-[16px]">
                   Language

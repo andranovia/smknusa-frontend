@@ -233,7 +233,7 @@ const NavigationItem = ({
           before:border-0 before:absolute before:bottom-0 before:right-0 before:border-transparent before:transition-colors before:duration-500
           before:w-full hover:before:border-[1px] hover:before:left-0 hover:before:border-[#F5C451] cursor-pointer z-20 ${route === pathname ? 'opacity-100 before:border-[1px] ' : pathname === '/' ? 'opacity-100' : 'opacity-60'} `}
         >
-          <span className={`hidden xl:block ${show || !activePage ? "text-blue-base" : 'text-white'}`}>
+           <span className={`hidden xl:block ${show || !activePage ? "text-blue-base" : 'text-white'}`}>
             {route === '/news' || route === '/article' ? <Link href={route}>{name}</Link> : name}
           </span>
           {icon ? (
@@ -267,7 +267,7 @@ const NavigationItem = ({
                     exit: { opacity: 0, y: 10 },
                   }}
                   transition={defaultTransition}
-                  className={cn(`min-w-[17rem] xs:min-w-[19rem] border-none sm:min-w-[20rem] relative w-[90%] xl:w-[26rem] items-center justify-center grid grid-cols-2 xl:gap-0 h-fit xl:h-full xl:grid-cols-1 xl:mt-14 z-20 rounded-tl-[10px] xl:rounded-b-[10px] rounded-r-[10px] bg-white ${show || !activePage ? "bg-opacity-100 shadow-lg xl:top-5 before:border-b-white " : "before:border-b-[#081B34] before:opacity-40 xl:bg-opacity-40 xl:bg-primary xl:z-10 xl:backdrop-blur-sm"}  xl:pb-0 pb-8 
+                  className={cn(`min-w-[17rem] xs:min-w-[19rem] border-none sm:min-w-[20rem] relative w-[90%] xl:w-[26rem] items-center justify-center grid grid-cols-2 xl:gap-0 h-fit xl:h-full xl:grid-cols-1 xl:mt-14 z-20 rounded-tl-[10px] xl:rounded-b-[10px] rounded-r-[10px] bg-white bg-opacity-100 shadow-lg xl:top-5 before:border-b-white xl:pb-0 pb-8 
                     before:content-[''] xl:before:block before:hidden before:absolute before:border-l-[10px] before:border-l-transparent before:border-r-[10px] before:border-r-transparent before:border-b-[14px] before:top-[-13.6px]  before:left-2
                   `)}>
                   {dropdownData?.map((data, index) => (
@@ -277,6 +277,7 @@ const NavigationItem = ({
                         className="w-full h-[6rem] xl:h-auto"
                       >
                         <NavigationDropdownMenuItem
+                        show={show}
                           active={currentDropdown}
                           item={name}
                           transition={defaultTransition}

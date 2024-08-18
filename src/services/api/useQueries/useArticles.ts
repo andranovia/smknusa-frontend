@@ -14,6 +14,7 @@ export type Article = {
   category: {
     id: number;
     nama: string;
+    color: string;
   };
   viewer: string;
 };

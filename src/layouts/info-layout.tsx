@@ -45,7 +45,7 @@ const InfoLayout = ({
               </Heading>
               <Heading
                 type="h5"
-                className="text-sm text-center xl:font-[500] md:text-[18px]"
+                className="text-center font-medium text-[18px]"
               >
                 {subtitle}
               </Heading>
