@@ -5,6 +5,7 @@ import { backendUrl } from "@/utils/backendUrl";
 import Image from "next/image";
 import React from "react";
 import { Heading } from "./typography";
+import { cn } from "@/utils/cn";
 
 type InfoCardItemProps = {
   infoCardData: Article | News | Event;
@@ -29,7 +30,7 @@ const InfoCardItem = ({ infoCardData, normalDate }: InfoCardItemProps) => {
             </div>
           ) : null}
 
-          <div className={`bg-[#CDFFAF] px-2 py-1 rounded-[6px] xl:rounded-[10px] max-w-[56.68px] sm:max-w-[89.25px] `}>
+          <div style={{ backgroundColor: infoCardData.category.color }} className={cn(` px-2 py-1 rounded-[6px] xl:rounded-[10px] max-w-[56.68px] sm:max-w-[89.25px] `)}>
             <Heading type="h5" className="font-[500] text-center text-[10px] line-clamp-1   text-ellipsis  text-gray">
               {infoCardData.category.nama}
             </Heading>

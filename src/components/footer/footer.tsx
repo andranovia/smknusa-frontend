@@ -1,7 +1,13 @@
+'use client'
+
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { useActiveToast } from "@/contexts/ActiveToastContext";
 
 export default function Footer() {
+  const {handleActiveUnavailableToast} = useActiveToast();
+
   return (
     <>
       <div className="flex flex-col items-center 1xl:justify-center  1xl:px-8 py-8 bg-primary rounded-[10px] text-white mt-3">
@@ -56,10 +62,12 @@ export default function Footer() {
                   className=" w-full outline-none placeholder:text-xs 1xl:placeholder:text-base"
                 />
                 <Image
+                onClick={() => handleActiveUnavailableToast()}
                   src={"/assets/icon/round-arrow-right.svg"}
                   alt="sm"
                   width={30}
                   height={30}
+                  className="cursor-pointer"
                 />
               </div>
             </div>
@@ -105,7 +113,7 @@ export default function Footer() {
         <hr className="mt-10 mb-4 w-full" />
 
         <div className="flex 1xl:items-center px-4 md:px-0 md:w-full md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-content  1xl:px-0 flex-col 1xl:flex-row  justify-between gap-8 my-4 1xl:my-0 1xl:gap-0 text-white ">
-          <div className="flex items-center">
+          <Link href={"/"} className="flex items-center">
             <Image
               src={"/assets/icon/logo-skansa.svg"}
               alt=""
@@ -117,7 +125,7 @@ export default function Footer() {
               SMK NEGERI 1 <br />
               PURWOSARI
             </div>
-          </div>
+          </Link>
 
           <div className="flex-grow flex 1xl:justify-center  ">
             <div className="1xl:text-center text-[14] text-white font-[500]">

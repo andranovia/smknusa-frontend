@@ -10,6 +10,7 @@ import { useMediaQuery } from "@uidotdev/usehooks";
 import { useActivePage } from "@/contexts/ActivePageContext";
 import { usePathname } from "next/navigation";
 import NavigationSearchResult from "./navigation-search-result";
+import { useActiveToast } from "@/contexts/ActiveToastContext";
 
 const Navbar = () => {
   const [show, setShow] = useState(true);
@@ -18,6 +19,7 @@ const Navbar = () => {
   const { activePage } = useActivePage()
   const pathname = usePathname();
   const [searchToggle, setSearchToggle] = useState(false);
+  const {handleActiveUnavailableToast} = useActiveToast();
 
   useEffect(() => {
     const controlNavbar = () => {
@@ -44,7 +46,6 @@ const Navbar = () => {
   }, [lastScrollY, isMobile]);
   return (
     <>
-      
       <div
         className={`flex items-center  justify-center rounded-lg bg-white xl:bg-transparent  xl:px-2.5   z-40  transition-[padding,max-width] ${show
           ? ` text-blue-base pt-0 xl:pt-2 `
@@ -61,48 +62,49 @@ const Navbar = () => {
             }  `}
         >
           <div className="flex  items-center w-full  2xl:max-w-[1492.8px] ">
-          <Link href={"/"} className="2xl:w-[52%] xl:w-[40%] w-full">
-            <div className="flex items-center">
-              <Image
-                src={"/assets/icon/logo-skansa.svg"}
-                alt=""
-                height={55}
-                width={55}
-                quality={100}
-                className="w-10 xl:w-auto h-auto"
-              />
+            <Link href={"/"} className="2xl:w-[52%] xl:w-[40%] w-full">
+              <div className="flex items-center">
+                <Image
+                  src={"/assets/icon/logo-skansa.svg"}
+                  alt=""
+                  height={55}
+                  width={55}
+                  quality={100}
+                  className="w-10 xl:w-auto h-auto"
+                />
 
-              <h2 className="ml-2 text-sm xl:text-lg  ">
-                SMK NEGERI 1 <br className="block" />
-                PURWOSARI
-              </h2>
-            </div>
-          </Link>
-          <div className="flex xl:justify-between  xl:w-full w-auto   font-[600] ">
-            <div
-              className={`xl:flex hidden  justify-center items-center gap-8 ${!show && activePage ? "text-white" : " text-gray-light"
-                }`}
-            >
-              <NavigationItem name="Profile" show={show} dropdown={true} route="/profile" />
-              <NavigationItem name="Akademik" show={show} dropdown={true} route="/academic" />
-              <NavigationItem name="BKK" show={show} dropdown={true} route="/bkk" />
-              <NavigationItem name="Berita" show={show} route={"/news"} />
-              <NavigationItem name="Artikel" show={show} route={"/article"} />
-            </div>
-            <div className="flex items-center xl:space-x-4 gap-3 xl:gap-0 w-max">
-              <NavigationSearch show={show} searchToggle={searchToggle} setSearchToggle={setSearchToggle} />
-              <NavigationLanguage show={show} />
-              <Image
-                src={"/assets/icon/user-profile.svg"}
-                alt="user"
-                height={20}
-                width={20}
-                className={`${!show && activePage ? `xl:invert-0 invert` : "invert"
-                  } transition-all  w-5 h-5 hidden xl:block`}
-              />
+                <h2 className="ml-2 text-sm xl:text-lg  ">
+                  SMK NEGERI 1 <br className="block" />
+                  PURWOSARI
+                </h2>
+              </div>
+            </Link>
+            <div className="flex xl:justify-between  xl:w-full w-auto   font-[600] ">
+              <div
+                className={`xl:flex hidden  justify-center items-center gap-8 ${!show && activePage ? "text-white" : " text-gray-light"
+                  }`}
+              >
+                <NavigationItem name="Profile" show={show} dropdown={true} route="/profile" />
+                <NavigationItem name="Akademik" show={show} dropdown={true} route="/academic" />
+                <NavigationItem name="BKK" show={show} dropdown={true} route="/bkk" />
+                <NavigationItem name="Berita" show={show} route={"/news"} />
+                <NavigationItem name="Artikel" show={show} route={"/article"} />
+              </div>
+              <div className="flex items-center xl:space-x-4 gap-3 xl:gap-0 w-max">
+                <NavigationSearch show={show} searchToggle={searchToggle} setSearchToggle={setSearchToggle} />
+                <NavigationLanguage show={show} />
+                <Image
+                  src={"/assets/icon/user-profile.svg"}
+                  alt="user"
+                  onClick={() => handleActiveUnavailableToast()}
+                  height={20}
+                  width={20}
+                  className={`${!show && activePage ? `xl:invert-0 invert` : "invert"
+                    } transition-all  w-5 h-5 hidden xl:block cursor-pointer`}
+                />
+              </div>
             </div>
           </div>
-        </div>
         </div>
       </div>
       {isMobile ? (
@@ -146,13 +148,7 @@ const Navbar = () => {
       ) : null}
       <NavigationSearchResult searchToggle={searchToggle} setSearchToggle={setSearchToggle} />
 
-      {/* <Image
-        src={"/assets/icon/rounded-arrow-up.svg"}
-        alt="arrow-up"
-        height={20}
-        width={20}
-        className="w-10 h-10 p-[1px] fixed xl:hidden bottom-20 right-8 z-50 bg-white rounded-full"
-      /> */}
+    
 
 
     </>

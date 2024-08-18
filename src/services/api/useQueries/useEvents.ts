@@ -14,6 +14,7 @@ export type Event = {
   category: {
     id: number;
     nama: string;
+    color: string;
   };
   viewer: string;
 };

@@ -20,6 +20,7 @@ const NavigationSearch = ({ show, searchToggle, setSearchToggle }: NavigationSea
      
 
       <motion.div
+      className="cursor-pointer"
         transition={defaultTransition}
         onClick={() => setSearchToggle(!searchToggle)}
       >

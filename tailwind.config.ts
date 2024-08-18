@@ -41,8 +41,8 @@ const config: Config = {
         next: 'url(/assets/icon/round-arrow-right.svg), next',
       },
       maxWidth: {
-        'xs-content': '280px',
-        'sm-content': '80%',
+        'xs-content': '312px',
+        'sm-content': '344px',
         'md-content': '485px',
         'lg-content': '648px',
         'xl-content': '922px',
@@ -53,6 +53,8 @@ const config: Config = {
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar')({ preferredStrategy: 'pseudoelements' }),
+],
 };
 export default config;

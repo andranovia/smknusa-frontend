@@ -6,7 +6,7 @@ import React from "react";
 const ProfileHistory = () => {
   return (
     <ProfileLayout
-      title="Sejarah Sekolah"
+      title="Sejarah Berdirinya Sekolah"
       subtitle="Sedikit pengetahuan mengenai bagaimana sejarah berdirinya SMK Negeri
             1 Purwosari"
     >

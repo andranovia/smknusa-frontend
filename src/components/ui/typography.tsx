@@ -48,7 +48,7 @@ export function Heading({ children, type, className }: HeadingProps) {
     case "h5":
       className;
       return (
-        <h5 className={cn(`font-[500] text-[18px] ${className} `)}>
+        <h5 className={cn(`font-[500] text-[18px] `, className)}>
           {children}
         </h5>
       );

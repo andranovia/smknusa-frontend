@@ -93,21 +93,21 @@ export default async function Page({ params }: { params: { id: string } }) {
   return (
     <div className="pt-20 xl:pt-24 px-2 xl:px-3 flex justify-center items-center w-full">
       <div className="w-full  bg-white  rounded-[10px] text-blue-base flex justify-center">
-        <div className="relative w-full flex flex-col justify-center items-center px-4 gap-10 xl:gap-20 pt-10 pb-20  max-w-full md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 2xl:max-w-max-content">
-          <div className="flex flex-col  gap-4 w-full 2xl:w-[82%] ">
+        <div className="relative w-full flex flex-col justify-center items-center px-4 gap-10 xl:gap-20 pt-10 pb-20  max-w-full md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 2xl:max-w-max-content min-w-full">
+          <div className="flex flex-col  gap-6 w-full 2xl:w-[82%] ">
             <h1 className="font-[700] xl:text-[46px] leading-[3rem] text-2xl">
               {newsById?.nama}
             </h1>
             <div className="flex xl:flex-row flex-col xl:my-0 xl:gap-0 gap-8 justify-between items-start w-full">
               <div className="grid grid-cols-2 items-center gap-2">
-                <div className="bg-[#FFE7AF] px-2  py-2 lg:py-1 rounded-[10px]">
+                <div style={{ backgroundColor: newsById?.category.color }}  className={`px-2  py-2 lg:py-1 rounded-[10px]`}>
                   <p className="font-[500] text-md xl:text-[10px] text-gray">
                     {newsById?.category.nama}
                   </p>
                 </div>
               </div>
               <div className="flex flex-col xl:w-4/5 gap-8 font-medium text-[18px]  ">
-              <p dangerouslySetInnerHTML={{ __html: sanitizedHtml }} className="relative !text-gray line-clamp-3 after:content-['[...]'] after:absolute after:bottom-0 after:right-0 after:bg-white after:px-1">
+              <p dangerouslySetInnerHTML={{ __html: sanitizedHtml }} className="relative !text-gray line-clamp-3  ">
                   
                   </p>
 
@@ -182,7 +182,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                 </div>
               </div>
 
-              <div className="flex flex-col items-start w-full 2xl:w-2/4 ">
+              <div className="flex flex-col items-start w-full 2xl:w-2/4 relative  xl:sticky xl:top-1/4 z-10">
                 <div className="flex gap-2 items-center w-full border-2 bg-white z-10 border-[#F5C451] py-3 px-8 rounded-[10px]">
                   <Image
                     width={20}

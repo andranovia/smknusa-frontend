@@ -12,6 +12,7 @@ export type News = {
   category: {
     id: number;
     nama: string;
+    color: string;
   };
   viewer: string;
 };

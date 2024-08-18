@@ -5,6 +5,7 @@ import React from "react";
 import parse from "html-react-parser";
 import { JSDOM } from 'jsdom';
 import { redirect } from "next/navigation";
+import { cn } from "@/utils/cn";
 
 const articleData = [
   {
@@ -40,8 +41,8 @@ async function fetchArticles() {
 }
 
 export async function generateStaticParams() {
-  const newsData = await fetchArticles();
-  const ids = newsData?.map((news: Article) => news.id_pemberitahuan);
+  const articlesData = await fetchArticles();
+  const ids = articlesData?.map((articles: Article) => articles.id_pemberitahuan);
 
   return ids?.map((id: string) => ({ id: id.toString() }));
 }
@@ -88,21 +89,21 @@ export default async function Page({ params }: { params: { id: string } }) {
   return (
     <div className="pt-20 xl:pt-24 px-2 xl:px-3 flex justify-center items-center w-full">
     <div className="w-full  bg-white rounded-[10px]  text-blue-base flex justify-center">
-      <div className="relative  bg-white rounded-[10px] flex flex-col items-center xl:gap-20 pt-10 pb-20 px-4 gap-10  max-w-full md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 2xl:max-w-max-content">
-        <div className="flex flex-col gap-4 w-[82%] ">
-          <h1 className="font-[700] xl:text-[46px] text-[24px] ">
+      <div className="relative  bg-white rounded-[10px] flex flex-col items-center xl:gap-20 pt-10 pb-20 px-4 gap-10  max-w-full md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 2xl:max-w-max-content  min-w-full">
+        <div className="flex flex-col gap-6 w-[82%] ">
+        <h1 className="font-[700] xl:text-[46px] leading-[3rem] text-2xl">
             {articleById?.nama}
           </h1>
           <div className="flex xl:flex-row flex-col xl:my-0 my-8 xl:gap-0 gap-8 justify-between items-start w-full">
             <div className="grid grid-cols-2 items-center gap-2">
-              <div className="bg-[#FFE7AF] px-2 py-1 rounded-[10px]">
+            <div style={{ backgroundColor: '#E61919' }}  className={cn(`px-2  py-2 lg:py-1 rounded-[10px]`)}>
                 <p className="font-[500] text-[10px] text-gray">
                   {articleById?.category?.nama}
                 </p>
               </div>
             </div>
             <div className="flex flex-col xl:w-4/5 gap-8 !font-[500] !text-[18px]  ">
-            <p dangerouslySetInnerHTML={{ __html: sanitizedHtml }} className="relative !text-gray line-clamp-3 after:content-['[...]'] after:absolute after:bottom-0 after:right-0 after:bg-white after:px-1">
+            <p dangerouslySetInnerHTML={{ __html: sanitizedHtml }} className="relative !text-gray line-clamp-3 ">
                   
                 </p>
               <hr className="w-full border " />
@@ -178,7 +179,7 @@ export default async function Page({ params }: { params: { id: string } }) {
               </div>
             </div>
 
-            <div className="flex flex-col items-start xl:w-2/4 ">
+            <div className="flex flex-col items-start w-full 2xl:w-2/4 relative  xl:sticky xl:top-1/4 z-10">
               <div className="flex gap-2 items-center w-full border-2 bg-white z-10 border-[#F5C451] py-3 px-8 rounded-[10px]">
                 <Image
                   width={20}
