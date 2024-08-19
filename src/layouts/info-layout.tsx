@@ -25,7 +25,7 @@ const InfoLayout = ({
       >
        
         <div   style={{
-              height: isMedium ? isSmall ? "10rem" : "14rem" : "30rem",
+              height: isMedium ? isSmall ? "16rem" : "19rem" : "30rem",
               background: 'url("/assets/smkn1purwosari.svg")',
               backgroundSize: "cover",
               backgroundRepeat: "no-repeat",
@@ -36,16 +36,16 @@ const InfoLayout = ({
           
             className="inset-0 flex flex-col items-center justify-center text-white px-8  max-w-full md:max-w-md-content lg:max-w-lg-content xl:max-w-full  z-20  w-full"
           >
-            <div className=" flex flex-col items-center container xl:pt-16">
+            <div className=" flex flex-col items-center container -mt-10  xl:-mt-0 xl:pt-16">
               <Heading
                 type="h1"
-                className="text-[24px] mb-2 xl:mb-6 md:text-[32px] xl:text-[46px] xl:mt-10"
+                className="text-[20px] mb-2 xl:mb-6 md:text-[32px] xl:text-[46px] xl:mt-10"
               >
                 {title}
               </Heading>
               <Heading
                 type="h5"
-                className="text-center font-medium text-[18px]"
+                className="text-center font-medium text-xs md:text-base xl:text-[18px]"
               >
                 {subtitle}
               </Heading>

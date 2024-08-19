@@ -96,7 +96,7 @@ export default async function Page({ params }: { params: { id: string } }) {
           </h1>
           <div className="flex xl:flex-row flex-col xl:my-0 my-8 xl:gap-0 gap-8 justify-between items-start w-full">
             <div className="grid grid-cols-2 items-center gap-2">
-            <div style={{ backgroundColor: '#E61919' }}  className={cn(`px-2  py-2 lg:py-1 rounded-[10px]`)}>
+            <div className={`bg-${articleById?.category.color} px-2  py-2 lg:py-1 rounded-[10px]`}>
                 <p className="font-[500] text-[10px] text-gray">
                   {articleById?.category?.nama}
                 </p>

@@ -8,6 +8,7 @@ const ProfileCourseWork = () => {
     <ProfileLayout
       title="Program Kerja Sekolah"
       subtitle="Program Kerja Sekolah SMK Negeri 1 Purwosari"
+       classNameWrapper="pt-[76px]"
     >
       <div className="flex flex-col items-start xl:w-[60%] gap-4">
         <Image
