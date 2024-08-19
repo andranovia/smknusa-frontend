@@ -9,6 +9,7 @@ const ProfileHistory = () => {
     <ProfileLayout
       title="Sambutan Kepala Sekolah"
       subtitle="Sambutan resmi dari kepala sekolah SMK Negeri 1 Purwosari"
+      classNameWrapper="pt-[76px]"
     >
       <Image
         src={"/assets/profile/welcome-speech/profile-welcome-speech.png"}

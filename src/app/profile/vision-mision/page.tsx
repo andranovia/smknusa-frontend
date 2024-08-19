@@ -1,6 +1,5 @@
 import { Heading, List, Paragraph } from "@/components/ui/typography";
 import ProfileLayout from "@/layouts/profile-layout";
-import Image from "next/image";
 import React from "react";
 
 const ProfileVisionMision = () => {
@@ -8,7 +7,8 @@ const ProfileVisionMision = () => {
     <ProfileLayout
       title="Visi dan Misi Sekolah"
       subtitle="Informasi mengenai visi dan misi sekolah SMK Negeri 1 Puworsari"
-      className="items-start"
+         className="items-start"
+          classNameWrapper="pt-[76px]"
     >
       <span className="flex flex-col items-start gap-4 my-10">
         <Heading type="h3">Visi SMK Negeri 1 Purwosari adalah</Heading>

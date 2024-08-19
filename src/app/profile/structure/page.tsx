@@ -8,6 +8,7 @@ const ProfileHistory = () => {
     <ProfileLayout
       title="Struktur Organisasi Sekolah"
       subtitle="Struktur Organisasi Sekolah SMK Negeri 1 Purwosari"
+       classNameWrapper="pt-[76px]"
     >
       <Image
         src={"/assets/profile/structure/profile-structure.png"}

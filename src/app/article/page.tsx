@@ -10,7 +10,7 @@ export default function Article() {
         title="Artikel-Artikel SMK"
         subtitle="Update artikel terbaru karya siswa-siswi SMK Negeri 1 Purwosari"
       >
-        <div className=" w-full max-w-full md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 1xl:max-w-full bg-white">
+       <div className="w-full max-w-[290px] xs:max-w-[330px] sm:max-w-[380px] md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 1xl:max-w-full ">
           <ArticleForm />
           <ArticleCard />
         </div>

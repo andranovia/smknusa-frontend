@@ -95,12 +95,12 @@ export default async function Page({ params }: { params: { id: string } }) {
       <div className="w-full  bg-white  rounded-[10px] text-blue-base flex justify-center">
         <div className="relative w-full flex flex-col justify-center items-center px-4 gap-10 xl:gap-20 pt-10 pb-20  max-w-full md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 2xl:max-w-max-content min-w-full">
           <div className="flex flex-col  gap-6 w-full 2xl:w-[82%] ">
-            <h1 className="font-[700] xl:text-[46px] leading-[3rem] text-2xl">
+            <h1 className="font-[700] xl:text-[46px] leading-[3.5rem] text-2xl">
               {newsById?.nama}
             </h1>
             <div className="flex xl:flex-row flex-col xl:my-0 xl:gap-0 gap-8 justify-between items-start w-full">
               <div className="grid grid-cols-2 items-center gap-2">
-                <div style={{ backgroundColor: newsById?.category.color }}  className={`px-2  py-2 lg:py-1 rounded-[10px]`}>
+                <div className={`bg-${newsById?.category.color} px-2  py-2 lg:py-1 rounded-[10px]`}>
                   <p className="font-[500] text-md xl:text-[10px] text-gray">
                     {newsById?.category.nama}
                   </p>

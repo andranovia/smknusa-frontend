@@ -3,14 +3,14 @@ import React from "react";
 const NewsForm = () => {
   return (
     <>
-      <div className="relative z-20 xl:-top-24 flex justify-center bg-transparent">
+      <div className="relative z-20 -top-14 xl:-top-24 flex justify-center bg-transparent">
         <div className="flex justify-center items-center w-full bg-transparent">
-          <div className=" bg-white w-full px-4 xl:px-12 py-4 1xl:py-10  rounded-lg  max-w-[73rem]   border-white 1xl:shadow-md">
+          <div className=" bg-white w-full px-4 lg:px-8 xl:px-12 py-4 1xl:py-10  rounded-lg  max-w-[73rem]   border-white 1xl:shadow-md">
             <div className="grid grid-cols-2 xl:grid-cols-4 1xl:gap-12 gap-4 mb-3">
-              <div className="col-span-1 flex flex-col">
+              <div className="col-span-2 xl:col-span-1 flex flex-col">
                 <label
                   htmlFor="title"
-                  className="block font-medium 1xl:text-lg mb-5 text-blue-base mt-1"
+                  className="block font-medium text-sm sm:text-base 1xl:text-lg mb-5 text-blue-base mt-1"
                 >
                   Judul Berita
                 </label>
@@ -21,10 +21,10 @@ const NewsForm = () => {
                   className="1xl:w-[107%] h-10 border border-gray-300 rounded-lg p-2"
                 />
               </div>
-              <div className="col-span-1 flex flex-col">
+              <div className="col-span-2 xl:col-span-1 flex flex-col">
                 <label
                   htmlFor="category"
-                  className="block font-medium 1xl:text-lg mb-5 text-blue-base mt-1"
+                  className="block font-medium text-sm sm:text-base 1xl:text-lg mb-5 text-blue-base mt-1"
                 >
                   Kategori Berita
                 </label>
@@ -38,7 +38,7 @@ const NewsForm = () => {
               <div className="col-span-1 flex flex-col">
                 <label
                   htmlFor="from"
-                  className="block font-medium 1xl:text-lg mb-5 text-blue-base mt-1"
+                  className="block font-medium text-sm sm:text-base 1xl:text-lg mb-5 text-blue-base mt-1"
                 >
                   Dari Tanggal
                 </label>
@@ -52,7 +52,7 @@ const NewsForm = () => {
               <div className="col-span-1 flex flex-col">
                 <label
                   htmlFor="to-date"
-                  className="block font-medium 1xl:text-lg mb-5 text-blue-base mt-1"
+                  className="block font-medium text-sm sm:text-base 1xl:text-lg mb-5 text-blue-base mt-1"
                 >
                   Sampai Tanggal
                 </label>
