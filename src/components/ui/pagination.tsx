@@ -47,7 +47,7 @@ const Pagination: React.FC<PaginationProps> = ({
   return (
     <div className="flex text-center gap-3 p-3 ">
       <button 
-        className="p-3 bg-gray-base rounded-md"
+        className="px-2 xs:p-3 bg-gray-base rounded-md"
         onClick={() => handleButtonClick(currentPage - 1)}
         disabled={currentPage === 1}
       >
@@ -62,7 +62,7 @@ const Pagination: React.FC<PaginationProps> = ({
       {getDisplayedPages().slice(0, isMobile ? 5 : 7).map((page, index) => (
         <button
           key={index}
-          className={`px-3 py-1 rounded-md ${
+          className={`px-2.5 xs:px-3 py-1 rounded-md ${
             currentPage === page ? "bg-yellow-light" : "bg-white"
           }`}
           onClick={() => typeof page === 'number' && handleButtonClick(page)}
@@ -72,7 +72,7 @@ const Pagination: React.FC<PaginationProps> = ({
         </button>
       ))}
       <button 
-        className="p-3 bg-gray-base rounded-md"
+        className="px-2 xs:p-3 bg-gray-base rounded-md"
         onClick={() => handleButtonClick(currentPage + 1)}
         disabled={currentPage === totalPages}
       >

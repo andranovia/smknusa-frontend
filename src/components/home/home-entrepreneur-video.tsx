@@ -28,7 +28,7 @@ const HomeEntrepreneurVideo = () => {
 
   return (
     <YouTube
-      className="rounded-[10px] overflow-hidden  min-h-48 sm:min-h-60 md:min-h-72 xl:min-h-[30rem] 1xl:min-h-[34rem] 2xl:min-h-[38rem] lg:min-h-[20rem] w-full  md:max-w-md-content lg:max-w-lg-content xl:max-w-full 2xl:max-w-max-container"
+      className="rounded-[10px] overflow-hidden  min-h-40 sm:min-h-60 md:min-h-72 xl:min-h-[30rem] 1xl:min-h-[34rem] 2xl:min-h-[38rem] lg:min-h-[20rem] w-full  md:max-w-md-content lg:max-w-lg-content xl:max-w-full 2xl:max-w-max-container"
       videoId="oknvOlg6EeE"
       opts={opts}
       onReady={onPlayerReady}

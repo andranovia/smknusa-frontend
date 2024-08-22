@@ -134,7 +134,7 @@ const HomeAnnouncement = () => {
                       onClick={() =>
                         handleChangeAnnouncements(link.announcementsTitle)
                       }
-                      className={`font-[600] text-[16px] text-center p-2 xl:p-1 rounded-md relative transition-all w-min-content cursor-pointer ${
+                      className={`font-[600] text-sm sm:text-[16px] text-center p-2 xl:p-1 rounded-md relative transition-all w-min-content cursor-pointer ${
                         link.announcementsTitle === currentAnnouncementsType
                           ? `p-1 rounded-md relative   before:xl:border-[1px] before:absolute bg-yellow text-blue-base xl:bg-transparent before:right-0  before:bottom-0 xl:text-white  before:mx-auto before:border-[#F5C451] before:w-full before:opacity-100 `
                           : "p-1 rounded-md relative   before:h-0 before:absolute before:bottom-0 text-gray-light before:right-0 before:bg-white before:opacity-0 "

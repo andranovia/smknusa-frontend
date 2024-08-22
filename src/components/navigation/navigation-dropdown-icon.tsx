@@ -10,7 +10,7 @@ type NavigationDropdownProps = {
 
 const NavigationDropdownIcon = ({ show }: NavigationDropdownProps) => {
   const {activePage} = useActivePage()
-  const isMobile = useMediaQuery("only screen and (max-width: 1024px)");
+  const isMobile = useMediaQuery("only screen and (max-width: 1023.98px)");
   return (
     <Image
       src={`${

@@ -10,7 +10,7 @@ const ProfileVisionMision = () => {
          className="items-start"
           classNameWrapper="pt-[76px]"
     >
-      <span className="flex flex-col items-start gap-4 my-10">
+      <span className="flex flex-col items-start gap-4 mt-10">
         <Heading type="h3">Visi SMK Negeri 1 Purwosari adalah</Heading>
         <Paragraph>
           Terwujudnya Tamatan yang Beriman dan Bertaqwa kepada Tuhan Yang Maha

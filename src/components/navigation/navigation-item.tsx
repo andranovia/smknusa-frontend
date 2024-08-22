@@ -118,7 +118,7 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
         text: "E-Learning",
         description: "Berisi sambutan resmi dari kepala sekolah",
         icon: "/assets/nav-dropdown-icon/akademik/e-learning.svg",
-        linkRef: "/profile/welcome-speech",
+        linkRef: "/academic/e-learn",
       },
     },
     {
@@ -134,7 +134,7 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
         text: "Jurusan",
         description: "Berisi sambutan resmi dari kepala sekolah",
         icon: "/assets/nav-dropdown-icon/akademik/jurusan.svg",
-        linkRef: "/profile/welcome-speech",
+        linkRef: "/academic/major",
       },
     },
     {

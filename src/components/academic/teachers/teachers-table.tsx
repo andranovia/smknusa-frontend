@@ -24,10 +24,10 @@ const TeachersTable = ({ teachersData, handleChangeTable }: TeachersTableProps) 
     <div className="relative flex flex-col  overflow-x-auto  1xl:rounded-lg border w-full">
     <div className="flex  items-center justify-between mx-4 1xl:mx-12 gap-4">
       <div className="flex w-full  items-center justify-between 1xl:justify-start  gap-4">
-        <Heading type="h5" className="text-sm font-bold text-blue-base  1xl:w-fit  my-6">
+        <Heading type="h5" className="!text-sm font-bold text-blue-base  1xl:w-fit  my-6">
           Peserta Didik Kependidikan
         </Heading>
-        <Heading type="h5" className="text-xs bg-amber-100 bg-opacity-70 border-yellow px-3 py-0.5 border rounded-full text-yellow-500">
+        <Heading type="h5" className="!text-xs bg-amber-100 bg-opacity-70 border-yellow px-3 py-0.5 border rounded-full text-yellow-500">
         {teachersData?.length + " " + "orang"}
         </Heading>
       </div>

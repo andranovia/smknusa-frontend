@@ -26,7 +26,7 @@ const ProfileLayout = ({
             <Heading type="h1" className="">
               {title}
             </Heading>
-            <Heading type="h5" className="text-gray text-center">
+            <Heading type="h5" className="text-gray text-center ">
               {subtitle}
             </Heading>
             <hr className="w-full border mt-8" />
