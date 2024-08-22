@@ -9,6 +9,7 @@ const ProfileHistory = () => {
       title="Sejarah Berdirinya Sekolah"
       subtitle="Sedikit pengetahuan mengenai bagaimana sejarah berdirinya SMK Negeri
             1 Purwosari"
+            className="my-10"
             classNameWrapper="pt-[76px]"
     >
       <Image
@@ -18,7 +19,7 @@ const ProfileHistory = () => {
         width={800}
         height={800}
       />
-      <Paragraph className="flex flex-col items-start gap-10 text-blue-base">
+      <Paragraph className="flex flex-col items-start gap-10 text-blue-base text-justify">
         <span>
           SMK Negeri 1 Purwosari, merupakan sebuah institusi pendidikan yang
           berdiri pada tahun 2000, telah menjadi salah satu landasan pendidikan

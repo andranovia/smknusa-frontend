@@ -16,7 +16,7 @@ export function Heading({ children, type, className }: HeadingProps) {
     case "h1":
       return (
         <h1
-          className={cn(`font-[700] xl:text-[46px] text-[20px] xs:text-[24px] ${className} `)}
+          className={cn(`font-[700] xl:text-[46px] text-[17px] sm:text-[24px] xl:leading-[4.5rem] ${className} `)}
         >
           {children}
         </h1>
@@ -48,7 +48,7 @@ export function Heading({ children, type, className }: HeadingProps) {
     case "h5":
       className;
       return (
-        <h5 className={cn(`font-[500] text-[18px] `, className)}>
+        <h5 className={cn(`font-[500] text-sm xl:text-[18px] `, className)}>
           {children}
         </h5>
       );
@@ -57,7 +57,7 @@ export function Heading({ children, type, className }: HeadingProps) {
 
 export function Paragraph({ children, className }: ParagraphProps) {
   return (
-    <p className={cn(`font-[400] lin text-[18px] ${className}`)}>{children}</p>
+    <p className={cn(`font-[400] text-[18px] ${className}`)}>{children}</p>
   );
 }
 

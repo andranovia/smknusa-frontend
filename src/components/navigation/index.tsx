@@ -11,6 +11,7 @@ import { useActivePage } from "@/contexts/ActivePageContext";
 import { usePathname } from "next/navigation";
 import NavigationSearchResult from "./navigation-search-result";
 import { useActiveToast } from "@/contexts/ActiveToastContext";
+import NavigationHamburger from "./navigation-hamburger";
 
 const Navbar = () => {
   const [show, setShow] = useState(true);
@@ -19,7 +20,7 @@ const Navbar = () => {
   const { activePage } = useActivePage()
   const pathname = usePathname();
   const [searchToggle, setSearchToggle] = useState(false);
-  const {handleActiveUnavailableToast} = useActiveToast();
+  const { handleActiveUnavailableToast } = useActiveToast();
 
   useEffect(() => {
     const controlNavbar = () => {
@@ -44,15 +45,28 @@ const Navbar = () => {
       window.removeEventListener("scroll", controlNavbar);
     };
   }, [lastScrollY, isMobile]);
+
+
+
+  const [showMenu, setShowMenu] = useState(false)
+
+  const handleToggleMenu = () => {
+    if(!showMenu){
+      setShowMenu(true)
+    }
+
+  }
+
+
   return (
     <>
       <div
         className={`flex items-center  justify-center rounded-lg bg-white xl:bg-transparent  xl:px-2.5   z-40  transition-[padding,max-width,transform] ${show
           ? ` text-blue-base pt-0 xl:pt-2 `
-          : `  ${    activePage
-                  ? `-translate-y-20 xl:translate-y-0 xl:pt-8 xl:text-white  ${pathname === "/" ? "" : "xl:pt-1 xl:mt-[15px] xl:max-w-[98%]"} before:backdrop-blur-sm before:backdrop-hack `
-                  : "xl:translate-y-2 xl:pt-0"
-         
+          : `  ${activePage
+            ? `-translate-y-20 xl:translate-y-0 xl:pt-8 xl:text-white  ${pathname === "/" ? "" : "xl:pt-1 xl:mt-[15px] xl:max-w-[98%]"} before:backdrop-blur-sm before:backdrop-hack `
+            : "xl:translate-y-2 xl:pt-0"
+
           }`
           } fixed w-full  delay-0 `}
       >
@@ -103,53 +117,21 @@ const Navbar = () => {
                   className={`${!show && activePage ? `xl:invert-0 invert` : "invert"
                     } transition-all  w-5 h-5 hidden xl:block cursor-pointer`}
                 />
+                {isMobile ? <Image src={"/assets/icon/hamburger.svg"} alt="hamburger" width={25} height={25} className='w-6 h-6 ' onClick={() => handleToggleMenu()} /> : null}
               </div>
             </div>
           </div>
         </div>
       </div>
+
+
+
       {isMobile ? (
-        <div className="w-full  p-2 flex justify-center  fixed xl:hidden bottom-2 z-50 ">
-          <div className="bg-white flex gap-5 xl:gap-4 shadow-lg items-center justify-between px-8 w-[90%]  py-2 rounded-[10px] sm:max-w-[368px] md:max-w-[430px] relative">
-            <NavigationItem
-              name="Profile"
-              show={show}
-              dropdown={false}
-              icon="https://img.icons8.com/?size=100&id=EOn31zjdfgcn&format=png&color=000000"
-            />
-            <NavigationItem
-              name="Akademik"
-              show={show}
-              dropdown={false}
-              icon="https://img.icons8.com/?size=100&id=83308&format=png&color=000000"
-            />
-            <Image
-              src={
-                "https://img.icons8.com/?size=100&id=83326&format=png&color=FFFFFF"
-              }
-              alt="arrow-up"
-              height={20}
-              width={20}
-              className="w-10 h-10 p-2 bg-primary rounded-full"
-            />
-            <NavigationItem
-              name="BKK"
-              show={show}
-              dropdown={false}
-              icon="https://img.icons8.com/?size=100&id=86119&format=png&color=000000"
-            />
-            <NavigationItem
-              name="Info"
-              show={show}
-              dropdown={false}
-              icon="https://img.icons8.com/?size=100&id=83308&format=png&color=000000"
-            />
-          </div>
-        </div>
+        <><NavigationHamburger showMenu={showMenu} setShowMenu={setShowMenu}/></>
       ) : null}
       <NavigationSearchResult searchToggle={searchToggle} setSearchToggle={setSearchToggle} />
 
-    
+
 
 
     </>

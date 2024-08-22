@@ -219,9 +219,9 @@ const HomeAnnouncementsCard = ({
                 key={index}
                 className={`flex flex-col items-start gap-2 xl:w-2/3 animate-pulse `}
               >
-                <div className="h-4 bg-gray-300 rounded-full w-[20rem]  xl:w-[26rem] mb-4"></div>
-                <div className="h-3 bg-gray-300 rounded-full  w-[14rem]  xl:w-[30rem] mb-4"></div>
-                <div className="h-3 bg-gray-300 rounded-full   w-[16rem] xl:w-[20rem] mb-4"></div>
+                <div className="h-4 bg-gray-300 rounded-full w-[16rem] sm:w-[20rem]  1xl:w-[26rem] mb-4 xl:mb-2.5"></div>
+                <div className="h-3 bg-gray-300 rounded-full w-[14rem]  1xl:w-[20rem] mb-4 xl:mb-2.5"></div>
+                <div className="h-3 bg-gray-300 rounded-full w-[16rem] 1xl:w-[22rem] mb-4 xl:mb-2.5"></div>
                 <div className="flex justify-start items-center gap-2">
                   <div className="h-3 bg-gray-200 rounded-full w-[10rem] "></div>
                   <Image
@@ -276,7 +276,7 @@ const HomeAnnouncementsCard = ({
 
         </>
       ) : <>
-        <div className="relative w-full h-full xl:h-[27rem]  xl:w-3/5 -left-10 object-cover z-1  md:mb-0  shadow-sm  animate-pulse">
+        <div className="relative w-full h-full xl:h-[27rem]  xl:w-3/5 xl:-left-10 object-cover z-1  md:mb-0  shadow-sm  animate-pulse">
           <div className="flex justify-center  rounded-xl items-center flex-col w-full h-full bg-gray-300">
             <svg
               className="w-1/3 h-1/3"
@@ -363,7 +363,7 @@ const HomeAnnouncementsCard = ({
       <div className="flex flex-col lg:flex-row overflow-hidden  xl:flex-row-reverse  rounded-[10px]  justify-between items-center w-full h-full xl:p-8 gap-6">
         {AnnouncementImageHighlight(AnnouncementImageList())}
 
-        <div className="flex justify-start items-start gap-8 h-[20rem] px-2 lg:px-0 lg:h-full w-full xl:w-[60%] overflow-hidden  lg:overflow-visible">
+        <div className="flex justify-start items-start gap-8 h-[17rem] px-2 lg:px-0 lg:h-full w-full xl:w-[60%] overflow-hidden  lg:overflow-visible">
           <div className="hidden xl:block h-full">
             <motion.div
               dragConstraints={sliderContainerRef}
