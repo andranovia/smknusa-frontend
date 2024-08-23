@@ -7,6 +7,8 @@ import Link from "next/link";
 import InfoCardItem from "@/components/ui/info-card-item";
 
 
+export const dynamic = 'force-static'
+export const dynamicParams = false;
 
 async function fetchArticles() {
   const response = await fetch(`${backendUrl}api/user/articles`, { cache: 'no-store' });
@@ -14,7 +16,6 @@ async function fetchArticles() {
   return data?.data;
 }
 
-export const dynamicParams = false;
 
 export async function generateStaticParams() {
   const articlesData = await fetchArticles();
