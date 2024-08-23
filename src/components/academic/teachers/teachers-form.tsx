@@ -3,8 +3,8 @@ import React from "react";
 
 const TeachersForm = () => {
   return (
-    <div className="relative z-10 w-full">
-      <div className="flex justify-center items-center p-2 bg-gray-base xl:bg-transparent w-full">
+    <div className="relative z-10 w-full  -mt-20  1xl:-mt-32">
+      <div className="flex justify-center items-center p-2  xl:bg-transparent w-full">
         <div className=" bg-white w-full px-6 xl:px-12 py-4 xl:py-10 rounded-lg border-white xl:shadow-lg">
           <Heading type="h5" className="block mb-5 text-blue-base mt-1">
             Form Pencarian PTK

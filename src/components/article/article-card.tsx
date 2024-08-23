@@ -22,7 +22,7 @@ const ArticleCard = () => {
 
   return (
     <>
-      <div className="flex flex-col justify-center items-center bg-white  -mt-10 xl:-mt-14">
+      <div className="flex flex-col justify-center items-center bg-white  -mt-10 xl:-mt-14 rounded-lg">
         {isArticlesLoading ? (
                    <div className="grid grid-cols-1 lg:grid-cols-2 1xl:grid-cols-3 gap-4 xl:gap-8 p-4 1xl:px-12 pb-12 bg-white w-full 2xl:max-w-fit  rounded-[10px]">
             {Array(6)

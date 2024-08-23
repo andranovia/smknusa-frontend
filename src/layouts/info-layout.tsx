@@ -53,7 +53,7 @@ const InfoLayout = ({
           </div>
         </div>
       </div>
-      <div className="flex w-full flex-col items-center px-2 xl:px-2.5  bg-gray-base">
+      <div className="flex w-full flex-col items-center px-2 xl:px-2.5  bg-gray-base ">
         <div className=" w-full gap-10 xl:gap-0 flex flex-col  items-center bg-white   h-full rounded-lg ">
           {children}
         </div>

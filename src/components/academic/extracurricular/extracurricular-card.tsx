@@ -7,17 +7,6 @@ import ProfileCardItem from "@/components/ui/profile-card-item";
 import ProfileCardItemLoading from "@/components/ui/profile-card-item-loading";
 import { useExtra } from "@/services/api/useQueries/useExtracurricular";
 
-export type Extracurricular = {
-
-  icon: {
-    iconImg: string,
-    iconName: string,
-  },
-  img: string,
-  description: string,
-}
-
-
 
 const ExtracurricularCard = () => {
   const { extras, isExtraLoading } = useExtra();
@@ -37,7 +26,7 @@ const ExtracurricularCard = () => {
                 .map((extracurricular, index) => {
                   return (
                     <React.Fragment key={index}>
-                      <Link href={"/news/2"}>
+                      <Link href={`extracurricular/${extracurricular.id_extra}`}>
                         <ProfileCardItem profileCardData={extracurricular} />
                       </Link>
                     </React.Fragment>
