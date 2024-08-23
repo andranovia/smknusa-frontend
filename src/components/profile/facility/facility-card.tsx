@@ -4,137 +4,24 @@ import FacilityShowMore from "./facility-showmore";
 import FeatureCardItem from "@/components/ui/feature-card-item";
 
 import FeatureCardItemLoading from "@/components/ui/feature-card-item-loading";
+import { useFacility } from "@/services/api/useQueries/useFacility";
 
-export type Facility = {
-  title: string;
-  thumbnail: string;
-  description: string;
-  category: {
-    id: number;
-    nama: string;
-  };
-};
-
-const facilityData: Facility[] = [
-  {
-    title: "Laser Cutting",
-    thumbnail: "/assets/facility/facility-image.png",
-    description: "Laser Cutting adalah alat yang digunakan untuk...",
-    category: { id: 1, nama: "Teknologi dan Rekayasa" },
-  
-  },
-  {
-    title: "Laser Cutting",
-    thumbnail: "/assets/facility/facility-image.png",
-    description: "Laser Cutting adalah alat yang digunakan untuk...",
-    category: { id: 1, nama: "Teknologi dan Rekayasa" },
-  },
-  {
-    title: "Laser Cutting",
-    thumbnail: "/assets/facility/facility-image.png",
-    description: "Laser Cutting adalah alat yang digunakan untuk...",
-    category: { id: 1, nama: "Teknologi dan Rekayasa" },
-  },
-  {
-    title: "Laser Cutting",
-    thumbnail: "/assets/facility/facility-image.png",
-    description: "Laser Cutting adalah alat yang digunakan untuk...",
-    category: { id: 1, nama: "Teknologi dan Rekayasa" },
-  },
-  {
-    title: "Laser Cutting",
-    thumbnail: "/assets/facility/facility-image.png",
-    description: "Laser Cutting adalah alat yang digunakan untuk...",
-    category: { id: 1, nama: "Teknologi dan Rekayasa" },
-  },
-  {
-    title: "Laser Cutting",
-    thumbnail: "/assets/facility/facility-image.png",
-    description: "Laser Cutting adalah alat yang digunakan untuk...",
-    category: { id: 1, nama: "Teknologi dan Rekayasa" },
-  },
-  {
-    title: "Laser Cutting",
-    thumbnail: "/assets/facility/facility-image.png",
-    description: "Laser Cutting adalah alat yang digunakan untuk...",
-    category: { id: 1, nama: "Teknologi dan Rekayasa" },
-  },
-  {
-    title: "Laser Cutting",
-    thumbnail: "/assets/facility/facility-image.png",
-    description: "Laser Cutting adalah alat yang digunakan untuk...",
-    category: { id: 1, nama: "Teknologi dan Rekayasa" },
-  },
-  {
-    title: "Laser Cutting",
-    thumbnail: "/assets/facility/facility-image.png",
-    description: "Laser Cutting adalah alat yang digunakan untuk...",
-    category: { id: 1, nama: "Teknologi dan Rekayasa" },
-  },
-  {
-    title: "Laser Cutting",
-    thumbnail: "/assets/facility/facility-image.png",
-    description: "Laser Cutting adalah alat yang digunakan untuk...",
-    category: { id: 1, nama: "Teknologi dan Rekayasa" },
-  },
-  {
-    title: "Laser Cutting",
-    thumbnail: "/assets/facility/facility-image.png",
-    description: "Laser Cutting adalah alat yang digunakan untuk...",
-    category: { id: 1, nama: "Teknologi dan Rekayasa" },
-  },
-  {
-    title: "Laser Cutting",
-    thumbnail: "/assets/facility/facility-image.png",
-    description: "Laser Cutting adalah alat yang digunakan untuk...",
-    category: { id: 1, nama: "Teknologi dan Rekayasa" },
-  },
-  {
-    title: "Laser Cutting",
-    thumbnail: "/assets/facility/facility-image.png",
-    description: "Laser Cutting adalah alat yang digunakan untuk...",
-    category: { id: 1, nama: "Teknologi dan Rekayasa" },
-  },
-  {
-    title: "Laser Cutting",
-    thumbnail: "/assets/facility/facility-image.png",
-    description: "Laser Cutting adalah alat yang digunakan untuk...",
-    category: { id: 1, nama: "Teknologi dan Rekayasa" },
-  },
-  {
-    title: "Laser Cutting",
-    thumbnail: "/assets/facility/facility-image.png",
-    description: "Laser Cutting adalah alat yang digunakan untuk...",
-    category: { id: 1, nama: "Teknologi dan Rekayasa" },
-  },
-  {
-    title: "Laser Cutting",
-    thumbnail: "/assets/facility/facility-image.png",
-    description: "Laser Cutting adalah alat yang digunakan untuk...",
-    category: { id: 1, nama: "Teknologi dan Rekayasa" },
-  },
-  {
-    title: "Laser Cutting",
-    thumbnail: "/assets/facility/facility-image.png",
-    description: "Laser Cutting adalah alat yang digunakan untuk...",
-    category: { id: 1, nama: "Teknologi dan Rekayasa" },
-  },
-];
 
 const FacilityCard = () => {
   const [showAllFacility, setShowAllFacility] = useState(false);
+  const {facilities, isFacilityLoading} = useFacility();
   return (
     <>
       <div className="w=-full flex justify-center items-center bg-white px-2 xl:mt-0 ">
-        {facilityData ? (
+        {facilities && !isFacilityLoading ? (
           <div className="flex flex-col items-center w-full  lg:w-fit ">
             <div className="w-full lg:w-fit grid grid-cols-1 lg:grid-cols-2 1xl:grid-cols-3 gap-4 xl:gap-8 p-4 1xl:px-14 pb-12 bg-white rounded-[10px]">
-              {facilityData
-                .slice(0, showAllFacility ? facilityData.length : 9)
+              {facilities
+                .slice(0, showAllFacility ? facilities.length : 9)
                 .map((facility, index) => {
                   return (
                     <React.Fragment key={index}>
-                      <Link href={"/news/2"}>
+                      <Link href={`/profile/school-facility/${facility.id_facility}`}>
                         <FeatureCardItem featureCardData={facility} />
                       </Link>
                     </React.Fragment>

@@ -2,8 +2,6 @@ import { Article } from "@/services/api/useQueries/useArticles";
 import { backendUrl } from "@/utils/backendUrl";
 import Image from "next/image";
 import React from "react";
-import parse from "html-react-parser";
-import { JSDOM } from 'jsdom';
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import InfoCardItem from "@/components/ui/info-card-item";
@@ -11,10 +9,12 @@ import InfoCardItem from "@/components/ui/info-card-item";
 
 
 async function fetchArticles() {
-  const response = await fetch(`${backendUrl}api/user/articles`);
+  const response = await fetch(`${backendUrl}api/user/articles`, { cache: 'no-store' });
   const data: { data: Article[] } = await response.json();
   return data?.data;
 }
+
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
   const articlesData = await fetchArticles();
@@ -25,7 +25,7 @@ export async function generateStaticParams() {
 
 async function getArticleById(id: string) {
   if (!id) throw new Error("ID is required to fetch article");
-  const response = await fetch(`${backendUrl}api/user/articles/${id}`);
+  const response = await fetch(`${backendUrl}api/user/articles/${id}`, { cache: 'no-store' });
 
   const data = await response.json();
   return data?.data || null;

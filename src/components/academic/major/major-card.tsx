@@ -7,9 +7,7 @@ import MajorShowMore from "./major-showmore";
 import FeatureCardItem from "@/components/ui/feature-card-item";
 
 export type Major = {
-    icon: {
-        icon: string,
-    },
+    icon: string,
     img: string,
     title: string,
     description: string,
@@ -18,73 +16,73 @@ export type Major = {
 
 const majorData: Major[] = [
     {
-        icon: {
+        
             icon: 'Informatika',
-        },
+        
         img: '/assets/academic/major/rpl-major.png',
         title: 'Rekayasa Perangkat Lunak',
         description: 'Rekayasa Perangkat Lunak adalah sebuah jurusan yang...'
     },
     {
-        icon: {
+        
             icon: 'Informatika',
-        },
+        
         img: '/assets/academic/major/tkj-major.png',
         title: 'Teknik Komputer dan Jaringan',
         description: 'Laser Cutting adalah alat yang digunakan untuk...'
     }, {
-        icon: {
+        
             icon: 'Informatika',
-        },
+        
         img: '/assets/academic/major/dkv-major.png',
         title: 'Desain Komunikasi Visual',
         description: 'Laser Cutting adalah alat yang digunakan untuk...'
     }, {
-        icon: {
+        
             icon: 'Agribisnis',
-        },
+        
         img: '/assets/academic/major/aphp-major.png',
         title: 'Agribisnis Pengolahan Hasil Pertanian',
         description: 'Laser Cutting adalah alat...'
     }, {
-        icon: {
+        
             icon: 'Agribisnis',
-        },
+        
         img: '/assets/academic/major/atph-major.png',
         title: 'Agribisnis Tanaman Pangan dan Hortikultura',
         description: 'Laser Cutting adalah alat...'
     }, {
-        icon: {
+        
             icon: 'Elektronika',
-        },
+        
         img: '/assets/academic/major/mkt-major.png',
         title: 'Teknik Mekatronika',
         description: 'Laser Cutting adalah alat yang digunakan untuk...'
     }, {
-        icon: {
+        
             icon: 'Permesinan',
-        },
+        
         img: '/assets/academic/major/tl-major.png',
         title: 'Teknik Pengelasan',
         description: 'Laser Cutting adalah alat yang digunakan untuk...'
     }, {
-        icon: {
+        
             icon: 'Permesinan',
-        },
+        
         img: '/assets/academic/major/tpm-major.png',
         title: 'Teknik Pemesinan',
         description: 'Laser Cutting adalah alat yang digunakan untuk...'
     }, {
-        icon: {
+        
             icon: 'Permesinan',
-        },
+        
         img: '/assets/academic/major/tkro-major.png',
         title: 'Teknik Kendaraan Ringan Otomotif',
         description: 'Laser Cutting adalah alat...'
     }, {
-        icon: {
+        
             icon: 'Permesinan',
-        },
+        
         img: '/assets/academic/major/tkro-major.png',
         title: 'Teknik Kendaraan Ringan Otomotif',
         description: 'Laser Cutting adalah alat...'

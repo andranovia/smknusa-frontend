@@ -3,19 +3,17 @@ import { News } from "@/services/api/useQueries/useNews";
 import { backendUrl } from "@/utils/backendUrl";
 import Image from "next/image";
 import React from "react";
-import parse from "html-react-parser";
-import { JSDOM } from 'jsdom';
 import Link from "next/link";
 import InfoCardItem from "@/components/ui/info-card-item";
 
 
 async function fetchNews() {
-  const response = await fetch(`${backendUrl}api/user/news`);
+  const response = await fetch(`${backendUrl}api/user/news`, { cache: 'no-store' });
   const data: { data: News[] } = await response.json();
 
   return data.data;
-}
-
+} 
+export const dynamicParams = false;
 export async function generateStaticParams() {
   const newsData = await fetchNews();
 
@@ -25,7 +23,7 @@ export async function generateStaticParams() {
 }
 
 async function getNewsById(id: string) {
-  const response = await fetch(`${backendUrl}api/user/news/${id}`);
+  const response = await fetch(`${backendUrl}api/user/news/${id}`, { cache: 'no-store' });
   const data = await response.json();
   return data.data;
 }
