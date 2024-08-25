@@ -130,16 +130,9 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
         },
         {
             linkDropdownData: {
-                text: "Alumni Hebat",
-                description: "Berisi sambutan resmi dari kepala sekolah",
-                linkRef: "/profile/welcome-speech",
-            },
-        },
-        {
-            linkDropdownData: {
                 text: "Lowongan Pekerjaan",
                 description: "Berisi sambutan resmi dari kepala sekolah",
-                linkRef: "/profile/welcome-speech",
+                linkRef: "/bkk/job",
             },
         },
     ],
