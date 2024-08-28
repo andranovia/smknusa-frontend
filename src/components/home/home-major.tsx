@@ -5,6 +5,7 @@ import React, { useCallback, useMemo, useState } from "react";
 import HomeMajorSlider from "./home-major-slider";
 import { motion, useAnimation, useMotionValue, useSpring } from "framer-motion";
 import { Heading, Paragraph } from "../ui/typography";
+import { defaultTransition } from "../animation/transition";
 
 const Informatika = Symbol("Informatika");
 const Agribisnis = Symbol("Agribisnis");
@@ -90,6 +91,7 @@ const HomeMajor = () => {
   const [currentSlide, setCurrentSlide] = useState<symbol>(Informatika);
   const xValue = 0;
   const offsetX = useMotionValue(xValue);
+  const navHighlight = useAnimation()
   const majors = useMemo(() => {
     return majorData[currentSlide as keyof typeof majorData];
   }, [currentSlide]);
@@ -106,7 +108,24 @@ const HomeMajor = () => {
         animatedX.set(0);
         setTimeout(() => {
           setCurrentSlide(newSlide);
+          switch (newSlide) {
+            case Informatika:
+              navHighlight.start({ x: 0, width: '144px' })
+              break;
+            case Agribisnis:
+              navHighlight.start({ x: 144, width: '116px' })
+              break;
+            case Pemesinan:
+              navHighlight.start({ x: 272, width: '116px' })
+              break;
+            case Elektronika:
+              navHighlight.start({ x: 396, width: '140px' })
+              break;
+            default:
+              navHighlight.start({ x: 0, width: '144px' })
+          }
         }, 500);
+
       }
     },
     [currentSlide, controls, animatedX]
@@ -130,24 +149,27 @@ const HomeMajor = () => {
 
       <div className="relative  xl:px-8 px-0  xl:-mt-32 flex justify-center w-full ">
         <div className="flex justify-center items-end relative  bg-white overflow-hidden rounded-[10px]  2xl:max-w-max-container h-full w-full">
-        <div className="absolute right-0 h-full bg-gradient-to-l from-white to-transparent z-20 p-10 md:p-16 opacity-80"></div>
-        <div className="absolute block xl:hidden left-0 h-full bg-gradient-to-r from-white to-transparent z-20 p-10 md:p-16 opacity-80"></div>
+          <div className="absolute right-0 h-full bg-gradient-to-l from-white to-transparent z-20 p-10 md:p-16 opacity-80"></div>
+          <div className="absolute block xl:hidden left-0 h-full bg-gradient-to-r from-white to-transparent z-20 p-10 md:p-16 opacity-80"></div>
           <div className="relative w-full  flex flex-col xl:flex-row   justify-center gap-14  h-full  mt-8 mb-10 xl:mb-0 max-w-max-container">
-            <div className=" w-full flex top-0 -mt-28 xl:mt-0 absolute justify-center py-3 xl:rounded-[10px] items-center xl:px-0 px-6 gap-8 xl:bg-primary lg:min-w-lg max-w-[34rem]">
-              {majorLinkData.map((data, index) => {
+            <div className=" w-full flex top-0 -mt-28 xl:mt-0 absolute justify-center py-3 xl:rounded-[10px] items-center xl:px-0 px-6 gap-8 xl:bg-[#e5e7eb] lg:min-w-lg max-w-[34rem]">
+              <motion.div initial={false} animate={navHighlight} transition={defaultTransition} className="left-1 w-[9rem] h-[2.475rem] bg-white absolute rounded-md" />
+              {majorLinkData?.map((data, index) => {
                 return (
                   <React.Fragment key={index}>
-                    <span
+                    <motion.span
                       key={index}
+                      animate={{ scale: currentSlide === data.slide ? 0.9 : 1 }}
                       onClick={() => handleSlideChange(data.slide)}
-                      className={`font-[600] relative text-center z-30 text-xs cursor-pointer transition-colors xl:text-[16px] ${
-                        currentSlide === data.slide
-                          ? "p-1 rounded-md relative text-white  w-min-content before:border-[1px] before:absolute before:bottom-0 before:right-0 before:border-yellow before:w-full before:opacity-100"
-                          : "p-1 rounded-md relative  text-gray-light w-min-content before:h-0 before:absolute before:bottom-0 before:right-0 before:bg-white before:opacity-0"
-                      }`}
+                      className={`font-[600] relative text-center z-30 p-1 before:transition-colors before:duration-500 rounded-md before:bottom-0 before:right-0 before:absolute w-min-content text-xs cursor-pointer  xl:text-[16px]
+                        before:h-0   before:bg-white before:opacity-0 
+                        ${currentSlide === data.slide
+                          ? " text-blue-base  "
+                          : " text-gray-light hover:before:border-[1px]  hover:before:border-yellow hover:before:w-full hover:before:opacity-100"
+                        }`}
                     >
                       {data.text}
-                    </span>
+                    </motion.span>
                   </React.Fragment>
                 );
               })}

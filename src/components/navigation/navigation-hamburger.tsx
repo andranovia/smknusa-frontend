@@ -175,7 +175,7 @@ const NavigationMenuItem = ({ name, currentDropdown, setCurrentDropdown, setShow
                     width={20}
                 />
             </div>
-                <motion.div initial={{y: 200, opacity: 0}} animate={{opacity: isOpen ? 1 : 0, y: isOpen ? 0 : 200}} transition={{...defaultTransition}} className='flex flex-col px-3 sm:px-6 gap-2 absolute bottom-4'>
+                <motion.div initial={{y: 200, opacity: 0}} animate={{opacity: isOpen ? 1 : 0, y: isOpen ? 0 : 200}} transition={{...defaultTransition}} className='flex flex-col px-3 sm:px-6 gap-2 absolute bottom-8'>
                     {navbarDropdownData[name].map((item, index) => (
                         <Link href={item.linkDropdownData.linkRef} key={index} onClick={() => setShowMenu(false)}>
                             <Paragraph className='text-white font-medium text-base'>
