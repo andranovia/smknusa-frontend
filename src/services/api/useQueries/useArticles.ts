@@ -19,7 +19,7 @@ export type Article = {
   viewer: string;
 };
 
-export const useArticles = (id?: string) => {
+export const useArticles = ( ) => {
 
 
   const { data: articles, isLoading: isArticlesLoading } = useQuery<Article[] | null>({

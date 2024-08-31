@@ -5,11 +5,11 @@ import Link from "next/link";
 import ExtracurricularShowMore from "./extracurricular-showmore";
 import ProfileCardItem from "@/components/ui/profile-card-item";
 import ProfileCardItemLoading from "@/components/ui/profile-card-item-loading";
-import { useExtra } from "@/services/api/useQueries/useExtracurricular";
+import { useExtras } from "@/services/api/useQueries/useExtracurriculars";
 
 
 const ExtracurricularCard = () => {
-  const { extras, isExtraLoading } = useExtra();
+  const { extras, isExtraLoading } = useExtras();
 
 
 
