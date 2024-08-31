@@ -17,7 +17,7 @@ export type News = {
   viewer: string;
 };
 
-export const useNews = (id?: string) => {
+export const useNews = ( ) => {
 
 
   const { data: news, isLoading: isNewsLoading } = useQuery<News[] | null>({

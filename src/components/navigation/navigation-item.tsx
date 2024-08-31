@@ -107,14 +107,6 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
     },
     {
       linkDropdownData: {
-        text: "E-Raport",
-        description: "Berisi sambutan resmi dari kepala sekolah",
-        icon: "/assets/nav-dropdown-icon/akademik/e-raport.svg",
-        linkRef: "/profile/welcome-speech",
-      },
-    },
-    {
-      linkDropdownData: {
         text: "E-Learning",
         description: "Berisi sambutan resmi dari kepala sekolah",
         icon: "/assets/nav-dropdown-icon/akademik/e-learning.svg",
@@ -137,14 +129,14 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
         linkRef: "/academic/major",
       },
     },
-    {
-      linkDropdownData: {
-        text: "Form Perangkat Ajar",
-        description: "Berisi sambutan resmi dari kepala sekolah",
-        icon: "/assets/nav-dropdown-icon/akademik/form-pa.svg",
-        linkRef: "/profile/welcome-speech",
-      },
-    },
+    // {
+    //   linkDropdownData: {
+    //     text: "Form Perangkat Ajar",
+    //     description: "Berisi sambutan resmi dari kepala sekolah",
+    //     icon: "/assets/nav-dropdown-icon/akademik/form-pa.svg",
+    //     linkRef: "/profile/welcome-speech",
+    //   },
+    // },
   ],
   BKK: [
     {
@@ -152,7 +144,7 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
         text: "Kemitraan",
         description: "Berisi sambutan resmi dari kepala sekolah",
         icon: "/assets/nav-dropdown-icon/Bkk/kemitraan.svg",
-        linkRef: "/profile/welcome-speech",
+        linkRef: "/bkk/partnership",
       },
     },
     {
@@ -161,24 +153,6 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
         description: "Berisi sambutan resmi dari kepala sekolah",
         icon: "/assets/nav-dropdown-icon/Bkk/lowongan.svg",
         linkRef: "/bkk/job",
-      },
-    },
-  ],
-  Info: [
-    {
-      linkDropdownData: {
-        text: "Berita",
-        description: "Berisi sambutan resmi dari kepala sekolah",
-        icon: "/assets/nav-dropdown-icon/Bkk/kemitraan.svg",
-        linkRef: "/news",
-      },
-    },
-    {
-      linkDropdownData: {
-        text: "Article",
-        description: "Berisi sambutan resmi dari kepala sekolah",
-        icon: "/assets/nav-dropdown-icon/Bkk/kemitraan.svg",
-        linkRef: "/article",
       },
     },
   ],

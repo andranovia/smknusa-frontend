@@ -1,7 +1,7 @@
 import FeatureCardItem from '@/components/ui/feature-card-item';
 import { Heading, Paragraph } from '@/components/ui/typography';
 import DetailLayout from '@/layouts/detail-layout'
-import { Facility } from '@/services/api/useQueries/useFacility';
+import { Facility } from '@/services/api/useQueries/useFacilities';
 import { backendUrl } from '@/utils/backendUrl';
 import Link from 'next/link';
 import { redirect } from "next/navigation";

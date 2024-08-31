@@ -20,7 +20,7 @@ export type Announcement = {
   viewer: string;
 };
 
-export const useAnnouncements = (id?: string) => {
+export const useAnnouncements = ( ) => {
 
 
   const { data: announcements, isLoading: isAnnouncementsLoading  } = useQuery<Announcement[] | null>({

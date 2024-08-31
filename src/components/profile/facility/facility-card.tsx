@@ -4,12 +4,12 @@ import FacilityShowMore from "./facility-showmore";
 import FeatureCardItem from "@/components/ui/feature-card-item";
 
 import FeatureCardItemLoading from "@/components/ui/feature-card-item-loading";
-import { useFacility } from "@/services/api/useQueries/useFacility";
+import { useFacilities } from "@/services/api/useQueries/useFacilities";
 
 
 const FacilityCard = () => {
   const [showAllFacility, setShowAllFacility] = useState(false);
-  const {facilities, isFacilityLoading} = useFacility();
+  const {facilities, isFacilityLoading} = useFacilities();
   return (
     <>
       <div className="w=-full flex justify-center items-center bg-white px-2 xl:mt-0 ">

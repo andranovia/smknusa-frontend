@@ -16,7 +16,7 @@ export interface Prodi {
 }
 
 
-export const useFacility = (id?: string) => {
+export const useFacilities = ( ) => {
 
     const { data: facilities, isLoading: isFacilityLoading } = useQuery<Facility[] | null>({
         queryKey: ["Facility"],

@@ -29,7 +29,7 @@ export type Student = {
 
 
 
-export const useResidents = (id?: string) => {
+export const useResidents = ( ) => {
 
   const { data: teachers } = useQuery<Teacher[] | null>({
     queryKey: ["Teachers"],

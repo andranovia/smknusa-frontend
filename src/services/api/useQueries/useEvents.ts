@@ -19,7 +19,7 @@ export type Event = {
   viewer: string;
 };
 
-export const useEvents = (id?: string) => {
+export const useEvents = ( ) => {
 
 
   const { data: events } = useQuery<Event[] | null>({
@@ -29,12 +29,12 @@ export const useEvents = (id?: string) => {
 
 
 
-  const { data: eventCategories } = useQuery({
-    queryKey: ["EventCategories"],
+  const { data: eventsCategories } = useQuery({
+    queryKey: ["EventsCategories"],
     queryFn: () => {
       return getEventCategories();
     },
   });
 
-  return { events,  eventCategories };
+  return { events,  eventsCategories };
 };

@@ -18,7 +18,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getSchoolMajors } from "../methods/fetch-majors"
 
 
-export const useMajors = (id?: string) => {
+export const useMajors = ( ) => {
 
     const { data: majors, isLoading: isMajorsLoading } = useQuery<[] | null>({
         queryKey: ["Majors"],

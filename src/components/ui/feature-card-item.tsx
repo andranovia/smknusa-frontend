@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { Heading } from "./typography";
-import { Facility } from "@/services/api/useQueries/useFacility";
+import { Facility } from "@/services/api/useQueries/useFacilities";
 import { backendUrl } from "@/utils/backendUrl";
 import { Majors } from "@/services/api/useQueries/useMajors";
 

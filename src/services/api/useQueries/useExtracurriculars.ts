@@ -13,7 +13,7 @@ export type Extra = {
     extra_hari: string;
 };
 
-export const useExtra = (id?: string) => {
+export const useExtras = ( ) => {
 
     const {data: extras, isLoading: isExtraLoading} = useQuery<Extra[] | null>({
         queryKey: ["Extra"],

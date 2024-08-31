@@ -5,6 +5,7 @@ import React from "react";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import InfoCardItem from "@/components/ui/info-card-item";
+import ArticleShare from "@/components/article/article-share";
 
 
 export const dynamic = 'force-static'
@@ -114,15 +115,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                       />
                       <h4>{articleById?.viewer}</h4>
                     </div>
-                    <div className="flex gap-1 items-center">
-                      <Image
-                        width={20}
-                        height={20}
-                        src={"/assets/icon/share.svg"}
-                        alt="share"
-                      />
-                      <h4>Bagikan</h4>
-                    </div>
+                    <ArticleShare/>
                   </div>
                 </div>
               </div>

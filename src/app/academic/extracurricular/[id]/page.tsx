@@ -3,7 +3,7 @@ import FeatureCardItem from '@/components/ui/feature-card-item';
 import ProfileCardItem from '@/components/ui/profile-card-item';
 import { Heading, Paragraph } from '@/components/ui/typography';
 import DetailLayout from '@/layouts/detail-layout'
-import { Extra } from '@/services/api/useQueries/useExtracurricular';
+import { Extra } from '@/services/api/useQueries/useExtracurriculars';
 import { backendUrl } from '@/utils/backendUrl';
 import Image from 'next/image';
 import Link from 'next/link';
