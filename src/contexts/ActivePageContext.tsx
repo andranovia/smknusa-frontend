@@ -27,7 +27,8 @@ export const ActivePageProvider = ({children}: {children: React.ReactNode}) => {
     pathname === "/academic/extracurricular" ||
     pathname === "/academic/major" || 
     pathname === "/academic/resident-data" || 
-    pathname === "/bkk/job";
+    pathname === "/bkk/job" || 
+    pathname === "/bkk/partnership";
   return (
     <ActivePageContext.Provider value={{activePage: isActivePage}}>
       {children}

@@ -19,7 +19,7 @@ const PartnershipCard = () => {
                             {[...partnerships]?.map((partnership, index) => {
                                 return (
                                     <React.Fragment key={index}>
-                                        <Link href={`/partnership/${partnership.id_kemitraan}`} className="flex justify-center">
+                                        <Link href={`/bkk/partnership/${partnership.id_kemitraan}`} className="flex justify-center">
                                             <ProfileCardItem profileCardData={partnership} />
                                         </Link>
                                     </React.Fragment>
