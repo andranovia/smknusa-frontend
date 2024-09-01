@@ -9,7 +9,7 @@ const Partnership = () => {
         
         <ClientOnly>
             <InfoLayout title="Kemitraan" subtitle="Daftar kemitraan SMK Negeri 1 Purwosari">
-                <div className="pb-20  flex flex-col items-center w-full justify-center gap-10  md:max-w-md-content lg:max-w-lg-content xl:max-w-[1002px] 2xl:max-w-max-container ">
+                <div className="pb-20  flex flex-col items-center w-full  gap-10  md:max-w-md-content lg:max-w-lg-content xl:max-w-[1002px] 2xl:max-w-max-container ">
                 <PartnershipForm/>
                 <PartnershipCard/>
                 </div>

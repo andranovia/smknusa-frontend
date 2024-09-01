@@ -14,7 +14,7 @@ export default function NotFound() {
                         <Paragraph className='!text-sm lg:!text-base xl:!text-lg'>
                             Kami mohon maaf, Pencarian tidak ada yang cocok.
                         </Paragraph>
-                        <Image src={'assets/icon/404.svg'} alt='404' width={500} height={500} className='w-[20rem] lg:w-[25rem] xl:w-[31rem] my-4' />
+                        <Image src={'/assets/icon/404.svg'} alt='404' width={500} height={500} className='w-[20rem] lg:w-[25rem] xl:w-[31rem] my-4' />
                         <Link
                             href={'/'}
                             className="w-fit py-[10px] px-10 border-2 border-primary  text-blue-base bg-yellow-light rounded-md"

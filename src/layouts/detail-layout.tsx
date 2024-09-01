@@ -1,24 +1,21 @@
 
-import { Extra } from '@/services/api/useQueries/useExtracurricular'
-import { Facility } from '@/services/api/useQueries/useFacility'
+import { Extra } from '@/services/api/useQueries/useExtracurriculars'
+import { Facility } from '@/services/api/useQueries/useFacilities'
 import { Majors } from '@/services/api/useQueries/useMajors'
+import { Partnership } from '@/services/api/useQueries/usePartnerships'
 import { backendUrl } from '@/utils/backendUrl'
 import { cn } from '@/utils/cn'
 import React from 'react'
 
-const DetailLayout = ({ children, detailData, className }: { children: React.ReactNode, detailData: Majors | Facility | Extra, className?: string }) => {
+const DetailLayout = ({ children, detailData, className }: { children: React.ReactNode, detailData: Majors | Facility | Extra | Partnership, className?: string }) => {
     return (
         <div className="flex xl:min-h-screen flex-col items-center px-2.5 xl:px-3 gap-3 ">
             <div
                 className="relative mt-[72px] xl:mt-24 h-[16rem] w-full p-2 xl:p-2.5 overflow-hidden rounded-[10px] sm:h-[17rem] md:h-[20rem] xl:h-[28rem] 1xl:h-[32.375rem] bg-cover bg-no-repeat"
                 style={{
-                    backgroundImage: `url(${'facility_image' in detailData ? backendUrl + detailData.facility_image : 'jurusan_thumbnail' in detailData ? backendUrl + detailData.jurusan_thumbnail : backendUrl + detailData.extra_image})`
+                    backgroundImage: `url(${'facility_image' in detailData ? backendUrl + detailData.facility_image : 'jurusan_thumbnail' in detailData ? backendUrl + detailData.jurusan_thumbnail : 'extra_image' in detailData ? backendUrl + detailData.extra_image : backendUrl + detailData.kemitraan_thumbnail})`,
                 }}
             >
-
-
-
-
             </div>
             <div className="flex w-full flex-col items-center   bg-gray-base">
                 <div className=" w-full gap-10 xl:gap-0 flex flex-col  items-center bg-white py-8 lg:py-14  h-full rounded-lg ">

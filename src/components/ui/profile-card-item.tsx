@@ -25,13 +25,25 @@ const ProfileCardItem = ({ profileCardData }: ProfileCardItemProps) => {
 
           <div className={`bg-white px-2 sm:px-4 xl:px-2 border xl:border-none py-2 rounded-md flex justify-center sm:justify-start xl:justify-center gap-2 sm:gap-4 xl:gap-2 items-center sm:rounded-[10px]`}>
             <Image src={'extra_logo' in profileCardData ? backendUrl + profileCardData.extra_logo : backendUrl + profileCardData.kemitraan_logo} alt={'extra_name' in profileCardData ? profileCardData.extra_name : profileCardData.kemitraan_name} width={40} height={40} className="w-6 h-6" />
+
+
+
             <Heading type="h5" className="font-semibold text-center !text-sm sm:!text-[16px] line-clamp-1  text-blue-base">
               {'extra_name' in profileCardData ? profileCardData.extra_name : profileCardData.kemitraan_name}
             </Heading>
           </div>
         </div>
+        {'kemitraan_location_detail' in profileCardData ?
+          <div className="flex items-center gap-2">
+            <Image src={'/assets/icon/location-filled.svg'} alt={profileCardData.kemitraan_name} width={14} height={14} className="w-4 h-4" />
+            <Heading type="h5" className=" !text-xs font-[500]   xl:!text-sm  sm:w-full  line-clamp-1 leading-6 text-blue-base">
+              Singosari
+            </Heading>
 
-        <Heading type="h5" className=" !text-xs font-[500]   xl:!text-lg mb-2 sm:w-full  line-clamp-3 leading-6 text-gray"> {'extra_text' in profileCardData ? profileCardData.extra_text : profileCardData.kemitraan_description}</Heading>
+          </div> : null}
+        <Heading type="h5" className="!text-xs font-[500] xl:!text-base mb-2 sm:w-full  line-clamp-3 leading-6 text-gray">
+          {'extra_text' in profileCardData ? profileCardData.extra_text : profileCardData.kemitraan_description}
+        </Heading>
       </div>
     </div>
   );
