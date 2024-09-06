@@ -1,0 +1,9 @@
+<svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="directbox-receive">
+<path id="Vector" d="M7.5 1.25V5L8.75 3.75" stroke="#081B34" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_2" d="M7.5 5L6.25 3.75" stroke="#081B34" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_3" d="M4.375 7.5C1.875 7.5 1.875 8.61875 1.875 10V10.625C1.875 12.35 1.875 13.75 5 13.75H10C12.5 13.75 13.125 12.35 13.125 10.625V10C13.125 8.61875 13.125 7.5 10.625 7.5C10 7.5 9.825 7.63125 9.5 7.875L8.8625 8.55C8.125 9.3375 6.875 9.3375 6.13125 8.55L5.5 7.875C5.175 7.63125 5 7.5 4.375 7.5Z" stroke="#081B34" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_4" d="M3.125 7.4999V4.9999C3.125 3.74365 3.125 2.70615 5 2.5249" stroke="#081B34" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_5" d="M11.875 7.4999V4.9999C11.875 3.74365 11.875 2.70615 10 2.5249" stroke="#081B34" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</svg>

@@ -129,14 +129,14 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
         linkRef: "/academic/major",
       },
     },
-    // {
-    //   linkDropdownData: {
-    //     text: "Form Perangkat Ajar",
-    //     description: "Berisi sambutan resmi dari kepala sekolah",
-    //     icon: "/assets/nav-dropdown-icon/akademik/form-pa.svg",
-    //     linkRef: "/profile/welcome-speech",
-    //   },
-    // },
+    {
+      linkDropdownData: {
+        text: "Form Perangkat Ajar",
+        description: "Berisi sambutan resmi dari kepala sekolah",
+        icon: "/assets/nav-dropdown-icon/akademik/form-pa.svg",
+        linkRef: "/profile/welcome-speech",
+      },
+    },
   ],
   BKK: [
     {
