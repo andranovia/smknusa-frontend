@@ -33,7 +33,7 @@ async function getPartnershipById(id: string) {
 export default async function Page({ params }: { params: { id: string } }) {
     const { id } = params;
     const partnershipData = await fetchPartnership();
-    const partnershipById = await getPartnershipById(id);
+    const partnershipById: Partnership = await getPartnershipById(id);
 
     return (
         <DetailLayout detailData={partnershipById} className='!justify-start'>
@@ -48,15 +48,23 @@ export default async function Page({ params }: { params: { id: string } }) {
                             className="w-14 h-14 "
                         />
                     </div>
-                    <div className='flex flex-col h-full gap-6 lg:gap-8'>
+                    <div className='flex flex-col h-full gap-4'>
                         <Heading type="h1" className="text-blue-base font-bold !leading-none">
-                            {partnershipById?.extra_name}
+                            {partnershipById?.kemitraan_name}
+                        </Heading>
+                        <div className='flex items-center h-full gap-2'>
+                    <Image src={'/assets/icon/location-filled.svg'} alt={partnershipById?.kemitraan_name} width={14} height={14} className="w-4 h-4" />
+           
+                        <Heading type="h5" className=" !text-xs font-[500]   xl:!text-sm  sm:w-full  line-clamp-1 leading-6 text-blue-base">
+                            {partnershipById?.kemitraan_location_detail}
                         </Heading>
                     </div>
+                    </div>
+                    
                 </div>
 
                 <Paragraph>
-                    {partnershipById?.extra_text}
+                    {partnershipById?.kemitraan_description}
                 </Paragraph>
                 <div className=" flex gap-4 lg:gap-10 flex-col w-full ">
                     <h2 className="mt-10 text-2xl lg:text-3xl xl:text-4xl 1xl:text-5xl font-semibold">
