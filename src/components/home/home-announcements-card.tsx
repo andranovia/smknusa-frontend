@@ -6,7 +6,6 @@ import {
   AnimatePresence,
   AnimationControls,
   motion,
-  motionValue,
   useAnimation,
 } from "framer-motion";
 import { useMediaQuery } from "@uidotdev/usehooks";
@@ -41,18 +40,16 @@ const HomeAnnouncementsCard = ({
   const sliderContainerRef = useRef<HTMLDivElement>(null);
   const controls = useAnimation();
 
-
-
   useEffect(() => {
     if (isChangingAnnouncements) {
       controls.start({ y: 0 });
-    }
-    else if (isTablet) {
-      let timeoutId: NodeJS.Timeout;
-
-      timeoutId = setTimeout(() => {
+    } else if (isTablet) {
+      const timeoutId: NodeJS.Timeout = setTimeout(() => {
         setCurrentAnnouncementsHighlightIndex((prevIndex) => {
-          if (currentAnnouncementsData && prevIndex < currentAnnouncementsData?.length - 1) {
+          if (
+            currentAnnouncementsData &&
+            prevIndex < currentAnnouncementsData?.length - 1
+          ) {
             return prevIndex + 1;
           } else {
             return 0;
@@ -62,13 +59,19 @@ const HomeAnnouncementsCard = ({
 
       return () => clearTimeout(timeoutId);
     }
-
-
-
-  }, [currentAnnouncementsData, currentAnnouncementsHighlightIndex, controls, setCurrentAnnouncementsHighlightIndex, isTablet]);
+  }, [
+    currentAnnouncementsData,
+    currentAnnouncementsHighlightIndex,
+    controls,
+    setCurrentAnnouncementsHighlightIndex,
+    isTablet,
+    isChangingAnnouncements,
+  ]);
 
   const handleChangeHighlight = (index: number) => {
-    if (isTablet) { return }
+    if (isTablet) {
+      return;
+    }
     setCurrentAnnouncementsHighlightIndex(index);
     if (currentAnnouncementsData && index === 0) {
       controls.start({ y: 0 });
@@ -79,7 +82,6 @@ const HomeAnnouncementsCard = ({
     }
   };
 
-
   const imageVariantMobile = {
     hidden: { opacity: 0, y: 0, x: -100 },
     visible: { opacity: 1, y: 0, x: 0 },
@@ -87,17 +89,12 @@ const HomeAnnouncementsCard = ({
   };
 
   useEffect(() => {
-
-    let timeoutId: NodeJS.Timeout;
-
-    timeoutId = setTimeout(() => {
+    const timeoutId = setTimeout(() => {
       announcementsHighlightControls.start("visible");
     }, 400);
 
     return () => clearTimeout(timeoutId);
-
-
-  }, [currentAnnouncementsData]);
+  }, [currentAnnouncementsData, announcementsHighlightControls]);
 
   const announcementsHighlightVariant = {
     hidden: {
@@ -112,10 +109,24 @@ const HomeAnnouncementsCard = ({
       y: 0,
     },
     visible: {
-      y: isMobile && currentAnnouncementsHighlightIndex === 1 && !isChangingAnnouncements ? -150 :
-        isMobile && currentAnnouncementsHighlightIndex === 2 && !isChangingAnnouncements ? -310 : 
-        isTablet && currentAnnouncementsHighlightIndex === 1 && !isChangingAnnouncements ? -80 :
-        isTablet && Number(currentAnnouncementsHighlightIndex) === 2 && !isChangingAnnouncements ? -160 : 0,
+      y:
+        isMobile &&
+        currentAnnouncementsHighlightIndex === 1 &&
+        !isChangingAnnouncements
+          ? -150
+          : isMobile &&
+            currentAnnouncementsHighlightIndex === 2 &&
+            !isChangingAnnouncements
+          ? -310
+          : isTablet &&
+            currentAnnouncementsHighlightIndex === 1 &&
+            !isChangingAnnouncements
+          ? -80
+          : isTablet &&
+            Number(currentAnnouncementsHighlightIndex) === 2 &&
+            !isChangingAnnouncements
+          ? -160
+          : 0,
       opacity: 1,
       transition: {
         type: "spring",
@@ -126,7 +137,6 @@ const HomeAnnouncementsCard = ({
         staggerChildren: 0.2,
       },
     },
-
   };
 
   const listVariant = {
@@ -138,17 +148,13 @@ const HomeAnnouncementsCard = ({
       y: 40,
       opacity: 0,
     },
-
   };
-
-
-
 
   const AnnouncementsHighlight = (children: React.ReactNode) => {
     return (
       <motion.div
         variants={{
-          ...announcementsHighlightVariant
+          ...announcementsHighlightVariant,
         }}
         animate={announcementsHighlightControls}
         initial="hidden"
@@ -166,26 +172,40 @@ const HomeAnnouncementsCard = ({
           <React.Fragment key={index}>
             <motion.div
               variants={{
-                ...listVariant, visible: {
+                ...listVariant,
+                visible: {
                   y: 0,
-                  opacity: currentAnnouncementsHighlightIndex === index || !isTablet ? 1 : 0.3,
+                  opacity:
+                    currentAnnouncementsHighlightIndex === index || !isTablet
+                      ? 1
+                      : 0.3,
                 },
               }}
               animate={{
                 color:
-                  currentAnnouncementsHighlightIndex === index && !isChangingAnnouncements
+                  currentAnnouncementsHighlightIndex === index &&
+                  !isChangingAnnouncements
                     ? "#111827"
                     : "#9ca3af",
                 scale:
-                  currentAnnouncementsHighlightIndex === index && !isChangingAnnouncements
+                  currentAnnouncementsHighlightIndex === index &&
+                  !isChangingAnnouncements
                     ? 1
                     : 0.9,
-                opacity: currentAnnouncementsHighlightIndex === index && isTablet && !isChangingAnnouncements ? 1 : 0.2,
+                opacity:
+                  currentAnnouncementsHighlightIndex === index &&
+                  isTablet &&
+                  !isChangingAnnouncements
+                    ? 1
+                    : 0.2,
               }}
               transition={defaultTransition}
               className={`flex flex-col items-start justify-between xl:w-2/3 relative min-h-[7.9rem] xl:min-h-[8rem]`}
             >
-              <span className="flex flex-col items-start gap-2  cursor-pointer " onClick={() => handleChangeHighlight(index)}>
+              <span
+                className="flex flex-col items-start gap-2  cursor-pointer "
+                onClick={() => handleChangeHighlight(index)}
+              >
                 <h2 className="font-[600]   xl:text-lg">
                   {currentAnnouncementsType}
                 </h2>
@@ -196,7 +216,9 @@ const HomeAnnouncementsCard = ({
               </span>
 
               <div className="flex justify-start items-center gap-2">
-                <h3 className="font-[500] text-[16px] cursor-pointer">Lihat Selengkapnya</h3>
+                <h3 className="font-[500] text-[16px] cursor-pointer">
+                  Lihat Selengkapnya
+                </h3>
                 <Image
                   src={"assets/icon/line-arrow-right.svg"}
                   alt="arrow-right"
@@ -238,14 +260,13 @@ const HomeAnnouncementsCard = ({
       </>
     );
 
-
   const announcementsImageHighlightVariant = {
     hidden: {
       x: 100,
       opacity: 0,
     },
     after: {
-      x: isTablet ? '' : 200,
+      x: isTablet ? "" : 200,
       scale: isTablet ? 0.9 : 1,
       opacity: 0,
     },
@@ -256,26 +277,21 @@ const HomeAnnouncementsCard = ({
     },
   };
 
-
   const AnnouncementImageHighlight = (children: React.ReactNode) => {
-    return (
-
-      currentAnnouncementsData ? (
-        <>
-
-          <motion.div
-            variants={announcementsImageHighlightVariant}
-            animate={announcementsHighlightControls}
-            initial="hidden"
-            transition={defaultTransition}
-            className=" w-full xl:w-3/4 relative rounded-[10px] overflow-hidden xl:overflow-visible  z-20 h-full "
-          >
-            {children}
-          </motion.div>
-
-
-        </>
-      ) : <>
+    return currentAnnouncementsData ? (
+      <>
+        <motion.div
+          variants={announcementsImageHighlightVariant}
+          animate={announcementsHighlightControls}
+          initial="hidden"
+          transition={defaultTransition}
+          className=" w-full xl:w-3/4 relative rounded-[10px] overflow-hidden xl:overflow-visible  z-20 h-full "
+        >
+          {children}
+        </motion.div>
+      </>
+    ) : (
+      <>
         <div className="relative w-full h-full xl:h-[27rem]  xl:w-3/5 xl:-left-10 object-cover z-1  md:mb-0  shadow-sm  animate-pulse">
           <div className="flex justify-center  rounded-xl items-center flex-col w-full h-full bg-gray-300">
             <svg
@@ -291,7 +307,7 @@ const HomeAnnouncementsCard = ({
         </div>
       </>
     );
-  }
+  };
   const AnnouncementImageList = () => {
     const cardTransitionSettings = {
       duration: 0.4,
@@ -315,9 +331,9 @@ const HomeAnnouncementsCard = ({
                 src={
                   currentAnnouncementsData
                     ? backendUrl +
-                    currentAnnouncementsData[
-                      currentAnnouncementsHighlightIndex
-                    ].thumbnail
+                      currentAnnouncementsData[
+                        currentAnnouncementsHighlightIndex
+                      ].thumbnail
                     : "/empty"
                 }
                 alt={`announcement-${currentAnnouncementsHighlightIndex}`}
@@ -333,8 +349,23 @@ const HomeAnnouncementsCard = ({
               <motion.div
                 initial="hidden"
                 animate={{
-                  x: currentAnnouncementsHighlightIndex === index ? 0 : isTablet ? index === 2 ? 0 : 840 : 660,
-                  zIndex: isTablet ? index === 0 ? 10 : index === 1 ? 8 : currentAnnouncementsHighlightIndex : index === 1 ? 10 : currentAnnouncementsHighlightIndex,
+                  x:
+                    currentAnnouncementsHighlightIndex === index
+                      ? 0
+                      : isTablet
+                      ? index === 2
+                        ? 0
+                        : 840
+                      : 660,
+                  zIndex: isTablet
+                    ? index === 0
+                      ? 10
+                      : index === 1
+                      ? 8
+                      : currentAnnouncementsHighlightIndex
+                    : index === 1
+                    ? 10
+                    : currentAnnouncementsHighlightIndex,
                 }}
                 transition={cardTransitionSettings}
                 className={` w-full h-full xl:max-h-[27rem] xl:top-4  xl:max-w-[40rem] absolute  `}
@@ -349,10 +380,7 @@ const HomeAnnouncementsCard = ({
               </motion.div>
             </React.Fragment>
           ))
-        )
-
-        }
-
+        )}
       </>
     );
   };

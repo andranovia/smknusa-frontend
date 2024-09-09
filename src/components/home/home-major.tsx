@@ -68,7 +68,7 @@ const HomeMajor = () => {
         }, 500);
       }
     },
-    [currentSlide, controls, animatedX]
+    [currentSlide, controls, animatedX, navHighlight]
   );
 
   return (

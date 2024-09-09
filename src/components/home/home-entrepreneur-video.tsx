@@ -1,19 +1,17 @@
 "use client";
 
-import { useMediaQuery } from "@uidotdev/usehooks";
 import React from "react";
 import YouTube, { YouTubeEvent } from "react-youtube";
 
 const HomeEntrepreneurVideo = () => {
-  const isMobile = useMediaQuery("only screen and (max-width : 1024px)");
-  const onPlayerReady = (event: YouTubeEvent<any>) => {
+  const onPlayerReady = (event: YouTubeEvent<unknown>) => {
     event.target.pauseVideo();
   };
 
   const opts = {
-      height: "100%",
-      width: "100%",
-      playerVars: {
+    height: "100%",
+    width: "100%",
+    playerVars: {
       autoplay: 0,
       rel: 0,
       modestbranding: 1,

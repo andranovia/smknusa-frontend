@@ -1,7 +1,6 @@
 import Image from "next/image";
-import React, { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { useActivePage } from "@/contexts/ActivePageContext";
+import React from "react";
+// import { AnimatePresence, motion } from "framer-motion";
 import { useActiveToast } from "@/contexts/ActiveToastContext";
 import NavigationDropdownIcon from "./navigation-dropdown-icon";
 
@@ -9,22 +8,21 @@ type NavigationLanguageProps = {
   show: boolean;
 };
 
-const languageDropdown = [
-  {
-    language: "indonesia",
-    imgSrc: "/assets/icon/indonesia.svg",
-  },
-];
+// const languageDropdown = [
+//   {
+//     language: "indonesia",
+//     imgSrc: "/assets/icon/indonesia.svg",
+//   },
+// ];
 
 const NavigationLanguage = ({ show }: NavigationLanguageProps) => {
-  const [languageToggle, setLanguageToggle] = useState(false);
-  const { activePage } = useActivePage();
+  // const [languageToggle, setLanguageToggle] = useState(false);
+  // const { activePage } = useActivePage();
   const { handleActiveUnavailableToast } = useActiveToast();
 
   return (
     <div
       className="hidden xl:flex  flex-col items-center cursor-pointer"
-      // onClick={() => setLanguageToggle(!languageToggle)}
       onClick={() => handleActiveUnavailableToast()}
     >
       <div className="flex justify-center items-center gap-1">
@@ -36,7 +34,7 @@ const NavigationLanguage = ({ show }: NavigationLanguageProps) => {
         />
         <NavigationDropdownIcon show={show} />
       </div>
-      <AnimatePresence>
+      {/* <AnimatePresence>
         {languageToggle && (
           <div className="absolute right-14 md:right-auto xl:right-4 2xl:right-auto">
             <motion.div
@@ -89,7 +87,7 @@ const NavigationLanguage = ({ show }: NavigationLanguageProps) => {
             </motion.div>
           </div>
         )}
-      </AnimatePresence>
+      </AnimatePresence> */}
     </div>
   );
 };
