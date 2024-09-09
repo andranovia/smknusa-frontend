@@ -1,6 +1,6 @@
-import { Heading, Paragraph } from '@/components/ui/typography'
 import Image from 'next/image'
 import Link from 'next/link'
+import { Heading, Paragraph } from '@/components/ui/typography'
 
 export default function NotFound() {
     return (

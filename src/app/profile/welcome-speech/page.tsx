@@ -1,7 +1,7 @@
 
 import React from "react";
-import ProfileLayout from "@/layouts/profile-layout";
 import Image from "next/image";
+import ProfileLayout from "@/layouts/profile-layout";
 import { Paragraph } from "@/components/ui/typography";
 
 const ProfileHistory = () => {

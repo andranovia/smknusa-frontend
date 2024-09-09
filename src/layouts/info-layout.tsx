@@ -1,8 +1,8 @@
 "use client";
 
-import { Heading } from "@/components/ui/typography";
 import { useMediaQuery } from "@uidotdev/usehooks";
 import React from "react";
+import { Heading } from "@/components/ui/typography";
 
 const InfoLayout = ({
   title,

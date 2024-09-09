@@ -1,8 +1,8 @@
 import React from "react";
+import { ClientOnly } from "@/utils/isClient";
 import HomeEntrepreneurSlider from "./home-entrepreneur-slider";
 
 import HomeEntrepreneurVideo from "./home-entrepreneur-video";
-import { ClientOnly } from "@/utils/isClient";
 import { Heading, Paragraph } from "../ui/typography";
 
 const HomeEntrepreneur = () => {

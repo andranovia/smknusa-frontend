@@ -2,8 +2,8 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import Pagination from "../ui/pagination";
 import { useArticles } from "@/services/api/useQueries/useArticles";
+import Pagination from "../ui/pagination";
 import InfoCardItem from "../ui/info-card-item";
 import InfoCardItemLoading from "../ui/info-card-item-loading";
 

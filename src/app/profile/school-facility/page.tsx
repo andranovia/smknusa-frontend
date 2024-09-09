@@ -1,10 +1,10 @@
 "use client";
 
+import React from "react";
 import FacilityCard from "@/components/profile/facility/facility-card";
 import FacilityFilter from "@/components/profile/facility/facility-filter";
 import InfoLayout from "@/layouts/info-layout";
 import { ClientOnly } from "@/utils/isClient";
-import React from "react";
 
 const ProfileSchoolFacility = () => {
   return (

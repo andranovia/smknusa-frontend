@@ -5,8 +5,9 @@ import { useMediaQuery } from "@uidotdev/usehooks";
 type PaginationTableProps = {
   totalPosts?: number;
   postsPerPage: number;
+  // eslint-disable-next-line no-unused-vars
   onPageChange?: (pageNumber: number) => void;
-}
+};
 
 const PaginationTable: React.FC<PaginationTableProps> = ({
   totalPosts,
@@ -24,11 +25,27 @@ const PaginationTable: React.FC<PaginationTableProps> = ({
     const pages = [];
 
     if (currentPage <= 4) {
-      pages.push(1, 2, 3, 4, 5, '...', totalPages);
+      pages.push(1, 2, 3, 4, 5, "...", totalPages);
     } else if (currentPage >= totalPages - 3) {
-      pages.push(1, '...', totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1, totalPages);
+      pages.push(
+        1,
+        "...",
+        totalPages - 4,
+        totalPages - 3,
+        totalPages - 2,
+        totalPages - 1,
+        totalPages
+      );
     } else {
-      pages.push(1, '...', currentPage - 1, currentPage, currentPage + 1, '...', totalPages);
+      pages.push(
+        1,
+        "...",
+        currentPage - 1,
+        currentPage,
+        currentPage + 1,
+        "...",
+        totalPages
+      );
     }
 
     return pages;
@@ -57,29 +74,37 @@ const PaginationTable: React.FC<PaginationTableProps> = ({
           width={15}
           height={15}
         />
-        <p className="text-sm font-semibold text-blue-base hidden xl:block">Previous</p>
+        <p className="text-sm font-semibold text-blue-base hidden xl:block">
+          Previous
+        </p>
       </button>
 
       <div className="flex justify-center gap-2 items-center">
-      {getDisplayedPages().slice(0, isMobile ? 5 : 7).map((page, index) => (
-          <button
-            key={index}
-            className={`px-3 py-1 rounded-md ${
-              currentPage === page ? "bg-gray-base" : "bg-white"
-            }`}
-            onClick={() => typeof page === 'number' && handleButtonClick(page)}
-            disabled={page === '...'}
-          >
-            {page}
-          </button>
-        ))}
+        {getDisplayedPages()
+          .slice(0, isMobile ? 5 : 7)
+          .map((page, index) => (
+            <button
+              key={index}
+              className={`px-3 py-1 rounded-md ${
+                currentPage === page ? "bg-gray-base" : "bg-white"
+              }`}
+              onClick={() =>
+                typeof page === "number" && handleButtonClick(page)
+              }
+              disabled={page === "..."}
+            >
+              {page}
+            </button>
+          ))}
       </div>
       <button
         onClick={() => handleButtonClick(currentPage + 1)}
         disabled={currentPage === totalPages}
         className="p-2 border-2 border-gray-200 rounded-lg flex justify-center gap-2 items-center"
       >
-        <p className="text-sm font-semibold text-blue-base hidden xl:block">Next</p>
+        <p className="text-sm font-semibold text-blue-base hidden xl:block">
+          Next
+        </p>
         <Image
           alt="arrow-right"
           src={"/assets/icon/arrow-line-right.svg"}

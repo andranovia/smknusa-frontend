@@ -2,7 +2,8 @@
 
 import React, { useState } from "react";
 import { useAnimation } from "framer-motion";
-import HomeAnnouncementsCard from "./home-announcements-card";
+import { useMediaQuery } from "@uidotdev/usehooks";
+import Link from "next/link";
 import {
   Announcement,
   useAnnouncements,
@@ -10,9 +11,8 @@ import {
 import { News, useNews } from "@/services/api/useQueries/useNews";
 import { Article, useArticles } from "@/services/api/useQueries/useArticles";
 import { useEvents } from "@/services/api/useQueries/useEvents";
+import HomeAnnouncementsCard from "./home-announcements-card";
 import { Heading, Paragraph } from "../ui/typography";
-import { useMediaQuery } from "@uidotdev/usehooks";
-import Link from "next/link";
 
 const announcementsLinkData = [
   {

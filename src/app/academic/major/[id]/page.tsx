@@ -1,9 +1,9 @@
+import Image from 'next/image';
+import React from 'react'
 import { Heading, Paragraph } from '@/components/ui/typography';
 import DetailLayout from '@/layouts/detail-layout'
 import { Majors } from '@/services/api/useQueries/useMajors';
 import { backendUrl } from '@/utils/backendUrl';
-import Image from 'next/image';
-import React from 'react'
 
 async function fetchMajors() {
     const response = await fetch(`${backendUrl}api/user/profile/majors`, { cache: 'no-store' });

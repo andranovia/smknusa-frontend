@@ -1,6 +1,6 @@
-import { Heading } from "@/components/ui/typography";
 import React from "react";
 import Iframe from "react-iframe";
+import { Heading } from "@/components/ui/typography";
 
 const ProfileSchoolCommitte = () => {
   return (

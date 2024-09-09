@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import {
 
-  getAnnouncements,
-  getAnnouncementCategories
+  getAnnouncementCategories,
+  getAnnouncements
 } from "../methods/fetch-announcements";
 
 export type Announcement = {

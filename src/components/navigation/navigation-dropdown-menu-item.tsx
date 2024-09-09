@@ -1,22 +1,19 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, Transition } from "framer-motion";
+
 import { defaultTransition } from "../animation/transition";
-import { useActivePage } from "@/contexts/ActivePageContext";
 
 export const NavigationDropdownMenuItem = ({
   active,
-  show,
   item,
   children,
 }: {
   active: string | null;
   item: string;
   children?: React.ReactNode;
-  transition: any;
+  transition: Transition;
   show: boolean;
 }) => {
-  const { activePage } = useActivePage()
-
   return (
     active !== null && (
       <>
@@ -27,7 +24,9 @@ export const NavigationDropdownMenuItem = ({
               initial={{ y: 80 }}
               transition={defaultTransition}
             >
-              <motion.div className={`p-4 z-20 flex flex-col  gap-4 items-start xl:justify-start justify-center`}>
+              <motion.div
+                className={`p-4 z-20 flex flex-col  gap-4 items-start xl:justify-start justify-center`}
+              >
                 {children}
               </motion.div>
             </motion.div>

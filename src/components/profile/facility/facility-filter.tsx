@@ -1,5 +1,5 @@
-import { Heading } from '@/components/ui/typography'
 import React from 'react'
+import { Heading } from '@/components/ui/typography'
 
 const FacilityFilter = () => {
   return (

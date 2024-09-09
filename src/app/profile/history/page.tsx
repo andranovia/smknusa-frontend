@@ -1,7 +1,7 @@
-import { Paragraph } from "@/components/ui/typography";
-import ProfileLayout from "@/layouts/profile-layout";
 import Image from "next/image";
 import React from "react";
+import { Paragraph } from "@/components/ui/typography";
+import ProfileLayout from "@/layouts/profile-layout";
 
 const ProfileHistory = () => {
   return (
@@ -9,8 +9,8 @@ const ProfileHistory = () => {
       title="Sejarah Berdirinya Sekolah"
       subtitle="Sedikit pengetahuan mengenai bagaimana sejarah berdirinya SMK Negeri
             1 Purwosari"
-            className="my-10"
-            classNameWrapper="pt-[76px]"
+      className="my-10"
+      classNameWrapper="pt-[76px]"
     >
       <Image
         src={"/assets/profile/history/profile-history.png"}
@@ -32,8 +32,8 @@ const ProfileHistory = () => {
           menarik perhatian masyarakat sejak awal berdirinya.
         </span>
         <span>
-          Dengan moto "Mandiri dan Prestasi", SMK Negeri 1 Purwosari telah
-          mengukuhkan dirinya sebagai pusat pendidikan yang berfokus pada
+          Dengan moto &quot;Mandiri dan Prestasi&quot;, SMK Negeri 1 Purwosari
+          telah mengukuhkan dirinya sebagai pusat pendidikan yang berfokus pada
           kemandirian dan prestasi anak didiknya. Awalnya, sekolah ini
           mengadopsi sistem IGI (Indonesia German Institute) yang berbasis IT,
           berkolaborasi dengan Jerman. Namun, seiring berjalannya waktu, sistem

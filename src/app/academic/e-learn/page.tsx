@@ -1,6 +1,6 @@
-import { Heading, Paragraph } from '@/components/ui/typography'
 import Image from 'next/image'
 import React from 'react'
+import { Heading, Paragraph } from '@/components/ui/typography'
 
 const page = () => {
     return (

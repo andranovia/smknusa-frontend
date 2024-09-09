@@ -1,8 +1,8 @@
+import React from "react";
 import ExtracurricularCard from "@/components/academic/extracurricular/extracurricular-card";
 import ExtracurricularHeader from "@/components/academic/extracurricular/extracurricular-header";
 import InfoLayout from "@/layouts/info-layout";
 import { ClientOnly } from "@/utils/isClient";
-import React from "react";
 
 const page = () => {
   return (

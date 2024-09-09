@@ -1,9 +1,9 @@
 
-import { News } from "@/services/api/useQueries/useNews";
-import { backendUrl } from "@/utils/backendUrl";
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
+import { backendUrl } from "@/utils/backendUrl";
+import { News } from "@/services/api/useQueries/useNews";
 import InfoCardItem from "@/components/ui/info-card-item";
 import NewsShare from "@/components/news/news-share";
 

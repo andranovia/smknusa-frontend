@@ -28,7 +28,7 @@ export const useFacilities = ( ) => {
     if (facilities == undefined) {
         console.log("get data returned undefined");
     } else {
-        console.log("get adata", facilities);
+ 
     }
 
     return { facilities, isFacilityLoading };

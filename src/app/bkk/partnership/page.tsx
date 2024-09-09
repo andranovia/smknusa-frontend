@@ -1,8 +1,8 @@
+import React from 'react'
 import PartnershipCard from '@/components/bkk/partnership/partnership-card'
 import PartnershipForm from '@/components/bkk/partnership/partnership-form'
 import InfoLayout from '@/layouts/info-layout'
 import { ClientOnly } from '@/utils/isClient'
-import React from 'react'
 
 const Partnership = () => {
     return (

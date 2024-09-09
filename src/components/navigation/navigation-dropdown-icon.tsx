@@ -1,15 +1,15 @@
-import { useActivePage } from "@/contexts/ActivePageContext";
 import { useMediaQuery } from "@uidotdev/usehooks";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+
 import React from "react";
+import { useActivePage } from "@/contexts/ActivePageContext";
 
 type NavigationDropdownProps = {
   show: boolean;
-}
+};
 
 const NavigationDropdownIcon = ({ show }: NavigationDropdownProps) => {
-  const {activePage} = useActivePage()
+  const { activePage } = useActivePage();
   const isMobile = useMediaQuery("only screen and (max-width: 1023.98px)");
   return (
     <Image

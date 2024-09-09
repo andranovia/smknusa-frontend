@@ -1,9 +1,9 @@
 'use client'
 
-import { useActiveToast } from '@/contexts/ActiveToastContext';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import React from 'react'
+import { useActiveToast } from '@/contexts/ActiveToastContext';
 
 const UnavailableToast = () => {
 

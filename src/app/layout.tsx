@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "@/components/navigation";
 import { Montserrat } from "next/font/google";
+import Navbar from "@/components/navigation";
 import Footer from "@/components/footer/footer";
 import { ReactQueryProvider } from "@/utils/ReactQueryProvider";
 import { ClientOnly } from "@/utils/isClient";

@@ -1,12 +1,12 @@
 "use client";
 
 
+import React, { useState } from "react";
 import TeachersForm from "@/components/academic/teachers/teachers-form";
 import TeachersTable from "@/components/academic/teachers/teachers-table";
 import StudentsForm from "@/components/academic/students/students-form";
 import StudentsTable from "@/components/academic/students/students-table";
 import { useResidents } from "@/services/api/useQueries/useResidents";
-import React, { useState } from "react";
 import { ClientOnly } from "@/utils/isClient";
 import InfoLayout from "@/layouts/info-layout";
 

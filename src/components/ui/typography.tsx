@@ -16,7 +16,9 @@ export function Heading({ children, type, className }: HeadingProps) {
     case "h1":
       return (
         <h1
-          className={cn(`font-[700] xl:text-[46px] text-[17px] sm:text-[24px] xl:leading-[4.5rem] ${className} `)}
+          className={cn(
+            `font-[700] xl:text-[46px] text-[17px] sm:text-[24px] xl:leading-[4.5rem] ${className} `
+          )}
         >
           {children}
         </h1>
@@ -46,7 +48,6 @@ export function Heading({ children, type, className }: HeadingProps) {
         </h4>
       );
     case "h5":
-      className;
       return (
         <h5 className={cn(`font-[500] text-sm xl:text-[18px] `, className)}>
           {children}
@@ -62,5 +63,13 @@ export function Paragraph({ children, className }: ParagraphProps) {
 }
 
 export function List({ children, className }: ParagraphProps) {
-  return <ul className={cn(`list-disc list-inside font-[500] xl:text-lg, ${className}`)}>{children}</ul>;
+  return (
+    <ul
+      className={cn(
+        `list-disc list-inside font-[500] xl:text-lg, ${className}`
+      )}
+    >
+      {children}
+    </ul>
+  );
 }

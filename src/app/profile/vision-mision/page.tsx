@@ -1,6 +1,6 @@
+import React from "react";
 import { Heading, List, Paragraph } from "@/components/ui/typography";
 import ProfileLayout from "@/layouts/profile-layout";
-import React from "react";
 
 const ProfileVisionMision = () => {
   return (

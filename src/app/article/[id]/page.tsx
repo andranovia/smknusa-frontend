@@ -1,33 +1,37 @@
-import { Article } from "@/services/api/useQueries/useArticles";
-import { backendUrl } from "@/utils/backendUrl";
 import Image from "next/image";
 import React from "react";
 import { redirect } from "next/navigation";
 import Link from "next/link";
+import { backendUrl } from "@/utils/backendUrl";
+import { Article } from "@/services/api/useQueries/useArticles";
 import InfoCardItem from "@/components/ui/info-card-item";
 import ArticleShare from "@/components/article/article-share";
 
-
-export const dynamic = 'force-static'
+export const dynamic = "force-static";
 export const dynamicParams = false;
 
 async function fetchArticles() {
-  const response = await fetch(`${backendUrl}api/user/articles`, { cache: 'no-store' });
+  const response = await fetch(`${backendUrl}api/user/articles`, {
+    cache: "no-store",
+  });
   const data: { data: Article[] } = await response.json();
   return data?.data;
 }
 
-
 export async function generateStaticParams() {
   const articlesData = await fetchArticles();
-  const ids = articlesData?.map((articles: Article) => articles.id_pemberitahuan);
+  const ids = articlesData?.map(
+    (articles: Article) => articles.id_pemberitahuan
+  );
 
   return ids?.map((id: string) => ({ id: id.toString() }));
 }
 
 async function getArticleById(id: string) {
   if (!id) throw new Error("ID is required to fetch article");
-  const response = await fetch(`${backendUrl}api/user/articles/${id}`, { cache: 'no-store' });
+  const response = await fetch(`${backendUrl}api/user/articles/${id}`, {
+    cache: "no-store",
+  });
 
   const data = await response.json();
   return data?.data || null;
@@ -36,11 +40,10 @@ async function getArticleById(id: string) {
 export default async function Page({ params }: { params: { id: string } }) {
   const { id } = params;
   const articlesData = await fetchArticles();
-  let articleById;
-  articleById = await getArticleById(id);
+  const articleById = await getArticleById(id);
 
-  if (articleById === 'Data tidak ditemukan' || !articleById) {
-    redirect('/404');
+  if (articleById === "Data tidak ditemukan" || !articleById) {
+    redirect("/404");
   }
 
   // const parsedHtml = parse(articleById?.text);
@@ -60,8 +63,6 @@ export default async function Page({ params }: { params: { id: string } }) {
 
   const date = new Date(articleById?.created_at || Date.now());
   const normalDate = date.toLocaleDateString();
-
-
 
   return (
     <div className="pt-[4.5rem] xl:pt-24 px-2 xl:px-3 flex justify-center items-center w-full">
@@ -90,8 +91,8 @@ export default async function Page({ params }: { params: { id: string } }) {
                 </div>
               </div>
               <div className="flex flex-col w-full xl:w-4/5 gap-8 !font-[500] !text-[18px]  ">
-                <p  className="relative !text-gray line-clamp-3 ">
-                {(articleById?.text)}
+                <p className="relative !text-gray line-clamp-3 ">
+                  {articleById?.text}
                 </p>
                 <hr className="w-full border " />
                 <div className="w-full justify-between flex lg:flex-row flex-col lg:items-center gap-4">
@@ -115,7 +116,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                       />
                       <h4>{articleById?.viewer}</h4>
                     </div>
-                    <ArticleShare/>
+                    <ArticleShare />
                   </div>
                 </div>
               </div>
@@ -133,7 +134,7 @@ export default async function Page({ params }: { params: { id: string } }) {
               <div className="w-full flex flex-col items-start gap-10 ">
                 <div className="flex flex-col items-start gap-10 font-[500] text-[18px] text-blue-base w-full">
                   <span className="flex flex-col items-start gap-4">
-                  {(articleById?.text)}
+                    {articleById?.text}
                   </span>
 
                   <span>Jurnalis: -</span>
@@ -242,23 +243,24 @@ export default async function Page({ params }: { params: { id: string } }) {
               Artikel Lain yang tak kalah menarik
             </h2>
             <div className="grid grid-cols-1 bg-[#F1F5F9] lg:grid-cols-2 1xl:grid-cols-3 gap-4 xl:gap-8 px-2 py-2 md:py-6 md:px-6  2xl:px-12 2xl:py-9  rounded-[10px] w-full">
-              {articlesData
-                ?.slice(0, 3)
-                .map((article, index) => {
-                  const date = new Date(article.created_at);
-                  const normalDate = date.toLocaleDateString();
+              {articlesData?.slice(0, 3).map((article, index) => {
+                const date = new Date(article.created_at);
+                const normalDate = date.toLocaleDateString();
 
-                  return (
-                    <React.Fragment key={index}>
-                      <Link
-                        href={`/article/${article.id_pemberitahuan}`}
-                        className="flex justify-center"
-                      >
-                        <InfoCardItem infoCardData={article} normalDate={normalDate} />
-                      </Link>
-                    </React.Fragment>
-                  );
-                })}
+                return (
+                  <React.Fragment key={index}>
+                    <Link
+                      href={`/article/${article.id_pemberitahuan}`}
+                      className="flex justify-center"
+                    >
+                      <InfoCardItem
+                        infoCardData={article}
+                        normalDate={normalDate}
+                      />
+                    </Link>
+                  </React.Fragment>
+                );
+              })}
             </div>
           </div>
         </div>
