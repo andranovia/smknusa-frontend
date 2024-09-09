@@ -1,8 +1,8 @@
 import Image from "next/image";
 import React, { useState } from "react";
-import PaginationTable from "../../ui/pagination-table";
 import { Student } from "@/services/api/useQueries/useResidents";
 import { Heading } from "@/components/ui/typography";
+import PaginationTable from "../../ui/pagination-table";
 
 type StudentsTableProps = {
   studentsData?: Student[] | null;

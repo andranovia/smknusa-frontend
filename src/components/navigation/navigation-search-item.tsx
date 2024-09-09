@@ -1,6 +1,6 @@
 import React from 'react'
-import { Paragraph } from '../ui/typography'
 import Image from 'next/image'
+import { Paragraph } from '../ui/typography'
 
 const NavigationSearchItem = ({imgSrc, title}: {imgSrc: string, title: string}) => {
   return (

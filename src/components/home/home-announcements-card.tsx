@@ -3,19 +3,19 @@
 import Image from "next/image";
 import React, { Dispatch, SetStateAction, useEffect, useRef } from "react";
 import {
+  AnimatePresence,
   AnimationControls,
   motion,
-  useAnimation,
   motionValue,
-  AnimatePresence,
+  useAnimation,
 } from "framer-motion";
-import { defaultTransition } from "../animation/transition";
 import { useMediaQuery } from "@uidotdev/usehooks";
 import { Announcement } from "@/services/api/useQueries/useAnnouncements";
 import { Article } from "@/services/api/useQueries/useArticles";
 import { News } from "@/services/api/useQueries/useNews";
 import { Event } from "@/services/api/useQueries/useEvents";
 import { backendUrl } from "@/utils/backendUrl";
+import { defaultTransition } from "../animation/transition";
 
 type HomeAnnouncementsCardProps = {
   currentAnnouncementsData?: Announcement[] | Article[] | News[] | Event[];

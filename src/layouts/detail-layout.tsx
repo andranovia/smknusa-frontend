@@ -1,11 +1,11 @@
 
+import React from 'react'
 import { Extra } from '@/services/api/useQueries/useExtracurriculars'
 import { Facility } from '@/services/api/useQueries/useFacilities'
 import { Majors } from '@/services/api/useQueries/useMajors'
 import { Partnership } from '@/services/api/useQueries/usePartnerships'
 import { backendUrl } from '@/utils/backendUrl'
 import { cn } from '@/utils/cn'
-import React from 'react'
 
 const DetailLayout = ({ children, detailData, className }: { children: React.ReactNode, detailData: Majors | Facility | Extra | Partnership, className?: string }) => {
     return (

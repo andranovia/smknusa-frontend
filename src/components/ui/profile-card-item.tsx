@@ -1,10 +1,10 @@
 
 import Image from "next/image";
 import React from "react";
-import { Heading } from "./typography";
 import { Extra } from "@/services/api/useQueries/useExtracurriculars";
 import { backendUrl } from "@/utils/backendUrl";
 import { Partnership } from "@/services/api/useQueries/usePartnerships";
+import { Heading } from "./typography";
 
 type ProfileCardItemProps = {
   profileCardData: Extra | Partnership;

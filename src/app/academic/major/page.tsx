@@ -1,8 +1,8 @@
+import React from "react";
 import MajorCard from "@/components/academic/major/major-card";
 import MajorHeader from "@/components/academic/major/major-header";
 import InfoLayout from "@/layouts/info-layout";
 import { ClientOnly } from "@/utils/isClient";
-import React from "react";
 
 const page = () => {
   return (

@@ -2,10 +2,10 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import MajorShowMore from "./major-showmore";
 import FeatureCardItem from "@/components/ui/feature-card-item";
 import { useMajors } from "@/services/api/useQueries/useMajors";
 import FeatureCardItemLoading from "@/components/ui/feature-card-item-loading";
+import MajorShowMore from "./major-showmore";
 
 const MajorCard = () => {
     const [showAllMajor, setShowAllMajor] = useState(false);

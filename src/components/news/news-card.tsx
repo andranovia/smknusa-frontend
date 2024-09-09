@@ -2,10 +2,10 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import Pagination from "../ui/pagination";
 import { useNews } from "@/services/api/useQueries/useNews";
-import InfoCardItem from "../ui/info-card-item";
 import InfoCardItemLoading from "@/components/ui/info-card-item-loading";
+import Pagination from "../ui/pagination";
+import InfoCardItem from "../ui/info-card-item";
 
 const NewsCard = () => {
   const { news, isNewsLoading } = useNews();

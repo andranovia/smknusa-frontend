@@ -1,7 +1,7 @@
-import { Paragraph } from "@/components/ui/typography";
-import ProfileLayout from "@/layouts/profile-layout";
 import Image from "next/image";
 import React from "react";
+import { Paragraph } from "@/components/ui/typography";
+import ProfileLayout from "@/layouts/profile-layout";
 
 const ProfileHistory = () => {
   return (

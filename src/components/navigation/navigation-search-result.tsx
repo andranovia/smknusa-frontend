@@ -1,9 +1,9 @@
 import React, { Dispatch, SetStateAction, useState } from 'react'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import { defaultTransition } from '../animation/transition'
 import { Heading, Paragraph } from '../ui/typography'
 import NavigationSearchItem from './navigation-search-item'
-import Image from 'next/image'
 
 const NavigationSearchResult = ({ searchToggle, setSearchToggle }: { searchToggle: boolean, setSearchToggle: Dispatch<SetStateAction<boolean>> }) => {
 

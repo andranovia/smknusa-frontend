@@ -1,10 +1,10 @@
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import React, { useState } from 'react'
-import { Heading, Paragraph } from '../ui/typography'
 import Link from 'next/link';
-import { defaultTransition } from '../animation/transition';
 import { useMediaQuery } from '@uidotdev/usehooks';
+import { Heading, Paragraph } from '../ui/typography'
+import { defaultTransition } from '../animation/transition';
 
 
 type NavigationLinkData = {

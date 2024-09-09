@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import FacilityShowMore from "./facility-showmore";
 import FeatureCardItem from "@/components/ui/feature-card-item";
 
 import FeatureCardItemLoading from "@/components/ui/feature-card-item-loading";
 import { useFacilities } from "@/services/api/useQueries/useFacilities";
+import FacilityShowMore from "./facility-showmore";
 
 
 const FacilityCard = () => {

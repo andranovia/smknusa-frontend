@@ -1,8 +1,8 @@
 import Image from "next/image";
 import React, { Dispatch, SetStateAction, useState } from "react";
 import { motion } from "framer-motion";
-import { defaultTransition } from "../animation/transition";
 import { useActivePage } from "@/contexts/ActivePageContext";
+import { defaultTransition } from "../animation/transition";
 
 interface NavigationSearchProps {
   show: boolean;

@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import DeviceShowMore from "./device-showmore";
 import DeviceFormCardItem from "@/components/ui/device-form-card-item";
+import DeviceShowMore from "./device-showmore";
 
 const dataMaterials = [
     {

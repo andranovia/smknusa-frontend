@@ -1,9 +1,9 @@
-import { Article } from "@/services/api/useQueries/useArticles";
-import { backendUrl } from "@/utils/backendUrl";
 import Image from "next/image";
 import React from "react";
 import { redirect } from "next/navigation";
 import Link from "next/link";
+import { backendUrl } from "@/utils/backendUrl";
+import { Article } from "@/services/api/useQueries/useArticles";
 import InfoCardItem from "@/components/ui/info-card-item";
 import ArticleShare from "@/components/article/article-share";
 

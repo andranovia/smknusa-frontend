@@ -1,8 +1,8 @@
+import React from 'react'
 import JobVacanciesCard from '@/components/bkk/job/job-card'
 import JobVacanciesForm from '@/components/bkk/job/job-form'
 import InfoLayout from '@/layouts/info-layout'
 import { ClientOnly } from '@/utils/isClient'
-import React from 'react'
 
 const JobVacancies = () => {
     return (

@@ -1,9 +1,9 @@
 import Image from "next/image";
 import React, { useState } from "react";
-import NavigationDropdownIcon from "./navigation-dropdown-icon";
 import { AnimatePresence, motion } from "framer-motion";
 import { useActivePage } from "@/contexts/ActivePageContext";
 import { useActiveToast } from "@/contexts/ActiveToastContext";
+import NavigationDropdownIcon from "./navigation-dropdown-icon";
 
 type NavigationLanguageProps = {
   show: boolean;

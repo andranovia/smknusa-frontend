@@ -1,6 +1,6 @@
 import React from 'react'
-import { Heading, Paragraph } from './typography'
 import Image from 'next/image'
+import { Heading, Paragraph } from './typography'
 
 const JobCardItem = () => {
     return (

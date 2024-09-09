@@ -1,100 +1,41 @@
 "use client";
 
-import Image from "next/image";
-import React, { useCallback, useMemo, useState } from "react";
-import HomeMajorSlider from "./home-major-slider";
+import React, { useCallback, useState } from "react";
 import { motion, useAnimation, useMotionValue, useSpring } from "framer-motion";
+import { Majors, useMajors } from "@/services/api/useQueries/useMajors";
+import HomeMajorSlider from "./home-major-slider";
 import { Heading, Paragraph } from "../ui/typography";
 import { defaultTransition } from "../animation/transition";
-
-const Informatika = Symbol("Informatika");
-const Agribisnis = Symbol("Agribisnis");
-const Pemesinan = Symbol("Pemesinan");
-const Elektronika = Symbol("Elektronika");
-
-const majorData = {
-  [Informatika]: [
-    {
-      major: "RPL",
-      majorDesc: "Rekayasa Perangkat Lunak",
-      majorImg: "/assets/home/major/rpl-major.png",
-    },
-    {
-      major: "DKV",
-      majorDesc: "Design Komunikasi Visual",
-      majorImg: "/assets/home/major/dkv-major.png",
-    },
-    {
-      major: "TKJ",
-      majorDesc: "Teknik Komputer Dan Jaringan",
-      majorImg: "/assets/home/major/tkj-major.png",
-    },
-  ],
-  [Agribisnis]: [
-    {
-      major: "RPL",
-      majorDesc: "Rekayasa Perangkat Lunak",
-      majorImg: "/assets/home/major/rpl-major.png",
-    },
-  ],
-  [Pemesinan]: [
-    {
-      major: "RPL",
-      majorDesc: "Rekayasa Perangkat Lunak",
-      majorImg: "/assets/home/major/rpl-major.png",
-    },
-    {
-      major: "DKV",
-      majorDesc: "Design Komunikasi Visual",
-      majorImg: "/assets/home/major/dkv-major.png",
-    },
-  ],
-  [Elektronika]: [
-    {
-      major: "RPL",
-      majorDesc: "Rekayasa Perangkat Lunak",
-      majorImg: "/assets/home/major/rpl-major.png",
-    },
-    {
-      major: "DKV",
-      majorDesc: "Design Komunikasi Visual",
-      majorImg: "/assets/home/major/dkv-major.png",
-    },
-    {
-      major: "DKV",
-      majorDesc: "Design Komunikasi Visual",
-      majorImg: "/assets/home/major/dkv-major.png",
-    },
-  ],
-};
 
 const majorLinkData = [
   {
     text: "Informatika",
-    slide: Informatika,
+    slide: "TI",
   },
   {
     text: "Agribisnis",
-    slide: Agribisnis,
+    slide: "Pertanian",
   },
   {
     text: "Pemesinan",
-    slide: Pemesinan,
+    slide: "Pemesinan",
   },
   {
     text: "Elektronika",
-    slide: Elektronika,
+    slide: "Elektro",
   },
 ];
 
 const HomeMajor = () => {
-  const [currentSlide, setCurrentSlide] = useState<symbol>(Informatika);
+  const [currentSlide, setCurrentSlide] = useState("TI");
   const xValue = 0;
   const offsetX = useMotionValue(xValue);
-  const navHighlight = useAnimation()
-  const majors = useMemo(() => {
-    return majorData[currentSlide as keyof typeof majorData];
-  }, [currentSlide]);
+  const navHighlight = useAnimation();
+  const { majors } = useMajors();
+  const majorData = majors?.filter(
+    (major: Majors) => major.prodi.prodi_short === currentSlide
+  );
+
   const controls = useAnimation();
   const animatedX = useSpring(offsetX, {
     damping: 20,
@@ -102,30 +43,29 @@ const HomeMajor = () => {
   });
 
   const handleSlideChange = useCallback(
-    (newSlide: symbol) => {
+    (newSlide: string) => {
       if (currentSlide !== newSlide) {
         controls.start("animate");
         animatedX.set(0);
         setTimeout(() => {
           setCurrentSlide(newSlide);
           switch (newSlide) {
-            case Informatika:
-              navHighlight.start({ x: 0, width: '144px' })
+            case "TI":
+              navHighlight.start({ x: 0, width: "144px" });
               break;
-            case Agribisnis:
-              navHighlight.start({ x: 144, width: '116px' })
+            case "Pertanian":
+              navHighlight.start({ x: 144, width: "116px" });
               break;
-            case Pemesinan:
-              navHighlight.start({ x: 272, width: '116px' })
+            case "Pemesinan":
+              navHighlight.start({ x: 272, width: "116px" });
               break;
-            case Elektronika:
-              navHighlight.start({ x: 396, width: '140px' })
+            case "Elektro":
+              navHighlight.start({ x: 396, width: "140px" });
               break;
             default:
-              navHighlight.start({ x: 0, width: '144px' })
+              navHighlight.start({ x: 0, width: "144px" });
           }
         }, 500);
-
       }
     },
     [currentSlide, controls, animatedX]
@@ -134,7 +74,10 @@ const HomeMajor = () => {
   return (
     <section className="w-full h-full bg-white rounded-[10px]">
       <div className="flex flex-col lg:text-center w-full items-center justify-center bg-primary  rounded-md text-white pt-6 sm:pt-10 pb-16 xl:pb-48">
-        <Heading type="h1" className="xl:text-[36px]  text-[22px] lg:text-[30px] sm:text-[24px] w-full max-w-[274px] xs:max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container xl:w-fit ">
+        <Heading
+          type="h1"
+          className="xl:text-[36px]  text-[22px] lg:text-[30px] sm:text-[24px] w-full max-w-[274px] xs:max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container xl:w-fit "
+        >
           Menuju SMK Bisa,
           <br className="block sm:hidden" /> SMK Hebat
         </Heading>
@@ -153,7 +96,12 @@ const HomeMajor = () => {
           <div className="absolute block xl:hidden left-0 h-full bg-gradient-to-r from-white to-transparent z-20 p-10 md:p-16 opacity-80"></div>
           <div className="relative w-full  flex flex-col xl:flex-row   justify-center gap-14  h-full  mt-8 mb-10 xl:mb-0 max-w-max-container">
             <div className=" w-full flex top-0 -mt-28 xl:mt-0 absolute justify-center py-3 xl:rounded-[10px] items-center xl:px-0 px-6 gap-8 xl:bg-[#e5e7eb] lg:min-w-lg max-w-[34rem]">
-              <motion.div initial={false} animate={navHighlight} transition={defaultTransition} className="left-1 w-[9rem] h-[2.475rem] bg-white absolute rounded-md" />
+              <motion.div
+                initial={false}
+                animate={navHighlight}
+                transition={defaultTransition}
+                className="left-1 w-[9rem] h-[2.475rem] bg-white absolute rounded-md"
+              />
               {majorLinkData?.map((data, index) => {
                 return (
                   <React.Fragment key={index}>
@@ -163,9 +111,10 @@ const HomeMajor = () => {
                       onClick={() => handleSlideChange(data.slide)}
                       className={`font-[600] relative text-center z-30 p-1 before:transition-colors before:duration-500 rounded-md before:bottom-0 before:right-0 before:absolute w-min-content text-xs cursor-pointer  xl:text-[16px]
                         before:h-0   before:bg-white before:opacity-0 
-                        ${currentSlide === data.slide
-                          ? " text-blue-base  "
-                          : " text-gray-light hover:before:border-[1px]  hover:before:border-yellow hover:before:w-full hover:before:opacity-100"
+                        ${
+                          currentSlide === data.slide
+                            ? " text-blue-base  "
+                            : " text-gray-light hover:before:border-[1px]  hover:before:border-yellow hover:before:w-full hover:before:opacity-100"
                         }`}
                     >
                       {data.text}
@@ -174,21 +123,13 @@ const HomeMajor = () => {
                 );
               })}
             </div>
-            <div className="relative flex justify-center items-center w-full   xl:left-20">
-              <Image
-                src={"/assets/home/major/principal.png"}
-                alt=""
-                width={550}
-                height={550}
-                draggable={false}
-                className="w-[40rem] hidden xl:block h-full z-20 relative lg:left-0 xl:-left-[34%]"
-              />
+            <div className="relative flex justify-center items-center w-full   xl:py-16">
               <motion.div
                 animate={controls}
-                className="xl:absolute left-[34%] xl:mt-10"
+                className="xl:mt-10"
                 variants={{
                   animate: {
-                    x: [0, 1000, 0],
+                    x: [0, 1400, 0],
                     opacity: [1, 0, 1],
                     transition: {
                       duration: 1.2,
@@ -200,7 +141,7 @@ const HomeMajor = () => {
                   },
                 }}
               >
-                <HomeMajorSlider majorData={majors} animatedX={animatedX} />
+                <HomeMajorSlider majorData={majorData} animatedX={animatedX} />
               </motion.div>
             </div>
           </div>

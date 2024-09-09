@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import Image from "next/image";
-import { NavigationLinkData } from "./navigation-item";
 import { useMediaQuery } from "@uidotdev/usehooks";
 import { useActivePage } from "@/contexts/ActivePageContext";
 import { cn } from "@/utils/cn";
+import { NavigationLinkData } from "./navigation-item";
 
 type NavigationItemAnimateProps = {
   itemData: NavigationLinkData;

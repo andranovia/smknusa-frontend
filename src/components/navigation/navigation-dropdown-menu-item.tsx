@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { defaultTransition } from "../animation/transition";
 import { useActivePage } from "@/contexts/ActivePageContext";
+import { defaultTransition } from "../animation/transition";
 
 export const NavigationDropdownMenuItem = ({
   active,

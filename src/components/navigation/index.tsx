@@ -1,16 +1,16 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import Link from "next/link";
+import { useMediaQuery } from "@uidotdev/usehooks";
+import { usePathname } from "next/navigation";
+import { useActivePage } from "@/contexts/ActivePageContext";
+import { useActiveToast } from "@/contexts/ActiveToastContext";
 import NavigationItem from "./navigation-item";
 import NavigationLanguage from "./navigation-language";
 import NavigationSearch from "./navigation-search";
-import Link from "next/link";
-import { useMediaQuery } from "@uidotdev/usehooks";
-import { useActivePage } from "@/contexts/ActivePageContext";
-import { usePathname } from "next/navigation";
 import NavigationSearchResult from "./navigation-search-result";
-import { useActiveToast } from "@/contexts/ActiveToastContext";
 import NavigationHamburger from "./navigation-hamburger";
 
 const Navbar = () => {

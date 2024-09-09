@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import NavigationDropdown from "./navigation-dropdown-icon";
-import { NavigationDropdownMenuItem } from "./navigation-dropdown-menu-item";
 import { AnimatePresence, motion, useAnimation } from "framer-motion";
 
 import Link from "next/link";
-import { defaultTransition } from "../animation/transition";
-import NavigationItemAnimate from "./navigation-item-animate";
 import { useMediaQuery } from "@uidotdev/usehooks";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useActivePage } from "@/contexts/ActivePageContext";
 import { cn } from "@/utils/cn";
+import NavigationItemAnimate from "./navigation-item-animate";
+import { defaultTransition } from "../animation/transition";
+import { NavigationDropdownMenuItem } from "./navigation-dropdown-menu-item";
+import NavigationDropdown from "./navigation-dropdown-icon";
 
 export type NavigationLinkData = {
   linkDropdownData: {
