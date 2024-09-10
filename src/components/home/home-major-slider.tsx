@@ -1,11 +1,11 @@
 import React, { useRef } from "react";
 import { motion, MotionValue, PanInfo, useAnimation } from "framer-motion";
 import Image from "next/image";
-import { Majors } from "@/services/api/useQueries/useMajors";
+import { Major } from "@/services/api/useQueries/useMajors";
 import { backendUrl } from "@/utils/backendUrl";
 
 interface HomeMajorSliderProps {
-  majorData: Majors[] | undefined;
+  majorData: Major[] | undefined;
   animatedX: MotionValue<number>;
 }
 

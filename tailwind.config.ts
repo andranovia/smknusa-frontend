@@ -16,7 +16,6 @@ const config: Config = {
         'xl': '1024px',
         '1xl': '1279.98px',
         '2xl': '1440px',
-       
       },
       backgroundColor: {
         'gray-base': '#F2F2F2',
@@ -28,7 +27,9 @@ const config: Config = {
       textColor: {
         'blue-base' : '#081B34',
         'gray': '#696969',
-        'gray-light': '#9DA5B1'
+        'gray-light': '#9DA5B1',
+        'yellow' : '#F5C451',
+        'yellow-light': '#FFD980',
       },
       borderColor: {
         'blue-base' : '#081B34',
@@ -54,6 +55,7 @@ const config: Config = {
     },
   },
   plugins: [
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
     require('tailwind-scrollbar')({ preferredStrategy: 'pseudoelements' }),
 ],
 };

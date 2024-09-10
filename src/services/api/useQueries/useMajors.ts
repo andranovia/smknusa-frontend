@@ -1,4 +1,4 @@
-export interface Majors {
+export interface Major {
     id_jurusan: number
     jurusan_nama: string
     jurusan_short: string

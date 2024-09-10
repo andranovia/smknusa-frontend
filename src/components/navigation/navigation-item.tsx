@@ -134,7 +134,7 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
         text: "Form Perangkat Ajar",
         description: "Berisi sambutan resmi dari kepala sekolah",
         icon: "/assets/nav-dropdown-icon/akademik/form-pa.svg",
-        linkRef: "/profile/welcome-speech",
+        linkRef: "/academic/device-form",
       },
     },
   ],
@@ -169,9 +169,9 @@ const NavigationItem = ({
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownControls = useAnimation();
   const basePathname = usePathname();
-  const pathname = '/' + basePathname.split('/')[1];
+  const pathname = "/" + basePathname.split("/")[1];
   const isMobile = useMediaQuery("only screen and (max-width: 1023.98px)");
-  const { activePage } = useActivePage()
+  const { activePage } = useActivePage();
   const dropdownData = currentDropdown
     ? navbarDropdownData[currentDropdown]
     : null;
@@ -197,10 +197,24 @@ const NavigationItem = ({
           onMouseEnter={() => handleOpenDropdown()}
           className={`font-semibold  relative flex justify-center items-center  gap-1   rounded-md  w-min-content
           before:border-0 before:absolute before:bottom-0 before:right-0 before:border-transparent before:transition-colors before:duration-500
-          before:w-full hover:before:border-[1px] hover:before:left-0 hover:before:border-[#F5C451] cursor-pointer z-20 ${route === pathname ? 'opacity-100 before:border-[1px] ' : pathname === '/' ? 'opacity-100' : 'opacity-60'} `}
+          before:w-full hover:before:border-[1px] hover:before:left-0 hover:before:border-[#F5C451] cursor-pointer z-20 ${
+            route === pathname
+              ? "opacity-100 before:border-[1px] "
+              : pathname === "/"
+              ? "opacity-100"
+              : "opacity-60"
+          } `}
         >
-           <span className={`hidden xl:block ${show || !activePage ? "text-blue-base" : 'text-white'}`}>
-            {route === '/news' || route === '/article' ? <Link href={route}>{name}</Link> : name}
+          <span
+            className={`hidden xl:block ${
+              show || !activePage ? "text-blue-base" : "text-white"
+            }`}
+          >
+            {route === "/news" || route === "/article" ? (
+              <Link href={route}>{name}</Link>
+            ) : (
+              name
+            )}
           </span>
           {icon ? (
             <div className="block xl:hidden">
@@ -215,14 +229,10 @@ const NavigationItem = ({
           )}
         </span>
 
-
-        {route === '/news' || route === '/article' ? null : (
+        {route === "/news" || route === "/article" ? null : (
           <AnimatePresence>
             {showDropdown && (
-              <div
-                className="absolute left-0 xs:left-4 md:left-14  xl:left-auto xl:ml-6  xl:top-auto h-[25rem] xl:h-auto xl:justify-start xl:items-start flex flex-col items-end justify-end"
-              >
-
+              <div className="absolute left-0 xs:left-4 md:left-14  xl:left-auto xl:ml-6  xl:top-auto h-[25rem] xl:h-auto xl:justify-start xl:items-start flex flex-col items-end justify-end">
                 <motion.div
                   initial="initial"
                   animate="animate"
@@ -235,7 +245,8 @@ const NavigationItem = ({
                   transition={defaultTransition}
                   className={cn(`min-w-[17rem] xs:min-w-[19rem] border-none sm:min-w-[20rem] relative w-[90%] xl:w-[26rem] items-center justify-center grid grid-cols-2 xl:gap-0 h-fit xl:h-full xl:grid-cols-1 xl:mt-14 z-20 rounded-tl-[10px] xl:rounded-b-[10px] rounded-r-[10px] bg-white bg-opacity-100 shadow-lg xl:top-5 before:border-b-white xl:pb-0 pb-8 
                     before:content-[''] xl:before:block before:hidden before:absolute before:border-l-[10px] before:border-l-transparent before:border-r-[10px] before:border-r-transparent before:border-b-[14px] before:top-[-13.6px]  before:left-2
-                  `)}>
+                  `)}
+                >
                   {dropdownData?.map((data, index) => (
                     <React.Fragment key={index}>
                       <Link
@@ -243,7 +254,7 @@ const NavigationItem = ({
                         className="w-full h-[6rem] xl:h-auto"
                       >
                         <NavigationDropdownMenuItem
-                        show={show}
+                          show={show}
                           active={currentDropdown}
                           item={name}
                           transition={defaultTransition}
@@ -258,7 +269,6 @@ const NavigationItem = ({
             )}
           </AnimatePresence>
         )}
-
       </div>
     </>
   );

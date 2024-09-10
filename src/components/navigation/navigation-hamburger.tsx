@@ -84,13 +84,6 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
     },
     {
       linkDropdownData: {
-        text: "E-Raport",
-        description: "Berisi sambutan resmi dari kepala sekolah",
-        linkRef: "/profile/welcome-speech",
-      },
-    },
-    {
-      linkDropdownData: {
         text: "E-Learning",
         description: "Berisi sambutan resmi dari kepala sekolah",
         linkRef: "/academic/e-learn",
@@ -114,7 +107,7 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
       linkDropdownData: {
         text: "Form Perangkat Ajar",
         description: "Berisi sambutan resmi dari kepala sekolah",
-        linkRef: "/profile/welcome-speech",
+        linkRef: "/academic/device-form",
       },
     },
   ],
@@ -123,7 +116,7 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
       linkDropdownData: {
         text: "Kemitraan",
         description: "Berisi sambutan resmi dari kepala sekolah",
-        linkRef: "/profile/welcome-speech",
+        linkRef: "/bkk/partnership",
       },
     },
     {

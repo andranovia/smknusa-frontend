@@ -69,7 +69,7 @@ const HomeFacilityCardStack: React.FC<HomeFacilityCardStackProps> = ({
             height={1000}
             className="absolute w-full h-full object-cover rounded-lg"
           />
-          <div className="relative z-20 text-center text-white -top-10 flex items-center flex-col justify-center">
+          <div className="relative z-20 text-center text-white -top-10 flex items-center flex-col justify-center w-full">
             <p className="font-[700] xl:text-[20px]">{card?.facility_name}</p>
             <p className="font-[500] xl:text-[14px] text-xs line-clamp-1 w-2/4">
               {card?.facility_text}
