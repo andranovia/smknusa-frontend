@@ -4,8 +4,8 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { useNews } from "@/services/api/useQueries/useNews";
 import InfoCardItemLoading from "@/components/ui/info-card-item-loading";
-import Pagination from "../ui/pagination";
-import InfoCardItem from "../ui/info-card-item";
+import Pagination from "../../ui/pagination";
+import InfoCardItem from "../../ui/info-card-item";
 
 const NewsCard = () => {
   const { news, isNewsLoading } = useNews();
@@ -42,19 +42,25 @@ const NewsCard = () => {
 
                 return (
                   <React.Fragment key={index}>
-                    <Link href={`/news/${news.id_pemberitahuan}`}className="flex justify-center">
-                      <InfoCardItem infoCardData={news} normalDate={normalDate} />
+                    <Link
+                      href={`/info/news/${news.id_pemberitahuan}`}
+                      className="flex justify-center"
+                    >
+                      <InfoCardItem
+                        infoCardData={news}
+                        normalDate={normalDate}
+                      />
                     </Link>
                   </React.Fragment>
                 );
               })}
             </div>
             <div className="mt-4 mb-12">
-            <Pagination
-              totalPosts={news?.length}
-              postsPerPage={postsPerPage}
-              onPageChange={onPageChange}
-            />
+              <Pagination
+                totalPosts={news?.length}
+                postsPerPage={postsPerPage}
+                onPageChange={onPageChange}
+              />
             </div>
           </div>
         )}

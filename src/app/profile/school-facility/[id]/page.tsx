@@ -14,6 +14,7 @@ async function fetchFacility() {
   return data?.data;
 }
 
+export const dynamic = "force-static";
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
@@ -65,7 +66,7 @@ export default async function Page({ params }: { params: { id: string } }) {
 
         <div className=" flex gap-4 lg:gap-10 flex-col w-full ">
           <h2 className="mt-10 text-2xl lg:text-3xl xl:text-4xl 1xl:text-5xl font-semibold">
-            Berita Lain yang tak kalah menarik
+            Fasilitas Lain
           </h2>
           <div className="grid grid-cols-1 bg-[#F1F5F9] lg:grid-cols-2 1xl:grid-cols-3 gap-4 xl:gap-8 px-2 py-2 md:py-6 md:px-6  2xl:py-9  rounded-[10px] w-full">
             {facilityData?.slice(0, 3).map((facility, index) => {

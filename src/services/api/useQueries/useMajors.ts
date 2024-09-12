@@ -1,4 +1,4 @@
-export interface Majors {
+export interface Major {
     id_jurusan: number
     jurusan_nama: string
     jurusan_short: string
@@ -20,7 +20,7 @@ import { getSchoolMajors } from "../methods/fetch-majors"
 
 export const useMajors = ( ) => {
 
-    const { data: majors, isLoading: isMajorsLoading } = useQuery<[] | null>({
+    const { data: majors, isLoading: isMajorsLoading } = useQuery<Major[] | null>({
         queryKey: ["Majors"],
         queryFn: async () => {
             const data = await getSchoolMajors();

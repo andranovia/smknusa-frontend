@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import React from "react";
 import Image from "next/image";
@@ -6,33 +6,55 @@ import Link from "next/link";
 import { useActiveToast } from "@/contexts/ActiveToastContext";
 
 export default function Footer() {
-  const {handleActiveUnavailableToast} = useActiveToast();
+  const { handleActiveUnavailableToast } = useActiveToast();
 
   return (
     <>
       <div className="flex flex-col items-center 1xl:justify-center  1xl:px-8 py-8 bg-primary rounded-[10px] text-white mt-3">
         <div className="grid grid-cols-1 md:grid-cols-2 1xl:flex 1xl:flex-wrap flex-col 1xl:flex-row flex-nowrap mt-0 lg:mt-8 px-4 md:px-0  1xl:gap-0 gap-10 xl:max-w-xl-content  md:max-w-md-content lg:max-w-lg-content 1xl:max-w-1xl-content 2xl:max-w-max-content">
           <div className="flex flex-col items-stretch 1xl:w-1/4 ">
-            <h2 className="text-lg lg:text-2xl font-bold ">Unit Produksi Sekolah</h2>
-            <div className="mt-4 lg:mt-10">
-              <p className="mb-4">Tangirelasi </p>
-              <p className="">SMK Production</p>
+            <h2 className="text-lg lg:text-2xl font-bold ">
+              Unit Produksi Sekolah
+            </h2>
+            <div className="mt-4 lg:mt-10 w-fit">
+              <p className="hover:text-yellow cursor-pointer transition-colors">
+                SMK Production
+              </p>
             </div>
           </div>
           <div className="flex flex-col items-stretch  1xl:w-1/4 ">
-            <h2 className="text-lg lg:text-2xl font-bold ">Aplikasi & Layanan</h2>
-            <div className="mt-4 lg:mt-10">
-              <p className="mb-4">LSP SMKN 1 Purwosari</p>
-              <p className="mb-4">Virtual School</p>
-              <p className="mb-4">CBT(Ujian Sekolah)</p>
-              <p className="mb-4">LMS Save The Children</p>
-              <p className="mb-4">Kotak Saran</p>
+            <h2 className="text-lg lg:text-2xl font-bold ">
+              Aplikasi & Layanan
+            </h2>
+            <div className="mt-4 lg:mt-10 w-fit">
+              <p className="mb-4 hover:text-yellow cursor-pointer transition-colors">
+                LSP SMKN 1 Purwosari
+              </p>
+              <p className="mb-4 hover:text-yellow cursor-pointer transition-colors">
+                Virtual School
+              </p>
+              <p className="mb-4 hover:text-yellow cursor-pointer transition-colors">
+                CBT(Ujian Sekolah)
+              </p>
+              <p className="mb-4 hover:text-yellow cursor-pointer transition-colors">
+                LMS Save The Children
+              </p>
+              <p className="mb-4 hover:text-yellow cursor-pointer transition-colors">
+                Kotak Saran
+              </p>
             </div>
           </div>
           <div className="flex flex-col items-stretch 1xl:w-1/4 md:col-span-2">
-            <h2 className="text-lg lg:text-2xl font-bold">Lainnya</h2>
-            <div className="mt-4 lg:mt-10">
-              <p className="">Peta Situs (XML)</p>
+            <h2 className="text-lg lg:text-2xl font-bold ">Lainnya</h2>
+            <div className="mt-4 lg:mt-10 w-fit">
+              <Link href={"/gallery"}>
+                <p className="mb-4 hover:text-yellow cursor-pointer transition-colors">
+                  Gallery
+                </p>
+              </Link>
+              <p className="hover:text-yellow cursor-pointer transition-colors">
+                Peta Situs (XML)
+              </p>
             </div>
           </div>
 
@@ -62,7 +84,7 @@ export default function Footer() {
                   className=" w-full outline-none placeholder:text-xs 1xl:placeholder:text-base"
                 />
                 <Image
-                onClick={() => handleActiveUnavailableToast()}
+                  onClick={() => handleActiveUnavailableToast()}
                   src={"/assets/icon/round-arrow-right.svg"}
                   alt="sm"
                   width={30}
@@ -131,7 +153,7 @@ export default function Footer() {
             <div className="1xl:text-center text-[14] text-white font-[500]">
               <p>
                 Hak Cipta &copy; 2024 SMK Negeri 1 Purwosari. Dikembangkan oleh
-                VAR Studio
+                <b>&nbsp; Var Studio</b>
               </p>
             </div>
           </div>

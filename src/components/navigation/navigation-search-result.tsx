@@ -2,7 +2,7 @@ import React, { Dispatch, SetStateAction } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { defaultTransition } from "../animation/transition";
-import { Heading } from "../ui/typography";
+import { Heading, Paragraph } from "../ui/typography";
 import NavigationSearchItem from "./navigation-search-item";
 
 const NavigationSearchResult = ({
@@ -96,6 +96,9 @@ const NavigationSearchResult = ({
           <Heading type="h5" className="font-[500] text-sm text-gray-light">
             Riwayat
           </Heading>
+          <Paragraph className="text-center  my-6 text-sm sm:text-base xl:ltext-lg text-gray-light">
+            Tidak ada riwayat pencarian
+          </Paragraph>
           {/* {searchRecent.length > 0 ? (
                         <React.Fragment>
                             {searchRecent.map((item, index) => (

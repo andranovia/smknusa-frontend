@@ -84,13 +84,6 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
     },
     {
       linkDropdownData: {
-        text: "E-Raport",
-        description: "Berisi sambutan resmi dari kepala sekolah",
-        linkRef: "/profile/welcome-speech",
-      },
-    },
-    {
-      linkDropdownData: {
         text: "E-Learning",
         description: "Berisi sambutan resmi dari kepala sekolah",
         linkRef: "/academic/e-learn",
@@ -114,7 +107,7 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
       linkDropdownData: {
         text: "Form Perangkat Ajar",
         description: "Berisi sambutan resmi dari kepala sekolah",
-        linkRef: "/profile/welcome-speech",
+        linkRef: "/academic/device-form",
       },
     },
   ],
@@ -123,7 +116,7 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
       linkDropdownData: {
         text: "Kemitraan",
         description: "Berisi sambutan resmi dari kepala sekolah",
-        linkRef: "/profile/welcome-speech",
+        linkRef: "/bkk/partnership",
       },
     },
     {
@@ -139,14 +132,14 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
       linkDropdownData: {
         text: "Berita",
         description: "Berisi sambutan resmi dari kepala sekolah",
-        linkRef: "/news",
+        linkRef: "/info/news",
       },
     },
     {
       linkDropdownData: {
         text: "Article",
         description: "Berisi sambutan resmi dari kepala sekolah",
-        linkRef: "/article",
+        linkRef: "/info/article",
       },
     },
   ],
@@ -306,27 +299,12 @@ const NavigationHamburger = ({
           setCurrentDropdown={setCurrentDropdown}
           setShowMenu={setShowMenu}
         />
-        <Link
-          href="/news"
-          onClick={() => setShowMenu(false)}
-          className=" my-3 lg:col-span-2"
-        >
-          {" "}
-          <Heading type="h5" className="text-white clas">
-            Berita
-          </Heading>
-        </Link>
-        <hr className="border border-white my-5 lg:col-span-2" />
-        <Link
-          href="/article"
-          onClick={() => setShowMenu(false)}
-          className=" my-5 lg:col-span-2"
-        >
-          {" "}
-          <Heading type="h5" className="text-white">
-            Artikel
-          </Heading>
-        </Link>
+        <NavigationMenuItem
+          name="Info"
+          currentDropdown={currentDropdown}
+          setCurrentDropdown={setCurrentDropdown}
+          setShowMenu={setShowMenu}
+        />
       </div>
       <div className="flex gap-4 flex-col px-4  pb-[22px] fixed bg-primary bottom-0 w-full">
         <hr className="border border-white my-2" />

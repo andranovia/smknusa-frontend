@@ -1,5 +1,5 @@
-import NewsCard from "@/components/news/news-card";
-import NewsForm from "@/components/news/news-form";
+import NewsCard from "@/components/info/news/news-card";
+import NewsForm from "@/components/info/news/news-form";
 import InfoLayout from "@/layouts/info-layout";
 import { ClientOnly } from "@/utils/isClient";
 

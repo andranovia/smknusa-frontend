@@ -17,7 +17,7 @@ const Navbar = () => {
   const [show, setShow] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const isMobile = useMediaQuery("only screen and (max-width : 1023.98px)");
-  const { activePage } = useActivePage()
+  const { activePage } = useActivePage();
   const pathname = usePathname();
   const [searchToggle, setSearchToggle] = useState(false);
   const { handleActiveUnavailableToast } = useActiveToast();
@@ -46,35 +46,37 @@ const Navbar = () => {
     };
   }, [lastScrollY, isMobile]);
 
-
-
-  const [showMenu, setShowMenu] = useState(false)
+  const [showMenu, setShowMenu] = useState(false);
 
   const handleToggleMenu = () => {
-    if(!showMenu){
-      setShowMenu(true)
+    if (!showMenu) {
+      setShowMenu(true);
     }
-
-  }
-
+  };
 
   return (
     <>
       <div
-        className={`flex items-center  justify-center rounded-lg bg-white xl:bg-transparent  xl:px-2.5   z-40  transition-[padding,max-width,transform] ${show
-          ? ` text-blue-base pt-0 xl:pt-2 `
-          : `  ${activePage
-            ? `-translate-y-20 xl:translate-y-0 xl:pt-8 xl:text-white  ${pathname === "/" ? "" : "xl:pt-1 xl:mt-[15px] xl:max-w-[98%]"} before:backdrop-blur-sm before:backdrop-hack `
-            : "xl:translate-y-2 xl:pt-0"
-
-          }`
-          } fixed w-full  delay-0 `}
+        className={`flex items-center  justify-center rounded-lg bg-white xl:bg-transparent  xl:px-2.5   z-40  transition-[padding,max-width,transform] ${
+          show
+            ? ` text-blue-base pt-0 xl:pt-2 `
+            : `  ${
+                activePage
+                  ? `-translate-y-20 xl:translate-y-0 xl:pt-8 xl:text-white  ${
+                      pathname === "/"
+                        ? ""
+                        : "xl:pt-1 xl:mt-[15px] xl:max-w-[98%]"
+                    } before:backdrop-blur-sm before:backdrop-hack `
+                  : "xl:translate-y-2 xl:pt-0"
+              }`
+        } fixed w-full  delay-0 `}
       >
         <div
-          className={`flex  items-center justify-center  md:max-w-md-content lg:max-w-lg-content xl:max-w-full   w-full py-3 transition-all rounded-[10px] px-4 2xl:px-11  ${!show && activePage
-            ? "xl:bg-opacity-0  bg-white font-[800] xl:font-[900]"
-            : `bg-opacity-100 bg-white  font-[800] `
-            }  `}
+          className={`flex  items-center justify-center  md:max-w-md-content lg:max-w-lg-content xl:max-w-full   w-full py-3 transition-all rounded-[10px] px-4 2xl:px-11  ${
+            !show && activePage
+              ? "xl:bg-opacity-0  bg-white font-[800] xl:font-[900]"
+              : `bg-opacity-100 bg-white  font-[800] `
+          }  `}
         >
           <div className="flex  items-center w-full  2xl:max-w-[1492.8px] ">
             <Link href={"/"} className="2xl:w-[52%] xl:w-[40%] w-full">
@@ -96,17 +98,46 @@ const Navbar = () => {
             </Link>
             <div className="flex xl:justify-between  xl:w-full w-auto   font-[600] ">
               <div
-                className={`xl:flex hidden  justify-center items-center gap-8 ${!show && activePage ? "text-white" : " text-gray-light"
-                  }`}
+                className={`xl:flex hidden  justify-center items-center gap-8 ${
+                  !show && activePage ? "text-white" : " text-gray-light"
+                }`}
               >
-                <NavigationItem name="Profile" show={show} dropdown={true} route="/profile" />
-                <NavigationItem name="Akademik" show={show} dropdown={true} route="/academic" />
-                <NavigationItem name="BKK" show={show} dropdown={true} route="/bkk" />
-                <NavigationItem name="Berita" show={show} route={"/news"} />
-                <NavigationItem name="Artikel" show={show} route={"/article"} />
+                <NavigationItem
+                  name="Profile"
+                  show={show}
+                  dropdown={true}
+                  route="/profile"
+                />
+                <NavigationItem
+                  name="Akademik"
+                  show={show}
+                  dropdown={true}
+                  route="/academic"
+                />
+                <NavigationItem
+                  name="BKK"
+                  show={show}
+                  dropdown={true}
+                  route="/bkk"
+                />
+                <NavigationItem
+                  name="Info"
+                  show={show}
+                  dropdown={true}
+                  route={"/Info"}
+                />
+                <NavigationItem
+                  name="E-Raport"
+                  show={show}
+                  route={"/e-raport"}
+                />
               </div>
               <div className="flex items-center xl:space-x-4 gap-3 xl:gap-0 w-max">
-                <NavigationSearch show={show} searchToggle={searchToggle} setSearchToggle={setSearchToggle} />
+                <NavigationSearch
+                  show={show}
+                  searchToggle={searchToggle}
+                  setSearchToggle={setSearchToggle}
+                />
                 <NavigationLanguage show={show} />
                 <Image
                   src={"/assets/icon/user-profile.svg"}
@@ -114,26 +145,35 @@ const Navbar = () => {
                   onClick={() => handleActiveUnavailableToast()}
                   height={20}
                   width={20}
-                  className={`${!show && activePage ? `xl:invert-0 invert` : "invert"
-                    } transition-all  w-5 h-5 hidden xl:block cursor-pointer`}
+                  className={`${
+                    !show && activePage ? `xl:invert-0 invert` : "invert"
+                  } transition-all  w-5 h-5 hidden xl:block cursor-pointer`}
                 />
-                {isMobile ? <Image src={"/assets/icon/hamburger.svg"} alt="hamburger" width={25} height={25} className='w-6 h-6 ' onClick={() => handleToggleMenu()} /> : null}
+                {isMobile ? (
+                  <Image
+                    src={"/assets/icon/hamburger.svg"}
+                    alt="hamburger"
+                    width={25}
+                    height={25}
+                    className="w-6 h-6 "
+                    onClick={() => handleToggleMenu()}
+                  />
+                ) : null}
               </div>
             </div>
           </div>
         </div>
       </div>
 
-
-
       {isMobile ? (
-        <><NavigationHamburger showMenu={showMenu} setShowMenu={setShowMenu}/></>
+        <>
+          <NavigationHamburger showMenu={showMenu} setShowMenu={setShowMenu} />
+        </>
       ) : null}
-      <NavigationSearchResult searchToggle={searchToggle} setSearchToggle={setSearchToggle} />
-
-
-
-
+      <NavigationSearchResult
+        searchToggle={searchToggle}
+        setSearchToggle={setSearchToggle}
+      />
     </>
   );
 };
