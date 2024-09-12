@@ -58,7 +58,7 @@ const FeatureCardItem = ({
 
         <Heading
           type="h2"
-          className="xl:text-md text-xs font-[500]   xl:text-lg xl:w-full line-clamp-1"
+          className="xl:text-md text-xs !font-[600]   xl:text-lg xl:w-full line-clamp-1"
         >
           {"facility_name" in featureCardData
             ? featureCardData.facility_name

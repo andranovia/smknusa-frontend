@@ -2,7 +2,7 @@
 
 import React, { useCallback, useState } from "react";
 import { motion, useAnimation, useMotionValue, useSpring } from "framer-motion";
-import { Majors, useMajors } from "@/services/api/useQueries/useMajors";
+import { Major, useMajors } from "@/services/api/useQueries/useMajors";
 import HomeMajorSlider from "./home-major-slider";
 import { Heading, Paragraph } from "../ui/typography";
 import { defaultTransition } from "../animation/transition";
@@ -20,10 +20,6 @@ const majorLinkData = [
     text: "Pemesinan",
     slide: "Pemesinan",
   },
-  {
-    text: "Elektronika",
-    slide: "Elektro",
-  },
 ];
 
 const HomeMajor = () => {
@@ -33,7 +29,7 @@ const HomeMajor = () => {
   const navHighlight = useAnimation();
   const { majors } = useMajors();
   const majorData = majors?.filter(
-    (major: Majors) => major.prodi.prodi_short === currentSlide
+    (major: Major) => major.prodi.prodi_short === currentSlide
   );
 
   const controls = useAnimation();
@@ -54,13 +50,10 @@ const HomeMajor = () => {
               navHighlight.start({ x: 0, width: "144px" });
               break;
             case "Pertanian":
-              navHighlight.start({ x: 144, width: "116px" });
+              navHighlight.start({ x: 148, width: "116px" });
               break;
             case "Pemesinan":
-              navHighlight.start({ x: 272, width: "116px" });
-              break;
-            case "Elektro":
-              navHighlight.start({ x: 396, width: "140px" });
+              navHighlight.start({ x: 263, width: "144px" });
               break;
             default:
               navHighlight.start({ x: 0, width: "144px" });
@@ -95,7 +88,7 @@ const HomeMajor = () => {
           <div className="absolute right-0 h-full bg-gradient-to-l from-white to-transparent z-20 p-10 md:p-16 opacity-80"></div>
           <div className="absolute block xl:hidden left-0 h-full bg-gradient-to-r from-white to-transparent z-20 p-10 md:p-16 opacity-80"></div>
           <div className="relative w-full  flex flex-col xl:flex-row   justify-center gap-14  h-full  mt-8 mb-10 xl:mb-0 max-w-max-container">
-            <div className=" w-full flex top-0 -mt-28 xl:mt-0 absolute justify-center py-3 xl:rounded-[10px] items-center xl:px-0 px-6 gap-8 xl:bg-[#e5e7eb] lg:min-w-lg max-w-[34rem]">
+            <div className=" w-full flex top-0 -mt-28 xl:mt-0 absolute justify-center py-3 xl:rounded-[10px] items-center xl:px-0 px-6 gap-8 xl:bg-[#e5e7eb] lg:min-w-lg max-w-[26rem]">
               <motion.div
                 initial={false}
                 animate={navHighlight}

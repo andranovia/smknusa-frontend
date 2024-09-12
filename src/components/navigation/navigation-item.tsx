@@ -3,7 +3,6 @@ import { AnimatePresence, motion, useAnimation } from "framer-motion";
 
 import Link from "next/link";
 import { useMediaQuery } from "@uidotdev/usehooks";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useActivePage } from "@/contexts/ActivePageContext";
 import { cn } from "@/utils/cn";
@@ -26,7 +25,6 @@ interface NavigationItemProps {
   dropdown?: boolean;
   show: boolean;
   route?: string;
-  icon?: string;
 }
 
 const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
@@ -143,7 +141,7 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
       linkDropdownData: {
         text: "Kemitraan",
         description: "Berisi sambutan resmi dari kepala sekolah",
-        icon: "/assets/nav-dropdown-icon/Bkk/kemitraan.svg",
+        icon: "/assets/nav-dropdown-icon/bkk/kemitraan.svg",
         linkRef: "/bkk/partnership",
       },
     },
@@ -151,8 +149,26 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
       linkDropdownData: {
         text: "Lowongan Pekerjaan",
         description: "Berisi sambutan resmi dari kepala sekolah",
-        icon: "/assets/nav-dropdown-icon/Bkk/lowongan.svg",
+        icon: "/assets/nav-dropdown-icon/bkk/lowongan.svg",
         linkRef: "/bkk/job",
+      },
+    },
+  ],
+  Info: [
+    {
+      linkDropdownData: {
+        text: "Berita",
+        description: "Berisi sambutan resmi dari kepala sekolah",
+        icon: "/assets/nav-dropdown-icon/info/info.svg",
+        linkRef: "/info/news",
+      },
+    },
+    {
+      linkDropdownData: {
+        text: "Artikel",
+        description: "Berisi sambutan resmi dari kepala sekolah",
+        icon: "/assets/nav-dropdown-icon/info/info.svg",
+        linkRef: "/info/article",
       },
     },
   ],
@@ -162,7 +178,6 @@ const NavigationItem = ({
   name,
   dropdown,
   show,
-  icon,
   route,
 }: NavigationItemProps) => {
   const [currentDropdown, setCurrentDropdown] = useState<string | null>(null);
@@ -210,26 +225,19 @@ const NavigationItem = ({
               show || !activePage ? "text-blue-base" : "text-white"
             }`}
           >
-            {route === "/news" || route === "/article" ? (
-              <Link href={route}>{name}</Link>
+            {route === "/e-raport" ? (
+              <Link href={"http://36.93.85.150:8154/"}>{name}</Link>
             ) : (
               name
             )}
           </span>
-          {icon ? (
-            <div className="block xl:hidden">
-              <Image src={icon} alt="navbar-icon" width={30} height={30} />
-            </div>
-          ) : null}
-
           {dropdown && (
             <motion.div animate={{ rotate: showDropdown ? 180 : 0 }}>
               <NavigationDropdown show={show} />
             </motion.div>
           )}
         </span>
-
-        {route === "/news" || route === "/article" ? null : (
+        {route === "/e-raport" ? null : (
           <AnimatePresence>
             {showDropdown && (
               <div className="absolute left-0 xs:left-4 md:left-14  xl:left-auto xl:ml-6  xl:top-auto h-[25rem] xl:h-auto xl:justify-start xl:items-start flex flex-col items-end justify-end">

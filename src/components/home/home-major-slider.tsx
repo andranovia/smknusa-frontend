@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { motion, MotionValue, PanInfo, useAnimation } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { Major } from "@/services/api/useQueries/useMajors";
 import { backendUrl } from "@/utils/backendUrl";
 
@@ -49,28 +50,29 @@ const HomeMajorSlider = ({ majorData, animatedX }: HomeMajorSliderProps) => {
       className="flex gap-8 relative"
     >
       {majorData?.map((data, index) => (
-        <motion.div
-          key={index}
-          layout
-          transition={{ ease: "easeInOut", duration: 0.4 }}
-          animate={controls}
-          className="flex justify-end items-center flex-col relative bg-black rounded-[10px] overflow-hidden w-[13rem] h-[18rem] xl:w-[18.75rem] xl:h-[25rem]"
-        >
-          <Image
-            src={backendUrl + data.jurusan_thumbnail}
-            alt="rpl-major"
-            width={300}
-            height={400}
-            className="w-full h-full opacity-70 object-cover"
-            draggable={false}
-          />
-          <div className="absolute text-center pb-4 text-white">
-            <h2 className="font-[600] text-[18px]">{data.jurusan_short}</h2>
-            <p className="font-[500] text-[14px] hidden xl:block">
-              {data.jurusan_nama}
-            </p>
-          </div>
-        </motion.div>
+        <Link href={"/academic/major/" + data.id_jurusan} key={index}>
+          <motion.div
+            layout
+            transition={{ ease: "easeInOut", duration: 0.4 }}
+            animate={controls}
+            className="flex justify-end items-center flex-col relative bg-black rounded-[10px] overflow-hidden w-[13rem] h-[18rem] xl:w-[18.75rem] xl:h-[25rem]"
+          >
+            <Image
+              src={backendUrl + data.jurusan_thumbnail}
+              alt="rpl-major"
+              width={300}
+              height={400}
+              className="w-full h-full opacity-70 object-cover"
+              draggable={false}
+            />
+            <div className="absolute text-center pb-4 text-white">
+              <h2 className="font-[600] text-[18px]">{data.jurusan_short}</h2>
+              <p className="font-[500] text-[14px] hidden xl:block">
+                {data.jurusan_nama}
+              </p>
+            </div>
+          </motion.div>
+        </Link>
       ))}
       {majorData &&
         majorData.length < 4 &&

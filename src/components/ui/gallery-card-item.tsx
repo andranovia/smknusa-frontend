@@ -17,7 +17,7 @@ const GalleryCardItem = ({ GalleryCardData }: { GalleryCardData: Gallery }) => {
       <div className=" px-3 xl:p-4 flex flex-col items-start gap-3 w-full my-3 xl:my-0 ">
         <Heading
           type="h2"
-          className="xl:text-sm text-xs font-[500]  xl:w-full line-clamp-1"
+          className="xl:text-sm text-xs !font-[600]  xl:w-full line-clamp-1"
         >
           {GalleryCardData.gallery_title}
         </Heading>

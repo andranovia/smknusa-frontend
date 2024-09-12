@@ -20,7 +20,7 @@ import { getSchoolMajors } from "../methods/fetch-majors"
 
 export const useMajors = ( ) => {
 
-    const { data: majors, isLoading: isMajorsLoading } = useQuery<[] | null>({
+    const { data: majors, isLoading: isMajorsLoading } = useQuery<Major[] | null>({
         queryKey: ["Majors"],
         queryFn: async () => {
             const data = await getSchoolMajors();

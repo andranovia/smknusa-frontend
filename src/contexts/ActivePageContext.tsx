@@ -23,9 +23,9 @@ export const ActivePageProvider = ({
   const pathname = usePathname();
   const isActivePage =
     pathname === "/" ||
-    pathname === "/news" ||
+    pathname === "/info/news" ||
     pathname === "/profile/school-facility" ||
-    pathname === "/article" ||
+    pathname === "/info/article" ||
     pathname === "/academic/extracurricular" ||
     pathname === "/academic/major" ||
     pathname === "/academic/resident-data" ||

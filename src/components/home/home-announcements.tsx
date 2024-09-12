@@ -38,7 +38,7 @@ const HomeAnnouncement = () => {
 
   const [currentAnnouncementsType, setCurrentAnnouncementsType] =
     useState<string>("Pengumuman");
-  const [isChangingAnnouncements, setisChangingAnnouncements] = useState(false)
+  const [isChangingAnnouncements, setisChangingAnnouncements] = useState(false);
 
   const [
     currentAnnouncementsHighlightIndex,
@@ -82,39 +82,35 @@ const HomeAnnouncement = () => {
   const currentAnnouncementsData = getCurrentAnnouncementsData();
 
   const handleChangeAnnouncements = (announcementsType: string) => {
-    setisChangingAnnouncements(true)
+    setisChangingAnnouncements(true);
     if (announcementsType !== currentAnnouncementsType) {
       announcementsHighlightControls.start("after");
-      if(isMobile){
+      if (isMobile) {
         setTimeout(() => {
-          setisChangingAnnouncements(false)
+          setisChangingAnnouncements(false);
         }, 2000);
       } else {
         setTimeout(() => {
-          setisChangingAnnouncements(false)
+          setisChangingAnnouncements(false);
         }, 500);
       }
-     
 
       setTimeout(() => {
         setCurrentAnnouncementsType(announcementsType);
         setCurrentAnnouncementsHighlightIndex(0);
-      
       }, 400);
-   
-
-      
     }
   };
 
   return (
-    <section
-      className="w-full h-full  flex justify-center items-center flex-col "
-    >
+    <section className="w-full h-full  flex justify-center items-center flex-col ">
       <div className="xl:sticky -top-1/3 w-full  flex justify-center items-center  ">
         <div className="w-full h-full xl:pb-8 bg-white rounded-[10px] ">
           <div className="flex flex-col items-center lg:text-center justify-center bg-primary  rounded-md text-white pt-6 sm:pt-10 pb-48">
-            <Heading type="h1" className=" xl:text-[36px] text-[22px] lg:text-[30px] sm:text-[24px] max-w-[274px] xs:max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content w-full xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container">
+            <Heading
+              type="h1"
+              className=" xl:text-[36px] text-[22px] lg:text-[30px] sm:text-[24px] max-w-[274px] xs:max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content w-full xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container"
+            >
               Papan Pengumuman Informasi <br className="hidden lg:block" />
               SMK Negeri 1 Purwosari
             </Heading>
@@ -147,7 +143,14 @@ const HomeAnnouncement = () => {
               </div>
 
               <div className="hidden xl:flex justify-center items-center w-full xl:w-40">
-                <Link href={currentAnnouncementsType === "Berita" ? "/news" : "/article"} className="w-full bg-yellow text-[#081B34] font-[500] py-2.5 px-5 rounded">
+                <Link
+                  href={
+                    currentAnnouncementsType === "Berita"
+                      ? "/info/news"
+                      : "/info/article"
+                  }
+                  className="w-full bg-yellow text-[#081B34] font-[500] py-2.5 px-5 rounded"
+                >
                   Selengkapnya
                 </Link>
               </div>
@@ -157,20 +160,20 @@ const HomeAnnouncement = () => {
           <div className="relative  xl:px-8 flex justify-center items-center  -mt-36   w-full ">
             <div className=" xl:h-full flex justify-center   bg-white relative xl:rounded-xl mt-0 w-full max-w-full 2xl:max-w-max-container">
               <div className="relative  max-w-[274px] xs:max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-full w-full">
-                  <HomeAnnouncementsCard
-                    isChangingAnnouncements={isChangingAnnouncements}
-                    announcementsHighlightControls={
-                      announcementsHighlightControls
-                    }
-                    setCurrentAnnouncementsHighlightIndex={
-                      setCurrentAnnouncementsHighlightIndex
-                    }
-                    currentAnnouncementsHighlightIndex={
-                      currentAnnouncementsHighlightIndex
-                    }
-                    currentAnnouncementsData={currentAnnouncementsData}
-                    currentAnnouncementsType={currentAnnouncementsType}
-                  />
+                <HomeAnnouncementsCard
+                  isChangingAnnouncements={isChangingAnnouncements}
+                  announcementsHighlightControls={
+                    announcementsHighlightControls
+                  }
+                  setCurrentAnnouncementsHighlightIndex={
+                    setCurrentAnnouncementsHighlightIndex
+                  }
+                  currentAnnouncementsHighlightIndex={
+                    currentAnnouncementsHighlightIndex
+                  }
+                  currentAnnouncementsData={currentAnnouncementsData}
+                  currentAnnouncementsType={currentAnnouncementsType}
+                />
               </div>
             </div>
           </div>

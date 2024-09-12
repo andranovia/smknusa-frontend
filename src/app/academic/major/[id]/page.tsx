@@ -13,6 +13,7 @@ async function fetchMajors() {
   return data?.data;
 }
 
+export const dynamic = "force-static";
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
@@ -34,10 +35,6 @@ async function getMajorById(id: string) {
 export default async function Page({ params }: { params: { id: string } }) {
   const { id } = params;
   const majorById = await getMajorById(id);
-
-  // if (majorById === 'Data tidak ditemukan' || !majorById) {
-  //     redirect('/404');
-  // }
 
   const getCategoryColor = (icon: string) => {
     switch (icon) {

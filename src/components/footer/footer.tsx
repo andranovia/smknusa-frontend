@@ -45,9 +45,7 @@ export default function Footer() {
             </div>
           </div>
           <div className="flex flex-col items-stretch 1xl:w-1/4 md:col-span-2">
-            <h2 className="text-lg lg:text-2xl font-bold hover:text-yellow cursor-pointer transition-colors">
-              Lainnya
-            </h2>
+            <h2 className="text-lg lg:text-2xl font-bold ">Lainnya</h2>
             <div className="mt-4 lg:mt-10 w-fit">
               <Link href={"/gallery"}>
                 <p className="mb-4 hover:text-yellow cursor-pointer transition-colors">
@@ -155,7 +153,7 @@ export default function Footer() {
             <div className="1xl:text-center text-[14] text-white font-[500]">
               <p>
                 Hak Cipta &copy; 2024 SMK Negeri 1 Purwosari. Dikembangkan oleh
-                VAR Studio
+                <b>&nbsp; Var Studio</b>
               </p>
             </div>
           </div>
