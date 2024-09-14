@@ -65,7 +65,7 @@ const ArticleForm = () => {
               </div>
             </div>
             <div className="1xl:flex grid grid-cols-2 w-full justify-end py-3 gap-3 relative 1xl:-right-2">
-              <button className="bg-gray-base w-full text-gray py-2 px-4 rounded-[4px] text-[16px] font-medium 1xl:w-28  h-10">
+              <button className="bg-gray-200 w-full text-blue-base py-2 px-4 rounded-lg text-[16px] font-medium 1xl:w-28 h-10">
                 Reset
               </button>
               <button className="bg-yellow-light w-full text-blue-base py-2 px-4 rounded-lg text-[16px] font-medium 1xl:w-28 h-10">

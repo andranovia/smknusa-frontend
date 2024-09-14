@@ -9,7 +9,6 @@ import { useVacancies } from "@/services/api/useQueries/useVacancies";
 const JobVacanciesCard = () => {
   const { vacancies, isVacanciesLoading } = useVacancies();
   const [currentPage, setCurrentPage] = useState(1);
-  console.log("vacancies", vacancies);
   const postsPerPage = 9;
 
   const indexOfLastPost = currentPage * postsPerPage;
@@ -39,7 +38,7 @@ const JobVacanciesCard = () => {
                 );
               })}
             </div>
-            <div className="mt-4 mb-12">
+            <div className="mt-4 ">
               <Pagination
                 totalPosts={vacancies?.length}
                 postsPerPage={postsPerPage}

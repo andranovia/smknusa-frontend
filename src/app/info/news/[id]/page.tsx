@@ -73,8 +73,8 @@ export default async function Page({ params }: { params: { id: string } }) {
                 </p>
                 <hr className="w-full border " />
                 <div className="w-full justify-between flex lg:flex-row flex-col lg:items-center gap-4">
-                  <h4 className="text-[12px]">Diposting pada : {normalDate}</h4>
-                  <div className="flex flex-row justify-between lg:justify-center xl:items-center grayscale my-4 gap-4 xl:gap-10 text-[10px]">
+                  <h4 className="text-[14px]">Diposting pada : {normalDate}</h4>
+                  <div className="flex flex-row justify-between lg:justify-center xl:items-center grayscale my-4 gap-4 xl:gap-10 text-[12px]">
                     <div className="flex gap-1 items-center">
                       <Image
                         width={20}

@@ -1,22 +1,15 @@
-
-import Image from "next/image";
 import React from "react";
 import ProfileLayout from "@/layouts/profile-layout";
+import PDFViewer from "@/components/ui/pdf-viewer";
 
 const ProfileHistory = () => {
   return (
     <ProfileLayout
       title="Struktur Organisasi Sekolah"
       subtitle="Struktur Organisasi Sekolah SMK Negeri 1 Purwosari"
-       classNameWrapper="pt-[76px]"
+      classNameWrapper="pt-[76px]"
     >
-      <Image
-        src={"/assets/profile/structure/profile-structure.png"}
-        alt=""
-        className="w-full rounded-[10px]"
-        width={1000}
-        height={1000}
-      />
+      <PDFViewer url="https://www.smkn1purwosari.sch.id/public/img/struktur_smk.pdf#toolbar=1&navpanes=0&scrollbar=0" />
     </ProfileLayout>
   );
 };

@@ -120,7 +120,10 @@ const page = () => {
                   </span>
                 </button>
               </div>
-              <button className="border-none w-full py-3 1xl:py-4 px-6 border-2 border-primary flex justify-between items-center  text-blue-base bg-yellow-light rounded-md">
+              <Link
+                href={"https://www.microsoft.com/en-us/microsoft-365"}
+                className="border-none w-full py-3 1xl:py-4 px-6 border-2 border-primary flex justify-between items-center  text-blue-base bg-yellow-light rounded-md"
+              >
                 <span className="text-xs sm:text-base">Pelajari lebih</span>
                 <Image
                   src={"/assets/icon/arrow-right.svg"}
@@ -129,7 +132,7 @@ const page = () => {
                   height={30}
                   className="w-4 sm:w-[18px] "
                 />
-              </button>
+              </Link>
             </div>
             <Image
               src={"/assets/academic/e-learn/teams-app.png"}

@@ -16,13 +16,13 @@ const InfoCardItem = ({ infoCardData, normalDate }: InfoCardItemProps) => {
   return (
     <div className="bg-white rounded-lg w-full 1xl:w-[23rem] h-full border overflow-hidden relative">
       <Image
-        className="w-full min-h-[8rem] sm:min-h-[8rem] xl:min-h-[10rem]  max-h-[6rem] sm:max-h-[10rem] lg:max-h-[8rem] xl:max-h-[10rem] object-cover"
+        className="w-full h-full  max-h-[8rem] xs:max-h-[9rem] sm:max-h-[10rem] lg:max-h-[9rem] xl:max-h-[11rem] object-cover"
         src={backendUrl + infoCardData.thumbnail}
         alt={infoCardData.nama}
         width={800}
         height={800}
       />
-      <div className="px-2 sm:px-3 xl:p-4 flex flex-col items-stretch lg:h-[13rem] xl:h-[10rem]   gap-4 w-full my-4 xl:my-0 ">
+      <div className="px-3 md:px-4 xl:p-4 flex flex-col items-stretch lg:h-[11rem] xl:h-[8rem]   gap-4 w-full my-4 xl:my-0 ">
         <div className="flex justify-start xl:grid grid-cols-2   items-center gap-1 sm:gap-2 top-2 lg:top-0 left-0 absolute lg:relative xl:absolute px-1.5 lg:px-0 xl:p-2 z-20">
           {infoCardData.level === "0" || infoCardData.level === 0 ? (
             <div
@@ -51,7 +51,7 @@ const InfoCardItem = ({ infoCardData, normalDate }: InfoCardItemProps) => {
 
         <Heading
           type="h5"
-          className="text-sm md:text-[16px]  !font-[600] min-h-16 lg:min-h-fit xl:min-h-fit  xl:text-lg mb-2 sm:w-full  line-clamp-3 xl:!leading-6"
+          className="text-sm md:text-[16px]  !font-[550] min-h-fit xl:min-h-fit  xl:text-lg mb-2 sm:w-full  line-clamp-2 xl:!leading-6"
         >
           {infoCardData.nama}
         </Heading>

@@ -58,7 +58,7 @@ const FeatureCardItem = ({
 
         <Heading
           type="h2"
-          className="xl:text-md text-xs !font-[600]   xl:text-lg xl:w-full line-clamp-1"
+          className="xl:text-md text-xs !font-[550]   xl:text-lg xl:w-full line-clamp-1"
         >
           {"facility_name" in featureCardData
             ? featureCardData.facility_name
@@ -67,7 +67,7 @@ const FeatureCardItem = ({
 
         <Heading
           type="h4"
-          className="xl:text-md text-xs font-[500] leading-6 xl:text-lg mb-2 xl:w-full  text-gray line-clamp-2"
+          className="xl:text-md text-xs !font-[500] leading-6 xl:text-lg mb-2 xl:w-full  text-gray line-clamp-2"
         >
           {"facility_text" in featureCardData
             ? featureCardData.facility_text
