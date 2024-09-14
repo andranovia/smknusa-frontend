@@ -69,7 +69,7 @@ const ProfileCardItem = ({ profileCardData }: ProfileCardItemProps) => {
             />
             <Heading
               type="h5"
-              className=" !text-xs !font-[600]   xl:!text-sm  sm:w-full  line-clamp-1 leading-6 text-blue-base"
+              className=" !text-xs !font-[550]   xl:!text-sm  sm:w-full  line-clamp-1 leading-6 text-blue-base"
             >
               Singosari
             </Heading>

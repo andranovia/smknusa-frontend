@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 import { Paragraph } from "./typography";
 
@@ -61,11 +60,14 @@ const DeviceFormCardItem = ({ deviceFormData }: DeviceFormCardItemProps) => {
         <Paragraph className="font-[320] text-xs line-clamp-4 text-[#081B34] mb-4 mt-2 w-[391px]">
           {deviceFormData?.description}
         </Paragraph>
-        <Link href={`/download/${deviceFormData?.id}`}>
-          <button className="bg-yellow-light text-blue-base py-2 px-4 my-2 rounded-lg w-full text-[12px] font-medium">
+        <div className="1xl:flex grid grid-cols-2 w-full gap-3 mt-2">
+          <button className="bg-primary w-full text-white py-[10px] rounded-md text-xs font-medium">
+            Go to file
+          </button>
+          <button className="bg-yellow-light w-full text-blue-base py-[10px] rounded-md  text-xs font-medium">
             Download
           </button>
-        </Link>
+        </div>
       </div>
     </div>
   );

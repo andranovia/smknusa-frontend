@@ -59,7 +59,7 @@ const Navbar = () => {
       <div
         className={`flex items-center  justify-center rounded-lg bg-white xl:bg-transparent  xl:px-2.5   z-40  transition-[padding,max-width,transform] ${
           show
-            ? ` text-blue-base pt-0 xl:pt-2 `
+            ? `  text-blue-base pt-0 xl:pt-2 `
             : `  ${
                 activePage
                   ? `-translate-y-20 xl:translate-y-0 xl:pt-8 xl:text-white  ${
@@ -67,7 +67,7 @@ const Navbar = () => {
                         ? ""
                         : "xl:pt-1 xl:mt-[15px] xl:max-w-[98%]"
                     } before:backdrop-blur-sm before:backdrop-hack `
-                  : "xl:translate-y-2 xl:pt-0"
+                  : "xl:translate-y-2 xl:pt-0 "
               }`
         } fixed w-full  delay-0 `}
       >
@@ -75,7 +75,7 @@ const Navbar = () => {
           className={`flex  items-center justify-center  md:max-w-md-content lg:max-w-lg-content xl:max-w-full   w-full py-3 transition-all rounded-[10px] px-4 2xl:px-11  ${
             !show && activePage
               ? "xl:bg-opacity-0  bg-white font-[800] xl:font-[900]"
-              : `bg-opacity-100 bg-white  font-[800] `
+              : `bg-opacity-100 bg-white  font-[800] xl:shadow-md`
           }  `}
         >
           <div className="flex  items-center w-full  2xl:max-w-[1492.8px] ">
@@ -124,7 +124,7 @@ const Navbar = () => {
                   name="Info"
                   show={show}
                   dropdown={true}
-                  route={"/Info"}
+                  route={"/info"}
                 />
                 <NavigationItem
                   name="E-Raport"
