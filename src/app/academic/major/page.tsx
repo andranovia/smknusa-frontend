@@ -4,6 +4,11 @@ import MajorHeader from "@/components/academic/major/major-header";
 import InfoLayout from "@/layouts/info-layout";
 import { ClientOnly } from "@/utils/isClient";
 
+export const metadata = {
+  title: "School Major",
+  description: "SMKN 1 Purwosari School Major",
+};
+
 const page = () => {
   return (
     <ClientOnly>
@@ -13,9 +18,8 @@ const page = () => {
       >
         <div className="flex flex-col w-full max-w-full md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 1xl:max-w-[1472.8px] bg-white">
           <MajorHeader />
-          <MajorCard/>
+          <MajorCard />
         </div>
-
       </InfoLayout>
     </ClientOnly>
   );

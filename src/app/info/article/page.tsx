@@ -3,6 +3,11 @@ import ArticleForm from "@/components/info/article/article-form";
 import InfoLayout from "@/layouts/info-layout";
 import { ClientOnly } from "@/utils/isClient";
 
+export const metadata = {
+  title: "School Article",
+  description: "SMKN 1 Purwosari School Article",
+};
+
 export default function Article() {
   return (
     <ClientOnly>

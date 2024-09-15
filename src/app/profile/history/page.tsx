@@ -3,6 +3,11 @@ import React from "react";
 import { Paragraph } from "@/components/ui/typography";
 import ProfileLayout from "@/layouts/profile-layout";
 
+export const metadata = {
+  title: "School History",
+  description: "SMKN 1 Purwosari History",
+};
+
 const ProfileHistory = () => {
   return (
     <ProfileLayout

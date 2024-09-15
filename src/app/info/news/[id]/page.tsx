@@ -34,6 +34,13 @@ async function getNewsById(id: string) {
   return data.data;
 }
 
+export async function generateMetadata({ params }: { params: { id: string } }) {
+  const newsById = await getNewsById(params.id);
+  return {
+    title: newsById?.nama,
+  };
+}
+
 export default async function Page({ params }: { params: { id: string } }) {
   const { id } = params;
   const newsById = await getNewsById(id);

@@ -3,6 +3,11 @@ import React from "react";
 import Link from "next/link";
 import { Heading, Paragraph } from "@/components/ui/typography";
 
+export const metadata = {
+  title: "School E-Learning",
+  description: "SMKN 1 Purwosari E-Learning",
+};
+
 const page = () => {
   return (
     <div className="flex xl:min-h-screen flex-col items-center px-2.5 xl:px-3 gap-3 ">
