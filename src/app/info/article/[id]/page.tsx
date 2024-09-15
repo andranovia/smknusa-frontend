@@ -37,6 +37,13 @@ async function getArticleById(id: string) {
   return data?.data || null;
 }
 
+export async function generateMetadata({ params }: { params: { id: string } }) {
+  const post = await getArticleById(params?.id);
+  return {
+    title: post.nama,
+  };
+}
+
 export default async function Page({ params }: { params: { id: string } }) {
   const { id } = params;
   const articlesData = await fetchArticles();
@@ -45,21 +52,6 @@ export default async function Page({ params }: { params: { id: string } }) {
   if (articleById === "Data tidak ditemukan" || !articleById) {
     redirect("/404");
   }
-
-  // const parsedHtml = parse(articleById?.text);
-  // const dom = new JSDOM(articleById?.text || '');
-  // const document = dom.window.document;
-
-  // const imgElements = document.querySelectorAll('img');
-  // imgElements.forEach(img => img.remove());
-
-  // const styleElements = document.querySelectorAll('style');
-  // styleElements.forEach(style => style.remove());
-
-  // const allElements = document.querySelectorAll('*');
-  // allElements.forEach(element => element.removeAttribute('style'));
-
-  // const sanitizedHtml = document.body.innerHTML;
 
   const date = new Date(articleById?.created_at || Date.now());
   const normalDate = date.toLocaleDateString();

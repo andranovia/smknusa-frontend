@@ -2,13 +2,18 @@ import React from "react";
 import { Heading, List, Paragraph } from "@/components/ui/typography";
 import ProfileLayout from "@/layouts/profile-layout";
 
+export const metadata = {
+  title: "School Vision & Mision",
+  description: "SMKN 1 Purwosari School Vision and Mision",
+};
+
 const ProfileVisionMision = () => {
   return (
     <ProfileLayout
       title="Visi dan Misi Sekolah"
       subtitle="Informasi mengenai visi dan misi sekolah SMK Negeri 1 Puworsari"
-         className="items-start"
-          classNameWrapper="pt-[76px]"
+      className="items-start"
+      classNameWrapper="pt-[76px]"
     >
       <span className="flex flex-col items-start gap-4 mt-10">
         <Heading type="h3">Visi SMK Negeri 1 Purwosari adalah</Heading>

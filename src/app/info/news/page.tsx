@@ -3,6 +3,11 @@ import NewsForm from "@/components/info/news/news-form";
 import InfoLayout from "@/layouts/info-layout";
 import { ClientOnly } from "@/utils/isClient";
 
+export const metadata = {
+  title: "School News",
+  description: "SMKN 1 Purwosari School News",
+};
+
 export default function News() {
   return (
     <ClientOnly>

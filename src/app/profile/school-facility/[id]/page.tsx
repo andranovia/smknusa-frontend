@@ -35,6 +35,13 @@ async function getFacilityById(id: string) {
   return data?.data || null;
 }
 
+export async function generateMetadata({ params }: { params: { id: string } }) {
+  const post = await getFacilityById(params?.id);
+  return {
+    title: post.facility_name,
+  };
+}
+
 export default async function Page({ params }: { params: { id: string } }) {
   const { id } = params;
   const facilityData = await fetchFacility();

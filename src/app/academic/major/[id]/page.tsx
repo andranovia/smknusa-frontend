@@ -32,6 +32,13 @@ async function getMajorById(id: string) {
   return data?.data || null;
 }
 
+export async function generateMetadata({ params }: { params: { id: string } }) {
+  const major = await getMajorById(params?.id);
+  return {
+    title: major.jurusan_nama,
+  };
+}
+
 export default async function Page({ params }: { params: { id: string } }) {
   const { id } = params;
   const majorById = await getMajorById(id);

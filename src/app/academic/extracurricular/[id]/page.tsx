@@ -36,6 +36,13 @@ async function getExtacurricularById(id: string) {
   return data?.data || null;
 }
 
+export async function generateMetadata({ params }: { params: { id: string } }) {
+  const extracurricular = await getExtacurricularById(params?.id);
+  return {
+    title: extracurricular.extra_name,
+  };
+}
+
 export default async function Page({ params }: { params: { id: string } }) {
   const { id } = params;
   const extraData = await fetchExtracurricular();

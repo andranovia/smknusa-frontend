@@ -2,6 +2,11 @@ import React from "react";
 import ProfileLayout from "@/layouts/profile-layout";
 import PDFViewer from "@/components/ui/pdf-viewer";
 
+export const metadata = {
+  title: "School Committee",
+  description: "SMKN 1 Purwosari School Committee",
+};
+
 const ProfileSchoolCommittee = () => {
   return (
     <ProfileLayout

@@ -4,6 +4,11 @@ import ExtracurricularHeader from "@/components/academic/extracurricular/extracu
 import InfoLayout from "@/layouts/info-layout";
 import { ClientOnly } from "@/utils/isClient";
 
+export const metadata = {
+  title: "School Extracurricular",
+  description: "SMKN 1 Purwosari School Extracurricular",
+};
+
 const page = () => {
   return (
     <ClientOnly>
@@ -13,9 +18,8 @@ const page = () => {
       >
         <div className="flex flex-col w-full max-w-full md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 1xl:max-w-[1472.8px] bg-white">
           <ExtracurricularHeader />
-          <ExtracurricularCard/>
+          <ExtracurricularCard />
         </div>
-
       </InfoLayout>
     </ClientOnly>
   );

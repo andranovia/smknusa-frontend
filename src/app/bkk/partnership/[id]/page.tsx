@@ -36,6 +36,13 @@ async function getPartnershipById(id: string) {
   return data?.data || null;
 }
 
+export async function generateMetadata({ params }: { params: { id: string } }) {
+  const partnership = await getPartnershipById(params?.id);
+  return {
+    title: partnership.kemitraan_name,
+  };
+}
+
 export default async function Page({ params }: { params: { id: string } }) {
   const { id } = params;
   const partnershipData = await fetchPartnership();

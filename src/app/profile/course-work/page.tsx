@@ -3,12 +3,17 @@ import Image from "next/image";
 import { Heading, Paragraph } from "@/components/ui/typography";
 import ProfileLayout from "@/layouts/profile-layout";
 
+export const metadata = {
+  title: "Course Work",
+  description: "SMKN 1 Purwosari Course Work",
+};
+
 const ProfileCourseWork = () => {
   return (
     <ProfileLayout
       title="Program Kerja Sekolah"
       subtitle="Program Kerja Sekolah SMK Negeri 1 Purwosari"
-       classNameWrapper="pt-[76px]"
+      classNameWrapper="pt-[76px]"
     >
       <div className="flex flex-col items-start xl:w-[60%] gap-4">
         <Image

@@ -1,8 +1,12 @@
-
 import React from "react";
 import Image from "next/image";
 import ProfileLayout from "@/layouts/profile-layout";
 import { Paragraph } from "@/components/ui/typography";
+
+export const metadata = {
+  title: "School Welcome Speech",
+  description: "SMKN 1 Purwosari School Welcome Speech",
+};
 
 const ProfileHistory = () => {
   return (

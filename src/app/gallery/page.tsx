@@ -3,6 +3,11 @@ import InfoLayout from "@/layouts/info-layout";
 import { ClientOnly } from "@/utils/isClient";
 import GalleryCard from "@/components/gallery/gallery-card";
 
+export const metadata = {
+  title: "School Gallery",
+  description: "SMKN 1 Purwosari School Gallery",
+};
+
 const page = () => {
   return (
     <ClientOnly>
