@@ -50,11 +50,11 @@ export default function FacilityLayout({
             <ReactQueryProvider>
               <UnavailableToast />
               {children}
+              <footer className=" px-2 xl:px-2.5 pb-2 xl:pb-2.5">
+                <Footer />
+              </footer>
             </ReactQueryProvider>
           </main>
-          <footer className=" px-2 xl:px-2.5 pb-2 xl:pb-2.5">
-            <Footer />
-          </footer>
         </ActiveToastProvider>
       </body>
     </html>
