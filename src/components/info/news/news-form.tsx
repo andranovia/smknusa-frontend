@@ -1,6 +1,36 @@
-import React from "react";
+import React, { SetStateAction } from "react";
+import { useNews } from "@/services/api/useQueries/useNews";
 
-const NewsForm = () => {
+type NewsFilterFormProps = {
+  newsFilter: {
+    search: string;
+    start_date: string;
+    end_date: string;
+  };
+  setNewsFilter: React.Dispatch<
+    SetStateAction<{ search: string; start_date: string; end_date: string }>
+  >;
+};
+
+const NewsForm = ({ newsFilter, setNewsFilter }: NewsFilterFormProps) => {
+  const { refetch } = useNews();
+  const handleOnClick = (type: "reset" | "search") => {
+    switch (type) {
+      case "reset":
+        setNewsFilter({
+          search: "",
+          start_date: "",
+          end_date: "",
+        });
+        refetch();
+        break;
+      case "search":
+        refetch();
+        break;
+      default:
+        break;
+    }
+  };
   return (
     <>
       <div className="relative z-20 -top-14 xl:-top-24 flex justify-center bg-transparent">
@@ -18,6 +48,13 @@ const NewsForm = () => {
                   type="text"
                   id="title"
                   name="title"
+                  value={newsFilter.search}
+                  onChange={(e) =>
+                    setNewsFilter({
+                      ...newsFilter,
+                      search: e.target.value,
+                    })
+                  }
                   className="1xl:w-[107%] h-10 border border-gray-300 rounded-lg p-2"
                 />
               </div>
@@ -65,10 +102,16 @@ const NewsForm = () => {
               </div>
             </div>
             <div className="1xl:flex grid grid-cols-2 w-full justify-end py-3 gap-3 relative 1xl:-right-2">
-              <button className="bg-gray-200 w-full text-blue-base py-2 px-4 rounded-lg text-[16px] font-medium 1xl:w-28 h-10">
+              <button
+                onClick={() => handleOnClick("reset")}
+                className="bg-gray-200 w-full text-blue-base py-2 px-4 rounded-lg text-[16px] font-medium 1xl:w-28 h-10"
+              >
                 Reset
               </button>
-              <button className="bg-yellow-light w-full text-blue-base py-2 px-4 rounded-lg text-[16px] font-medium 1xl:w-28 h-10">
+              <button
+                onClick={() => handleOnClick("search")}
+                className="bg-yellow-light w-full text-blue-base py-2 px-4 rounded-lg text-[16px] font-medium 1xl:w-28 h-10"
+              >
                 Cari
               </button>
             </div>

@@ -15,11 +15,11 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "School Facility",
-  description: "SMKN 1 Purwosari School Facility",
+  title: "School Articles",
+  description: "SMKN 1 Purwosari School Articles",
 };
 
-export default function FacilityLayout({
+export default function ArticlesLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -39,13 +39,13 @@ export default function FacilityLayout({
       </head>
       <body className={`bg-gray-base ${montserrat.className}`}>
         <ActiveToastProvider>
-          <ClientOnly>
-            <nav className="bg-gray-base xl:flex justify-center ">
+          <nav className="bg-gray-base xl:flex justify-center ">
+            <ClientOnly>
               <ActivePageProvider>
                 <Navbar />
               </ActivePageProvider>
-            </nav>
-          </ClientOnly>
+            </ClientOnly>
+          </nav>
           <main>
             <ReactQueryProvider>
               <UnavailableToast />

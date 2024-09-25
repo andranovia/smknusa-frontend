@@ -1,4 +1,3 @@
-
 import { useQuery } from "@tanstack/react-query";
 import { getNews, getNewsCategories } from "../methods/fetch-news";
 
@@ -17,14 +16,19 @@ export type News = {
   viewer: string;
 };
 
-export const useNews = ( ) => {
-
-
-  const { data: news, isLoading: isNewsLoading } = useQuery<News[] | null>({
-    queryKey: ["News"],
-    queryFn: () => getNews()
+export const useNews = (filter?: {
+  search: string;
+  start_date: string;
+  end_date: string;
+}) => {
+  const {
+    data: news,
+    isLoading: isNewsLoading,
+    refetch,
+  } = useQuery<News[] | null>({
+    queryKey: ["News", filter],
+    queryFn: () => getNews(filter),
   });
-
 
   const { data: newsCategories } = useQuery({
     queryKey: ["NewsCategories"],
@@ -33,5 +37,5 @@ export const useNews = ( ) => {
     },
   });
 
-  return { news, newsCategories, isNewsLoading };
+  return { news, newsCategories, isNewsLoading, refetch };
 };

@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import Link from "next/link";
 
 import { useGalleries } from "@/services/api/useQueries/useGalleries";
 import GalleryCardItem from "@/components/ui/gallery-card-item";
@@ -22,9 +21,7 @@ const GalleryCard = () => {
                 .map((gallery, index) => {
                   return (
                     <React.Fragment key={index}>
-                      <Link href={`gallery/${gallery.id_gallery}`}>
-                        <GalleryCardItem GalleryCardData={gallery} />
-                      </Link>
+                      <GalleryCardItem GalleryCardData={gallery} />
                     </React.Fragment>
                   );
                 })}

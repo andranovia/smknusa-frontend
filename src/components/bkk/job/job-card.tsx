@@ -25,14 +25,14 @@ const JobVacanciesCard = () => {
         {vacancies && !isVacanciesLoading ? (
           <div className="flex justify-center items-center flex-col w-full 2xl:w-auto">
             <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 xl:gap-8 px-2 lg:px-4 py-4 1xl:px-12 pb-12 bg-white rounded-[10px] w-full">
-              {currentJobData?.map((_, index) => {
+              {currentJobData?.map((vacancy, index) => {
                 return (
                   <React.Fragment key={index}>
                     <Link
-                      href={`/info/article/`}
+                      href={`/bkk/job/${vacancy.id_loker}`}
                       className="flex justify-center"
                     >
-                      <JobVacanciesCardItem />
+                      <JobVacanciesCardItem vacancy={vacancy} />
                     </Link>
                   </React.Fragment>
                 );
