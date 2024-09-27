@@ -6,6 +6,7 @@ import { backendUrl } from "@/utils/backendUrl";
 import { Article } from "@/services/api/useQueries/useArticles";
 import InfoCardItem from "@/components/ui/info-card-item";
 import ArticleShare from "@/components/info/article/article-share";
+import FilterCard from "@/components/ui/filter-card";
 
 export const dynamic = "force-static";
 export const dynamicParams = false;
@@ -151,83 +152,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                 </div>
               </div>
 
-              <div className="flex flex-col items-start w-full xl:max-w-[360.59px] relative  xl:sticky xl:top-1/4 z-10">
-                <div className="flex gap-2 items-center w-full border-2 bg-white z-10 border-[#F5C451] py-3 px-4 xs:px-8 rounded-[10px]">
-                  <Image
-                    width={20}
-                    height={20}
-                    src={"/assets/icon/filter.svg"}
-                    alt="share"
-                  />
-                  <h4 className="font-[500] text-base xs:text-[18px]">
-                    Cari Artikel Berdasarkan
-                  </h4>
-                </div>
-                <div className="grid grid-cols-2 w-full gap-4 py-6 -mt-2 px-4 xs:px-6 border rounded-b-[10px]">
-                  <div className="flex flex-col gap-4 w-full col-span-2">
-                    <label
-                      htmlFor="title"
-                      className="font-medium text-[13px] xl:text-lg text-blue-base"
-                    >
-                      Judul Artikel
-                    </label>
-                    <input
-                      type="text"
-                      id="title"
-                      name="title"
-                      className="border border-gray-300 rounded-lg p-2 focus:ring-[#F5C451] focus:border-[#F5C451] focus:outline-none focus:ring-1"
-                    />
-                  </div>
-
-                  <div className="flex flex-col gap-4 w-full col-span-2">
-                    <label
-                      htmlFor="category"
-                      className="font-medium  text-[13px] xs:text-sm xl:text-lg  text-blue-base"
-                    >
-                      Kategori Artikel
-                    </label>
-                    <input
-                      type="text"
-                      id="category"
-                      name="category"
-                      className="border border-gray-300 rounded-lg p-2 focus:ring-[#F5C451] focus:border-[#F5C451] focus:outline-none focus:ring-1"
-                    />
-                  </div>
-                  <div className="flex flex-col gap-4 w-full col-span-1">
-                    <label
-                      htmlFor="from"
-                      className=" font-medium  text-[13px] xs:text-sm xl:text-lg  text-blue-base "
-                    >
-                      Dari tanggal
-                    </label>
-                    <input
-                      type="text"
-                      id="from"
-                      name="from"
-                      className="border border-gray-300 rounded-lg p-2 focus:ring-[#F5C451] focus:border-[#F5C451] focus:outline-none focus:ring-1"
-                    />
-                  </div>
-                  <div className="flex flex-col gap-4 w-full col-span-1">
-                    <label
-                      htmlFor="to-date"
-                      className=" font-medium  text-[13px] xs:text-sm xl:text-lg  text-blue-base "
-                    >
-                      Sampai tanggal
-                    </label>
-                    <input
-                      type="text"
-                      id="to-date"
-                      name="to-date"
-                      className="border border-gray-300 rounded-lg p-2 focus:ring-[#F5C451] focus:border-[#F5C451] focus:outline-none focus:ring-1"
-                    />
-                  </div>
-                  <div className="flex flex-col gap-4 w-full col-span-2 mt-2">
-                    <button className=" font-medium text-sm xl:text-lg bg-yellow-light  py-2 rounded-[10px] ">
-                      Cari
-                    </button>
-                  </div>
-                </div>
-              </div>
+              <FilterCard url="article" />
             </div>
           </div>
           <div className=" flex gap-4 lg:gap-10 flex-col w-full xl:w-[82%]">

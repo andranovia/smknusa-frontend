@@ -1,11 +1,11 @@
 import "@/app/globals.css";
 
 export const metadata = {
-  title: "School News",
-  description: "SMKN 1 Purwosari School News",
+  title: "School Major",
+  description: "SMKN 1 Purwosari School Major",
 };
 
-export default function NewsLayout({
+export default function MajorsLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
