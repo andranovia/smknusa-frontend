@@ -7,8 +7,16 @@ import InfoCardItemLoading from "@/components/ui/info-card-item-loading";
 import Pagination from "../../ui/pagination";
 import InfoCardItem from "../../ui/info-card-item";
 
-const NewsCard = () => {
-  const { news, isNewsLoading } = useNews();
+const NewsCard = ({
+  newsFilter,
+}: {
+  newsFilter: {
+    search: string;
+    start_date: string;
+    end_date: string;
+  };
+}) => {
+  const { news, isNewsLoading } = useNews({ ...newsFilter });
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 9;
 

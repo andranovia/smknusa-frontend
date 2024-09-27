@@ -1,8 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import {
-  getArticleCategories,
-  getArticles,
-} from "../methods/fetch-articles";
+import { getArticleCategories, getArticles } from "../methods/fetch-articles";
 
 export type Article = {
   id_pemberitahuan: string;
@@ -19,14 +16,20 @@ export type Article = {
   viewer: string;
 };
 
-export const useArticles = ( ) => {
-
-
-  const { data: articles, isLoading: isArticlesLoading } = useQuery<Article[] | null>({
-    queryKey: ["Articles"],
-    queryFn: () => getArticles()
+export const useArticles = (filter?: {
+  search: string;
+  start_date: string;
+  end_date: string;
+}) => {
+  const {
+    data: articles,
+    isLoading: isArticlesLoading,
+    refetch,
+  } = useQuery<Article[] | null>({
+    queryKey: ["Articles", filter],
+    queryFn: () => getArticles(filter),
+    enabled: !!filter,
   });
-
 
   const { data: articleCategories } = useQuery({
     queryKey: ["ArticleCategories"],
@@ -35,5 +38,10 @@ export const useArticles = ( ) => {
     },
   });
 
-  return { articles, articleCategories, isArticlesLoading };
+  return {
+    articles,
+    articleCategories,
+    isArticlesLoading,
+    refetch,
+  };
 };

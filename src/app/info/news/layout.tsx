@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import "@/app/globals.css";
 import { Montserrat } from "next/font/google";
 import Navbar from "@/components/navigation";
@@ -14,12 +13,12 @@ const montserrat = Montserrat({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "School Facility",
-  description: "SMKN 1 Purwosari School Facility",
+export const metadata = {
+  title: "School News",
+  description: "SMKN 1 Purwosari School News",
 };
 
-export default function FacilityLayout({
+export default function NewsLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -39,13 +38,13 @@ export default function FacilityLayout({
       </head>
       <body className={`bg-gray-base ${montserrat.className}`}>
         <ActiveToastProvider>
-          <ClientOnly>
-            <nav className="bg-gray-base xl:flex justify-center ">
+          <nav className="bg-gray-base xl:flex justify-center ">
+            <ClientOnly>
               <ActivePageProvider>
                 <Navbar />
               </ActivePageProvider>
-            </nav>
-          </ClientOnly>
+            </ClientOnly>
+          </nav>
           <main>
             <ReactQueryProvider>
               <UnavailableToast />

@@ -5,6 +5,7 @@ import { Major } from "@/services/api/useQueries/useMajors";
 import { Partnership } from "@/services/api/useQueries/usePartnerships";
 import { backendUrl } from "@/utils/backendUrl";
 import { cn } from "@/utils/cn";
+import { Vacancy } from "@/services/api/useQueries/useVacancies";
 
 const DetailLayout = ({
   children,
@@ -12,7 +13,7 @@ const DetailLayout = ({
   className,
 }: {
   children: React.ReactNode;
-  detailData: Major | Facility | Extra | Partnership;
+  detailData: Major | Facility | Extra | Partnership | Vacancy;
   className?: string;
 }) => {
   return (
@@ -27,7 +28,10 @@ const DetailLayout = ({
               ? backendUrl + detailData.jurusan_thumbnail
               : "extra_image" in detailData
               ? backendUrl + detailData.extra_image
-              : backendUrl + detailData.kemitraan_thumbnail
+              : "kemitraan_thumbnail" in detailData
+              ? backendUrl + detailData.kemitraan_thumbnail
+              : backendUrl +
+                "img/artikel/0CLJYkVxOPdAmwT3YZNioVLyLevyfexsDa7XgAMM.jpg"
           })`,
         }}
       ></div>

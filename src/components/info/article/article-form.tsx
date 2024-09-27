@@ -1,6 +1,41 @@
-import React from "react";
+import React, { SetStateAction } from "react";
+import { useArticles } from "@/services/api/useQueries/useArticles";
 
-const ArticleForm = () => {
+type ArticleFilterFormProps = {
+  articleFilter: {
+    search: string;
+    start_date: string;
+    end_date: string;
+  };
+  setArticleFilter: React.Dispatch<
+    SetStateAction<{ search: string; start_date: string; end_date: string }>
+  >;
+};
+
+const ArticleForm = ({
+  articleFilter,
+  setArticleFilter,
+}: ArticleFilterFormProps) => {
+  const { refetch } = useArticles();
+
+  const handleOnClick = (type: "reset" | "search") => {
+    switch (type) {
+      case "reset":
+        setArticleFilter({
+          search: "",
+          start_date: "",
+          end_date: "",
+        });
+        refetch();
+        break;
+      case "search":
+        refetch();
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <>
       <div className="relative z-20 -top-14 xl:-top-24 flex justify-center bg-transparent">
@@ -18,6 +53,13 @@ const ArticleForm = () => {
                   type="text"
                   id="title"
                   name="title"
+                  value={articleFilter.search}
+                  onChange={(e) =>
+                    setArticleFilter({
+                      ...articleFilter,
+                      search: e.target.value,
+                    })
+                  }
                   className="1xl:w-[107%] h-10 border border-gray-300 rounded-lg p-2"
                 />
               </div>
@@ -65,10 +107,16 @@ const ArticleForm = () => {
               </div>
             </div>
             <div className="1xl:flex grid grid-cols-2 w-full justify-end py-3 gap-3 relative 1xl:-right-2">
-              <button className="bg-gray-200 w-full text-blue-base py-2 px-4 rounded-lg text-[16px] font-medium 1xl:w-28 h-10">
+              <button
+                onClick={() => handleOnClick("reset")}
+                className="bg-gray-200 w-full text-blue-base py-2 px-4 rounded-lg text-[16px] font-medium 1xl:w-28 h-10"
+              >
                 Reset
               </button>
-              <button className="bg-yellow-light w-full text-blue-base py-2 px-4 rounded-lg text-[16px] font-medium 1xl:w-28 h-10">
+              <button
+                onClick={() => handleOnClick("search")}
+                className="bg-yellow-light w-full text-blue-base py-2 px-4 rounded-lg text-[16px] font-medium 1xl:w-28 h-10"
+              >
                 Cari
               </button>
             </div>
