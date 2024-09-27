@@ -4,59 +4,50 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useActiveToast } from "@/contexts/ActiveToastContext";
+import { FooterItem, useFooters } from "@/services/api/useQueries/useFooters";
 
 export default function Footer() {
   const { handleActiveUnavailableToast } = useActiveToast();
+  const { footers, isFooterLoading, error }= useFooters();
+
+  const renderFooterSection = (sectionName: string, items: FooterItem[]) => {
+    return (
+      <div className="flex flex-col items-stretch 1xl:w-1/4">
+        <h2 className="text-lg lg:text-2xl font-bold">{sectionName}</h2>
+        <div className="mt-4 lg:mt-10 w-fit">
+          {Array.isArray(items) && items.length > 0 ? (
+            items.map((item) => (
+              <Link href={item.url} key={item.id}>
+                <p className="mb-4 hover:text-yellow cursor-pointer transition-colors">{item.label}</p>
+              </Link>
+            ))
+          ) : (
+            <p></p> // Display a message when no items are present
+          )}
+        </div>
+      </div>
+    );
+  };
+
+  if (isFooterLoading) {
+    return <div>Loading footer...</div>; // Tampilkan loading state
+  }
+
+  if (error) {
+    return <div>Error loading footer</div>; // Handle error
+  }
 
   return (
     <>
       <div className="flex flex-col items-center 1xl:justify-center  1xl:px-8 py-8 bg-primary rounded-[10px] text-white mt-3">
         <div className="grid grid-cols-1 md:grid-cols-2 1xl:flex 1xl:flex-wrap flex-col 1xl:flex-row flex-nowrap mt-0 lg:mt-8 px-4 md:px-0  1xl:gap-0 gap-10 xl:max-w-xl-content  md:max-w-md-content lg:max-w-lg-content 1xl:max-w-1xl-content 2xl:max-w-max-content">
-          <div className="flex flex-col items-stretch 1xl:w-1/4 ">
-            <h2 className="text-lg lg:text-2xl font-bold ">
-              Unit Produksi Sekolah
-            </h2>
-            <div className="mt-4 lg:mt-10 w-fit">
-              <p className="hover:text-yellow cursor-pointer transition-colors">
-                SMK Production
-              </p>
-            </div>
-          </div>
-          <div className="flex flex-col items-stretch  1xl:w-1/4 ">
-            <h2 className="text-lg lg:text-2xl font-bold ">
-              Aplikasi & Layanan
-            </h2>
-            <div className="mt-4 lg:mt-10 w-fit">
-              <p className="mb-4 hover:text-yellow cursor-pointer transition-colors">
-                LSP SMKN 1 Purwosari
-              </p>
-              <p className="mb-4 hover:text-yellow cursor-pointer transition-colors">
-                Virtual School
-              </p>
-              <p className="mb-4 hover:text-yellow cursor-pointer transition-colors">
-                CBT(Ujian Sekolah)
-              </p>
-              <p className="mb-4 hover:text-yellow cursor-pointer transition-colors">
-                LMS Save The Children
-              </p>
-              <p className="mb-4 hover:text-yellow cursor-pointer transition-colors">
-                Kotak Saran
-              </p>
-            </div>
-          </div>
-          <div className="flex flex-col items-stretch 1xl:w-1/4 md:col-span-2">
-            <h2 className="text-lg lg:text-2xl font-bold ">Lainnya</h2>
-            <div className="mt-4 lg:mt-10 w-fit">
-              <Link href={"/gallery"}>
-                <p className="mb-4 hover:text-yellow cursor-pointer transition-colors">
-                  Gallery
-                </p>
-              </Link>
-              <p className="hover:text-yellow cursor-pointer transition-colors">
-                Peta Situs (XML)
-              </p>
-            </div>
-          </div>
+
+              { footers && footers.map((section) => {
+                const sectionName = section["1"] || section["2"] || section["3"];
+                const data = Array.isArray(section.data) ? section.data : [];
+
+                return renderFooterSection(sectionName as string, data);
+              })}
 
           <div className="flex flex-col items-start justify-start text-blue-base rounded-md 1xl:w-1/4 md:col-span-2">
             <div className="flex flex-col bg-white rounded-md w-full">
@@ -109,7 +100,7 @@ export default function Footer() {
               </p>
             </div>
 
-            <div className=" text-white flex flex-col items-start gap-4 justify-start relative ">
+            <div className="text-white flex flex-col items-start gap-4 justify-start relative ">
               <div className="flex items-center mr-4 mb-2 gap-4">
                 <Image
                   src={"/assets/icon/sms.svg"}
@@ -117,7 +108,7 @@ export default function Footer() {
                   width={22}
                   height={22}
                 />
-                <p className=" mb-0">informasi@smkn1purwosari.sch.id</p>
+                <p className="mb-0">informasi@smkn1purwosari.sch.id</p>
               </div>
               <div className="flex items-center gap-4">
                 <Image
