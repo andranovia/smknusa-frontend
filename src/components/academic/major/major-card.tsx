@@ -3,13 +3,13 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import FeatureCardItem from "@/components/ui/feature-card-item";
-import { useMajors } from "@/services/api/useQueries/useMajors";
+import { Major, useMajors } from "@/services/api/useQueries/useMajors";
 import FeatureCardItemLoading from "@/components/ui/feature-card-item-loading";
 import MajorShowMore from "./major-showmore";
 
-const MajorCard = () => {
+const MajorCard = ({ majors }: { majors: Major[] | undefined }) => {
   const [showAllMajor, setShowAllMajor] = useState(false);
-  const { majors, isMajorsLoading } = useMajors();
+  const { isMajorsLoading } = useMajors();
 
   return (
     <div className="w-full flex justify-center items-center bg-white px-2 xl:mt-0">
@@ -31,10 +31,12 @@ const MajorCard = () => {
                 );
               })}
           </div>
-          <MajorShowMore
-            showAllMajor={showAllMajor}
-            setShowAllMajor={setShowAllMajor}
-          />
+          {majors.length > 8 && (
+            <MajorShowMore
+              showAllMajor={showAllMajor}
+              setShowAllMajor={setShowAllMajor}
+            />
+          )}
         </div>
       ) : (
         <div className="w-full 1xl:w-fit grid grid-cols-1 lg:grid-cols-2 1xl:grid-cols-3 gap-4 md:gap-8 p-4 1xl:px-14 pb-12 bg-white rounded-[10px]">

@@ -1,15 +1,26 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import MajorCard from "@/components/academic/major/major-card";
-import MajorHeader from "@/components/academic/major/major-header";
+import MajorFilter from "@/components/academic/major/major-filter";
 import InfoLayout from "@/layouts/info-layout";
 import { ClientOnly } from "@/utils/isClient";
+import { useMajors } from "@/services/api/useQueries/useMajors";
 
-export const metadata = {
-  title: "School Major",
-  description: "SMKN 1 Purwosari School Major",
-};
+const Page = () => {
+  const { majors } = useMajors();
+  const [majorFilter, setMajorFilter] = useState<string | null>(null);
 
-const page = () => {
+  const majorCategories = Array.from(
+    new Set(majors?.map((major) => major.prodi.nama_prodi))
+  ).map((category) => {
+    return { id: category, name: category };
+  });
+
+  const filteredMajors = majors?.filter((major) =>
+    majorFilter ? major.prodi.nama_prodi === majorFilter : true
+  );
+
   return (
     <ClientOnly>
       <InfoLayout
@@ -17,12 +28,15 @@ const page = () => {
         subtitle="Daftar jurusan yang ada di SMK Negeri 1 Purwosari"
       >
         <div className="flex flex-col w-full max-w-full md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 1xl:max-w-[1472.8px] bg-white">
-          <MajorHeader />
-          <MajorCard />
+          <MajorFilter
+            filterData={majorCategories}
+            setSelectedFilter={setMajorFilter}
+          />
+          <MajorCard majors={filteredMajors} />
         </div>
       </InfoLayout>
     </ClientOnly>
   );
 };
 
-export default page;
+export default Page;

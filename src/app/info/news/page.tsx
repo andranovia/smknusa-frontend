@@ -1,16 +1,23 @@
 "use client";
 
 import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 import NewsCard from "@/components/info/news/news-card";
 import NewsForm from "@/components/info/news/news-form";
 import InfoLayout from "@/layouts/info-layout";
 import { ClientOnly } from "@/utils/isClient";
 
 export default function News() {
+  const params = useSearchParams();
+
+  const search = params.get("search");
+  const start_date = params.get("start_date");
+  const end_date = params.get("end_date");
+
   const [newsFilter, setNewsFilter] = useState({
-    search: "",
-    start_date: "",
-    end_date: "",
+    search: search || "",
+    start_date: start_date || "",
+    end_date: end_date || "",
   });
 
   return (
