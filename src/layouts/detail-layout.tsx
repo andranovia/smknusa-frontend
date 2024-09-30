@@ -6,6 +6,7 @@ import { Partnership } from "@/services/api/useQueries/usePartnerships";
 import { backendUrl } from "@/utils/backendUrl";
 import { cn } from "@/utils/cn";
 import { Vacancy } from "@/services/api/useQueries/useVacancies";
+import { Announcement } from "@/services/api/useQueries/useAnnouncements";
 
 const DetailLayout = ({
   children,
@@ -13,7 +14,7 @@ const DetailLayout = ({
   className,
 }: {
   children: React.ReactNode;
-  detailData: Major | Facility | Extra | Partnership | Vacancy;
+  detailData: Major | Facility | Extra | Partnership | Vacancy | Announcement;
   className?: string;
 }) => {
   return (
@@ -30,8 +31,9 @@ const DetailLayout = ({
               ? backendUrl + detailData.extra_image
               : "kemitraan_thumbnail" in detailData
               ? backendUrl + detailData.kemitraan_thumbnail
-              : backendUrl +
-                "img/artikel/0CLJYkVxOPdAmwT3YZNioVLyLevyfexsDa7XgAMM.jpg"
+              : "loker_thumbnail" in detailData
+              ? backendUrl + detailData.loker_thumbnail
+              : backendUrl + detailData.thumbnail
           })`,
         }}
       ></div>

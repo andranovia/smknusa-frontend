@@ -8,6 +8,7 @@ import {
   motion,
   useAnimation,
 } from "framer-motion";
+import Link from "next/link";
 import { useMediaQuery } from "@uidotdev/usehooks";
 import { Announcement } from "@/services/api/useQueries/useAnnouncements";
 import { Article } from "@/services/api/useQueries/useArticles";
@@ -150,6 +151,21 @@ const HomeAnnouncementsCard = ({
     },
   };
 
+  const getLinkDetail = (link: string) => {
+    switch (currentAnnouncementsType) {
+      case "Pengumuman":
+        return `info/announcements/${link}`;
+      case "Berita":
+        return `info/news/${link}`;
+      case "Artikel":
+        return `info/article/${link}`;
+      case "Agenda":
+        return `info/events/${link}`;
+      default:
+        return "/";
+    }
+  };
+
   const AnnouncementsHighlight = (children: React.ReactNode) => {
     return (
       <motion.div
@@ -215,7 +231,10 @@ const HomeAnnouncementsCard = ({
                 </p>
               </span>
 
-              <div className="flex justify-start items-center gap-2">
+              <Link
+                href={getLinkDetail(announcement.id_pemberitahuan)}
+                className="flex justify-start items-center gap-2"
+              >
                 <h3 className="font-[500] text-[16px] cursor-pointer">
                   Lihat Selengkapnya
                 </h3>
@@ -226,7 +245,7 @@ const HomeAnnouncementsCard = ({
                   height={40}
                   className="w-4 h-4"
                 />
-              </div>
+              </Link>
             </motion.div>
           </React.Fragment>
         ))}

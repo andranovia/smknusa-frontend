@@ -9,10 +9,10 @@ import { useResidents } from "@/services/api/useQueries/useResidents";
 import { ClientOnly } from "@/utils/isClient";
 import InfoLayout from "@/layouts/info-layout";
 
-export const metadata = {
-  title: "School Residents",
-  description: "SMKN 1 Purwosari Residents",
-};
+// export const metadata = {
+//   title: "School Residents",
+//   description: "SMKN 1 Purwosari Residents",
+// };
 
 const ResidentData = () => {
   const [currentTable, setcurrentTable] = useState<string>("students");
