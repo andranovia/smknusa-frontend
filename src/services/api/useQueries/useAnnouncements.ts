@@ -1,8 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import {
-
   getAnnouncementCategories,
-  getAnnouncements
+  getAnnouncements,
 } from "../methods/fetch-announcements";
 
 export type Announcement = {
@@ -16,19 +15,18 @@ export type Announcement = {
   category: {
     id: number;
     nama: string;
+    color: string;
   };
   viewer: string;
 };
 
-export const useAnnouncements = ( ) => {
-
-
-  const { data: announcements, isLoading: isAnnouncementsLoading  } = useQuery<Announcement[] | null>({
+export const useAnnouncements = () => {
+  const { data: announcements, isLoading: isAnnouncementsLoading } = useQuery<
+    Announcement[] | null
+  >({
     queryKey: ["Announcements"],
-    queryFn: () => getAnnouncements()
+    queryFn: () => getAnnouncements(),
   });
-
-
 
   const { data: announcementCategories } = useQuery({
     queryKey: ["AnnouncementCategories"],
