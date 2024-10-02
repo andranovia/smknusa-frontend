@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import Link from "next/link";
 import Pagination from "@/components/ui/pagination";
 import JobVacanciesCardItem from "@/components/ui/job-card-item";
 import { useVacancies } from "@/services/api/useQueries/useVacancies";
@@ -28,12 +27,7 @@ const JobVacanciesCard = () => {
               {currentJobData?.map((vacancy, index) => {
                 return (
                   <React.Fragment key={index}>
-                    <Link
-                      href={`/bkk/job/${vacancy.id_loker}`}
-                      className="flex justify-center"
-                    >
-                      <JobVacanciesCardItem vacancy={vacancy} />
-                    </Link>
+                    <JobVacanciesCardItem vacancy={vacancy} />
                   </React.Fragment>
                 );
               })}

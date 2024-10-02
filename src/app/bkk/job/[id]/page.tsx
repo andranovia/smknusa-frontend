@@ -4,6 +4,7 @@ import { Heading, Paragraph } from "@/components/ui/typography";
 import DetailLayout from "@/layouts/detail-layout";
 import { Vacancy } from "@/services/api/useQueries/useVacancies";
 import { backendUrl } from "@/utils/backendUrl";
+import ApplyButton from "@/components/ui/job-apply-button";
 
 async function fetchVacancy() {
   const response = await fetch(`${backendUrl}api/user/lokers`, {
@@ -104,9 +105,10 @@ export default async function Page({ params }: { params: { id: string } }) {
                 </Paragraph>
               </div>
             </div>
-            <button className="bg-yellow-light w-full xl:max-w-[183px] text-blue-base py-[10px] rounded-md  text-xs font-medium">
-              Lamar
-            </button>
+            <ApplyButton
+              vacancy={VacancyById}
+              className="bg-yellow-light w-full xl:max-w-[183px] text-blue-base py-[10px] rounded-md text-xs font-medium"
+            />
           </div>
         </div>
 

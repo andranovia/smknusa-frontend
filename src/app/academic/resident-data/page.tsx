@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import TeachersForm from "@/components/academic/teachers/teachers-form";
-import TeachersTable from "@/components/academic/teachers/teachers-table";
-import StudentsForm from "@/components/academic/students/students-form";
-import StudentsTable from "@/components/academic/students/students-table";
+import TeachersForm from "@/components/academic/resident-data/teachers/teachers-form";
+import TeachersTable from "@/components/academic/resident-data/teachers/teachers-table";
+import StudentsForm from "@/components/academic/resident-data/students/students-form";
+import StudentsTable from "@/components/academic/resident-data/students/students-table";
 import { useResidents } from "@/services/api/useQueries/useResidents";
 import { ClientOnly } from "@/utils/isClient";
 import InfoLayout from "@/layouts/info-layout";
@@ -15,15 +15,11 @@ import InfoLayout from "@/layouts/info-layout";
 // };
 
 const ResidentData = () => {
-  const [currentTable, setcurrentTable] = useState<string>("students");
+  const [currentTable, setCurrentTable] = useState<string>("students");
   const { teachers, students } = useResidents();
 
-  const handleChangeTable = () => {
-    if (currentTable === "students") {
-      setcurrentTable("teachers");
-    } else {
-      setcurrentTable("students");
-    }
+  const handleChangeTable = (current: string) => {
+    setCurrentTable(current);
   };
 
   return (

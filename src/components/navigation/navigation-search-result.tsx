@@ -1,9 +1,12 @@
-import React, { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import Image from "next/image";
+import { useSearches } from "@/services/api/useQueries/useSearches";
 import { defaultTransition } from "../animation/transition";
 import { Heading, Paragraph } from "../ui/typography";
 import NavigationSearchItem from "./navigation-search-item";
+import SearchResultItemLoading from "../ui/search-result-item-loading";
 
 const NavigationSearchResult = ({
   searchToggle,
@@ -12,7 +15,76 @@ const NavigationSearchResult = ({
   searchToggle: boolean;
   setSearchToggle: Dispatch<SetStateAction<boolean>>;
 }) => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const { searches, isSearchLoading } = useSearches({ query: searchQuery });
+
   // const [searchRecent, setSearchRecent] = useState([]);
+
+  const getResultItemIcon = (iconType: string) => {
+    switch (iconType) {
+      case "Articles":
+        return "/assets/nav-dropdown-icon/info/info.svg";
+      case "Announcement":
+        return "/assets/nav-dropdown-icon/info/info.svg";
+      case "News":
+        return "/assets/nav-dropdown-icon/info/info.svg";
+      case "Event":
+        return "/assets/nav-dropdown-icon/info/info.svg";
+      case "Ekstra":
+        return "/assets/nav-dropdown-icon/akademik/ekstrakulikuler.svg";
+      case "Faculty":
+        return "/assets/nav-dropdown-icon/profile/fasilitas.svg";
+      case "Gallery":
+        return "/assets/nav-dropdown-icon/info/info.svg";
+      case "Jurusan":
+        return "/assets/nav-dropdown-icon/akademik/jurusan.svg";
+      case "Pa":
+        return "/assets/nav-dropdown-icon/akademik/form-pa.svg";
+      case "PD":
+        return "/assets/nav-dropdown-icon/akademik/data-warga.svg";
+      case "PTK":
+        return "/assets/nav-dropdown-icon/akademik/data-warga.svg";
+      case "Kemitraan":
+        return "/assets/nav-dropdown-icon/bkk/kemitraan.svg";
+      case "lokers":
+        return "/assets/nav-dropdown-icon/bkk/lowongan.svg";
+      default:
+        return "/assets/nav-dropdown-icon/info/info.svg";
+    }
+  };
+
+  const getResultItemLink = (iconType: string) => {
+    switch (iconType) {
+      case "Articles":
+        return "/info/article";
+      case "Announcement":
+        return "/info/announcements";
+      case "News":
+        return "/info/news";
+      case "Event":
+        return "/info/events";
+      case "Ekstra":
+        return "/academic/extracurricular";
+      case "Faculty":
+        return "/profile/school-facility";
+      case "Gallery":
+        return "/gallery";
+      case "Jurusan":
+        return "/academic/major";
+      case "Pa":
+        return "/academic/device-form";
+      case "PD":
+        return "/academic/resident-data";
+      case "PTK":
+        return "/academic/resident-data";
+      case "Kemitraan":
+        return "/bkk/partnership";
+      case "lokers":
+        return "/bkk/job";
+      default:
+        return "/";
+    }
+  };
 
   return (
     <div
@@ -56,8 +128,10 @@ const NavigationSearchResult = ({
             />
             <input
               type="text"
-              name="search"
-              id="search"
+              name="query"
+              id="query"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Ketikkan kata kunci"
               className={`focus:outline-none  hidden 2xl:block placeholder:font-[500] placeholder:text-sm bg-transparent placeholder:text-gray-light`}
             />
@@ -75,21 +149,64 @@ const NavigationSearchResult = ({
           <Heading type="h5" className="font-[500] text-sm text-gray-light">
             Disarankan
           </Heading>
-          {[...Array(3)].map((_, index) => (
-            <motion.div
-              animate={{
-                y: searchToggle ? 0 : 20,
-                opacity: searchToggle ? 1 : 0,
-              }}
-              transition={{ ...defaultTransition, delay: index * 0.1 }}
-              key={index}
-            >
-              <NavigationSearchItem
-                imgSrc="/assets/nav-dropdown-icon/akademik/ekstrakulikuler.svg"
-                title="Ekstrakulikuler"
-              />
-            </motion.div>
-          ))}
+          {searches && !isSearchLoading ? (
+            searches?.slice(0, 3).map((data, index) => {
+              return (
+                <Link
+                  href={
+                    getResultItemLink(data?.icon_type) +
+                    `/${
+                      data?.id_pemberitahuan ||
+                      data?.id_extra ||
+                      data?.id_gallery ||
+                      data?.id_facility ||
+                      data?.id_jurusan ||
+                      data?.id_loker ||
+                      data?.id_pa ||
+                      data?.id ||
+                      data?.id_kemitraan
+                    }`
+                  }
+                  key={index}
+                >
+                  <motion.div
+                    animate={{
+                      y: searchToggle ? 0 : 20,
+                      opacity: searchToggle ? 1 : 0,
+                    }}
+                    transition={{ ...defaultTransition, delay: index * 0.1 }}
+                  >
+                    <NavigationSearchItem
+                      imgSrc={getResultItemIcon(data?.icon_type)}
+                      title={
+                        data?.nama ||
+                        data?.facility_name ||
+                        data?.gallery_title ||
+                        data?.jurusan_nama ||
+                        data?.title ||
+                        data?.kemitraan_name ||
+                        data?.loker_type
+                      }
+                      description={
+                        data?.text ||
+                        data?.extra_text ||
+                        data?.facility_text ||
+                        data?.gallery_text ||
+                        data?.jurusan_text ||
+                        data?.description ||
+                        data?.kelas ||
+                        data?.nip ||
+                        data?.kemitraan_description ||
+                        data?.kemitraan_id
+                      }
+                    />
+                  </motion.div>
+                </Link>
+              );
+            })
+          ) : (
+            <SearchResultItemLoading />
+          )}
         </div>
         <hr />
         <div className="w-full  flex flex-col justify-start gap-4  px-4 text-blue-base">

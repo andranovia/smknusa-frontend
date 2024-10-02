@@ -9,6 +9,7 @@ export type Announcement = {
   nama: string;
   thumbnail: string;
   created_at: string;
+  icon_type: string;
   date: string;
   text: string;
   level: string;
