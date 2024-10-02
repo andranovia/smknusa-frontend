@@ -1,35 +1,58 @@
 import Image from "next/image";
-import React from "react";
-import { Gallery } from "@/services/api/useQueries/useGalleries";
+import React, { useState } from "react";
+import { motion } from "framer-motion";
 import { backendUrl } from "@/utils/backendUrl";
+import { Gallery } from "@/services/api/useQueries/useGalleries";
 import { Heading } from "./typography";
+import GalleryModal from "./gallery-modal";
 
 const GalleryCardItem = ({ GalleryCardData }: { GalleryCardData: Gallery }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const handleHover = () => setIsHovered(true);
+  const handleHoverLeave = () => setIsHovered(false);
+  const handleModalOpen = () => setIsModalOpen(true);
+  const handleModalClose = () => setIsModalOpen(false);
   return (
-    <div className="bg-white rounded-lg 1xl:w-[23rem] h-full shadow-md overflow-hidden relative w-full">
-      <Image
-        className="w-full  min-h-[8rem] xl:min-h-[10rem]  max-h-[6rem] sm:max-h-[8rem] xl:max-h-[10rem]  object-cover"
-        src={backendUrl + GalleryCardData.gallery_file}
-        alt={"gallery-image"}
-        width={800}
-        height={800}
-      />
-      <div className=" px-3 xl:p-4 flex flex-col items-start gap-3 w-full my-3 xl:my-0 ">
-        <Heading
-          type="h2"
-          className="xl:text-sm text-xs !font-[550]  xl:w-full line-clamp-1"
-        >
-          {GalleryCardData.gallery_title}
-        </Heading>
-
-        <Heading
-          type="h4"
-          className="text-xs font-[500] leading-6  mb-2 xl:w-full  text-gray line-clamp-2"
-        >
-          {GalleryCardData.gallery_text}
-        </Heading>
+    <>
+      <div
+        className={`relative bg-white rounded-lg shadow-md overflow-hidden cursor-pointer mx-auto transition-transform duration-300 ${
+          isHovered ? "scale-105" : "scale-100"
+        }`}
+        onMouseEnter={handleHover}
+        onMouseLeave={handleHoverLeave}
+        onClick={handleModalOpen}
+        style={{ width: "23rem", maxWidth: "100%", height: "100%" }}
+      >
+        <Image
+          className={`w-full min-h-[10rem] sm:min-h-[7rem] xl:min-h-[12rem] max-h-[8rem] sm:max-h-[10rem] xl:max-h-[12rem] object-cover transition-all duration-300  ${
+            isHovered ? "brightness-75" : ""
+          }`}
+          src={backendUrl + GalleryCardData.gallery_file}
+          alt={"gallery-image"}
+          width={800}
+          height={800}
+        />
+        {isHovered && (
+          <motion.div
+            initial={{ opacity: 0, translateY: 20 }}
+            animate={{ opacity: 1, translateY: 0 }}
+            exit={{ opacity: 0, translateY: 20 }}
+            transition={{ duration: 0.3 }}
+            className="absolute inset-0 flex justify-center items-end pb-4"
+          >
+            <Heading type="h5" className="text-white text-sm font-bold">
+              {GalleryCardData.gallery_title}
+            </Heading>
+          </motion.div>
+        )}
       </div>
-    </div>
+      <GalleryModal
+        isOpen={isModalOpen}
+        onClose={handleModalClose}
+        GalleryCardData={GalleryCardData}
+      />
+    </>
   );
 };
 

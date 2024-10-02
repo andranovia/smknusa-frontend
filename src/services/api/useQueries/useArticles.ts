@@ -4,6 +4,7 @@ import { getArticleCategories, getArticles } from "../methods/fetch-articles";
 export type Article = {
   id_pemberitahuan: string;
   nama: string;
+  icon_type: string;
   thumbnail: string;
   created_at: string;
   text: string;

@@ -1,8 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import {
-  getEventCategories,
-  getEvents,
-} from "../methods/fetch-events";
+import { getEventCategories, getEvents } from "../methods/fetch-events";
 
 export type Event = {
   id_pemberitahuan: string;
@@ -10,6 +7,7 @@ export type Event = {
   thumbnail: string;
   created_at: string;
   text: string;
+  icon_type: string;
   level: string;
   category: {
     id: number;
@@ -19,15 +17,11 @@ export type Event = {
   viewer: string;
 };
 
-export const useEvents = ( ) => {
-
-
+export const useEvents = () => {
   const { data: events } = useQuery<Event[] | null>({
     queryKey: ["Events"],
-    queryFn: () => getEvents()
+    queryFn: () => getEvents(),
   });
-
-
 
   const { data: eventsCategories } = useQuery({
     queryKey: ["EventsCategories"],
@@ -36,5 +30,5 @@ export const useEvents = ( ) => {
     },
   });
 
-  return { events,  eventsCategories };
+  return { events, eventsCategories };
 };

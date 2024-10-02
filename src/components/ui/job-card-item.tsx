@@ -1,7 +1,9 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Vacancy } from "@/services/api/useQueries/useVacancies";
 import { Heading, Paragraph } from "./typography";
+import ApplyButton from "./job-apply-button";
 
 const JobCardItem = ({ vacancy }: { vacancy: Vacancy }) => {
   return (
@@ -60,12 +62,23 @@ const JobCardItem = ({ vacancy }: { vacancy: Vacancy }) => {
         lobortis magnis porta tellus platea.
       </Paragraph>
       <div className="1xl:flex grid grid-cols-2 w-full gap-3 mt-2">
-        <button className="bg-primary w-full text-white py-[10px] rounded-md text-xs font-medium">
-          Detail
-        </button>
-        <button className="bg-yellow-light w-full text-blue-base py-[10px] rounded-md  text-xs font-medium">
+        <Link
+          href={`/bkk/job/${vacancy.id_loker}`}
+          className="bg-primary w-full text-white rounded-md text-xs font-medium"
+        >
+          <button className="bg-primary w-full text-white py-[10px] rounded-md text-xs font-medium">
+            Detail
+          </button>
+        </Link>
+        {/*  jika ingin menggunakan tanpa template bisa
+        <button className="bg-yellow-light w-full text-blue-base py-[10px] rounded-md text-xs font-medium">
           Lamar
         </button>
+        */}
+        <ApplyButton
+          vacancy={vacancy}
+          className="bg-yellow-light w-full text-blue-base py-[10px] rounded-md  text-xs font-medium"
+        />
       </div>
     </div>
   );

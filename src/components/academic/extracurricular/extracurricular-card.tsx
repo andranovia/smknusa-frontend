@@ -1,18 +1,14 @@
-'use client'
+"use client";
 
 import React, { useState } from "react";
 import Link from "next/link";
 import ProfileCardItem from "@/components/ui/profile-card-item";
 import ProfileCardItemLoading from "@/components/ui/profile-card-item-loading";
-import { useExtras } from "@/services/api/useQueries/useExtracurriculars";
+import { useExtras } from "@/services/api/useQueries/useExtracurricular";
 import ExtracurricularShowMore from "./extracurricular-showmore";
-
 
 const ExtracurricularCard = () => {
   const { extras, isExtraLoading } = useExtras();
-
-
-
 
   const [showAllExtracurricular, setShowAllExtracurricular] = useState(false);
   return (
@@ -26,7 +22,9 @@ const ExtracurricularCard = () => {
                 .map((extracurricular, index) => {
                   return (
                     <React.Fragment key={index}>
-                      <Link href={`extracurricular/${extracurricular.id_extra}`}>
+                      <Link
+                        href={`extracurricular/${extracurricular.id_extra}`}
+                      >
                         <ProfileCardItem profileCardData={extracurricular} />
                       </Link>
                     </React.Fragment>

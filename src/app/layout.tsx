@@ -38,25 +38,24 @@ export default function RootLayout({
         />
       </head>
       <body className={`bg-gray-base ${montserrat.className}`}>
-      <ActiveToastProvider>
-        <nav className="bg-gray-base xl:flex justify-center ">
-          <ClientOnly>
-            <ActivePageProvider>
-              <Navbar />
-            </ActivePageProvider>
-          </ClientOnly>
-        </nav>
-        <main>
+        <ActiveToastProvider>
           <ReactQueryProvider>
-      
+            <nav className="bg-gray-base xl:flex justify-center ">
+              <ClientOnly>
+                <ActivePageProvider>
+                  <Navbar />
+                </ActivePageProvider>
+              </ClientOnly>
+            </nav>
+            <main>
               <UnavailableToast />
               {children}
-       
-            <footer className=" px-2 xl:px-2.5 pb-2 xl:pb-2.5">
-              <Footer />
-            </footer>
+
+              <footer className=" px-2 xl:px-2.5 pb-2 xl:pb-2.5">
+                <Footer />
+              </footer>
+            </main>
           </ReactQueryProvider>
-        </main>
         </ActiveToastProvider>
       </body>
     </html>

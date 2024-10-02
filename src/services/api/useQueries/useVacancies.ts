@@ -4,6 +4,7 @@ export interface Vacancy {
   loker_type: string;
   position_id: string;
   kemitraan_id: string;
+  icon_type: string;
   loker_available: string;
 }
 

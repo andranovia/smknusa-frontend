@@ -1,5 +1,5 @@
 import React from "react";
-import { Extra } from "@/services/api/useQueries/useExtracurriculars";
+import { Extra } from "@/services/api/useQueries/useExtracurricular";
 import { Facility } from "@/services/api/useQueries/useFacilities";
 import { Major } from "@/services/api/useQueries/useMajors";
 import { Partnership } from "@/services/api/useQueries/usePartnerships";
@@ -7,6 +7,7 @@ import { backendUrl } from "@/utils/backendUrl";
 import { cn } from "@/utils/cn";
 import { Vacancy } from "@/services/api/useQueries/useVacancies";
 import { Announcement } from "@/services/api/useQueries/useAnnouncements";
+import { Event } from "@/services/api/useQueries/useEvents";
 
 const DetailLayout = ({
   children,
@@ -14,7 +15,14 @@ const DetailLayout = ({
   className,
 }: {
   children: React.ReactNode;
-  detailData: Major | Facility | Extra | Partnership | Vacancy | Announcement;
+  detailData:
+    | Major
+    | Facility
+    | Extra
+    | Partnership
+    | Vacancy
+    | Announcement
+    | Event;
   className?: string;
 }) => {
   return (

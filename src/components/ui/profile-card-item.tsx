@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import { Extra } from "@/services/api/useQueries/useExtracurriculars";
+import { Extra } from "@/services/api/useQueries/useExtracurricular";
 import { backendUrl } from "@/utils/backendUrl";
 import { Partnership } from "@/services/api/useQueries/usePartnerships";
 import { Heading } from "./typography";

@@ -8,6 +8,7 @@ export type Teacher = {
   nuptk: string;
   tempat_lahir: string;
   tanggal_lahir: string;
+  icon_type: string;
   jenis_kelamin: string;
   alamat: string;
   foto: string;
@@ -19,6 +20,7 @@ export type Student = {
   nis: string;
   nama: string;
   kelas: string;
+  icon_type: string;
   tempat_lahir: string;
   tanggal_lahir: string;
   agama: string;
@@ -27,10 +29,7 @@ export type Student = {
   alamat: string;
 };
 
-
-
-export const useResidents = ( ) => {
-
+export const useResidents = () => {
   const { data: teachers } = useQuery<Teacher[] | null>({
     queryKey: ["Teachers"],
     queryFn: () => getTeachers(),
@@ -41,5 +40,5 @@ export const useResidents = ( ) => {
     queryFn: () => getStudents(),
   });
 
-  return {teachers, students};
+  return { teachers, students };
 };

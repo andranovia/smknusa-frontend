@@ -4,7 +4,7 @@ import React from "react";
 import ProfileCardItem from "@/components/ui/profile-card-item";
 import { Heading, Paragraph } from "@/components/ui/typography";
 import DetailLayout from "@/layouts/detail-layout";
-import { Extra } from "@/services/api/useQueries/useExtracurriculars";
+import { Extra } from "@/services/api/useQueries/useExtracurricular";
 import { backendUrl } from "@/utils/backendUrl";
 
 async function fetchExtracurricular() {
