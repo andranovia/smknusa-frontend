@@ -1,32 +1,35 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useQuery } from "@tanstack/react-query";
-import { News } from "./useNews";
-import { Announcement } from "./useAnnouncements";
-import { Extra } from "./useExtracurricular";
-import { Major } from "./useMajors";
-import { Gallery } from "./useGalleries";
-import { Facility } from "./useFacilities";
-import { Teaching } from "./useTeaching";
-import { Student, Teacher } from "./useResidents";
-import { Partnership } from "./usePartnerships";
-import { Vacancy } from "./useVacancies";
 import { getSearchData } from "../methods/fetch-searches";
-import { Article } from "./useArticles";
-import { Event } from "./useEvents";
 
 export type SearchData = {
-  articles: Article | null;
-  news: News | null;
-  announcements: Announcement | null;
-  events: Event | null;
-  ekstras: Extra | null;
-  facilities: Facility | null;
-  galleries: Gallery | null;
-  jurusans: Major | null;
-  pa: Teaching | null;
-  pd: Student | null;
-  ptk: Teacher | null;
-  kemitraan: Partnership | null;
-  lokers: Vacancy | null;
+  icon_type: any;
+  id_pemberitahuan: any;
+  id_extra: any;
+  id_gallery: any;
+  id_facility: any;
+  id_jurusan: any;
+  id_loker: any;
+  id_pa: any;
+  id: any;
+  id_kemitraan: any;
+  nama: any;
+  facility_name: any;
+  gallery_title: any;
+  jurusan_nama: any;
+  title: any;
+  kemitraan_name: any;
+  loker_type: any;
+  text: any;
+  extra_text: any;
+  facility_text: any;
+  gallery_text: any;
+  jurusan_text: any;
+  description: any;
+  kelas: any;
+  nip: any;
+  kemitraan_description: any;
+  kemitraan_id: any;
 };
 
 export const useSearches = (filter?: { query: string }) => {

@@ -44,14 +44,15 @@ const HomeHero = () => {
       <div className="absolute hidden xl:block top-0 bg-gradient-to-b w-full from-black opacity-40 to-transparent p-10"></div>
 
       <div className="relative w-full h-[180px] xs:h-[230px] sm:h-[270px] md:h-[320px] lg:h-[400px] xl:h-[720px] 1xl:h-[800px] 2xl:h-[900px] aspect-w-16 aspect-h-9">
+
         {jumbotron && jumbotron[0] && (
             <YouTube
               opts={videoOptions}
-              onStateChange={onPlayerStateChange}  // Memainkan video kembali jika di-pause
-              onEnd={(event: YouTubeEvent) => event.target.playVideo()} // Memastikan video loop
+              onStateChange={onPlayerStateChange}
+              onEnd={(event: YouTubeEvent) => event.target.playVideo()}
               videoId={extractVideoId(jumbotron[0].video_url || "") || ""}
-              className="w-full h-full pointer-events-none" // Mencegah interaksi pengguna
-              iframeClassName="w-full h-full pointer-events-none" // Mencegah hover dan klik
+              className="w-full h-full pointer-events-none"
+              iframeClassName="w-full h-full pointer-events-none"
             />
           )}
       </div>

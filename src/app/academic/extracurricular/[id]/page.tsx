@@ -8,15 +8,10 @@ import { Extra } from "@/services/api/useQueries/useExtracurricular";
 import { backendUrl } from "@/utils/backendUrl";
 
 async function fetchExtracurricular() {
-  const response = await fetch(`${backendUrl}api/user/profile/ekstras`, {
-    cache: "no-store",
-  });
+  const response = await fetch(`${backendUrl}api/user/profile/ekstras`);
   const data: { data: Extra[] } = await response.json();
   return data?.data;
 }
-
-export const dynamic = "force-static";
-export const dynamicParams = false;
 
 export async function generateStaticParams() {
   const extracurricularData = await fetchExtracurricular();
@@ -28,9 +23,7 @@ export async function generateStaticParams() {
 
 async function getExtacurricularById(id: string) {
   if (!id) throw new Error("ID is required to fetch extras");
-  const response = await fetch(`${backendUrl}api/user/profile/ekstras/${id}`, {
-    cache: "no-store",
-  });
+  const response = await fetch(`${backendUrl}api/user/profile/ekstras/${id}`);
 
   const data = await response.json();
   return data?.data || null;

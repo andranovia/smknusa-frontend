@@ -7,9 +7,7 @@ import { backendUrl } from "@/utils/backendUrl";
 import ApplyButton from "@/components/ui/job-apply-button";
 
 async function fetchVacancy() {
-  const response = await fetch(`${backendUrl}api/user/lokers`, {
-    cache: "no-store",
-  });
+  const response = await fetch(`${backendUrl}api/user/lokers`);
   const data: { data: Vacancy[] } = await response.json();
   return data?.data;
 }
@@ -25,9 +23,7 @@ export async function generateStaticParams() {
 
 async function getVacancyById(id: string) {
   if (!id) throw new Error("ID is required to fetch Vacancy");
-  const response = await fetch(`${backendUrl}api/user/lokers/${id}`, {
-    cache: "no-store",
-  });
+  const response = await fetch(`${backendUrl}api/user/lokers/${id}`);
 
   const data = await response.json();
   return data?.data || null;

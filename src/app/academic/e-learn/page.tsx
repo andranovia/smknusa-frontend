@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 import Link from "next/link";
 import { Heading, Paragraph } from "@/components/ui/typography";
+import { cn } from "@/utils/cn";
 
 export const metadata = {
   title: "School E-Learning",
@@ -18,7 +19,7 @@ const page = () => {
             <div className=" flex flex-col items-center container xl:pt-16 gap-6">
               <Heading
                 type="h1"
-                className="text-sm sm:text-md sm:!text-lg md:text-[20px] lg:text-[32px] xl:text-[46px] "
+                className={cn("xl:!text-[46px] text-sm sm:text-lg md:text-[20px] lg:!text-[32px] ")}
               >
                 E-Learning SMKN 1 Purwosari
               </Heading>
@@ -76,7 +77,7 @@ const page = () => {
             <div className="flex flex-col gap-4 mt-4">
               <Heading
                 type="h5"
-                className="font-semibold xl:text-xl 1xl:!text-2xl text-blue-base"
+                className="font-semibold xl:text-xl 1xl:text-2xl text-blue-base"
               >
                 Apa itu Microsoft Teams 365 ?
               </Heading>

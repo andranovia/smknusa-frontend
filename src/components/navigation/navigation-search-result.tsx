@@ -118,7 +118,7 @@ const NavigationSearchResult = ({
           transition={defaultTransition}
           className="w-full  flex justify-between items-center gap-4  px-4 "
         >
-          <div className="flex justify-start items-center gap-4 ">
+          <div className="flex justify-start items-center gap-4 w-full">
             <Image
               src={"/assets/icon/search.svg"}
               alt="search"
@@ -133,7 +133,7 @@ const NavigationSearchResult = ({
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Ketikkan kata kunci"
-              className={`focus:outline-none  hidden 2xl:block placeholder:font-[500] placeholder:text-sm bg-transparent placeholder:text-gray-light`}
+              className={`focus:outline-none w-full hidden 2xl:block placeholder:font-[500] placeholder:text-sm bg-transparent placeholder:text-gray-light`}
             />
           </div>
           <div
@@ -146,11 +146,11 @@ const NavigationSearchResult = ({
         <hr />
 
         <div className="w-full  flex flex-col justify-start gap-4  px-4 text-blue-base">
-          <Heading type="h5" className="font-[500] text-sm text-gray-light">
+          <Heading type="h5" className="font-[500]text-xs xl:text-[16px] text-gray-light">
             Disarankan
           </Heading>
           {searches && !isSearchLoading ? (
-            searches?.slice(0, 3).map((data, index) => {
+            searches?.slice(0, 4).map((data, index) => {
               return (
                 <Link
                   href={
@@ -170,6 +170,7 @@ const NavigationSearchResult = ({
                   key={index}
                 >
                   <motion.div
+                    onClick={() => setSearchToggle(false)}
                     animate={{
                       y: searchToggle ? 0 : 20,
                       opacity: searchToggle ? 1 : 0,
@@ -210,10 +211,10 @@ const NavigationSearchResult = ({
         </div>
         <hr />
         <div className="w-full  flex flex-col justify-start gap-4  px-4 text-blue-base">
-          <Heading type="h5" className="font-[500] text-sm text-gray-light">
+          <Heading type="h5" className="font-[500] text-xs xl:text-[16px]  text-gray-light">
             Riwayat
           </Heading>
-          <Paragraph className="text-center  my-6 text-sm sm:text-base xl:ltext-lg text-gray-light">
+          <Paragraph className="text-center  my-6 text-xs sm:text-sm xl:text-lg text-gray-light">
             Tidak ada riwayat pencarian
           </Paragraph>
           {/* {searchRecent.length > 0 ? (
