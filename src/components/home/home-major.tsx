@@ -85,6 +85,7 @@ const HomeMajor = () => {
 
       <div className="relative  xl:px-8 px-0  xl:-mt-32 flex justify-center w-full ">
         <div className="flex justify-center items-end relative  bg-white overflow-hidden rounded-[10px]  2xl:max-w-max-container h-full w-full">
+          <div className="absolute left-0 h-full bg-gradient-to-r from-white to-transparent z-20 p-10 md:p-16 opacity-40"></div>
           <div className="absolute right-0 h-full bg-gradient-to-l from-white to-transparent z-20 p-10 md:p-16 opacity-80"></div>
           <div className="absolute block xl:hidden left-0 h-full bg-gradient-to-r from-white to-transparent z-20 p-10 md:p-16 opacity-80"></div>
           <div className="relative w-full  flex flex-col xl:flex-row   justify-center gap-14  h-full  mt-8 mb-10 xl:mb-0 max-w-max-container">
