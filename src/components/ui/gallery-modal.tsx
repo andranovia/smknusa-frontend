@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Gallery } from "@/services/api/useQueries/useGalleries";
+import { backendUrl } from "@/utils/backendUrl";
 import { Heading, Paragraph } from "./typography";
 import { defaultTransition } from "../animation/transition";
 
@@ -35,8 +36,24 @@ const GalleryModal: React.FC<ModalProps> = ({
         initial={false}
         animate={isOpen ? { scale: 1, opacity: 1 } : { scale: 0.9, opacity: 0 }}
         transition={defaultTransition}
-        className="bg-white rounded-lg w-full max-w-[600px] mx-4 lg:mx-0 py-5 px-6 shadow-lg"
+        className="bg-white rounded-lg w-full xl:max-w-[1150px] mx-4 lg:mx-4 py-5 px-6 shadow-lg"
       >
+        <motion.div
+          initial={false}
+          animate={
+            isOpen ? { scale: 1, opacity: 1 } : { scale: 0.9, opacity: 0 }
+          }
+          transition={defaultTransition}
+        >
+          <Image
+            src={backendUrl + GalleryCardData.gallery_file}
+            alt={GalleryCardData.gallery_title}
+            width={800}
+            height={800}
+            className="hidden lg:block items-center justify-center w-[100%] lg:max-h-[500px] xl:max-w-[1100px] sm:max-h-[250px] mb-4 object-cover"
+          />
+        </motion.div>
+
         <motion.div
           initial={false}
           animate={isOpen ? { y: 0, opacity: 1 } : { y: 40, opacity: 0 }}
