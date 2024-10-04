@@ -6,9 +6,7 @@ import ArticleShare from "@/components/info/article/article-share";
 import DetailLayout from "@/layouts/detail-layout";
 
 async function fetchAnnoucements() {
-  const response = await fetch(`${backendUrl}api/user/announcements`, {
-    cache: "no-store",
-  });
+  const response = await fetch(`${backendUrl}api/user/announcements`);
   const data: { data: Announcement[] } = await response.json();
   return data?.data;
 }
@@ -26,9 +24,7 @@ export async function generateStaticParams() {
 
 async function getAnnouncementById(id: string) {
   if (!id) throw new Error("ID is required to fetch Annoucement");
-  const response = await fetch(`${backendUrl}api/user/announcements/${id}`, {
-    cache: "no-store",
-  });
+  const response = await fetch(`${backendUrl}api/user/announcements/${id}`);
 
   const data = await response.json();
   return data?.data || null;

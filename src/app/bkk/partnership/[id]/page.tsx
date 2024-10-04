@@ -8,9 +8,7 @@ import { Partnership } from "@/services/api/useQueries/usePartnerships";
 import { backendUrl } from "@/utils/backendUrl";
 
 async function fetchPartnership() {
-  const response = await fetch(`${backendUrl}api/user/kemitraans`, {
-    cache: "no-store",
-  });
+  const response = await fetch(`${backendUrl}api/user/kemitraans`);
   const data: { data: Partnership[] } = await response.json();
   return data?.data;
 }
@@ -28,9 +26,7 @@ export async function generateStaticParams() {
 
 async function getPartnershipById(id: string) {
   if (!id) throw new Error("ID is required to fetch partnership");
-  const response = await fetch(`${backendUrl}api/user/kemitraans/${id}`, {
-    cache: "no-store",
-  });
+  const response = await fetch(`${backendUrl}api/user/kemitraans/${id}`);
 
   const data = await response.json();
   return data?.data || null;

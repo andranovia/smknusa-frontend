@@ -25,7 +25,7 @@ const HomeHero = () => {
     },
   };
 
-  const extractVideoId = (url: string): string | null => {
+  const extractVideoId = (url: string) => {
     const regex =
       /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
     const match = url.match(regex);
@@ -42,8 +42,8 @@ const HomeHero = () => {
           onEnd={(event: YouTubeEvent) => event.target.playVideo()}
           videoId={
             jumbotron && jumbotron[0]
-              ? extractVideoId(jumbotron[0].video_url || "")
-              : ""
+              ? extractVideoId(jumbotron[0].video_url || "") ?? undefined
+              : undefined
           }
           className="w-full h-full"
           iframeClassName={"w-full h-full"}

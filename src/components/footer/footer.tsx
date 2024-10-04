@@ -8,7 +8,7 @@ import { FooterItem, useFooters } from "@/services/api/useQueries/useFooters";
 
 export default function Footer() {
   const { handleActiveUnavailableToast } = useActiveToast();
-  const { footers, isFooterLoading, error } = useFooters();
+  const { footers, isFooterLoading } = useFooters();
 
   const renderFooterSection = (sectionName: string, items: FooterItem[]) => {
     return (
@@ -33,10 +33,6 @@ export default function Footer() {
 
   if (isFooterLoading) {
     return <div>Loading footer...</div>;
-  }
-
-  if (error) {
-    return <div>Error loading footer</div>;
   }
 
   return (

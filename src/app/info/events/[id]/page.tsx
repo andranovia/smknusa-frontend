@@ -6,9 +6,7 @@ import DetailLayout from "@/layouts/detail-layout";
 import { Event } from "@/services/api/useQueries/useEvents";
 
 async function fetchEvents() {
-  const response = await fetch(`${backendUrl}api/user/events`, {
-    cache: "no-store",
-  });
+  const response = await fetch(`${backendUrl}api/user/events`);
   const data: { data: Event[] } = await response.json();
   return data?.data;
 }
@@ -24,9 +22,7 @@ export async function generateStaticParams() {
 
 async function getEventById(id: string) {
   if (!id) throw new Error("ID is required to fetch Events");
-  const response = await fetch(`${backendUrl}api/user/events/${id}`, {
-    cache: "no-store",
-  });
+  const response = await fetch(`${backendUrl}api/user/events/${id}`);
 
   const data = await response.json();
   return data?.data || null;

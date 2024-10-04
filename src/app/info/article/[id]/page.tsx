@@ -12,9 +12,7 @@ export const dynamic = "force-static";
 export const dynamicParams = false;
 
 async function fetchArticles() {
-  const response = await fetch(`${backendUrl}api/user/articles`, {
-    cache: "no-store",
-  });
+  const response = await fetch(`${backendUrl}api/user/articles`);
   const data: { data: Article[] } = await response.json();
   return data?.data;
 }
@@ -30,9 +28,7 @@ export async function generateStaticParams() {
 
 async function getArticleById(id: string) {
   if (!id) throw new Error("ID is required to fetch article");
-  const response = await fetch(`${backendUrl}api/user/articles/${id}`, {
-    cache: "no-store",
-  });
+  const response = await fetch(`${backendUrl}api/user/articles/${id}`);
 
   const data = await response.json();
   return data?.data || null;

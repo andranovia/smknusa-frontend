@@ -7,9 +7,7 @@ import { Facility } from "@/services/api/useQueries/useFacilities";
 import { backendUrl } from "@/utils/backendUrl";
 
 async function fetchFacility() {
-  const response = await fetch(`${backendUrl}api/user/profile/facilities`, {
-    cache: "no-store",
-  });
+  const response = await fetch(`${backendUrl}api/user/profile/facilities`);
   const data: { data: Facility[] } = await response.json();
   return data?.data;
 }
@@ -27,8 +25,7 @@ export async function generateStaticParams() {
 async function getFacilityById(id: string) {
   if (!id) throw new Error("ID is required to fetch facility");
   const response = await fetch(
-    `${backendUrl}api/user/profile/facilities/${id}`,
-    { cache: "no-store" }
+    `${backendUrl}api/user/profile/facilities/${id}`
   );
 
   const data = await response.json();
