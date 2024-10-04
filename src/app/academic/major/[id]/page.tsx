@@ -6,14 +6,11 @@ import { Major } from "@/services/api/useQueries/useMajors";
 import { backendUrl } from "@/utils/backendUrl";
 
 async function fetchMajors() {
-  const response = await fetch(`${backendUrl}api/user/profile/majors`, {
-    cache: "no-store",
-  });
+  const response = await fetch(`${backendUrl}api/user/profile/majors`);
   const data: { data: Major[] } = await response.json();
   return data?.data;
 }
 
-export const dynamic = "force-static";
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
@@ -24,9 +21,7 @@ export async function generateStaticParams() {
 
 async function getMajorById(id: string) {
   if (!id) throw new Error("ID is required to fetch majors");
-  const response = await fetch(`${backendUrl}api/user/profile/majors/${id}`, {
-    cache: "no-store",
-  });
+  const response = await fetch(`${backendUrl}api/user/profile/majors/${id}`);
 
   const data = await response.json();
   return data?.data || null;

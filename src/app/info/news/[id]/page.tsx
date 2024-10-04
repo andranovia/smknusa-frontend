@@ -11,9 +11,7 @@ export const dynamic = "force-static";
 export const dynamicParams = false;
 
 async function fetchNews() {
-  const response = await fetch(`${backendUrl}api/user/news`, {
-    cache: "no-store",
-  });
+  const response = await fetch(`${backendUrl}api/user/news`);
   const data: { data: News[] } = await response.json();
 
   return data.data;
@@ -28,9 +26,7 @@ export async function generateStaticParams() {
 }
 
 async function getNewsById(id: string) {
-  const response = await fetch(`${backendUrl}api/user/news/${id}`, {
-    cache: "no-store",
-  });
+  const response = await fetch(`${backendUrl}api/user/news/${id}`);
   const data = await response.json();
   return data.data;
 }
