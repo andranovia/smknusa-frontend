@@ -1,8 +1,8 @@
 import Image from "next/image";
 import React from "react";
 import { backendUrl } from "@/utils/backendUrl";
-import ArticleShare from "@/components/info/article/article-share";
-import DetailLayout from "@/layouts/detail-layout";
+// import ArticleShare from "@/components/info/article/article-share";
+// import DetailLayout from "@/layouts/detail-layout";
 import { Event } from "@/services/api/useQueries/useEvents";
 
 async function fetchEvents() {
@@ -47,9 +47,11 @@ export default async function Page({ params }: { params: { id: string } }) {
   const normalDate = date.toLocaleDateString();
 
   return (
-    <DetailLayout detailData={eventById} className="w-full">
-      <div className="relative  bg-white rounded-[10px] flex flex-col items-center xl:gap-20 pt-4 lg:pt-10 pb-20 px-4 gap-0   w-full">
-        <div className="flex flex-col gap-0 xl:gap-6 w-full">
+    // <DetailLayout detailData={eventById} className="w-full">
+    <div className="pt-[4.5rem] xl:pt-24 px-2 xl:px-3 flex justify-center items-center w-full">
+      <div className="w-full  bg-white rounded-[10px]  text-blue-base flex justify-center ">
+      <div className="relative  bg-white rounded-[10px] flex flex-col items-center xl:gap-20 pt-4 lg:pt-10 pb-20 px-4 gap-0 max-w-full md:max-w-md-content lg:max-w-lg-content xl:max-w-full 2xl:max-w-max-content  w-full">
+        <div className="flex flex-col gap-0 xl:gap-6 w-full xl:w-[82%]">
           <h1 className="font-[700] lg:text-4xl xl:text-[42px] xl:leading-[3rem] text-2xl">
             {eventById?.nama}
           </h1>
@@ -99,20 +101,22 @@ export default async function Page({ params }: { params: { id: string } }) {
                     />
                     <h4>{eventById?.viewer}</h4>
                   </div>
-                  <ArticleShare />
+                  {/* <ArticleShare /> */}
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="flex flex-col items-center gap-8 w-full">
-          <Image
-            src={backendUrl + eventById?.thumbnail}
-            alt="article-image"
-            className="w-full rounded-[10px]"
-            width={800}
-            height={800}
-          />
+        <div className="flex flex-col items-center gap-8 w-full xl:w-[82%]">
+          <div className="w-full max-h-[17rem] md:max-h-[20rem]  rounded-[10px] lg:max-h-[30rem] xl:max-h-[40rem]">
+            <Image
+              src={backendUrl + eventById?.thumbnail}
+              alt="article-image"
+              className="w-full object-cover"
+              width={800}
+              height={800}
+              />
+            </div>
         </div>
         {/* <div className=" flex gap-4 lg:gap-10 flex-col w-full xl:w-[82%]">
             <h2 className="mt-10 text-2xl lg:text-3xl xl:text-4xl 1xl:text-5xl font-semibold">
@@ -140,6 +144,8 @@ export default async function Page({ params }: { params: { id: string } }) {
             </div>
           </div> */}
       </div>
-    </DetailLayout>
+      </div>
+      </div>
+    // </DetailLayout>
   );
 }
