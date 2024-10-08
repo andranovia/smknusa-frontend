@@ -26,42 +26,42 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
     {
       linkDropdownData: {
         text: "Visi dan Misi",
-        description: "Berisi sambutan resmi dari kepala sekolah",
+        description: "Berisi Informasi Visi dan Misi SMK",
         linkRef: "/profile/vision-mision",
       },
     },
     {
       linkDropdownData: {
         text: "Struktur Organisasi Sekolah",
-        description: "Berisi sambutan resmi dari kepala sekolah",
+        description: "Berisi Tatanan Struktur Organisasi SMK",
         linkRef: "/profile/structure",
       },
     },
     {
       linkDropdownData: {
         text: "Program Kerja Sekolah",
-        description: "Berisi sambutan resmi dari kepala sekolah",
+        description: "Berisi Tatanan Program Kerja SMK",
         linkRef: "/profile/course-work",
       },
     },
     {
       linkDropdownData: {
         text: "Komite Sekolah",
-        description: "Berisi sambutan resmi dari kepala sekolah",
+        description: "Berisi Tatanan Komite SMK",
         linkRef: "/profile/school-committe",
       },
     },
     {
       linkDropdownData: {
         text: "Fasilitas Sekolah",
-        description: "Berisi sambutan resmi dari kepala sekolah",
+        description: "Berisi Detail Kelengkapan Fasilitas SMK",
         linkRef: "/profile/school-facility",
       },
     },
     {
       linkDropdownData: {
         text: "Sejarah Sekolah",
-        description: "Berisi sambutan resmi dari kepala sekolah",
+        description: "Berisi Informasi Mengenai Sejarah Berdirinya SMK",
         linkRef: "/profile/history",
       },
     },
@@ -70,43 +70,42 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
     {
       linkDropdownData: {
         text: "Data Warga Sekolah",
-        description: "Berisi sambutan resmi dari kepala sekolah",
+        description: "Berisi  Data Warga SMK Negeri 1 Purwosari",
         linkRef: "/academic/resident-data",
       },
     },
     {
       linkDropdownData: {
         text: "Ekstrakulikuler",
-        description: "Berisi sambutan resmi dari kepala sekolah",
-
+        description: "Berisi Data Ekstrakulikuler SMK Negeri 1 Purwosari",
         linkRef: "/academic/extracurricular",
       },
     },
     {
       linkDropdownData: {
         text: "E-Learning",
-        description: "Berisi sambutan resmi dari kepala sekolah",
+        description: "Berisi Informasi E-Learning yang di Gunakan SMK",
         linkRef: "/academic/e-learn",
       },
     },
     {
       linkDropdownData: {
         text: "PPDB",
-        description: "Berisi sambutan resmi dari kepala sekolah",
+        description: "Berisi Link untuk Menuju ke Website PPDB",
         linkRef: "https://ppdbjatim.net/",
       },
     },
     {
       linkDropdownData: {
         text: "Jurusan",
-        description: "Berisi sambutan resmi dari kepala sekolah",
+        description: "Berisi Data Jurusan SMK Negeri 1 Purwosari",
         linkRef: "/academic/major",
       },
     },
     {
       linkDropdownData: {
         text: "Form Perangkat Ajar",
-        description: "Berisi sambutan resmi dari kepala sekolah",
+        description: "Berisi Data Perangkat Ajar SMK Negeri 1 Purwosari",
         linkRef: "/academic/device-form",
       },
     },
@@ -115,14 +114,14 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
     {
       linkDropdownData: {
         text: "Kemitraan",
-        description: "Berisi sambutan resmi dari kepala sekolah",
+        description: "Berisi Data Kemitraan SMK Negeri 1 Purwosari",
         linkRef: "/bkk/partnership",
       },
     },
     {
       linkDropdownData: {
         text: "Lowongan Pekerjaan",
-        description: "Berisi sambutan resmi dari kepala sekolah",
+        description: "Berisi Data Loker SMK Negeri 1 Purwosari",
         linkRef: "/bkk/job",
       },
     },
@@ -131,14 +130,14 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
     {
       linkDropdownData: {
         text: "Berita",
-        description: "Berisi sambutan resmi dari kepala sekolah",
+        description: "Berisi Informasi Mengenai Berita yang Ada di SMK",
         linkRef: "/info/news",
       },
     },
     {
       linkDropdownData: {
         text: "Article",
-        description: "Berisi sambutan resmi dari kepala sekolah",
+        description: "Berisi Informasi Mengenai Artikel Yang Ada di SMK",
         linkRef: "/info/article",
       },
     },
