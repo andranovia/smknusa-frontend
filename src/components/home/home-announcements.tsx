@@ -32,7 +32,11 @@ const announcementsLinkData = [
 const HomeAnnouncement = () => {
   const { announcements } = useAnnouncements();
   const { news } = useNews();
-  const { articles } = useArticles();
+  const { articles } = useArticles({
+    search: "",
+    start_date: "",
+    end_date: "",
+  });
   const { events } = useEvents();
   const isMobile = useMediaQuery("only screen and (max-width : 1024px)");
 

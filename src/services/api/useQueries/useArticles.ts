@@ -32,6 +32,8 @@ export const useArticles = (filter?: {
     enabled: !!filter,
   });
 
+  console.log("articles", articles);
+
   const { data: articleCategories } = useQuery({
     queryKey: ["ArticleCategories"],
     queryFn: () => {

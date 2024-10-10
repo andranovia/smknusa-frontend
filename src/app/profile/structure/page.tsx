@@ -1,22 +1,30 @@
+"use client";
+
 import React from "react";
 import ProfileLayout from "@/layouts/profile-layout";
 import PDFViewer from "@/components/ui/pdf-viewer";
+import { useSchool } from "@/services/api/useQueries/useSchool";
 
-export const metadata = {
-  title: "School Structure",
-  description: "SMKN 1 Purwosari School Structure",
-};
+const ProfileStructure = () => {
+  const { schoolStructure } = useSchool();
 
-const ProfileHistory = () => {
   return (
     <ProfileLayout
       title="Struktur Organisasi Sekolah"
       subtitle="Struktur Organisasi Sekolah SMK Negeri 1 Purwosari"
       classNameWrapper="pt-[76px]"
     >
-      <PDFViewer url="https://www.smkn1purwosari.sch.id/public/img/struktur_smk.pdf#toolbar=1&navpanes=0&scrollbar=0" />
+      <PDFViewer
+        className="mt-10"
+        url={
+          (schoolStructure &&
+            schoolStructure?.[0] &&
+            schoolStructure?.[0]?.profile_data) ||
+          ""
+        }
+      />
     </ProfileLayout>
   );
 };
 
-export default ProfileHistory;
+export default ProfileStructure;
