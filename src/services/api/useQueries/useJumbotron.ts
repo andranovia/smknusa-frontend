@@ -16,7 +16,15 @@ const useJumbotron = () => {
     queryFn: () => getJumbotron(),
   });
 
+  const { data: partnersJumbotron, isLoading: isPartnersJumbotronLoading } =
+    useQuery<jumbotron[] | null>({
+      queryKey: ["PartnersJumbotron"],
+      queryFn: () => getJumbotron(),
+    });
+
   return {
+    partnersJumbotron,
+    isPartnersJumbotronLoading,
     jumbotron,
     isJumbotronLoading,
   };

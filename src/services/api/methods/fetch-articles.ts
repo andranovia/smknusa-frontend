@@ -13,6 +13,8 @@ export async function getArticles(
   if (filter?.search) params.append("search", filter.search);
   if (filter?.start_date) params.append("start_date", filter.start_date);
   if (filter?.end_date) params.append("end_date", filter.end_date);
+
+  
   const queryString = params.toString();
   const url = queryString
     ? `api/user/articles?${queryString}`
@@ -21,6 +23,7 @@ export async function getArticles(
   try {
     const response = await axiosInstance.get(url);
     const data = response.data.data;
+    console.log("fetch data", data);
     return data;
   } catch (error) {
     console.log(error, "Error fetching articles by filter");

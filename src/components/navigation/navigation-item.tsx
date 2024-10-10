@@ -40,7 +40,7 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
     {
       linkDropdownData: {
         text: "Visi dan Misi",
-        description: "Berisi sambutan resmi dari kepala sekolah",
+        description: "Berisi Informasi Visi dan Misi SMK",
         icon: "/assets/nav-dropdown-icon/profile/visi-misi.svg",
         linkRef: "/profile/vision-mision",
       },
@@ -48,7 +48,7 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
     {
       linkDropdownData: {
         text: "Struktur Organisasi Sekolah",
-        description: "Berisi sambutan resmi dari kepala sekolah",
+        description: "Berisi Tatanan Struktur Organisasi SMK",
         icon: "/assets/nav-dropdown-icon/profile/struktur.svg",
         linkRef: "/profile/structure",
       },
@@ -56,7 +56,7 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
     {
       linkDropdownData: {
         text: "Program Kerja Sekolah",
-        description: "Berisi sambutan resmi dari kepala sekolah",
+        description: "Berisi Tatanan Program Kerja SMK",
         icon: "/assets/nav-dropdown-icon/profile/proker.svg",
         linkRef: "/profile/course-work",
       },
@@ -64,7 +64,7 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
     {
       linkDropdownData: {
         text: "Komite Sekolah",
-        description: "Berisi sambutan resmi dari kepala sekolah",
+        description: "Berisi Tatanan Komite SMK",
         icon: "/assets/nav-dropdown-icon/profile/komite.svg",
         linkRef: "/profile/school-committe",
       },
@@ -72,7 +72,7 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
     {
       linkDropdownData: {
         text: "Fasilitas Sekolah",
-        description: "Berisi sambutan resmi dari kepala sekolah",
+        description: "Berisi Detail Kelengkapan Fasilitas SMK",
         icon: "/assets/nav-dropdown-icon/profile/fasilitas.svg",
         linkRef: "/profile/school-facility",
       },
@@ -80,7 +80,7 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
     {
       linkDropdownData: {
         text: "Sejarah Sekolah",
-        description: "Berisi sambutan resmi dari kepala sekolah",
+        description: "Berisi Informasi Mengenai Sejarah Berdirinya SMK",
         icon: "/assets/nav-dropdown-icon/profile/sejarah.svg",
         linkRef: "/profile/history",
       },
@@ -90,7 +90,7 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
     {
       linkDropdownData: {
         text: "Data Warga Sekolah",
-        description: "Berisi sambutan resmi dari kepala sekolah",
+        description: "Berisi Data Warga SMK Negeri 1 Purwosari",
         icon: "/assets/nav-dropdown-icon/akademik/data-warga.svg",
         linkRef: "/academic/resident-data",
       },
@@ -98,7 +98,7 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
     {
       linkDropdownData: {
         text: "Ekstrakulikuler",
-        description: "Berisi sambutan resmi dari kepala sekolah",
+        description: "Berisi Data Ekstrakulikuler SMK Negeri 1 Purwosari",
         icon: "/assets/nav-dropdown-icon/akademik/ekstrakulikuler.svg",
         linkRef: "/academic/extracurricular",
       },
@@ -106,7 +106,7 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
     {
       linkDropdownData: {
         text: "E-Learning",
-        description: "Berisi sambutan resmi dari kepala sekolah",
+        description: "Berisi Informasi E-Learning yang di Gunakan SMK",
         icon: "/assets/nav-dropdown-icon/akademik/e-learning.svg",
         linkRef: "/academic/e-learn",
       },
@@ -114,7 +114,7 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
     {
       linkDropdownData: {
         text: "PPDB",
-        description: "Berisi sambutan resmi dari kepala sekolah",
+        description: "Berisi Link untuk Menuju ke Website PPDB",
         icon: "/assets/nav-dropdown-icon/akademik/ppdb.svg",
         linkRef: "https://ppdbjatim.net/",
       },
@@ -122,7 +122,7 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
     {
       linkDropdownData: {
         text: "Jurusan",
-        description: "Berisi sambutan resmi dari kepala sekolah",
+        description: "Berisi Data Jurusan SMK Negeri 1 Purwosari",
         icon: "/assets/nav-dropdown-icon/akademik/jurusan.svg",
         linkRef: "/academic/major",
       },
@@ -130,7 +130,7 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
     {
       linkDropdownData: {
         text: "Form Perangkat Ajar",
-        description: "Berisi sambutan resmi dari kepala sekolah",
+        description: "Berisi Data Perangkat Ajar SMK Negeri 1 Purwosari",
         icon: "/assets/nav-dropdown-icon/akademik/form-pa.svg",
         linkRef: "/academic/device-form",
       },
@@ -140,7 +140,7 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
     {
       linkDropdownData: {
         text: "Kemitraan",
-        description: "Berisi sambutan resmi dari kepala sekolah",
+        description: "Berisi Data Kemitraan SMK Negeri 1 Purwosari",
         icon: "/assets/nav-dropdown-icon/bkk/kemitraan.svg",
         linkRef: "/bkk/partnership",
       },
@@ -148,7 +148,7 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
     {
       linkDropdownData: {
         text: "Lowongan Pekerjaan",
-        description: "Berisi sambutan resmi dari kepala sekolah",
+        description: "Berisi Data Loker SMK Negeri 1 Purwosari",
         icon: "/assets/nav-dropdown-icon/bkk/lowongan.svg",
         linkRef: "/bkk/job",
       },
@@ -158,7 +158,7 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
     {
       linkDropdownData: {
         text: "Berita",
-        description: "Berisi sambutan resmi dari kepala sekolah",
+        description: "Berisi Informasi Mengenai Berita yang Ada di SMK",
         icon: "/assets/nav-dropdown-icon/info/info.svg",
         linkRef: "/info/news",
       },
@@ -166,7 +166,7 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
     {
       linkDropdownData: {
         text: "Artikel",
-        description: "Berisi sambutan resmi dari kepala sekolah",
+        description: "Berisi Informasi Mengenai Artikel Yang Ada di SMK",
         icon: "/assets/nav-dropdown-icon/info/info.svg",
         linkRef: "/info/article",
       },

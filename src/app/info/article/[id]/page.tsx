@@ -11,12 +11,6 @@ import FilterCard from "@/components/ui/filter-card";
 export const dynamic = "force-static";
 export const dynamicParams = false;
 
-async function fetchArticles() {
-  const response = await fetch(`${backendUrl}api/user/articles`);
-  const data: { data: Article[] } = await response.json();
-  return data?.data;
-}
-
 export async function generateStaticParams() {
   const articlesData = await fetchArticles();
   const ids = articlesData?.map(
@@ -26,9 +20,17 @@ export async function generateStaticParams() {
   return ids?.map((id: string) => ({ id: id.toString() }));
 }
 
+async function fetchArticles() {
+  const response = await fetch(`${backendUrl}api/user/articles`);
+  const data: { data: Article[] } = await response.json();
+  return data?.data;
+}
+
 async function getArticleById(id: string) {
   if (!id) throw new Error("ID is required to fetch article");
-  const response = await fetch(`${backendUrl}api/user/articles/${id}`);
+  const response = await fetch(`${backendUrl}api/user/articles/${id}`, {
+    cache: "no-store",
+  });
 
   const data = await response.json();
   return data?.data || null;
