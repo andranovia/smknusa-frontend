@@ -4,7 +4,7 @@ import { Heading, Paragraph } from "@/components/ui/typography";
 import DetailLayout from "@/layouts/detail-layout";
 import { Vacancy } from "@/services/api/useQueries/useVacancies";
 import { backendUrl } from "@/utils/backendUrl";
-import ApplyButton from "@/components/ui/job-apply-button";
+import ApplyButton from "@/components/bkk/job/job-apply-button";
 
 async function fetchVacancy() {
   const response = await fetch(`${backendUrl}api/user/lokers`);

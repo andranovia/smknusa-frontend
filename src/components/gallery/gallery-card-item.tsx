@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { backendUrl } from "@/utils/backendUrl";
 import { Gallery } from "@/services/api/useQueries/useGalleries";
-import { Heading } from "./typography";
+import { Heading } from "../ui/typography";
 import GalleryModal from "./gallery-modal";
 
 const GalleryCardItem = ({ GalleryCardData }: { GalleryCardData: Gallery }) => {

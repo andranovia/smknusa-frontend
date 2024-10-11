@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import Link from "next/link";
 import { Teaching } from "@/services/api/useQueries/useTeaching";
-import { Paragraph } from "./typography";
+import { Paragraph } from "../../ui/typography";
 
 type DeviceFormCardItemProps = {
   deviceFormData: Teaching;
@@ -54,7 +54,7 @@ const DeviceFormCardItem = ({ deviceFormData }: DeviceFormCardItemProps) => {
         />
       </div>
       <div className="flex flex-col justify-between w-full">
-        <h3 className="text-[18px] font-[600] text-[#081B34] line-clamp-1">
+        <h3 className="text-[18px] font-[600] text-[#081B34] line-clamp-1 w-[95%]">
           {deviceFormData?.title}
         </h3>
         <div className="flex items-center space-x-4 mt-2 mb-2">

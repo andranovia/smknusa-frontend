@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 
 import { useGalleries } from "@/services/api/useQueries/useGalleries";
-import GalleryCardItem from "@/components/ui/gallery-card-item";
+import GalleryCardItem from "@/components/gallery/gallery-card-item";
 import GalleryShowMore from "./gallery-showmore";
 
 const GalleryCard = () => {
