@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Vacancy } from "@/services/api/useQueries/useVacancies";
-import { Heading, Paragraph } from "./typography";
+import { Heading, Paragraph } from "../../ui/typography";
 import ApplyButton from "./job-apply-button";
 
 const JobCardItem = ({ vacancy }: { vacancy: Vacancy }) => {

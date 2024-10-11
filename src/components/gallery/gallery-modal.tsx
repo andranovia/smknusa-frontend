@@ -3,7 +3,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Gallery } from "@/services/api/useQueries/useGalleries";
 import { backendUrl } from "@/utils/backendUrl";
-import { Heading, Paragraph } from "./typography";
+import { Heading, Paragraph } from "../ui/typography";
 import { defaultTransition } from "../animation/transition";
 
 interface ModalProps {

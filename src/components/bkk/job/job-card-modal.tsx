@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Vacancy } from "@/services/api/useQueries/useVacancies";
-import { Paragraph } from "./typography";
-import { defaultTransition } from "../animation/transition";
+import { Paragraph } from "../../ui/typography";
+import { defaultTransition } from "../../animation/transition";
 const Modal = ({
   vacancy,
   closeModal,
