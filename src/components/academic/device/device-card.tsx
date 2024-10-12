@@ -6,8 +6,14 @@ import { useTeaching } from "@/services/api/useQueries/useTeaching";
 import DataCardItemLoading from "@/components/ui/data-card-item-loading";
 import DeviceShowMore from "./device-showmore";
 
-const TeachingDeviceCard = () => {
-  const { teachings, isTeachingsLoading } = useTeaching();
+const TeachingDeviceCard = ({
+  deviceFormFilter,
+}: {
+  deviceFormFilter: { search: string };
+}) => {
+  const { teachings, isTeachingsLoading } = useTeaching({
+    search: deviceFormFilter.search,
+  });
   const [showAllDevice, setShowAllDevice] = useState(false);
 
   return (

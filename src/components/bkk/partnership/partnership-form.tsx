@@ -1,7 +1,15 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { Heading } from "@/components/ui/typography";
 
-const PartnershipForm = () => {
+const PartnershipForm = ({
+  partnershipFilter,
+  setPartnershipFilter,
+}: {
+  partnershipFilter: {
+    search: string;
+  };
+  setPartnershipFilter: Dispatch<SetStateAction<{ search: string }>>;
+}) => {
   return (
     <div className="relative z-10 w-full  -mt-20  1xl:-mt-32 max-w-[70rem]">
       <div className="flex justify-center items-center p-2  xl:bg-transparent w-full">
@@ -15,6 +23,10 @@ const PartnershipForm = () => {
                 type="text"
                 id="Kemitraan"
                 name="Kemitraan"
+                value={partnershipFilter.search}
+                onChange={(e) =>
+                  setPartnershipFilter({ search: e.target.value })
+                }
                 placeholder="Jenis Pekerjaan"
                 className="w-auto h-10 border border-gray-300 rounded-lg p-2"
               />

@@ -1,27 +1,52 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { Heading } from "@/components/ui/typography";
 
-const TeachersForm = () => {
+const TeachersForm = ({
+  teacherFilter,
+  setTeacherFilter,
+}: {
+  teacherFilter: {
+    search_nama: string;
+    search_nuptk: string;
+  };
+  setTeacherFilter: Dispatch<
+    SetStateAction<{ search_nama: string; search_nuptk: string }>
+  >;
+}) => {
   return (
     <div className="relative z-10 w-full  -mt-20  1xl:-mt-32">
       <div className="flex justify-center items-center p-2  xl:bg-transparent w-full">
-        <div className=" bg-white w-full px-6 xl:px-12 py-4 xl:py-10 rounded-lg border-white xl:shadow-lg">
+        <div className=" bg-white w-full px-6 xl:px-12 py-4 xl:py-12 rounded-lg border-white xl:shadow-lg">
           <Heading type="h5" className="block mb-5 text-blue-base mt-1">
             Form Pencarian PTK
           </Heading>
           <div className="grid grid-cols-1 xl:grid-cols-2 xl:gap-12 gap-4 mb-3">
             <input
               type="text"
-              id="title"
-              name="title"
+              id="teacher-name"
+              name="teacher-name"
+              value={teacherFilter.search_nama}
+              onChange={(e) =>
+                setTeacherFilter({
+                  ...teacherFilter,
+                  search_nama: e.target.value,
+                })
+              }
               placeholder="Masukkan Nama atau NIM Guru"
               className="xl:w-[107%] h-10 border border-gray-300 rounded-lg p-2"
             />
 
             <input
               type="text"
-              id="to-date"
-              name="to-date"
+              id="teacher-nuptk"
+              name="teacher-nuptk"
+              value={teacherFilter.search_nuptk}
+              onChange={(e) =>
+                setTeacherFilter({
+                  ...teacherFilter,
+                  search_nuptk: e.target.value,
+                })
+              }
               placeholder="Masukkan NUPTK"
               className="xl:w-[107%] h-10 border border-gray-300 rounded-lg p-2"
             />

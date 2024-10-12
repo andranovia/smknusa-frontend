@@ -9,14 +9,21 @@ import { useResidents } from "@/services/api/useQueries/useResidents";
 import { ClientOnly } from "@/utils/isClient";
 import InfoLayout from "@/layouts/info-layout";
 
-// export const metadata = {
-//   title: "School Residents",
-//   description: "SMKN 1 Purwosari Residents",
-// };
-
 const ResidentData = () => {
   const [currentTable, setCurrentTable] = useState<string>("students");
-  const { teachers, students } = useResidents();
+  const [teacherFilter, setTeacherFilter] = useState({
+    search_nama: "",
+    search_nuptk: "",
+  });
+  const [studentsFilter, setStudentsFilter] = useState({
+    search_nama: "",
+    search_kelas: "",
+  });
+
+  const { teachers, students } = useResidents({
+    filterTeachers: teacherFilter,
+    filterStudents: studentsFilter,
+  });
 
   const handleChangeTable = (current: string) => {
     setCurrentTable(current);
@@ -31,7 +38,10 @@ const ResidentData = () => {
         <div className="pb-20  flex flex-col items-center w-full justify-center gap-10  md:max-w-md-content lg:max-w-lg-content xl:max-w-[1002px] 2xl:max-w-[1216px] ">
           {currentTable === "teachers" ? (
             <>
-              <TeachersForm />
+              <TeachersForm
+                setTeacherFilter={setTeacherFilter}
+                teacherFilter={teacherFilter}
+              />
               <TeachersTable
                 teachersData={teachers}
                 handleChangeTable={handleChangeTable}
@@ -39,7 +49,10 @@ const ResidentData = () => {
             </>
           ) : (
             <>
-              <StudentsForm />
+              <StudentsForm
+                setStudentsFilter={setStudentsFilter}
+                studentsFilter={studentsFilter}
+              />
               <StudentsTable
                 studentsData={students}
                 handleChangeTable={handleChangeTable}
