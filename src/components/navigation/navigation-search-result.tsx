@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
@@ -17,8 +17,20 @@ const NavigationSearchResult = ({
 }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const { searches, isSearchLoading } = useSearches({ query: searchQuery });
-
   // const [searchRecent, setSearchRecent] = useState([]);
+
+  useEffect(() => {
+    if (!searchToggle) return;
+    const handleEsc = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setSearchToggle(false);
+      }
+    };
+    window.addEventListener("keydown", handleEsc);
+    return () => {
+      window.removeEventListener("keydown", handleEsc);
+    };
+  }, [searchToggle, setSearchToggle]);
 
   const getResultItemIcon = (iconType: string) => {
     switch (iconType) {
@@ -146,7 +158,10 @@ const NavigationSearchResult = ({
         <hr />
 
         <div className="w-full  flex flex-col justify-start gap-4  px-4 text-blue-base">
-          <Heading type="h5" className="font-[500]text-xs xl:text-[16px] text-gray-light">
+          <Heading
+            type="h5"
+            className="font-[500]text-xs xl:text-[16px] text-gray-light"
+          >
             Disarankan
           </Heading>
           {searches && !isSearchLoading ? (
@@ -211,7 +226,10 @@ const NavigationSearchResult = ({
         </div>
         <hr />
         <div className="w-full  flex flex-col justify-start gap-4  px-4 text-blue-base">
-          <Heading type="h5" className="font-[500] text-xs xl:text-[16px]  text-gray-light">
+          <Heading
+            type="h5"
+            className="font-[500] text-xs xl:text-[16px]  text-gray-light"
+          >
             Riwayat
           </Heading>
           <Paragraph className="text-center  my-6 text-xs sm:text-sm xl:text-lg text-gray-light">

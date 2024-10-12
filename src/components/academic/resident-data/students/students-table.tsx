@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Student } from "@/services/api/useQueries/useResidents";
+import { Student, useResidents } from "@/services/api/useQueries/useResidents";
 import { Heading } from "@/components/ui/typography";
 import PaginationTable from "../../../ui/pagination-table";
 import ResidentDropdownChange from "../resident-dropdown-change";
@@ -13,6 +13,7 @@ const StudentsTable = ({
   studentsData,
   handleChangeTable,
 }: StudentsTableProps) => {
+  const { isStudentsLoading } = useResidents();
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 9;
 
@@ -84,72 +85,117 @@ const StudentsTable = ({
           </tr>
         </thead>
         <tbody>
-          {currentStudentsData?.map((student, index) => (
-            <React.Fragment key={index}>
-              <tr className="bg-white border flex flex-col xl:table-row">
-                <td className="w-4  px-6 py-4 xl:p-4 flex items-center xl:table-cell">
-                  <div className="flex items-center gap-4">
-                    <input
-                      id={`checkbox-table-${index}`}
-                      type="checkbox"
-                      className="w-4 h-4 bg-gray-100 border-gray-300 rounded focus:ring-yellow ring-offset-gray-800 focus:ring-offset-gray-800 focus:ring-2"
-                    />
-                    <label
-                      htmlFor={`checkbox-table-${index}`}
-                      className="block xl:hidden "
-                    >
-                      Checkbox
-                    </label>
-                  </div>
-                </td>
-                <td className="px-6 py-4 flex gap-2 items-center xl:table-cell xl:justify-start  justify-between ">
-                  <span className="block xl:hidden text-sm font-bold text-blue-base">
-                    NISN
-                  </span>
+          {studentsData && !isStudentsLoading
+            ? currentStudentsData?.map((student, index) => (
+                <React.Fragment key={index}>
+                  <tr className="bg-white border flex flex-col xl:table-row">
+                    <td className="w-4  px-6 py-4 xl:p-4 flex items-center xl:table-cell">
+                      <div className="flex items-center gap-4">
+                        <input
+                          id={`checkbox-table-${index}`}
+                          type="checkbox"
+                          className="w-4 h-4 bg-gray-100 border-gray-300 rounded focus:ring-yellow ring-offset-gray-800 focus:ring-offset-gray-800 focus:ring-2"
+                        />
+                        <label
+                          htmlFor={`checkbox-table-${index}`}
+                          className="block xl:hidden "
+                        >
+                          Checkbox
+                        </label>
+                      </div>
+                    </td>
+                    <td className="px-6 py-4 flex gap-2 items-center xl:table-cell xl:justify-start  justify-between ">
+                      <span className="block xl:hidden text-sm font-bold text-blue-base">
+                        NISN
+                      </span>
 
-                  <p>{student.nisn}</p>
-                </td>
-                <td className="px-6 py-4 xl:table-cell flex gap-2 justify-between items-center truncate xl:max-w-[12rem]">
-                  <span className="block xl:hidden text-sm font-bold text-blue-base">
-                    Name
-                  </span>
-                  <span className="truncate max-w-[10rem] ">
-                    {student.nama}
-                  </span>
-                </td>
-                <td className="px-6 py-4 xl:table-cell flex gap-2 justify-between items-center">
-                  <span className="block xl:hidden text-sm font-bold text-blue-base">
-                    Kelas
-                  </span>
-                  <span className="xl:w-full text-center text-xs">
-                    <p className=" bg-amber-100 bg-opacity-70 border-yellow p-1 border rounded-full text-yellow-500">
-                      {student.kelas}
-                    </p>
-                  </span>
-                </td>
-                <td className="px-6 py-4 xl:table-cell flex gap-2 justify-between items-center truncate xl:max-w-[10rem]">
-                  <span className="block xl:hidden text-sm font-bold text-blue-base">
-                    Alamat
-                  </span>
-                  <span className="truncate max-w-[10rem]">
-                    {student.alamat}
-                  </span>
-                </td>
-                <td className="px-6 py-4 xl:table-cell flex gap-2 justify-between items-center">
-                  <span className="block xl:hidden text-sm font-bold text-blue-base">
-                    TTL
-                  </span>
-                  {student.tempat_lahir}, {student.tanggal_lahir}
-                </td>
-                <td className="px-6 py-4 xl:table-cell flex gap-2 justify-between items-center">
-                  <span className="block xl:hidden text-sm font-bold text-blue-base">
-                    Jenis Kelamin
-                  </span>
-                  {student.gender === "L" ? "Laki-laki" : "Perempuan"}
-                </td>
-              </tr>
-            </React.Fragment>
-          ))}
+                      <p>{student.nisn}</p>
+                    </td>
+                    <td className="px-6 py-4 xl:table-cell flex gap-2 justify-between items-center truncate xl:max-w-[12rem]">
+                      <span className="block xl:hidden text-sm font-bold text-blue-base">
+                        Name
+                      </span>
+                      <span className="truncate max-w-[10rem] ">
+                        {student.nama}
+                      </span>
+                    </td>
+                    <td className="px-6 py-4 xl:table-cell flex gap-2 justify-between items-center">
+                      <span className="block xl:hidden text-sm font-bold text-blue-base">
+                        Kelas
+                      </span>
+                      <span className="xl:w-full text-center text-xs">
+                        <p className=" bg-amber-100 bg-opacity-70 border-yellow p-1 border rounded-full text-yellow-500">
+                          {student.kelas}
+                        </p>
+                      </span>
+                    </td>
+                    <td className="px-6 py-4 xl:table-cell flex gap-2 justify-between items-center truncate xl:max-w-[10rem]">
+                      <span className="block xl:hidden text-sm font-bold text-blue-base">
+                        Alamat
+                      </span>
+                      <span className="truncate max-w-[10rem]">
+                        {student.alamat}
+                      </span>
+                    </td>
+                    <td className="px-6 py-4 xl:table-cell flex gap-2 justify-between items-center">
+                      <span className="block xl:hidden text-sm font-bold text-blue-base">
+                        TTL
+                      </span>
+                      {student.tempat_lahir}, {student.tanggal_lahir}
+                    </td>
+                    <td className="px-6 py-4 xl:table-cell flex gap-2 justify-between items-center">
+                      <span className="block xl:hidden text-sm font-bold text-blue-base">
+                        Jenis Kelamin
+                      </span>
+                      {student.gender === "L" ? "Laki-laki" : "Perempuan"}
+                    </td>
+                  </tr>
+                </React.Fragment>
+              ))
+            : Array(5)
+                .fill(0)
+                .map((_, index) => (
+                  <React.Fragment key={index}>
+                    <tr className="bg-white border flex flex-col xl:table-row animate-pulse ">
+                      <td className="w-4 px-6 py-4 xl:p-4 flex items-center xl:table-cell">
+                        <div className="flex items-center gap-4">
+                          <div className="w-4 h-4 bg-gray-200 rounded"></div>
+                          <label className="block xl:hidden bg-gray-200 h-4 w-20 rounded"></label>
+                        </div>
+                      </td>
+
+                      <td className="px-6 py-4 flex gap-2 items-center xl:table-cell xl:justify-start justify-between">
+                        <span className="block xl:hidden bg-gray-200 h-4 w-10 rounded"></span>
+                        <div className="bg-gray-200 h-4 w-24 rounded"></div>
+                      </td>
+
+                      <td className="px-6 py-4 xl:table-cell flex gap-2 justify-between items-center truncate xl:max-w-[12rem]">
+                        <span className="block xl:hidden bg-gray-200 h-4 w-10 rounded"></span>
+                        <div className="bg-gray-200 h-4 w-32 rounded"></div>
+                      </td>
+
+                      <td className="px-6 py-4 xl:table-cell flex gap-2 justify-between items-center">
+                        <span className="block xl:hidden bg-gray-200 h-4 w-10 rounded"></span>
+                        <div className="bg-gray-200 h-4 w-20 rounded-full"></div>
+                      </td>
+
+                      <td className="px-6 py-4 xl:table-cell flex gap-2 justify-between items-center truncate xl:max-w-[10rem]">
+                        <span className="block xl:hidden bg-gray-200 h-4 w-10 rounded"></span>
+                        <div className="bg-gray-200 h-4 w-32 rounded"></div>
+                      </td>
+
+                      <td className="px-6 py-4 xl:table-cell flex gap-2 justify-between items-center">
+                        <span className="block xl:hidden bg-gray-200 h-4 w-10 rounded"></span>
+                        <div className="bg-gray-200 h-4 w-32 rounded"></div>
+                      </td>
+
+                      <td className="px-6 py-4 xl:table-cell flex gap-2 justify-between items-center">
+                        <span className="block xl:hidden bg-gray-200 h-4 w-10 rounded"></span>
+                        <div className="bg-gray-200 h-4 w-16 rounded"></div>
+                      </td>
+                    </tr>
+                  </React.Fragment>
+                ))}
         </tbody>
       </table>
       <PaginationTable

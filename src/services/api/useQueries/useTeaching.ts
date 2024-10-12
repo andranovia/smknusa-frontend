@@ -11,15 +11,16 @@ export interface Teaching {
   size: string;
 }
 
-export const useTeaching = () => {
+export const useTeaching = (filter: { search: string }) => {
   const { data: teachings, isLoading: isTeachingsLoading } = useQuery<
     Teaching[] | null
   >({
-    queryKey: ["Teachings"],
+    queryKey: ["Teachings", filter],
     queryFn: async () => {
-      const data = await getTeachingTools();
+      const data = await getTeachingTools({ search: filter.search });
       return data ?? [];
     },
+    enabled: !!filter,
   });
   if (teachings == undefined) {
     console.log("get data returned undefined");

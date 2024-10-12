@@ -29,16 +29,34 @@ export type Student = {
   alamat: string;
 };
 
-export const useResidents = () => {
-  const { data: teachers } = useQuery<Teacher[] | null>({
-    queryKey: ["Teachers"],
-    queryFn: () => getTeachers(),
+export const useResidents = ({
+  filterStudents,
+  filterTeachers,
+}: {
+  filterStudents?: {
+    search_nama: string;
+    search_kelas: string;
+  };
+  filterTeachers?: {
+    search_nama: string;
+    search_nuptk: string;
+  };
+} = {}) => {
+  const { data: teachers, isLoading: isTeachersLoading } = useQuery<
+    Teacher[] | null
+  >({
+    queryKey: ["Teachers", filterTeachers],
+    queryFn: () => getTeachers(filterTeachers),
+    enabled: !!filterTeachers,
   });
 
-  const { data: students } = useQuery<Student[] | null>({
-    queryKey: ["Students"],
-    queryFn: () => getStudents(),
+  const { data: students, isLoading: isStudentsLoading } = useQuery<
+    Student[] | null
+  >({
+    queryKey: ["Students", filterStudents],
+    queryFn: () => getStudents(filterStudents),
+    enabled: !!filterStudents,
   });
 
-  return { teachers, students };
+  return { teachers, students, isTeachersLoading, isStudentsLoading };
 };

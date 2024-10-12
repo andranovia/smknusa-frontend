@@ -2,10 +2,22 @@ export interface Vacancy {
   id_loker: number;
   loker_thumbnail: string;
   loker_type: string;
-  position_id: string;
-  kemitraan_id: string;
   icon_type: string;
   loker_available: string;
+  position: {
+    id_position: number;
+    position_name: string;
+    position_type: string;
+  };
+  kemitraan: {
+    id_kemitraan: number;
+    kemitraan_name: string;
+    kemitraan_description: string;
+    kemitraan_logo: string;
+    kemitraan_thumbnail: string;
+    kemitraan_city: string;
+    kemitraan_location_detail: string;
+  };
 }
 
 import { useQuery } from "@tanstack/react-query";
