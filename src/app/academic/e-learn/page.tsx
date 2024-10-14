@@ -36,6 +36,7 @@ const page = () => {
                   <Image
                     src={"/assets/icon/teams.svg"}
                     alt="teams"
+                    draggable={false}
                     width={30}
                     height={30}
                     className="w-[27px] "
