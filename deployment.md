@@ -10,3 +10,5 @@
  7. after that run npm install
  8. then start the server
  9. """
+
+this code is work on production mode only
