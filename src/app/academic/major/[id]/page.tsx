@@ -1,9 +1,11 @@
 import Image from "next/image";
 import React from "react";
-import { Heading, Paragraph } from "@/components/ui/typography";
+import Link from "next/link";
+import { Heading } from "@/components/ui/typography";
 import DetailLayout from "@/layouts/detail-layout";
 import { Major } from "@/services/api/useQueries/useMajors";
 import { backendUrl } from "@/utils/backendUrl";
+import FeatureCardItem from "@/components/ui/feature-card-item";
 
 async function fetchMajors() {
   const response = await fetch(`${backendUrl}api/user/profile/majors`);
@@ -37,6 +39,7 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
 export default async function Page({ params }: { params: { id: string } }) {
   const { id } = params;
   const majorById = await getMajorById(id);
+  const majorData = await fetchMajors();
 
   const getCategoryColor = (icon: string) => {
     switch (icon) {
@@ -56,8 +59,8 @@ export default async function Page({ params }: { params: { id: string } }) {
   return (
     <DetailLayout detailData={majorById} className="justify-start">
       <div className="flex flex-col gap-[3.5rem] xl:min-h-[20rem]">
-        <div className="flex flex-col lg:flex-row justify-center items-center gap-4 h-full">
-          <div className="px-8 py-6 w-full lg:w-fit flex justify-center items-center bg-gray-medium rounded-[10px]">
+        <div className="flex flex-col lg:flex-row lg:justify-start justify-center items-center gap-4 h-full w-full">
+          <div className="px-28 xs:px-8 py-6 w-fit xs:w-full lg:w-fit flex justify-center items-center bg-gray-medium rounded-[10px]">
             <Image
               src={"/assets/icon/logo-skansa.svg"}
               alt="smknusa-icon"
@@ -69,7 +72,7 @@ export default async function Page({ params }: { params: { id: string } }) {
           <div className="flex flex-col h-full gap-6 lg:gap-8">
             <Heading
               type="h1"
-              className="text-blue-base font-bold !leading-none"
+              className="text-blue-base font-bold md:!leading-none text-center"
             >
               {majorById?.jurusan_nama}
             </Heading>
@@ -87,8 +90,25 @@ export default async function Page({ params }: { params: { id: string } }) {
             </div>
           </div>
         </div>
-
-        <Paragraph>{majorById?.major_text}</Paragraph>
+        <span className="!w-[280px] xs:!w-full font-[400] text-[16px]  md:text-[18px]">
+          {majorById?.jurusan_text}
+        </span>
+        <div className=" flex gap-4 lg:gap-10 flex-col w-full ">
+          <h2 className="mt-10 text-2xl lg:text-3xl xl:text-4xl 1xl:text-5xl font-semibold">
+            Jurusan Lain
+          </h2>
+          <div className="grid grid-cols-1 bg-[#F1F5F9] lg:grid-cols-2 1xl:grid-cols-3 gap-4 xl:gap-8 px-2 py-2 md:py-6 md:px-6  2xl:py-9  rounded-[10px] w-full">
+            {majorData?.slice(0, 3).map((major, index) => {
+              return (
+                <React.Fragment key={index}>
+                  <Link href={`/academic/major/${major.id_jurusan}`}>
+                    <FeatureCardItem featureCardData={major} />
+                  </Link>
+                </React.Fragment>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </DetailLayout>
   );
