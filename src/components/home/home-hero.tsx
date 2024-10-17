@@ -26,8 +26,8 @@ const HomeHero = () => {
       showinfo: 0,
       iv_load_policy: 3,
       cc_load_policy: 0,
-      hl: "en",
-      cc_lang_pref: "en",
+      hl: "",
+      cc_lang_pref: "",
       playlist: jumbotron && jumbotron[0] ? [extractVideoId(jumbotron[0].video_url || "")] : [],
     },
   };

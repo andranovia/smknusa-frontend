@@ -28,12 +28,12 @@ const TeachingDeviceCard = ({
                 </React.Fragment>
               ))}
             </div>
-            <div className="mt-4 mb-12">
+            
               <DeviceShowMore
                 setShowAllDevice={setShowAllDevice}
                 showAllDevice={showAllDevice}
               />
-            </div>
+           
           </>
         ) : (
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 xl:gap-8 px-2 lg:px-4 py-4 1xl:px-12 pb-12 bg-white rounded-[10px] w-full">

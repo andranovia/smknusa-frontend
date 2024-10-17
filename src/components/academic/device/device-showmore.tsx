@@ -14,7 +14,7 @@ const DeviceShowMore = ({
   };
 
   return (
-    <div className="mt-0 mb-10  px-4 w-full sm:w-[316px]">
+    <div className="px-4 w-full sm:w-[316px]">
       {!showAllDevice ? (
         <button
           className="w-full py-2 text-blue-base bg-yellow-light rounded-md"

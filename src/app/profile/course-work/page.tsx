@@ -19,6 +19,7 @@ const ProfileCourseWork = () => {
         <Image
           src={"/assets/profile/course-work/course-work.png"}
           alt="commit and consist"
+          draggable={false}
           className="w-full rounded-[10px] mt-24"
           width={800}
           height={800}
@@ -37,6 +38,7 @@ const ProfileCourseWork = () => {
         <Image
           src={"/assets/profile/course-work/Table1.png"}
           alt="commit and consist"
+          draggable={false}
           className="w-full mt-10"
           width={800}
           height={800}
@@ -56,6 +58,7 @@ const ProfileCourseWork = () => {
         <Image
           src={"/assets/profile/course-work/Table2.png"}
           alt="commit and consist"
+          draggable={false}
           className="w-full"
           width={800}
           height={800}
@@ -64,6 +67,7 @@ const ProfileCourseWork = () => {
         <Image
           src={"/assets/profile/course-work/Table3.png"}
           alt="commit and consist"
+          draggable={false}
           className="w-full mt-6"
           width={800}
           height={800}

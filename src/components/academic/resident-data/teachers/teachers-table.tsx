@@ -28,8 +28,8 @@ const TeachersTable = ({
 
   return (
     <div className="relative flex flex-col 1xl:rounded-lg border w-full">
-      <div className="flex  items-center justify-between mx-4 1xl:mx-12 gap-4">
-        <div className="flex w-full  items-center justify-between 1xl:justify-start  gap-4">
+      <div className="flex items-center justify-between mx-4 1xl:mx-12 gap-4">
+        <div className="flex w-full flex-col sm:flex-row items-start sm:items-center justify-between 1xl:justify-start gap-4">
           <Heading
             type="h5"
             className="!text-sm font-bold text-blue-base  1xl:w-fit  my-6"
@@ -38,12 +38,15 @@ const TeachersTable = ({
           </Heading>
           <Heading
             type="h5"
-            className="!text-xs bg-amber-100 bg-opacity-70 border-yellow px-3 py-0.5 border rounded-full text-yellow-500"
+            className="!text-xs bg-amber-100 bg-opacity-70 border-yellow px-3 py-0.5 border rounded-full text-yellow-500 -mt-6 sm:mt-0 mb-7 sm:mb-0  sm:mr-14 2xl:mr-0"
           >
             {teachersData?.length + " " + "orang"}
           </Heading>
         </div>
+
+        <div className="-mt-14 sm:-mt-6">
         <ResidentDropdownChange handleChangeTable={handleChangeTable} />
+        </div>
       </div>
 
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">

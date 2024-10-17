@@ -29,7 +29,7 @@ const Modal = ({
       >
         <div className="flex justify-between items-center mb-4">
           <h1 className="text-xl font-semibold uppercase line-clamp-1">
-            Lamar Pekerjaan {vacancy.loker_type}
+            Lamar Pekerjaan {vacancy.loker_description}
           </h1>
           <button
             onClick={closeModal}
