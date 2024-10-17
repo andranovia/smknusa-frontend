@@ -3,6 +3,7 @@ export interface Vacancy {
   loker_thumbnail: string;
   loker_type: string;
   icon_type: string;
+  loker_description: string;
   loker_available: string;
   position: {
     id_position: number;
