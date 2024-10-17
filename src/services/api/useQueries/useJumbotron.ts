@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getJumbotron } from "../methods/fetch-jumbotron";
+import { getJumbotron, getPartnersJumbotron } from "../methods/fetch-jumbotron";
 
 export interface jumbotron {
   id_video: number;
@@ -19,7 +19,7 @@ const useJumbotron = () => {
   const { data: partnersJumbotron, isLoading: isPartnersJumbotronLoading } =
     useQuery<jumbotron[] | null>({
       queryKey: ["PartnersJumbotron"],
-      queryFn: () => getJumbotron(),
+      queryFn: () => getPartnersJumbotron(),
     });
 
   return {

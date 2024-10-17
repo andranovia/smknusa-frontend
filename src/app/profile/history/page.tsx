@@ -20,6 +20,7 @@ const ProfileHistory = () => {
       <Image
         src={"/assets/profile/history/profile-history.png"}
         alt=""
+        draggable={false}
         className="w-full rounded-[10px]"
         width={800}
         height={800}

@@ -51,7 +51,7 @@ export default async function Page({ params }: { params: { id: string } }) {
               type="h1"
               className="text-blue-base font-bold !leading-none"
             >
-              {VacancyById?.loker_type}
+              {VacancyById?.loker_description}
             </Heading>
             <div className="flex flex-col sm:flex-row sm:items-center h-full gap-2 md:gap-4 ">
               <Heading
