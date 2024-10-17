@@ -8,6 +8,7 @@ import { ClientOnly } from "@/utils/isClient";
 import { ActivePageProvider } from "@/contexts/ActivePageContext";
 import { ActiveToastProvider } from "@/contexts/ActiveToastContext";
 import UnavailableToast from "@/components/ui/unavailable-toast";
+import HomeAlert from "@/components/home/home-alert";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -40,6 +41,7 @@ export default function RootLayout({
       <body className={`bg-gray-base ${montserrat.className}`}>
         <ActiveToastProvider>
           <ReactQueryProvider>
+            <HomeAlert />
             <nav className="bg-gray-base xl:flex justify-center ">
               <ClientOnly>
                 <ActivePageProvider>
