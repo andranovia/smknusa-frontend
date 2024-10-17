@@ -28,9 +28,7 @@ async function fetchArticles() {
 
 async function getArticleById(id: string) {
   if (!id) throw new Error("ID is required to fetch article");
-  const response = await fetch(`${backendUrl}api/user/articles/${id}`, {
-    cache: "no-store",
-  });
+  const response = await fetch(`${backendUrl}api/user/articles/${id}`);
 
   const data = await response.json();
   return data?.data || null;
