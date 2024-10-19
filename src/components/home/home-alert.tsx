@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useAlert } from "@/services/api/useQueries/useAlert";
@@ -42,7 +43,8 @@ const HomeAlert = () => {
                 className={!close ? "opacity-0" : ""}
               />
             </motion.div>
-            <div
+            <Link
+              href={alert[0]?.alert_url}
               onMouseEnter={() => setHover(true)}
               onMouseLeave={() => setHover(false)}
               className="flex justify-center gap-2 items-center cursor-pointer"
@@ -77,7 +79,7 @@ const HomeAlert = () => {
                   className={`${hover ? "invert" : ""}`}
                 />
               </motion.div>
-            </div>
+            </Link>
             <div
               onClick={() => setClose(true)}
               className="rounded-md font-bold px-4 py-3 bg-primary gap-2 text-white text-xs cursor-pointer absolute flex justify-center items-center right-2 bottom-2"

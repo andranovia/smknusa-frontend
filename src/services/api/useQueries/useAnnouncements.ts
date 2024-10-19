@@ -12,6 +12,8 @@ export type Announcement = {
   icon_type: string;
   date: string;
   text: string;
+  pdf: string;
+  iframe: string[];
   level: string;
   category: {
     id: number;

@@ -20,7 +20,6 @@ export const useTeaching = (filter: { search: string }) => {
       const data = await getTeachingTools({ search: filter.search });
       return data ?? [];
     },
-    enabled: !!filter,
   });
   if (teachings == undefined) {
     console.log("get data returned undefined");

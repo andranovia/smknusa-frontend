@@ -47,7 +47,6 @@ export const useResidents = ({
   >({
     queryKey: ["Teachers", filterTeachers],
     queryFn: () => getTeachers(filterTeachers),
-    enabled: !!filterTeachers,
   });
 
   const { data: students, isLoading: isStudentsLoading } = useQuery<
@@ -55,7 +54,6 @@ export const useResidents = ({
   >({
     queryKey: ["Students", filterStudents],
     queryFn: () => getStudents(filterStudents),
-    enabled: !!filterStudents,
   });
 
   return { teachers, students, isTeachersLoading, isStudentsLoading };

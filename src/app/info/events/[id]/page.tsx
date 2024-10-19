@@ -4,6 +4,7 @@ import { backendUrl } from "@/utils/backendUrl";
 // import ArticleShare from "@/components/info/article/article-share";
 // import DetailLayout from "@/layouts/detail-layout";
 import { Event } from "@/services/api/useQueries/useEvents";
+import PDFViewer from "@/components/ui/pdf-viewer";
 
 async function fetchEvents() {
   const response = await fetch(`${backendUrl}api/user/events`);
@@ -46,75 +47,83 @@ export default async function Page({ params }: { params: { id: string } }) {
     // <DetailLayout detailData={eventById} className="w-full">
     <div className="pt-[4.5rem] xl:pt-24 px-2 xl:px-3 flex justify-center items-center w-full">
       <div className="w-full  bg-white rounded-[10px]  text-blue-base flex justify-center ">
-      <div className="relative  bg-white rounded-[10px] flex flex-col items-center xl:gap-20 pt-4 lg:pt-10 pb-20 px-4 gap-0 max-w-full md:max-w-md-content lg:max-w-lg-content xl:max-w-full 2xl:max-w-max-content  w-full">
-        <div className="flex flex-col gap-0 xl:gap-6 w-full xl:w-[82%]">
-          <h1 className="font-[700] lg:text-4xl xl:text-[42px] xl:leading-[3rem] text-2xl">
-            {eventById?.nama}
-          </h1>
-          <div className="flex xl:flex-row flex-col xl:my-0 my-6 gap-4 xl:gap-8 justify-between items-start w-full">
-            <div className="flex flex-wrap items-center gap-2 xl:w-1/4 2xl:w-1/6">
-              {eventById?.level === "0" ? (
-                <div className="bg-[#FFE7AF] px-2 py-1.5 lg:py-1 rounded-[10px]">
+        <div className="relative  bg-white rounded-[10px] flex flex-col items-center xl:gap-20 pt-4 lg:pt-10 pb-20 px-4 gap-0 max-w-full md:max-w-md-content lg:max-w-lg-content xl:max-w-full 2xl:max-w-max-content  w-full">
+          <div className="flex flex-col gap-0 xl:gap-6 w-full xl:w-[82%]">
+            <h1 className="font-[700] lg:text-4xl xl:text-[42px] xl:leading-[3rem] text-2xl">
+              {eventById?.nama}
+            </h1>
+            <div className="flex xl:flex-row flex-col xl:my-0 my-6 gap-4 xl:gap-8 justify-between items-start w-full">
+              <div className="flex flex-wrap items-center gap-2 xl:w-1/4 2xl:w-1/6">
+                {eventById?.level === "0" ? (
+                  <div className="bg-[#FFE7AF] px-2 py-1.5 lg:py-1 rounded-[10px]">
+                    <p className="font-[500] text-[10px] text-gray text-center">
+                      Penting
+                    </p>
+                  </div>
+                ) : null}
+                <div
+                  style={{
+                    backgroundColor: eventById?.category.color,
+                  }}
+                  className="px-2 py-1.5 lg:py-1 rounded-[10px]"
+                >
                   <p className="font-[500] text-[10px] text-gray text-center">
-                    Penting
+                    {eventById?.category.nama}
                   </p>
                 </div>
-              ) : null}
-              <div
-                style={{
-                  backgroundColor: eventById?.category.color,
-                }}
-                className="px-2 py-1.5 lg:py-1 rounded-[10px]"
-              >
-                <p className="font-[500] text-[10px] text-gray text-center">
-                  {eventById?.category.nama}
-                </p>
               </div>
-            </div>
-            <div className="flex flex-col w-full xl:w-4/5 gap-8 !font-[500] !text-[18px]  ">
-              <p className="relative !text-gray line-clamp-3 ">
-                {eventById?.text}
-              </p>
-              <hr className="w-full border " />
-              <div className="w-full justify-between flex lg:flex-row flex-col lg:items-center gap-4">
-                <h4 className="text-[14px]">Diposting pada : {normalDate}</h4>
-                <div className="flex flex-row justify-between lg:justify-center xl:items-center grayscale my-4 gap-4 xl:gap-10 text-[12px]">
-                  <div className="flex gap-1 items-center">
-                    <Image
-                      width={20}
-                      height={20}
-                      src={"/assets/icon/location-black.svg"}
-                      alt="location"
-                    />
-                    <h4>SMKN 1 PURWOSARI</h4>
+              <div className="flex flex-col w-full xl:w-4/5 gap-8 !font-[500] !text-[18px]  ">
+                <p className="relative !text-gray line-clamp-3 ">
+                  {eventById?.text}
+                </p>
+                <hr className="w-full border " />
+                <div className="w-full justify-between flex lg:flex-row flex-col lg:items-center gap-4">
+                  <h4 className="text-[14px]">Diposting pada : {normalDate}</h4>
+                  <div className="flex flex-row justify-between lg:justify-center xl:items-center grayscale my-4 gap-4 xl:gap-10 text-[12px]">
+                    <div className="flex gap-1 items-center">
+                      <Image
+                        width={20}
+                        height={20}
+                        src={"/assets/icon/location-black.svg"}
+                        alt="location"
+                      />
+                      <h4>SMKN 1 PURWOSARI</h4>
+                    </div>
+                    <div className="flex gap-1 items-center ml-auto lg:ml-0">
+                      <Image
+                        width={20}
+                        height={20}
+                        src={"/assets/icon/eye.svg"}
+                        alt="view"
+                      />
+                      <h4>{eventById?.viewer}</h4>
+                    </div>
+                    {/* <ArticleShare /> */}
                   </div>
-                  <div className="flex gap-1 items-center ml-auto lg:ml-0">
-                    <Image
-                      width={20}
-                      height={20}
-                      src={"/assets/icon/eye.svg"}
-                      alt="view"
-                    />
-                    <h4>{eventById?.viewer}</h4>
-                  </div>
-                  {/* <ArticleShare /> */}
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className="flex flex-col items-center gap-8 w-full xl:w-[82%]">
-          <div className="w-full max-h-[17rem] md:max-h-[20rem]  rounded-[10px] lg:max-h-[30rem] xl:max-h-[40rem]">
-            <Image
-              src={backendUrl + eventById?.thumbnail}
-              alt="article-image"
-              className="w-full object-cover"
-              width={800}
-              height={800}
-              />
+          <div className="flex flex-col items-center gap-8 w-full xl:w-[82%]">
+            <div className="w-full max-h-[17rem] md:max-h-[20rem]  rounded-[10px] lg:max-h-[30rem] xl:max-h-[40rem]">
+              {eventById?.pdf ? (
+                <PDFViewer url={eventById?.pdf ? eventById?.pdf : ""} />
+              ) : (
+                <div className="min-h-[17rem] md:min-h-[20rem]  rounded-[10px] lg:min-h-[30rem] xl:min-h-[40rem] flex justify-center items-center bg-gray-base">
+                  <Image
+                    src={
+                      "https://img.icons8.com/?size=100&id=cD26kdwTbCzt&format=png&color=DCDCDC"
+                    }
+                    alt="pdf"
+                    width={50}
+                    height={50}
+                    className="w-40 h-40"
+                  />
+                </div>
+              )}
             </div>
-        </div>
-        {/* <div className=" flex gap-4 lg:gap-10 flex-col w-full xl:w-[82%]">
+          </div>
+          {/* <div className=" flex gap-4 lg:gap-10 flex-col w-full xl:w-[82%]">
             <h2 className="mt-10 text-2xl lg:text-3xl xl:text-4xl 1xl:text-5xl font-semibold">
               Artikel Lain yang tak kalah menarik
             </h2>
@@ -139,9 +148,9 @@ export default async function Page({ params }: { params: { id: string } }) {
               })}
             </div>
           </div> */}
+        </div>
       </div>
-      </div>
-      </div>
+    </div>
     // </DetailLayout>
   );
 }

@@ -6,8 +6,17 @@ import JobVacanciesCardItem from "@/components/bkk/job/job-card-item";
 import { useVacancies } from "@/services/api/useQueries/useVacancies";
 import DataCardItemLoading from "@/components/ui/data-card-item-loading";
 
-const JobVacanciesCard = () => {
-  const { vacancies, isVacanciesLoading } = useVacancies();
+const JobVacanciesCard = ({
+  jobVacanciesFilter,
+}: {
+  jobVacanciesFilter: {
+    search: string;
+    search_requirement: string;
+  };
+}) => {
+  const { vacancies, isVacanciesLoading } = useVacancies({
+    ...jobVacanciesFilter,
+  });
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 9;
 

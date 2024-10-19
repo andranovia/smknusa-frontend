@@ -9,6 +9,8 @@ export type Event = {
   text: string;
   icon_type: string;
   level: string;
+  pdf: string;
+  iframe: string[];
   category: {
     id: number;
     nama: string;

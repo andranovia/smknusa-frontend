@@ -29,7 +29,6 @@ export const useArticles = (filter?: {
   } = useQuery<Article[] | null>({
     queryKey: ["Articles", filter],
     queryFn: () => getArticles(filter),
-    enabled: !!filter,
   });
 
   const { data: articleCategories } = useQuery({

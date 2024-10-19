@@ -6,6 +6,7 @@ import JobVacanciesCardItem from "@/components/bkk/job/job-card-item";
 import { Vacancy } from "@/services/api/useQueries/useVacancies";
 import { backendUrl } from "@/utils/backendUrl";
 import ApplyButton from "@/components/bkk/job/job-apply-button";
+import PDFViewer from "@/components/ui/pdf-viewer";
 
 async function fetchVacancy() {
   const response = await fetch(`${backendUrl}api/user/lokers`);
@@ -24,7 +25,9 @@ export async function generateStaticParams() {
 
 async function getVacancyById(id: string) {
   if (!id) throw new Error("ID is required to fetch Vacancy");
-  const response = await fetch(`${backendUrl}api/user/lokers/${id}`);
+  const response = await fetch(`${backendUrl}api/user/lokers/${id}`, {
+    cache: "no-store",
+  });
 
   const data = await response.json();
   return data?.data || null;
@@ -33,7 +36,8 @@ async function getVacancyById(id: string) {
 export async function generateMetadata({ params }: { params: { id: string } }) {
   const Vacancy = await getVacancyById(params?.id);
   return {
-    title: Vacancy.loker_type + " | " + Vacancy.kemitraan_id,
+    title:
+      Vacancy.position.position_name + " | " + Vacancy.kemitraan.kemitraan_name,
   };
 }
 
@@ -79,30 +83,35 @@ export default async function Page({ params }: { params: { id: string } }) {
           </div>
           <div className="flex flex-col h-full gap-6 xl:items-end w-full">
             <div className="flex items-center gap-6">
-              {VacancyById.position.position_type !== "Full time" && (
+              {VacancyById.position.position_type &&
+                VacancyById.position.position_type !== "" && (
+                  <div className="flex items-center gap-2">
+                    <Image
+                      src="/assets/icon/time.svg"
+                      alt="time"
+                      width={15}
+                      height={15}
+                      className="w-5 h-5"
+                    />
+                    <Paragraph className="text-sm xl:text-lg">
+                      {VacancyById.position.position_type}
+                    </Paragraph>
+                  </div>
+                )}
+              {VacancyById.loker_for && VacancyById.loker_for !== "" && (
                 <div className="flex items-center gap-2">
                   <Image
-                    src="/assets/icon/time.svg"
-                    alt="time"
+                    src="/assets/icon/user-filled.svg"
+                    alt="user"
                     width={15}
                     height={15}
                     className="w-5 h-5"
                   />
-                  <Paragraph className="text-sm xl:text-lg">Fulltime</Paragraph>
+                  <Paragraph className="text-sm xl:text-lg">
+                    {VacancyById.loker_for}
+                  </Paragraph>
                 </div>
               )}
-              <div className="flex items-center gap-2">
-                <Image
-                  src="/assets/icon/user-filled.svg"
-                  alt="user"
-                  width={15}
-                  height={15}
-                  className="w-5 h-5"
-                />
-                <Paragraph className="text-sm xl:text-lg">
-                  Siswa Alumni
-                </Paragraph>
-              </div>
             </div>
             <ApplyButton
               vacancy={VacancyById}
@@ -111,12 +120,22 @@ export default async function Page({ params }: { params: { id: string } }) {
           </div>
         </div>
         <hr className="border-gray-300 w-full" />
-        <Paragraph>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          reiciendis nostrum autem aut, cupiditate corrupti voluptates ad atque
-          vel minus eaque deleniti inventore eligendi tempora fugiat harum error
-          vitae. Nemo.
-        </Paragraph>
+        {VacancyById?.pdf ? (
+          <PDFViewer url={VacancyById?.pdf ? VacancyById?.pdf : ""} />
+        ) : (
+          <div className="min-h-[17rem] md:min-h-[20rem]  rounded-[10px] lg:min-h-[30rem] xl:min-h-[40rem] flex justify-center items-center bg-gray-base">
+            <Image
+              src={
+                "https://img.icons8.com/?size=100&id=cD26kdwTbCzt&format=png&color=DCDCDC"
+              }
+              alt="pdf"
+              width={50}
+              height={50}
+              className="w-40 h-40"
+            />
+          </div>
+        )}
+        <Paragraph>{VacancyById?.loker_description}</Paragraph>
         <div className=" flex gap-4 lg:gap-10 flex-col w-full ">
           <h2 className="mt-10 text-2xl lg:text-3xl xl:text-4xl 1xl:text-5xl font-semibold">
             Lowongan Lain

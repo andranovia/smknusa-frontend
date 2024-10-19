@@ -21,7 +21,6 @@ export const usePartnerships = (filter: { search: string }) => {
       const data = await getSchoolPartnerships({ search: filter.search });
       return data ?? [];
     },
-    enabled: !!filter,
   });
   if (partnerships == undefined) {
     console.log("get data returned undefined");
