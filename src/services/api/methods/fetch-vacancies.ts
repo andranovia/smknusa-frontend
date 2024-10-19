@@ -27,3 +27,14 @@ export async function getJobVacancies(
     return null;
   }
 }
+
+export async function getJobVacancyDetails(id?: string) {
+  try {
+    const response = await axiosInstance.get(`api/user/lokers/${id}`);
+    const data = response.data.data;
+    return data;
+  } catch (error) {
+    console.log(error, "Error fetching job vacancy details");
+    return null;
+  }
+}

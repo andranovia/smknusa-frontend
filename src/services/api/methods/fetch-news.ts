@@ -25,13 +25,14 @@ export async function getNews(
   }
 }
 
-export async function getNewsCategories() {
+export async function getNewsDetails(id?: string) {
   try {
-    const response = await axiosInstance.get(`api/user/news-categories`);
+    const response = await axiosInstance.get(`api/user/news/${id}`);
     const data = response.data.data;
+    console.log("fetch data", data);
     return data;
   } catch (error) {
-    console.log(error, "Error fetching news categories");
+    console.log(error, "Error fetching news details");
     return null;
   }
 }

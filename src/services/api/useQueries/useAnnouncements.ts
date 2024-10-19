@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import {
-  getAnnouncementCategories,
+  getAnnouncementDetails,
   getAnnouncements,
 } from "../methods/fetch-announcements";
 
@@ -23,7 +23,7 @@ export type Announcement = {
   viewer: string;
 };
 
-export const useAnnouncements = () => {
+export const useAnnouncements = (id?: string) => {
   const { data: announcements, isLoading: isAnnouncementsLoading } = useQuery<
     Announcement[] | null
   >({
@@ -31,12 +31,17 @@ export const useAnnouncements = () => {
     queryFn: () => getAnnouncements(),
   });
 
-  const { data: announcementCategories } = useQuery({
-    queryKey: ["AnnouncementCategories"],
-    queryFn: () => {
-      return getAnnouncementCategories();
-    },
-  });
+  const { data: announcementDetails, isLoading: isAnnouncementDetailsLoading } =
+    useQuery<Announcement | null>({
+      queryKey: ["AnnouncementDetails"],
+      queryFn: () => getAnnouncementDetails(id),
+      enabled: !!id,
+    });
 
-  return { announcements, announcementCategories, isAnnouncementsLoading };
+  return {
+    announcements,
+    isAnnouncementsLoading,
+    announcementDetails,
+    isAnnouncementDetailsLoading,
+  };
 };

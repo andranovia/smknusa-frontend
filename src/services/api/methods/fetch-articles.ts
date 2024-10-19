@@ -14,7 +14,6 @@ export async function getArticles(
   if (filter?.start_date) params.append("start_date", filter.start_date);
   if (filter?.end_date) params.append("end_date", filter.end_date);
 
-  
   const queryString = params.toString();
   const url = queryString
     ? `api/user/articles?${queryString}`
@@ -31,13 +30,14 @@ export async function getArticles(
   }
 }
 
-export async function getArticleCategories() {
+export async function getArticleDetails(id?: string) {
   try {
-    const response = await axiosInstance.get(`api/user/article-categories`);
+    const response = await axiosInstance.get(`api/user/articles/${id}`);
     const data = response.data.data;
+    console.log("fetch data", data);
     return data;
   } catch (error) {
-    console.log(error, "Error fetching article categories");
+    console.log(error, "Error fetching article details");
     return null;
   }
 }

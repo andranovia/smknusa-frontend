@@ -1,56 +1,33 @@
+"use client";
+
 import Image from "next/image";
 import React from "react";
-import { redirect } from "next/navigation";
+import DOMPurify from "dompurify";
 import Link from "next/link";
+import parse from "html-react-parser";
 import { backendUrl } from "@/utils/backendUrl";
-import { Article } from "@/services/api/useQueries/useArticles";
+import { useArticles } from "@/services/api/useQueries/useArticles";
 import InfoCardItem from "@/components/ui/info-card-item";
 import ArticleShare from "@/components/info/article/article-share";
 import FilterCard from "@/components/ui/filter-card";
+import { useMetadata } from "@/utils/useMetadata";
 
-export const dynamic = "force-static";
-export const dynamicParams = false;
-
-export async function generateStaticParams() {
-  const articlesData = await fetchArticles();
-  const ids = articlesData?.map(
-    (articles: Article) => articles.id_pemberitahuan
-  );
-
-  return ids?.map((id: string) => ({ id: id.toString() }));
-}
-
-async function fetchArticles() {
-  const response = await fetch(`${backendUrl}api/user/articles`);
-  const data: { data: Article[] } = await response.json();
-  return data?.data;
-}
-
-async function getArticleById(id: string) {
-  if (!id) throw new Error("ID is required to fetch article");
-  const response = await fetch(`${backendUrl}api/user/articles/${id}`);
-
-  const data = await response.json();
-  return data?.data || null;
-}
-
-export async function generateMetadata({ params }: { params: { id: string } }) {
-  const post = await getArticleById(params?.id);
-  return {
-    title: post.nama,
-  };
-}
-
-export default async function Page({ params }: { params: { id: string } }) {
+export default function Page({ params }: { params: { id: string } }) {
   const { id } = params;
-  const articlesData = await fetchArticles();
-  const articleById = await getArticleById(id);
+  const { articleDetails, articles } = useArticles(id);
+  const sanitizedHtml = DOMPurify.sanitize(articleDetails?.text, {
+    FORBID_TAGS: ["img", "style", "b", "i", "strong", "em", "u", "font"],
+    FORBID_ATTR: ["style"],
+  });
+  const parsedHTML = parse(articleDetails?.text ? articleDetails?.text : "");
 
-  if (articleById === "Data tidak ditemukan" || !articleById) {
-    redirect("/404");
-  }
-
-  const date = new Date(articleById?.created_at || Date.now());
+  useMetadata(
+    articleDetails?.nama || "Article Details",
+    `Details about the article: ${
+      articleDetails?.text || "Article description"
+    }`
+  );
+  const date = new Date(articleDetails?.created_at || Date.now());
   const normalDate = date.toLocaleDateString();
 
   return (
@@ -59,11 +36,11 @@ export default async function Page({ params }: { params: { id: string } }) {
         <div className="relative  bg-white rounded-[10px] flex flex-col items-center xl:gap-20 pt-4 lg:pt-10 pb-20 px-4 gap-0  max-w-full md:max-w-md-content lg:max-w-lg-content xl:max-w-full 2xl:max-w-max-content w-full">
           <div className="flex flex-col gap-0 xl:gap-6 w-full xl:w-[82%] ">
             <h1 className="font-[700] lg:text-4xl xl:text-[46px] xl:leading-[3rem] text-2xl">
-              {articleById?.nama}
+              {articleDetails?.nama}
             </h1>
             <div className="flex xl:flex-row flex-col xl:my-0 my-6 gap-4 xl:gap-8 justify-between items-start w-full">
               <div className="flex flex-wrap items-center gap-2 xl:w-1/4 2xl:w-1/6">
-                {articleById?.level === "0" || articleById?.level === 0 ? (
+                {articleDetails?.level === "0" ? (
                   <div className="bg-[#FFE7AF] px-2 py-1.5 lg:py-1 rounded-[10px]">
                     <p className="font-[500] text-[10px] text-gray text-center">
                       Penting
@@ -71,17 +48,17 @@ export default async function Page({ params }: { params: { id: string } }) {
                   </div>
                 ) : null}
                 <div
-                  style={{ backgroundColor: articleById?.category.color }}
+                  style={{ backgroundColor: articleDetails?.category.color }}
                   className="px-2 py-1.5 lg:py-1 rounded-[10px]"
                 >
                   <p className="font-[500] text-[10px] text-gray text-center">
-                    {articleById?.category.nama}
+                    {articleDetails?.category.nama}
                   </p>
                 </div>
               </div>
               <div className="flex flex-col w-full xl:w-4/5 gap-8 !font-[500] !text-[18px]  ">
                 <p className="relative !text-gray line-clamp-3 ">
-                  {articleById?.text}
+                  {parse(sanitizedHtml)}
                 </p>
                 <hr className="w-full border " />
                 <div className="w-full justify-between flex lg:flex-row flex-col lg:items-center gap-4">
@@ -103,7 +80,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                         src={"/assets/icon/eye.svg"}
                         alt="view"
                       />
-                      <h4>{articleById?.viewer}</h4>
+                      <h4>{articleDetails?.viewer}</h4>
                     </div>
                     <ArticleShare />
                   </div>
@@ -113,7 +90,7 @@ export default async function Page({ params }: { params: { id: string } }) {
           </div>
           <div className="flex flex-col items-center gap-8 w-full xl:w-[82%] ">
             <Image
-              src={backendUrl + articleById?.thumbnail}
+              src={backendUrl + articleDetails?.thumbnail}
               alt="article-image"
               className="w-full rounded-[10px]"
               width={800}
@@ -123,7 +100,7 @@ export default async function Page({ params }: { params: { id: string } }) {
               <div className="w-full flex flex-col items-start gap-10 ">
                 <div className="flex flex-col items-start gap-10 font-[500] text-[18px] text-blue-base w-full">
                   <span className="flex flex-col items-start gap-4">
-                    {articleById?.text}
+                    {parsedHTML}
                   </span>
 
                   <span>Jurnalis: -</span>
@@ -156,7 +133,7 @@ export default async function Page({ params }: { params: { id: string } }) {
               Artikel Lain yang tak kalah menarik
             </h2>
             <div className="grid grid-cols-1 bg-[#F1F5F9] lg:grid-cols-2 1xl:grid-cols-3 gap-4 xl:gap-8 px-2 py-2 md:py-6 md:px-6  2xl:px-12 2xl:py-9  rounded-[10px] w-full">
-              {articlesData?.slice(0, 3).map((article, index) => {
+              {articles?.slice(0, 3).map((article, index) => {
                 const date = new Date(article.created_at);
                 const normalDate = date.toLocaleDateString();
 

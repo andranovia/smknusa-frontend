@@ -1,5 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
-import { getSchoolExtra } from "../methods/fetch-extracurricular";
+import {
+  getSchoolExtra,
+  getSchoolExtraDetails,
+} from "../methods/fetch-extracurricular";
 
 export type Extra = {
   id_extra: string;
@@ -14,7 +17,7 @@ export type Extra = {
   extra_hari: string;
 };
 
-export const useExtras = () => {
+export const useExtras = (id?: string) => {
   const { data: extras, isLoading: isExtraLoading } = useQuery<Extra[] | null>({
     queryKey: ["Extra"],
     queryFn: async () => {
@@ -22,11 +25,15 @@ export const useExtras = () => {
       return data ?? [];
     },
   });
-  if (extras == undefined) {
-    console.log("get data returned undefined");
-  } else {
-    console.log("get adata", extras);
-  }
 
-  return { extras, isExtraLoading };
+  const { data: extraDetails, isLoading: isExtraDetailsLoading } =
+    useQuery<Extra | null>({
+      queryKey: ["ExtraDetails"],
+      queryFn: async () => {
+        const data = await getSchoolExtraDetails(id);
+        return data ?? null;
+      },
+    });
+
+  return { extras, isExtraLoading, extraDetails, isExtraDetailsLoading };
 };

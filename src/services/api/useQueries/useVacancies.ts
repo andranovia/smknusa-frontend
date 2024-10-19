@@ -24,12 +24,18 @@ export interface Vacancy {
 }
 
 import { useQuery } from "@tanstack/react-query";
-import { getJobVacancies } from "../methods/fetch-vacancies";
+import {
+  getJobVacancies,
+  getJobVacancyDetails,
+} from "../methods/fetch-vacancies";
 
-export const useVacancies = (filter?: {
-  search: string;
-  search_requirement: string;
-}) => {
+export const useVacancies = (
+  id?: string,
+  filter?: {
+    search: string;
+    search_requirement: string;
+  }
+) => {
   const { data: vacancies, isLoading: isVacanciesLoading } = useQuery<
     Vacancy[] | null
   >({
@@ -39,11 +45,20 @@ export const useVacancies = (filter?: {
       return data ?? [];
     },
   });
-  if (vacancies == undefined) {
-    console.log("get data returned undefined");
-  } else {
-    console.log("get adata", vacancies);
-  }
 
-  return { vacancies, isVacanciesLoading };
+  const { data: vacanciesDetails, isLoading: isVacanciesDetailsLoading } =
+    useQuery<Vacancy | null>({
+      queryKey: ["VacanciesDetails"],
+      queryFn: async () => {
+        const data = await getJobVacancyDetails(id);
+        return data?.[0] ?? null;
+      },
+    });
+
+  return {
+    vacancies,
+    isVacanciesLoading,
+    vacanciesDetails,
+    isVacanciesDetailsLoading,
+  };
 };

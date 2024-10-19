@@ -1,5 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
-import { getTeachingTools } from "../methods/fetch-teaching";
+import {
+  getTeachingToolDetails,
+  getTeachingTools,
+} from "../methods/fetch-teaching";
 
 export interface Teaching {
   id_pa: number;
@@ -11,21 +14,30 @@ export interface Teaching {
   size: string;
 }
 
-export const useTeaching = (filter: { search: string }) => {
+export const useTeaching = (id?: string, filter?: { search: string }) => {
   const { data: teachings, isLoading: isTeachingsLoading } = useQuery<
     Teaching[] | null
   >({
     queryKey: ["Teachings", filter],
     queryFn: async () => {
-      const data = await getTeachingTools({ search: filter.search });
+      const data = await getTeachingTools(filter);
       return data ?? [];
     },
   });
-  if (teachings == undefined) {
-    console.log("get data returned undefined");
-  } else {
-    console.log("get data", teachings);
-  }
 
-  return { teachings, isTeachingsLoading };
+  const { data: teachingDetails, isLoading: isTeachingDetailsLoading } =
+    useQuery<Teaching | null>({
+      queryKey: ["TeachingDetails"],
+      queryFn: async () => {
+        const data = await getTeachingToolDetails(id);
+        return data?.[0] ?? null;
+      },
+    });
+
+  return {
+    teachings,
+    isTeachingsLoading,
+    teachingDetails,
+    isTeachingDetailsLoading,
+  };
 };

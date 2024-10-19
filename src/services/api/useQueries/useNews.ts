@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getNews, getNewsCategories } from "../methods/fetch-news";
+import { getNews, getNewsDetails } from "../methods/fetch-news";
 
 export type News = {
   id_pemberitahuan: string;
@@ -17,11 +17,14 @@ export type News = {
   viewer: string;
 };
 
-export const useNews = (filter?: {
-  search: string;
-  start_date: string;
-  end_date: string;
-}) => {
+export const useNews = (
+  id?: string,
+  filter?: {
+    search: string;
+    start_date: string;
+    end_date: string;
+  }
+) => {
   const {
     data: news,
     isLoading: isNewsLoading,
@@ -31,12 +34,12 @@ export const useNews = (filter?: {
     queryFn: () => getNews(filter),
   });
 
-  const { data: newsCategories } = useQuery({
-    queryKey: ["NewsCategories"],
-    queryFn: () => {
-      return getNewsCategories();
-    },
-  });
+  const { data: newsDetails, isLoading: isNewsDetailsLoading } =
+    useQuery<News | null>({
+      queryKey: ["NewsDetails"],
+      queryFn: () => getNewsDetails(id),
+      enabled: !!id,
+    });
 
-  return { news, newsCategories, isNewsLoading, refetch };
+  return { news, newsDetails, isNewsDetailsLoading, isNewsLoading, refetch };
 };

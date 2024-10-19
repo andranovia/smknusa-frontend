@@ -15,9 +15,12 @@ export interface Prodi {
 }
 
 import { useQuery } from "@tanstack/react-query";
-import { getSchoolMajors } from "../methods/fetch-majors";
+import {
+  getSchoolMajorDetails,
+  getSchoolMajors,
+} from "../methods/fetch-majors";
 
-export const useMajors = () => {
+export const useMajors = (id?: string) => {
   const { data: majors, isLoading: isMajorsLoading } = useQuery<Major[] | null>(
     {
       queryKey: ["Majors"],
@@ -27,11 +30,15 @@ export const useMajors = () => {
       },
     }
   );
-  if (majors == undefined) {
-    console.log("get data returned undefined");
-  } else {
-    console.log("get adata", majors);
-  }
 
-  return { majors, isMajorsLoading };
+  const { data: majorDetails, isLoading: isMajorDetailsLoading } =
+    useQuery<Major | null>({
+      queryKey: ["MajorDetails"],
+      queryFn: async () => {
+        const data = await getSchoolMajorDetails(id);
+        return data ?? null;
+      },
+    });
+
+  return { majors, isMajorsLoading, majorDetails, isMajorDetailsLoading };
 };
