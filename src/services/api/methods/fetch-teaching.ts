@@ -24,3 +24,14 @@ export async function getTeachingTools(
     return null;
   }
 }
+
+export async function getTeachingToolDetails(id?: string) {
+  try {
+    const response = await axiosInstance.get(`api/user/PerangkatAjar/${id}`);
+    const data = response.data.data;
+    return data;
+  } catch (error) {
+    console.log(error, "Error fetching teaching tool details");
+    return null;
+  }
+}

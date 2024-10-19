@@ -1,7 +1,23 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { Heading } from "@/components/ui/typography";
 
-const JobVacanciesForm = () => {
+type JobVacanciesFormProps = {
+  jobVacanciesFilter: {
+    search: string;
+    search_requirement: string;
+  };
+  setJobVacanciesFilter: Dispatch<
+    SetStateAction<{
+      search: string;
+      search_requirement: string;
+    }>
+  >;
+};
+
+const JobVacanciesForm = ({
+  jobVacanciesFilter,
+  setJobVacanciesFilter,
+}: JobVacanciesFormProps) => {
   return (
     <div className="relative z-10 w-full  -mt-20  1xl:-mt-32 max-w-[70rem]">
       <div className="flex justify-center items-center p-2  xl:bg-transparent w-full">
@@ -15,6 +31,13 @@ const JobVacanciesForm = () => {
                 type="text"
                 id="job-name"
                 name="job-name"
+                value={jobVacanciesFilter.search}
+                onChange={(e) =>
+                  setJobVacanciesFilter({
+                    ...jobVacanciesFilter,
+                    search: e.target.value,
+                  })
+                }
                 placeholder="Jenis Pekerjaan"
                 className="w-auto h-10 border border-gray-300 rounded-lg p-2"
               />
@@ -27,6 +50,13 @@ const JobVacanciesForm = () => {
                 type="text"
                 id="requirement"
                 name="requirement"
+                value={jobVacanciesFilter.search_requirement}
+                onChange={(e) =>
+                  setJobVacanciesFilter({
+                    ...jobVacanciesFilter,
+                    search_requirement: e.target.value,
+                  })
+                }
                 placeholder="Pilih Requirement"
                 className="xl:w-auto h-10 border border-gray-300 rounded-lg p-2"
               />

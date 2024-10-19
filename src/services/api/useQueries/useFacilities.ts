@@ -1,5 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
-import { getSchoolFacility } from "../methods/fetch-facility";
+import {
+  getSchoolFacility,
+  getSchoolFacilityDetails,
+} from "../methods/fetch-facility";
 
 export interface Facility {
   id_facility: number;
@@ -16,7 +19,7 @@ export interface Prodi {
   prodi_short: string;
 }
 
-export const useFacilities = () => {
+export const useFacilities = (id?: string) => {
   const { data: facilities, isLoading: isFacilityLoading } = useQuery<
     Facility[] | null
   >({
@@ -26,10 +29,21 @@ export const useFacilities = () => {
       return data ?? [];
     },
   });
-  if (facilities == undefined) {
-    console.log("get data returned undefined");
-  } else {
-  }
 
-  return { facilities, isFacilityLoading };
+  const { data: facilityDetails, isLoading: isFacilityDetailsLoading } =
+    useQuery<Facility | null>({
+      queryKey: ["FacilityDetails"],
+      queryFn: async () => {
+        const data = await getSchoolFacilityDetails(id);
+        return data ?? null;
+      },
+      enabled: !!id,
+    });
+
+  return {
+    facilities,
+    isFacilityLoading,
+    facilityDetails,
+    isFacilityDetailsLoading,
+  };
 };

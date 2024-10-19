@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { Article } from "@/services/api/useQueries/useArticles";
+import { Announcement } from "@/services/api/useQueries/useAnnouncements";
 import { Event } from "@/services/api/useQueries/useEvents";
 import { News } from "@/services/api/useQueries/useNews";
 import { backendUrl } from "@/utils/backendUrl";
@@ -8,7 +9,7 @@ import { cn } from "@/utils/cn";
 import { Heading } from "./typography";
 
 type InfoCardItemProps = {
-  infoCardData: Article | News | Event;
+  infoCardData: Article | News | Event | Announcement;
   normalDate: string;
 };
 

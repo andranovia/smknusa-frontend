@@ -3,6 +3,8 @@ export interface Vacancy {
   loker_thumbnail: string;
   loker_type: string;
   icon_type: string;
+  pdf: string;
+  loker_for: string;
   loker_description: string;
   loker_available: string;
   position: {
@@ -22,23 +24,41 @@ export interface Vacancy {
 }
 
 import { useQuery } from "@tanstack/react-query";
-import { getJobVacancies } from "../methods/fetch-vacancies";
+import {
+  getJobVacancies,
+  getJobVacancyDetails,
+} from "../methods/fetch-vacancies";
 
-export const useVacancies = () => {
+export const useVacancies = (
+  id?: string,
+  filter?: {
+    search: string;
+    search_requirement: string;
+  }
+) => {
   const { data: vacancies, isLoading: isVacanciesLoading } = useQuery<
     Vacancy[] | null
   >({
-    queryKey: ["Vacancies"],
+    queryKey: ["Vacancies", filter],
     queryFn: async () => {
-      const data = await getJobVacancies();
+      const data = await getJobVacancies(filter);
       return data ?? [];
     },
   });
-  if (vacancies == undefined) {
-    console.log("get data returned undefined");
-  } else {
-    console.log("get adata", vacancies);
-  }
 
-  return { vacancies, isVacanciesLoading };
+  const { data: vacanciesDetails, isLoading: isVacanciesDetailsLoading } =
+    useQuery<Vacancy | null>({
+      queryKey: ["VacanciesDetails"],
+      queryFn: async () => {
+        const data = await getJobVacancyDetails(id);
+        return data?.[0] ?? null;
+      },
+    });
+
+  return {
+    vacancies,
+    isVacanciesLoading,
+    vacanciesDetails,
+    isVacanciesDetailsLoading,
+  };
 };

@@ -24,3 +24,14 @@ export async function getSchoolPartnerships(
     return null;
   }
 }
+
+export async function getSchoolPartnershipDetails(id?: string) {
+  try {
+    const response = await axiosInstance.get(`api/user/kemitraans/${id}`);
+    const data = response.data.data;
+    return data;
+  } catch (error) {
+    console.log(error, "Error fetching partnership details");
+    return null;
+  }
+}

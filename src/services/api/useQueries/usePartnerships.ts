@@ -10,24 +10,35 @@ export interface Partnership {
 }
 
 import { useQuery } from "@tanstack/react-query";
-import { getSchoolPartnerships } from "../methods/fetch-partnerships";
+import {
+  getSchoolPartnershipDetails,
+  getSchoolPartnerships,
+} from "../methods/fetch-partnerships";
 
-export const usePartnerships = (filter: { search: string }) => {
+export const usePartnerships = (id?: string, filter?: { search: string }) => {
   const { data: partnerships, isLoading: isPartnershipsLoading } = useQuery<
     Partnership[] | null
   >({
     queryKey: ["Partnerships", filter],
     queryFn: async () => {
-      const data = await getSchoolPartnerships({ search: filter.search });
+      const data = await getSchoolPartnerships(filter);
       return data ?? [];
     },
-    enabled: !!filter,
   });
-  if (partnerships == undefined) {
-    console.log("get data returned undefined");
-  } else {
-    console.log("get adata", partnerships);
-  }
 
-  return { partnerships, isPartnershipsLoading };
+  const { data: partnershipDetails, isLoading: isPartnershipDetailsLoading } =
+    useQuery<Partnership | null>({
+      queryKey: ["PartnershipDetails"],
+      queryFn: async () => {
+        const data = await getSchoolPartnershipDetails(id);
+        return data?.[0] ?? null;
+      },
+    });
+
+  return {
+    partnerships,
+    isPartnershipsLoading,
+    partnershipDetails,
+    isPartnershipDetailsLoading,
+  };
 };
