@@ -14,9 +14,10 @@ const JobVacanciesCard = ({
     search_requirement: string;
   };
 }) => {
-  const { vacancies, isVacanciesLoading } = useVacancies({
-    ...jobVacanciesFilter,
-  });
+  const { vacancies, isVacanciesLoading } = useVacancies(
+    undefined,
+    jobVacanciesFilter
+  );
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 9;
 

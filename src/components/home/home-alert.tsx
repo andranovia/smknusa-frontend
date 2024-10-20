@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useAlert } from "@/services/api/useQueries/useAlert";
 import { defaultTransition } from "../animation/transition";
+import { Paragraph } from "../ui/typography";
 
 const HomeAlert = () => {
   const { alert, isAlertLoading } = useAlert();
@@ -25,7 +26,7 @@ const HomeAlert = () => {
       transition={defaultTransition}
       className=" fixed bottom-0 z-50 w-full px-2"
     >
-      <div className="bg-[#fef9c3] px-2 py-4 w-full rounded-tl-md rounded-tr-md h-full relative flex justify-center items-center">
+      <div className="bg-[#fef9c3] px-2 py-4 w-full rounded-tl-md rounded-tr-md h-full relative flex md:justify-center items-center">
         {alert && !isAlertLoading ? (
           <>
             <motion.div
@@ -53,7 +54,7 @@ const HomeAlert = () => {
                 initial={false}
                 transition={defaultTransition}
                 animate={{ x: hover ? -20 : 0 }}
-                className="flex justify-center gap-2  text-blue-base line-clamp-1 text-xl font-semibold items-center"
+                className="flex justify-center gap-2    items-center"
               >
                 <Image
                   src={"/assets/icon/alert.svg"}
@@ -61,7 +62,9 @@ const HomeAlert = () => {
                   height={20}
                   alt={"alert"}
                 />
-                <span>{alert[0]?.alert_title}</span>
+                <Paragraph className="line-clamp-1 !text-base md:!text-xl !font-semibold text-blue-base">
+                  {alert[0]?.alert_title}
+                </Paragraph>
               </motion.div>
               <motion.div
                 initial={false}
@@ -69,7 +72,7 @@ const HomeAlert = () => {
                 animate={{
                   backgroundColor: hover ? "#081b34" : "#fef9c3",
                 }}
-                className="flex justify-center items-center p-1 rounded-full overflow-hidden"
+                className="hidden md:flex justify-center items-center p-1 rounded-full overflow-hidden"
               >
                 <Image
                   src={"/assets/icon/line-arrow-right-blue.svg"}
@@ -82,7 +85,7 @@ const HomeAlert = () => {
             </Link>
             <div
               onClick={() => setClose(true)}
-              className="rounded-md font-bold px-4 py-3 bg-primary gap-2 text-white text-xs cursor-pointer absolute flex justify-center items-center right-2 bottom-2"
+              className="rounded-md font-bold px-2 md:px-4 py-3 bg-primary gap-2 text-white text-xs cursor-pointer absolute flex justify-center items-center right-2 bottom-2"
             >
               <Image
                 src={"/assets/icon/close-square.svg"}
@@ -90,7 +93,7 @@ const HomeAlert = () => {
                 height={20}
                 alt={"close-square"}
               />
-              <span>Close</span>
+              <span className="hidden md:block ">Close</span>
             </div>
           </>
         ) : null}

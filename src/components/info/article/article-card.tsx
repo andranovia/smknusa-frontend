@@ -16,7 +16,7 @@ const ArticleCard = ({
     end_date: string;
   };
 }) => {
-  const { articles, isArticlesLoading } = useArticles({ ...articleFilter });
+  const { articles, isArticlesLoading } = useArticles(undefined, articleFilter);
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 9;
 

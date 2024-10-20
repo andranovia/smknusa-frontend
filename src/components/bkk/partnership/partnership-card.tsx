@@ -8,9 +8,10 @@ import ProfileCardItem from "@/components/ui/profile-card-item";
 import Pagination from "@/components/ui/pagination";
 
 const PartnershipCard = (partnershipFilter: { search: string }) => {
-  const { partnerships, isPartnershipsLoading } = usePartnerships({
-    search: partnershipFilter.search,
-  });
+  const { partnerships, isPartnershipsLoading } = usePartnerships(
+    undefined,
+    partnershipFilter
+  );
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 9;
 
