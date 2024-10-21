@@ -8,12 +8,13 @@ import DetailLayout from "@/layouts/detail-layout";
 import { useMajors } from "@/services/api/useQueries/useMajors";
 import FeatureCardItem from "@/components/ui/feature-card-item";
 import { useMetadata } from "@/utils/useMetadata";
+import { backendUrl } from "@/utils/backendUrl";
 
 export default function Page({ params }: { params: { id: string } }) {
   const { id } = params;
   const { majors, majorDetails } = useMajors(id);
   useMetadata(
-    majorDetails?.jurusan_short + "|" + majorDetails?.jurusan_nama ||
+    majorDetails?.jurusan_short + " | " + majorDetails?.jurusan_nama ||
       "Major Details",
     `Details about the major: ${
       majorDetails?.jurusan_text || "Major description"
@@ -42,7 +43,7 @@ export default function Page({ params }: { params: { id: string } }) {
           <div className="flex flex-col lg:flex-row lg:justify-start justify-center items-center gap-4 h-full w-full">
             <div className="px-28 xs:px-8 py-6 w-fit xs:w-full lg:w-fit flex justify-center items-center bg-gray-medium rounded-[10px]">
               <Image
-                src={"/assets/icon/logo-skansa.svg"}
+                src={backendUrl + majorDetails?.jurusan_logo}
                 alt="smknusa-icon"
                 width={50}
                 height={50}

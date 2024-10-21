@@ -8,10 +8,12 @@ import { Heading, Paragraph } from "@/components/ui/typography";
 import DetailLayout from "@/layouts/detail-layout";
 import { usePartnerships } from "@/services/api/useQueries/usePartnerships";
 import { useMetadata } from "@/utils/useMetadata";
+import { backendUrl } from "@/utils/backendUrl";
 
 export default function Page({ params }: { params: { id: string } }) {
   const { id } = params;
   const { partnerships, partnershipDetails } = usePartnerships(id);
+
   useMetadata(
     partnershipDetails?.kemitraan_name || "Partnership Details",
     `Details about the partnership: ${
@@ -26,7 +28,7 @@ export default function Page({ params }: { params: { id: string } }) {
           <div className="flex flex-col lg:flex-row justify-center items-center lg:justify-start  gap-4 h-full w-full">
             <div className="px-8 py-6 w-full lg:w-fit flex justify-center items-center bg-gray-medium rounded-[10px]">
               <Image
-                src={"/assets/icon/logo-skansa.svg"}
+                src={backendUrl + partnershipDetails?.kemitraan_logo}
                 alt="smknusa-icon"
                 width={50}
                 height={50}

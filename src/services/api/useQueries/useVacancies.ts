@@ -51,7 +51,7 @@ export const useVacancies = (
       queryKey: ["VacanciesDetails"],
       queryFn: async () => {
         const data = await getJobVacancyDetails(id);
-        return data?.[0] ?? null;
+        return data ?? null;
       },
     });
 

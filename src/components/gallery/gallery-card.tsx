@@ -26,10 +26,12 @@ const GalleryCard = () => {
                   );
                 })}
             </div>
-            <GalleryShowMore
-              setShowAllGalleries={setShowAllGalleries}
-              showAllGalleries={showAllGalleries}
-            />
+            {galleries && galleries?.length > 9 && (
+              <GalleryShowMore
+                setShowAllGalleries={setShowAllGalleries}
+                showAllGalleries={showAllGalleries}
+              />
+            )}
           </div>
         ) : (
           <div className="grid grid-cols-2 1xl:grid-cols-3 gap-4 md:gap-8 w-full 1xl:w-auto p-4 2xl:px-14 pb-12 bg-white rounded-[10px]">

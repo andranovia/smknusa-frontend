@@ -31,7 +31,7 @@ const MajorCard = ({ majors }: { majors: Major[] | undefined }) => {
                 );
               })}
           </div>
-          {majors.length > 8 && (
+          {majors.length > 9 && (
             <MajorShowMore
               showAllMajor={showAllMajor}
               setShowAllMajor={setShowAllMajor}

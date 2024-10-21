@@ -30,10 +30,12 @@ const TeachingDeviceCard = ({
               ))}
             </div>
 
-            <DeviceShowMore
-              setShowAllDevice={setShowAllDevice}
-              showAllDevice={showAllDevice}
-            />
+            {teachings && teachings?.length > 6 && (
+              <DeviceShowMore
+                setShowAllDevice={setShowAllDevice}
+                showAllDevice={showAllDevice}
+              />
+            )}
           </>
         ) : (
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 xl:gap-8 px-2 lg:px-4 py-4 1xl:px-12 pb-12 bg-white rounded-[10px] w-full">

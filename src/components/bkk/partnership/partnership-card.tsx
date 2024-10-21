@@ -44,13 +44,15 @@ const PartnershipCard = (partnershipFilter: { search: string }) => {
                 );
               })}
             </div>
-            <div className="mt-4 ">
-              <Pagination
-                totalPosts={partnerships?.length}
-                postsPerPage={postsPerPage}
-                onPageChange={onPageChange}
-              />
-            </div>
+            {partnerships && partnerships?.length > 9 && (
+              <div className="mt-4 ">
+                <Pagination
+                  totalPosts={partnerships?.length}
+                  postsPerPage={postsPerPage}
+                  onPageChange={onPageChange}
+                />
+              </div>
+            )}
           </div>
         ) : (
           <div className="grid grid-cols-2 1xl:grid-cols-3 gap-4 md:gap-8 w-full 1xl:w-auto p-4 2xl:px-14 pb-12 bg-white rounded-[10px]">

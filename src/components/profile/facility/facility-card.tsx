@@ -36,7 +36,7 @@ const FacilityCard = ({
                   );
                 })}
             </div>
-            {facilities.length > 8 && (
+            {facilities.length > 9 && (
               <FacilityShowMore
                 showAllFacility={showAllFacility}
                 setShowAllFacility={setShowAllFacility}

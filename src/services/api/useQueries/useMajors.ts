@@ -3,6 +3,7 @@ export interface Major {
   jurusan_nama: string;
   jurusan_short: string;
   jurusan_thumbnail: string;
+  jurusan_logo: string;
   prodi: Prodi;
   jurusan_text: string;
   icon_type: string;

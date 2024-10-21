@@ -63,13 +63,15 @@ const ArticleCard = ({
                 );
               })}
             </div>
-            <div className="mt-4 mb-12">
-              <Pagination
-                totalPosts={articles?.length}
-                postsPerPage={postsPerPage}
-                onPageChange={onPageChange}
-              />
-            </div>
+            {articles && articles?.length > 9 && (
+              <div className="mt-4 mb-12">
+                <Pagination
+                  totalPosts={articles?.length}
+                  postsPerPage={postsPerPage}
+                  onPageChange={onPageChange}
+                />
+              </div>
+            )}
           </div>
         )}
       </div>

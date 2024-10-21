@@ -63,13 +63,15 @@ const NewsCard = ({
                 );
               })}
             </div>
-            <div className="mt-4 mb-12">
-              <Pagination
-                totalPosts={news?.length}
-                postsPerPage={postsPerPage}
-                onPageChange={onPageChange}
-              />
-            </div>
+            {news && news?.length > 9 && (
+              <div className="mt-4 mb-12">
+                <Pagination
+                  totalPosts={news?.length}
+                  postsPerPage={postsPerPage}
+                  onPageChange={onPageChange}
+                />
+              </div>
+            )}
           </div>
         )}
       </div>
