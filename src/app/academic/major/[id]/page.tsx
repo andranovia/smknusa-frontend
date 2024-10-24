@@ -3,6 +3,7 @@
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
+import parse from "html-react-parser";
 import { Heading } from "@/components/ui/typography";
 import DetailLayout from "@/layouts/detail-layout";
 import { useMajors } from "@/services/api/useQueries/useMajors";
@@ -35,6 +36,10 @@ export default function Page({ params }: { params: { id: string } }) {
         return "bg-gray-500";
     }
   };
+
+  const parsedHtml = parse(
+    majorDetails?.jurusan_text ? majorDetails?.jurusan_text : ""
+  );
 
   return (
     majorDetails && (
@@ -72,7 +77,7 @@ export default function Page({ params }: { params: { id: string } }) {
             </div>
           </div>
           <span className="!w-[280px] xs:!w-full font-[400] text-[16px]  md:text-[18px]">
-            {majorDetails?.jurusan_text}
+            {parsedHtml}
           </span>
           <div className=" flex gap-4 lg:gap-10 flex-col w-full ">
             <h2 className="mt-10 text-2xl lg:text-3xl xl:text-4xl 1xl:text-5xl font-semibold">

@@ -45,7 +45,7 @@ const HomeAlert = () => {
               />
             </motion.div>
             <Link
-              href={alert[0]?.alert_url}
+              href={alert[0]?.alert_url || ""}
               onMouseEnter={() => setHover(true)}
               onMouseLeave={() => setHover(false)}
               className="flex justify-center gap-2 items-center cursor-pointer"

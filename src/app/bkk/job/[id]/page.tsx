@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import React from "react";
+import parse from "html-react-parser";
 import { Heading, Paragraph } from "@/components/ui/typography";
 import DetailLayout from "@/layouts/detail-layout";
 import JobVacanciesCardItem from "@/components/bkk/job/job-card-item";
@@ -13,6 +14,7 @@ import PDFViewer from "@/components/ui/pdf-viewer";
 export default function Page({ params }: { params: { id: string } }) {
   const { id } = params;
   const { vacancies, vacanciesDetails } = useVacancies(id);
+
   useMetadata(
     vacanciesDetails?.position.position_name +
       " | " +
@@ -20,6 +22,12 @@ export default function Page({ params }: { params: { id: string } }) {
     `Details about the job: ${
       vacanciesDetails?.loker_description || "Job description"
     }`
+  );
+
+  const parsedHtml = parse(
+    vacanciesDetails?.loker_description
+      ? vacanciesDetails?.loker_description
+      : ""
   );
 
   return (
@@ -118,7 +126,7 @@ export default function Page({ params }: { params: { id: string } }) {
               />
             </div>
           )}
-          <Paragraph>{vacanciesDetails?.loker_description}</Paragraph>
+          <Paragraph>{parsedHtml}</Paragraph>
           <div className=" flex gap-4 lg:gap-10 flex-col w-full ">
             <h2 className="mt-10 text-2xl lg:text-3xl xl:text-4xl 1xl:text-5xl font-semibold">
               Lowongan Lain
