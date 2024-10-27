@@ -123,7 +123,7 @@ const HomeAnnouncement = () => {
             <hr className="bg-white mt-8 xl:mt-[52px]  w-full  max-w-[274px] xs:max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container" />
 
             <div className="flex flex-col xl:flex-row max-w-[274px] xs:max-w-xs-content sm:max-w-sm-content md:max-w-md-content  lg:max-w-lg-content xl:justify-between xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container items-start w-full gap-8 left-8 mt-12  ">
-              <div className="grid grid-cols-2 xl:flex items-center xl:justify-start xl:gap-x-10  md:px-4 w-full gap-x-4 gap-y-10 ">
+              <div className="grid grid-cols-2 lg:grid-cols-4 xl:flex items-center xl:justify-start xl:gap-x-10  xl:px-4 w-full gap-x-4 gap-y-10 ">
                 {announcementsLinkData.map((link, index) => (
                   <React.Fragment key={index}>
                     <span

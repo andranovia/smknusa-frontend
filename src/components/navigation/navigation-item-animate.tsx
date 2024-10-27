@@ -62,16 +62,6 @@ const NavigationItemAnimate = ({
     },
   };
 
-  const getLinkMobile = (text: string) => {
-    if (text === "Sambutan Kepala Sekolah" || text === "Lowongan Pekerjaan") {
-      return text.split(" ")[0];
-    } else if (text === "Visi dan Misi") {
-      return text;
-    }
-    const words = text.split(" ");
-    return words.slice(0, 2).join(" ");
-  };
-
   return (
     <motion.div
       initial={"initial"}
@@ -97,9 +87,7 @@ const NavigationItemAnimate = ({
           variants={titleVariant}
           className=" font-[600] text-xs xl:text-[16px] line-clamp-1"
         >
-          {isMobile
-            ? getLinkMobile(itemData.linkDropdownData.text)
-            : itemData.linkDropdownData.text}
+          {itemData.linkDropdownData.text}
         </motion.h2>
 
         <motion.p

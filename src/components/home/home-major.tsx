@@ -80,7 +80,7 @@ const HomeMajor = () => {
           menjadi 10 macam jurusan.
         </Paragraph>
 
-        <hr className="bg-white mt-8 xl:mt-[52px]  w-full max-w-[274px] xs:max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container" />
+        <hr className="bg-white  xl:block hidden mt-8 xl:mt-[52px]  w-full max-w-[274px] xs:max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container" />
       </div>
 
       <div className="relative  xl:px-8 px-0  xl:-mt-32 flex justify-center w-full ">

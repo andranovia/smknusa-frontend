@@ -64,13 +64,11 @@ const HomeFacility = () => {
         </Heading>
 
         <Paragraph className=" text-sm xl:text-lg lg:text-[14px] mt-[12px] w-full 1xl:w-2/3 lg:text-center max-w-[274px] xs:max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container">
-          Di SMK Negeri 1 Purwosari, kami akan memberikan pengalaman terbaik
-          dalam kegiatan belajar mengajar yang menyongsong kurikulum merdeka
-          belajar. Dengan dilengkapi fasilitas yang berqualitas, mampu
-          menyongsong kebutuhan siswa untuk belajar.
+          Dengan dilengkapi fasilitas yang berqualitas, mampu menyongsong
+          kebutuhan siswa untuk belajar.
         </Paragraph>
 
-        <hr className="bg-white mt-8 xl:mt-[52px] w-full max-w-[274px] xs:max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container" />
+        <hr className="bg-white hidden xl:block mt-8 xl:mt-[52px] w-full max-w-[274px] xs:max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container" />
 
         <div className="flex my-6 xl:my-12  xl:gap-0 gap-8 justify-center items-center  w-full max-w-[274px] xs:max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container ">
           <div className="max-w-max-container flex xl:justify-between w-full items-center xl:px-4 gap-8 ">
@@ -105,7 +103,7 @@ const HomeFacility = () => {
         </div>
       </div>
       <div className="relative xl:px-8 -mt-44 mb-6 xl:mt-0  xl:-top-44  w-full flex justify-center  xl:-mb-20">
-        <div className="flex justify-center xl:items-end relative overflow-hidden w-full bg-white 2xl:max-w-max-container xl:rounded-[10px] ">
+        <div className="flex justify-center xl:items-end pt-4 relative overflow-hidden w-full bg-white 2xl:max-w-max-container xl:rounded-[10px] ">
           <div className="absolute bottom-0  w-full bg-gradient-to-t from-white to-transparent z-20 p-10 md:p-7x opacity-60"></div>
           <motion.div
             variants={{
@@ -125,9 +123,9 @@ const HomeFacility = () => {
             initial={"initial"}
             className=" 2xl:h-[38rem] xl:h-[30rem] lg:h-[24rem] flex xl:items-end  justify-center w-full xl:px-20 pt-10 xl:pt-20"
           >
-            {facilityCardData && facilityCardData?.length > 0 && (
+            {facilityCardData && facilities && facilityCardData?.length > 0 && (
               <HomeFacilityCardStack
-                items={facilityCardData}
+                items={isMobile ? facilities.slice(0, 4) : facilityCardData}
                 isChangingSlide={isChangingSlide}
               />
             )}
