@@ -3,17 +3,19 @@
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
+import parse from "html-react-parser";
 import { Heading } from "@/components/ui/typography";
 import DetailLayout from "@/layouts/detail-layout";
 import { useMajors } from "@/services/api/useQueries/useMajors";
 import FeatureCardItem from "@/components/ui/feature-card-item";
 import { useMetadata } from "@/utils/useMetadata";
+import { backendUrl } from "@/utils/backendUrl";
 
 export default function Page({ params }: { params: { id: string } }) {
   const { id } = params;
   const { majors, majorDetails } = useMajors(id);
   useMetadata(
-    majorDetails?.jurusan_short + "|" + majorDetails?.jurusan_nama ||
+    majorDetails?.jurusan_short + " | " + majorDetails?.jurusan_nama ||
       "Major Details",
     `Details about the major: ${
       majorDetails?.jurusan_text || "Major description"
@@ -35,6 +37,10 @@ export default function Page({ params }: { params: { id: string } }) {
     }
   };
 
+  const parsedHtml = parse(
+    majorDetails?.jurusan_text ? majorDetails?.jurusan_text : ""
+  );
+
   return (
     majorDetails && (
       <DetailLayout detailData={majorDetails} className="justify-start">
@@ -42,7 +48,7 @@ export default function Page({ params }: { params: { id: string } }) {
           <div className="flex flex-col lg:flex-row lg:justify-start justify-center items-center gap-4 h-full w-full">
             <div className="px-28 xs:px-8 py-6 w-fit xs:w-full lg:w-fit flex justify-center items-center bg-gray-medium rounded-[10px]">
               <Image
-                src={"/assets/icon/logo-skansa.svg"}
+                src={backendUrl + majorDetails?.jurusan_logo}
                 alt="smknusa-icon"
                 width={50}
                 height={50}
@@ -71,7 +77,7 @@ export default function Page({ params }: { params: { id: string } }) {
             </div>
           </div>
           <span className="!w-[280px] xs:!w-full font-[400] text-[16px]  md:text-[18px]">
-            {majorDetails?.jurusan_text}
+            {parsedHtml}
           </span>
           <div className=" flex gap-4 lg:gap-10 flex-col w-full ">
             <h2 className="mt-10 text-2xl lg:text-3xl xl:text-4xl 1xl:text-5xl font-semibold">

@@ -16,7 +16,7 @@ const NewsCard = ({
     end_date: string;
   };
 }) => {
-  const { news, isNewsLoading } = useNews({ ...newsFilter });
+  const { news, isNewsLoading } = useNews(undefined, newsFilter);
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 9;
 
@@ -63,13 +63,15 @@ const NewsCard = ({
                 );
               })}
             </div>
-            <div className="mt-4 mb-12">
-              <Pagination
-                totalPosts={news?.length}
-                postsPerPage={postsPerPage}
-                onPageChange={onPageChange}
-              />
-            </div>
+            {news && news?.length > 9 && (
+              <div className="mt-4 mb-12">
+                <Pagination
+                  totalPosts={news?.length}
+                  postsPerPage={postsPerPage}
+                  onPageChange={onPageChange}
+                />
+              </div>
+            )}
           </div>
         )}
       </div>

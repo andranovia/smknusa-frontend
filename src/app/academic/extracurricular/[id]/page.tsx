@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import parse from "html-react-parser";
 import ProfileCardItem from "@/components/ui/profile-card-item";
 import { Heading } from "@/components/ui/typography";
 import DetailLayout from "@/layouts/detail-layout";
@@ -18,6 +19,10 @@ export default function Page({ params }: { params: { id: string } }) {
     `Details about the extracurricular: ${
       extraDetails?.extra_text || "Extracurricular description"
     }`
+  );
+
+  const parsedHtml = parse(
+    extraDetails?.extra_text ? extraDetails?.extra_text : ""
   );
 
   return (
@@ -44,7 +49,7 @@ export default function Page({ params }: { params: { id: string } }) {
             </div>
           </div>
           <span className="!w-[280px] xs:!w-full font-[400] text-[16px]  md:text-[18px]">
-            {extraDetails?.extra_text}
+            {parsedHtml}
           </span>
           <div className=" flex gap-4 lg:gap-10 flex-col w-full ">
             <h2 className="mt-10 text-2xl lg:text-3xl xl:text-4xl 1xl:text-5xl font-semibold">

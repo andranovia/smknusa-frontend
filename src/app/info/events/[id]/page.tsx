@@ -20,7 +20,7 @@ export default function Page({ params }: { params: { id: string } }) {
   });
   const parsedHtml = parse(sanitizedHtml);
   useMetadata(
-    eventDetails?.nama + "|" + eventDetails?.id_pemberitahuan ||
+    eventDetails?.nama + " | " + eventDetails?.id_pemberitahuan ||
       "Event Details",
     `Details about the event: ${eventDetails?.text || "Event description"}`
   );

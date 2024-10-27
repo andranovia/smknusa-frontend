@@ -16,7 +16,7 @@ const ArticleCard = ({
     end_date: string;
   };
 }) => {
-  const { articles, isArticlesLoading } = useArticles({ ...articleFilter });
+  const { articles, isArticlesLoading } = useArticles(undefined, articleFilter);
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 9;
 
@@ -63,13 +63,15 @@ const ArticleCard = ({
                 );
               })}
             </div>
-            <div className="mt-4 mb-12">
-              <Pagination
-                totalPosts={articles?.length}
-                postsPerPage={postsPerPage}
-                onPageChange={onPageChange}
-              />
-            </div>
+            {articles && articles?.length > 9 && (
+              <div className="mt-4 mb-12">
+                <Pagination
+                  totalPosts={articles?.length}
+                  postsPerPage={postsPerPage}
+                  onPageChange={onPageChange}
+                />
+              </div>
+            )}
           </div>
         )}
       </div>

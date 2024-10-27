@@ -30,7 +30,7 @@ export const useTeaching = (id?: string, filter?: { search: string }) => {
       queryKey: ["TeachingDetails"],
       queryFn: async () => {
         const data = await getTeachingToolDetails(id);
-        return data?.[0] ?? null;
+        return data ?? null;
       },
     });
 

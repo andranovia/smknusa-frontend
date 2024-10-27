@@ -29,10 +29,8 @@ export const usePartnerships = (id?: string, filter?: { search: string }) => {
   const { data: partnershipDetails, isLoading: isPartnershipDetailsLoading } =
     useQuery<Partnership | null>({
       queryKey: ["PartnershipDetails"],
-      queryFn: async () => {
-        const data = await getSchoolPartnershipDetails(id);
-        return data?.[0] ?? null;
-      },
+      queryFn: async () => getSchoolPartnershipDetails(id),
+      enabled: !!id,
     });
 
   return {

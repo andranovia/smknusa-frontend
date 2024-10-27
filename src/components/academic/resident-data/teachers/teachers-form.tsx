@@ -16,7 +16,7 @@ const TeachersForm = ({
   return (
     <div className="relative z-10 w-full  -mt-20  1xl:-mt-32">
       <div className="flex justify-center items-center p-2  xl:bg-transparent w-full">
-        <div className=" bg-white w-full px-6 xl:px-12 py-4 xl:py-12 rounded-lg border-white xl:shadow-lg">
+        <div className=" bg-white w-full px-6 xl:px-12 py-4 xl:py-12 rounded-lg border-white xl:shadow-md">
           <Heading type="h5" className="block mb-5 text-blue-base mt-1">
             Form Pencarian PTK
           </Heading>
@@ -52,7 +52,15 @@ const TeachersForm = ({
             />
           </div>
           <div className="xl:flex w-full justify-center py-3 gap-3 relative xl:-right-2">
-            <button className="bg-yellow-light w-full text-blue-base py-2 px-4 rounded-lg text-[16px] font-medium xl:w-1/3">
+            <button
+              onClick={() =>
+                setTeacherFilter({ search_nuptk: "", search_nama: "" })
+              }
+              className="bg-gray-200 w-full text-blue-base py-2 px-4 rounded-lg text-[16px] font-medium 1xl:w-28 h-10"
+            >
+              Reset
+            </button>
+            <button className="bg-yellow-light w-full text-blue-base py-2 px-4 rounded-lg text-[16px] font-medium 1xl:w-28 h-10">
               Cari
             </button>
           </div>

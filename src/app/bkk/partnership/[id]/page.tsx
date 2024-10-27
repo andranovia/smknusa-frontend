@@ -3,20 +3,29 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import parse from "html-react-parser";
 import ProfileCardItem from "@/components/ui/profile-card-item";
 import { Heading, Paragraph } from "@/components/ui/typography";
 import DetailLayout from "@/layouts/detail-layout";
 import { usePartnerships } from "@/services/api/useQueries/usePartnerships";
 import { useMetadata } from "@/utils/useMetadata";
+import { backendUrl } from "@/utils/backendUrl";
 
 export default function Page({ params }: { params: { id: string } }) {
   const { id } = params;
   const { partnerships, partnershipDetails } = usePartnerships(id);
+
   useMetadata(
     partnershipDetails?.kemitraan_name || "Partnership Details",
     `Details about the partnership: ${
       partnershipDetails?.kemitraan_description || "Partnership description"
     }`
+  );
+
+  const parsedHtml = parse(
+    partnershipDetails?.kemitraan_description
+      ? partnershipDetails?.kemitraan_description
+      : ""
   );
 
   return (
@@ -26,7 +35,7 @@ export default function Page({ params }: { params: { id: string } }) {
           <div className="flex flex-col lg:flex-row justify-center items-center lg:justify-start  gap-4 h-full w-full">
             <div className="px-8 py-6 w-full lg:w-fit flex justify-center items-center bg-gray-medium rounded-[10px]">
               <Image
-                src={"/assets/icon/logo-skansa.svg"}
+                src={backendUrl + partnershipDetails?.kemitraan_logo}
                 alt="smknusa-icon"
                 width={50}
                 height={50}
@@ -58,7 +67,7 @@ export default function Page({ params }: { params: { id: string } }) {
             </div>
           </div>
 
-          <Paragraph>{partnershipDetails?.kemitraan_description}</Paragraph>
+          <Paragraph>{parsedHtml}</Paragraph>
           <div className=" flex gap-4 lg:gap-10 flex-col w-full ">
             <h2 className="mt-10 text-2xl lg:text-3xl xl:text-4xl 1xl:text-5xl font-semibold">
               Perusahaan Lain

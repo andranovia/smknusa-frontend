@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import parse from "html-react-parser";
 import { Facility } from "@/services/api/useQueries/useFacilities";
 import { backendUrl } from "@/utils/backendUrl";
 import { Major } from "@/services/api/useQueries/useMajors";
@@ -10,6 +11,12 @@ const FeatureCardItem = ({
 }: {
   featureCardData: Facility | Major;
 }) => {
+  const parsedHtml = parse(
+    "facility_text" in featureCardData
+      ? featureCardData.facility_text
+      : featureCardData.jurusan_text
+  );
+
   const getCategoryColor = (icon: string) => {
     switch (icon) {
       case "Teknologi Informatika":
@@ -69,9 +76,7 @@ const FeatureCardItem = ({
           type="h4"
           className="xl:text-md text-xs !font-[500] leading-6 xl:text-lg mb-2 xl:w-full  text-gray line-clamp-2"
         >
-          {"facility_text" in featureCardData
-            ? featureCardData.facility_text
-            : featureCardData.jurusan_text}
+          {parsedHtml}
         </Heading>
       </div>
     </div>

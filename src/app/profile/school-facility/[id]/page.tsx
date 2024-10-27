@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import React from "react";
+
+import parse from "html-react-parser";
 import FeatureCardItem from "@/components/ui/feature-card-item";
 import { Heading, Paragraph } from "@/components/ui/typography";
 import DetailLayout from "@/layouts/detail-layout";
@@ -17,6 +19,9 @@ export default function Page({ params }: { params: { id: string } }) {
     `Details about the facility: ${
       facilityDetails?.facility_text || "Facility description"
     }`
+  );
+  const parsedHtml = parse(
+    facilityDetails?.facility_text ? facilityDetails?.facility_text : ""
   );
 
   return (
@@ -38,7 +43,7 @@ export default function Page({ params }: { params: { id: string } }) {
               </Heading>
             </div>
           </div>
-          <Paragraph>{facilityDetails?.facility_text}</Paragraph>
+          <Paragraph>{parsedHtml}</Paragraph>
 
           <div className=" flex gap-4 lg:gap-10 flex-col w-full ">
             <h2 className="mt-10 text-2xl lg:text-3xl xl:text-4xl 1xl:text-5xl font-semibold">

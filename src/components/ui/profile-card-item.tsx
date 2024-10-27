@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import parse from "html-react-parser";
 import { Extra } from "@/services/api/useQueries/useExtracurricular";
 import { backendUrl } from "@/utils/backendUrl";
 import { Partnership } from "@/services/api/useQueries/usePartnerships";
@@ -10,6 +11,12 @@ type ProfileCardItemProps = {
 };
 
 const ProfileCardItem = ({ profileCardData }: ProfileCardItemProps) => {
+  const parsedHtml = parse(
+    "extra_name" in profileCardData
+      ? profileCardData.extra_name
+      : profileCardData.kemitraan_name
+  );
+
   return (
     <div className="bg-white rounded-lg sm:w-full 1xl:w-[23rem] h-full border overflow-hidden relative">
       <Image
@@ -52,9 +59,7 @@ const ProfileCardItem = ({ profileCardData }: ProfileCardItemProps) => {
               type="h5"
               className="font-semibold text-center !text-sm sm:!text-[16px] line-clamp-1  text-blue-base"
             >
-              {"extra_name" in profileCardData
-                ? profileCardData.extra_name
-                : profileCardData.kemitraan_name}
+              {parsedHtml}
             </Heading>
           </div>
         </div>

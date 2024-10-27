@@ -23,15 +23,16 @@ const HomeEntrepreneurVideo = () => {
     height: "100%",
     width: "100%",
     playerVars: {
-      autoplay: 0,
-      rel: 0,
+      controls: 0,
       modestbranding: 1,
-      fs: 1,
-      cc_load_policy: 0,
+      disablekb: 1,
+      fs: 0,
+      rel: 0,
+      showinfo: 0,
       iv_load_policy: 3,
-      start: 0,
-      end: 0,
-      playsinline: 1,
+      cc_load_policy: 0,
+      hl: "",
+      cc_lang_pref: "",
     },
   };
 
