@@ -406,7 +406,7 @@ const HomeAnnouncementsCard = ({
 
   return (
     <div className="flex justify-start overflow-hidden items-end relative w-full h-[30rem] lg:h-[20rem] py-4 xl:h-[34rem] bg-white   rounded-[10px] ">
-      <div className="absolute right-0 h-full bg-gradient-to-l from-white to-transparent z-40 p-0 xl:p-16 opacity-80"></div>
+      <div className="absolute right-0 h-full bg-gradient-to-l from-white to-transparent z-40 p-0 xl:p-16 opacity-40"></div>
       <div className="flex flex-col lg:flex-row overflow-hidden  xl:flex-row-reverse  rounded-[10px]  justify-between items-center w-full h-full xl:p-8 gap-6">
         {AnnouncementImageHighlight(AnnouncementImageList())}
 

@@ -33,7 +33,7 @@ const FeatureCardItem = ({
   };
 
   return (
-    <div className="bg-white rounded-lg 1xl:w-[23rem] h-full shadow-md overflow-hidden relative w-full">
+    <div className="bg-white rounded-lg 1xl:w-[23rem] h-full border overflow-hidden relative w-full hover:shadow-md">
       <Image
         className="w-full  min-h-[8rem] xl:min-h-[10rem]  max-h-[6rem] sm:max-h-[8rem] xl:max-h-[10rem]  object-cover"
         src={

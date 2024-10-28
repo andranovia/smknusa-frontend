@@ -105,7 +105,7 @@ const HomeAnnouncement = () => {
   return (
     <section className="w-full h-full  flex justify-center items-center flex-col ">
       <div className="xl:sticky -top-1/3 w-full  flex justify-center items-center  ">
-        <div className="w-full h-full xl:pb-8 bg-white rounded-[10px] ">
+        <div className="w-full h-full xl:pb-4 bg-white rounded-[10px] ">
           <div className="flex flex-col items-center lg:text-center justify-center bg-primary  rounded-md text-white pt-6 sm:pt-10 pb-48">
             <Heading
               type="h1"
