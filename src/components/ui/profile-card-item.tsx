@@ -18,7 +18,7 @@ const ProfileCardItem = ({ profileCardData }: ProfileCardItemProps) => {
   );
 
   return (
-    <div className="bg-white rounded-lg sm:w-full 1xl:w-[23rem] h-full border overflow-hidden relative">
+    <div className="bg-white rounded-lg sm:w-full 1xl:w-[23rem] h-full border hover:shadow-md overflow-hidden relative">
       <Image
         className="w-full min-h-[8rem] xl:min-h-[12rem]  max-h-[8rem] sm:min-h-[10rem] sm:max-h-[10rem] xl:max-h-[12rem] object-cover"
         src={

@@ -19,7 +19,7 @@ const ProfileHistory = () => {
         src={"/assets/profile/welcome-speech/profile-welcome-speech.png"}
         alt="welcome-speech"
         draggable={false}
-        className="w-full rounded-[10px]"
+        className="w-full rounded-[10px] mt-10"
         width={800}
         height={800}
       />

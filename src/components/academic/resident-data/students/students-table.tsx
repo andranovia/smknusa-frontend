@@ -17,6 +17,11 @@ const StudentsTable = ({
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 9;
 
+  const [checkedAll, setCheckedAll] = useState(false);
+  const [checkedItems, setCheckedItems] = useState<boolean[]>(
+    new Array(studentsData?.length || 0).fill(false)
+  );
+
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentStudentsData = studentsData?.slice(
@@ -27,6 +32,17 @@ const StudentsTable = ({
   const onPageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
   };
+
+  const handleCheckAll = () => {
+    const isChecked = !checkedAll;
+    setCheckedAll(isChecked);
+    setCheckedItems(new Array(currentStudentsData?.length || 0).fill(isChecked));
+  }
+  const handleCheckItem = (index: number) => {
+    const updatedCheckedItems = [...checkedItems];
+    updatedCheckedItems[index] = !updatedCheckedItems[index];
+    setCheckedItems(updatedCheckedItems);
+  }
 
   return (
     <div className="relative flex flex-col 1xl:rounded-lg border w-full">
@@ -60,6 +76,8 @@ const StudentsTable = ({
                   id="checkbox-all"
                   type="checkbox"
                   className="w-4 h-4  bg-gray-100 border-gray-300 rounded focus:ring-yellow  ring-offset-gray-800 focus:ring-offset-gray-800 focus:ring-2 "
+                  checked={checkedAll}
+                  onChange={handleCheckAll}
                 />
                 <label htmlFor="checkbox-all" className="sr-only">
                   checkbox
@@ -98,6 +116,8 @@ const StudentsTable = ({
                           id={`checkbox-table-${index}`}
                           type="checkbox"
                           className="w-4 h-4 bg-gray-100 border-gray-300 rounded focus:ring-yellow ring-offset-gray-800 focus:ring-offset-gray-800 focus:ring-2"
+                          checked={checkedItems[index]}
+                          onChange={() => handleCheckItem}
                         />
                         <label
                           htmlFor={`checkbox-table-${index}`}

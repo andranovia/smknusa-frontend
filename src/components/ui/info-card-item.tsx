@@ -15,7 +15,7 @@ type InfoCardItemProps = {
 
 const InfoCardItem = ({ infoCardData, normalDate }: InfoCardItemProps) => {
   return (
-    <div className="bg-white rounded-lg w-full 1xl:w-[23rem] h-full border overflow-hidden relative">
+    <div className="bg-white rounded-lg w-full 1xl:w-[23rem] h-full border hover:shadow-md overflow-hidden relative">
       <Image
         className="w-full h-full  max-h-[8rem] xs:max-h-[9rem] sm:max-h-[10rem] lg:max-h-[9rem] xl:max-h-[11rem] object-cover"
         src={backendUrl + infoCardData.thumbnail}
