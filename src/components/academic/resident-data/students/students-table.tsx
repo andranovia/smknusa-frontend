@@ -117,7 +117,7 @@ const StudentsTable = ({
                           type="checkbox"
                           className="w-4 h-4 bg-gray-100 border-gray-300 rounded focus:ring-yellow ring-offset-gray-800 focus:ring-offset-gray-800 focus:ring-2"
                           checked={checkedItems[index]}
-                          onChange={() => handleCheckItem}
+                          onChange={() => handleCheckItem(index)}
                         />
                         <label
                           htmlFor={`checkbox-table-${index}`}
