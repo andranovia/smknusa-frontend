@@ -15,6 +15,8 @@ export type News = {
     color: string;
   };
   viewer: string;
+  published_by: string;
+  jurnal_by: string;
 };
 
 export const useNews = (
