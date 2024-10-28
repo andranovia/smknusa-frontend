@@ -113,7 +113,7 @@ export default function Page({ params }: { params: { id: string } }) {
           </div>
           <div className=" flex gap-4 lg:gap-10 flex-col w-full xl:w-[82%]">
             <h2 className="mt-10 text-2xl lg:text-3xl xl:text-4xl 1xl:text-5xl font-semibold">
-              Announcement Lain yang tak kalah penting
+              Pengumuman Lain yang tak kalah penting
             </h2>
             <div className="grid grid-cols-1 bg-[#F1F5F9] lg:grid-cols-2 1xl:grid-cols-3 gap-4 xl:gap-8 px-2 py-2 md:py-6 md:px-6  2xl:px-12 2xl:py-9  rounded-[10px] w-full">
               {announcements?.slice(0, 3).map((announcement, index) => {

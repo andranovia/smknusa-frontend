@@ -105,7 +105,7 @@ export default function Page({ params }: { params: { id: string } }) {
                     {parsedHtml}
                   </span>
 
-                  <span>Jurnalis: -</span>
+                  <span>Jurnalis: {newsDetails?.jurnal_by}</span>
                 </div>
                 <hr className="w-full border " />
                 <div className="w-full rounded-[10px] p-4 flex justify-start items-center gap-4 bg-gray-base">
@@ -122,7 +122,7 @@ export default function Page({ params }: { params: { id: string } }) {
                     <h3 className="font-medium text-xs xs:text-sm text-gray">
                       DIPUBLIKASIKAN OLEH
                     </h3>
-                    <h4 className="font-semibold text-[18px]">Humas</h4>
+                    <h4 className="font-semibold text-[18px]">{newsDetails?.published_by}</h4>
                   </div>
                 </div>
               </div>
