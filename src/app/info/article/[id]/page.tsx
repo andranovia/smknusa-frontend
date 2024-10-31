@@ -30,6 +30,9 @@ export default function Page({ params }: { params: { id: string } }) {
   const date = new Date(articleDetails?.created_at || Date.now());
   const normalDate = date.toLocaleDateString();
 
+  const filteredArticles = (articles || []).filter((item) => item.id_pemberitahuan !== articleDetails?.id_pemberitahuan);
+  const shuffledArticles = filteredArticles.sort(() => Math.random() - 0.5);
+
   return (
     <div className="pt-[4.5rem] xl:pt-24 px-2 xl:px-3 flex justify-center items-center w-full">
       <div className="w-full  bg-white rounded-[10px]  text-blue-base flex justify-center ">
@@ -133,7 +136,7 @@ export default function Page({ params }: { params: { id: string } }) {
               Artikel Lain yang tak kalah menarik
             </h2>
             <div className="grid grid-cols-1 bg-[#F1F5F9] lg:grid-cols-2 1xl:grid-cols-3 gap-4 xl:gap-8 px-2 py-2 md:py-6 md:px-6  2xl:px-12 2xl:py-9  rounded-[10px] w-full">
-              {articles?.slice(0, 3).map((article, index) => {
+              {shuffledArticles.slice(0, 3).map((article, index) => {
                 const date = new Date(article.created_at);
                 const normalDate = date.toLocaleDateString();
 

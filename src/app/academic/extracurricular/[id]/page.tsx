@@ -25,6 +25,9 @@ export default function Page({ params }: { params: { id: string } }) {
     extraDetails?.extra_text ? extraDetails?.extra_text : ""
   );
 
+  const filteredExtra = (extras || []).filter((item) => item.id_extra !== extraDetails?.id_extra);
+  const shuffledExtra = filteredExtra.sort(() => Math.random() - 0.5);
+
   return (
     extraDetails && (
       <DetailLayout detailData={extraDetails} className="justify-start">
@@ -56,7 +59,7 @@ export default function Page({ params }: { params: { id: string } }) {
               Extrakurikuler Lain
             </h2>
             <div className="grid grid-cols-1 bg-[#F1F5F9] lg:grid-cols-2 1xl:grid-cols-3 gap-4 xl:gap-8 px-2 py-2 md:py-6 md:px-6  2xl:py-9  rounded-[10px] w-full">
-              {extras?.slice(0, 3).map((extracurricular, index) => {
+              {shuffledExtra.slice(0, 3).map((extracurricular, index) => {
                 return (
                   <React.Fragment key={index}>
                     <Link
