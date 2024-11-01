@@ -35,7 +35,7 @@ const NewsForm = ({ newsFilter, setNewsFilter }: NewsFilterFormProps) => {
     <>
       <div className="relative z-20 -top-14 xl:-top-24 flex justify-center bg-transparent">
         <div className="flex justify-center items-center w-full bg-transparent">
-          <div className=" bg-white w-full px-4 lg:px-8 xl:px-12 py-4 1xl:py-10  rounded-lg  max-w-[73rem]   border-white 1xl:shadow-md">
+          <div className=" bg-white w-full px-4 lg:px-8 xl:px-12 py-4 lg:py-10  rounded-lg  max-w-[73rem]   border-white 1xl:shadow-md">
             <div className="grid grid-cols-2 xl:grid-cols-4 1xl:gap-12 gap-4 mb-3">
               <div className="col-span-2 xl:col-span-1 flex flex-col">
                 <label

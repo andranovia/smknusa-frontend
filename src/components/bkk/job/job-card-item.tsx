@@ -7,20 +7,20 @@ import ApplyButton from "./job-apply-button";
 
 const JobCardItem = ({ vacancy }: { vacancy: Vacancy }) => {
   return (
-    <div className="flex flex-col gap-3 w-full p-6 border rounded-md 1xl:min-w-[36.75rem] bg-white">
-      <div className="flex flex-col md:flex-row justify-between gap-3 md:gap-0 md:items-center">
-        <div className="flex items-center gap-2">
+    <div className="flex flex-col gap-3 w-full p-6 border rounded-md 2xl:w-[38rem] bg-white">
+      <div className="flex flex-col md:flex-row justify-between gap-3 md:gap-0 items-start">
+        <div className="flex-col  flex  gap-1">
           <Heading
             type="h5"
-            className="text-blue-base uppercase font-semibold text-xl max-w-[13rem] line-clamp-1"
+            className="text-blue-base uppercase font-semibold text-xl line-clamp-1"
           >
             {vacancy.position.position_name}
           </Heading>
-          <Paragraph className="uppercase font-[320] text-xs max-w-[9rem] line-clamp-1">
+          <Paragraph className="uppercase font-[320] text-xs line-clamp-1">
             {vacancy?.kemitraan.kemitraan_name}
           </Paragraph>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 pt-1.5">
           {vacancy.position.position_type &&
             vacancy.position.position_type !== "" && (
               <div className="flex items-center gap-1">

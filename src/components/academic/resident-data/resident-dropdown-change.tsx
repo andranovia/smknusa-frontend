@@ -36,7 +36,7 @@ const ResidentDropdownChange = ({
           y: isChangeDropdown ? 0 : 40,
         }}
         transition={defaultTransition}
-        className={` absolute -right-[5rem]  pt-9   ${
+        className={` absolute lg:-right-[5rem]  pt-9   ${
           isChangeDropdown ? "pointer-events-auto" : "pointer-events-none"
         }`}
       >
@@ -71,18 +71,16 @@ const ResidentDropdownChange = ({
               Teachers Data
             </Paragraph>
           </div>
-          <hr className="border w-[85%]"/>
+          <hr className="border w-[85%]" />
           <div className="w-full flex items-center gap-4 px-4 py-2 cursor-pointer hover:bg-gray-base transition-colors">
-            <Image 
+            <Image
               src={"/assets/academic/resident-data/print.svg"}
               alt={"print"}
               width={20}
               height={20}
               className="w-7 h-7 p-1 rounded-full border"
             />
-            <Paragraph className="text-[12px] font-medium">
-              Cetak
-            </Paragraph>
+            <Paragraph className="text-[12px] font-medium">Cetak</Paragraph>
           </div>
         </div>
       </motion.div>
