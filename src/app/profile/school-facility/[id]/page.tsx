@@ -20,9 +20,28 @@ export default function Page({ params }: { params: { id: string } }) {
       facilityDetails?.facility_text || "Facility description"
     }`
   );
+
+  const getCategoryColor = (icon: string) => {
+    switch (icon) {
+      case "Teknologi Informatika":
+        return "bg-orange-400";
+      case "Agribisnis dan Agroteknologi":
+        return "bg-green-500";
+      case "Teknologi dan Rekayasa":
+        return "bg-blue-500";
+      case "Teknologi Elektronika":
+        return "bg-red-500";
+      default:
+        return "bg-gray-500";
+    }
+  };
+
   const parsedHtml = parse(
     facilityDetails?.facility_text ? facilityDetails?.facility_text : ""
   );
+
+  const filteredFacilities = (facilities || []).filter((item) => item.id_facility!== facilityDetails?.id_facility);
+  const shuffledFacilities = filteredFacilities.sort(() => Math.random() - 0.5);
 
   return (
     facilityDetails && (
@@ -33,7 +52,7 @@ export default function Page({ params }: { params: { id: string } }) {
               {facilityDetails?.facility_name}
             </Heading>
             <div
-              className={`bg-[#007AFF] px-2 py-1 rounded-[6px] 1xl:rounded-[10px]`}
+              className={`${getCategoryColor(facilityDetails?.prodi.nama_prodi)} px-2 py-1 rounded-[6px] 1xl:rounded-[10px]`}
             >
               <Heading
                 type="h5"
@@ -50,7 +69,7 @@ export default function Page({ params }: { params: { id: string } }) {
               Fasilitas Lain
             </h2>
             <div className="grid grid-cols-1 bg-[#F1F5F9] lg:grid-cols-2 1xl:grid-cols-3 gap-4 xl:gap-8 px-2 py-2 md:py-6 md:px-6  2xl:py-9  rounded-[10px] w-full">
-              {facilities?.slice(0, 3).map((facility, index) => {
+              {shuffledFacilities.slice(0, 3).map((facility, index) => {
                 return (
                   <React.Fragment key={index}>
                     <Link
