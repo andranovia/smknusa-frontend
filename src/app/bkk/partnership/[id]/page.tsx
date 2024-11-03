@@ -28,6 +28,9 @@ export default function Page({ params }: { params: { id: string } }) {
       : ""
   );
 
+  const filteredPartner = (partnerships || []).filter((item) => item.id_kemitraan !== partnershipDetails?.id_kemitraan);
+  const shuffledPartner = filteredPartner.sort(() => Math.random() - 0.5);
+
   return (
     partnershipDetails && (
       <DetailLayout detailData={partnershipDetails} className="!justify-start">
@@ -73,7 +76,7 @@ export default function Page({ params }: { params: { id: string } }) {
               Perusahaan Lain
             </h2>
             <div className="grid grid-cols-1 bg-[#F1F5F9] lg:grid-cols-2 1xl:grid-cols-3 gap-4 xl:gap-8 px-2 py-2 md:py-6 md:px-6  2xl:py-9  rounded-[10px] w-full">
-              {partnerships?.slice(0, 3).map((partnership, index) => {
+              {shuffledPartner.slice(0, 3).map((partnership, index) => {
                 return (
                   <React.Fragment key={index}>
                     <Link href={`/bkk/partnership/${partnership.id_kemitraan}`}>
