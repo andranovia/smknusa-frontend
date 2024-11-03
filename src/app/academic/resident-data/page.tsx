@@ -35,7 +35,7 @@ const ResidentData = () => {
         title="Data Warga Sekolah"
         subtitle="Informasi mengenai data seluruh warga sekolah, baik siswa, guru dan staff."
       >
-        <div className="pb-20  flex flex-col items-center w-full justify-center gap-10  md:max-w-md-content lg:max-w-lg-content xl:max-w-[1002px] 2xl:max-w-[1216px] ">
+        <div className="pb-20  flex flex-col items-center w-full justify-center gap-10  md:max-w-md-content lg:max-w-lg-content xl:max-w-[932px] 2xl:max-w-[1216px] ">
           {currentTable === "teachers" ? (
             <>
               <TeachersForm

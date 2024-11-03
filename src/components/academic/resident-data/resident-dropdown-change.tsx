@@ -36,7 +36,7 @@ const ResidentDropdownChange = ({
           y: isChangeDropdown ? 0 : 40,
         }}
         transition={defaultTransition}
-        className={` absolute lg:-right-[5rem]  pt-9   ${
+        className={` absolute 1xl:-right-[5rem]  pt-9   ${
           isChangeDropdown ? "pointer-events-auto" : "pointer-events-none"
         }`}
       >

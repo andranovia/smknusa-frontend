@@ -18,7 +18,7 @@ const MajorFilter = ({
       <Menu
         as="div"
         className="relative inline-block text-left w-full xl:w-fit"
-      >
+      > 
         <div className="w-full xl:w-[20rem]">
           <MenuButton className="inline-flex w-full justify-between items-center gap-x-1.5 rounded-md bg-white px-4 py-2 text-sm font-medium  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
             Filter
