@@ -51,7 +51,7 @@ const TeachersForm = ({
               className="xl:w-[107%] h-10 border border-gray-300 rounded-lg p-2"
             />
           </div>
-          <div className="xl:flex w-full justify-center py-3 gap-3 relative xl:-right-2">
+          <div className="flex flex-col md:flex-row w-full justify-center py-3 gap-3 relative xl:-right-2">
             <button
               onClick={() =>
                 setTeacherFilter({ search_nuptk: "", search_nama: "" })

@@ -30,6 +30,9 @@ export default function Page({ params }: { params: { id: string } }) {
   const date = new Date(announcementDetails?.created_at || Date.now());
   const normalDate = date.toLocaleDateString();
 
+  const filteredAnnouncements = (announcements || []).filter((item) => item.id_pemberitahuan !== announcementDetails?.id_pemberitahuan);
+  const shuffledAnnouncements = filteredAnnouncements.sort(() => Math.random() - 0.5);
+
   return (
     <div className="pt-[4.5rem] xl:pt-24 px-2 xl:px-3 flex justify-center items-center w-full">
       <div className="w-full  bg-white rounded-[10px]  text-blue-base flex justify-center ">
@@ -113,10 +116,10 @@ export default function Page({ params }: { params: { id: string } }) {
           </div>
           <div className=" flex gap-4 lg:gap-10 flex-col w-full xl:w-[82%]">
             <h2 className="mt-10 text-2xl lg:text-3xl xl:text-4xl 1xl:text-5xl font-semibold">
-              Announcement Lain yang tak kalah penting
+              Pengumuman Lain yang tak kalah penting
             </h2>
             <div className="grid grid-cols-1 bg-[#F1F5F9] lg:grid-cols-2 1xl:grid-cols-3 gap-4 xl:gap-8 px-2 py-2 md:py-6 md:px-6  2xl:px-12 2xl:py-9  rounded-[10px] w-full">
-              {announcements?.slice(0, 3).map((announcement, index) => {
+              {shuffledAnnouncements.slice(0, 3).map((announcement, index) => {
                 const date = new Date(announcement.created_at);
                 const normalDate = date.toLocaleDateString();
 

@@ -31,11 +31,11 @@ const JobVacanciesCard = ({
 
   return (
     <>
-      <div className="flex flex-col justify-center items-center bg-white  rounded-lg">
+      <div className="flex flex-col justify-center items-center bg-white  rounded-lg w-full">
         <div className="flex justify-center items-center flex-col w-full 2xl:w-auto">
           {vacancies && !isVacanciesLoading ? (
             <>
-              <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 xl:gap-8 px-2 lg:px-4 py-4 1xl:px-12 pb-12 bg-white rounded-[10px] w-full">
+              <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 xl:gap-8 px-2 lg:px-4 py-4 2xl:px-12 pb-12 bg-white rounded-[10px] w-full">
                 {currentJobData?.map((vacancy, index) => {
                   return (
                     <React.Fragment key={index}>

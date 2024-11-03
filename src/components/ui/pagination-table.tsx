@@ -65,7 +65,7 @@ const PaginationTable: React.FC<PaginationTableProps> = ({
       <button
         onClick={() => handleButtonClick(currentPage - 1)}
         disabled={currentPage === 1}
-        className="p-2 border-2 border-gray-200 rounded-lg flex justify-center gap-2 items-center"
+        className="p-2 border-2 border-gray-200 rounded-lg flex justify-center gap-2 items-center !cursor-pointer"
       >
         <Image
           alt="arrow-right"
@@ -100,7 +100,7 @@ const PaginationTable: React.FC<PaginationTableProps> = ({
       <button
         onClick={() => handleButtonClick(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="p-2 border-2 border-gray-200 rounded-lg flex justify-center gap-2 items-center"
+        className="p-2 border-2 border-gray-200 rounded-lg flex justify-center gap-2 items-center !cursor-pointer"
       >
         <p className="text-sm font-semibold text-blue-base hidden xl:block">
           Next

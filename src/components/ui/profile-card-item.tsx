@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import parse from "html-react-parser";
+import DOMPurify from "dompurify";
 import { Extra } from "@/services/api/useQueries/useExtracurricular";
 import { backendUrl } from "@/utils/backendUrl";
 import { Partnership } from "@/services/api/useQueries/usePartnerships";
@@ -17,8 +18,16 @@ const ProfileCardItem = ({ profileCardData }: ProfileCardItemProps) => {
       : profileCardData.kemitraan_name
   );
 
+  const sanitizedHtml = DOMPurify.sanitize("extra_text" in profileCardData ? profileCardData?.extra_text : profileCardData?.kemitraan_description, {
+    FORBID_TAGS: ["img", "style", "b", "i", "strong", "em", "u", "font"],
+    FORBID_ATTR: ["style"],
+  });
+
+  const parsedText = parse(sanitizedHtml)
+
+
   return (
-    <div className="bg-white rounded-lg sm:w-full 1xl:w-[23rem] h-full border overflow-hidden relative">
+    <div className="bg-white rounded-lg sm:w-full 1xl:w-[23rem] h-full border hover:shadow-md overflow-hidden relative">
       <Image
         className="w-full min-h-[8rem] xl:min-h-[12rem]  max-h-[8rem] sm:min-h-[10rem] sm:max-h-[10rem] xl:max-h-[12rem] object-cover"
         src={
@@ -84,9 +93,7 @@ const ProfileCardItem = ({ profileCardData }: ProfileCardItemProps) => {
           type="h5"
           className="!text-xs font-[500] xl:!text-base mb-2 sm:w-full  line-clamp-3 leading-6 text-gray"
         >
-          {"extra_text" in profileCardData
-            ? profileCardData.extra_text
-            : profileCardData.kemitraan_description}
+          {parsedText}
         </Heading>
       </div>
     </div>

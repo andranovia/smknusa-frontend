@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -13,7 +13,28 @@ const HomeAlert = () => {
   const { alert, isAlertLoading } = useAlert();
   const [hover, setHover] = useState(false);
   const [close, setClose] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const pathname = usePathname();
+  
+  useEffect(() => {
+    const handleScroll = () => {
+        const currentScrollY = window.scrollY;
+
+        if (currentScrollY > lastScrollY) {
+          setClose(true);
+        } else {
+          setClose(false);
+        }
+
+        setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    }
+  }, [lastScrollY]);
 
   return pathname === "/" ? (
     <motion.div
@@ -24,37 +45,22 @@ const HomeAlert = () => {
         y: close ? 60 : 0,
       }}
       transition={defaultTransition}
-      className=" fixed bottom-0 z-50 w-full px-2"
+      className=" fixed bottom-0 z-50 w-full "
     >
-      <div className="bg-[#fef9c3] px-2 py-4 w-full rounded-tl-md rounded-tr-md h-full relative flex md:justify-center items-center">
+      <div className="bg-primary px-2 py-4 w-full h-full relative flex md:justify-center items-center">
         {alert && !isAlertLoading ? (
           <>
-            <motion.div
-              initial={false}
-              transition={defaultTransition}
-              animate={{ y: !close ? 100 : 0 }}
-              onClick={() => setClose(false)}
-              className="-top-12 rounded-md font-bold px-2 py-4 bg-[#fef9c3] gap-2 text-white text-xs cursor-pointer absolute  left-4 "
-            >
-              <Image
-                src={"/assets/icon/arrow-square-up.svg"}
-                width={20}
-                height={20}
-                alt={"arrow-square-up"}
-                className={!close ? "opacity-0" : ""}
-              />
-            </motion.div>
             <Link
               href={alert[0]?.alert_url || ""}
               onMouseEnter={() => setHover(true)}
               onMouseLeave={() => setHover(false)}
-              className="flex justify-center gap-2 items-center cursor-pointer"
+              className="flex justify-center gap-3 items-center cursor-pointer"
             >
               <motion.div
                 initial={false}
                 transition={defaultTransition}
                 animate={{ x: hover ? -20 : 0 }}
-                className="flex justify-center gap-2    items-center"
+                className="flex justify-center gap-3  items-center"
               >
                 <Image
                   src={"/assets/icon/alert.svg"}
@@ -62,16 +68,13 @@ const HomeAlert = () => {
                   height={20}
                   alt={"alert"}
                 />
-                <Paragraph className="line-clamp-1 !text-base md:!text-xl !font-semibold text-blue-base">
+                <Paragraph className="line-clamp-1 !text-sm md:!text-base !font-semibold text-white">
                   {alert[0]?.alert_title}
                 </Paragraph>
               </motion.div>
               <motion.div
                 initial={false}
                 transition={defaultTransition}
-                animate={{
-                  backgroundColor: hover ? "#081b34" : "#fef9c3",
-                }}
                 className="hidden md:flex justify-center items-center p-1 rounded-full overflow-hidden"
               >
                 <Image
@@ -79,13 +82,13 @@ const HomeAlert = () => {
                   width={20}
                   height={20}
                   alt={"line-arrow-right-blue"}
-                  className={`${hover ? "invert" : ""}`}
+                  // className={`${hover ? "invert" : ""}`}
                 />
               </motion.div>
             </Link>
-            <div
+            {/* <div
               onClick={() => setClose(true)}
-              className="rounded-md font-bold px-2 md:px-4 py-3 bg-primary gap-2 text-white text-xs cursor-pointer absolute flex justify-center items-center right-2 bottom-2"
+              className="rounded-md font-bold px-2 py-2 bg-primary gap-2 text-white text-xs cursor-pointer absolute flex justify-center items-center right-2 bottom-2 md:px-4 md:py-3"
             >
               <Image
                 src={"/assets/icon/close-square.svg"}
@@ -94,7 +97,7 @@ const HomeAlert = () => {
                 alt={"close-square"}
               />
               <span className="hidden md:block ">Close</span>
-            </div>
+            </div> */}
           </>
         ) : null}
       </div>

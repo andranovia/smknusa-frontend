@@ -41,6 +41,9 @@ export default function Page({ params }: { params: { id: string } }) {
     majorDetails?.jurusan_text ? majorDetails?.jurusan_text : ""
   );
 
+  const filteredMajor = (majors || []).filter((item) => item.id_jurusan !== majorDetails?.id_jurusan);
+  const shuffledMajor = filteredMajor.sort(() => Math.random() - 0.5);
+
   return (
     majorDetails && (
       <DetailLayout detailData={majorDetails} className="justify-start">
@@ -84,7 +87,7 @@ export default function Page({ params }: { params: { id: string } }) {
               Jurusan Lain
             </h2>
             <div className="grid grid-cols-1 bg-[#F1F5F9] lg:grid-cols-2 1xl:grid-cols-3 gap-4 xl:gap-8 px-2 py-2 md:py-6 md:px-6  2xl:py-9  rounded-[10px] w-full">
-              {majors?.slice(0, 3).map((major, index) => {
+              {shuffledMajor.slice(0, 3).map((major, index) => {
                 return (
                   <React.Fragment key={index}>
                     <Link href={`/academic/major/${major.id_jurusan}`}>

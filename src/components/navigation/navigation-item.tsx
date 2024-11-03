@@ -136,24 +136,24 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
       },
     },
   ],
-  BKK: [
-    {
-      linkDropdownData: {
-        text: "Kemitraan",
-        description: "Berisi Data Kemitraan SMK Negeri 1 Purwosari",
-        icon: "/assets/nav-dropdown-icon/bkk/kemitraan.svg",
-        linkRef: "/bkk/partnership",
-      },
-    },
-    {
-      linkDropdownData: {
-        text: "Lowongan Pekerjaan",
-        description: "Berisi Data Loker SMK Negeri 1 Purwosari",
-        icon: "/assets/nav-dropdown-icon/bkk/lowongan.svg",
-        linkRef: "/bkk/job",
-      },
-    },
-  ],
+  // BKK: [
+  //   {
+  //     linkDropdownData: {
+  //       text: "Kemitraan",
+  //       description: "Berisi Data Kemitraan SMK Negeri 1 Purwosari",
+  //       icon: "/assets/nav-dropdown-icon/bkk/kemitraan.svg",
+  //       linkRef: "/bkk/partnership",
+  //     },
+  //   },
+  //   {
+  //     linkDropdownData: {
+  //       text: "Lowongan Pekerjaan",
+  //       description: "Berisi Data Loker SMK Negeri 1 Purwosari",
+  //       icon: "/assets/nav-dropdown-icon/bkk/lowongan.svg",
+  //       linkRef: "/bkk/job",
+  //     },
+  //   },
+  // ],
   Info: [
     {
       linkDropdownData: {
@@ -225,8 +225,10 @@ const NavigationItem = ({
               show || !activePage ? "text-blue-base" : "text-white"
             }`}
           >
-            {route === "/e-raport" ? (
-              <Link href={"http://36.93.85.150:8154/"}>{name}</Link>
+            {(route === "/e-raport") ? (
+              <Link href="http://36.93.85.150:8154/">{name}</Link>
+            ) : (route === "/w-bkk") ? (
+              <Link href="https://bkk.smkn1purwosari.sch.id/">{name}</Link>
             ) : (
               name
             )}
@@ -237,7 +239,7 @@ const NavigationItem = ({
             </motion.div>
           )}
         </span>
-        {route === "/e-raport" ? null : (
+        {route === "/e-raport" || route === "/w-bkk" ? null : (
           <AnimatePresence>
             {showDropdown && (
               <div className="absolute left-0 xs:left-4 md:left-14  xl:left-auto xl:ml-6  xl:top-auto h-[25rem] xl:h-auto xl:justify-start xl:items-start flex flex-col items-end justify-end">

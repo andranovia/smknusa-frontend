@@ -119,8 +119,7 @@ const Navbar = () => {
                 <NavigationItem
                   name="BKK"
                   show={show}
-                  dropdown={true}
-                  route="/bkk"
+                  route={"/w-bkk"}
                 />
                 <NavigationItem
                   name="Info"

@@ -27,7 +27,7 @@ const PartnershipCard = (partnershipFilter: { search: string }) => {
   };
   return (
     <>
-      <div className="flex flex-col justify-center items-center bg-white  rounded-lg">
+      <div className="flex flex-col justify-center items-center bg-white  rounded-lg w-full">
         {currentpartnershipsData && !isPartnershipsLoading ? (
           <div className="w-full flex flex-col items-center">
             <div className="w-full grid grid-cols-1 1xl:w-fit lg:grid-cols-2 1xl:grid-cols-3 gap-4 xl:gap-8 p-4 1xl:px-14 pb-12 bg-white rounded-[10px]">

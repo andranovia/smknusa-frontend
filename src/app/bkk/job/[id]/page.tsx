@@ -30,6 +30,9 @@ export default function Page({ params }: { params: { id: string } }) {
       : ""
   );
 
+  const filteredVacancies = (vacancies || []).filter((item) => item.id_loker !== vacanciesDetails?.id_loker);
+  const shuffledVacancies = filteredVacancies.sort(() => Math.random() - 0.5);
+
   return (
     vacanciesDetails && (
       <DetailLayout
@@ -132,7 +135,7 @@ export default function Page({ params }: { params: { id: string } }) {
               Lowongan Lain
             </h2>
             <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 xl:gap-8 bg-[#F1F5F9] px-2 py-2 md:py-6 md:px-6  2xl:py-9  rounded-[10px] w-full">
-              {vacancies?.map((vacancy, index) => {
+              {shuffledVacancies.map((vacancy, index) => {
                 return (
                   <React.Fragment key={index}>
                     <JobVacanciesCardItem vacancy={vacancy} />
