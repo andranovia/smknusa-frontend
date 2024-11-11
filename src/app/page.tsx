@@ -18,8 +18,8 @@ export default function Home() {
         <HomeMajor />
         <ClientOnly>
           <HomeFacility />
+          <HomeEntrepreneur />
         </ClientOnly>
-        <HomeEntrepreneur />
       </div>
     </div>
   );
