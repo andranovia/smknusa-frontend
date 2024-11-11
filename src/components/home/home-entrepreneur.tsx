@@ -24,7 +24,9 @@ const HomeEntrepreneur = () => {
         </Paragraph>
 
         <hr className="bg-white mt-8 xl:mt-[52px]  w-full max-w-[274px] xs:max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container" />
-        <HomeEntrepreneurSlider />
+        <ClientOnly>
+          <HomeEntrepreneurSlider />
+        </ClientOnly>
       </div>
       <div className="relative xl:-top-[12%] px-4 xl:px-8 1xl:-top-[10%] -mt-32 xl:mt-0 mb-10 xl:mb-0 w-full flex justify-center">
         <ClientOnly>
