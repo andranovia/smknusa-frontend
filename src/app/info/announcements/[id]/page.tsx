@@ -15,10 +15,10 @@ export default function Page({ params }: { params: { id: string } }) {
   const { id } = params;
   const { announcements, announcementDetails } = useAnnouncements(id);
 
-  const sanitizedHtml = DOMPurify.sanitize(announcementDetails?.text, {
+  const sanitizedHtml = announcementDetails?.text ? DOMPurify.sanitize(announcementDetails?.text, {
     FORBID_TAGS: ["img", "style", "b", "i", "strong", "em", "u", "font"],
     FORBID_ATTR: ["style"],
-  });
+  }) : "";
   const parsedHtml = parse(sanitizedHtml);
   useMetadata(
     announcementDetails?.nama || "Announcement Details",
@@ -68,7 +68,7 @@ export default function Page({ params }: { params: { id: string } }) {
                 <hr className="w-full border " />
                 <div className="w-full justify-between flex lg:flex-row flex-col lg:items-center gap-4">
                   <h4 className="text-[14px]">Diposting pada : {normalDate}</h4>
-                  <div className="flex flex-row justify-between lg:justify-center xl:items-center grayscale my-4 gap-4 xl:gap-10 text-[12px]">
+                  <div className="flex flex-row justify-between lg:justify-center xl:items-center my-4 gap-4 xl:gap-10 text-[12px]">
                     <div className="flex gap-1 items-center">
                       <Image
                         width={20}
