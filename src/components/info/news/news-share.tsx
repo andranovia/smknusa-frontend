@@ -8,6 +8,43 @@ import { defaultTransition } from "../../animation/transition";
 
 const NewsShare = () => {
   const [isShareDropdown, setisShareDropdown] = useState(false);
+  const [buttonText, setButtonText] = useState("Salin Tautan");
+
+  const copyToClipboard = () => {
+    const currentUrl = window.location.href;
+
+    navigator.clipboard.writeText(currentUrl)
+      .then(() => {
+        setButtonText('Tersalin');
+        setTimeout(() => {
+            setButtonText('Salin Tautan');
+        }, 2000);
+      })
+      .catch((err) => {
+        console.error('Copy error:', err);
+      });
+  };
+
+  const handleShare = (platform: string) => {
+    const currentUrl = window.location.href;
+    let shareUrl = "";
+
+    switch (platform) {
+      case "facebook":
+        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`;
+        break;
+      case "twitter":
+        shareUrl = `https://twitter.com/intent/tweet?url=${currentUrl}&text=Check%20this%20out!`;
+        break;
+      case "whatsapp":
+        shareUrl = `https://api.whatsapp.com/send?text=${currentUrl}`;
+        break;
+      default:
+        break;
+    }
+
+    window.open(shareUrl, "_blank")
+  }
 
   return (
     <div
@@ -36,36 +73,55 @@ const NewsShare = () => {
           isShareDropdown ? "pointer-events-auto" : "pointer-events-none"
         }`}
       >
-        <div className="flex flex-col items-center rounded-lg bg-white w-[14rem] border">
-          <div className="w-full flex items-center gap-4 px-4 py-2 cursor-pointer hover:bg-gray-base transition-colors">
+        <div className="flex flex-col items-center rounded-lg bg-white w-[10rem] border">
+          <div 
+            className="w-full flex items-center gap-4 px-4 py-2 cursor-pointer hover:bg-gray-base transition-colors"
+            onClick={() => handleShare("facebook")}>
             <Image
-              src={"/assets/icon/facebook-outline.svg"}
+              src={"/assets/icon/facebookori.svg"}
               alt={"facebook"}
               width={20}
               height={20}
-              className="w-7 h-7 p-1 rounded-full border"
+              className="w-7 h-7 p-1"
             />
             <Paragraph className="text-[12px] font-medium">Facebook</Paragraph>
           </div>
-          <div className="w-full flex items-center gap-4 px-4 py-2 cursor-pointer hover:bg-gray-base transition-colors">
+          <div 
+            className="w-full flex items-center gap-4 px-4 py-2 cursor-pointer hover:bg-gray-base transition-colors"
+            onClick={() => handleShare("twitter")}>
             <Image
-              src={"/assets/icon/instagram-outline.svg"}
+              src={"/assets/icon/twitterori.svg"}
               alt={"instagram"}
               width={20}
               height={20}
-              className="w-7 h-7 p-1 rounded-full border"
+              className="w-7 h-7 p-1"
             />
-            <Paragraph className="text-[12px] font-medium">Instagram</Paragraph>
+            <Paragraph className="text-[12px] font-medium">X (Twitter)</Paragraph>
           </div>
-          <div className="w-full flex items-center gap-4 px-4 pb-2 py-2 cursor-pointer hover:bg-gray-base transition-colors">
+          <div 
+            className="w-full flex items-center gap-4 px-4 pb-2 py-2 cursor-pointer hover:bg-gray-base transition-colors"
+            onClick={() => handleShare("whatsapp")}>
             <Image
-              src={"/assets/icon/whatsapp-outline.svg"}
+              src={"/assets/icon/whatsappori.svg"}
               alt={"whatsapp"}
               width={20}
               height={20}
-              className="w-7 h-7 p-1 rounded-full border"
+              className="w-7 h-7 p-1"
             />
             <Paragraph className="text-[12px] font-medium">Whatsapp</Paragraph>
+          </div>
+          <hr className="border w-[85%]"/>
+          <div 
+            className="w-full flex items-center gap-4 px-4 pb-2 py-2 cursor-pointer transition-colors"
+            onClick={copyToClipboard}>
+            <Image
+              src={"/assets/icon/link.svg"}
+              alt={"whatsapp"}
+              width={20}
+              height={20}
+              className="w-7 h-7 p-1"
+            />
+            <Paragraph className="text-[12px] font-medium">{buttonText}</Paragraph>
           </div>
         </div>
       </motion.div>

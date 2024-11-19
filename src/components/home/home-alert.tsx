@@ -12,21 +12,15 @@ import { Paragraph } from "../ui/typography";
 const HomeAlert = () => {
   const { alert, isAlertLoading } = useAlert();
   const [hover, setHover] = useState(false);
-  const [close, setClose] = useState(false);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const [isAtTop, setIsAtTop] = useState(true);
+  // const [lastScrollY, setLastScrollY] = useState(0);
   const pathname = usePathname();
   
   useEffect(() => {
     const handleScroll = () => {
         const currentScrollY = window.scrollY;
 
-        if (currentScrollY > lastScrollY) {
-          setClose(true);
-        } else {
-          setClose(false);
-        }
-
-        setLastScrollY(currentScrollY);
+        setIsAtTop(currentScrollY === 0);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -34,7 +28,7 @@ const HomeAlert = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     }
-  }, [lastScrollY]);
+  }, []);
 
   return pathname === "/" ? (
     <motion.div
@@ -42,7 +36,7 @@ const HomeAlert = () => {
         y: 60,
       }}
       animate={{
-        y: close ? 60 : 0,
+        y: isAtTop ? 0 : 60,
       }}
       transition={defaultTransition}
       className=" fixed bottom-0 z-50 w-full "
