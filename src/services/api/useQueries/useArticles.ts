@@ -9,6 +9,11 @@ export type Article = {
   created_at: string;
   text: string;
   level: string;
+  published_by: {
+    name: string;
+    img: string;
+  };
+  jurnal_by: string;
   category: {
     id: number;
     nama: string;

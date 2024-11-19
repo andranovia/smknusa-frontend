@@ -122,6 +122,19 @@ const InfoShare = () => {
             />
             <Paragraph className="text-[12px] font-medium">{buttonText}</Paragraph>
           </div>
+          <div
+            className="w-full flex items-center gap-4 px-4 pb-2 py-2 cursor-pointer transition-colors"
+            onClick={window.print}
+            >
+            <Image
+              src={"/assets/academic/resident-data/print.svg"}
+              alt={"print"}
+              width={20}
+              height={20}
+              className="w-7 h-7 p-1 rounded-full border"
+              />
+              <Paragraph className="text-[12px] font-medium">Cetak</Paragraph>
+          </div>
         </div>
       </motion.div>
     </div>

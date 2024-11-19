@@ -9,14 +9,18 @@ export type News = {
   created_at: string;
   text: string;
   level: number;
+  published_by: {
+    name: string;
+    img: string;
+  };
+  jurnal_by: string;
+  location: string;
   category: {
     id: number;
     nama: string;
     color: string;
   };
   viewer: string;
-  published_by: string;
-  jurnal_by: string;
 };
 
 export const useNews = (
