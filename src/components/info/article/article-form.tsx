@@ -99,9 +99,16 @@ const ArticleForm = ({
                   Dari Tanggal
                 </label>
                 <input
-                  type="text"
+                  type="date"
                   id="from"
                   name="from"
+                  value={articleFilter.start_date}
+                  onChange={(e) =>
+                    setArticleFilter({
+                      ...articleFilter,
+                      start_date: e.target.value,
+                    })
+                  }
                   className="1xl:w-[107%] h-10 border border-gray-300 rounded-lg p-2"
                 />
               </div>
@@ -113,9 +120,16 @@ const ArticleForm = ({
                   Sampai Tanggal
                 </label>
                 <input
-                  type="text"
+                  type="date"
                   id="to-date"
                   name="to-date"
+                  value={articleFilter.end_date}
+                  onChange={(e) =>
+                    setArticleFilter({
+                      ...articleFilter,
+                      end_date: e.target.value,
+                    })
+                  }
                   className="1xl:w-[107%] h-10 border border-gray-300 rounded-lg p-2"
                 />
               </div>

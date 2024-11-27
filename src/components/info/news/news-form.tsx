@@ -94,9 +94,13 @@ const NewsForm = ({ newsFilter, setNewsFilter }: NewsFilterFormProps) => {
                   Dari Tanggal
                 </label>
                 <input
-                  type="text"
+                  type="date"
                   id="from"
                   name="from"
+                  value={newsFilter.start_date}
+                  onChange={(e) =>
+                    setNewsFilter({ ...newsFilter, start_date: e.target.value })
+                  }
                   className="1xl:w-[107%] h-10 border border-gray-300 rounded-lg p-2"
                 />
               </div>
@@ -108,9 +112,13 @@ const NewsForm = ({ newsFilter, setNewsFilter }: NewsFilterFormProps) => {
                   Sampai Tanggal
                 </label>
                 <input
-                  type="text"
+                  type="date"
                   id="to-date"
                   name="to-date"
+                  value={newsFilter.end_date}
+                  onChange={(e) =>
+                    setNewsFilter({ ...newsFilter, end_date: e.target.value })
+                  }
                   className="1xl:w-[107%] h-10 border border-gray-300 rounded-lg p-2"
                 />
               </div>

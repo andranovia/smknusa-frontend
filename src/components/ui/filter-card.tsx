@@ -19,8 +19,8 @@ const FilterCard = ({ url }: { url: string }) => {
     const query = new URLSearchParams({
       search: title as string,
       category: category as string,
-      from: from as string,
-      toDate: toDate as string,
+      start_date: from as string,
+      end_date: toDate as string,
     }).toString();
 
     router.push(`/info/${url}?${query}`);
