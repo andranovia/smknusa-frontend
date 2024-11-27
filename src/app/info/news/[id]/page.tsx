@@ -16,7 +16,7 @@ export default function Page({ params }: { params: { id: string } }) {
   const { id } = params;
   const { news, newsDetails } = useNews(id);
   const sanitizedHtml = newsDetails?.text ? DOMPurify.sanitize(newsDetails?.text, {
-    FORBID_TAGS: ["img", "style", "b", "i", "strong", "em", "u", "font", "p"],
+    FORBID_TAGS: ["img", "style", "b", "i", "strong", "em", "u", "font"],
     FORBID_ATTR: ["style"],
   }) : "";
 
@@ -27,7 +27,7 @@ export default function Page({ params }: { params: { id: string } }) {
   const parsedHtml = parse(newsDetails?.text ? newsDetails?.text : "");
 
   const date = new Date(newsDetails?.created_at || Date.now());
-  const normalDate = date.toLocaleDateString();
+  const normalDate = newsDetails ? date.toLocaleDateString() : "";
 
   const filteredNews = (news || []).filter((item) => item.id_pemberitahuan !== newsDetails?.id_pemberitahuan);
   const shuffledNews = filteredNews.sort(() => Math.random() - 0.5);
@@ -73,7 +73,7 @@ export default function Page({ params }: { params: { id: string } }) {
                         src={"/assets/icon/location-black.svg"}
                         alt="location"
                       />
-                      <h4>SMKN 1 PURWOSARI</h4>
+                      <h4>{newsDetails?.location}</h4>
                     </div>
                     <div className="flex gap-1 items-center ml-auto lg:ml-0">
                       <Image
@@ -94,7 +94,7 @@ export default function Page({ params }: { params: { id: string } }) {
             <div className="w-full max-h-[17rem] md:max-h-[20rem]  rounded-[10px] lg:max-h-[30rem] xl:max-h-[40rem] overflow-y-scroll scrollbar-thin scrollbar-thumb-[#F5C451] scrollbar-track-yellow-100">
               <Image
                 src={backendUrl + newsDetails?.thumbnail}
-                alt="news-image"
+                alt={`${newsDetails?.nama}`}
                 className="w-full object-cover"
                 width={800}
                 height={800}

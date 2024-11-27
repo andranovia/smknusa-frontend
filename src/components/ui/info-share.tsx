@@ -45,6 +45,13 @@ const InfoShare = () => {
 
     window.open(shareUrl, "_blank")
   }
+
+  const handlePrint = () => {
+    if (typeof window !== 'undefined') {
+      window.print();
+    }
+  }
+
   return (
     <div
       className={` inline-flex flex-col items-end relative `}
@@ -124,7 +131,7 @@ const InfoShare = () => {
           </div>
           <div
             className="w-full flex items-center gap-4 px-4 pb-2 py-2 cursor-pointer transition-colors"
-            onClick={window.print}
+            onClick={handlePrint}
             >
             <Image
               src={"/assets/academic/resident-data/print.svg"}

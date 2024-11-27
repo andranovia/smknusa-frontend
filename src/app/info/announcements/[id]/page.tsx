@@ -28,7 +28,7 @@ export default function Page({ params }: { params: { id: string } }) {
   );
 
   const date = new Date(announcementDetails?.created_at || Date.now());
-  const normalDate = date.toLocaleDateString();
+  const normalDate = announcementDetails ? date.toLocaleDateString() : "";
 
   const filteredAnnouncements = (announcements || []).filter((item) => item.id_pemberitahuan !== announcementDetails?.id_pemberitahuan);
   const shuffledAnnouncements = filteredAnnouncements.sort(() => Math.random() - 0.5);

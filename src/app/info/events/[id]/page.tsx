@@ -27,7 +27,7 @@ export default function Page({ params }: { params: { id: string } }) {
     `Details about the event: ${eventDetails?.text || "Event description"}`
   );
   const date = new Date(eventDetails?.created_at || Date.now());
-  const normalDate = date.toLocaleDateString();
+  const normalDate = eventDetails ? date.toLocaleDateString() : "";
 
   const filteredEvents = (events || []).filter((item) => item.id_pemberitahuan !== eventDetails?.id_pemberitahuan);
   const shuffledEvents = filteredEvents.sort(() => Math.random() - 0.5);
