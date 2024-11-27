@@ -106,13 +106,13 @@ export default function Page({ params }: { params: { id: string } }) {
                     {parsedHTML}
                   </span>
 
-                  <span>Jurnalis: -</span>
+                  <span>Jurnalis: {articleDetails?.jurnal_by}</span>
                 </div>
                 <hr className="w-full border " />
                 <div className="w-full rounded-[10px] p-4 flex justify-start items-center gap-4 bg-gray-base">
                   <div className="p-2 xs:p-4 bg-gray-medium rounded-[10px]">
                     <Image
-                      src={"/assets/icon/ethic-logo.png"}
+                      src={backendUrl + articleDetails?.published_by.img}
                       alt="smknusa-icon"
                       width={50}
                       height={50}
@@ -123,7 +123,7 @@ export default function Page({ params }: { params: { id: string } }) {
                     <h3 className="font-medium text-xs xs:text-sm text-gray">
                       DIPUBLIKASIKAN OLEH
                     </h3>
-                    <h4 className="font-semibold text-[18px]">Ethics</h4>
+                    <h4 className="font-semibold text-[18px]">{articleDetails?.published_by.name}</h4>
                   </div>
                 </div>
               </div>
