@@ -59,7 +59,10 @@ const config: Config = {
   },
   plugins: [
     // eslint-disable-next-line @typescript-eslint/no-require-imports
-    require("tailwind-scrollbar")({ preferredStrategy: "pseudoelements" }),
+    require("tailwind-scrollbar")({
+      preferredStrategy: "pseudoelements",
+      nocompatible: true,
+    }),
   ],
 };
 export default config;

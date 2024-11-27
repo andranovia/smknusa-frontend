@@ -4,11 +4,17 @@ import { useArticles } from "@/services/api/useQueries/useArticles";
 type ArticleFilterFormProps = {
   articleFilter: {
     search: string;
+    category: string;
     start_date: string;
     end_date: string;
   };
   setArticleFilter: React.Dispatch<
-    SetStateAction<{ search: string; start_date: string; end_date: string }>
+    SetStateAction<{
+      search: string;
+      start_date: string;
+      end_date: string;
+      category: string;
+    }>
   >;
 };
 
@@ -23,6 +29,7 @@ const ArticleForm = ({
       case "reset":
         setArticleFilter({
           search: "",
+          category: "",
           start_date: "",
           end_date: "",
         });
@@ -74,6 +81,13 @@ const ArticleForm = ({
                   type="text"
                   id="category"
                   name="category"
+                  value={articleFilter.category}
+                  onChange={(e) =>
+                    setArticleFilter({
+                      ...articleFilter,
+                      category: e.target.value,
+                    })
+                  }
                   className="1xl:w-[107%] h-10 border border-gray-300 rounded-lg p-2"
                 />
               </div>

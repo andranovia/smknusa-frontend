@@ -8,10 +8,12 @@ const NewsContainer = () => {
 
   const search = params.get("search");
   const start_date = params.get("start_date");
+  const category = params.get("category");
   const end_date = params.get("end_date");
 
   const [newsFilter, setNewsFilter] = useState({
     search: search || "",
+    category: category || "",
     start_date: start_date || "",
     end_date: end_date || "",
   });

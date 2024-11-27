@@ -4,11 +4,17 @@ import { useNews } from "@/services/api/useQueries/useNews";
 type NewsFilterFormProps = {
   newsFilter: {
     search: string;
+    category: string;
     start_date: string;
     end_date: string;
   };
   setNewsFilter: React.Dispatch<
-    SetStateAction<{ search: string; start_date: string; end_date: string }>
+    SetStateAction<{
+      search: string;
+      start_date: string;
+      end_date: string;
+      category: string;
+    }>
   >;
 };
 
@@ -19,6 +25,7 @@ const NewsForm = ({ newsFilter, setNewsFilter }: NewsFilterFormProps) => {
       case "reset":
         setNewsFilter({
           search: "",
+          category: "",
           start_date: "",
           end_date: "",
         });
@@ -69,6 +76,13 @@ const NewsForm = ({ newsFilter, setNewsFilter }: NewsFilterFormProps) => {
                   type="text"
                   id="category"
                   name="category"
+                  value={newsFilter.category}
+                  onChange={(e) =>
+                    setNewsFilter({
+                      ...newsFilter,
+                      category: e.target.value,
+                    })
+                  }
                   className="1xl:w-[107%] h-10 border border-gray-300 rounded-lg p-2"
                 />
               </div>
