@@ -225,9 +225,9 @@ const NavigationItem = ({
               show || !activePage ? "text-blue-base" : "text-white"
             }`}
           >
-            {(route === "/e-raport") ? (
+            {route === "/e-raport" ? (
               <Link href="http://36.93.85.150:8154/">{name}</Link>
-            ) : (route === "/w-bkk") ? (
+            ) : route === "/w-bkk" ? (
               <Link href="https://bkk.smkn1purwosari.sch.id/">{name}</Link>
             ) : (
               name
@@ -253,9 +253,9 @@ const NavigationItem = ({
                     exit: { opacity: 0, y: 10 },
                   }}
                   transition={defaultTransition}
-                  className={cn(`min-w-[17rem] xs:min-w-[19rem] border-none sm:min-w-[20rem] relative w-[90%] xl:w-[26rem] items-center justify-center grid grid-cols-2 xl:gap-0 h-fit xl:h-full xl:grid-cols-1 xl:mt-14 z-20 rounded-tl-[10px] xl:rounded-b-[10px] rounded-r-[10px] bg-white bg-opacity-100 shadow-lg xl:top-5 before:border-b-white xl:pb-0 pb-8 
+                  className={cn(`min-w-[17rem] xs:min-w-[19rem] border-none max-h-[calc(80vh-4rem)] overflow-y-auto sm:min-w-[20rem] relative w-[90%] xl:w-[26rem] items-center justify-center grid grid-cols-2 xl:gap-0 h-fit xl:h-full xl:grid-cols-1 xl:mt-14 z-20 rounded-tl-[10px] xl:rounded-b-[10px] rounded-r-[10px] bg-white bg-opacity-100 shadow-lg xl:top-5 before:border-b-white xl:pb-0 pb-8 
                     before:content-[''] xl:before:block before:hidden before:absolute before:border-l-[10px] before:border-l-transparent before:border-r-[10px] before:border-r-transparent before:border-b-[14px] before:top-[-13.6px]  before:left-2
-                  `)}
+                  scrollbar scrollbar-w-[6px] scrollbar-thumb-[#F5C451] scrollbar-track-yellow-100`)}
                 >
                   {dropdownData?.map((data, index) => (
                     <React.Fragment key={index}>
