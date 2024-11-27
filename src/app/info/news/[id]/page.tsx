@@ -16,7 +16,7 @@ export default function Page({ params }: { params: { id: string } }) {
   const { id } = params;
   const { news, newsDetails } = useNews(id);
   const sanitizedHtml = newsDetails?.text ? DOMPurify.sanitize(newsDetails?.text, {
-    FORBID_TAGS: ["img", "style", "b", "i", "strong", "em", "u", "font"],
+    FORBID_TAGS: ["img", "style", "b", "i", "strong", "em", "u", "font", "p"],
     FORBID_ATTR: ["style"],
   }) : "";
 
@@ -114,7 +114,7 @@ export default function Page({ params }: { params: { id: string } }) {
                 <div className="w-full rounded-[10px] p-4 flex justify-start items-center gap-4 bg-gray-base">
                   <div className="p-2 xs:p-4 bg-gray-medium rounded-[10px]">
                     <Image
-                      src={"/assets/icon/logo-skansa.svg"}
+                      src={backendUrl + newsDetails?.published_by.img}
                       alt="smknusa-icon"
                       width={50}
                       height={50}
@@ -125,7 +125,7 @@ export default function Page({ params }: { params: { id: string } }) {
                     <h3 className="font-medium text-xs xs:text-sm text-gray">
                       DIPUBLIKASIKAN OLEH
                     </h3>
-                    <h4 className="font-semibold text-[18px]">{newsDetails?.published_by}</h4>
+                    <h4 className="font-semibold text-[18px]">{newsDetails?.published_by.name}</h4>
                   </div>
                 </div>
               </div>
