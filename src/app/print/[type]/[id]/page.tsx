@@ -26,20 +26,6 @@ export default function Page({params}: {params: { type: string, id: string }}) {
     const { announcementDetails } = useAnnouncements(id);
 
     useEffect(() => {
-        if (typeof window !== 'undefined') {
-            const returnUrl = sessionStorage.getItem('returnUrl');
-            
-            if (returnUrl) {
-                window.print();
-                window.onafterprint = () => {
-                    sessionStorage.removeItem('returnUrl');
-                    window.location.href = returnUrl;
-                };
-            }
-        }
-    }, []);
-
-    useEffect(() => {
         switch (type) {
             case 'news' :
                 if (newsDetails) setContentData(newsDetails);
@@ -69,11 +55,13 @@ export default function Page({params}: {params: { type: string, id: string }}) {
             const returnUrl = sessionStorage.getItem("returnUrl");
 
             if(returnUrl) {
-                window.print();
-                window.onafterprint = () => {
-                    sessionStorage.removeItem("returnUrl");
-                    window.location.href = returnUrl;
-                };
+                setTimeout(() => {
+                    window.print();
+                    window.onafterprint = () => {
+                        sessionStorage.removeItem("returnUrl");
+                        window.location.href = returnUrl;
+                    };
+                }, 3000);
             }
         }
     }, [loading, contentData])
