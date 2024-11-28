@@ -12,6 +12,7 @@ const NewsCard = ({
 }: {
   newsFilter: {
     search: string;
+    category: string;
     start_date: string;
     end_date: string;
   };

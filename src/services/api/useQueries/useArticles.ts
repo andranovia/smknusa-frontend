@@ -26,6 +26,7 @@ export const useArticles = (
   id?: string,
   filter?: {
     search: string;
+    category: string;
     start_date: string;
     end_date: string;
   }

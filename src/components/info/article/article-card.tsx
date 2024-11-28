@@ -12,6 +12,7 @@ const ArticleCard = ({
 }: {
   articleFilter: {
     search: string;
+    category: string;
     start_date: string;
     end_date: string;
   };

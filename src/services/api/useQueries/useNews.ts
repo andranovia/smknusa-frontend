@@ -27,6 +27,7 @@ export const useNews = (
   id?: string,
   filter?: {
     search: string;
+    category: string;
     start_date: string;
     end_date: string;
   }
