@@ -1,9 +1,10 @@
-"use clinet";
+"use client";
 
 import React from "react";
 import DOMPurify from "dompurify";
 import parse from "html-react-parser";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import { useMetadata } from "@/utils/useMetadata";
 import { backendUrl } from "@/utils/backendUrl";
 
@@ -25,6 +26,14 @@ interface Details {
 }
 
 const PrintTemplate = ({ details, type }: { details: Details; type: string }) => {
+  const [sourceUrl, setSourceUrl] = useState<string>("");
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const source = params.get("source");
+    if(source) setSourceUrl(decodeURIComponent(source));
+  }, [])
+
   const sanitizedHtml = details?.text
     ? DOMPurify.sanitize(details.text, {
         FORBID_TAGS: ["img", "style", "b", "i", "strong", "em", "u", "font"],
@@ -33,12 +42,12 @@ const PrintTemplate = ({ details, type }: { details: Details; type: string }) =>
     : "";
 
     useMetadata(
-        details?.nama || "News details" || "" || "" || "",
-        `Details about the job: ${details?.text || "News description"} `
+        details?.nama || "News" || "Events" || "Announcement" || "Article",
+        ``
     )
 
     const date = details && details.created_at ? new Date(details?.created_at) : null;
-    const normalDate = date ? date.toLocaleString() : "";
+    const normalDate = date ? date.toLocaleDateString("id-ID") : "";
 
   const parsedHtml = parse(sanitizedHtml);
 
@@ -59,10 +68,12 @@ const PrintTemplate = ({ details, type }: { details: Details; type: string }) =>
                     <p className="font-medium text-gray">Diposting pada :</p>
                     <h4 className="font-semibold"> {normalDate}</h4>
                     </div>
-                    <div className="flex gap-1 items-center text-xs xs:text-sm">
-                      <p className="font-medium text-gray">location :</p>
-                      <h4 className="font-semibold">{details?.location}</h4>
-                    </div>
+                    {details?.location && (
+                      <div className="flex gap-1 items-center text-xs xs:text-sm">
+                        <p className="font-medium text-gray">location :</p>
+                        <h4 className="font-semibold">{details?.location}</h4>
+                      </div>
+                    )}
                 </div>
 
                 <div className="flex items-start gap-4">
@@ -113,7 +124,7 @@ const PrintTemplate = ({ details, type }: { details: Details; type: string }) =>
               {type !== "announcement" && type !== "event" && (
                 <hr className="w-full border" />
               )}
-                <span className="text-start font-[500] text-[18px] text-black"> Sumber : {}</span>
+                <span className="text-start font-[500] text-[18px] text-black"> Sumber : {sourceUrl}</span>
             </div>
           </div>
         </div>

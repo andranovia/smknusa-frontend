@@ -126,7 +126,7 @@ export default function Page({ params }: { params: { id: string } }) {
                 return (
                   <React.Fragment key={index}>
                     <Link
-                      href={`/info/announcement/${announcement.id_pemberitahuan}`}
+                      href={`/info/announcements/${announcement.id_pemberitahuan}`}
                       className="flex justify-center"
                     >
                       <InfoCardItem

@@ -48,7 +48,16 @@ const NewsShare = () => {
 
   const handlePrint = () => {
     if (typeof window !== 'undefined') {
-      window.print();
+      const currentUrl = window.location.href;
+      const urlParts = currentUrl.split('/');
+      const id = urlParts[urlParts.length - 1];
+      const news = urlParts[urlParts.length - 2];
+
+      sessionStorage.setItem('returnUrl', currentUrl);
+
+      const newUrl = `${urlParts[0]}//${urlParts[2]}/print/${news}/${id}?source=${encodeURIComponent(currentUrl)}`;
+
+      window.location.href = newUrl;
     }
   }
 

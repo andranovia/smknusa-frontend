@@ -48,7 +48,16 @@ const InfoShare = () => {
 
   const handlePrint = () => {
     if (typeof window !== 'undefined') {
-      window.print();
+      const currentUrl = window.location.href;
+      const urlParts = currentUrl.split('/');
+      const id = urlParts[urlParts.length - 1];
+      const info = urlParts[urlParts.length - 2];
+
+      sessionStorage.setItem('returnUrl', currentUrl);
+
+      const newUrl = `${urlParts[0]}//${urlParts[2]}/print/${info}/${id}?source=${encodeURIComponent(currentUrl)}`;
+
+      window.location.href = newUrl;
     }
   }
 

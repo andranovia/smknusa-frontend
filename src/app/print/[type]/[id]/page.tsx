@@ -1,6 +1,6 @@
 "use client"
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Inter } from "next/font/google";
 import { useArticles } from "@/services/api/useQueries/useArticles";
 import { useAnnouncements } from "@/services/api/useQueries/useAnnouncements";
@@ -13,31 +13,75 @@ const inter = Inter({
     display: "swap",
 })
 
+
 export default function Page({params}: {params: { type: string, id: string }}) {
     const { type, id } = params;
+
+    const [loading, setLoading] = useState(true);
+    const [contentData, setContentData] = useState<any>(null);
+
     const { newsDetails } = useNews(id);
     const { articleDetails } = useArticles(id);
     const { eventDetails } = useEvents(id);
     const { announcementDetails } = useAnnouncements(id);
-    let contentData;
 
-    switch (type) {
-        case 'news' :
-            contentData = newsDetails;
-            break;
-        case 'announcement' :
-            contentData = announcementDetails;
-            break;
-        case 'event' :
-            contentData = eventDetails;
-            break;
-        case 'article' :
-            contentData = articleDetails;
-            break;
-        default : 
-            contentData = null;
-            break;
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            const returnUrl = sessionStorage.getItem('returnUrl');
+            
+            if (returnUrl) {
+                window.print();
+                window.onafterprint = () => {
+                    sessionStorage.removeItem('returnUrl');
+                    window.location.href = returnUrl;
+                };
+            }
+        }
+    }, []);
+
+    useEffect(() => {
+        switch (type) {
+            case 'news' :
+                if (newsDetails) setContentData(newsDetails);
+                console.log({'news': contentData, type });
+                break;
+            case 'announcements' :
+                if(announcementDetails) setContentData(announcementDetails);
+                console.log({'announcement': contentData, type });
+                break;
+            case 'events' :
+                if(eventDetails) setContentData(eventDetails);
+                console.log({'events': contentData, type });
+                break;
+            case 'article' :
+                if(articleDetails) setContentData(articleDetails);
+                console.log({'article': contentData, type });
+                break;
+            default : 
+                setContentData(null);
+                break;
+        }
+        setLoading(false);
+    }, [type, newsDetails, articleDetails, eventDetails, announcementDetails, contentData]);
+
+    useEffect(() => {
+        if (!loading && contentData && typeof window !== "undefined") {
+            const returnUrl = sessionStorage.getItem("returnUrl");
+
+            if(returnUrl) {
+                window.print();
+                window.onafterprint = () => {
+                    sessionStorage.removeItem("returnUrl");
+                    window.location.href = returnUrl;
+                };
+            }
+        }
+    }, [loading, contentData])
+
+    if (loading) {
+        return <div>Loading...</div>
     }
+
 
     return (
         <div className={`text-center ${inter.className}`}>
