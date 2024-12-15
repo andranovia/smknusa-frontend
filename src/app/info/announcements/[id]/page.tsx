@@ -28,7 +28,7 @@ export default function Page({ params }: { params: { id: string } }) {
   );
 
   const date = new Date(announcementDetails?.created_at || Date.now());
-  const normalDate = date.toLocaleDateString();
+  const normalDate = announcementDetails ? date.toLocaleDateString() : "";
 
   const filteredAnnouncements = (announcements || []).filter((item) => item.id_pemberitahuan !== announcementDetails?.id_pemberitahuan);
   const shuffledAnnouncements = filteredAnnouncements.sort(() => Math.random() - 0.5);
@@ -126,7 +126,7 @@ export default function Page({ params }: { params: { id: string } }) {
                 return (
                   <React.Fragment key={index}>
                     <Link
-                      href={`/info/announcement/${announcement.id_pemberitahuan}`}
+                      href={`/info/announcements/${announcement.id_pemberitahuan}`}
                       className="flex justify-center"
                     >
                       <InfoCardItem

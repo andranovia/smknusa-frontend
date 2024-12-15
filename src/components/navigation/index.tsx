@@ -69,7 +69,9 @@ const Navbar = () => {
                     } before:backdrop-blur-sm before:backdrop-hack `
                   : "xl:translate-y-2 xl:pt-0 "
               }`
-        } fixed w-full  delay-0 `}
+        } 
+        ${pathname.startsWith("/print") ? 'hidden' : ''}
+        fixed w-full  delay-0 `}
       >
         <div
           className={`flex  items-center justify-center  md:max-w-md-content lg:max-w-lg-content xl:max-w-full   w-full py-3 transition-all rounded-[10px] px-4 2xl:px-11  ${

@@ -28,7 +28,7 @@ export default function Page({ params }: { params: { id: string } }) {
     }`
   );
   const date = new Date(articleDetails?.created_at || Date.now());
-  const normalDate = date.toLocaleDateString();
+  const normalDate = articleDetails ? date.toLocaleDateString() : "";
 
   const filteredArticles = (articles || []).filter((item) => item.id_pemberitahuan !== articleDetails?.id_pemberitahuan);
   const shuffledArticles = filteredArticles.sort(() => Math.random() - 0.5);
