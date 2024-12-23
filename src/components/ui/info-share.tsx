@@ -45,6 +45,22 @@ const InfoShare = () => {
 
     window.open(shareUrl, "_blank")
   }
+
+  const handlePrint = () => {
+    if (typeof window !== 'undefined') {
+      const currentUrl = window.location.href;
+      const urlParts = currentUrl.split('/');
+      const id = urlParts[urlParts.length - 1];
+      const info = urlParts[urlParts.length - 2];
+
+      sessionStorage.setItem('returnUrl', currentUrl);
+
+      const newUrl = `${urlParts[0]}//${urlParts[2]}/print/${info}/${id}?source=${encodeURIComponent(currentUrl)}`;
+
+      window.location.href = newUrl;
+    }
+  }
+
   return (
     <div
       className={` inline-flex flex-col items-end relative `}
@@ -124,7 +140,7 @@ const InfoShare = () => {
           </div>
           <div
             className="w-full flex items-center gap-4 px-4 pb-2 py-2 cursor-pointer transition-colors"
-            onClick={window.print}
+            onClick={handlePrint}
             >
             <Image
               src={"/assets/academic/resident-data/print.svg"}
