@@ -8,11 +8,41 @@ import { defaultTransition } from "../../animation/transition";
 
 const ResidentDropdownChange = ({
   handleChangeTable,
+  activeTable,
+  studentsData,
+  teachersData,
+  checkedItems,
 }: {
   // eslint-disable-next-line no-unused-vars
   handleChangeTable: (current: string) => void;
+  activeTable : string;
+  studentsData?: { id: number | string }[];
+  teachersData?: { id: number | string }[];
+  checkedItems: string[];
 }) => {
   const [isChangeDropdown, setIsChangeDropdown] = useState(false);
+  
+    const handlePrint = () => {
+      if (typeof window !== "undefined") {
+        const currentUrl = window.location.href;
+    
+        const selectedData = activeTable === "students"
+          ? studentsData?.filter((student) =>
+              checkedItems.includes(String(student.id))
+            ) : teachersData?.filter((teacher) =>
+              checkedItems.includes(String(teacher.id))
+            );
+
+        sessionStorage.setItem("printData", JSON.stringify(selectedData));
+        sessionStorage.setItem("previousUrl", currentUrl);
+    
+        const urlParts = currentUrl.split("/");
+        const baseUrl = `${urlParts[0]}//${urlParts[2]}`;
+        const newUrl = `${baseUrl}/print/academic/resident-data/${activeTable}`;
+    
+        window.location.href = newUrl;
+      }
+    };
 
   return (
     <div
@@ -72,7 +102,9 @@ const ResidentDropdownChange = ({
             </Paragraph>
           </div>
           <hr className="border w-[85%]" />
-          <div className="w-full flex items-center gap-4 px-4 py-2 cursor-pointer hover:bg-gray-base transition-colors">
+          <div
+            onClick={handlePrint}
+            className="w-full flex items-center gap-4 px-4 py-2 cursor-pointer hover:bg-gray-base transition-colors">
             <Image
               src={"/assets/academic/resident-data/print.svg"}
               alt={"print"}

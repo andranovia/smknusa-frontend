@@ -18,9 +18,8 @@ const StudentsTable = ({
   const postsPerPage = 9;
 
   const [checkedAll, setCheckedAll] = useState(false);
-  const [checkedItems, setCheckedItems] = useState<boolean[]>(
-    new Array(studentsData?.length || 0).fill(false)
-  );
+  const [checkedItems, setCheckedItems] = useState<string[]>([]);
+  const [activeTable, setActiveTable] = useState<string>("students");
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
@@ -31,20 +30,36 @@ const StudentsTable = ({
 
   const onPageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
+    setCheckedAll(false);
   };
 
   const handleCheckAll = () => {
     const isChecked = !checkedAll;
     setCheckedAll(isChecked);
-    setCheckedItems(
-      new Array(currentStudentsData?.length || 0).fill(isChecked)
+
+    if (isChecked) {
+      const pageIds = currentStudentsData?.map((student) => student.id) || [];
+      setCheckedItems((prev) => {
+        const newItems = [...prev, ...pageIds.map(String)];
+        const uniqueItems = newItems.filter((item, index) => newItems.indexOf(item) === index);
+        return uniqueItems;
+      });
+    } else {
+      const pageIds = currentStudentsData?.map((student) => String(student.id)) || [];
+      setCheckedItems((prev) => prev.filter((id) => !pageIds.includes(id)));
+    }
+  };
+
+  const handleCheckItem = (id: string) => {
+    setCheckedItems((prev) =>
+      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
     );
   };
-  const handleCheckItem = (index: number) => {
-    const updatedCheckedItems = [...checkedItems];
-    updatedCheckedItems[index] = !updatedCheckedItems[index];
-    setCheckedItems(updatedCheckedItems);
-  };
+
+  const handleActiveTableChange = (table:string) => {
+    setActiveTable(table);
+    handleChangeTable(table);
+  }
 
   return (
     <div className="relative flex flex-col 1md:rounded-lg border w-full">
@@ -65,7 +80,7 @@ const StudentsTable = ({
         </div>
 
         <div className="-mt-14 sm:-mt-6">
-          <ResidentDropdownChange handleChangeTable={handleChangeTable} />
+          <ResidentDropdownChange handleChangeTable={handleActiveTableChange} activeTable={activeTable} studentsData={studentsData || []} checkedItems={checkedItems} />
         </div>
       </div>
       <div className="overflow-x-scroll 2xl:overflow-auto w-full scrollbar-thin scrollbar-thumb-[#F5C451] scrollbar-track-yellow-100">
@@ -118,8 +133,8 @@ const StudentsTable = ({
                             id={`checkbox-table-${index}`}
                             type="checkbox"
                             className="w-4 h-4 bg-gray-100 border-gray-300 rounded focus:ring-yellow ring-offset-gray-800 focus:ring-offset-gray-800 focus:ring-2"
-                            checked={checkedItems[index]}
-                            onChange={() => handleCheckItem(index)}
+                            checked={checkedItems.includes(String(student.id))}
+                            onChange={() => handleCheckItem(String(student.id))}
                           />
                           <label
                             htmlFor={`checkbox-table-${index}`}
