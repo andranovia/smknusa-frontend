@@ -53,7 +53,7 @@ export default function RootLayout({
               <UnavailableToast />
               {children}
 
-              <footer className=" px-2 xl:px-2.5 pb-2 xl:pb-2.5">
+              <footer>
                 <Footer />
               </footer>
             </main>

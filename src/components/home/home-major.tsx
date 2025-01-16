@@ -66,7 +66,7 @@ const HomeMajor = () => {
 
   return (
     <section className="w-full h-full bg-white rounded-[10px]">
-      <div className="flex flex-col lg:text-center w-full items-center justify-center bg-primary  rounded-md text-white pt-6 sm:pt-10 pb-16 xl:pb-48">
+      <div className="flex flex-col lg:text-center w-full items-center justify-center bg-primary  text-white pt-6 sm:pt-10 pb-16 xl:pb-48">
         <Heading
           type="h1"
           className="xl:text-[36px]  text-[22px] lg:text-[30px] sm:text-[24px] w-full max-w-[274px] xs:max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container xl:w-fit "

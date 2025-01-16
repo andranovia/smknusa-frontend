@@ -11,7 +11,7 @@ export default function Home() {
     <div className="flex min-h-screen flex-col items-center w-full">
       <HomeHero />
       <HomeSlider />
-      <div className=" px-2 xl:px-2.5 flex flex-col w-full items-center gap-3 mt-3">
+      <div className=" flex flex-col w-full items-center gap-3 mt-3">
         <ClientOnly>
           <HomeAnnouncement />
         </ClientOnly>

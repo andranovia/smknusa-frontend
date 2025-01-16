@@ -20,15 +20,20 @@ const Navbar = () => {
   const { activePage } = useActivePage();
   const pathname = usePathname();
   const [searchToggle, setSearchToggle] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
   const { handleActiveUnavailableToast } = useActiveToast();
 
   useEffect(() => {
     const controlNavbar = () => {
       if (isMobile) {
-        if (window.scrollY > lastScrollY) {
-          setShow(false);
-        } else {
+        if (showMenu) {
           setShow(true);
+        } else {
+          if (window.scrollY > lastScrollY) {
+            setShow(false);
+          } else {
+            setShow(true);
+          }
         }
       } else if (window.scrollY > 0) {
         setShow(true);
@@ -46,18 +51,16 @@ const Navbar = () => {
     };
   }, [lastScrollY, isMobile]);
 
-  const [showMenu, setShowMenu] = useState(false);
-
   const handleToggleMenu = () => {
-    if (!showMenu) {
-      setShowMenu(true);
-    }
+    setShowMenu(!showMenu);
   };
 
   return (
     <>
       <div
-        className={`flex items-center  justify-center rounded-lg bg-white xl:bg-transparent  xl:px-2.5   z-40  transition-[padding,max-width,transform] ${
+        className={`flex items-center  justify-center ${
+          showMenu ? "" : "rounded-lg"
+        } bg-white xl:bg-transparent  xl:px-2.5   z-40  transition-[padding,max-width,transform] ${
           show
             ? `  text-blue-base pt-0 xl:pt-2 `
             : `  ${
@@ -70,7 +73,7 @@ const Navbar = () => {
                   : "xl:translate-y-2 xl:pt-0 "
               }`
         } 
-        ${pathname.startsWith("/print") ? 'hidden' : ''}
+        ${pathname.startsWith("/print") ? "hidden" : ""}
         fixed w-full  delay-0 `}
       >
         <div
@@ -118,11 +121,7 @@ const Navbar = () => {
                   dropdown={true}
                   route="/academic"
                 />
-                <NavigationItem
-                  name="BKK"
-                  show={show}
-                  route={"/w-bkk"}
-                />
+                <NavigationItem name="BKK" show={show} route={"/w-bkk"} />
                 <NavigationItem
                   name="Info"
                   show={show}
@@ -135,7 +134,7 @@ const Navbar = () => {
                   route={"/e-raport"}
                 />
               </div>
-              <div className="flex items-center xl:space-x-4 gap-3 xl:gap-0 w-max">
+              <div className="flex items-center xl:space-x-4 gap-4 xl:gap-0 w-max">
                 <NavigationSearch
                   show={show}
                   searchToggle={searchToggle}
@@ -152,7 +151,7 @@ const Navbar = () => {
                     !show && activePage ? `xl:invert-0 invert` : "invert"
                   } transition-all  w-5 h-5 hidden xl:block cursor-pointer`}
                 />
-                {isMobile ? (
+                {isMobile && !showMenu ? (
                   <Image
                     src={"/assets/icon/hamburger.svg"}
                     alt="hamburger"
@@ -161,7 +160,16 @@ const Navbar = () => {
                     className="w-6 h-6 "
                     onClick={() => handleToggleMenu()}
                   />
-                ) : null}
+                ) : (
+                  <Image
+                    src={"/assets/icon/close-square-blue.svg"}
+                    alt="hamburger"
+                    width={25}
+                    height={25}
+                    className="w-6 h-6 "
+                    onClick={() => handleToggleMenu()}
+                  />
+                )}
               </div>
             </div>
           </div>
