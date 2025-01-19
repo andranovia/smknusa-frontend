@@ -7,3 +7,29 @@
       @apply absolute inset-0 -z-10;
     }
   }
+
+  @media print {
+    body {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  
+    .print-container {
+      width: 100%;
+      margin: 0 auto;
+      padding: 0;
+    }
+
+    .print-container table {
+      width: 100%;
+      table-layout: fixed;
+    }
+  
+    .print-container th,
+    .print-container td {
+      padding: 8px;
+      border: 1px solid #000;
+      text-align: left;
+    }
+  }

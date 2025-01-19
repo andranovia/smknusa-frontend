@@ -9,7 +9,7 @@ const inter = Inter({
     display: "swap",
 })
 
-const PrintResident = () => {
+const PrintStudents = () => {
     const { isStudentsLoading } = useResidents();
     const [ printData, setPrintData ] = useState<Student[]>([]);
 
@@ -40,7 +40,7 @@ const PrintResident = () => {
     }, [isStudentsLoading]);
 
     return (
-          <div className={`w-full px-24 py-10 ${inter.className}`}>
+          <div className={`w-full print-container px-24 py-10 ${inter.className}`}>
             <table className="table-auto w-full">
               <thead>
                 <tr>
@@ -71,4 +71,4 @@ const PrintResident = () => {
     )
 }
 
-export default PrintResident
+export default PrintStudents
