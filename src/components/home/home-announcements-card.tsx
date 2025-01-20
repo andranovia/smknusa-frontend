@@ -304,7 +304,7 @@ const HomeAnnouncementsCard = ({
           animate={announcementsHighlightControls}
           initial="hidden"
           transition={defaultTransition}
-          className=" w-full xl:w-3/4 relative rounded-[10px] overflow-hidden xl:overflow-visible  z-20 h-full "
+          className=" w-full xl:w-3/4 relative rounded-[10px] overflow-hidden xl:overflow-visible  z-20 h-full max-h-[13rem] lg:max-h-fit "
         >
           {children}
         </motion.div>
@@ -344,7 +344,7 @@ const HomeAnnouncementsCard = ({
               exit="exit"
               variants={{ ...imageVariantMobile }}
               transition={defaultTransition}
-              className={` w-full h-full min-h-[18rem] lg:min-h-fit xl:max-h-[27rem] xl:top-4  xl:max-w-[40rem] absolute   `}
+              className={` w-full h-full min-h-[13rem] lg:min-h-fit xl:max-h-[27rem] xl:top-4  xl:max-w-[40rem] absolute   `}
             >
               <Image
                 src={
@@ -405,7 +405,7 @@ const HomeAnnouncementsCard = ({
   };
 
   return (
-    <div className="flex justify-start overflow-hidden items-end relative w-full h-[30rem] lg:h-[20rem] py-4 xl:h-[34rem] bg-white   rounded-[10px] ">
+    <div className="flex justify-start overflow-hidden items-end relative w-full h-[24rem] lg:h-[20rem] py-4 xl:h-[34rem] bg-white   rounded-[10px] ">
       <div className="absolute right-0 h-full bg-gradient-to-l from-white to-transparent z-40 p-0 xl:p-16 opacity-40"></div>
       <div className="flex flex-col lg:flex-row overflow-hidden  xl:flex-row-reverse  rounded-[10px]  justify-between items-center w-full h-full xl:p-8 gap-6">
         {AnnouncementImageHighlight(AnnouncementImageList())}

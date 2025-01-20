@@ -20,7 +20,7 @@ const ProfileLayout = ({
   return (
     <div
       className={cn(
-        "w-full flex bg-gray-base justify-center  xl:pt-24 px-2  xl:px-2.5 min-h-screen rounded-[10px] text-blue-base",
+        "w-full flex bg-gray-base justify-center  xl:pt-24 min-h-screen rounded-[10px] text-blue-base",
         classNameWrapper
       )}
     >

@@ -26,7 +26,7 @@ const DetailLayout = ({
   className?: string;
 }) => {
   return (
-    <div className="flex xl:min-h-screen flex-col items-center px-2.5 xl:px-3 gap-3 ">
+    <div className="flex xl:min-h-screen flex-col items-center  gap-3 ">
       <div
         className="relative mt-[72px] xl:mt-24 h-[16rem] w-full p-2 xl:p-2.5 overflow-hidden rounded-[10px] sm:h-[17rem] md:h-[20rem] xl:h-[28rem] 1xl:h-[32.375rem] bg-cover bg-no-repeat"
         style={{

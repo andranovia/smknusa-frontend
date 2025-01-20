@@ -22,6 +22,9 @@ const Navbar = () => {
   const [searchToggle, setSearchToggle] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const { handleActiveUnavailableToast } = useActiveToast();
+  const [currentDropdown, setCurrentDropdown] = useState<string | null>(
+    "Akademik"
+  );
 
   useEffect(() => {
     const controlNavbar = () => {
@@ -52,6 +55,9 @@ const Navbar = () => {
   }, [lastScrollY, isMobile]);
 
   const handleToggleMenu = () => {
+    if (currentDropdown === null) {
+      setCurrentDropdown("Akademik");
+    }
     setShowMenu(!showMenu);
   };
 
@@ -59,7 +65,7 @@ const Navbar = () => {
     <>
       <div
         className={`flex items-center  justify-center ${
-          showMenu ? "" : "rounded-lg"
+          showMenu ? "" : "xl:rounded-lg"
         } bg-white xl:bg-transparent  xl:px-2.5   z-40  transition-[padding,max-width,transform] ${
           show
             ? `  text-blue-base pt-0 xl:pt-2 `
@@ -151,25 +157,26 @@ const Navbar = () => {
                     !show && activePage ? `xl:invert-0 invert` : "invert"
                   } transition-all  w-5 h-5 hidden xl:block cursor-pointer`}
                 />
-                {isMobile && !showMenu ? (
-                  <Image
-                    src={"/assets/icon/hamburger.svg"}
-                    alt="hamburger"
-                    width={25}
-                    height={25}
-                    className="w-6 h-6 "
-                    onClick={() => handleToggleMenu()}
-                  />
-                ) : (
-                  <Image
-                    src={"/assets/icon/close-square-blue.svg"}
-                    alt="hamburger"
-                    width={25}
-                    height={25}
-                    className="w-6 h-6 "
-                    onClick={() => handleToggleMenu()}
-                  />
-                )}
+                {isMobile &&
+                  (!showMenu ? (
+                    <Image
+                      src={"/assets/icon/hamburger.svg"}
+                      alt="hamburger"
+                      width={25}
+                      height={25}
+                      className="w-6 h-6 "
+                      onClick={() => handleToggleMenu()}
+                    />
+                  ) : (
+                    <Image
+                      src={"/assets/icon/close-square-blue.svg"}
+                      alt="hamburger"
+                      width={25}
+                      height={25}
+                      className="w-6 h-6 "
+                      onClick={() => handleToggleMenu()}
+                    />
+                  ))}
               </div>
             </div>
           </div>
@@ -178,7 +185,12 @@ const Navbar = () => {
 
       {isMobile ? (
         <>
-          <NavigationHamburger showMenu={showMenu} setShowMenu={setShowMenu} />
+          <NavigationHamburger
+            currentDropdown={currentDropdown}
+            setCurrentDropdown={setCurrentDropdown}
+            showMenu={showMenu}
+            setShowMenu={setShowMenu}
+          />
         </>
       ) : null}
       <NavigationSearchResult
