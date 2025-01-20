@@ -25,21 +25,21 @@ const PrintTeachers = () => {
         setTimeout(() => {
           window.print();
 
-          // window.onafterprint = () => {
-          //   sessionStorage.removeItem("printData");
-          //   if (backUrl) {
-          //     window.location.href = backUrl;
-          //   } else {
-          //     console.error("backUrl is null");
-          //   }
-          // }
+          window.onafterprint = () => {
+            sessionStorage.removeItem("printData");
+            if (backUrl) {
+              window.location.href = backUrl;
+            } else {
+              console.error("backUrl is null");
+            }
+          }
         }, 3500);
       }
     }
   }, [isTeachersLoading]);
 
   return (
-    <div className={`w-full px-24 mr-10 py-10 ${inter.className}`}>
+    <div className={`w-full print-container px-24 mr-10 py-10 ${inter.className}`}>
       <table className='table-auto w-full border'>
         <thead>
             <tr className='border-b'>

@@ -8,7 +8,7 @@ import { Heading, Paragraph } from "../ui/typography";
 const HomeEntrepreneur = () => {
   return (
     <section className="w-full h-full xl:h-[64rem] 1xl:h-[68rem] 2xl:h-[74rem]  flex flex-col items-center justify-center bg-white rounded-[10px] ">
-      <div className="relative flex w-full h-full flex-col items-center bg-primary  rounded-md text-white pt-6 sm:pt-10 pb-32 2xl:pb-40">
+      <div className="relative flex w-full h-full flex-col items-center bg-primary  text-white pt-6 sm:pt-10 pb-32 2xl:pb-40">
         <Heading
           type="h1"
           className="  xl:text-[36px] text-[22px] lg:text-[30px] sm:text-[24px] lg:text-center w-full max-w-[274px] xs:max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container"

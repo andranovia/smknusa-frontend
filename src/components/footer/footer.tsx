@@ -35,7 +35,11 @@ export default function Footer() {
 
   return (
     <>
-      <div className={`flex flex-col items-center 1xl:justify-center  1xl:px-8 py-8 bg-primary rounded-[10px] text-white mt-3 ${pathname.startsWith("/print") ? 'hidden' : ''}`}>
+      <div
+        className={`flex flex-col items-center 1xl:justify-center  1xl:px-8 py-8 bg-primary  text-white mt-3 ${
+          pathname.startsWith("/print") ? "hidden" : ""
+        }`}
+      >
         <div className="grid grid-cols-1 md:grid-cols-2 1xl:flex 1xl:flex-wrap flex-col 1xl:flex-row flex-nowrap mt-0 lg:mt-8 px-4 md:px-0  1xl:gap-0 gap-10 xl:max-w-xl-content  md:max-w-md-content lg:max-w-lg-content 1xl:max-w-1xl-content 2xl:max-w-max-content">
           {footers &&
             footers.map((section, index) => {
@@ -43,11 +47,12 @@ export default function Footer() {
               const data = Array.isArray(section.data) ? section.data : [];
 
               return (
-                <React.Fragment key={section.id?.toString() || index.toString()}>
+                <React.Fragment
+                  key={section.id?.toString() || index.toString()}
+                >
                   {renderFooterSection(sectionName as string, data)}
                 </React.Fragment>
-              )
-                
+              );
             })}
 
           <div className="flex flex-col items-start justify-start text-blue-base rounded-md 1xl:w-1/4 md:col-span-2">
@@ -133,17 +138,19 @@ export default function Footer() {
               alt=""
               height={55}
               width={55}
-              className="w-auto h-auto"
+              quality={100}
+              className="w-10 xl:w-auto h-auto"
             />
-            <div className="ml-2 font-[900] text-[18px] ">
+            <div className="ml-2 font-[900] text-sm xl:text-lg ">
               SMK NEGERI 1 <br />
               PURWOSARI
             </div>
           </Link>
 
-          <div className="flex-grow flex 1xl:justify-center  ">
-            <div className="1xl:text-center text-[14] text-white font-[500]">
-              <p>
+          
+          <div className="md:flex-grow flex 1xl:justify-center">
+            <div className="1xl:text-center text-white font-[500]">
+              <p className="text-xs 1xl:text-base">
                 Hak Cipta &copy; 2024 SMK Negeri 1 Purwosari. Dikembangkan oleh
                 <b>&nbsp; Var Studio</b>
               </p>

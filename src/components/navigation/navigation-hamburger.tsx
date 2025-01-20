@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 import React, { useState } from "react";
 import Link from "next/link";
 import { useMediaQuery } from "@uidotdev/usehooks";
@@ -110,22 +111,6 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
       },
     },
   ],
-  BKK: [
-    {
-      linkDropdownData: {
-        text: "Kemitraan",
-        description: "Berisi Data Kemitraan SMK Negeri 1 Purwosari",
-        linkRef: "/bkk/partnership",
-      },
-    },
-    {
-      linkDropdownData: {
-        text: "Lowongan Pekerjaan",
-        description: "Berisi Data Loker SMK Negeri 1 Purwosari",
-        linkRef: "/bkk/job",
-      },
-    },
-  ],
   Info: [
     {
       linkDropdownData: {
@@ -156,6 +141,7 @@ const NavigationMenuItem = ({
   setShowMenu: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   const isOpen = currentDropdown === name;
+  const pathname = usePathname();
 
   const handleToggleDropdown = () => {
     setCurrentDropdown(isOpen ? null : name);
@@ -164,47 +150,66 @@ const NavigationMenuItem = ({
     <motion.div
       initial={false}
       animate={{
-        height: isOpen ? (name === "BKK" ? "11rem" : "20rem") : "4rem",
+        height: isOpen
+          ? name === "Profile"
+            ? "21rem"
+            : name === "Info"
+            ? "9.5rem"
+            : "18rem"
+          : "4rem",
       }}
       transition={defaultTransition}
-      className={`flex flex-col gap-4 my-3 relative overflow-hidden ${
-        name === "BKK" ? "lg:col-span-2" : ""
-      }`}
+      className={`flex flex-col gap-4 my-3 relative overflow-hidden `}
     >
       <div
-        className="flex justify-between items-center"
+        className="flex justify-between items-center bg-white"
         onClick={() => handleToggleDropdown()}
       >
-        <Heading type="h5" className="text-white font-semibold">
-          {name}
-        </Heading>
-        <Image
-          src={`/assets/icon/dropdown-white.svg`}
-          alt="dropdown"
-          height={20}
-          width={20}
-        />
+        <div className="flex justify-between items-center w-full">
+          <Heading type="h5" className="text-primary font-semibold">
+            {name}
+          </Heading>
+          <Image
+            src={`/assets/icon/dropdown.svg`}
+            alt="dropdown"
+            height={20}
+            width={20}
+            className={`w-5 h-5 xl:invert-0 transition-transform ${
+              name === currentDropdown ? "-rotate-180" : "rotate-0"
+            }`}
+          />
+        </div>
       </div>
       <motion.div
         initial={{ y: 200, opacity: 0 }}
         animate={{ opacity: isOpen ? 1 : 0, y: isOpen ? 0 : 200 }}
         transition={{ ...defaultTransition }}
-        className="flex flex-col px-3 sm:px-6 gap-2 absolute bottom-8"
+        className="flex flex-col gap-3 absolute bottom-4"
       >
-        {navbarDropdownData[name].map((item, index) => (
+        {navbarDropdownData[name]?.map((item, index) => (
           <Link
             href={item.linkDropdownData.linkRef}
             key={index}
             onClick={() => setShowMenu(false)}
           >
-            <Paragraph className="text-white font-medium text-base">
+            <Paragraph
+              className={` font-medium text-base ${
+                pathname === item.linkDropdownData.linkRef
+                  ? "text-primary"
+                  : "text-gray-light"
+              }`}
+            >
               {item.linkDropdownData.text}
             </Paragraph>
           </Link>
         ))}
       </motion.div>
 
-      <hr className="border border-white my-2" />
+      <hr
+        className={`border  ${
+          currentDropdown === name ? "border-[#F5C451]" : "border-[#E2E8F0]"
+        } my-2`}
+      />
     </motion.div>
   );
 };
@@ -224,62 +229,11 @@ const NavigationHamburger = ({
       initial={{ x: isMobile ? 600 : 1050 }}
       animate={{ x: showMenu ? 0 : isMobile ? 600 : 1050 }}
       transition={{ ...defaultTransition, type: "tween" }}
-      className={` fixed top-0 left-0 w-full min-h-screen bg-primary z-40 flex flex-col gap-4 ${
+      className={` fixed  left-0 w-full  min-h-screen bg-white top-[64px] z-40 flex flex-col items-center gap-4 ${
         showMenu ? "pointer-events-auto" : "pointer-events-none"
       }`}
     >
-      <div className="left-3 top-3 relative">
-        <motion.svg
-          width="91"
-          height="92"
-          viewBox="0 0 91 92"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          onClick={() => setShowMenu(false)}
-        >
-          <motion.path
-            d="M56.5688 57.3139L33.9414 34.6865"
-            stroke="white"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: showMenu ? 1 : 0 }}
-            transition={defaultTransition}
-          />
-          <motion.path
-            d="M52.7969 38.4575L56.5681 34.6863"
-            stroke="white"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: showMenu ? 1 : 0 }}
-            transition={{ ...defaultTransition, delay: 0.2 }}
-          />
-          <motion.path
-            d="M33.9414 57.3135L44.614 46.6409"
-            stroke="white"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: showMenu ? 1 : 0 }}
-            transition={{ ...defaultTransition, delay: 0.4 }}
-          />
-          <motion.path
-            d="M56.5688 57.3139L33.9414 34.6865"
-            stroke="white"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: showMenu ? 1 : 0 }}
-            transition={{ ...defaultTransition, delay: 0.6 }}
-          />
-        </motion.svg>
-      </div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-4 px-[34px]">
+      <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-4 px-6 mt-6 md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-[1222px] w-full  ">
         <NavigationMenuItem
           name="Akademik"
           currentDropdown={currentDropdown}
@@ -293,34 +247,42 @@ const NavigationHamburger = ({
           setShowMenu={setShowMenu}
         />
         <NavigationMenuItem
-          name="BKK"
-          currentDropdown={currentDropdown}
-          setCurrentDropdown={setCurrentDropdown}
-          setShowMenu={setShowMenu}
-        />
-        <NavigationMenuItem
           name="Info"
           currentDropdown={currentDropdown}
           setCurrentDropdown={setCurrentDropdown}
           setShowMenu={setShowMenu}
         />
-      </div>
-      <div className="flex gap-4 flex-col px-4  pb-[22px] fixed bg-primary bottom-0 w-full">
-        <hr className="border border-white my-2" />
-        <div className="flex items-center">
-          {" "}
-          <Image
-            src={"/assets/icon/logo-skansa.svg"}
-            alt=""
-            height={55}
-            width={55}
-            quality={100}
-            className="w-10 xl:w-auto h-auto"
-          />
-          <h2 className="ml-2 text-sm xl:text-lg font-bold  text-white">
-            SMK NEGERI 1 <br className="block" />
-            PURWOSARI
-          </h2>
+        <div
+          className={`flex flex-col gap-4 my-3 relative overflow-hidden h-[4rem]`}
+        >
+          <div className="flex justify-between items-center bg-white">
+            <Link
+              href="https://bkk.smkn1purwosari.sch.id/"
+              className="flex justify-between items-center w-full"
+            >
+              <Heading type="h5" className="text-primary font-semibold">
+                BKK
+              </Heading>
+            </Link>
+          </div>
+
+          <hr className={`border-[#E2E8F0] border`} />
+        </div>
+        <div
+          className={`flex flex-col gap-4 my-3 relative overflow-hidden h-[4rem]`}
+        >
+          <div className="flex justify-between items-center bg-white">
+            <Link
+              href="http://36.93.85.150:8154/"
+              className="flex justify-between items-center w-full"
+            >
+              <Heading type="h5" className="text-primary font-semibold">
+                E-Raport
+              </Heading>
+            </Link>
+          </div>
+
+          <hr className={`border-[#E2E8F0] border `} />
         </div>
       </div>
     </motion.div>

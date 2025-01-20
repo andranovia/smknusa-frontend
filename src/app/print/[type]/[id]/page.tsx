@@ -13,7 +13,6 @@ const inter = Inter({
     display: "swap",
 })
 
-
 export default function Page({params}: {params: { type: string, id: string }}) {
     const { type, id } = params;
 
@@ -70,9 +69,8 @@ export default function Page({params}: {params: { type: string, id: string }}) {
         return <div>Loading...</div>
     }
 
-
     return (
-        <div className={`text-center ${inter.className}`}>
+        <div className={`text-center print-container ${inter.className}`}>
             {contentData ? (
                 <PrintTemplate details={contentData} type={type}/>
                 ) : (
