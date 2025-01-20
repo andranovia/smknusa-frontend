@@ -52,7 +52,7 @@ const Navbar = () => {
     return () => {
       window.removeEventListener("scroll", controlNavbar);
     };
-  }, [lastScrollY, isMobile]);
+  }, [lastScrollY, isMobile, showMenu]);
 
   const handleToggleMenu = () => {
     if (currentDropdown === null) {

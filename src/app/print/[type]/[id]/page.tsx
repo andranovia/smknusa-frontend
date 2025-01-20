@@ -2,10 +2,10 @@
 
 import React, { useEffect, useState } from "react";
 import { Inter } from "next/font/google";
-import { useArticles } from "@/services/api/useQueries/useArticles";
-import { useAnnouncements } from "@/services/api/useQueries/useAnnouncements";
-import { useEvents } from "@/services/api/useQueries/useEvents";
-import { useNews } from "@/services/api/useQueries/useNews";
+import { Article, useArticles } from "@/services/api/useQueries/useArticles";
+import { Announcement, useAnnouncements } from "@/services/api/useQueries/useAnnouncements";
+import { Event, useEvents } from "@/services/api/useQueries/useEvents";
+import { News, useNews } from "@/services/api/useQueries/useNews";
 import PrintTemplate from "@/components/ui/print-template";
 
 const inter = Inter({
@@ -13,11 +13,13 @@ const inter = Inter({
     display: "swap",
 })
 
+
+
 export default function Page({params}: {params: { type: string, id: string }}) {
     const { type, id } = params;
 
     const [loading, setLoading] = useState(true);
-    const [contentData, setContentData] = useState<any>(null);
+    const [contentData, setContentData] = useState<Event | News | Article | Announcement | null>(null);
 
     const { newsDetails } = useNews(id);
     const { articleDetails } = useArticles(id);

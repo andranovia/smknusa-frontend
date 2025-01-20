@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import React from "react";
 import Link from "next/link";
-import { useMediaQuery } from "@uidotdev/usehooks";
 import { Heading, Paragraph } from "../ui/typography";
 import { defaultTransition } from "../animation/transition";
 
@@ -225,7 +224,6 @@ const NavigationHamburger = ({
   currentDropdown: string | null;
   setCurrentDropdown: React.Dispatch<React.SetStateAction<string | null>>;
 }) => {
-  const isMobile = useMediaQuery("only screen and (max-width: 576px)");
 
   return (
     <motion.div

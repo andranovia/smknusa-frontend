@@ -158,30 +158,38 @@ export default function Footer() {
           </div>
 
           <div className="flex items-center space-x-4">
-            <Image
-              src={"/assets/icon/tiktok.svg"}
-              alt="tiktok"
-              width={22}
-              height={22}
-            />
-            <Image
-              src={"/assets/icon/instagram.svg"}
-              alt="instagram"
-              width={22}
-              height={22}
-            />
-            <Image
-              src={"/assets/icon/facebook.svg"}
-              alt="facebook"
-              width={22}
-              height={22}
-            />
-            <Image
-              src={"/assets/icon/twitter.svg"}
-              alt="twitter"
-              width={22}
-              height={22}
-            />
+          <Link href={"https://www.tiktok.com/@smkn1purwosari_official"}>
+              <Image
+                src={"/assets/icon/tiktok.svg"}
+                alt="tiktok"
+                width={22}
+                height={22}
+              />
+            </Link>
+            <Link href={"https://www.instagram.com/smkn1purwosari_official/"}>
+              <Image
+                src={"/assets/icon/instagram.svg"}
+                alt="instagram"
+                width={22}
+                height={22}
+              />
+            </Link>
+            <Link href={"https://www.facebook.com/profile.php?id=100064545915738"}>
+              <Image
+                src={"/assets/icon/facebook.svg"}
+                alt="facebook"
+                width={22}
+                height={22}
+              />
+            </Link>
+            <Link href={"https://x.com/smkn1purwosari"}>
+              <Image
+                src={"/assets/icon/twitter.svg"}
+                alt="twitter"
+                width={22}
+                height={22}
+              />
+            </Link>
           </div>
         </div>
       </div>
