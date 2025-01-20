@@ -1,11 +1,13 @@
 "use client";
 
 import React, { useCallback, useState } from "react";
-import { motion, useAnimation, useMotionValue, useSpring } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
+import { useMediaQuery } from "@uidotdev/usehooks";
 import { Major, useMajors } from "@/services/api/useQueries/useMajors";
 import HomeMajorSlider from "./home-major-slider";
 import { Heading, Paragraph } from "../ui/typography";
 import { defaultTransition } from "../animation/transition";
+
 
 const majorLinkData = [
   {
@@ -24,25 +26,22 @@ const majorLinkData = [
 
 const HomeMajor = () => {
   const [currentSlide, setCurrentSlide] = useState("TI");
-  const xValue = 0;
-  const offsetX = useMotionValue(xValue);
   const navHighlight = useAnimation();
   const { majors } = useMajors();
   const majorData = majors?.filter(
     (major: Major) => major.prodi.prodi_short === currentSlide
   );
-
+const isMobile = useMediaQuery("only screen and (max-width : 1023.98px)");
   const controls = useAnimation();
-  const animatedX = useSpring(offsetX, {
-    damping: 20,
-    stiffness: 150,
-  });
+
+
+  
+
 
   const handleSlideChange = useCallback(
     (newSlide: string) => {
       if (currentSlide !== newSlide) {
-        controls.start("animate");
-        animatedX.set(0);
+        controls.start("animate");;
         setTimeout(() => {
           setCurrentSlide(newSlide);
           switch (newSlide) {
@@ -61,7 +60,7 @@ const HomeMajor = () => {
         }, 500);
       }
     },
-    [currentSlide, controls, animatedX, navHighlight]
+    [currentSlide, controls, navHighlight]
   );
 
   return (
@@ -85,9 +84,8 @@ const HomeMajor = () => {
 
       <div className="relative  xl:px-8 px-0  xl:-mt-32 flex justify-center w-full ">
         <div className="flex justify-center items-end relative  bg-white overflow-hidden rounded-[10px]  2xl:max-w-max-container h-full w-full">
-          <div className="absolute left-0 h-full bg-gradient-to-r from-white to-transparent z-20 p-10 md:p-16 opacity-40"></div>
-          <div className="absolute right-0 h-full bg-gradient-to-l from-white to-transparent z-20 p-10 md:p-16 opacity-40"></div>
-          <div className="absolute block xl:hidden left-0 h-full bg-gradient-to-r from-white to-transparent z-20 p-10 md:p-16 opacity-80"></div>
+          <div className="hidden sm:absolute left-0 h-full bg-gradient-to-r from-white to-transparent z-20 p-10 md:p-16 opacity-40"></div>
+          <div className="hidden sm:absolute right-0 h-full bg-gradient-to-l from-white to-transparent z-20 p-10 md:p-16 opacity-40"></div>
           <div className="relative w-full  flex flex-col xl:flex-row   justify-center gap-14  h-full  mt-8 mb-10 xl:mb-0 max-w-max-container">
             <div className=" w-full flex top-0 -mt-28 xl:mt-0 absolute justify-center py-3 xl:rounded-[10px] items-center xl:px-0 px-6 gap-8 xl:bg-[#e5e7eb] lg:min-w-lg max-w-[26rem]">
               <motion.div
@@ -120,7 +118,7 @@ const HomeMajor = () => {
             <div className="relative flex justify-center items-center w-full   xl:py-16">
               <motion.div
                 animate={controls}
-                className="xl:mt-10"
+                className="xl:mt-10 w-full"
                 variants={{
                   animate: {
                     x: [0, 1400, 0],
@@ -135,7 +133,7 @@ const HomeMajor = () => {
                   },
                 }}
               >
-                <HomeMajorSlider majorData={majorData} animatedX={animatedX} />
+                <HomeMajorSlider majorData={isMobile ? majors : majorData } />
               </motion.div>
             </div>
           </div>

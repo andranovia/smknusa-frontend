@@ -138,17 +138,19 @@ export default function Footer() {
               alt=""
               height={55}
               width={55}
-              className="w-auto h-auto"
+              quality={100}
+              className="w-10 xl:w-auto h-auto"
             />
-            <div className="ml-2 font-[900] text-[18px] ">
+            <div className="ml-2 font-[900] text-sm xl:text-lg ">
               SMK NEGERI 1 <br />
               PURWOSARI
             </div>
           </Link>
 
-          <div className="flex-grow flex 1xl:justify-center  ">
-            <div className="1xl:text-center text-[14] text-white font-[500]">
-              <p>
+          
+          <div className="md:flex-grow flex 1xl:justify-center">
+            <div className="1xl:text-center text-white font-[500]">
+              <p className="text-xs 1xl:text-base">
                 Hak Cipta &copy; 2024 SMK Negeri 1 Purwosari. Dikembangkan oleh
                 <b>&nbsp; Var Studio</b>
               </p>
