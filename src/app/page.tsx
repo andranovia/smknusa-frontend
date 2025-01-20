@@ -1,3 +1,7 @@
+'use client';
+
+import { useEffect } from "react";
+import Lenis from "@studio-freight/lenis";
 import HomeHero from "@/components/home/home-hero";
 import HomeMajor from "@/components/home/home-major";
 import HomeSlider from "@/components/home/home-slider";
@@ -6,7 +10,20 @@ import HomeAnnouncement from "@/components/home/home-announcements";
 import HomeEntrepreneur from "@/components/home/home-entrepreneur";
 import { ClientOnly } from "@/utils/isClient";
 
+
 export default function Home() {
+  useEffect(() => {
+    const lenis = new Lenis();
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+  }, []);
+
+
   return (
     <div className="flex min-h-screen flex-col items-center w-full">
       <HomeHero />
@@ -15,7 +32,9 @@ export default function Home() {
         <ClientOnly>
           <HomeAnnouncement />
         </ClientOnly>
-        <HomeMajor />
+        <ClientOnly>
+          <HomeMajor />
+        </ClientOnly>
         <ClientOnly>
           <HomeFacility />
           <HomeEntrepreneur />
