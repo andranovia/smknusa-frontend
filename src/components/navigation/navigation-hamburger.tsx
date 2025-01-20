@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import { useMediaQuery } from "@uidotdev/usehooks";
 import { Heading, Paragraph } from "../ui/typography";
@@ -217,19 +217,22 @@ const NavigationMenuItem = ({
 const NavigationHamburger = ({
   showMenu,
   setShowMenu,
+  currentDropdown,
+  setCurrentDropdown,
 }: {
   showMenu: boolean;
   setShowMenu: React.Dispatch<React.SetStateAction<boolean>>;
+  currentDropdown: string | null;
+  setCurrentDropdown: React.Dispatch<React.SetStateAction<string | null>>;
 }) => {
-  const [currentDropdown, setCurrentDropdown] = useState<string | null>(null);
   const isMobile = useMediaQuery("only screen and (max-width: 576px)");
 
   return (
     <motion.div
-      initial={{ x: isMobile ? 600 : 1050 }}
-      animate={{ x: showMenu ? 0 : isMobile ? 600 : 1050 }}
+      initial={{ y: -1050 }}
+      animate={{ y: showMenu ? 0 : -1050 }}
       transition={{ ...defaultTransition, type: "tween" }}
-      className={` fixed  left-0 w-full  min-h-screen bg-white top-[64px] z-40 flex flex-col items-center gap-4 ${
+      className={` fixed  left-0 w-full  min-h-screen bg-white top-[64px] z-30 flex flex-col items-center gap-4 ${
         showMenu ? "pointer-events-auto" : "pointer-events-none"
       }`}
     >

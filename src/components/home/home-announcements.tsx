@@ -123,14 +123,14 @@ const HomeAnnouncement = () => {
             <hr className="bg-white mt-8 xl:mt-[52px]  w-full  max-w-[274px] xs:max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container" />
 
             <div className="flex flex-col xl:flex-row max-w-[274px] xs:max-w-xs-content sm:max-w-sm-content md:max-w-md-content  lg:max-w-lg-content xl:justify-between xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container items-start w-full gap-8 left-8 mt-12  ">
-              <div className="grid grid-cols-2 lg:grid-cols-4 xl:flex items-center xl:justify-start xl:gap-x-10  xl:px-4 w-full gap-x-4 gap-y-10 ">
+              <div className="grid grid-cols-4 xl:flex items-center overflow-scroll xl:overflow-hidden xl:justify-start xl:gap-x-10 md:justify-between  xl:px-4 w-full gap-x-[9rem] gap-y-10 ">
                 {announcementsLinkData.map((link, index) => (
                   <React.Fragment key={index}>
                     <span
                       onClick={() =>
                         handleChangeAnnouncements(link.announcementsTitle)
                       }
-                      className={`font-[600] text-sm sm:text-[16px] text-center p-2 xl:p-1 rounded-md relative transition-all w-min-content cursor-pointer ${
+                      className={`w-[9rem] lg:w-[10rem] xl:w-full font-[600] text-sm sm:text-[16px] text-center p-2 xl:p-1 rounded-md relative transition-all w-min-content cursor-pointer ${
                         link.announcementsTitle === currentAnnouncementsType
                           ? `p-1 rounded-md relative   before:xl:border-[1px] before:absolute bg-yellow text-blue-base xl:bg-transparent before:right-0  before:bottom-0 xl:text-white  before:mx-auto before:border-[#F5C451] before:w-full before:opacity-100 `
                           : "p-1 rounded-md relative   before:h-0 before:absolute before:bottom-0 text-gray-light before:right-0 before:bg-white before:opacity-0 "

@@ -21,21 +21,20 @@ const InfoLayout = ({
         style={{
           marginTop: isMedium ? "4rem" : "0rem",
         }}
-        className="relative h-full w-full xl:h-[80%] p-2 xl:p-3 overflow-hidden "
+        className="relative h-full w-full xl:h-[80%]  overflow-hidden "
       >
-       
-        <div   style={{
-              height: isMedium ? isSmall ? "16rem" : "19rem" : "30rem",
-              background: 'url("/assets/smkn1purwosari.svg")',
-              backgroundSize: "cover",
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "center",
-            }} className="relative 1xl:pb-6 h-full w-full flex justify-center rounded-md overflow-hidden">
-                <div className="absolute hidden xl:block top-0 bg-gradient-to-b w-full z-10 from-black opacity-40 to-transparent min-w-full p-10"></div>
-          <div
-          
-            className="inset-0 flex flex-col items-center justify-center text-white px-8  max-w-full md:max-w-md-content lg:max-w-lg-content xl:max-w-full  z-20  w-full"
-          >
+        <div
+          style={{
+            height: isMedium ? (isSmall ? "16rem" : "19rem") : "30rem",
+            background: 'url("/assets/smkn1purwosari.svg")',
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+          }}
+          className="relative 1xl:pb-6 h-full w-full flex justify-center  overflow-hidden"
+        >
+          <div className="absolute hidden xl:block top-0 bg-gradient-to-b w-full z-10 from-black opacity-40 to-transparent min-w-full p-10"></div>
+          <div className="inset-0 flex flex-col items-center justify-center text-white px-8  max-w-full md:max-w-md-content lg:max-w-lg-content xl:max-w-full  z-20  w-full">
             <div className=" flex flex-col items-center container -mt-10  xl:-mt-0 xl:pt-16">
               <Heading
                 type="h1"
@@ -53,7 +52,7 @@ const InfoLayout = ({
           </div>
         </div>
       </div>
-      <div className="flex w-full flex-col items-center px-2 xl:px-2.5  bg-gray-base ">
+      <div className="flex w-full flex-col items-center  bg-gray-base ">
         <div className=" w-full gap-10 xl:gap-0 flex flex-col  items-center bg-white   h-full rounded-lg ">
           {children}
         </div>

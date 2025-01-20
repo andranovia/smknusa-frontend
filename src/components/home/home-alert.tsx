@@ -15,19 +15,19 @@ const HomeAlert = () => {
   const [isAtTop, setIsAtTop] = useState(true);
   // const [lastScrollY, setLastScrollY] = useState(0);
   const pathname = usePathname();
-  
+
   useEffect(() => {
     const handleScroll = () => {
-        const currentScrollY = window.scrollY;
+      const currentScrollY = window.scrollY;
 
-        setIsAtTop(currentScrollY === 0);
+      setIsAtTop(currentScrollY === 0);
     };
 
     window.addEventListener("scroll", handleScroll);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-    }
+    };
   }, []);
 
   return pathname === "/" ? (
@@ -39,9 +39,9 @@ const HomeAlert = () => {
         y: isAtTop ? 0 : 60,
       }}
       transition={defaultTransition}
-      className=" fixed bottom-0 z-50 w-full "
+      className=" fixed bottom-0 z-30 w-full "
     >
-      <div className="bg-primary px-2 py-4 w-full h-full relative flex md:justify-center items-center">
+      <div className="bg-primary px-2 py-4 w-full h-full relative flex justify-center items-center">
         {alert && !isAlertLoading ? (
           <>
             <Link
@@ -62,7 +62,7 @@ const HomeAlert = () => {
                   height={20}
                   alt={"alert"}
                 />
-                <Paragraph className="line-clamp-1 !text-sm md:!text-base !font-semibold text-white">
+                <Paragraph className="line-clamp-1 !text-xs md:!text-base !font-semibold text-white">
                   {alert[0]?.alert_title}
                 </Paragraph>
               </motion.div>

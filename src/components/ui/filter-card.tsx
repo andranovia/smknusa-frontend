@@ -35,7 +35,7 @@ const FilterCard = ({ url }: { url: string }) => {
           alt="share"
         />
         <h4 className="font-[500] text-base xs:text-[18px]">
-          Cari Artikel Berdasarkan
+          Cari {url === "article" ? "Artikel" : "Berita"} Berdasarkan
         </h4>
       </div>
       <form
@@ -47,7 +47,7 @@ const FilterCard = ({ url }: { url: string }) => {
             htmlFor="title"
             className="font-medium text-[13px] xl:text-lg text-blue-base"
           >
-            Judul Artikel
+            Judul {url === "article" ? "Artikel" : "Berita"}
           </label>
           <input
             type="text"
@@ -62,7 +62,7 @@ const FilterCard = ({ url }: { url: string }) => {
             htmlFor="category"
             className="font-medium  text-[13px] xs:text-sm xl:text-lg  text-blue-base"
           >
-            Kategori Artikel
+            Kategori {url === "article" ? "Artikel" : "Berita"}
           </label>
           <input
             type="text"
@@ -79,7 +79,7 @@ const FilterCard = ({ url }: { url: string }) => {
             Dari tanggal
           </label>
           <input
-            type="text"
+            type="date"
             id="from"
             name="from"
             className="border border-gray-300 rounded-lg p-2 focus:ring-[#F5C451] focus:border-[#F5C451] focus:outline-none focus:ring-1"
@@ -93,9 +93,9 @@ const FilterCard = ({ url }: { url: string }) => {
             Sampai tanggal
           </label>
           <input
-            type="text"
+            type="date"
             id="to-date"
-            name="toDate"
+            name="to-date"
             className="border border-gray-300 rounded-lg p-2 focus:ring-[#F5C451] focus:border-[#F5C451] focus:outline-none focus:ring-1"
           />
         </div>
