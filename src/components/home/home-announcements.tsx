@@ -10,7 +10,7 @@ import {
 } from "@/services/api/useQueries/useAnnouncements";
 import { News, useNews } from "@/services/api/useQueries/useNews";
 import { Article, useArticles } from "@/services/api/useQueries/useArticles";
-import { useEvents } from "@/services/api/useQueries/useEvents";
+import { Event, useEvents } from "@/services/api/useQueries/useEvents";
 import HomeAnnouncementsCard from "./home-announcements-card";
 import { Heading, Paragraph } from "../ui/typography";
 
@@ -47,7 +47,7 @@ const HomeAnnouncement = () => {
   const announcementsHighlightControls = useAnimation();
 
   const getNewestItems = (
-    data?: Announcement[] | News[] | Article[] | null
+    data?: Announcement[] | News[] | Article[] | Event[] | null
   ) => {
     return data
       ?.sort((a, b) => {
