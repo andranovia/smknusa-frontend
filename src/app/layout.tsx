@@ -9,6 +9,7 @@ import { ActivePageProvider } from "@/contexts/ActivePageContext";
 import { ActiveToastProvider } from "@/contexts/ActiveToastContext";
 import UnavailableToast from "@/components/ui/unavailable-toast";
 import HomeAlert from "@/components/home/home-alert";
+import { LenisProvider } from "@/contexts/LenisScroll";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -41,22 +42,24 @@ export default function RootLayout({
       <body className={`bg-gray-base ${montserrat.className}`}>
         <ActiveToastProvider>
           <ReactQueryProvider>
-            <HomeAlert />
-            <nav className="bg-gray-base xl:flex justify-center ">
-              <ClientOnly>
-                <ActivePageProvider>
-                  <Navbar />
-                </ActivePageProvider>
-              </ClientOnly>
-            </nav>
-            <main>
-              <UnavailableToast />
-              {children}
+            <LenisProvider>
+              <HomeAlert />
+              <nav className="bg-gray-base xl:flex justify-center ">
+                <ClientOnly>
+                  <ActivePageProvider>
+                    <Navbar />
+                  </ActivePageProvider>
+                </ClientOnly>
+              </nav>
+              <main>
+                <UnavailableToast />
+                {children}
 
-              <footer>
-                <Footer />
-              </footer>
-            </main>
+                <footer>
+                  <Footer />
+                </footer>
+              </main>
+            </LenisProvider>
           </ReactQueryProvider>
         </ActiveToastProvider>
       </body>
