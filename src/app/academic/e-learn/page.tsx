@@ -1,5 +1,7 @@
 import Image from "next/image";
 import React from "react";
+import { useEffect } from "react";
+import Lenis from "@studio-freight/lenis";
 import Link from "next/link";
 import { Heading, Paragraph } from "@/components/ui/typography";
 import { cn } from "@/utils/cn";
@@ -9,7 +11,18 @@ export const metadata = {
   description: "SMKN 1 Purwosari E-Learning",
 };
 
-const page = () => {
+const Page = () => {
+  useEffect(() => {
+      const lenis = new Lenis();
+  
+      function raf(time: number) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+  
+      requestAnimationFrame(raf);
+    }, []);
+
   return (
     <div className="flex xl:min-h-screen flex-col items-center px-2.5 xl:px-3 gap-3 ">
       <div className="relative bg-[url('/assets/academic/e-learn/e-learn.png')] mt-[72px] xl:mt-24  h-[16rem] w-full  p-2 xl:p-2.5 overflow-hidden rounded-[10px] sm:h-[17rem] md:h-[20rem] xl:h-[28rem] 1xl:h-[32.375rem] bg-cover bg-no-repeat">
@@ -155,4 +168,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

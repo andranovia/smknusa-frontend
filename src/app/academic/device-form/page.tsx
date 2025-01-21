@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
+import { useEffect } from "react";
+import Lenis from "@studio-freight/lenis";
 import { ClientOnly } from "@/utils/isClient";
 import InfoLayout from "@/layouts/info-layout";
 import TeachingDeviceForm from "@/components/academic/device/device-form";
@@ -10,6 +12,17 @@ const Page = () => {
   const [deviceFormFilter, setDeviceFormFilter] = useState({
     search: "",
   });
+
+  useEffect(() => {
+      const lenis = new Lenis();
+  
+      function raf(time: number) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+  
+      requestAnimationFrame(raf);
+    }, []);
 
   return (
     <ClientOnly>
