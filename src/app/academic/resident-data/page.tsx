@@ -42,10 +42,12 @@ const ResidentData = () => {
                 setTeacherFilter={setTeacherFilter}
                 teacherFilter={teacherFilter}
               />
+              <div className="px-4 md:px-0 w-full">
               <TeachersTable
                 teachersData={teachers}
                 handleChangeTable={handleChangeTable}
               />
+              </div>
             </>
           ) : (
             <>
@@ -53,10 +55,12 @@ const ResidentData = () => {
                 setStudentsFilter={setStudentsFilter}
                 studentsFilter={studentsFilter}
               />
+              <div className="px-4 md:px-0 w-full">
               <StudentsTable
                 studentsData={students}
                 handleChangeTable={handleChangeTable}
               />
+              </div>
             </>
           )}
         </div>

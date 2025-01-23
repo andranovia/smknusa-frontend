@@ -33,7 +33,7 @@ const PrintTeachers = () => {
               console.error("backUrl is null");
             }
           }
-        }, 3500);
+        }, 3000);
       }
     }
   }, [isTeachersLoading]);

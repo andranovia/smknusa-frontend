@@ -73,7 +73,7 @@ const ResidentDropdownChange = ({
         <div className="flex flex-col items-center rounded-lg bg-white w-[14rem] border">
           <div
             onClick={() => handleChangeTable("students")}
-            className="w-full flex items-center gap-4 px-4 py-2 cursor-pointer hover:bg-gray-base transition-colors"
+            className={`w-full flex items-center gap-4 px-4 py-2 cursor-pointer hover:bg-gray-base transition-colors ${activeTable === "students" ? "bg-gray-medium" : ''}`}
           >
             <Image
               src={"/assets/academic/resident-data/students.svg"}
@@ -88,7 +88,7 @@ const ResidentDropdownChange = ({
           </div>
           <div
             onClick={() => handleChangeTable("teachers")}
-            className="w-full flex items-center gap-4 px-4 py-2 cursor-pointer hover:bg-gray-base transition-colors"
+            className={`w-full flex items-center gap-4 px-4 py-2 cursor-pointer hover:bg-gray-base transition-colors ${activeTable === "teachers" ? "bg-gray-medium" : ""}`}
           >
             <Image
               src={"/assets/academic/resident-data/teachers.svg"}

@@ -73,9 +73,9 @@ const StudentsTable = ({
           </Heading>
           <Heading
             type="h5"
-            className="!text-xs bg-amber-100 bg-opacity-70 border-yellow px-3 py-0.5 border rounded-full text-yellow-500 -mt-6 sm:mt-0 mb-7 sm:mb-0  sm:mr-14 2md:mr-0 "
+            className="!text-xs min-w-24 text-center bg-amber-100 bg-opacity-70 border-yellow px-3 py-0.5 border rounded-full text-yellow-500 -mt-6 sm:mt-0 mb-7 sm:mb-0  sm:mr-14 2md:mr-0 "
           >
-            {studentsData?.length + " " + "orang"}
+            {studentsData?.length !== undefined && studentsData?.length > 0   ?  studentsData?.length : 0} orang
           </Heading>
         </div>
 

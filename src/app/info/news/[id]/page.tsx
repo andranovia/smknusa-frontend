@@ -33,7 +33,7 @@ export default function Page({ params }: { params: { id: string } }) {
   const shuffledNews = filteredNews.sort(() => Math.random() - 0.5);
 
   return (
-    <div className="pt-[4.5rem] xl:pt-24 px-2 xl:px-3 flex justify-center items-center w-full">
+    <div className="pt-[4.5rem] xl:pt-24 px-2 xl:px-3 flex justify-center items-center w-full overflow-hidden">
       <div className="w-full  bg-white rounded-[10px]  text-blue-base flex justify-center ">
         <div className="relative  bg-white rounded-[10px] flex flex-col items-center xl:gap-20 pt-4 lg:pt-10 pb-20 px-4 gap-0  max-w-full md:max-w-md-content lg:max-w-lg-content xl:max-w-full 2xl:max-w-max-content w-full">
           <div className="flex flex-col gap-0 xl:gap-6 w-full xl:w-[82%] ">

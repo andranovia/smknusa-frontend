@@ -183,7 +183,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {isMobile ? (
+      {isMobile && !pathname.startsWith("/print") ? (
         <>
           <NavigationHamburger
             currentDropdown={currentDropdown}

@@ -6,7 +6,7 @@ export async function getFooter(){
 
         const data = response.data?.List;
 
-        console.log("fetch footer data", data);
+        // console.log("fetch footer data", data);
 
         return data;
     } catch (error){
