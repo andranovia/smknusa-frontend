@@ -103,14 +103,21 @@ const ResidentDropdownChange = ({
           </div>
           <hr className="border w-[85%]" />
           <div
-            onClick={handlePrint}
-            className="w-full flex items-center gap-4 px-4 py-2 cursor-pointer hover:bg-gray-base transition-colors">
+            onClick={checkedItems.length === 0 ? undefined : handlePrint}
+            className={`w-full flex items-center gap-4 px-4 py-2  transition-colors ${
+              checkedItems.length === 0
+                ? "bg-gray-100 text-gray cursor-not-allowed"
+                : "hover:bg-gray-base text-black cursor-pointer"
+            }`}>
             <Image
               src={"/assets/academic/resident-data/print.svg"}
               alt={"print"}
               width={20}
               height={20}
-              className="w-7 h-7 p-1 rounded-full border"
+              className={`w-7 h-7 p-1 rounded-full border ${
+                checkedItems.length === 0 ? "bg-gray-200 opacity-50" 
+                : ""
+              } `}
             />
             <Paragraph className="text-[12px] font-medium">Cetak</Paragraph>
           </div>

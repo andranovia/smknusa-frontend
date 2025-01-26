@@ -120,7 +120,7 @@ const navbarDropdownData: { [key: string]: NavigationLinkData[] } = {
     },
     {
       linkDropdownData: {
-        text: "Article",
+        text: "Artikel",
         description: "Berisi Informasi Mengenai Artikel Yang Ada di SMK",
         linkRef: "/info/article",
       },
