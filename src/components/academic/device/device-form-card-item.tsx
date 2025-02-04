@@ -42,9 +42,9 @@ const DeviceFormCardItem = ({ deviceFormData }: DeviceFormCardItemProps) => {
   return (
     <div
       key={deviceFormData?.id_pa}
-      className="flex border p-6 rounded-lg w-full"
+      className="flex border p-6 rounded-lg w-full max-w-full"
     >
-      <div className="flex-shrink-0 mr-4">
+      <div className="flex-shrink-0 mr-4 hidden lg:block">
         <Image
           src={"/assets/academic/device-form/folder.png"}
           alt="Book file"
@@ -87,7 +87,7 @@ const DeviceFormCardItem = ({ deviceFormData }: DeviceFormCardItemProps) => {
             ) : null}
           </div>
         </div>
-        <Paragraph className="font-[320] text-xs line-clamp-4 text-[#081B34] mb-4 mt-2 w-[391px]">
+        <Paragraph className="font-[320] text-xs line-clamp-4 text-[#081B34] mb-4 mt-2 w-full md:w-[391px]">
           {deviceFormData?.description}
         </Paragraph>
 
