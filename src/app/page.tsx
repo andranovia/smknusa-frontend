@@ -15,7 +15,9 @@ export default function Home() {
         <ClientOnly>
           <HomeAnnouncement />
         </ClientOnly>
-        <HomeMajor />
+        <ClientOnly>
+          <HomeMajor />
+        </ClientOnly>
         <ClientOnly>
           <HomeFacility />
           <HomeEntrepreneur />

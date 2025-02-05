@@ -1,3 +1,5 @@
+
+
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
@@ -9,12 +11,12 @@ export const metadata = {
   description: "SMKN 1 Purwosari E-Learning",
 };
 
-const page = () => {
+const Page = () => {
+
   return (
-    <div className="flex xl:min-h-screen flex-col items-center px-2.5 xl:px-3 gap-3 ">
-      <div className="relative bg-[url('/assets/academic/e-learn/e-learn.png')] mt-[72px] xl:mt-24  h-[16rem] w-full  p-2 xl:p-2.5 overflow-hidden rounded-[10px] sm:h-[17rem] md:h-[20rem] xl:h-[28rem] 1xl:h-[32.375rem] bg-cover bg-no-repeat">
-        <div className="relative 1xl:pb-6 h-full w-full flex justify-center rounded-md overflow-hidden">
-          <div className="absolute hidden xl:block top-0 bg-gradient-to-b w-full z-10 from-black opacity-40 to-transparent min-w-full p-10"></div>
+    <div className="flex xl:min-h-screen flex-col items-center gap-3 ">
+      <div className="relative bg-[url('/assets/academic/e-learn/e-learn.png')] mt-[65px] xl:mt-24  h-[16rem] w-full  p-2 xl:p-2.5 overflow-hidden sm:h-[17rem] md:h-[20rem] xl:h-[28rem] 1xl:h-[32.375rem] bg-cover bg-no-repeat">
+        <div className="relative 1xl:pb-6 h-full w-full flex justify-center overflow-hidden">
           <div className="inset-0 flex flex-col items-center justify-center text-white px-8  max-w-full md:max-w-md-content lg:max-w-lg-content xl:max-w-full  z-20  w-full">
             <div className=" flex flex-col items-center container xl:pt-16 gap-6">
               <Heading
@@ -31,7 +33,7 @@ const page = () => {
                 online atau daring adalah Microsoft Teams yang ada pada
                 Microsoft 365
               </Heading>
-              <div className="flex justify-center gap-6 items-center">
+              <div className="flex justify-center gap-3 xl:gap-6 items-center">
                 <button className="px-6 py-2 bg-white rounded-lg flex justify-center items-center gap-4">
                   <Image
                     src={"/assets/icon/teams.svg"}
@@ -50,13 +52,13 @@ const page = () => {
                     Masuk
                   </Link>
                 </button>
-                <button className="px-6 py-2 bg-white rounded-lg flex justify-center items-center gap-4">
+                <button className="px-6 py-[10.5px] bg-white rounded-lg flex justify-center items-center gap-4">
                   <Image
                     src={"/assets/icon/download.svg"}
                     alt="download"
                     width={30}
                     height={30}
-                    className="w-[18px] "
+                    className="w-[14px] xl:w-[18px] "
                   />
                   <Link
                     href={
@@ -155,4 +157,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

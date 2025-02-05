@@ -11,6 +11,7 @@ const Page = () => {
     search: "",
   });
 
+
   return (
     <ClientOnly>
       <InfoLayout

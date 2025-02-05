@@ -34,14 +34,14 @@ const PrintStudents = () => {
                   console.error("backUrl is null");
                 }
             };
-          }, 3500);
+          }, 3000);
         }
       }
     }, [isStudentsLoading]);
 
     return (
-          <div className={`w-full print-container px-24 py-10 ${inter.className}`}>
-            <table className="table-auto w-full">
+          <div className={`w-full print-container px-24 py-10 h-full ${inter.className}`}>
+            <table className="table-auto w-full h-full">
               <thead>
                 <tr>
                   <th className="border text-start px-4 py-2">Nisn</th>

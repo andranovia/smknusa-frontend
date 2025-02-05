@@ -9,7 +9,7 @@ export const metadata = {
   description: "SMKN 1 Purwosari School Extracurricular",
 };
 
-const page = () => {
+const Page = () => {
   return (
     <ClientOnly>
       <InfoLayout
@@ -25,4 +25,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

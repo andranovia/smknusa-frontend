@@ -14,11 +14,11 @@ const ExtracurricularCard = () => {
   return (
     <>
       <div className="flex justify-center items-center bg-white px-2 xl:mt-0 ">
-        {extras && isExtraLoading ? (
+        {extras && !isExtraLoading ? (
           <div className="w-full flex flex-col items-center">
             <div className="w-full grid grid-cols-1 1xl:w-fit lg:grid-cols-2 1xl:grid-cols-3 gap-4 xl:gap-8 p-4 1xl:px-14 pb-12 bg-white rounded-[10px]">
               {extras
-                .slice(0, showAllExtracurricular ? extras.length : 9)
+                ?.slice(0, showAllExtracurricular ? extras.length : 9)
                 .map((extracurricular, index) => {
                   return (
                     <React.Fragment key={index}>

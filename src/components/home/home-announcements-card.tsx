@@ -304,7 +304,7 @@ const HomeAnnouncementsCard = ({
           animate={announcementsHighlightControls}
           initial="hidden"
           transition={defaultTransition}
-          className=" w-full xl:w-3/4 relative rounded-[10px] overflow-hidden xl:overflow-visible  z-20 h-full max-h-[13rem] lg:max-h-fit "
+          className=" w-full xl:w-3/4 relative rounded-[10px] overflow-hidden xl:overflow-visible  z-20 h-full max-h-[13rem] lg:max-h-full "
         >
           {children}
         </motion.div>

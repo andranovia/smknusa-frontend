@@ -42,7 +42,7 @@ export const useSearches = (filter?: { query: string }) => {
     queryFn: () => getSearchData(filter),
     enabled: !!filter,
   });
-  console.log(searches);
+  // console.log(searches);
 
   return {
     searches,

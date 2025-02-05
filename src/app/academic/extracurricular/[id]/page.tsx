@@ -32,14 +32,14 @@ export default function Page({ params }: { params: { id: string } }) {
     extraDetails && (
       <DetailLayout detailData={extraDetails} className="justify-start">
         <div className="flex flex-col gap-[3.5rem] xl:min-h-[20rem]">
-          <div className="flex flex-col lg:flex-row justify-center items-center lg:justify-start  gap-4 h-full w-full">
-            <div className="px-8 py-6 w-full lg:w-fit flex justify-center items-center bg-gray-medium rounded-[10px]">
+          <div className="flex flex-row items-center lg:justify-start  gap-4 h-full w-full">
+            <div className="px-4 md:px-6 lg:px-8 py-2 md:py-4 lg:py-6 w-fit flex justify-center items-center bg-gray-medium rounded-[10px]">
               <Image
                 src={"/assets/icon/logo-skansa.svg"}
                 alt="smknusa-icon"
                 width={50}
                 height={50}
-                className="w-14 h-14 "
+                className="w-10 xl:w-14 h-10 xl:h-14 "
               />
             </div>
             <div className="flex flex-col h-full gap-6 lg:gap-8">
@@ -51,7 +51,7 @@ export default function Page({ params }: { params: { id: string } }) {
               </Heading>
             </div>
           </div>
-          <span className="!w-[280px] xs:!w-full font-[400] text-[16px]  md:text-[18px]">
+          <span className="!w-[280px] xs:!w-full font-[400] text-[16px] md:text-[18px] !text-left">
             {parsedHtml}
           </span>
           <div className=" flex gap-4 lg:gap-10 flex-col w-full ">

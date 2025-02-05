@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import parse from "html-react-parser";
+import DOMPurify from "dompurify";
 import {
   Facility,
   useFacilities,
@@ -56,7 +58,7 @@ const HomeFacilityCardStack: React.FC<HomeFacilityCardStackProps> = ({
   };
 
   return (
-    <div className="relative  h-full min-h-64 sm:min-h-72 w-full max-w-[274px] xs:max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 2xl:max-w-max-container">
+    <div className="relative h-full min-h-64 sm:min-h-72 w-full max-w-[274px] xs:max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 2xl:max-w-max-container">
       {!isFacilityLoading
         ? cards?.map((card, index) => (
             <motion.div
@@ -79,7 +81,12 @@ const HomeFacilityCardStack: React.FC<HomeFacilityCardStackProps> = ({
                   {card?.facility_name}
                 </p>
                 <p className="font-[500] xl:text-[14px] text-xs line-clamp-1 w-2/4">
-                  {card?.facility_text}
+                {parse(
+                  DOMPurify.sanitize(card?.facility_text || "", {
+                    FORBID_TAGS: ["img", "style", "b", "i", "strong", "em", "u", "font"],
+                    FORBID_ATTR: ["style"],
+                  })
+                )}
                 </p>
               </div>
             </motion.div>

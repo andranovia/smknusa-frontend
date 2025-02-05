@@ -10,11 +10,9 @@
 
   @media print {
     body {
-      width: 100%;
-      margin: 0;
-      padding: 0;
+      min-height: 100%;
     }
-  
+
     .print-container {
       width: 100%;
       margin: 0 auto;
@@ -23,13 +21,12 @@
 
     .print-container table {
       width: 100%;
-      table-layout: fixed;
     }
   
     .print-container th,
     .print-container td {
       padding: 8px;
-      border: 1px solid #000;
+      table-layout: fixed;
       text-align: left;
     }
   }

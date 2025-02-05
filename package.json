@@ -13,6 +13,7 @@
   "dependencies": {
     "@headlessui/react": "^2.1.8",
     "@studio-freight/lenis": "^1.0.39",
+    "@studio-freight/react-lenis": "^0.0.47",
     "@tanstack/react-query": "^5.44.0",
     "@typescript-eslint/eslint-plugin": "^8.4.0",
     "@uidotdev/usehooks": "^2.4.1",

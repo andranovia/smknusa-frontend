@@ -145,7 +145,7 @@ const NavigationSearchResult = ({
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Ketikkan kata kunci"
-              className={`focus:outline-none w-full hidden 2xl:block placeholder:font-[500] placeholder:text-sm bg-transparent placeholder:text-gray-light`}
+              className={`focus:outline-none w-full block placeholder:font-[500] placeholder:text-sm bg-transparent placeholder:text-gray-light`}
             />
           </div>
           <div
