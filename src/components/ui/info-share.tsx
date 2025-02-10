@@ -13,15 +13,16 @@ const InfoShare = () => {
   const copyToClipboard = () => {
     const currentUrl = window.location.href;
 
-    navigator.clipboard.writeText(currentUrl)
+    navigator.clipboard
+      .writeText(currentUrl)
       .then(() => {
-        setButtonText('Tersalin');
+        setButtonText("Tersalin");
         setTimeout(() => {
-            setButtonText('Salin Tautan');
+          setButtonText("Salin Tautan");
         }, 2000);
       })
       .catch((err) => {
-        console.error('Copy error:', err);
+        console.error("Copy error:", err);
       });
   };
 
@@ -43,23 +44,25 @@ const InfoShare = () => {
         break;
     }
 
-    window.open(shareUrl, "_blank")
-  }
+    window.open(shareUrl, "_blank");
+  };
 
   const handlePrint = () => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       const currentUrl = window.location.href;
-      const urlParts = currentUrl.split('/');
+      const urlParts = currentUrl.split("/");
       const id = urlParts[urlParts.length - 1];
       const info = urlParts[urlParts.length - 2];
 
-      sessionStorage.setItem('returnUrl', currentUrl);
+      sessionStorage.setItem("returnUrl", currentUrl);
 
-      const newUrl = `${urlParts[0]}//${urlParts[2]}/print/${info}/${id}?source=${encodeURIComponent(currentUrl)}`;
+      const newUrl = `${urlParts[0]}//${
+        urlParts[2]
+      }/print/${info}/${id}?source=${encodeURIComponent(currentUrl)}`;
 
       window.location.href = newUrl;
     }
-  }
+  };
 
   return (
     <div
@@ -84,14 +87,15 @@ const InfoShare = () => {
           y: isShareDropdown ? 0 : 40,
         }}
         transition={defaultTransition}
-        className={` absolute -right-[5rem]  pt-9   ${
+        className={` absolute -left-[5rem]  xl:-right-[5rem]  pt-9   ${
           isShareDropdown ? "pointer-events-auto" : "pointer-events-none"
         }`}
       >
         <div className="flex flex-col items-center rounded-lg bg-white w-[10rem] border">
-          <div 
+          <div
             className="w-full flex items-center gap-4 px-4 py-2 cursor-pointer hover:bg-gray-base transition-colors"
-            onClick={() => handleShare("facebook")}>
+            onClick={() => handleShare("facebook")}
+          >
             <Image
               src={"/assets/icon/facebookori.svg"}
               alt={"facebook"}
@@ -101,9 +105,10 @@ const InfoShare = () => {
             />
             <Paragraph className="text-[12px] font-medium">Facebook</Paragraph>
           </div>
-          <div 
+          <div
             className="w-full flex items-center gap-4 px-4 py-2 cursor-pointer hover:bg-gray-base transition-colors"
-            onClick={() => handleShare("twitter")}>
+            onClick={() => handleShare("twitter")}
+          >
             <Image
               src={"/assets/icon/twitterori.svg"}
               alt={"instagram"}
@@ -111,11 +116,14 @@ const InfoShare = () => {
               height={20}
               className="w-7 h-7 p-1"
             />
-            <Paragraph className="text-[12px] font-medium">X (Twitter)</Paragraph>
+            <Paragraph className="text-[12px] font-medium">
+              X (Twitter)
+            </Paragraph>
           </div>
-          <div 
+          <div
             className="w-full flex items-center gap-4 px-4 pb-2 py-2 cursor-pointer hover:bg-gray-base transition-colors"
-            onClick={() => handleShare("whatsapp")}>
+            onClick={() => handleShare("whatsapp")}
+          >
             <Image
               src={"/assets/icon/whatsappori.svg"}
               alt={"whatsapp"}
@@ -125,10 +133,11 @@ const InfoShare = () => {
             />
             <Paragraph className="text-[12px] font-medium">Whatsapp</Paragraph>
           </div>
-          <hr className="border w-[85%]"/>
-          <div 
+          <hr className="border w-[85%]" />
+          <div
             className="w-full flex items-center gap-4 px-4 pb-2 py-2 cursor-pointer transition-colors"
-            onClick={copyToClipboard}>
+            onClick={copyToClipboard}
+          >
             <Image
               src={"/assets/icon/link.svg"}
               alt={"whatsapp"}
@@ -136,20 +145,22 @@ const InfoShare = () => {
               height={20}
               className="w-7 h-7 p-1"
             />
-            <Paragraph className="text-[12px] font-medium">{buttonText}</Paragraph>
+            <Paragraph className="text-[12px] font-medium">
+              {buttonText}
+            </Paragraph>
           </div>
           <div
             className="w-full flex items-center gap-4 px-4 pb-2 py-2 cursor-pointer transition-colors"
             onClick={handlePrint}
-            >
+          >
             <Image
               src={"/assets/academic/resident-data/print.svg"}
               alt={"print"}
               width={20}
               height={20}
               className="w-7 h-7 p-1 rounded-full border"
-              />
-              <Paragraph className="text-[12px] font-medium">Cetak</Paragraph>
+            />
+            <Paragraph className="text-[12px] font-medium">Cetak</Paragraph>
           </div>
         </div>
       </motion.div>
