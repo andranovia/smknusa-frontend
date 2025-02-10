@@ -25,6 +25,7 @@ export type News = {
 
 export const useNews = (
   id?: string,
+  page?: number,
   filter?: {
     search: string;
     category: string;
@@ -38,7 +39,7 @@ export const useNews = (
     refetch,
   } = useQuery<News[] | null>({
     queryKey: ["News", filter],
-    queryFn: () => getNews(filter),
+    queryFn: () => getNews(filter, page),
   });
 
   const { data: newsDetails, isLoading: isNewsDetailsLoading } =

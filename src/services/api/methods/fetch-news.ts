@@ -7,13 +7,17 @@ export async function getNews(
         start_date: string;
         end_date: string;
       }
-    | undefined
+    | undefined,
+    page: number | undefined
 ) {
   const params = new URLSearchParams();
   if (filter?.search) params.append("search", filter.search);
   if (filter?.start_date) params.append("start_date", filter.start_date);
   if (filter?.end_date) params.append("end_date", filter.end_date);
+  if (page) params.append("page", page.toString());
   const queryString = params.toString();
+
+  
   const url = queryString ? `api/user/news?${queryString}` : `api/user/news`;
   try {
     const response = await axiosInstance.get(url);

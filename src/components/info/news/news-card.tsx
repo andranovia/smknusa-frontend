@@ -17,8 +17,8 @@ const NewsCard = ({
     end_date: string;
   };
 }) => {
-  const { news, isNewsLoading } = useNews(undefined, newsFilter);
   const [currentPage, setCurrentPage] = useState(1);
+  const { news, isNewsLoading } = useNews(undefined, currentPage, newsFilter);
   const postsPerPage = 9;
 
   const indexOfLastPost = currentPage * postsPerPage;
