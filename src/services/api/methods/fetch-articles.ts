@@ -21,7 +21,7 @@ export async function getArticles(
 
   try {
     const response = await axiosInstance.get(url);
-    const data = response.data.data;
+    const data = response.data;
     console.log("fetch data", data);
     return data;
   } catch (error) {

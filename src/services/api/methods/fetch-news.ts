@@ -21,7 +21,7 @@ export async function getNews(
   const url = queryString ? `api/user/news?${queryString}` : `api/user/news`;
   try {
     const response = await axiosInstance.get(url);
-    const data = response.data.data;
+    const data = response.data;
     return data;
   } catch (error) {
     console.log(error, "Error fetching news");

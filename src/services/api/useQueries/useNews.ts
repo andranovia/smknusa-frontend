@@ -23,6 +23,11 @@ export type News = {
   viewer: string;
 };
 
+export type NewsData = {
+  data: News[];
+  pagination: { total: number; per_page: number; current_page: number };
+}
+
 export const useNews = (
   id?: string,
   page?: number,
@@ -37,7 +42,7 @@ export const useNews = (
     data: news,
     isLoading: isNewsLoading,
     refetch,
-  } = useQuery<News[] | null>({
+  } = useQuery<NewsData | null>({
     queryKey: ["News", filter],
     queryFn: () => getNews(filter, page),
   });

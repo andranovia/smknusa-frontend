@@ -22,6 +22,11 @@ export type Article = {
   viewer: string;
 };
 
+export type ArticlesData = {
+  data: Article[];
+  pagination: { total: number; per_page: number; current_page: number };
+}
+
 export const useArticles = (
   id?: string,
   filter?: {
@@ -35,7 +40,7 @@ export const useArticles = (
     data: articles,
     isLoading: isArticlesLoading,
     refetch,
-  } = useQuery<Article[] | null>({
+  } = useQuery<ArticlesData| null>({
     queryKey: ["Articles", filter],
     queryFn: () => getArticles(filter),
   });
