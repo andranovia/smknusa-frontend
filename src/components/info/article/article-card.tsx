@@ -21,11 +21,10 @@ const ArticleCard = ({
 }) => {
   const { articles, isArticlesLoading } = useArticles(undefined, articleFilter);
   const [currentPage, setCurrentPage] = useState(1);
-  const postsPerPage = articles?.pagination.per_page || 9;
-
+  const postsPerPage = articles?.pagination?.per_page || 9;
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentArticleData = articles?.data.slice(indexOfFirstPost, indexOfLastPost);
+  const currentArticleData = articles?.data?.slice(indexOfFirstPost, indexOfLastPost);
 
   const onPageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
@@ -44,7 +43,7 @@ const ArticleCard = ({
                 </React.Fragment>
               ))}
           </div>
-        ) : articles && articles?.data.length > 0 ? (
+        ) : articles && articles?.data!.length > 0 ? (
           <div className="flex justify-center items-center flex-col w-full 2xl:w-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 1xl:grid-cols-3 gap-4 xl:gap-8 px-2 lg:px-4 py-4 1xl:px-12 pb-12 bg-white rounded-[10px] w-full">
               {currentArticleData?.map((article, index) => {

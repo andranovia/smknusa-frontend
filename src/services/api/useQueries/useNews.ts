@@ -54,5 +54,11 @@ export const useNews = (
       enabled: !!id,
     });
 
-  return { news, newsDetails, isNewsDetailsLoading, isNewsLoading, refetch };
+  const filteredNews = news?.data.filter((item) =>
+    filter?.category ? item.category.nama.toLowerCase().includes(filter.category.toLowerCase()) : true
+  );
+
+  const categoriesNews = Array.from(new Set(news?.data.map((item) => item.category.nama)));
+
+  return { news: { ...news, data: filteredNews }, newsDetails, isNewsDetailsLoading, isNewsLoading, refetch, categoriesNews };
 };

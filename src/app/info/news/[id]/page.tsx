@@ -29,7 +29,7 @@ export default function Page({ params }: { params: { id: string } }) {
   const date = new Date(newsDetails?.created_at || Date.now());
   const normalDate = newsDetails ? date.toLocaleDateString() : "";
 
-  const filteredNews = (news || []).filter((item) => item.id_pemberitahuan !== newsDetails?.id_pemberitahuan);
+  const filteredNews = (news?.data || []).filter((item) => item.id_pemberitahuan !== newsDetails?.id_pemberitahuan);
   const shuffledNews = filteredNews.sort(() => Math.random() - 0.5);
 
   return (

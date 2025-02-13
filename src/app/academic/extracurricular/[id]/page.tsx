@@ -39,7 +39,7 @@ export default function Page({ params }: { params: { id: string } }) {
                 alt="smknusa-icon"
                 width={50}
                 height={50}
-                className="w-10 xl:w-14 h-10 xl:h-14 "
+                className="w-10 xl:w-14 h-10 xl:h-14 object-cover"
               />
             </div>
             <div className="flex flex-col h-full gap-6 lg:gap-8">

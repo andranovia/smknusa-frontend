@@ -41,3 +41,15 @@ export async function getArticleDetails(id?: string) {
     return null;
   }
 }
+
+export async function getArticleCategories() { 
+  try {
+    const response = await axiosInstance.get("api/user/articles/categories");
+    const data = response.data;
+    console.log("fetch data", data);
+    return data;
+  } catch (error) {
+    console.log(error, "Error fetching article categories");
+    return null;
+  }
+}

@@ -1,4 +1,6 @@
 import React, { SetStateAction } from "react";
+import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
+import Image from "next/image";
 import { useNews } from "@/services/api/useQueries/useNews";
 
 type NewsFilterFormProps = {
@@ -19,7 +21,7 @@ type NewsFilterFormProps = {
 };
 
 const NewsForm = ({ newsFilter, setNewsFilter }: NewsFilterFormProps) => {
-  const { refetch } = useNews();
+  const { refetch, categoriesNews } = useNews();
   const handleOnClick = (type: "reset" | "search") => {
     switch (type) {
       case "reset":
@@ -72,19 +74,48 @@ const NewsForm = ({ newsFilter, setNewsFilter }: NewsFilterFormProps) => {
                 >
                   Kategori Berita
                 </label>
-                <input
-                  type="text"
-                  id="category"
-                  name="category"
-                  value={newsFilter.category}
-                  onChange={(e) =>
-                    setNewsFilter({
-                      ...newsFilter,
-                      category: e.target.value,
-                    })
-                  }
-                  className="1xl:w-[107%] h-10 border border-gray-300 rounded-lg p-2"
-                />
+                <Menu as="div" className="relative inline-block text-left w-full ">
+                  <div className="w-full ">
+                    <MenuButton className="inline-flex text-black w-full justify-between items-center gap-x-1.5 rounded-md bg-white px-4 py-2 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 1xl:w-[107%] h-10">
+                      {newsFilter.category ? newsFilter.category : "Pilih Kategori"}
+                      <Image
+                        src="/assets/icon/arrow-right.svg"
+                        width={16}
+                        height={16}
+                        alt="chevron-down"
+                        className="w-4 h-4 rotate-90"
+                      />
+                    </MenuButton>
+                  </div>
+
+                  <MenuItems
+                    transition
+                    className="absolute scrollbar scrollbar-w-2 scrollbar-thumb-[#F5C451] scrollbar-track-yellow-100 max-h-[15rem] overflow-auto z-50 mt-2 lg:w-[15.5rem] origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in px-2 cursor-pointer"
+                  >
+                    <div className="py-1">
+                      <MenuItem>
+                        <span
+                          onClick={() => setNewsFilter({ ...newsFilter, category: "" })}
+                          className={`${
+                            newsFilter.category === "" ? "bg-gray-200" : ""
+                          } block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:text-gray-900 rounded-md`}
+                        >
+                          Semua Kategori
+                        </span>
+                      </MenuItem>
+                      {categoriesNews?.map((filter, index) => (
+                        <MenuItem key={index}>
+                          <span
+                            onClick={() => setNewsFilter({ ...newsFilter, category: filter })}
+                            className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:text-gray-900"
+                          >
+                            {filter}
+                          </span>
+                        </MenuItem>
+                      ))}
+                    </div>
+                  </MenuItems>
+                </Menu>
               </div>
               <div className="col-span-1 flex flex-col">
                 <label

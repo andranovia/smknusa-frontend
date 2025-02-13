@@ -48,27 +48,27 @@ export default function Page({ params }: { params: { id: string } }) {
     majorDetails && (
       <DetailLayout detailData={majorDetails} className="justify-start">
         <div className="flex flex-col gap-[3.5rem] xl:min-h-[20rem]">
-          <div className="flex flex-col lg:flex-row lg:justify-start justify-center items-center gap-4 h-full w-full">
-            <div className="px-28 xs:px-8 py-6 w-fit xs:w-full lg:w-fit flex justify-center items-center bg-gray-medium rounded-[10px]">
+          <div className="flex flex-row items-center lg:justify-start gap-4 h-full w-full">
+            <div className="px-4 md:px-6 lg:px-8 py-2 md:py-4 lg:py-6 w-fit flex justify-center items-center bg-gray-medium rounded-[10px]">
               <Image
                 src={backendUrl + majorDetails?.jurusan_logo}
                 alt="smknusa-icon"
                 width={50}
                 height={50}
-                className="w-14 h-14 "
+                className="w-12 xl:w-14 h-12 xl:h-14 object-cover"
               />
             </div>
-            <div className="flex flex-col h-full gap-6 lg:gap-8">
+            <div className="flex flex-col h-full gap-2 lg:gap-8">
               <Heading
                 type="h1"
-                className="text-blue-base font-bold md:!leading-none text-center"
+                className="text-blue-base font-bold md:!leading-none"
               >
                 {majorDetails?.jurusan_nama}
               </Heading>
               <div
                 className={`${getCategoryColor(
                   majorDetails.prodi.nama_prodi
-                )} text-center lg:text-start px-2 py-1 rounded-[6px] 1xl:rounded-[10px] w-full lg:w-auto lg:max-w-fit`}
+                )} text-start px-2 py-1 rounded-[6px] 1xl:rounded-[10px] w-fit`}
               >
                 <Heading
                   type="h5"
@@ -79,7 +79,7 @@ export default function Page({ params }: { params: { id: string } }) {
               </div>
             </div>
           </div>
-          <span className="!w-[280px] xs:!w-full font-[400] text-[16px]  md:text-[18px]">
+          <span className="!w-[280px] xs:!w-full font-[400] text-[16px]  md:text-[18px] overflow-auto">
             {parsedHtml}
           </span>
           <div className=" flex gap-4 lg:gap-10 flex-col w-full ">

@@ -21,10 +21,10 @@ const NewsCard = ({
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const { news, isNewsLoading } = useNews(undefined, currentPage, newsFilter);
-  const postsPerPage = news?.pagination.per_page || 9;
+  const postsPerPage = news?.pagination?.per_page || 9;
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentNewsData = news?.data.slice(indexOfFirstPost, indexOfLastPost);
+  const currentNewsData = news?.data?.slice(indexOfFirstPost, indexOfLastPost);
 
   const onPageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
@@ -43,7 +43,7 @@ const NewsCard = ({
                 </React.Fragment>
               ))}
           </div>
-        ) : news && news?.data.length > 0 ? (
+        ) : news && news?.data!.length > 0 ? (
           <div className="flex justify-center items-center flex-col w-full 2xl:w-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 1xl:grid-cols-3 gap-4 xl:gap-8  px-2 lg:px-4 py-4  1xl:px-12 pb-12 bg-white rounded-[10px] w-full">
               {currentNewsData?.map((news, index) => {
