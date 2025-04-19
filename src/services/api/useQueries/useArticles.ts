@@ -22,6 +22,11 @@ export type Article = {
   viewer: string;
 };
 
+export type ArticlesData = {
+  data: Article[];
+  pagination: { total: number; per_page: number; current_page: number };
+}
+
 export const useArticles = (
   id?: string,
   filter?: {
@@ -35,7 +40,7 @@ export const useArticles = (
     data: articles,
     isLoading: isArticlesLoading,
     refetch,
-  } = useQuery<Article[] | null>({
+  } = useQuery<ArticlesData| null>({
     queryKey: ["Articles", filter],
     queryFn: () => getArticles(filter),
   });
@@ -47,11 +52,18 @@ export const useArticles = (
       enabled: !!id,
     });
 
+  const filteredArticles = articles?.data.filter((item) =>
+    filter?.category ? item.category.nama.toLowerCase().includes(filter.category.toLowerCase()) : true
+  );
+
+  const categoriesArticles = Array.from(new Set(articles?.data.map((item) => item.category.nama)));
+
   return {
-    articles,
+    articles: {...articles, data: filteredArticles},
     articleDetails,
     isArticleDetailsLoading,
     isArticlesLoading,
     refetch,
+    categoriesArticles
   };
 };

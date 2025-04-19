@@ -23,8 +23,14 @@ export type News = {
   viewer: string;
 };
 
+export type NewsData = {
+  data: News[];
+  pagination: { total: number; per_page: number; current_page: number };
+}
+
 export const useNews = (
   id?: string,
+  page?: number,
   filter?: {
     search: string;
     category: string;
@@ -36,9 +42,9 @@ export const useNews = (
     data: news,
     isLoading: isNewsLoading,
     refetch,
-  } = useQuery<News[] | null>({
+  } = useQuery<NewsData | null>({
     queryKey: ["News", filter],
-    queryFn: () => getNews(filter),
+    queryFn: () => getNews(filter, page),
   });
 
   const { data: newsDetails, isLoading: isNewsDetailsLoading } =
@@ -48,5 +54,11 @@ export const useNews = (
       enabled: !!id,
     });
 
-  return { news, newsDetails, isNewsDetailsLoading, isNewsLoading, refetch };
+  const filteredNews = news?.data.filter((item) =>
+    filter?.category ? item.category.nama.toLowerCase().includes(filter.category.toLowerCase()) : true
+  );
+
+  const categoriesNews = Array.from(new Set(news?.data.map((item) => item.category.nama)));
+
+  return { news: { ...news, data: filteredNews }, newsDetails, isNewsDetailsLoading, isNewsLoading, refetch, categoriesNews };
 };

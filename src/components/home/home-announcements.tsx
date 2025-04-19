@@ -69,9 +69,9 @@ const HomeAnnouncement = () => {
       case "Pengumuman":
         return getNewestItems(announcements);
       case "Berita":
-        return getNewestItems(news);
+        return getNewestItems(news?.data);
       case "Artikel":
-        return getNewestItems(articles);
+        return getNewestItems(articles?.data);
       case "Agenda":
         return getNewestItems(events);
       default:
