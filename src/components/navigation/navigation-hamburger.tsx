@@ -227,8 +227,8 @@ const NavigationHamburger = ({
 
   return (
     <motion.div
-      initial={{ y: -1200 }}
-      animate={{ y: showMenu ? 0 : -1200 }}
+      initial={{ y: -1400 }}
+      animate={{ y: showMenu ? 0 : -1400 }}
       transition={{ ...defaultTransition, type: "tween" }}
       className={` fixed  left-0 w-full  min-h-screen bg-white top-[64px] z-30 flex flex-col items-center gap-4 ${
         showMenu ? "pointer-events-auto" : "pointer-events-none"

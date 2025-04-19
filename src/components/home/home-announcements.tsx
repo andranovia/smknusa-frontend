@@ -110,20 +110,20 @@ const HomeAnnouncement = () => {
           <div className="flex flex-col items-center lg:text-center justify-center bg-primary  text-white pt-6 sm:pt-10 pb-48">
             <Heading
               type="h1"
-              className=" xl:text-[36px] text-[22px] lg:text-[30px] sm:text-[24px] max-w-[274px] xs:max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content w-full xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container"
+              className=" xl:text-[36px] text-[22px] lg:text-[30px] sm:text-[24px] px-4 lg:px-0 md:max-w-md-content lg:max-w-lg-content w-full xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container"
             >
               Papan Pengumuman Informasi <br className="hidden lg:block" />
               SMK Negeri 1 Purwosari
             </Heading>
 
-            <Paragraph className="text-sm xl:text-lg lg:text-[14px] mt-[12px]  max-w-[274px] xs:max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content w-full xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container">
+            <Paragraph className="text-sm xl:text-lg lg:text-[14px] mt-[12px]  px-4 lg:px-0 md:max-w-md-content lg:max-w-lg-content w-full xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container">
               Papan Pengumuman ini berisi segala informasi mengenai pembaruan
               agenda, berita, artikel atau yang lainnya.
             </Paragraph>
 
-            <hr className="bg-white mt-8 xl:mt-[52px]  w-full  max-w-[274px] xs:max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container" />
+            <hr className="bg-white mt-8 xl:mt-[52px] w-[calc(100%-32px)] lg: md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container" />
 
-            <div className="flex flex-col xl:flex-row max-w-[274px] xs:max-w-xs-content sm:max-w-sm-content md:max-w-md-content  lg:max-w-lg-content xl:justify-between xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container items-start w-full gap-8 left-8 mt-12  ">
+            <div className="flex flex-col xl:flex-row px-4 lg:px-0 md:max-w-md-content  lg:max-w-lg-content xl:justify-between xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container items-start w-full gap-8 left-8 mt-12  ">
               <div className="grid grid-cols-4 xl:flex items-center overflow-x-scroll scrollbar scrollbar-h-1 pb-3 xl:pb-0 xl:overflow-hidden xl:justify-start xl:gap-x-10 md:justify-between  xl:px-4 w-full sm:gap-x-[10rem] gap-x-[9rem] gap-y-10 ">
                 {announcementsLinkData.map((link, index) => (
                   <React.Fragment key={index}>
@@ -160,7 +160,7 @@ const HomeAnnouncement = () => {
 
           <div className="relative  xl:px-8 flex justify-center items-center  -mt-36   w-full ">
             <div className=" xl:h-full flex justify-center   bg-white relative xl:rounded-xl mt-0 w-full max-w-full 2xl:max-w-max-container">
-              <div className="relative  max-w-[274px] xs:max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-full w-full">
+              <div className="relative  px-4 lg:px-0 md:max-w-md-content lg:max-w-lg-content xl:max-w-full w-full">
                 <HomeAnnouncementsCard
                   isChangingAnnouncements={isChangingAnnouncements}
                   announcementsHighlightControls={
