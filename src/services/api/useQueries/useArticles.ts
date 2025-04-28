@@ -8,6 +8,7 @@ export type Article = {
   thumbnail: string;
   created_at: string;
   text: string;
+  iframe: string[];
   level: string;
   published_by: {
     name: string;
