@@ -64,7 +64,7 @@ const Navbar = () => {
   return (
     <>
       <div
-        className={`flex items-center  justify-center ${
+        className={`flex items-center   justify-center ${
           showMenu ? "" : "xl:rounded-lg"
         } bg-white xl:bg-transparent  xl:px-2.5   z-40  transition-[padding,max-width,transform] ${
           show
@@ -86,9 +86,7 @@ const Navbar = () => {
           className={`flex  items-center justify-center  md:max-w-md-content lg:max-w-lg-content xl:max-w-full   w-full py-3 transition-all rounded-[10px] px-4 2xl:px-11  ${
             !show && activePage
               ? "xl:bg-opacity-0  bg-white font-[800] xl:font-[900]"
-              : `bg-opacity-100 bg-white  font-[800] ${
-                  activePage ? "xl:shadow-md" : ""
-                }`
+              : `bg-opacity-100 bg-white shadow-md font-[800]`
           }  `}
         >
           <div className="flex  items-center w-full  2xl:max-w-[1492.8px] ">
