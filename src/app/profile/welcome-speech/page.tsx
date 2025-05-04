@@ -25,7 +25,7 @@ const ProfileHistory = () => {
       />
       <Paragraph
         className={
-          "flex flex-col items-start text-justify gap-10 text-blue-base"
+          "flex flex-col items-start  gap-10 text-blue-base"
         }
       >
         <span>

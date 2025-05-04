@@ -25,7 +25,7 @@ const ProfileHistory = () => {
         width={800}
         height={800}
       />
-      <Paragraph className="flex flex-col items-start gap-10 text-blue-base text-justify">
+      <Paragraph className="flex flex-col items-start gap-10 text-blue-base">
         <span>
           SMK Negeri 1 Purwosari, merupakan sebuah institusi pendidikan yang
           berdiri pada tahun 2000, telah menjadi salah satu landasan pendidikan
