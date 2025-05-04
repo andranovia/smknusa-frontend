@@ -162,7 +162,11 @@ const NavigationMenuItem = ({
     >
       <div
         className="flex justify-between items-center bg-white"
-        onClick={() => handleToggleDropdown()}
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          handleToggleDropdown();
+        }}
       >
         <div className="flex justify-between items-center w-full">
           <Heading type="h5" className="text-primary font-semibold">
@@ -180,10 +184,10 @@ const NavigationMenuItem = ({
         </div>
       </div>
       <motion.div
-        initial={{ y: 200, opacity: 0 }}
-        animate={{ opacity: isOpen ? 1 : 0, y: isOpen ? 0 : 200 }}
+        initial={{ y: 0, opacity: 0 }}
+        animate={{ opacity: isOpen ? 1 : 0, y: isOpen ? 0 : 0 }}
         transition={{ ...defaultTransition }}
-        className="flex flex-col gap-3 absolute bottom-4"
+        className="flex flex-col gap-4 absolute top-16 "
       >
         {navbarDropdownData[name]?.map((item, index) => (
           <Link
