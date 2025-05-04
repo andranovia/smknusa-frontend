@@ -11,7 +11,7 @@ const MajorFilter = ({
   setSelectedFilter: React.Dispatch<React.SetStateAction<string | null>>;
 }) => {
   return (
-    <div className="flex lg:justify-between lg:flex-row flex-col items-center w-full px-6 mb-10 lg:mb-0 1xl:px-14 place-self-center max-w-[1264px] ">
+    <div className="flex lg:justify-between lg:flex-row flex-col items-center w-full px-6 mb-10 lg:mb-0 xl:px-6 1xl:px-14 place-self-center max-w-[1264px] ">
       <Heading type="h5" className="xl:w-1/3  my-10">
         Kami memiliiki beberapa jurusan yang dapat menunjang kebutuhan siswa.
       </Heading>

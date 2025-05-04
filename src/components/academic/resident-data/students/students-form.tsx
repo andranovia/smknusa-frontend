@@ -91,7 +91,7 @@ const StudentsForm = ({
   return (
     <div className="relative z-10 w-full -mt-20 1xl:-mt-32">
       <div className="flex justify-center items-center p-2 xl:bg-transparent">
-        <div className=" bg-white w-full px-6 xl:px-12 py-4 xl:py-10 rounded-lg border-white xl:shadow-md">
+        <div className=" bg-white w-full px-6 xl:px-12 py-4 xl:py-10 rounded-lg border-white shadow-md">
           <Heading
             type="h5"
             className="block font-medium xl:text-lg mb-5 text-blue-base mt-1"
@@ -131,7 +131,7 @@ const StudentsForm = ({
 
               <MenuItems
                 transition
-                className="absolute scrollbar scrollbar-w-2 scrollbar-thumb-[#F5C451] scrollbar-track-yellow-100 max-h-[15rem] overflow-auto right-0 z-40 mt-2 lg:w-[18rem] origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
+                className="absolute scrollbar scrollbar-w-2 scrollbar-thumb-[#F5C451] scrollbar-track-yellow-100 max-h-[16rem] overflow-auto right-0 z-40 mt-2 lg:w-[18rem] origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
               >
                 <div className="py-1">
                   <MenuItem>

@@ -152,7 +152,7 @@ export default function Footer() {
             <div className="1xl:text-center text-white font-[500]">
               <p className="text-xs 1xl:text-base">
                 Hak Cipta &copy; 2024 SMK Negeri 1 Purwosari. Dikembangkan oleh
-                <a href="https://var-site.vercel.app/"><b>&nbsp; Var Studio</b></a>
+                <a href="https://var-site.vercel.app/"><b>&nbsp; Varcretife</b></a>
               </p>
             </div>
           </div>

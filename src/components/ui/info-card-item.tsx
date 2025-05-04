@@ -23,8 +23,8 @@ const InfoCardItem = ({ infoCardData, normalDate }: InfoCardItemProps) => {
         width={800}
         height={800}
       />
-      <div className="px-3 md:px-4 xl:p-4 flex flex-col items-stretch  xl:h-[8rem]   gap-4 w-full my-4 xl:my-0 ">
-        <div className="flex justify-start xl:grid grid-cols-2   items-center gap-1 sm:gap-2 top-2 xl:top-0  left-0 absolute  xl:absolute px-1.5  xl:p-2 z-10">
+<div className="px-3 md:px-4 xl:p-4 flex flex-col items-stretch lg:h-[11rem] xl:h-[8rem]   gap-4 w-full my-4 xl:my-0 ">
+        <div className="flex items-center gap-1 sm:gap-2 absolute top-2 lg:top-0 left-0 px-1.5 lg:px-0 lg:relative xl:absolute xl:p-2 z-10">
           {infoCardData.level === "0" || infoCardData.level === 0 ? (
             <div
               className={`bg-[#FFE7AF] px-2 py-1 rounded-[10px] max-w-[89.25px]`}

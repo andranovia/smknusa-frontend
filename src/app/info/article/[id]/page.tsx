@@ -1,10 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import DOMPurify from "dompurify";
 import Link from "next/link";
 import parse from "html-react-parser";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Scrollbar } from 'swiper/modules';
 import { backendUrl } from "@/utils/backendUrl";
 import { useArticles } from "@/services/api/useQueries/useArticles";
 import InfoCardItem from "@/components/ui/info-card-item";
@@ -20,6 +22,14 @@ export default function Page({ params }: { params: { id: string } }) {
     FORBID_ATTR: ["style"],
   }) : "";
   const parsedHTML = parse(articleDetails?.text ? articleDetails?.text : "");
+  const [articleFilter, setArticleFilter] = useState({
+    search: "",
+    category: "",
+    start_date: "",
+    end_date: "",
+  });
+  
+  const { categoriesArticles } = useArticles(undefined, 1, articleFilter);
 
   useMetadata(
     articleDetails?.nama || "Article Details",
@@ -32,6 +42,8 @@ export default function Page({ params }: { params: { id: string } }) {
 
   const filteredArticles = (articles?.data || []).filter((item) => item.id_pemberitahuan !== articleDetails?.id_pemberitahuan);
   const shuffledArticles = filteredArticles.sort(() => Math.random() - 0.5);
+
+  const iframeSources = articleDetails?.iframe;
 
   return (
     <div className="pt-[4.5rem] xl:pt-24 px-2 xl:px-3 flex justify-center items-center w-full">
@@ -92,13 +104,55 @@ export default function Page({ params }: { params: { id: string } }) {
             </div>
           </div>
           <div className="flex flex-col items-center gap-8 w-full xl:w-[82%] ">
-            <Image
-              src={backendUrl + articleDetails?.thumbnail}
-              alt="article-image"
-              className="w-full rounded-[10px]"
-              width={800}
-              height={800}
-            />
+            {iframeSources && iframeSources.length > 0 ? (
+                <Swiper
+                  modules={[Navigation, Pagination, Scrollbar]}
+                  navigation={{
+                    prevEl: '.swiper-button-prev',
+                    nextEl: '.swiper-button-next',
+                  }}
+                  pagination={{
+                    el: '.my-custom-pagination',
+                    clickable: true,
+                    dynamicBullets: true,
+                  }}
+                  className="w-full rounded-[10px] z-10 relative my-custom-swiper"
+                >
+                  <SwiperSlide>
+                    <Image
+                    src={backendUrl + articleDetails?.thumbnail}
+                    alt="article-image"
+                    className="w-full rounded-[10px]"
+                    width={800}
+                    height={800}
+                    />
+                  </SwiperSlide>
+                  {iframeSources.map((source, index) => (
+                    <SwiperSlide key={index}>
+                      <iframe
+                        src={source}
+                        width={800}
+                        height="100%"
+                        className="w-full rounded-[10px]"
+                        title={`Iframe ${index + 1}`}
+                      ></iframe>
+                    </SwiperSlide>
+                  ))}
+                  <div className="swiper-button-prev">
+                  </div>
+                  <div className="swiper-button-next">
+                  </div>
+                  <div className="my-custom-pagination absolute bottom-2 left-0 right-0 text-center z-20" />
+                </Swiper>
+            ) : (
+              <Image
+                src={backendUrl + articleDetails?.thumbnail}
+                alt="article-image"
+                className="w-full rounded-[10px]"
+                width={800}
+                height={800}
+              />
+            )}
             <div className="flex xl:flex-row flex-col justify-between items-start gap-10 xl:gap-20 w-full">
               <div className="w-full flex flex-col items-start gap-10 ">
                 <div className="flex flex-col items-start gap-10 font-[500] text-[18px] text-blue-base w-full">
@@ -128,7 +182,13 @@ export default function Page({ params }: { params: { id: string } }) {
                 </div>
               </div>
 
-              <FilterCard url="article" />
+              <FilterCard 
+                url="article"
+                categories={categoriesArticles}
+                selectedCategory={articleFilter.category}
+                onCategorySelect={(val) => 
+                  setArticleFilter((prev) => ({ ...prev, category: val }))}
+              />
             </div>
           </div>
           <div className=" flex gap-4 lg:gap-10 flex-col w-full xl:w-[82%]">
