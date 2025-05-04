@@ -26,7 +26,7 @@ const ProfileLayout = ({
     >
       <div className="relative bg-white  rounded-md lg:min-h-screen px-3 pt-10 pb-20 w-full flex justify-center">
         <div className="max-w-max  md:max-w-md-content lg:max-w-lg-content  flex flex-col items-center w-full xl:max-w-xl-content 2xl:max-w-max-container">
-          <div className="flex flex-col items-center gap-4 w-[90%] xl:text-center ">
+          <div className="flex flex-col items-center gap-4 w-full xl:text-center ">
             <Heading type="h1" className="text-center">
               {title}
             </Heading>
@@ -37,7 +37,7 @@ const ProfileLayout = ({
           </div>
           <div
             className={cn(
-              `flex flex-col items-center gap-10 xl:gap-20 w-[90%]`,
+              `flex flex-col items-center gap-10 xl:gap-20 w-full`,
               className
             )}
           >

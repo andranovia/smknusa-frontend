@@ -68,18 +68,18 @@ const isMobile = useMediaQuery("only screen and (max-width : 1023.98px)");
       <div className="flex flex-col lg:text-center w-full items-center justify-center bg-primary  text-white pt-6 sm:pt-10 pb-16 xl:pb-48">
         <Heading
           type="h1"
-          className="xl:text-[36px]  text-[22px] lg:text-[30px] sm:text-[24px] w-full max-w-[274px] xs:max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container xl:w-fit "
+          className="xl:text-[36px]  text-[22px] lg:text-[30px] sm:text-[24px] w-full px-4 md:px-0 md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container xl:w-fit "
         >
           Menuju SMK Bisa,
           <br className="block sm:hidden" /> SMK Hebat
         </Heading>
 
-        <Paragraph className=" text-sm xl:text-lg lg:text-[14px] xl:w-fit  mt-[12px] w-full max-w-[274px] xs:max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container">
+        <Paragraph className=" text-sm xl:text-lg lg:text-[14px] xl:w-fit  mt-[12px] w-full px-4 md:px-0 md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container">
           SMK Negeri 1 Purwosari memiliki beberapa program keahlian yang dibagi
           menjadi 10 macam jurusan.
         </Paragraph>
 
-        <hr className="bg-white  xl:block hidden mt-8 xl:mt-[52px]  w-full max-w-[274px] xs:max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container" />
+        <hr className="bg-white  xl:block hidden mt-8 xl:mt-[52px]  w-full px-4 md:px-0 md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container" />
       </div>
 
       <div className="relative  xl:px-8 px-0  xl:-mt-32 flex justify-center w-full ">

@@ -121,7 +121,7 @@ const NavigationSearchResult = ({
           opacity: searchToggle ? 1 : 0,
         }}
         transition={defaultTransition}
-        className={`flex absolute z-50 flex-col w-[80%] sm:w-[23rem] md:w-[26rem] xl:w-[35rem] top-[12rem]  bg-[#F7F7F7] transition-all rounded-[10px]  py-4 gap-4 `}
+        className={`flex absolute z-50 flex-col w-[94%] sm:w-[23rem] md:w-[26rem] xl:w-[35rem] top-[12rem]  bg-[#F7F7F7] transition-all rounded-[10px]  py-4 gap-4 `}
       >
         <motion.div
           animate={{

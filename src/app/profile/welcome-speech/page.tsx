@@ -13,7 +13,7 @@ const ProfileHistory = () => {
     <ProfileLayout
       title="Sambutan Kepala Sekolah"
       subtitle="Sambutan resmi dari kepala sekolah SMK Negeri 1 Purwosari"
-      classNameWrapper="pt-[76px]"
+      classNameWrapper="pt-[70px]"
     >
       <Image
         src={"/assets/profile/welcome-speech/profile-welcome-speech.png"}
@@ -25,7 +25,7 @@ const ProfileHistory = () => {
       />
       <Paragraph
         className={
-          "flex flex-col items-start text-justify gap-10 text-blue-base"
+          "flex flex-col items-start  gap-10 text-blue-base"
         }
       >
         <span>

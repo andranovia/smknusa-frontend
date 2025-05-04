@@ -21,7 +21,7 @@ const InfoLayout = ({
         style={{
           marginTop: isMedium ? "4rem" : "0rem",
         }}
-        className="relative h-full w-full xl:h-[80%]  overflow-hidden "
+        className="relative h-full w-full xl:h-[80%]  overflow-hidden pb-3"
       >
         <div
           style={{

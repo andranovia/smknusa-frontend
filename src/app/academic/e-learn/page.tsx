@@ -21,7 +21,7 @@ const Page = () => {
             <div className=" flex flex-col items-center container xl:pt-16 gap-6">
               <Heading
                 type="h1"
-                className={cn("xl:!text-[46px] text-sm sm:text-lg md:text-[20px] lg:!text-[32px] ")}
+                className={cn("xl:!text-[46px] text-center lg:!text-[32px] ")}
               >
                 E-Learning SMKN 1 Purwosari
               </Heading>

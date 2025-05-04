@@ -12,7 +12,7 @@ const ProfileStructure = () => {
     <ProfileLayout
       title="Struktur Organisasi Sekolah"
       subtitle="Struktur Organisasi Sekolah SMK Negeri 1 Purwosari"
-      classNameWrapper="pt-[76px]"
+      classNameWrapper="pt-[70px]"
     >
       <PDFViewer
         className="mt-10"
