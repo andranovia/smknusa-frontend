@@ -13,7 +13,7 @@ const ProfileVisionMision = () => {
       title="Visi dan Misi Sekolah"
       subtitle="Informasi mengenai visi dan misi sekolah SMK Negeri 1 Puworsari"
       className="items-start"
-      classNameWrapper="pt-[76px]"
+      classNameWrapper="pt-[70px]"
     >
       <span className="flex flex-col items-start gap-4 mt-10">
         <Heading type="h3">Visi SMK Negeri 1 Purwosari adalah</Heading>

@@ -15,7 +15,7 @@ const ProfileHistory = () => {
       subtitle="Sedikit pengetahuan mengenai bagaimana sejarah berdirinya SMK Negeri
             1 Purwosari"
       className="my-10"
-      classNameWrapper="pt-[76px]"
+      classNameWrapper="pt-[70px]"
     >
       <Image
         src={"/assets/profile/history/profile-history.png"}
