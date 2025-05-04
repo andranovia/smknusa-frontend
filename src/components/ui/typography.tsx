@@ -17,7 +17,7 @@ export function Heading({ children, type, className }: HeadingProps) {
       return (
         <h1
           className={cn(
-            `font-[700] xl:text-[46px] text-[20px] sm:text-[24px] xl:leading-[4.5rem] ${className} `
+            `font-[700] xl:text-[46px] text-[22px] sm:text-[24px] xl:leading-[4.5rem] ${className} `
           )}
         >
           {children}
