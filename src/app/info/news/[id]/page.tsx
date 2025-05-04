@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import DOMPurify from "dompurify";
 import parse from "html-react-parser";
@@ -20,11 +20,20 @@ export default function Page({ params }: { params: { id: string } }) {
     FORBID_ATTR: ["style"],
   }) : "";
 
+  const parsedHtml = parse(newsDetails?.text ? newsDetails?.text : "");
+  const [newsFilter, setNewsFilter] = useState({
+      search: "",
+      category: "",
+      start_date: "",
+      end_date: "",
+    });
+    
+  const { categoriesNews } = useNews(undefined, 1, newsFilter);
+
   useMetadata(
     newsDetails?.nama || "News details",
     `Details about the job: ${newsDetails?.text || "News description"}`
   );
-  const parsedHtml = parse(newsDetails?.text ? newsDetails?.text : "");
 
   const date = new Date(newsDetails?.created_at || Date.now());
   const normalDate = newsDetails ? date.toLocaleDateString() : "";
@@ -130,7 +139,13 @@ export default function Page({ params }: { params: { id: string } }) {
                 </div>
               </div>
 
-              <FilterCard url="news" />
+              <FilterCard 
+                url="news" 
+                categories={categoriesNews}
+                selectedCategory={newsFilter.category}
+                onCategorySelect={(val) => 
+                  setNewsFilter((prev) => ({ ...prev, category: val }))}  
+              />
             </div>
           </div>
           <div className=" flex gap-4 lg:gap-10 flex-col w-full xl:w-[82%]">

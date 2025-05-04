@@ -30,6 +30,7 @@ export type ArticlesData = {
 
 export const useArticles = (
   id?: string,
+  page?: number,
   filter?: {
     search: string;
     category: string;

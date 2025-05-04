@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import DOMPurify from "dompurify";
 import Link from "next/link";
 import parse from "html-react-parser";
@@ -22,6 +22,14 @@ export default function Page({ params }: { params: { id: string } }) {
     FORBID_ATTR: ["style"],
   }) : "";
   const parsedHTML = parse(articleDetails?.text ? articleDetails?.text : "");
+  const [articleFilter, setArticleFilter] = useState({
+    search: "",
+    category: "",
+    start_date: "",
+    end_date: "",
+  });
+  
+  const { categoriesArticles } = useArticles(undefined, 1, articleFilter);
 
   useMetadata(
     articleDetails?.nama || "Article Details",
@@ -174,7 +182,13 @@ export default function Page({ params }: { params: { id: string } }) {
                 </div>
               </div>
 
-              <FilterCard url="article" />
+              <FilterCard 
+                url="article"
+                categories={categoriesArticles}
+                selectedCategory={articleFilter.category}
+                onCategorySelect={(val) => 
+                  setArticleFilter((prev) => ({ ...prev, category: val }))}
+              />
             </div>
           </div>
           <div className=" flex gap-4 lg:gap-10 flex-col w-full xl:w-[82%]">
