@@ -35,3 +35,38 @@
   display: flex;
   width: 100%;
 }
+
+/* SCOPED SWIPER STYLE */
+.my-custom-swiper .swiper-button-next,
+.my-custom-swiper .swiper-button-prev {
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 30px;
+  height: 30px;
+  background-color: #081B34;
+  border-radius: 50%;
+}
+
+.my-custom-swiper .swiper-button-next {
+  background-image: url('/assets/icon/swiper-right.svg');
+  rotate: 180deg;
+  padding: 20px 20px;
+}
+
+.my-custom-swiper .swiper-button-prev {
+  background-image: url('/assets/icon/swiper-right.svg');
+  padding: 20px 20px;
+}
+
+.my-custom-swiper .swiper-button-next::after,
+.my-custom-swiper .swiper-button-prev::after {
+  display: none;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #F5C451 !important;
+}
+
+/* .swiper-scrollbar-drag {
+  background-color: #F5C451 !important  ;
+} */

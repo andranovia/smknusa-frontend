@@ -8,6 +8,7 @@ export type Article = {
   thumbnail: string;
   created_at: string;
   text: string;
+  iframe: string[];
   level: string;
   published_by: {
     name: string;
@@ -29,6 +30,7 @@ export type ArticlesData = {
 
 export const useArticles = (
   id?: string,
+  page?: number,
   filter?: {
     search: string;
     category: string;

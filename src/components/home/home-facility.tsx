@@ -58,19 +58,19 @@ const HomeFacility = () => {
       <div className="flex flex-col items-center justify-center bg-primary  text-white pt-6 sm:pt-10 pb-48">
         <Heading
           type="h1"
-          className=" xl:text-[36px] text-[22px] lg:text-[30px] sm:text-[24px] lg:text-center w-full max-w-[274px] xs:max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content 1xl:max-w-1xl-content xl:max-w-xl-content 2xl:max-w-max-container xl:w-fit "
+          className=" xl:text-[36px] text-[22px] lg:text-[30px] sm:text-[24px] lg:text-center w-full px-4 lg:px-0 md:max-w-md-content lg:max-w-lg-content 1xl:max-w-1xl-content xl:max-w-xl-content 2xl:max-w-max-container xl:w-fit "
         >
           Kenapa Harus SMK Negeri 1 Purwosari
         </Heading>
 
-        <Paragraph className=" text-sm xl:text-lg lg:text-[14px] mt-[12px] w-full 1xl:w-2/3 lg:text-center max-w-[274px] xs:max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container">
+        <Paragraph className=" text-sm xl:text-lg lg:text-[14px] mt-[12px] w-full 1xl:w-2/3 lg:text-center px-4 lg:px-0 md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container">
           Dengan dilengkapi fasilitas yang berqualitas, mampu menyongsong
           kebutuhan siswa untuk belajar.
         </Paragraph>
 
-        <hr className="bg-white hidden xl:block mt-8 xl:mt-[52px] w-full max-w-[274px] xs:max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container" />
+        <hr className="bg-white hidden xl:block mt-8 xl:mt-[52px] w-full px-4 lg:px-0 md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container" />
 
-        <div className="flex my-6 xl:my-12  xl:gap-0 gap-8 justify-center items-center  w-full max-w-[274px] xs:max-w-xs-content sm:max-w-sm-content md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container ">
+        <div className="flex my-6 xl:my-12  xl:gap-0 gap-8 justify-center items-center  w-full px-4 lg:px-0 md:max-w-md-content lg:max-w-lg-content xl:max-w-xl-content 1xl:max-w-1xl-content 2xl:max-w-max-container ">
           <div className="max-w-max-container flex xl:justify-between w-full items-center xl:px-4 gap-8 ">
             {facilityLinkData?.map((data, index) => {
               return (

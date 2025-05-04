@@ -12,7 +12,7 @@ const ProfileSchoolCommittee = () => {
     <ProfileLayout
       title="Komite Sekolah"
       subtitle="Memberitahu informasi mengenai komite sekolah"
-      classNameWrapper="pt-[76px]"
+      classNameWrapper="pt-[70px]"
     >
       <PDFViewer
         className="mt-10"

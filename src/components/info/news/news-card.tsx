@@ -43,7 +43,7 @@ const NewsCard = ({
                 </React.Fragment>
               ))}
           </div>
-        ) : news && news?.data!.length > 0 ? (
+        ) : news.data && news?.data?.length > 0 ? (
           <div className="flex justify-center items-center flex-col w-full 2xl:w-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 1xl:grid-cols-3 gap-4 xl:gap-8  px-2 lg:px-4 py-4  1xl:px-12 pb-12 bg-white rounded-[10px] w-full">
               {currentNewsData?.map((news, index) => {

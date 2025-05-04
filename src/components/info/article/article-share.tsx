@@ -66,7 +66,7 @@ const ArticleShare = () => {
 
   return (
     <div
-      className={` inline-flex flex-col items-end relative `}
+      className={` inline-flex flex-col items-end relative z-30`}
       onMouseEnter={() => setisShareDropdown(true)}
       onMouseLeave={() => setisShareDropdown(false)}
     >
