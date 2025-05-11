@@ -9,6 +9,7 @@ type FilterCardProps = {
   url: string;
   categories: string[];
   selectedCategory: string;
+  // eslint-disable-next-line no-unused-vars
   onCategorySelect: (value: string) => void;
 };
 

@@ -13,7 +13,6 @@ const HomeAlert = () => {
   const { alert, isAlertLoading } = useAlert();
   const [hover, setHover] = useState(false);
   const [isAtTop, setIsAtTop] = useState(true);
-  // const [lastScrollY, setLastScrollY] = useState(0);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -76,22 +75,9 @@ const HomeAlert = () => {
                   width={20}
                   height={20}
                   alt={"line-arrow-right-blue"}
-                  // className={`${hover ? "invert" : ""}`}
                 />
               </motion.div>
             </Link>
-            {/* <div
-              onClick={() => setClose(true)}
-              className="rounded-md font-bold px-2 py-2 bg-primary gap-2 text-white text-xs cursor-pointer absolute flex justify-center items-center right-2 bottom-2 md:px-4 md:py-3"
-            >
-              <Image
-                src={"/assets/icon/close-square.svg"}
-                width={20}
-                height={20}
-                alt={"close-square"}
-              />
-              <span className="hidden md:block ">Close</span>
-            </div> */}
           </>
         ) : null}
       </div>

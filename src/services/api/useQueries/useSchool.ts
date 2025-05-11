@@ -1,7 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import {
+  getCourseWork,
+  getPrincipalSpeech,
   getSchoolCommittee,
   getSchoolStructure,
+  getVisiMission,
 } from "../methods/fetch-school";
 
 export interface SchoolProfile {
@@ -9,6 +12,7 @@ export interface SchoolProfile {
   profile_name: string;
   name_data: string;
   type_data: string;
+  profile_image: string;
   profile_data: string;
   icon_type: string;
 }
@@ -32,6 +36,33 @@ export const useSchool = () => {
       },
     });
 
+  const { data: courseWork, isLoading: isCourseWorkLoading } =
+    useQuery<SchoolProfile[] | null>({
+      queryKey: ["CourseWork"],
+      queryFn: async () => {
+        const data = await getCourseWork();
+        return data ?? [];
+      },
+    });
+
+  const { data: visiMission, isLoading: isVisiMissionLoading } =
+    useQuery<SchoolProfile[] | null>({
+      queryKey: ["VisiMission"],
+      queryFn: async () => {
+        const data = await getVisiMission();
+        return data ?? [];
+      },
+    });
+
+  const { data: principalSpeech, isLoading: isPrincipalSpeechLoading } =
+    useQuery<SchoolProfile[] | null>({
+      queryKey: ["PrincipalSpeech"],
+      queryFn: async () => {
+        const data = await getPrincipalSpeech();
+        return data ?? [];
+      },
+    });
+
   if (schoolCommittee == undefined) {
     console.log("get data returned undefined");
   } else {
@@ -43,5 +74,11 @@ export const useSchool = () => {
     isSchoolStructureLoading,
     schoolCommittee,
     isSchoolCommitteeLoading,
+    courseWork,
+    isCourseWorkLoading,
+    visiMission,
+    isVisiMissionLoading,
+    principalSpeech,
+    isPrincipalSpeechLoading,
   };
 };

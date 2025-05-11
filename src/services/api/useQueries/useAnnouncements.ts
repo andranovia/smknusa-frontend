@@ -14,6 +14,10 @@ export type Announcement = {
   text: string;
   pdf: string;
   iframe: string[];
+  published_by: {
+    name: string;
+    img: string;
+  };
   level: string;
   category: {
     id: number;
