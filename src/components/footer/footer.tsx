@@ -4,17 +4,29 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useActiveToast } from "@/contexts/ActiveToastContext";
+// import { useActiveToast } from "@/contexts/ActiveToastContext";
 import { FooterItem, useFooters } from "@/services/api/useQueries/useFooters";
+import { useInformation } from "@/services/api/useQueries/useInformation";
 
 export default function Footer() {
-  const { handleActiveUnavailableToast } = useActiveToast();
+  // const { handleActiveUnavailableToast } = useActiveToast();
   const { footers } = useFooters();
+  const { informations } = useInformation();
   const pathname = usePathname();
+
+  const locationInfo = informations?.find(info => info.alias === 'location');
+  const emailInfo = informations?.find(info => info.alias === 'email');
+  const phoneInfo = informations?.find(info => info.alias === 'phone');
+  // const socialMediaAliases = ['facebook', 'instagram', 'twitter', 'telegram', 'tiktok'];
+  // const socialMediaLinks = informations?.filter(info =>
+  //   socialMediaAliases.includes(info.alias)
+  // );
+  const socialMediaLinks = informations?.filter(info => info.alias === 'sosmed');
+
 
   const renderFooterSection = (sectionName: string, items: FooterItem[]) => {
     return (
-      <div className="flex flex-col items-stretch 1xl:w-1/4">
+      <div className="flex flex-col items-stretch">
         <h2 className="text-lg lg:text-2xl font-bold">{sectionName}</h2>
         <div className="mt-4 lg:mt-10 w-fit">
           {Array.isArray(items) && items.length > 0 ? (
@@ -40,10 +52,13 @@ export default function Footer() {
           pathname.startsWith("/print") ? "hidden" : ""
         }`}
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 1xl:flex 1xl:flex-wrap flex-col 1xl:flex-row flex-nowrap mt-0 lg:mt-8 px-4 md:px-0  1xl:gap-0 gap-10 xl:max-w-xl-content  md:max-w-md-content lg:max-w-lg-content 1xl:max-w-1xl-content 2xl:max-w-max-content">
+        <div className="grid grid-cols-1 md:grid-cols-2 1xl:grid-cols-4 1xl:flex-wrap flex-col 1xl:flex-row flex-nowrap mt-0 lg:mt-8 px-4 md:px-0  1xl:gap-0 gap-10  xl:max-w-xl-content  md:max-w-md-content lg:max-w-lg-content  1xl:max-w-1xl-content 2xl:max-w-max-content w-full">
           {footers &&
             footers.map((section, index) => {
-              const sectionName = section["1"] || section["2"] || section["3"];
+              const sectionName = Object.keys(section)
+              .filter((key) => key !== "id" && key !== "data")
+              .map((key) => section[key])
+              .find((val) => typeof val === "string" && val.trim().length > 0);
               const data = Array.isArray(section.data) ? section.data : [];
 
               return (
@@ -54,8 +69,8 @@ export default function Footer() {
                 </React.Fragment>
               );
             })}
-
-          <div className="flex flex-col items-start justify-start text-blue-base rounded-md 1xl:w-1/4 md:col-span-2">
+        </div>
+          {/* <div className="flex flex-col items-start justify-start text-blue-base rounded-md 1xl:w-1/4 md:col-span-2">
             <div className="flex flex-col bg-white rounded-md w-full">
               <div className="flex items-center gap-1 rounded-md bg-yellow p-4">
                 <Image
@@ -90,44 +105,43 @@ export default function Footer() {
                 />
               </div>
             </div>
-          </div>
+          </div> */}
 
-          <div className="w-full  h-full 1xl:justify-between 1xl:items-end flex flex-col 1xl:flex-row text-xs 1xl:text-base gap-4 1xl:gap-0">
+          <div className="w-full mt-8 h-full 1xl:justify-between 1xl:items-end flex flex-col  lg:flex-row lg:items-center text-xs 1xl:text-base gap-4 1xl:gap-0 px-4 md:px-0 lg:px-0 xl:max-w-xl-content  md:max-w-md-content lg:max-w-lg-content  1xl:max-w-1xl-content 2xl:max-w-max-content">
             <div className="flex flex-row 1xl:justify-between gap-4">
               <Image
-                src={"/assets/icon/location.svg"}
-                alt="location"
+                src={locationInfo?.logo || ""}
+                alt={locationInfo?.alias || ""}
                 height={22}
                 width={22}
               />
               <p>
-                Jl. Raya Purwosari No. 1, Kec Purwosari, Kab Pasuruan, Jawa
-                Timur 67162
+                {locationInfo?.link}
               </p>
             </div>
 
-            <div className="text-white flex flex-col items-start gap-4 justify-start relative ">
-              <div className="flex items-center mr-4 mb-2 gap-4">
+            <div className="flex flex-col lg:flex-row items-start lg:items-center gap-4">
+              <div className="flex items-center gap-4">
                 <Image
-                  src={"/assets/icon/sms.svg"}
-                  alt="sm"
+                  src={emailInfo?.logo || ""}
+                  alt={emailInfo?.alias || ""}
                   width={22}
                   height={22}
                 />
-                <p className="mb-0">informasi@smkn1purwosari.sch.id</p>
+                <p className="mb-0"><a href={emailInfo?.link}>{emailInfo?.link}</a></p>
               </div>
               <div className="flex items-center gap-4">
                 <Image
-                  src={"/assets/icon/call.svg"}
-                  alt="call"
+                  src={phoneInfo?.logo || ""}
+                  alt={phoneInfo?.alias || ""}
                   width={22}
                   height={22}
                 />
-                <p className=" mb-0">(0343) 613747</p>
+                <p className=" mb-0">{phoneInfo?.link}</p>
               </div>
             </div>
           </div>
-        </div>
+        
 
         <hr className="mt-10 mb-4 w-full" />
 
@@ -151,45 +165,18 @@ export default function Footer() {
           <div className="md:flex-grow flex 1xl:justify-center">
             <div className="1xl:text-center text-white font-[500]">
               <p className="text-xs 1xl:text-base">
-                Hak Cipta &copy; 2024 SMK Negeri 1 Purwosari. Dikembangkan oleh
+                Hak Cipta &copy; 2025 SMK Negeri 1 Purwosari. Dikembangkan oleh
                 <a href="https://var-site.vercel.app/"><b>&nbsp; Varcretife</b></a>
               </p>
             </div>
           </div>
 
           <div className="flex items-center space-x-4">
-          <Link href={"https://www.tiktok.com/@smkn1purwosari_official"}>
-              <Image
-                src={"/assets/icon/tiktok.svg"}
-                alt="tiktok"
-                width={22}
-                height={22}
-              />
-            </Link>
-            <Link href={"https://www.instagram.com/smkn1purwosari_official/"}>
-              <Image
-                src={"/assets/icon/instagram.svg"}
-                alt="instagram"
-                width={22}
-                height={22}
-              />
-            </Link>
-            <Link href={"https://www.facebook.com/profile.php?id=100064545915738"}>
-              <Image
-                src={"/assets/icon/facebook.svg"}
-                alt="facebook"
-                width={22}
-                height={22}
-              />
-            </Link>
-            <Link href={"https://x.com/smkn1purwosari"}>
-              <Image
-                src={"/assets/icon/twitter.svg"}
-                alt="twitter"
-                width={22}
-                height={22}
-              />
-            </Link>
+            {socialMediaLinks?.map((info) => (
+              <Link key={info.id} href={info.link} target="_blank" rel="noopener noreferrer">
+                <Image src={info.logo} alt={info.alias} width={22} height={22} />
+              </Link>
+            ))}
           </div>
         </div>
       </div>
