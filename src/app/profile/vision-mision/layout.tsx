@@ -1,8 +1,8 @@
 import "@/app/globals.css";
 
 export const metadata = {
-  title: "School Work Program",
-  description: "SMKN 1 Purwosari School Work Program",
+  title: "School Vision & Mision",
+  description: "SMKN 1 Purwosari School Vision and Mision",
 };
 
 export default function SchoolCourseWorkLayout({

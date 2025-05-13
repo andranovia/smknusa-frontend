@@ -22,7 +22,6 @@ export async function getArticles(
   try {
     const response = await axiosInstance.get(url);
     const data = response.data;
-    console.log("fetch data", data);
     return data;
   } catch (error) {
     console.log(error, "Error fetching articles by filter");
@@ -34,7 +33,6 @@ export async function getArticleDetails(id?: string) {
   try {
     const response = await axiosInstance.get(`api/user/articles/${id}`);
     const data = response.data.data;
-    console.log("fetch data", data);
     return data;
   } catch (error) {
     console.log(error, "Error fetching article details");
@@ -46,7 +44,6 @@ export async function getArticleCategories() {
   try {
     const response = await axiosInstance.get("api/user/articles/categories");
     const data = response.data;
-    console.log("fetch data", data);
     return data;
   } catch (error) {
     console.log(error, "Error fetching article categories");

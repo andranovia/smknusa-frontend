@@ -1,22 +1,22 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import ProfileLayout from "@/layouts/profile-layout";
 import { Paragraph } from "@/components/ui/typography";
-
-export const metadata = {
-  title: "School Welcome Speech",
-  description: "SMKN 1 Purwosari School Welcome Speech",
-};
+import { useSchool } from "@/services/api/useQueries/useSchool";
 
 const ProfileHistory = () => {
+  const { principalSpeech } = useSchool();
+
   return (
     <ProfileLayout
-      title="Sambutan Kepala Sekolah"
+      title={principalSpeech?.[0]?.profile_name || ""}
       subtitle="Sambutan resmi dari kepala sekolah SMK Negeri 1 Purwosari"
       classNameWrapper="pt-[70px]"
     >
       <Image
-        src={"/assets/profile/welcome-speech/profile-welcome-speech.png"}
+        src={principalSpeech?.[0]?.profile_image || ""}
         alt="welcome-speech"
         draggable={false}
         className="w-full rounded-[10px] mt-10"

@@ -1,21 +1,29 @@
-import React from "react";
-import Image from "next/image";
-import { Heading, Paragraph } from "@/components/ui/typography";
-import ProfileLayout from "@/layouts/profile-layout";
+"use client";
 
-export const metadata = {
-  title: "Course Work",
-  description: "SMKN 1 Purwosari Course Work",
-};
+import React from "react";
+import ProfileLayout from "@/layouts/profile-layout";
+import PDFViewer from "@/components/ui/pdf-viewer";
+import { useSchool } from "@/services/api/useQueries/useSchool";
 
 const ProfileCourseWork = () => {
+  const { courseWork } = useSchool();
+
   return (
     <ProfileLayout
       title="Program Kerja Sekolah"
       subtitle="Program Kerja Sekolah SMK Negeri 1 Purwosari"
       classNameWrapper="pt-[70px]"
     >
-      <div className="flex flex-col items-start xl:w-[60%] gap-4">
+      <PDFViewer
+        className="mt-10"
+        url={
+          (courseWork && 
+            courseWork?.[0] &&
+            courseWork?.[0]?.profile_data) ||
+            ""
+        }
+      />
+      {/* <div className="flex flex-col items-start xl:w-[60%] gap-4">
         <Image
           src={"/assets/profile/course-work/course-work.png"}
           alt="commit and consist"
@@ -72,7 +80,7 @@ const ProfileCourseWork = () => {
           width={800}
           height={800}
         />
-      </div>
+      </div> */}
     </ProfileLayout>
   );
 };

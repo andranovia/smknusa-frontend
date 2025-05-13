@@ -1,13 +1,14 @@
-import React from "react";
-import { Heading, List, Paragraph } from "@/components/ui/typography";
-import ProfileLayout from "@/layouts/profile-layout";
+"use client";
 
-export const metadata = {
-  title: "School Vision & Mision",
-  description: "SMKN 1 Purwosari School Vision and Mision",
-};
+import React from "react";
+// import { Heading, List, Paragraph } from "@/components/ui/typography";
+import ProfileLayout from "@/layouts/profile-layout";
+import { useSchool } from "@/services/api/useQueries/useSchool";
+import { Paragraph } from "@/components/ui/typography";
 
 const ProfileVisionMision = () => {
+  const { visiMission } = useSchool();
+
   return (
     <ProfileLayout
       title="Visi dan Misi Sekolah"
@@ -15,7 +16,15 @@ const ProfileVisionMision = () => {
       className="items-start"
       classNameWrapper="pt-[70px]"
     >
-      <span className="flex flex-col items-start gap-4 mt-10">
+      <Paragraph>
+        {visiMission && visiMission.length > 0 && (
+          <div
+            className="max-w-none"
+            dangerouslySetInnerHTML={{ __html: visiMission[0].profile_data }}
+          />
+        )}
+      </Paragraph>
+      {/* <span className="flex flex-col items-start gap-4 mt-10">
         <Heading type="h3">Visi SMK Negeri 1 Purwosari adalah</Heading>
         <Paragraph>
           Terwujudnya Tamatan yang Beriman dan Bertaqwa kepada Tuhan Yang Maha
@@ -100,7 +109,7 @@ const ProfileVisionMision = () => {
             Internasional
           </li>
         </List>
-      </span>
+      </span> */}
     </ProfileLayout>
   );
 };

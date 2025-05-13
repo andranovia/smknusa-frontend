@@ -11,6 +11,10 @@ export type Event = {
   level: string;
   pdf: string;
   iframe: string[];
+  published_by: {
+    name: string;
+    img: string;
+  };
   category: {
     id: number;
     nama: string;

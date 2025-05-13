@@ -30,19 +30,15 @@ export default function Page({params}: {params: { type: string, id: string }}) {
         switch (type) {
             case 'news' :
                 if (newsDetails) setContentData(newsDetails);
-                console.log({'news': contentData, type });
                 break;
             case 'announcements' :
                 if(announcementDetails) setContentData(announcementDetails);
-                console.log({'announcement': contentData, type });
                 break;
             case 'events' :
                 if(eventDetails) setContentData(eventDetails);
-                console.log({'events': contentData, type });
                 break;
             case 'article' :
                 if(articleDetails) setContentData(articleDetails);
-                console.log({'article': contentData, type });
                 break;
             default : 
                 setContentData(null);

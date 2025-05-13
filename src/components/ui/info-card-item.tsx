@@ -67,7 +67,7 @@ const InfoCardItem = ({ infoCardData, normalDate }: InfoCardItemProps) => {
               className="w-3 h-3 invert"
             />
             <span className=" flex text-gray font-[500] text-[12px] gap-2 items-center">
-              SMKNUSA
+              {infoCardData?.published_by?.name}
             </span>
           </div>
           <div className="flex xl:ml-auto font-[500] ml-auto  text-[12px] text-gray text-right gap-2 items-center">
